@@ -6,10 +6,12 @@
 //  Copyright © 2017年 CoderMikeHe. All rights reserved.
 //
 
+#import <Hyphenate/Hyphenate.h>
 #import "SYRegisterVM.h"
 #import "SYURLParameters.h"
 #import "SYHTTPRequest.h"
 #import "CocoaSecurity.h"
+
 @interface SYRegisterVM ()
 
 /// error （PS；这个记录请求过程中的发生的错误，请求之前必须置nil）
@@ -49,23 +51,29 @@
           sy_parsedResults]
          subscribeNext:^(SYUser * user) {
              NSLog(@"register successful");
-#pragma mark 这边逻辑要
              user.userPassword = password;
              /// 存储登录账号
              [SAMKeychain setRawLogin:user.userId];
              /// 存储用户数据
              [self.services.client loginUser:user];
+             self.user = user;
          } error:^(NSError *error) {
              /// 失败回调
              NSLog(@"error");
              [MBProgressHUD sy_showErrorTips:error];
          } completed:^{
-             /// 切换根控制器
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 /// 发通知
-                 [MBProgressHUD sy_showTips:@"注册成功"];
-                 [[NSNotificationCenter defaultCenter] postNotificationName:SYSwitchRootViewControllerNotification object:nil userInfo:@{SYSwitchRootViewControllerUserInfoKey:@(SYSwitchRootViewControllerFromTypeLogin)}];
-             });
+             // 登录环信
+             EMError *error = [[EMClient sharedClient] loginWithUsername:self.user.userId password:self.user.userPassword];
+             if (!error) {
+                 // 开启自动登录
+                 [[EMClient sharedClient].options setIsAutoLogin:YES];
+                 /// 切换根控制器
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     /// 发通知
+                     [MBProgressHUD sy_showTips:@"注册成功"];
+                     [[NSNotificationCenter defaultCenter] postNotificationName:SYSwitchRootViewControllerNotification object:nil userInfo:@{SYSwitchRootViewControllerUserInfoKey:@(SYSwitchRootViewControllerFromTypeLogin)}];
+                 });
+             }
          }];
         return [RACSignal empty];
     }];

@@ -22,6 +22,8 @@
 
 @property (nonatomic, strong) NSDictionary *dict;
 
+@property (nonatomic, strong) SYUser *user;
+
 /// 注册命令
 @property(nonatomic, strong) RACCommand *registerCommand;
 
