@@ -1,0 +1,66 @@
+//
+//  WeChat.pch
+//  WeChat
+//
+//  Created by senba on 2017/9/10.
+//  Copyright © 2017年 CoderMikeHe. All rights reserved.
+//
+//  前期参与编译的头文件，切记：这里只能放置轻量常用的的头文件，比较大的头文件切勿放置于此，否则会导致debug模式下 编译时间过长。
+
+#if __OBJC__
+
+#ifndef WeChat_pch
+#define WeChat_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+/// 系统or第三方框架
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <YYCategories/YYCategories.h>
+#import <Colours/Colours.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Masonry/Masonry.h>
+#import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
+#import <BlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
+#import <YYText/YYText.h>
+#import <YYWebImage/YYWebImage.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
+#import <ZYCornerRadius/UIImageView+CornerRadius.h>
+
+
+/// User Custom File
+#import "SYMacros.h"
+#import "SYFileManager.h"
+#import "SYSearchBar.h"
+#import "SYAppDelegate.h"
+#import "SYTextField.h"
+#import "SYPreferenceSettingHelper.h"
+#import "SYSingleton.h"
+#import "SYMomentHelper.h"
+
+#import "LCActionSheet+SYExtension.h"
+#import "UIFont+SYExtension.h"
+#import "NSError+SYModelException.h"
+#import "UIView+SY.h"
+#import "FBKVOController+SYExtension.h"
+#import "MBProgressHUD+SYExtension.h"
+#import "UIAlertController+SYColor.h"
+#import "UIBarButtonItem+SYExtension.h"
+#import "UIImage+SYExtension.h"
+#import "UIImage+ImageEffects.h"
+#import "NSObject+SY.h"
+#import "NSString+SY.h"
+#import "UITextField+SYExtension.h"
+#import "UITextView+SYExtension.h"
+#import "UILabel+SYExtension.h"
+#import "UISearchBar+SYExtension.h"
+#import "UITableView+SYExtension.h"
+#import "SAMKeychain+SYUtil.h"
+#import "NSDate+Extension.h"
+
+#endif /* WeChat_pch */
+
+#endif
