@@ -172,7 +172,8 @@ pod 'DZNEmptyDataSet'                   , '1.8.1'
 #pod 'RMStore', '0.7.1'
 # 图片视频采集
 #pod 'LFImagePickerController'           , '1.5.9'
-pod 'Hyphenate'                          , '3.5.2'
+pod 'RongCloudIM/IMLib'                 , '~> 2.9.7'
+pod 'RongCloudIM/IMKit'                 , '~> 2.9.7'
 
 target 'SeeYuTests' do
 end

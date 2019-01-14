@@ -1,6 +1,6 @@
 //
-//  WeChat.pch
-//  WeChat
+//  SeeYu.pch
+//  SeeYu
 //
 //  Created by senba on 2017/9/10.
 //  Copyright © 2017年 CoderMikeHe. All rights reserved.
@@ -9,8 +9,8 @@
 
 #if __OBJC__
 
-#ifndef WeChat_pch
-#define WeChat_pch
+#ifndef SeeYu_pch
+#define SeeYu_pch
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
@@ -29,7 +29,7 @@
 #import <YYWebImage/YYWebImage.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <ZYCornerRadius/UIImageView+CornerRadius.h>
-
+#import <RongIMKit/RongIMKit.h>
 
 /// User Custom File
 #import "SYMacros.h"
@@ -61,6 +61,6 @@
 #import "SAMKeychain+SYUtil.h"
 #import "NSDate+Extension.h"
 
-#endif /* WeChat_pch */
+#endif /* SeeYu_pch */
 
 #endif

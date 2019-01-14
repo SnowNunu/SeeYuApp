@@ -24,8 +24,8 @@ CGFloat const SYGlobalBottomLineHeight = 0.5f;
 /// 个性签名的最大字数为30
 NSUInteger const SYFeatureSignatureMaxWords = 30;
 
-/// 用户昵称的最大字数为20
-NSUInteger const SYNicknameMaxWords = 8;
+/// 用户昵称的最大字数为12
+NSUInteger const SYNicknameMaxWords = 12;
 
 
 /// 简书首页地址

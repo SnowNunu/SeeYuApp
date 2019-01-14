@@ -52,7 +52,6 @@ PODS:
   - FXBlurView (1.6.4)
   - HJCornerRadius (0.0.1)
   - HYBImageCliped (2.2.4)
-  - Hyphenate (3.5.2)
   - IQKeyboardManager (5.0.2)
   - JDStatusBarNotification (1.5.5)
   - JPFPSStatus (0.1)
@@ -112,6 +111,9 @@ PODS:
   - ReactiveCocoa/no-arc (2.5.2)
   - ReactiveCocoa/UI (2.5.2):
     - ReactiveCocoa/Core
+  - RongCloudIM/IMKit (2.9.8):
+    - RongCloudIM/IMLib
+  - RongCloudIM/IMLib (2.9.8)
   - SAMKeychain (1.5.2)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
@@ -161,7 +163,6 @@ DEPENDENCIES:
   - FXBlurView (= 1.6.4)
   - HJCornerRadius (from `https://github.com/panghaijiao/HJCornerRadius.git`)
   - HYBImageCliped (= 2.2.4)
-  - Hyphenate (= 3.5.2)
   - IQKeyboardManager (= 5.0.2)
   - JDStatusBarNotification (= 1.5.5)
   - JPFPSStatus (= 0.1)
@@ -180,6 +181,8 @@ DEPENDENCIES:
   - MMMaterialDesignSpinner (= 0.2.3)
   - pop (= 1.0.10)
   - ReactiveCocoa (from `https://github.com/zhao0/ReactiveCocoa.git`, tag `2.5.2`)
+  - RongCloudIM/IMKit (~> 2.9.7)
+  - RongCloudIM/IMLib (~> 2.9.7)
   - SAMKeychain (= 1.5.2)
   - SDWebImage (= 4.0.0)
   - SocketRocket (= 0.5.1)
@@ -221,7 +224,6 @@ SPEC REPOS:
     - FMDB
     - FXBlurView
     - HYBImageCliped
-    - Hyphenate
     - IQKeyboardManager
     - JDStatusBarNotification
     - JPFPSStatus
@@ -236,6 +238,7 @@ SPEC REPOS:
     - MJRefresh
     - MMMaterialDesignSpinner
     - pop
+    - RongCloudIM
     - SAMKeychain
     - SDWebImage
     - SocketRocket
@@ -292,7 +295,6 @@ SPEC CHECKSUMS:
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   HJCornerRadius: 0af191386b5f2e9c4465739b5db22c0acc52923b
   HYBImageCliped: 22d14431324bc9d056353d6f1490a3bd03fc7dff
-  Hyphenate: 55a0b19d2df1d79ed376e15f3a9ab1b0b2a901ee
   IQKeyboardManager: 5ab84749f20f682f784160c2c63bef4f19d10d26
   JDStatusBarNotification: 2b4f29bd68a60d7aa2f190b5265f1ce59c18aaf8
   JPFPSStatus: 4467a17488382e4c1700bd9d18c92ae581fd6305
@@ -308,6 +310,7 @@ SPEC CHECKSUMS:
   MMMaterialDesignSpinner: 55c80b454f7928d0ed789cc3c456fa06bd6a2f16
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   ReactiveCocoa: 3ff25b1bd992ac79c5c79b26b6c0c1713b715bb2
+  RongCloudIM: dcfa8c4fe11e992c0d187f7dda71f2ce5bfae4d1
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
@@ -331,6 +334,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 3db7d49bb2dc9a8fe5dda801c8b9a8ad6f7fe35c
+PODFILE CHECKSUM: c34f8db005b31479552e7bafc65463d8196e2bdb
 
 COCOAPODS: 1.5.3

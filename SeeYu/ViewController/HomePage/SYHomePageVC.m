@@ -9,9 +9,10 @@
 #import "SYHomePageVC.h"
 #import "SYNavigationController.h"
 #import "SYMainFrameVC.h"
-#import "SYContactsViewController.h"
+#import "SYContactsVC.h"
 #import "SYDiscoverViewController.h"
 #import "SYProfileVC.h"
+
 @interface SYHomePageVC ()
 /// viewModel
 @property (nonatomic, readonly, strong) SYHomePageVM *viewModel;
@@ -51,9 +52,9 @@
         [[SYNavigationController alloc] initWithRootViewController:mainFrameViewController];
     });
     
-    /// 通讯录
+    /// 联系人
     UINavigationController *contactsNavigationController = ({
-        SYContactsViewController *contactsViewController = [[SYContactsViewController alloc] initWithViewModel:self.viewModel.contactsViewModel];
+        SYContactsVC *contactsViewController = [[SYContactsVC alloc] initWithViewModel:self.viewModel.contactsViewModel];
         
         SYTabBarItemTagType tagType = SYTabBarItemTagTypeContacts;
         /// 配置

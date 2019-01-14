@@ -69,7 +69,7 @@ static id service_ = nil;
 +(instancetype) sharedInstance {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        service_ = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://192.168.1.24:8001/"] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        service_ = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://192.168.1.20:8001/"] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     });
     return service_;
 }

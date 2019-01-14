@@ -6,7 +6,6 @@
 //  Copyright © 2017年 CoderMikeHe. All rights reserved.
 //
 
-#import <Hyphenate/Hyphenate.h>
 #import "SYAppDelegate.h"
 #import "SYHomePageVC.h"
 #import "SYNewFeatureViewModel.h"
@@ -46,7 +45,18 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     // 重置rootViewController
-    [self.services resetRootViewModel:[self _createInitialViewModel]];
+    SYVM *vm = [self _createInitialViewModel];
+    if ([vm isKindOfClass:[SYHomePageVM class]]) {
+        [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
+            NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
+        } error:^(RCConnectErrorCode status) {
+            NSLog(@"登陆的错误码为:%d", status);
+        } tokenIncorrect:^{
+            // token永久有效，这种情形应该不会出现
+            NSLog(@"token错误");
+        }];
+    }
+    [self.services resetRootViewModel:vm];
     // 让窗口可见
     [self.window makeKeyAndVisible];
     
@@ -81,6 +91,9 @@
     
     /// 配置FMDB
     [self _configureFMDB];
+    
+    // 初始化融云服务
+    [[RCIM sharedRCIM] initWithAppKey:@"c9kqb3rdc4vbj"];
 }
 
 /// 配置文件夹
@@ -126,15 +139,6 @@
     /// 预先配置平台信息
 //    [SBUMengService configureUMengPreDefinePlatforms];
     
-    /// 配置环信SDK
-    EMOptions *options = [EMOptions optionsWithAppkey:@"1177170805178930#seeyu"];
-#if defined(DEBUG)||defined(_DEBUG)
-    options.apnsCertName = @"seeyu_aps_dev";
-#else
-    options.apnsCertName = @"seeyu_aps_dev";
-#endif
-    [[EMClient sharedClient] initializeSDKWithOptions:options];
-    
     /// 设置状态栏全局字体颜色
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
@@ -147,8 +151,20 @@
         SYSwitchRootViewControllerFromType fromType = [note.userInfo[SYSwitchRootViewControllerUserInfoKey] integerValue];
         NSLog(@"fromType is  %zd" , fromType);
         /// 切换根控制器
-        [self.services resetRootViewModel:[self _createInitialViewModel]];
-        
+        SYVM *vm = [self _createInitialViewModel];
+        if ([vm isKindOfClass:[SYHomePageVM class]]) {
+            [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
+                NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
+                [self.services resetRootViewModel:vm];
+            } error:^(RCConnectErrorCode status) {
+                NSLog(@"登陆的错误码为:%d", status);
+            } tokenIncorrect:^{
+                // token永久有效，这种情形应该不会出现
+                NSLog(@"token错误");
+            }];
+        } else {
+            [self.services resetRootViewModel:vm];
+        }
         /// 切换了根控制器，切记需要将指示器 移到window的最前面
 #if defined(DEBUG)||defined(_DEBUG)
         [self.window bringSubviewToFront:[SYDebugTouchView sharedInstance]];
@@ -186,12 +202,8 @@
     }else{
         /// 这里判断一下
         if ([SAMKeychain rawLogin] && self.services.client.currentUser) {
-            /// 有账号+有用户数据
             /// 已经登录，跳转到主页
             return [[SYHomePageVM alloc] initWithServices:self.services params:nil];
-//        }else if(self.services.client.currentUser){ /// 没账号+有用户数据
-//            /// 跳转到账户登录页面
-//            return [[SYAccountLoginViewModel alloc] initWithServices:self.services params:nil];
         }else{
             /// 进入注册页面
             return [[SYBootRegisterVM alloc] initWithServices:self.services params:nil];
@@ -211,12 +223,12 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [[EMClient sharedClient] applicationDidEnterBackground:application];
+    
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [[EMClient sharedClient] applicationWillEnterForeground:application];
+    
 }
 
 
