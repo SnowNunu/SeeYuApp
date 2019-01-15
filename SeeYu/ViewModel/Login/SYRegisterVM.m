@@ -63,6 +63,7 @@
              /// 切换根控制器
              dispatch_async(dispatch_get_main_queue(), ^{
                  /// 发通知
+                 [MBProgressHUD sy_hideHUD];
                  [MBProgressHUD sy_showProgressHUD:@"注册成功，登录中"];
                  [[NSNotificationCenter defaultCenter] postNotificationName:SYSwitchRootViewControllerNotification object:nil userInfo:@{SYSwitchRootViewControllerUserInfoKey:@(SYSwitchRootViewControllerFromTypeLogin)}];
              });

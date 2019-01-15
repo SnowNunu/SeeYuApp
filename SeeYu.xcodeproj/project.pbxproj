@@ -67,9 +67,9 @@
 		261753201F739DDC00812E1B /* SYCommonQRCodeItemViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2617531F1F739DDC00812E1B /* SYCommonQRCodeItemViewModel.m */; };
 		261753241F73ADB800812E1B /* SYMoreInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 261753231F73ADB800812E1B /* SYMoreInfoViewModel.m */; };
 		261753281F73ADFB00812E1B /* SYMoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 261753271F73ADFB00812E1B /* SYMoreInfoViewController.m */; };
-		261753361F73C41D00812E1B /* SYFeatureSignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 261753351F73C41D00812E1B /* SYFeatureSignatureViewController.m */; };
+		261753361F73C41D00812E1B /* SYFeatureSignatureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 261753351F73C41D00812E1B /* SYFeatureSignatureVC.m */; };
 		2617533A1F73C5A700812E1B /* SYFeatureSignatureTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 261753391F73C5A700812E1B /* SYFeatureSignatureTextView.m */; };
-		2617533D1F73D03C00812E1B /* SYFeatureSignatureViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2617533C1F73D03C00812E1B /* SYFeatureSignatureViewModel.m */; };
+		2617533D1F73D03C00812E1B /* SYFeatureSignatureVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 2617533C1F73D03C00812E1B /* SYFeatureSignatureVM.m */; };
 		2618AFD11F91A5D900F82A46 /* SYPreferenceSettingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2618AFD01F91A5D900F82A46 /* SYPreferenceSettingHelper.m */; };
 		2618AFDA1F91BD5B00F82A46 /* SYModifyNicknameVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 2618AFD91F91BD5B00F82A46 /* SYModifyNicknameVM.m */; };
 		2618AFDF1F91BDA300F82A46 /* SYModifyNicknameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2618AFDD1F91BDA300F82A46 /* SYModifyNicknameVC.m */; };
@@ -441,12 +441,12 @@
 		261753231F73ADB800812E1B /* SYMoreInfoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMoreInfoViewModel.m; sourceTree = "<group>"; };
 		261753261F73ADFB00812E1B /* SYMoreInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMoreInfoViewController.h; sourceTree = "<group>"; };
 		261753271F73ADFB00812E1B /* SYMoreInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMoreInfoViewController.m; sourceTree = "<group>"; };
-		261753341F73C41D00812E1B /* SYFeatureSignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYFeatureSignatureViewController.h; sourceTree = "<group>"; };
-		261753351F73C41D00812E1B /* SYFeatureSignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYFeatureSignatureViewController.m; sourceTree = "<group>"; };
+		261753341F73C41D00812E1B /* SYFeatureSignatureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYFeatureSignatureVC.h; sourceTree = "<group>"; };
+		261753351F73C41D00812E1B /* SYFeatureSignatureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYFeatureSignatureVC.m; sourceTree = "<group>"; };
 		261753381F73C5A700812E1B /* SYFeatureSignatureTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYFeatureSignatureTextView.h; sourceTree = "<group>"; };
 		261753391F73C5A700812E1B /* SYFeatureSignatureTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYFeatureSignatureTextView.m; sourceTree = "<group>"; };
-		2617533B1F73D03C00812E1B /* SYFeatureSignatureViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYFeatureSignatureViewModel.h; sourceTree = "<group>"; };
-		2617533C1F73D03C00812E1B /* SYFeatureSignatureViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYFeatureSignatureViewModel.m; sourceTree = "<group>"; };
+		2617533B1F73D03C00812E1B /* SYFeatureSignatureVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYFeatureSignatureVM.h; sourceTree = "<group>"; };
+		2617533C1F73D03C00812E1B /* SYFeatureSignatureVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYFeatureSignatureVM.m; sourceTree = "<group>"; };
 		2618AFCF1F91A5D900F82A46 /* SYPreferenceSettingHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPreferenceSettingHelper.h; sourceTree = "<group>"; };
 		2618AFD01F91A5D900F82A46 /* SYPreferenceSettingHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPreferenceSettingHelper.m; sourceTree = "<group>"; };
 		2618AFD81F91BD5B00F82A46 /* SYModifyNicknameVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYModifyNicknameVM.h; sourceTree = "<group>"; };
@@ -1428,8 +1428,8 @@
 		261753321F73C41200812E1B /* FeatureSignature */ = {
 			isa = PBXGroup;
 			children = (
-				2617533B1F73D03C00812E1B /* SYFeatureSignatureViewModel.h */,
-				2617533C1F73D03C00812E1B /* SYFeatureSignatureViewModel.m */,
+				2617533B1F73D03C00812E1B /* SYFeatureSignatureVM.h */,
+				2617533C1F73D03C00812E1B /* SYFeatureSignatureVM.m */,
 			);
 			path = FeatureSignature;
 			sourceTree = "<group>";
@@ -1437,8 +1437,8 @@
 		261753331F73C41D00812E1B /* FeatureSignature */ = {
 			isa = PBXGroup;
 			children = (
-				261753341F73C41D00812E1B /* SYFeatureSignatureViewController.h */,
-				261753351F73C41D00812E1B /* SYFeatureSignatureViewController.m */,
+				261753341F73C41D00812E1B /* SYFeatureSignatureVC.h */,
+				261753351F73C41D00812E1B /* SYFeatureSignatureVC.m */,
 			);
 			path = FeatureSignature;
 			sourceTree = "<group>";
@@ -3562,7 +3562,7 @@
 				26D817F7201EF38F00DDB286 /* SYProfileInfoViewController.m in Sources */,
 				263D37161F66656A007267C3 /* YYReachability.m in Sources */,
 				2664F5371FEA6BE6005C10CF /* SYMomentHelper.m in Sources */,
-				2617533D1F73D03C00812E1B /* SYFeatureSignatureViewModel.m in Sources */,
+				2617533D1F73D03C00812E1B /* SYFeatureSignatureVM.m in Sources */,
 				E932C42921369FC600B32A9F /* SYCameraViewController.m in Sources */,
 				26225D771F654DEE0074BFC3 /* SYWebViewController.m in Sources */,
 				26AEEE0D1F7D16F600A270EE /* SYSearchBar.m in Sources */,
@@ -3618,7 +3618,7 @@
 				2624CAEE1F98DFC80083923F /* SYKeyedSubscript.m in Sources */,
 				263D370F1F666569007267C3 /* LCActionSheetCell.m in Sources */,
 				260175851FE904D1000F6A25 /* SYGeneralViewController.m in Sources */,
-				261753361F73C41D00812E1B /* SYFeatureSignatureViewController.m in Sources */,
+				261753361F73C41D00812E1B /* SYFeatureSignatureVC.m in Sources */,
 				7BA3261221DFB4E100B7A352 /* SYSelfieVC.m in Sources */,
 				263D37191F66656A007267C3 /* YYTimer.m in Sources */,
 				26FE8E811F9514D100EC8BE0 /* TAPageControl.m in Sources */,

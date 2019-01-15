@@ -17,6 +17,9 @@
 /// 提示错误
 + (MBProgressHUD *)sy_showErrorTips:(NSError *)error;
 
+/// 提示错误文本
++ (MBProgressHUD *)sy_showError:(NSString *)error;
+
 /// 进度view
 + (MBProgressHUD *)sy_showProgressHUD:(NSString *)titleStr;
 

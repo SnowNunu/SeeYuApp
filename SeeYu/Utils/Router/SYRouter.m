@@ -59,7 +59,7 @@ static SYRouter *sharedInstance_ = nil;
              @"SYHomePageVM":@"SYHomePageVC",
              @"SYUserInfoVM":@"SYUserInfoVC",
              @"SYMoreInfoViewModel":@"SYMoreInfoViewController",
-             @"SYFeatureSignatureViewModel":@"SYFeatureSignatureViewController",
+             @"SYFeatureSignatureVM":@"SYFeatureSignatureVC",
              @"SYAddFriendsViewModel":@"SYAddFriendsViewController",
              @"SYSearchFriendsViewModel":@"SYSearchFriendsViewController",
              @"SYBootRegisterVM":@"SYBootRegisterVC",

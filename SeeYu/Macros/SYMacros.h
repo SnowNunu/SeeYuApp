@@ -39,8 +39,8 @@
 #define SYLogLastError(db) NSLog(@"lastError: %@, lastErrorCode: %d, lastErrorMessage: %@", [db lastError], [db lastErrorCode], [db lastErrorMessage]);
 
 
-
-
+/// 请求后台地址
+#define SYURL @"http://192.168.1.36:8001/"
 
 /// 类型相关
 #define SY_IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -124,7 +124,6 @@
 
 //  通知中心
 #define SYNotificationCenter [NSNotificationCenter defaultCenter]
-
 
 /// 全局细下滑线颜色 以及分割线颜色
 #define SYGlobalBottomLineColor     [UIColor colorFromHexString:@"#D9D9D9"]

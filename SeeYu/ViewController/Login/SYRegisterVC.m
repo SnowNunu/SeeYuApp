@@ -70,6 +70,7 @@
             [MBProgressHUD sy_showTips:@"职业不能为空"];
             return;
         }
+        [MBProgressHUD sy_showProgressHUD:@"注册中，请稍候"];
         [self.viewModel.registerCommand execute:nil];
     }];
     [RACObserve(self.viewModel, income) subscribeNext:^(id x) {

@@ -31,9 +31,13 @@
 #define SY_HTTTP_PATH_USER_REGISTER     @"/application/user/register"
 
 /// 获取用户资料
-#define SY_HTTTP_PATH_USER_INFO_QUERY     @"/application/user/query"
+#define SY_HTTTP_PATH_USER_INFO_QUERY   @"/application/user/query"
 
-#define SY_HTTTP_PATH_USER_INFO_UPDATE  @"/user/update_attribute"
+/// 更新用户资料
+#define SY_HTTTP_PATH_USER_INFO_UPDATE  @"/application/user/update"
+
+#define SY_HTTTP_PATH_USER_HEAD_UPLOAD  @"/application/user/headimage/upload"
+
 
 ///
 //+ (NSString *)ver;          // app版本号

@@ -69,7 +69,7 @@ static id service_ = nil;
 +(instancetype) sharedInstance {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        service_ = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://192.168.1.20:8001/"] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        service_ = [[self alloc] initWithBaseURL:[NSURL URLWithString:SYURL] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     });
     return service_;
 }
@@ -375,7 +375,7 @@ static id service_ = nil;
             // 设置时间格式
             [formatter setDateFormat:@"yyyyMMddHHmmss"];
             NSString *dateString = [formatter stringFromDate:[NSDate date]];
-            NSString *fileName = [NSString  stringWithFormat:@"senba_empty_%@_%zd.jpg", dateString , i];
+            NSString *fileName = [NSString  stringWithFormat:@"%@_%d.jpg", dateString , i];
             [formData appendPartWithFileData:fileData name:name fileName:fileName mimeType:SYStringIsNotEmpty(mimeType)?mimeType:@"application/octet-stream"];
         }
     }]

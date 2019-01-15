@@ -48,6 +48,9 @@
     SYVM *vm = [self _createInitialViewModel];
     if ([vm isKindOfClass:[SYHomePageVM class]]) {
         [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD sy_showTips:@"登录成功"];
+            });
             NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
         } error:^(RCConnectErrorCode status) {
             NSLog(@"登陆的错误码为:%d", status);
@@ -155,15 +158,24 @@
         if ([vm isKindOfClass:[SYHomePageVM class]]) {
             [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
                 NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-                [self.services resetRootViewModel:vm];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.services resetRootViewModel:vm];
+                    [MBProgressHUD sy_showTips:@"登录成功"];
+                });
             } error:^(RCConnectErrorCode status) {
-                NSLog(@"登陆的错误码为:%d", status);
+                NSLog(@"登陆的错误码为:%long", status);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.services resetRootViewModel:vm];
+                    [MBProgressHUD sy_showTips:[NSString stringWithFormat:@"连接IM服务器异常%long",status]];
+                });
             } tokenIncorrect:^{
                 // token永久有效，这种情形应该不会出现
                 NSLog(@"token错误");
             }];
         } else {
-            [self.services resetRootViewModel:vm];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.services resetRootViewModel:vm];
+            });
         }
         /// 切换了根控制器，切记需要将指示器 移到window的最前面
 #if defined(DEBUG)||defined(_DEBUG)

@@ -21,6 +21,11 @@
     return [self sy_showErrorTips:error addedToView:nil];
 }
 
+/// 提示错误文本
++ (MBProgressHUD *)sy_showError:(NSString *)error{
+    return [self sy_showError:error addedToView:nil];
+}
+
 /// 进度view
 + (MBProgressHUD *)sy_showProgressHUD:(NSString *)titleStr
 {
@@ -45,6 +50,12 @@
 + (MBProgressHUD *)sy_showErrorTips:(NSError *)error addedToView:(UIView *)view
 {
     return [self _showHUDWithTips:[self sy_tipsFromError:error] isAutomaticHide:YES addedToView:view];
+}
+
+/// 提示错误文本
++ (MBProgressHUD *)sy_showError:(NSString *)error addedToView:(UIView *)view
+{
+    return [self _showHUDWithTips:error isAutomaticHide:YES addedToView:view];
 }
 
 
