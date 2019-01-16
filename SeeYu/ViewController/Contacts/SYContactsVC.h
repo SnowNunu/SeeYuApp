@@ -11,6 +11,6 @@
 #import "FSSegmentTitleView.h"
 #import "FSPageContentView.h"
 
-@interface SYContactsVC : SYTableVC<FSSegmentTitleViewDelegate,FSPageContentViewDelegate>
+@interface SYContactsVC : SYTableVC <FSSegmentTitleViewDelegate,FSPageContentViewDelegate>
 
 @end

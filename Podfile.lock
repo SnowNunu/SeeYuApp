@@ -111,9 +111,15 @@ PODS:
   - ReactiveCocoa/no-arc (2.5.2)
   - ReactiveCocoa/UI (2.5.2):
     - ReactiveCocoa/Core
-  - RongCloudIM/IMKit (2.9.8):
+  - RongCloudIM/IMKit (2.9.7):
     - RongCloudIM/IMLib
-  - RongCloudIM/IMLib (2.9.8)
+  - RongCloudIM/IMLib (2.9.7)
+  - RongCloudRTC/RongCallKit (2.9.7):
+    - RongCloudIM/IMKit (~> 2.9.7)
+    - RongCloudIM/IMLib (~> 2.9.7)
+    - RongCloudRTC/RongCallLib
+  - RongCloudRTC/RongCallLib (2.9.7):
+    - RongCloudIM/IMLib (~> 2.9.7)
   - SAMKeychain (1.5.2)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
@@ -181,8 +187,10 @@ DEPENDENCIES:
   - MMMaterialDesignSpinner (= 0.2.3)
   - pop (= 1.0.10)
   - ReactiveCocoa (from `https://github.com/zhao0/ReactiveCocoa.git`, tag `2.5.2`)
-  - RongCloudIM/IMKit (~> 2.9.7)
-  - RongCloudIM/IMLib (~> 2.9.7)
+  - RongCloudIM/IMKit (= 2.9.7)
+  - RongCloudIM/IMLib (= 2.9.7)
+  - RongCloudRTC/RongCallKit (= 2.9.7)
+  - RongCloudRTC/RongCallLib (= 2.9.7)
   - SAMKeychain (= 1.5.2)
   - SDWebImage (= 4.0.0)
   - SocketRocket (= 0.5.1)
@@ -239,6 +247,7 @@ SPEC REPOS:
     - MMMaterialDesignSpinner
     - pop
     - RongCloudIM
+    - RongCloudRTC
     - SAMKeychain
     - SDWebImage
     - SocketRocket
@@ -310,7 +319,8 @@ SPEC CHECKSUMS:
   MMMaterialDesignSpinner: 55c80b454f7928d0ed789cc3c456fa06bd6a2f16
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   ReactiveCocoa: 3ff25b1bd992ac79c5c79b26b6c0c1713b715bb2
-  RongCloudIM: dcfa8c4fe11e992c0d187f7dda71f2ce5bfae4d1
+  RongCloudIM: 0a039a658fe5e40f62d8f2a14c3df3629c12526a
+  RongCloudRTC: c37e66794a21604a152c8b6599e7dba39bdfb0cc
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
@@ -334,6 +344,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: c34f8db005b31479552e7bafc65463d8196e2bdb
+PODFILE CHECKSUM: fa186ccafb548113f925c8eb78c2bdf004c9e867
 
 COCOAPODS: 1.5.3

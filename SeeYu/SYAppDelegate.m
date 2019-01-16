@@ -10,7 +10,7 @@
 #import "SYHomePageVC.h"
 #import "SYNewFeatureViewModel.h"
 #import "SYBootRegisterVM.h"
-
+#import "SYRCIMDataSource.h"
 
 #if defined(DEBUG)||defined(_DEBUG)
 #import <JPFPSStatus/JPFPSStatus.h>
@@ -49,11 +49,13 @@
     if ([vm isKindOfClass:[SYHomePageVM class]]) {
         [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                RCUserInfo *rcUser = [[RCUserInfo alloc]initWithUserId:userId name:self.services.client.currentUser.userName portrait:self.services.client.currentUser.userHeadImg];
+                [RCIM sharedRCIM].currentUserInfo = rcUser;
                 [MBProgressHUD sy_showTips:@"登录成功"];
             });
             NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
         } error:^(RCConnectErrorCode status) {
-            NSLog(@"登陆的错误码为:%d", status);
+            NSLog(@"登陆的错误码为:%ld", status);
         } tokenIncorrect:^{
             // token永久有效，这种情形应该不会出现
             NSLog(@"token错误");
@@ -74,7 +76,8 @@
     // Save the application version info. must write last
     [[NSUserDefaults standardUserDefaults] setValue:SY_APP_VERSION forKey:SYApplicationVersionKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
+    NSDictionary *remoteNotificationUserInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    NSLog(@"收到的推送消息内容为:%@",remoteNotificationUserInfo);
     return YES;
 }
 
@@ -97,6 +100,10 @@
     
     // 初始化融云服务
     [[RCIM sharedRCIM] initWithAppKey:@"c9kqb3rdc4vbj"];
+    [RCIM sharedRCIM].userInfoDataSource = [SYRCIMDataSource shareInstance];
+    //注册推送, 用于iOS8以及iOS8之后的系统
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
+    [application registerUserNotificationSettings:settings];
 }
 
 /// 配置文件夹
@@ -159,6 +166,8 @@
             [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
                 NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    RCUserInfo *rcUser = [[RCUserInfo alloc]initWithUserId:userId name:self.services.client.currentUser.userName portrait:self.services.client.currentUser.userHeadImg];
+                    [RCIM sharedRCIM].currentUserInfo = rcUser;
                     [self.services resetRootViewModel:vm];
                     [MBProgressHUD sy_showTips:@"登录成功"];
                 });
@@ -202,8 +211,6 @@
 #endif
 }
 
-
-
 #pragma mark - 创建根控制器
 - (SYVM *)_createInitialViewModel {
     // The user has logged-in.
@@ -226,6 +233,23 @@
 #pragma mark- 获取appDelegate
 + (AppDelegate *)sharedDelegate{
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
+// 注册用户通知设置
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings: (UIUserNotificationSettings *)notificationSettings {
+    [application registerForRemoteNotifications];
+}
+
+// 上传deviceToekn到融云服务器
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<" withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"deviceToken为:%@",token);
+    [[RCIMClient sharedRCIMClient] setDeviceToken:token];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    // userInfo为远程推送的内容
+    NSLog(@"收到的远程推送内容为:%@",userInfo);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

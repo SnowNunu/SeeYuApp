@@ -38,12 +38,6 @@ FOUNDATION_EXTERN NSString * const SYSwitchRootViewControllerNotification;
 /// 切换根控制器的通知 UserInfo key
 FOUNDATION_EXTERN NSString * const SYSwitchRootViewControllerUserInfoKey;
 
-/// 插件Switch按钮值改变
-FOUNDATION_EXTERN NSString * const SYPlugSwitchValueDidChangedNotification;
-
-
-
-
 /// 全局分割线高度 .5
 FOUNDATION_EXTERN CGFloat const SYGlobalBottomLineHeight;
 

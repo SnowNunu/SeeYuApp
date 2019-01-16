@@ -33,6 +33,9 @@
 /// 获取用户资料
 #define SY_HTTTP_PATH_USER_INFO_QUERY   @"/application/user/query"
 
+/// 获取IM用户资料
+#define SY_HTTTP_PATH_USER_IMINFO   @"/application/user/iminfo"
+
 /// 更新用户资料
 #define SY_HTTTP_PATH_USER_INFO_UPDATE  @"/application/user/update"
 

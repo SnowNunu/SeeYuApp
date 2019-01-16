@@ -14,9 +14,6 @@
 NSString * const SYSwitchRootViewControllerNotification = @"SYSwitchRootViewControllerNotification";
 /// 切换根控制器的通知 UserInfo key
 NSString * const SYSwitchRootViewControllerUserInfoKey = @"SYSwitchRootViewControllerUserInfoKey";
-/// 插件Switch按钮值改变
-NSString * const SYPlugSwitchValueDidChangedNotification = @"SYPlugSwitchValueDidChangedNotification";
-
 
 /// 全局分割线高度 .5
 CGFloat const SYGlobalBottomLineHeight = 0.5f;

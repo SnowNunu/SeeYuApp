@@ -16,7 +16,7 @@
 @property (nonatomic, strong, readwrite) SYContactsVM *contactsViewModel;
 
 /// The view model of `discover` interface.
-@property (nonatomic, strong, readwrite) SYDiscoverViewModel *discoverViewModel;
+@property (nonatomic, strong, readwrite) SYDiscoverVM *discoverViewModel;
 
 /// The view model of `Profile` interface.
 @property (nonatomic, strong, readwrite) SYProfileVM *profileViewModel;
@@ -29,7 +29,7 @@
     
     self.mainFrameViewModel  = [[SYMainFrameViewModel alloc] initWithServices:self.services params:nil];
     self.contactsViewModel   = [[SYContactsVM alloc] initWithServices:self.services params:nil];
-    self.discoverViewModel   = [[SYDiscoverViewModel alloc] initWithServices:self.services params:nil];
+    self.discoverViewModel   = [[SYDiscoverVM alloc] initWithServices:self.services params:nil];
     self.profileViewModel    = [[SYProfileVM alloc] initWithServices:self.services params:nil];
 }
 

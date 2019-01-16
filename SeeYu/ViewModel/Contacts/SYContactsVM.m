@@ -7,7 +7,7 @@
 //
 
 #import "SYContactsVM.h"
-#import "SYAddFriendsViewModel.h"
+
 @interface SYContactsVM ()
 /// addFriendsCommand
 @property (nonatomic, readwrite, strong) RACCommand *addFriendsCommand;
@@ -19,13 +19,5 @@
 - (void)initialize {
     [super initialize];
     self.title = @"消息";
-    @weakify(self);
-    self.addFriendsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        SYAddFriendsViewModel *viewModel = [[SYAddFriendsViewModel alloc] initWithServices:self.services params:nil];
-        [self.services pushViewModel:viewModel animated:YES];
-        return [RACSignal empty];
-    }];
-    
 }
 @end

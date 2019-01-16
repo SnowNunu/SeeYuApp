@@ -9,6 +9,5 @@
 #import "SYTableViewModel.h"
 
 @interface SYContactsVM : SYTableViewModel
-/// addFriendsCommand
-@property (nonatomic, readonly, strong) RACCommand *addFriendsCommand;
+
 @end

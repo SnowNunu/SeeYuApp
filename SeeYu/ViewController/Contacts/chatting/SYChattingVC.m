@@ -28,11 +28,18 @@
                                           @(ConversationType_GROUP)]];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;
+}
+
 - (void)onSelectedTableRow:(RCConversationModelType)conversationModelType conversationModel:(RCConversationModel *)model atIndexPath:(NSIndexPath *)indexPath {
     RCConversationViewController *conversationVC = [[RCConversationViewController alloc]init];
     conversationVC.conversationType = model.conversationType;
     conversationVC.targetId = model.targetId;
-    conversationVC.title = @"小萱萱";
+    // 从缓存获取用户信息，用户昵称变动一般不大
+    RCUserInfo *userInfo = [[RCIM sharedRCIM] getUserInfoCache:model.targetId];
+    conversationVC.title = userInfo.name;
     [self.navigationController pushViewController:conversationVC animated:YES];
 }
 

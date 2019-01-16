@@ -39,8 +39,11 @@
 #define SYLogLastError(db) NSLog(@"lastError: %@, lastErrorCode: %d, lastErrorMessage: %@", [db lastError], [db lastErrorCode], [db lastErrorMessage]);
 
 
-/// 请求后台地址
-#define SYURL @"http://192.168.1.36:8001/"
+/// 开发环境后台地址
+//#define SYURL @"http://192.168.1.36:8001/"
+
+/// 正式环境后台地址
+#define SYURL @"http://103.214.146.89:8080/"
 
 /// 类型相关
 #define SY_IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)

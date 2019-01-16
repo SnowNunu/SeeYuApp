@@ -10,7 +10,7 @@
 #import "SYNavigationController.h"
 #import "SYMainFrameVC.h"
 #import "SYContactsVC.h"
-#import "SYDiscoverViewController.h"
+#import "SYDiscoverVC.h"
 #import "SYProfileVC.h"
 
 @interface SYHomePageVC ()
@@ -65,7 +65,7 @@
     
     /// 发现
     UINavigationController *discoverNavigationController = ({
-        SYDiscoverViewController *discoverViewController = [[SYDiscoverViewController alloc] initWithViewModel:self.viewModel.discoverViewModel];
+        SYDiscoverVC *discoverViewController = [[SYDiscoverVC alloc] initWithViewModel:self.viewModel.discoverViewModel];
         
         SYTabBarItemTagType tagType = SYTabBarItemTagTypeDiscover;
         /// 配置
