@@ -7,13 +7,13 @@
 //  主界面的视图的视图模型
 
 #import "SYTabBarViewModel.h"
-#import "SYMainFrameViewModel.h"
+#import "SYMainFrameVM.h"
 #import "SYContactsVM.h"
 #import "SYDiscoverVM.h"
 #import "SYProfileVM.h"
 @interface SYHomePageVM : SYTabBarViewModel
 /// The view model of `MainFrame` interface.
-@property (nonatomic, strong, readonly) SYMainFrameViewModel *mainFrameViewModel;
+@property (nonatomic, strong, readonly) SYMainFrameVM *mainFrameViewModel;
 
 /// The view model of `contacts` interface.
 @property (nonatomic, strong, readonly) SYContactsVM *contactsViewModel;

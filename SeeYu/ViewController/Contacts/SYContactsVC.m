@@ -28,6 +28,14 @@
     [super viewDidLoad];
     /// 设置导航栏
     [self _setupNavigation];
+//    self.viewModel.services.client en
+    SYKeyedSubscript *subscript = [SYKeyedSubscript subscript];
+    subscript[@"userId"] = self.viewModel.services.client.currentUser.userId;
+    SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_PUSH_REBOT parameters:subscript.dictionary];
+    SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
+    [[self.viewModel.services.client enqueueRequest:request resultClass:[SYUser class]] subscribeCompleted:^{
+        NSLog(@"推送成功");
+    }];
 }
 
 #pragma mark - 设置导航栏

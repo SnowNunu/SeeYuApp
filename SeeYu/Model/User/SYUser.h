@@ -97,6 +97,13 @@
 /** 星座 */
 @property (nonatomic, strong) NSString *userConstellation;
 
+/** 好友位置 默认为用户当前位置*/
+@property (nonatomic, strong) NSString *userLocation;
+
+/** 好友距离 */
+@property (nonatomic, assign) float userDistance;
+
+//------------------------------------------------------------------
 /// 昵称
 @property (nonatomic, readwrite, copy) NSString *screenName;
 /// id

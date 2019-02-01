@@ -6,9 +6,9 @@
 //  Copyright © 2018年 CoderMikeHe. All rights reserved.
 //  用户主页信息
 
-#import "SYTableViewModel.h"
+#import "SYTableVM.h"
 #import "SYUser.h"
-@interface SYProfileInfoViewModel : SYTableViewModel
+@interface SYProfileInfoViewModel : SYTableVM
 /// user
 @property (nonatomic, readonly, strong) SYUser *user;
 

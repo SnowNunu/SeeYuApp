@@ -15,7 +15,7 @@
 /// contentInset defaul is (64 , 0 , 0 , 0)
 @property (nonatomic, readwrite, assign) UIEdgeInsets contentInset;
 /// 视图模型
-@property (nonatomic, readonly, strong) SYTableViewModel *viewModel;
+@property (nonatomic, readonly, strong) SYTableVM *viewModel;
 @end
 
 @implementation SYTableVC
@@ -30,7 +30,7 @@
 }
 
 /// init
-- (instancetype)initWithViewModel:(SYTableViewModel *)viewModel {
+- (instancetype)initWithViewModel:(SYTableVM *)viewModel {
     self = [super initWithViewModel:viewModel];
     if (self) {
         if ([viewModel shouldRequestRemoteDataOnViewDidLoad]) {

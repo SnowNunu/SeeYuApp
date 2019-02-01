@@ -26,6 +26,8 @@
     //设置需要将哪些类型的会话在会话列表中聚合显示
     [self setCollectionConversationType:@[@(ConversationType_DISCUSSION),
                                           @(ConversationType_GROUP)]];
+    // 设置头像圆形显示
+    [RCIM sharedRCIM].globalConversationAvatarStyle = 1;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

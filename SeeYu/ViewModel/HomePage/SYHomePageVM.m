@@ -10,7 +10,7 @@
 
 @interface SYHomePageVM ()
 /// The view model of `MainFrame` interface.
-@property (nonatomic, strong, readwrite) SYMainFrameViewModel *mainFrameViewModel;
+@property (nonatomic, strong, readwrite) SYMainFrameVM *mainFrameViewModel;
 
 /// The view model of `contacts` interface.
 @property (nonatomic, strong, readwrite) SYContactsVM *contactsViewModel;
@@ -27,7 +27,7 @@
 - (void)initialize {
     [super initialize];
     
-    self.mainFrameViewModel  = [[SYMainFrameViewModel alloc] initWithServices:self.services params:nil];
+    self.mainFrameViewModel  = [[SYMainFrameVM alloc] initWithServices:self.services params:nil];
     self.contactsViewModel   = [[SYContactsVM alloc] initWithServices:self.services params:nil];
     self.discoverViewModel   = [[SYDiscoverVM alloc] initWithServices:self.services params:nil];
     self.profileViewModel    = [[SYProfileVM alloc] initWithServices:self.services params:nil];

@@ -6,10 +6,10 @@
 //  Copyright © 2017年 CoderMikeHe. All rights reserved.
 //
 
-#import "SYTableViewModel.h"
+#import "SYTableVM.h"
 #import "SYCommonItemViewModel.h"
 #import "SYCommonGroupViewModel.h"
-@interface SYCommonViewModel : SYTableViewModel
+@interface SYCommonViewModel : SYTableVM
 
 
 

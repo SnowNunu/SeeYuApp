@@ -6,8 +6,8 @@
 //  Copyright © 2019年 fljj. All rights reserved.
 //
 
-#import "SYTableViewModel.h"
+#import "SYTableVM.h"
 
-@interface SYContactsVM : SYTableViewModel
+@interface SYContactsVM : SYTableVM
 
 @end

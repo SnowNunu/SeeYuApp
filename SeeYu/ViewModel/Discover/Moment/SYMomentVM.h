@@ -6,14 +6,14 @@
 //  Copyright © 2019年 fljj. All rights reserved.
 //
 
-#import "SYTableViewModel.h"
+#import "SYTableVM.h"
 #import "SYMomentItemViewModel.h"
 #import "SYMomentAttitudesItemViewModel.h"
 #import "SYMomentCommentItemViewModel.h"
 #import "SYMomentProfileViewModel.h"
 #import "SYMomentReplyItemViewModel.h"
 
-@interface SYMomentVM : SYTableViewModel
+@interface SYMomentVM : SYTableVM
 /// 个人信息头部视图模型
 @property (nonatomic, readonly, strong) SYMomentProfileViewModel *profileViewModel;
 /// 刷新某一个section的 事件回调

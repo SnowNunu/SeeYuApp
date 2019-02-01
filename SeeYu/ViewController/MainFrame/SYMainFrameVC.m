@@ -10,9 +10,18 @@
 #import "SYMainFrameTableViewCell.h"
 #import "SYTestViewController.h"
 #import "SYCameraViewController.h"
+#import "SYNearbyVC.h"
+#import "SYRankingVC.h"
+
 @interface SYMainFrameVC ()
+
 /// viewModel
-@property (nonatomic, readwrite, strong) SYMainFrameViewModel *viewModel;
+@property (nonatomic, readwrite, strong) SYMainFrameVM *viewModel;
+
+@property (nonatomic, strong) FSSegmentTitleView *titleView;
+
+@property (nonatomic, strong) FSPageContentView *contentView;
+
 @end
 
 @implementation SYMainFrameVC
@@ -21,60 +30,51 @@
 
 /// 子类代码逻辑
 - (void)viewDidLoad {
-    /// ①：子类调用父类的viewDidLoad方法，而父类主要是创建tableView以及强行布局子控件，从而导致tableView刷新，这样就会去走tableView的数据源方法
     [super viewDidLoad];
-    /// 设置
-    [self _setup];
     
     /// 设置导航栏
-    [self _setupNavigationItem];
+    [self _setupNavigation];
     
-    /// ③：注册cell
-    [self.tableView sy_registerNibCell:SYMainFrameTableViewCell.class];
 }
 
-
-
-
-#pragma mark - Override
-/// 配置tableView的区域
-- (UIEdgeInsets)contentInset{
-    return UIEdgeInsetsMake(SY_APPLICATION_TOP_BAR_HEIGHT, 0, SY_APPLICATION_TAB_BAR_HEIGHT, 0);
-}
-
-/// 返回自定义的cell
-- (UITableViewCell *)tableView:(UITableView *)tableView dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
-    // ②：父类的tableView的数据源方法的获取cell是通过注册cell的identifier来获取cell，然而此时子类并未注册cell，所以取出来的cell = nil而引发Crash
-    return [tableView dequeueReusableCellWithIdentifier:@"SYMainFrameTableViewCell"];
-    // 非注册cell 使用时：去掉ViewDidLoad里面注册Cell的代码
-    //    return [SYMainFrameTableViewCell cellWithTableView:tableView];
-}
-
-
-/// 绑定数据
-- (void)configureCell:(SYMainFrameTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(id)object{
-    [cell bindViewModel:object];
-}
-
-#pragma mark - 事件处理
-- (void)_addMore{
-    
-    /// 跳转到小视频模块
-    SYCameraViewController *camera = [[SYCameraViewController alloc] init];
-    [self presentViewController:camera animated:YES completion:NULL];
-}
-
-#pragma mark - 初始化
-- (void)_setup{
-    /// set up ...
-}
 #pragma mark - 设置导航栏
-- (void)_setupNavigationItem{
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"barbuttonicon_add_30x30" target:self selector:@selector(_addMore) textType:NO];
+- (void)_setupNavigation{
+//    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - 80, 44) titles:@[@"语音",@"附近",@"自选",@"周榜"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
+    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - 80, 44) titles:@[@"附近",@"周榜"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
+    self.titleView.titleNormalColor = [UIColor whiteColor];
+    self.titleView.titleSelectColor = [UIColor whiteColor];
+    self.titleView.backgroundColor = [UIColor clearColor];
+    self.titleView.indicatorColor = [UIColor whiteColor];
+    self.titleView.titleFont = SYRegularFont(18);
+    self.titleView.titleSelectFont = SYRegularFont(20);
+    self.navigationItem.titleView = self.titleView;
+    
+    NSMutableArray *childVCs = [[NSMutableArray alloc]init];
+//    UIViewController *vc1 = [[UIViewController alloc]init];
+//    vc1.view.backgroundColor = [UIColor redColor];
+//    [childVCs addObject:vc1];
+    SYNearbyVC *nearVC = [[SYNearbyVC alloc]initWithViewModel:self.viewModel.nearbyVM];
+    [childVCs addObject:nearVC];
+//    UIViewController *vc3 = [[UIViewController alloc]init];
+//    vc3.view.backgroundColor = [UIColor whiteColor];
+//    [childVCs addObject:vc3];
+    SYRankingVC *rankingVC = [[SYRankingVC alloc]initWithViewModel:self.viewModel.rankingVM];
+    [childVCs addObject:rankingVC];
+    
+    self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, SY_APPLICATION_TOP_BAR_HEIGHT, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SY_APPLICATION_TOP_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
+    [self.view addSubview:_contentView];
 }
 
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [self.viewModel.dataSource[indexPath.row] cellHeight];
+- (void)FSSegmentTitleView:(FSSegmentTitleView *)titleView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {
+    self.contentView.contentViewCurrentIndex = endIndex;
+//    self.title = @[@"语音",@"附近",@"自选",@"周榜"][endIndex];
+    self.title = @[@"附近",@"周榜"][endIndex];
 }
+
+- (void)FSContenViewDidEndDecelerating:(FSPageContentView *)contentView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {
+    self.titleView.selectIndex = endIndex;
+//    self.title = @[@"语音",@"附近",@"自选",@"周榜"][endIndex];
+    self.title = @[@"附近",@"周榜"][endIndex];
+}
+
 @end

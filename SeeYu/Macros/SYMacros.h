@@ -40,10 +40,10 @@
 
 
 /// 开发环境后台地址
-//#define SYURL @"http://192.168.1.36:8001/"
+#define SYURL @"http://192.168.2.228:8080/"
 
 /// 正式环境后台地址
-#define SYURL @"http://103.214.146.89:8080/"
+//#define SYURL @"http://103.214.146.89:8080/"
 
 /// 类型相关
 #define SY_IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)

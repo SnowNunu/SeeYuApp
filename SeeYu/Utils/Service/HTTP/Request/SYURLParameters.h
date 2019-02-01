@@ -39,8 +39,14 @@
 /// 更新用户资料
 #define SY_HTTTP_PATH_USER_INFO_UPDATE  @"/application/user/update"
 
+/// 头像上传接口
 #define SY_HTTTP_PATH_USER_HEAD_UPLOAD  @"/application/user/headimage/upload"
 
+/// 获取附近的人
+#define SY_HTTTP_PATH_USER_NEARBY   @"/application/user/nearby"
+
+/// 机器人推送
+#define SY_HTTTP_PATH_PUSH_REBOT    @"/application/push/rebot"
 
 ///
 //+ (NSString *)ver;          // app版本号

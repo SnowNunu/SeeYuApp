@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  WeChat
+//  SeeYu
 //
-//  Created by senba on 2017/9/4.
-//  Copyright © 2017年 CoderMikeHe. All rights reserved.
+//  Created by trc on 2019/01/29.
+//  Copyright © 2019年 fljj. All rights reserved.
 //
 
 #import "SYAppDelegate.h"
@@ -101,7 +101,7 @@
     // 初始化融云服务
     [[RCIM sharedRCIM] initWithAppKey:@"c9kqb3rdc4vbj"];
     [RCIM sharedRCIM].userInfoDataSource = [SYRCIMDataSource shareInstance];
-    //注册推送, 用于iOS8以及iOS8之后的系统
+    // 注册推送, 用于iOS8以及iOS8之后的系统
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
     [application registerUserNotificationSettings:settings];
 }

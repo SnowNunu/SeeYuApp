@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  WeChat
+//  SeeYu
 //
-//  Created by senba on 2017/9/4.
-//  Copyright © 2017年 CoderMikeHe. All rights reserved.
+//  Created by trc on 2019/01/29.
+//  Copyright © 2019年 fljj. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -23,5 +23,6 @@
 
 /// 是否已经弹出键盘 主要用于微信朋友圈的判断
 @property (nonatomic, readwrite, assign , getter = isShowKeyboard) BOOL showKeyboard;
+
 @end
 

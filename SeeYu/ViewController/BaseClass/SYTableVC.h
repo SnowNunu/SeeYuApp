@@ -7,7 +7,7 @@
 //  所有需要显示tableView的自定义的视图控制器的基类
 
 #import "SYVC.h"
-#import "SYTableViewModel.h"
+#import "SYTableVM.h"
 #import "SYTableView.h"
 @interface SYTableVC : SYVC<UITableViewDelegate , UITableViewDataSource>
 

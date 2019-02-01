@@ -2,12 +2,15 @@
 //  SYMainFrameVC.h
 //  SeeYu
 //
-//  Created by senba on 2017/9/11.
-//  Copyright © 2017年 CoderMikeHe. All rights reserved.
-//  `微信`会话层页面
+//  Created by trc on 2019/01/24.
+//  Copyright © 2019年 fljj. All rights reserved.
+//  `首页`会话层页面
 
-#import "SYTableVC.h"
-#import "SYMainFrameViewModel.h"
-@interface SYMainFrameVC : SYTableVC
+#import "SYVC.h"
+#import "SYMainFrameVM.h"
+#import "FSSegmentTitleView.h"
+#import "FSPageContentView.h"
+
+@interface SYMainFrameVC : SYVC <FSSegmentTitleViewDelegate,FSPageContentViewDelegate>
 
 @end
