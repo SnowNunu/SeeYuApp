@@ -28,14 +28,13 @@
     [super viewDidLoad];
     /// 设置导航栏
     [self _setupNavigation];
-//    self.viewModel.services.client en
-    SYKeyedSubscript *subscript = [SYKeyedSubscript subscript];
-    subscript[@"userId"] = self.viewModel.services.client.currentUser.userId;
-    SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_PUSH_REBOT parameters:subscript.dictionary];
-    SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
-    [[self.viewModel.services.client enqueueRequest:request resultClass:[SYUser class]] subscribeCompleted:^{
-        NSLog(@"推送成功");
-    }];
+//    SYKeyedSubscript *subscript = [SYKeyedSubscript subscript];
+//    subscript[@"userId"] = self.viewModel.services.client.currentUser.userId;
+//    SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_PUSH_REBOT parameters:subscript.dictionary];
+//    SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
+//    [[self.viewModel.services.client enqueueRequest:request resultClass:[SYUser class]] subscribeCompleted:^{
+//        NSLog(@"推送成功");
+//    }];
 }
 
 #pragma mark - 设置导航栏
@@ -50,23 +49,22 @@
     self.navigationItem.titleView = self.titleView;
     
     NSMutableArray *childVCs = [[NSMutableArray alloc]init];
-    SYChattingVC *chattingVC = [[SYChattingVC alloc]init];
-    [childVCs addObject:chattingVC];
-    UIViewController *vc = [[UIViewController alloc]init];
-    vc.view.backgroundColor = [UIColor whiteColor];
+    EaseConversationListViewController *vc = [EaseConversationListViewController new];
     [childVCs addObject:vc];
+    SYChattingVC *chattingVC = [SYChattingVC new];
+    [childVCs addObject:chattingVC];
     self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, SY_APPLICATION_TOP_BAR_HEIGHT, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SY_APPLICATION_TOP_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
     [self.view addSubview:_contentView];
 }
 
 - (void)FSSegmentTitleView:(FSSegmentTitleView *)titleView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {
     self.contentView.contentViewCurrentIndex = endIndex;
-    self.title = @[@"聊天",@"客服"][endIndex];
+    self.title = @[@"消息",@"好友"][endIndex];
 }
 
 - (void)FSContenViewDidEndDecelerating:(FSPageContentView *)contentView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {
     self.titleView.selectIndex = endIndex;
-    self.title = @[@"聊天",@"客服"][endIndex];
+    self.title = @[@"消息",@"好友"][endIndex];
 }
 
 @end

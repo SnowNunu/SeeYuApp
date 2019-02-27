@@ -11,10 +11,11 @@
 
 /// tababr item tag
 typedef NS_ENUM(NSUInteger, SYTabBarItemTagType) {
-    SYTabBarItemTagTypeMainFrame = 0,    /// 消息回话
-    SYTabBarItemTagTypeContacts,         /// 通讯录
-    SYTabBarItemTagTypeDiscover,         /// 发现
-    SYTabBarItemTagTypeProfile,          /// 我的
+    SYTabBarItemTagTypeMainFrame = 0,    /// 首页
+    SYTabBarItemTagTypeCollocation,         /// 速配交友
+    SYTabBarItemTagTypeContacts,         /// 消息
+    SYTabBarItemTagTypeDiscover,         /// 动态
+    SYTabBarItemTagTypeProfile,          /// 个人
 };
 
 

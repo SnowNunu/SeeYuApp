@@ -7,6 +7,7 @@
 //
 
 #import "SYChattingVC.h"
+#import "SYUserInfoManager.h"
 
 @interface SYChattingVC ()
 
@@ -15,34 +16,34 @@
 @implementation SYChattingVC
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    //设置需要显示哪些类型的会话
-    [self setDisplayConversationTypes:@[@(ConversationType_PRIVATE),
-                                        @(ConversationType_DISCUSSION),
-                                        @(ConversationType_CHATROOM),
-                                        @(ConversationType_GROUP),
-                                        @(ConversationType_APPSERVICE),
-                                        @(ConversationType_SYSTEM)]];
-    //设置需要将哪些类型的会话在会话列表中聚合显示
-    [self setCollectionConversationType:@[@(ConversationType_DISCUSSION),
-                                          @(ConversationType_GROUP)]];
-    // 设置头像圆形显示
-    [RCIM sharedRCIM].globalConversationAvatarStyle = 1;
+    self.showRefreshHeader = YES;
+    self.delegate = self;
+    self.dataSource = self;
+    //首次进入加载数据
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [IQKeyboardManager sharedManager].enable = NO;
+    [self tableViewDidTriggerHeaderRefresh];
 }
 
-- (void)onSelectedTableRow:(RCConversationModelType)conversationModelType conversationModel:(RCConversationModel *)model atIndexPath:(NSIndexPath *)indexPath {
-    RCConversationViewController *conversationVC = [[RCConversationViewController alloc]init];
-    conversationVC.conversationType = model.conversationType;
-    conversationVC.targetId = model.targetId;
-    // 从缓存获取用户信息，用户昵称变动一般不大
-    RCUserInfo *userInfo = [[RCIM sharedRCIM] getUserInfoCache:model.targetId];
-    conversationVC.title = userInfo.name;
-    [self.navigationController pushViewController:conversationVC animated:YES];
+- (void)conversationListViewController:(EaseConversationListViewController *)conversationListViewController didSelectConversationModel:(id<IConversationModel>)conversationModel {
+    
 }
+
+- (id<IConversationModel>)conversationListViewController:(EaseConversationListViewController *)conversationListViewController
+                                    modelForConversation:(EMConversation *)conversation {
+    EaseConversationModel *model = [[EaseConversationModel alloc] initWithConversation:conversation];
+    NSLog(@"%@",conversation.conversationId);
+    if (model.conversation.type == EMConversationTypeChat) {
+        if ([conversation.conversationId isEqualToString:@"12218"]) {
+            model.title = @"张无忌";
+        } else {
+            model.title = @"周芷若";
+        }
+    }
+    return model;
+}
+
+
 
 @end

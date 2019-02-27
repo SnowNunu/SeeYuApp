@@ -142,17 +142,16 @@ caption = _caption;
 #else
             SDWebImageOptions options = SDWebImageRetryFailed;
 #endif
-            [[SDWebImageManager sharedManager] loadImageWithURL:_photoURL options:options progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+            [[SDWebImageManager sharedManager] downloadImageWithURL:_photoURL options:options progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                 CGFloat progress = ((CGFloat)receivedSize)/((CGFloat)expectedSize);
-
+                
                 if (self.progressUpdateBlock) {
                     self.progressUpdateBlock(progress);
                 }
-            } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                 if (image) {
                     self.underlyingImage = image;
                 }
-
                 [self performSelectorOnMainThread:@selector(imageLoadingComplete) withObject:nil waitUntilDone:NO];
             }];
         } else {

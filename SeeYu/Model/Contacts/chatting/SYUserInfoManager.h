@@ -14,8 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (SYUserInfoManager *)shareInstance;
 
-// 根据id获取用户信息
-- (void)getUserInfo:(NSString *)userId completion:(void (^)(RCUserInfo *))completion;
+- (EaseConversationModel *)getUserInfo:(NSString *) userId withConversation:(EMConversation *)conversation;
 
 @end
 

@@ -89,22 +89,26 @@
     /// 也可以show之前 hid掉之前的
     [self sy_hideHUDForView:view];
     
-    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    HUD.mode = isAutomaticHide?MBProgressHUDModeText:MBProgressHUDModeIndeterminate;
-    HUD.animationType = MBProgressHUDAnimationZoom;
-    HUD.label.font = isAutomaticHide?SYMediumFont(17.0f):SYMediumFont(14.0f);
-    HUD.label.textColor = [UIColor whiteColor];
-    HUD.contentColor = [UIColor whiteColor];
-    HUD.label.text = tipStr;
-    HUD.bezelView.layer.cornerRadius = 8.0f;
-    HUD.bezelView.layer.masksToBounds = YES;
-    HUD.bezelView.color = SYColorAlpha(0, 0, 0, .6f);
-    HUD.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    HUD.minSize =isAutomaticHide?CGSizeMake([UIScreen mainScreen].bounds.size.width-96.0f, 60):CGSizeMake(120, 120);
-    HUD.margin = 18.2f;
-    HUD.removeFromSuperViewOnHide = YES;
-    if (isAutomaticHide) [HUD hideAnimated:YES afterDelay:1.0f];
-    return HUD;
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.mode = isAutomaticHide?MBProgressHUDModeText:MBProgressHUDModeIndeterminate;
+    hud.animationType = MBProgressHUDAnimationZoom;
+    hud.labelFont = isAutomaticHide?SYMediumFont(17.0f):SYMediumFont(14.0f);
+    hud.labelColor = [UIColor whiteColor];
+//    hud.contentColor = [UIColor whiteColor];
+    hud.labelText = tipStr;
+//    hud.bezelView.layer.cornerRadius = 8.0f;
+//    hud.bezelView.layer.masksToBounds = YES;
+//    hud.bezelView.color = SYColorAlpha(0, 0, 0, .6f);
+//    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.customView.layer.cornerRadius = 8.0f;
+    hud.customView.layer.masksToBounds = YES;
+//    hud.customView.color = SYColorAlpha(0, 0, 0, .6f);
+//    hud.customView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.minSize =isAutomaticHide?CGSizeMake([UIScreen mainScreen].bounds.size.width-96.0f, 60):CGSizeMake(120, 120);
+    hud.margin = 18.2f;
+    hud.removeFromSuperViewOnHide = YES;
+    if (isAutomaticHide) [hud hide:YES afterDelay:1.0f];
+    return hud;
 }
 
 

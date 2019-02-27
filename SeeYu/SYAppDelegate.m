@@ -10,7 +10,6 @@
 #import "SYHomePageVC.h"
 #import "SYNewFeatureViewModel.h"
 #import "SYBootRegisterVM.h"
-#import "SYRCIMDataSource.h"
 
 #if defined(DEBUG)||defined(_DEBUG)
 #import <JPFPSStatus/JPFPSStatus.h>
@@ -46,21 +45,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
     // 重置rootViewController
     SYVM *vm = [self _createInitialViewModel];
-    if ([vm isKindOfClass:[SYHomePageVM class]]) {
-        [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                RCUserInfo *rcUser = [[RCUserInfo alloc]initWithUserId:userId name:self.services.client.currentUser.userName portrait:self.services.client.currentUser.userHeadImg];
-                [RCIM sharedRCIM].currentUserInfo = rcUser;
-                [MBProgressHUD sy_showTips:@"登录成功"];
-            });
-            NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-        } error:^(RCConnectErrorCode status) {
-            NSLog(@"登陆的错误码为:%ld", status);
-        } tokenIncorrect:^{
-            // token永久有效，这种情形应该不会出现
-            NSLog(@"token错误");
-        }];
-    }
     [self.services resetRootViewModel:vm];
     // 让窗口可见
     [self.window makeKeyAndVisible];
@@ -98,9 +82,12 @@
     /// 配置FMDB
     [self _configureFMDB];
     
-    // 初始化融云服务
-    [[RCIM sharedRCIM] initWithAppKey:@"c9kqb3rdc4vbj"];
-    [RCIM sharedRCIM].userInfoDataSource = [SYRCIMDataSource shareInstance];
+    // 初始化环信服务
+    EMOptions *options = [EMOptions optionsWithAppkey:@"1177170805178930#seeyu"];
+    options.apnsCertName = @"seeyu_aps_dev";
+    [[EMClient sharedClient] initializeSDKWithOptions:options];
+    [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
+    
     // 注册推送, 用于iOS8以及iOS8之后的系统
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
     [application registerUserNotificationSettings:settings];
@@ -163,28 +150,17 @@
         /// 切换根控制器
         SYVM *vm = [self _createInitialViewModel];
         if ([vm isKindOfClass:[SYHomePageVM class]]) {
-            [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
-                NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    RCUserInfo *rcUser = [[RCUserInfo alloc]initWithUserId:userId name:self.services.client.currentUser.userName portrait:self.services.client.currentUser.userHeadImg];
-                    [RCIM sharedRCIM].currentUserInfo = rcUser;
-                    [self.services resetRootViewModel:vm];
-                    [MBProgressHUD sy_showTips:@"登录成功"];
-                });
-            } error:^(RCConnectErrorCode status) {
-                NSLog(@"登陆的错误码为:%long", status);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.services resetRootViewModel:vm];
-                    [MBProgressHUD sy_showTips:[NSString stringWithFormat:@"连接IM服务器异常%long",status]];
-                });
-            } tokenIncorrect:^{
-                // token永久有效，这种情形应该不会出现
-                NSLog(@"token错误");
-            }];
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            EMError *error = [[EMClient sharedClient] loginWithUsername:self.services.client.currentUser.userId password:self.services.client.currentUser.userPassword];
+            if (!error) {
+                [[EMClient sharedClient].options setIsAutoLogin:YES];
+                [MBProgressHUD sy_showTips:@"登录成功"];
                 [self.services resetRootViewModel:vm];
-            });
+            } else {
+                NSLog(@"%@",error);
+                [MBProgressHUD sy_showError:error.errorDescription];
+            }
+        } else {
+            [self.services resetRootViewModel:vm];
         }
         /// 切换了根控制器，切记需要将指示器 移到window的最前面
 #if defined(DEBUG)||defined(_DEBUG)
@@ -216,18 +192,23 @@
     // The user has logged-in.
     NSString *version = [[NSUserDefaults standardUserDefaults] valueForKey:SYApplicationVersionKey];
     /// 版本不一样就先走 新特性界面
-    if (![version isEqualToString:SY_APP_VERSION]){
+    if (![version isEqualToString:SY_APP_VERSION]) {
         return [[SYNewFeatureViewModel alloc] initWithServices:self.services params:nil];
-    }else{
+    } else {
         /// 这里判断一下
         if ([SAMKeychain rawLogin] && self.services.client.currentUser) {
             /// 已经登录，跳转到主页
             return [[SYHomePageVM alloc] initWithServices:self.services params:nil];
-        }else{
+        } else {
             /// 进入注册页面
             return [[SYBootRegisterVM alloc] initWithServices:self.services params:nil];
         }
     }
+}
+
+#pragma mark 环信delegate
+- (void)autoLoginDidCompleteWithError:(EMError *)aError {
+    NSLog(@"登录异常为：%@",aError);
 }
 
 #pragma mark- 获取appDelegate
@@ -240,11 +221,16 @@
     [application registerForRemoteNotifications];
 }
 
-// 上传deviceToekn到融云服务器
+// 上传deviceToekn到环信服务器
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<" withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"deviceToken为:%@",token);
-    [[RCIMClient sharedRCIMClient] setDeviceToken:token];
+    NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"deviceToken:%@",token);
+    [[EMClient sharedClient] bindDeviceToken:deviceToken];
+}
+
+// 注册deviceToken失败
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    NSLog(@"error -- %@",error);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -259,12 +245,12 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    
+    [[EMClient sharedClient] applicationDidEnterBackground:application];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    
+    [[EMClient sharedClient] applicationWillEnterForeground:application];
 }
 
 

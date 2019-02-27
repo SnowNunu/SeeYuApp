@@ -49,7 +49,7 @@ pod 'Colours'                           , '5.13.0'
 pod 'UIImage+ImageWithColor'            , '1.4.0'
 
 # HUD
-pod 'MBProgressHUD'                     , '1.1.0'
+pod 'MBProgressHUD'                     , '~> 0.9'
 pod 'SVProgressHUD'                     , '2.1.2'
 # 状态栏通知
 pod 'JDStatusBarNotification'           , '1.5.5'
@@ -68,7 +68,7 @@ pod 'ReactiveCocoa', :git => 'https://github.com/zhao0/ReactiveCocoa.git', :tag 
 pod 'AFNetworking'                      , '3.1.0'
 
 # 图片缓存
-pod 'SDWebImage'                        , '4.0.0'
+pod 'SDWebImage'                        , '~> 3.7.3'
 
 # UIView模糊
 pod 'FXBlurView'                        , '1.6.4'
@@ -172,10 +172,9 @@ pod 'DZNEmptyDataSet'                   , '1.8.1'
 #pod 'RMStore', '0.7.1'
 # 图片视频采集
 #pod 'LFImagePickerController'           , '1.5.9'
-pod 'RongCloudIM/IMLib'                 , '2.9.7'
-pod 'RongCloudIM/IMKit'                 , '2.9.7'
-pod 'RongCloudRTC/RongCallLib'          , '2.9.7'
-pod 'RongCloudRTC/RongCallKit'          , '2.9.7'
+#集成环信即时通讯
+pod 'Hyphenate'                         , '3.5.1'
+pod 'EaseUI', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git', :tag => '3.5.1'
 
 target 'SeeYuTests' do
 end

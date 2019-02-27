@@ -10,7 +10,7 @@
 #import "SYNavigationControllerStack.h"
 #import "SYViewModelServicesImpl.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, EMClientDelegate>
 
 /// 窗口
 @property (strong, nonatomic) UIWindow *window;

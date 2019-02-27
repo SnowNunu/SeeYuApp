@@ -29,7 +29,8 @@
 #import <YYWebImage/YYWebImage.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <ZYCornerRadius/UIImageView+CornerRadius.h>
-#import <RongIMKit/RongIMKit.h>
+#import <Hyphenate/Hyphenate.h>
+#import <EaseUI/EaseUI.h>
 
 /// User Custom File
 #import "SYMacros.h"

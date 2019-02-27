@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYChattingVC : RCConversationListViewController
+@interface SYChattingVC : EaseConversationListViewController <EaseConversationListViewControllerDelegate, EaseConversationListViewControllerDataSource>
 
 @end
 

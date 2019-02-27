@@ -20,4 +20,5 @@
     [super initialize];
     self.title = @"消息";
 }
+
 @end
