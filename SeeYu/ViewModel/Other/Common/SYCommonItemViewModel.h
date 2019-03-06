@@ -15,6 +15,8 @@
 @property (nonatomic, readwrite, copy) NSString *title;
 /// 子标题
 @property (nonatomic, readwrite, copy) NSString *subtitle;
+/// 子标题字体颜色
+@property (nonatomic, readwrite, copy) UIColor *subTitleColor;
 
 
 /// rowHeight , default is 44.0f

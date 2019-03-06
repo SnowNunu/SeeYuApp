@@ -92,22 +92,22 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.mode = isAutomaticHide?MBProgressHUDModeText:MBProgressHUDModeIndeterminate;
     hud.animationType = MBProgressHUDAnimationZoom;
-    hud.labelFont = isAutomaticHide?SYMediumFont(17.0f):SYMediumFont(14.0f);
-    hud.labelColor = [UIColor whiteColor];
-//    hud.contentColor = [UIColor whiteColor];
-    hud.labelText = tipStr;
-//    hud.bezelView.layer.cornerRadius = 8.0f;
-//    hud.bezelView.layer.masksToBounds = YES;
-//    hud.bezelView.color = SYColorAlpha(0, 0, 0, .6f);
-//    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    hud.customView.layer.cornerRadius = 8.0f;
-    hud.customView.layer.masksToBounds = YES;
-//    hud.customView.color = SYColorAlpha(0, 0, 0, .6f);
-//    hud.customView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.label.font = isAutomaticHide?SYMediumFont(17.0f):SYMediumFont(14.0f);
+    hud.label.textColor = [UIColor whiteColor];
+    hud.contentColor = [UIColor whiteColor];
+    hud.label.text = tipStr;
+    hud.bezelView.layer.cornerRadius = 8.0f;
+    hud.bezelView.layer.masksToBounds = YES;
+    hud.bezelView.color = SYColorAlpha(0, 0, 0, .6f);
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.bezelView.layer.cornerRadius = 8.0f;
+    hud.bezelView.layer.masksToBounds = YES;
+    hud.bezelView.color = SYColorAlpha(0, 0, 0, .6f);
+    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
     hud.minSize =isAutomaticHide?CGSizeMake([UIScreen mainScreen].bounds.size.width-96.0f, 60):CGSizeMake(120, 120);
     hud.margin = 18.2f;
     hud.removeFromSuperViewOnHide = YES;
-    if (isAutomaticHide) [hud hide:YES afterDelay:1.0f];
+    if (isAutomaticHide) [hud hideAnimated:YES afterDelay:1.0f];
     return hud;
 }
 

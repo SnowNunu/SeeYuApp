@@ -82,12 +82,6 @@
     /// 配置FMDB
     [self _configureFMDB];
     
-    // 初始化环信服务
-    EMOptions *options = [EMOptions optionsWithAppkey:@"1177170805178930#seeyu"];
-    options.apnsCertName = @"seeyu_aps_dev";
-    [[EMClient sharedClient] initializeSDKWithOptions:options];
-    [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
-    
     // 注册推送, 用于iOS8以及iOS8之后的系统
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
     [application registerUserNotificationSettings:settings];
@@ -150,15 +144,15 @@
         /// 切换根控制器
         SYVM *vm = [self _createInitialViewModel];
         if ([vm isKindOfClass:[SYHomePageVM class]]) {
-            EMError *error = [[EMClient sharedClient] loginWithUsername:self.services.client.currentUser.userId password:self.services.client.currentUser.userPassword];
-            if (!error) {
-                [[EMClient sharedClient].options setIsAutoLogin:YES];
-                [MBProgressHUD sy_showTips:@"登录成功"];
-                [self.services resetRootViewModel:vm];
-            } else {
-                NSLog(@"%@",error);
-                [MBProgressHUD sy_showError:error.errorDescription];
-            }
+//            EMError *error = [[EMClient sharedClient] loginWithUsername:self.services.client.currentUser.userId password:self.services.client.currentUser.userPassword];
+//            if (!error) {
+//                [[EMClient sharedClient].options setIsAutoLogin:YES];
+//                [MBProgressHUD sy_showTips:@"登录成功"];
+//                [self.services resetRootViewModel:vm];
+//            } else {
+//                NSLog(@"%@",error);
+//                [ çMBProgressHUD sy_showError:error.errorDescription];
+//            }
         } else {
             [self.services resetRootViewModel:vm];
         }
@@ -205,12 +199,6 @@
         }
     }
 }
-
-#pragma mark 环信delegate
-- (void)autoLoginDidCompleteWithError:(EMError *)aError {
-    NSLog(@"登录异常为：%@",aError);
-}
-
 #pragma mark- 获取appDelegate
 + (AppDelegate *)sharedDelegate{
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -225,7 +213,6 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"deviceToken:%@",token);
-    [[EMClient sharedClient] bindDeviceToken:deviceToken];
 }
 
 // 注册deviceToken失败
@@ -242,17 +229,6 @@
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 }
-
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    [[EMClient sharedClient] applicationDidEnterBackground:application];
-}
-
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    [[EMClient sharedClient] applicationWillEnterForeground:application];
-}
-
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.

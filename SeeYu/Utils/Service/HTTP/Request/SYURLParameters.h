@@ -39,8 +39,17 @@
 /// 更新用户资料
 #define SY_HTTTP_PATH_USER_INFO_UPDATE  @"/application/user/update"
 
-/// 头像上传接口
+/// 头像上传
 #define SY_HTTTP_PATH_USER_HEAD_UPLOAD  @"/application/user/headimage/upload"
+
+/// 用户签到
+#define SY_HTTTP_PATH_USER_SIGN  @"/application/user/userSign"
+
+/// 获取用户认证状态
+#define SY_HTTTP_PATH_USER_IDENTITY_SATUS  @"/application/user/queryAuth"
+
+/// 实名认证信息上传
+#define SY_HTTTP_PATH_USER_IDENTITY_UPLOAD @"/application/userIdentityAuth/addUserIdentity"
 
 /// 获取附近的人
 #define SY_HTTTP_PATH_USER_NEARBY   @"/application/user/nearby"

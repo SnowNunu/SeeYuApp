@@ -50,8 +50,8 @@
 //    return model;
 //}
 
-- (EaseConversationModel *)getUserInfo:(NSString *) userId withConversation:(EMConversation *)conversation {
-    EaseConversationModel *model = [[EaseConversationModel alloc] initWithConversation:conversation];
+//- (EaseConversationModel *)getUserInfo:(NSString *) userId withConversation:(EMConversation *)conversation {
+//    EaseConversationModel *model = [[EaseConversationModel alloc] initWithConversation:conversation];
 //    // 拼接参数发起网络请求
 //    NSDictionary *parameters = @{@"userId":userId};
 //    SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:parameters];
@@ -71,7 +71,7 @@
 //         NSLog(@"%@",@"网络请求完成");
 //     }];
     // 未等到网络请求返回就已经return
-    return model;
-}
+//    return model;
+//}
 
 @end

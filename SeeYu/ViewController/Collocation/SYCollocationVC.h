@@ -10,7 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYCollocationVC : SYVC
+@interface SYCollocationVC : SYVC <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+
+@property (nonatomic, strong) UITableView *bgTableView;
+
+
+@property (nonatomic, assign) NSInteger currentIndex;
+
+// 当前播放页面是否暂停
+@property (nonatomic, assign) BOOL isCurrentPlayerPause;
+
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 

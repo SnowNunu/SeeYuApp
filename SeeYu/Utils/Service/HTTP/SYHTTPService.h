@@ -168,4 +168,20 @@ FOUNDATION_EXTERN NSString *const SBUserDataConfigureCompleteUserInfoKey;
                           fileDatas:(NSArray <NSData *> *)fileDatas
                                name:(NSString *)name
                            mimeType:(NSString *)mimeType;
+
+/**
+ 用来上传多个文件流，也可以上传单个文件
+ 这个方法要求上传的文件流和文件流名称需要相同数量
+ @param request SYHTTPRequest
+ @param resultClass 要转化出来的请求结果且必须是 `SYObject`的子类，否则Crash
+ @param fileDatas 要上传的 文件数据，数组里面必须是装着` NSData ` 否则Crash
+ @param name  这个是服务器的`资源文件名`，这个服务器会给出具体的数值，不能传nil 否则 Crach
+ @param mimeType http://www.jianshu.com/p/a3e77751d37c 如果传nil ，则会传递 application/octet-stream
+ @return Returns a signal which will send an instance of `SYHTTPResponse` for each parsed
+ JSON object, then complete. If an error occurs at any point,
+ the returned signal will send it immediately, then terminate.
+ 这个方法与上面方法的区别是：多个图片上传时名字也由用户自定义
+ */
+#pragma mark - 多图片上传
+- (RACSignal *)enqueueUploadRequest:(SYHTTPRequest *)request resultClass:(Class)resultClass fileDatas:(NSArray<NSData *> *)fileDatas namesArray:(NSArray<NSString *> *)nameArrays mimeType:(NSString *)mimeType;
 @end

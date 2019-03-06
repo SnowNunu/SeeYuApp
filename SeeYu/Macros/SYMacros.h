@@ -93,7 +93,7 @@
 #define SY_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define SY_SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SY_SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
-
+#define SY_USERDEFAULTS [NSUserDefaults standardUserDefaults]
 
 // KVO获取监听对象的属性 有自动提示
 // 宏里面的#，会自动把后面的参数变成c语言的字符串
@@ -164,10 +164,10 @@ _Pragma("clang diagnostic pop")\
 
 //// --------------------  下面是公共配置  --------------------
 
-/// 微信项目重要数据备份的文件夹名称（Documents/WeChatDoc）利用NSFileManager来访问
+/// 项目重要数据备份的文件夹名称（Documents/WeChatDoc）利用NSFileManager来访问
 #define SY_SEEYU_DOC_NAME  @"SeeYuDoc"
 
-/// 微信项目轻量数据数据备份的文件夹（Library/Caches/WeChatCache）利用NSFileManager来访问
+/// 项目轻量数据数据备份的文件夹（Library/Caches/WeChatCache）利用NSFileManager来访问
 #define SY_SEEYU_CACHE_NAME  @"SeeYuCache"
 
 

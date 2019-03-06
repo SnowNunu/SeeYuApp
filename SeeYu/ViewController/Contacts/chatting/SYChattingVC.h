@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SYVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYChattingVC : EaseConversationListViewController <EaseConversationListViewControllerDelegate, EaseConversationListViewControllerDataSource>
+@interface SYChattingVC : SYVC
 
 @end
 

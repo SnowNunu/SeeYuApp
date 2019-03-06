@@ -20,4 +20,7 @@
 - (NSString *)sb_URLEncoding;
 // 消除所有空格
 - (NSString *)sb_trimAllWhitespace;
+// string转url
+- (NSURL *)urlScheme:(NSString *)scheme;
+
 @end

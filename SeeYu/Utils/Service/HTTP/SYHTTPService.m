@@ -392,6 +392,55 @@ static id service_ = nil;
             concat];;
 }
 
+#pragma mark - 多图片上传
+- (RACSignal *)enqueueUploadRequest:(SYHTTPRequest *)request resultClass:(Class)resultClass fileDatas:(NSArray<NSData *> *)fileDatas namesArray:(NSArray<NSString *> *)namesArray mimeType:(NSString *)mimeType {
+    /// request 必须的有值
+    if (!request) return [RACSignal error:[NSError errorWithDomain:SYHTTPServiceErrorDomain code:-1 userInfo:nil]];
+    @weakify(self);
+    
+    /// 覆盖manager 请求序列化
+    self.requestSerializer = [self _requestSerializerWithRequest:request];
+    
+    /// 发起请求
+    /// concat:按一定顺序拼接信号，当多个信号发出的时候，有顺序的接收信号。 这里传进去的参数，不是parameters而是之前通过
+    /// urlParametersWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters;穿进去的参数
+    return [[[self enqueueUploadRequestWithPath:request.urlParameters.path parameters:request.urlParameters.parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSInteger count = fileDatas.count;
+        for (int i = 0; i< count; i++) {
+            /// 取出fileData
+            NSData *fileData = fileDatas[i];
+            /// 断言
+            NSAssert([fileData isKindOfClass:NSData.class], @"fileData is not an NSData class: %@", fileData);
+            
+            // 在网络开发中，上传文件时，是文件不允许被覆盖，文件重名
+            // 要解决此问题，
+            // 可以在上传时使用当前的系统事件作为文件名
+            
+            static NSDateFormatter *formatter = nil;
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                formatter = [[NSDateFormatter alloc] init];
+            });
+            // 设置时间格式
+            [formatter setDateFormat:@"yyyyMMddHHmmss"];
+            NSString *dateString = [formatter stringFromDate:[NSDate date]];
+            NSString *fileName = [NSString  stringWithFormat:@"%@_%d.jpg", dateString , i];
+            [formData appendPartWithFileData:fileData name:namesArray[i] fileName:fileName mimeType:SYStringIsNotEmpty(mimeType)?mimeType:@"application/octet-stream"];
+        }
+    }]
+             reduceEach:^RACStream *(NSURLResponse *response, NSDictionary * responseObject){
+                 @strongify(self);
+                 /// 请求成功 这里解析数据
+                 return [[self parsedResponseOfClass:resultClass fromJSON:responseObject]
+                         map:^(id parsedResult) {
+                             SYHTTPResponse *parsedResponse = [[SYHTTPResponse alloc] initWithResponseObject:responseObject parsedResult:parsedResult];
+                             NSAssert(parsedResponse != nil, @"Could not create SYHTTPResponse with response %@ and parsedResult %@", response, parsedResult);
+                             return parsedResponse;
+                         }];
+             }]
+            concat];;
+}
+
 
 - (RACSignal *)enqueueUploadRequestWithPath:(NSString *)path parameters:(id)parameters constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block{
     @weakify(self);

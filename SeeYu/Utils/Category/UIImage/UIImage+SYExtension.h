@@ -48,4 +48,9 @@
  */
 - (NSData *)compressBySizeWithLengthLimit:(NSUInteger)maxLength;
 
+/*
+ *  二分法压缩图片
+ */
+- (NSData *)resetSizeOfImageData:(UIImage *)sourceImage maxSize:(NSInteger)maxSize;
+
 @end

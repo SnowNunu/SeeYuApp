@@ -7,6 +7,7 @@
 //  用户信息模型
 
 #import "SYObject.h"
+#import "SYAuthentication.h"
 
 @interface SYUser : SYObject
 
@@ -77,7 +78,7 @@
 @property (nonatomic, assign) int userVipStatus;
 
 /** 到期时间 */
-@property (nonatomic, strong) NSString *userVipExpiresAt;
+@property (nonatomic, strong) NSDate *userVipExpiresAt;
 
 /** 头像 */
 @property (nonatomic, strong) NSString *userHeadImg;
@@ -102,6 +103,9 @@
 
 /** 好友距离 */
 @property (nonatomic, assign) float userDistance;
+
+/** 用户认证状态 */
+@property (nonatomic, assign) int identityStatus;
 
 //------------------------------------------------------------------
 /// 昵称

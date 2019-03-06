@@ -37,4 +37,7 @@
 /// 是否是正确的QQ
 + (BOOL) sy_isValidQQ:(NSString *)QQ;
 
+/// 是否是正确的身份证号码
++ (BOOL)sy_validateIDCardNumber:(NSString *)value;
+
 @end

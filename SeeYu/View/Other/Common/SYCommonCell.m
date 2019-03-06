@@ -84,6 +84,10 @@
     self.textLabel.text = viewModel.title;
     self.imageView.image = (SYStringIsNotEmpty(viewModel.icon))?SYImageNamed(viewModel.icon):nil;
     self.detailTextLabel.text = viewModel.subtitle;
+    if (viewModel.subTitleColor) {
+        self.detailTextLabel.textColor = viewModel.subTitleColor;
+    }
+    
     /// 设置全新
     if (SYStringIsNotEmpty(viewModel.centerLeftViewName)) {
         self.centerLeftView.hidden = NO;

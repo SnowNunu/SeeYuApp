@@ -49,10 +49,12 @@
     self.navigationItem.titleView = self.titleView;
     
     NSMutableArray *childVCs = [[NSMutableArray alloc]init];
-    EaseConversationListViewController *vc = [EaseConversationListViewController new];
-    [childVCs addObject:vc];
+//    EaseConversationListViewController *vc = [EaseConversationListViewController new];
+//    [childVCs addObject:vc];
     SYChattingVC *chattingVC = [SYChattingVC new];
     [childVCs addObject:chattingVC];
+    UIViewController *vc = [UIViewController new];
+    [childVCs addObject:vc];
     self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, SY_APPLICATION_TOP_BAR_HEIGHT, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SY_APPLICATION_TOP_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
     [self.view addSubview:_contentView];
 }
