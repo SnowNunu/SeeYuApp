@@ -254,7 +254,7 @@
 #pragma mark - Setter Or Getter
 - (UIImageView *)rightArrow{
     if (_rightArrow == nil) {
-        _rightArrow = [[UIImageView alloc] initWithImage:SYImageNamed(@"tableview_arrow_8x13")];
+        _rightArrow = [[UIImageView alloc] initWithImage:SYImageNamed(@"tableview_arrow")];
     }
     return _rightArrow;
 }

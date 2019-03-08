@@ -41,15 +41,6 @@
 /** 特长 */
 @property (nonatomic, strong) NSString *userSpecialty;
 
-/** 用户等级 */
-@property (nonatomic, assign) int userLevel;
-
-/** 用户qq */
-@property (nonatomic, strong) NSString *userQq;
-
-/** 用户微信 */
-@property (nonatomic, strong) NSString *userWechat;
-
 /** 用户城市地址 */
 @property (nonatomic, strong) NSString *userAddress;
 

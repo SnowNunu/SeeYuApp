@@ -266,7 +266,7 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
 - (UIBarButtonItem *)backItem
 {
     if (_backItem == nil) {
-        _backItem = [UIBarButtonItem sy_backItemWithTitle:@"返回" imageName:@"barbuttonicon_back_15x30" target:self action:@selector(_backItemDidClicked)];
+        _backItem = [UIBarButtonItem sy_backItemWithTitle:@"返回" imageName:@"barbuttonicon_back" target:self action:@selector(_backItemDidClicked)];
     }
     return _backItem;
 }

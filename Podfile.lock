@@ -102,7 +102,6 @@ PODS:
   - MBProgressHUD (1.1.0)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
-  - MMMaterialDesignSpinner (0.2.3)
   - pop (1.0.10)
   - ReactiveCocoa (2.5.2):
     - ReactiveCocoa/UI (= 2.5.2)
@@ -175,7 +174,6 @@ DEPENDENCIES:
   - MBProgressHUD (= 1.1.0)
   - MJExtension (= 3.0.13)
   - MJRefresh (= 3.1.12)
-  - MMMaterialDesignSpinner (= 0.2.3)
   - pop (= 1.0.10)
   - ReactiveCocoa (from `https://github.com/zhao0/ReactiveCocoa.git`, tag `2.5.2`)
   - SAMKeychain (= 1.5.2)
@@ -231,7 +229,6 @@ SPEC REPOS:
     - MBProgressHUD
     - MJExtension
     - MJRefresh
-    - MMMaterialDesignSpinner
     - pop
     - SAMKeychain
     - SDWebImage
@@ -301,7 +298,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  MMMaterialDesignSpinner: 55c80b454f7928d0ed789cc3c456fa06bd6a2f16
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   ReactiveCocoa: 3ff25b1bd992ac79c5c79b26b6c0c1713b715bb2
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
@@ -327,6 +323,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: c29b71df64d445d2842484ca1328f43cd1da5855
+PODFILE CHECKSUM: 753a1d1249d55a0875a16906d72fff0dbe37b108
 
 COCOAPODS: 1.5.3

@@ -87,7 +87,7 @@ pod 'SSZipArchive'                      , '1.8.1'
 pod 'SAMKeychain'                       , '1.5.2'
 
 # 菊花activity
-pod 'MMMaterialDesignSpinner', '0.2.3'
+#pod 'MMMaterialDesignSpinner', '0.2.3'
 
 #FPS检测
 pod 'JPFPSStatus', '0.1'

@@ -54,6 +54,9 @@
 /// 获取附近的人
 #define SY_HTTTP_PATH_USER_NEARBY   @"/application/user/nearby"
 
+/// 获取所有的爱好标签
+#define SY_HTTTP_PATH_USER_HOBBIES   @"/application/userHobby/queryHobbies"
+
 /// 机器人推送
 #define SY_HTTTP_PATH_PUSH_REBOT    @"/application/push/rebot"
 

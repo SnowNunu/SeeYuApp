@@ -48,18 +48,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /// 设置
-    [self _setup];
-    
-    /// 设置导航栏
-    [self _setupNavigationItem];
-    
     /// 设置子控件
     [self _setupSubViews];
-    
     /// 布局子空间
     [self _makeSubViewsConstraints];
-    
     //开始预览摄像头工作
     [self.recorder startRunning];
     
@@ -100,16 +92,6 @@
 //     ];
     
     /// 屏幕锁定则无效
-    
-
-    
-    
-    
-    
-    
-
-    
-    
 }
 
 
@@ -231,21 +213,6 @@
 }
 - (void)recorder:(PKShortVideoRecorder *)recorder didFinishRecordingToOutputFilePath:(nullable NSString *)outputFilePath error:(nullable NSError *)error{
     SYLogFunc;
-}
-
-
-
-#pragma mark - 初始化
-- (void)_setup{
-    
-    
-    
-    
-}
-
-#pragma mark - 设置导航栏
-- (void)_setupNavigationItem{
-    
 }
 
 #pragma mark - 设置子控件

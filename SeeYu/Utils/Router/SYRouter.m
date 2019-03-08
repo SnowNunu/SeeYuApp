@@ -58,19 +58,14 @@ static SYRouter *sharedInstance_ = nil;
     return @{@"SYNewFeatureViewModel":@"SYNewFeatureViewController",
              @"SYHomePageVM":@"SYHomePageVC",
              @"SYUserInfoVM":@"SYUserInfoVC",
-             @"SYMoreInfoViewModel":@"SYMoreInfoViewController",
              @"SYFeatureSignatureVM":@"SYFeatureSignatureVC",
              @"SYBootRegisterVM":@"SYBootRegisterVC",
              @"SYSettingViewModel":@"SYSettingViewController",
              @"SYWebViewModel":@"SYWebViewController",
              @"SYRegisterVM":@"SYRegisterVC",
              @"SYModifyNicknameVM":@"SYModifyNicknameVC",
-             @"SYLocationViewModel":@"SYLocationViewController",
-             @"SYGenderViewModel":@"SYGenderViewController",
-             @"SYAccountSecurityViewModel":@"SYAccountSecurityViewController",
              @"SYTestViewModel":@"SYTestViewController",
              @"SYSettingVM":@"SYSettingVC",
-             @"SYFreeInterruptionViewModel":@"SYFreeInterruptionViewController",
              @"SYAboutUsViewModel":@"SYAboutUsViewController",
              @"SYPrivacyViewModel":@"SYPrivacyViewController",
              @"SYGeneralViewModel":@"SYGeneralViewController",
@@ -81,7 +76,8 @@ static SYRouter *sharedInstance_ = nil;
              @"SYRealnameVM":@"SYRealnameVC",
              @"SYSelfieVM":@"SYSelfieVC",
              @"SYDiamondsVM":@"SYDiamondsVC",
-             @"SYRechargeVM":@"SYRechargeVC"
+             @"SYRechargeVM":@"SYRechargeVC",
+             @"SYHobbyVM":@"SYHobbyVC"
              };
 }
 

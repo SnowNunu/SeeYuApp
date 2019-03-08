@@ -160,7 +160,7 @@
         }
         
         // 4.这里可以设置导航栏的左右按钮 统一管理方法
-        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem sy_backItemWithTitle:title imageName:@"barbuttonicon_back_15x30" target:self action:@selector(_back)];
+        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem sy_backItemWithTitle:title imageName:@"barbuttonicon_back" target:self action:@selector(_back)];
     }
     // push
     [super pushViewController:viewController animated:animated];
