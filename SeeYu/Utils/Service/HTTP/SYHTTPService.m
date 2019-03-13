@@ -10,7 +10,7 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import <CocoaSecurity/CocoaSecurity.h>
 #import <MJExtension/MJExtension.h>
-#import <JDStatusBarNotification/JDStatusBarNotification.h>
+//#import <JDStatusBarNotification/JDStatusBarNotification.h>
 
 
 

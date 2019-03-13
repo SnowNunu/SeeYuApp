@@ -67,9 +67,6 @@
         make.left.right.equalTo(self.view);
         
     }];
-    
-    
-    
     /**
      *  开始生成 设备旋转 通知
      */
@@ -103,10 +100,6 @@
 {
     //1.获取 当前设备 实例
     UIDevice *device = [UIDevice currentDevice] ;
-    
-    
-    
-    
     /**
      *  2.取得当前Device的方向，Device的方向类型为Integer
      *

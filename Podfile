@@ -28,7 +28,7 @@ pod 'YYDispatchQueuePool'               , '1.0'
 pod 'YYAsyncLayer'                      , '1.0'
 
 # AutoLayout
-pod 'Masonry'                           , '1.0.2'
+pod 'Masonry'                           , '1.1.0'
 
 # 缓存tableViewCell的高度
 pod 'UITableView+FDTemplateLayoutCell'  , '1.6'
@@ -52,7 +52,7 @@ pod 'UIImage+ImageWithColor'            , '1.4.0'
 pod 'MBProgressHUD'                     , '1.1.0'
 pod 'SVProgressHUD'                     , '2.1.2'
 # 状态栏通知
-pod 'JDStatusBarNotification'           , '1.5.5'
+pod 'FFToast'
 
 # 数据库
 pod 'FMDB'                              , '2.6.2'
@@ -162,6 +162,12 @@ pod 'CHTCollectionViewWaterfallLayout'  , '0.9.6'
 # 选择器
 pod 'ActionSheetPicker-3.0'             , '2.3.0'
 
+# 融云即时聊天服务
+pod 'RongCloudIM/IMLib'                 , '2.9.7'
+pod 'RongCloudIM/IMKit'                 , '2.9.7'
+pod 'RongCloudRTC/RongCallLib'          , '2.9.7'
+pod 'RongCloudRTC/RongCallKit'          , '2.9.7'
+
 # 空占位
 pod 'DZNEmptyDataSet'                   , '1.8.1'
 # 图片浏览器
@@ -170,8 +176,8 @@ pod 'DZNEmptyDataSet'                   , '1.8.1'
 #pod 'YZDisplayViewController', '1.0.6'
 # 苹果内购
 #pod 'RMStore', '0.7.1'
-# 图片视频采集
-#pod 'LFImagePickerController'           , '1.5.9'
+# 拍照和录视频
+pod 'PBJVision'
 
 target 'SeeYuTests' do
 end

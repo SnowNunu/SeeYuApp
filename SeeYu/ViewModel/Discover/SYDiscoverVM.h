@@ -7,9 +7,12 @@
 //
 
 #import "SYMomentVM.h"
+#import "SYWebVM.h"
 
 @interface SYDiscoverVM : SYVM
 
 @property (nonatomic, strong) SYMomentVM *momentVM;
+
+@property (nonatomic, strong) SYWebVM *webVM;
 
 @end

@@ -113,7 +113,7 @@
     [self.view addSubview:tableView];
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.left.equalTo(self.view);
-        make.top.equalTo(self.view);
+        make.top.equalTo(self.view).offset(SY_APPLICATION_STATUS_BAR_HEIGHT);
         make.height.equalTo(self.view).offset(-SY_APPLICATION_TAB_BAR_HEIGHT);
     }];
     

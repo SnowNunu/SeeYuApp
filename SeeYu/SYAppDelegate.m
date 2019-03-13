@@ -8,12 +8,12 @@
 
 #import "SYAppDelegate.h"
 #import "SYHomePageVC.h"
-#import "SYNewFeatureViewModel.h"
-#import "SYBootRegisterVM.h"
+#import "SYRegisterVM.h"
+#import "SYRCIMDataSource.h"
+#import "SYGuideVM.h"
 
 #if defined(DEBUG)||defined(_DEBUG)
 #import <JPFPSStatus/JPFPSStatus.h>
-#import "SYDebugTouchView.h"
 //#import <FBMemoryProfiler/FBMemoryProfiler.h>
 //#import <FBRetainCycleDetector/FBRetainCycleDetector.h>
 //#import "CacheCleanerPlugin.h"
@@ -45,6 +45,21 @@
     self.window.backgroundColor = [UIColor whiteColor];
     // 重置rootViewController
     SYVM *vm = [self _createInitialViewModel];
+    if ([vm isKindOfClass:[SYHomePageVM class]]) {
+        [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                RCUserInfo *rcUser = [[RCUserInfo alloc]initWithUserId:userId name:self.services.client.currentUser.userName portrait:self.services.client.currentUser.userHeadImg];
+                [RCIM sharedRCIM].currentUserInfo = rcUser;
+                [MBProgressHUD sy_showTips:@"登录成功"];
+            });
+            NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
+        } error:^(RCConnectErrorCode status) {
+            NSLog(@"登陆的错误码为:%ld", status);
+        } tokenIncorrect:^{
+            // token永久有效，这种情形应该不会出现
+            NSLog(@"token错误");
+        }];
+    }
     [self.services resetRootViewModel:vm];
     // 让窗口可见
     [self.window makeKeyAndVisible];
@@ -81,6 +96,10 @@
     
     /// 配置FMDB
     [self _configureFMDB];
+    
+    // 初始化融云服务
+    [[RCIM sharedRCIM] initWithAppKey:@"c9kqb3rdc4vbj"];
+    [RCIM sharedRCIM].userInfoDataSource = [SYRCIMDataSource shareInstance];
     
     // 注册推送, 用于iOS8以及iOS8之后的系统
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
@@ -144,22 +163,29 @@
         /// 切换根控制器
         SYVM *vm = [self _createInitialViewModel];
         if ([vm isKindOfClass:[SYHomePageVM class]]) {
-//            EMError *error = [[EMClient sharedClient] loginWithUsername:self.services.client.currentUser.userId password:self.services.client.currentUser.userPassword];
-//            if (!error) {
-//                [[EMClient sharedClient].options setIsAutoLogin:YES];
-//                [MBProgressHUD sy_showTips:@"登录成功"];
-//                [self.services resetRootViewModel:vm];
-//            } else {
-//                NSLog(@"%@",error);
-//                [ çMBProgressHUD sy_showError:error.errorDescription];
-//            }
+            [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
+                NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    RCUserInfo *rcUser = [[RCUserInfo alloc]initWithUserId:userId name:self.services.client.currentUser.userName portrait:self.services.client.currentUser.userHeadImg];
+                    [RCIM sharedRCIM].currentUserInfo = rcUser;
+                    [self.services resetRootViewModel:vm];
+                    [MBProgressHUD sy_showTips:@"登录成功"];
+                });
+            } error:^(RCConnectErrorCode status) {
+                NSLog(@"登陆的错误码为:%long", status);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.services resetRootViewModel:vm];
+                    [MBProgressHUD sy_showTips:[NSString stringWithFormat:@"连接IM服务器异常%long",status]];
+                });
+            } tokenIncorrect:^{
+                // token永久有效，这种情形应该不会出现
+                NSLog(@"token错误");
+            }];
         } else {
-            [self.services resetRootViewModel:vm];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.services resetRootViewModel:vm];
+            });
         }
-        /// 切换了根控制器，切记需要将指示器 移到window的最前面
-#if defined(DEBUG)||defined(_DEBUG)
-        [self.window bringSubviewToFront:[SYDebugTouchView sharedInstance]];
-#endif
     }];
     
     /// 配置H5
@@ -173,30 +199,18 @@
 #if defined(DEBUG)||defined(_DEBUG)
     /// 显示FPS
     [[JPFPSStatus sharedInstance] open];
-    
-    /// 打开调试按钮
-    [SYDebugTouchView sharedInstance];
-    /// CoderMikeHe Fixed: 切换了根控制器，切记需要将指示器 移到window的最前面
-    [self.window bringSubviewToFront:[SYDebugTouchView sharedInstance]];
 #endif
 }
 
 #pragma mark - 创建根控制器
 - (SYVM *)_createInitialViewModel {
-    // The user has logged-in.
-    NSString *version = [[NSUserDefaults standardUserDefaults] valueForKey:SYApplicationVersionKey];
-    /// 版本不一样就先走 新特性界面
-    if (![version isEqualToString:SY_APP_VERSION]) {
-        return [[SYNewFeatureViewModel alloc] initWithServices:self.services params:nil];
+    /// 这里判断一下
+    if ([SAMKeychain rawLogin] && self.services.client.currentUser) {
+        /// 已经登录，跳转到主页
+        return [[SYHomePageVM alloc] initWithServices:self.services params:nil];
     } else {
-        /// 这里判断一下
-        if ([SAMKeychain rawLogin] && self.services.client.currentUser) {
-            /// 已经登录，跳转到主页
-            return [[SYHomePageVM alloc] initWithServices:self.services params:nil];
-        } else {
-            /// 进入注册页面
-            return [[SYBootRegisterVM alloc] initWithServices:self.services params:nil];
-        }
+        /// 进入首页
+        return [[SYGuideVM alloc] initWithServices:self.services params:nil];
     }
 }
 #pragma mark- 获取appDelegate
@@ -209,10 +223,11 @@
     [application registerForRemoteNotifications];
 }
 
-// 上传deviceToekn到环信服务器
+// 上传deviceToekn到融云服务器
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"deviceToken:%@",token);
+    NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<" withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"deviceToken为:%@",token);
+    [[RCIMClient sharedRCIMClient] setDeviceToken:token];
 }
 
 // 注册deviceToken失败

@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYChattingVC : SYVC
+@interface SYChattingVC : RCConversationListViewController
 
 @end
 

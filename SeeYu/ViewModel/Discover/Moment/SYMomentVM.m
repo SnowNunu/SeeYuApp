@@ -8,7 +8,7 @@
 
 #import "SYMomentVM.h"
 #import "SYProfileInfoViewModel.h"
-#import "SYWebViewModel.h"
+#import "SYWebVM.h"
 #import "SYTestViewModel.h"
 @interface SYMomentVM ()
 /// 个人信息头部视图模型
@@ -143,7 +143,7 @@
         if (userInfo[SYMomentLinkUrlKey]) { /// 链接
             NSURL *url = [NSURL URLWithString:userInfo[SYMomentLinkUrlKey]];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
-            SYWebViewModel *viewModel = [[SYWebViewModel alloc] initWithServices:self.services params:@{SYViewModelRequestKey:request}];
+            SYWebVM *viewModel = [[SYWebVM alloc] initWithServices:self.services params:@{SYViewModelRequestKey:request}];
             [self.services pushViewModel:viewModel animated:YES];
             return [RACSignal empty];
         }
@@ -169,7 +169,7 @@
         @strongify(self);
         NSURL *url = [NSURL URLWithString:shareInfo.url];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        SYWebViewModel *viewModel = [[SYWebViewModel alloc] initWithServices:self.services params:@{SYViewModelRequestKey:request}];
+        SYWebVM *viewModel = [[SYWebVM alloc] initWithServices:self.services params:@{SYViewModelRequestKey:request}];
         [self.services pushViewModel:viewModel animated:YES];
         return [RACSignal empty];
     }];

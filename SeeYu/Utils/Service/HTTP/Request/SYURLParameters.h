@@ -60,6 +60,12 @@
 /// 机器人推送
 #define SY_HTTTP_PATH_PUSH_REBOT    @"/application/push/rebot"
 
+/// 发送手机验证码
+#define SY_HTTTP_PATH_USER_AUTH_CODE   @"/application/user/sendPIN"
+
+/// 手机验证码登录
+#define SY_HTTTP_PATH_USER_AUTH_LOGIN   @"/application/user/loginByMobile"
+
 ///
 //+ (NSString *)ver;          // app版本号
 //+ (NSString *)token;        // token，默认空字符串

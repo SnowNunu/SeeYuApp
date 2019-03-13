@@ -7,7 +7,7 @@
 //
 
 #import "SYDiscoverVM.h"
-#import "SYWebViewModel.h"
+#import "SYWebVM.h"
 #import "SYMomentVM.h"
 
 @implementation SYDiscoverVM

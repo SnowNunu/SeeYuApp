@@ -55,14 +55,14 @@ static SYRouter *sharedInstance_ = nil;
 /// 这里是viewModel -> ViewController的映射
 /// If You Use Push 、 Present 、 ResetRootViewController ,You Must Config This Dict
 - (NSDictionary *)viewModelViewMappings {
-    return @{@"SYNewFeatureViewModel":@"SYNewFeatureViewController",
+    return @{@"SYGuideVM":@"SYGuideVC",
+             @"SYLoginVM":@"SYLoginVC",
+             @"SYRegisterVM":@"SYRegisterVC",
              @"SYHomePageVM":@"SYHomePageVC",
              @"SYUserInfoVM":@"SYUserInfoVC",
              @"SYFeatureSignatureVM":@"SYFeatureSignatureVC",
-             @"SYBootRegisterVM":@"SYBootRegisterVC",
              @"SYSettingViewModel":@"SYSettingViewController",
-             @"SYWebViewModel":@"SYWebViewController",
-             @"SYRegisterVM":@"SYRegisterVC",
+             @"SYWebVM":@"SYWebVC",
              @"SYModifyNicknameVM":@"SYModifyNicknameVC",
              @"SYTestViewModel":@"SYTestViewController",
              @"SYSettingVM":@"SYSettingVC",
@@ -77,7 +77,8 @@ static SYRouter *sharedInstance_ = nil;
              @"SYSelfieVM":@"SYSelfieVC",
              @"SYDiamondsVM":@"SYDiamondsVC",
              @"SYRechargeVM":@"SYRechargeVC",
-             @"SYHobbyVM":@"SYHobbyVC"
+             @"SYHobbyVM":@"SYHobbyVC",
+             @"SYCollectVM":@"SYCollectVC"
              };
 }
 

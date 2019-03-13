@@ -45,6 +45,8 @@
 /// 正式环境后台地址
 //#define SYURL @"http://103.214.146.89:8080/"
 
+#define SY_GAME_URL @"http://103.214.146.89/seeyu_game/xyx/index.html"
+
 /// 类型相关
 #define SY_IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define SY_IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
