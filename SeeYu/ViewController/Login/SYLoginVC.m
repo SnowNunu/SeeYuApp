@@ -28,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self _setupNavigationItem];
     [self _setupSubViews];
 }
@@ -162,7 +163,7 @@
         make.left.equalTo(self.view).offset(45);
         make.height.offset(20);
         make.width.offset(55);
-        make.top.equalTo(self.view).offset(SY_APPLICATION_TOP_BAR_HEIGHT + 45);
+        make.top.equalTo(self.view).offset(45);
     }];
     [mobileTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(mobileLabel.mas_right).offset(30);

@@ -64,7 +64,6 @@ static SYRouter *sharedInstance_ = nil;
              @"SYSettingViewModel":@"SYSettingViewController",
              @"SYWebVM":@"SYWebVC",
              @"SYModifyNicknameVM":@"SYModifyNicknameVC",
-             @"SYTestViewModel":@"SYTestViewController",
              @"SYSettingVM":@"SYSettingVC",
              @"SYAboutUsViewModel":@"SYAboutUsViewController",
              @"SYPrivacyViewModel":@"SYPrivacyViewController",

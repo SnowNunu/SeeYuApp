@@ -66,6 +66,12 @@
 /// 手机验证码登录
 #define SY_HTTTP_PATH_USER_AUTH_LOGIN   @"/application/user/loginByMobile"
 
+/// 获取用户的好友列表
+#define SY_HTTTP_PATH_USER_FRIENDS_LIST   @"/application/userFriendRelation/queryFriendList"
+
+/// 获取主播列表
+#define SY_HTTTP_PATH_USER_ANCHOR_LIST   @"/application/userAnchor/queryAnchors"
+
 ///
 //+ (NSString *)ver;          // app版本号
 //+ (NSString *)token;        // token，默认空字符串

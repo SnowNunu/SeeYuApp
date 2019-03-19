@@ -8,11 +8,10 @@
 
 #import "SYMainFrameVM.h"
 #import "SYHTTPService+Live.h"
-#import "SYTestViewModel.h"
 
 @interface SYMainFrameVM ()
 /// 商品数组 <SYLiveRoom *>
-@property (nonatomic, readwrite, copy) NSArray *liveRooms;
+//@property (nonatomic, readwrite, copy) NSArray *liveRooms;
 @end
 
 
@@ -26,6 +25,8 @@
     
     self.nearbyVM = [[SYNearbyVM alloc]initWithServices:self.services params:nil];
     
+    self.anchorsOrderVM = [[SYAnchorsOrderVM alloc] initWithServices:self.services params:nil];
+    
 //    @weakify(self);
     /// 直播间列表
 //    RAC(self, liveRooms) = self.requestRemoteDataCommand.executionSignals.switchToLatest;
@@ -33,17 +34,6 @@
 //    RAC(self,dataSource) = [RACObserve(self, liveRooms) map:^(NSArray * liveRooms) {
 //        @strongify(self)
 //        return [self dataSourceWithLiveRooms:liveRooms];
-//    }];
-    
-    /// 选中cell 跳转的命令
-//    self.didSelectCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSIndexPath * indexPath) {
-//        @strongify(self);
-//        /// 这里只是测试
-//        SYLiveRoom *liveRoom = self.liveRooms[indexPath.row];
-//        SYTestViewModel *viewModel = [[SYTestViewModel alloc] initWithServices:self.services params:@{SYViewModelTitleKey:liveRoom.myname}];
-//        /// 执行push or present
-//        [self.services pushViewModel:viewModel animated:YES];
-//        return [RACSignal empty];
 //    }];
 
 }

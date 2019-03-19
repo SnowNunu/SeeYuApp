@@ -8,6 +8,8 @@
 
 #import "SYContactsVC.h"
 #import "SYChattingVC.h"
+#import "SYFriendsListVM.h"
+#import "SYFriendsListVC.h"
 
 @interface SYContactsVC ()
 
@@ -51,10 +53,14 @@
     NSMutableArray *childVCs = [[NSMutableArray alloc]init];
     SYChattingVC *chattingVC = [SYChattingVC new];
     [childVCs addObject:chattingVC];
-    UIViewController *vc = [UIViewController new];
-    [childVCs addObject:vc];
+    SYFriendsListVM *friendsVM = [[SYFriendsListVM alloc] initWithServices:self.viewModel.services params:nil];
+    SYFriendsListVC *friendsVC = [[SYFriendsListVC alloc]initWithViewModel:friendsVM];
+    [childVCs addObject:friendsVC];
+    
     self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, SY_APPLICATION_TOP_BAR_HEIGHT, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SY_APPLICATION_TOP_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
+    self.contentView.contentViewCanScroll = NO;
     [self.view addSubview:_contentView];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"btn_addFriend" target:nil selector:nil textType:NO];
 }
 
 - (void)FSSegmentTitleView:(FSSegmentTitleView *)titleView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {

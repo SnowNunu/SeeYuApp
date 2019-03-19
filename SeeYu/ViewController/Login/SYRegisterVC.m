@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     /// 设置导航栏
     [self _setupNavigationItem];
     /// 设置子控件
@@ -125,12 +126,11 @@
 #pragma mark - 设置子控件
 - (void)_setupSubViews {
     SYRegisterView *view = [SYRegisterView registerView];
-    view.sy_width = SY_SCREEN_WIDTH;
-    view.sy_height = SY_SCREEN_HEIGHT - SY_APPLICATION_TOP_BAR_HEIGHT;
-    view.sy_x = 0;
-    view.sy_y = SY_APPLICATION_TOP_BAR_HEIGHT;
     _registerView = view;
     [self.view addSubview:_registerView];
+    [_registerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
     self.viewModel.age = @"25";
     self.viewModel.gender = @"男";
     self.viewModel.job = @"工人";

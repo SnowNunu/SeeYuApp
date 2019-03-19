@@ -156,8 +156,6 @@
 		2654904C1F99AF6F003AEED1 /* SYMainFrameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2654904A1F99AF6F003AEED1 /* SYMainFrameTableViewCell.m */; };
 		2654904D1F99AF6F003AEED1 /* SYMainFrameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2654904B1F99AF6F003AEED1 /* SYMainFrameTableViewCell.xib */; };
 		265490511F99D6A0003AEED1 /* SYMainFrameItemViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 265490501F99D6A0003AEED1 /* SYMainFrameItemViewModel.m */; };
-		265490541F99E905003AEED1 /* SYTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265490531F99E905003AEED1 /* SYTestViewController.m */; };
-		265490571F99E921003AEED1 /* SYTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 265490561F99E921003AEED1 /* SYTestViewModel.m */; };
 		265DBFE41FE0C76700A5FCC8 /* SYAboutUsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFE31FE0C76700A5FCC8 /* SYAboutUsViewModel.m */; };
 		265DBFE81FE0C78F00A5FCC8 /* SYAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFE71FE0C78F00A5FCC8 /* SYAboutUsViewController.m */; };
 		265DBFEC1FE0C8D900A5FCC8 /* SYAboutUsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFEB1FE0C8D900A5FCC8 /* SYAboutUsHeaderView.m */; };
@@ -231,12 +229,32 @@
 		26FE8E911F9514D100EC8BE0 /* TZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FE8E791F9514D100EC8BE0 /* TZProgressView.m */; };
 		26FE8E921F9514D100EC8BE0 /* TZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FE8E7B1F9514D100EC8BE0 /* TZVideoPlayerController.m */; };
 		26FE8E931F9514D100EC8BE0 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FE8E7D1F9514D100EC8BE0 /* UIView+Layout.m */; };
+		7B0228A5223A16470045E25F /* NSString+PinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B022898223A16470045E25F /* NSString+PinYin4Cocoa.m */; };
+		7B0228A6223A16470045E25F /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7B022899223A16470045E25F /* unicode_to_hanyu_pinyin.txt */; };
+		7B0228A7223A16470045E25F /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B02289D223A16470045E25F /* PinyinHelper.m */; };
+		7B0228A8223A16470045E25F /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B02289F223A16470045E25F /* ChineseInclude.m */; };
+		7B0228A9223A16470045E25F /* HanyuPinyinOutputFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228A0223A16470045E25F /* HanyuPinyinOutputFormat.m */; };
+		7B0228AA223A16470045E25F /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228A1223A16470045E25F /* ChineseToPinyinResource.m */; };
+		7B0228AB223A16470045E25F /* PinyinFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228A2223A16470045E25F /* PinyinFormatter.m */; };
+		7B0228AC223A16470045E25F /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228A3223A16470045E25F /* PinYinForObjc.m */; };
+		7B0228B0223A66440045E25F /* SYFriendsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228AF223A66440045E25F /* SYFriendsList.m */; };
+		7B0228B4223B4E390045E25F /* NSMutableArray+FilterElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228B2223B4E390045E25F /* NSMutableArray+FilterElement.m */; };
+		7B0228B7223B55020045E25F /* SYFriendGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228B6223B55020045E25F /* SYFriendGroupModel.m */; };
+		7B0228BA223B7D9D0045E25F /* SYFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228B9223B7D9D0045E25F /* SYFriendModel.m */; };
+		7B0228BE223B87810045E25F /* SYFriendsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228BD223B87810045E25F /* SYFriendsListCell.m */; };
+		7B0228C7223BCAF80045E25F /* SYSearchFriendsResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228C6223BCAF80045E25F /* SYSearchFriendsResultVC.m */; };
 		7B1E733122267684001299C0 /* SYCollocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E733022267684001299C0 /* SYCollocationVC.m */; };
 		7B1E733522267765001299C0 /* SYCollocationVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E733422267765001299C0 /* SYCollocationVM.m */; };
 		7B1E73382226CC52001299C0 /* SYCollocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E73372226CC52001299C0 /* SYCollocationCell.m */; };
 		7B1E733E222782FD001299C0 /* AVPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E733B222782FC001299C0 /* AVPlayerManager.m */; };
 		7B1E733F222782FD001299C0 /* AVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E733C222782FD001299C0 /* AVPlayerView.m */; };
 		7B1E734222278C5E001299C0 /* WebCacheHelpler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E734122278C5E001299C0 /* WebCacheHelpler.m */; };
+		7B2E76BF223F460200D8F1CD /* SYAnchorsOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E76BE223F460200D8F1CD /* SYAnchorsOrderVC.m */; };
+		7B2E76C2223F464600D8F1CD /* SYAnchorsOrderVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E76C1223F464600D8F1CD /* SYAnchorsOrderVM.m */; };
+		7B590931223F776100EE5ACF /* SYAnchorsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590930223F776100EE5ACF /* SYAnchorsListVC.m */; };
+		7B590934223F77B200EE5ACF /* SYAnchorsListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590933223F77B200EE5ACF /* SYAnchorsListVM.m */; };
+		7B590939223F8B0300EE5ACF /* SYAnchorsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590938223F8B0300EE5ACF /* SYAnchorsModel.m */; };
+		7B59093D223F9C7300EE5ACF /* SYAnchorsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B59093C223F9C7300EE5ACF /* SYAnchorsListCell.m */; };
 		7B5A333C21F9BFC600535F8D /* SYRankingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A333B21F9BFC600535F8D /* SYRankingVC.m */; };
 		7B5A333F21F9ECF700535F8D /* SYRankingVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A333E21F9ECF700535F8D /* SYRankingVM.m */; };
 		7B5A334421FA074900535F8D /* SYNearbyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A334321FA074900535F8D /* SYNearbyVC.m */; };
@@ -629,10 +647,6 @@
 		2654904B1F99AF6F003AEED1 /* SYMainFrameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SYMainFrameTableViewCell.xib; sourceTree = "<group>"; };
 		2654904F1F99D6A0003AEED1 /* SYMainFrameItemViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMainFrameItemViewModel.h; sourceTree = "<group>"; };
 		265490501F99D6A0003AEED1 /* SYMainFrameItemViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMainFrameItemViewModel.m; sourceTree = "<group>"; };
-		265490521F99E905003AEED1 /* SYTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTestViewController.h; sourceTree = "<group>"; };
-		265490531F99E905003AEED1 /* SYTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTestViewController.m; sourceTree = "<group>"; };
-		265490551F99E921003AEED1 /* SYTestViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTestViewModel.h; sourceTree = "<group>"; };
-		265490561F99E921003AEED1 /* SYTestViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTestViewModel.m; sourceTree = "<group>"; };
 		265DBFE21FE0C76700A5FCC8 /* SYAboutUsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAboutUsViewModel.h; sourceTree = "<group>"; };
 		265DBFE31FE0C76700A5FCC8 /* SYAboutUsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAboutUsViewModel.m; sourceTree = "<group>"; };
 		265DBFE61FE0C78F00A5FCC8 /* SYAboutUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAboutUsViewController.h; sourceTree = "<group>"; };
@@ -776,6 +790,34 @@
 		5199ACCDE3914E9780CBE096 /* Pods-SeeYu-SeeYuUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeYu-SeeYuUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F007961429C86520F15C504 /* Pods_SeeYu_SeeYuUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeYu_SeeYuUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC95F3A9ABF83B9A3CDD57C /* Pods-SeeYu-SeeYuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeYu-SeeYuTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7B022895223A16470045E25F /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
+		7B022896223A16470045E25F /* HanyuPinyinOutputFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanyuPinyinOutputFormat.h; sourceTree = "<group>"; };
+		7B022897223A16470045E25F /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
+		7B022898223A16470045E25F /* NSString+PinYin4Cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin4Cocoa.m"; sourceTree = "<group>"; };
+		7B022899223A16470045E25F /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
+		7B02289A223A16470045E25F /* ChineseToPinyinResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyinResource.h; sourceTree = "<group>"; };
+		7B02289B223A16470045E25F /* PinYinForObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinForObjc.h; sourceTree = "<group>"; };
+		7B02289C223A16470045E25F /* PinyinFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinFormatter.h; sourceTree = "<group>"; };
+		7B02289D223A16470045E25F /* PinyinHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinHelper.m; sourceTree = "<group>"; };
+		7B02289E223A16470045E25F /* NSString+PinYin4Cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin4Cocoa.h"; sourceTree = "<group>"; };
+		7B02289F223A16470045E25F /* ChineseInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseInclude.m; sourceTree = "<group>"; };
+		7B0228A0223A16470045E25F /* HanyuPinyinOutputFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HanyuPinyinOutputFormat.m; sourceTree = "<group>"; };
+		7B0228A1223A16470045E25F /* ChineseToPinyinResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyinResource.m; sourceTree = "<group>"; };
+		7B0228A2223A16470045E25F /* PinyinFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinFormatter.m; sourceTree = "<group>"; };
+		7B0228A3223A16470045E25F /* PinYinForObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinForObjc.m; sourceTree = "<group>"; };
+		7B0228A4223A16470045E25F /* PinYin4Objc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYin4Objc.h; sourceTree = "<group>"; };
+		7B0228AE223A66440045E25F /* SYFriendsList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYFriendsList.h; sourceTree = "<group>"; };
+		7B0228AF223A66440045E25F /* SYFriendsList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYFriendsList.m; sourceTree = "<group>"; };
+		7B0228B2223B4E390045E25F /* NSMutableArray+FilterElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+FilterElement.m"; sourceTree = "<group>"; };
+		7B0228B3223B4E390045E25F /* NSMutableArray+FilterElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+FilterElement.h"; sourceTree = "<group>"; };
+		7B0228B5223B55020045E25F /* SYFriendGroupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYFriendGroupModel.h; sourceTree = "<group>"; };
+		7B0228B6223B55020045E25F /* SYFriendGroupModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYFriendGroupModel.m; sourceTree = "<group>"; };
+		7B0228B8223B7D9D0045E25F /* SYFriendModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYFriendModel.h; sourceTree = "<group>"; };
+		7B0228B9223B7D9D0045E25F /* SYFriendModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYFriendModel.m; sourceTree = "<group>"; };
+		7B0228BC223B87810045E25F /* SYFriendsListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYFriendsListCell.h; sourceTree = "<group>"; };
+		7B0228BD223B87810045E25F /* SYFriendsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYFriendsListCell.m; sourceTree = "<group>"; };
+		7B0228C5223BCAF80045E25F /* SYSearchFriendsResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSearchFriendsResultVC.h; sourceTree = "<group>"; };
+		7B0228C6223BCAF80045E25F /* SYSearchFriendsResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSearchFriendsResultVC.m; sourceTree = "<group>"; };
 		7B1E732F22267684001299C0 /* SYCollocationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCollocationVC.h; sourceTree = "<group>"; };
 		7B1E733022267684001299C0 /* SYCollocationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCollocationVC.m; sourceTree = "<group>"; };
 		7B1E733322267765001299C0 /* SYCollocationVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCollocationVM.h; sourceTree = "<group>"; };
@@ -789,6 +831,18 @@
 		7B1E734022278C5E001299C0 /* WebCacheHelpler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebCacheHelpler.h; sourceTree = "<group>"; };
 		7B1E734122278C5E001299C0 /* WebCacheHelpler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebCacheHelpler.m; sourceTree = "<group>"; };
 		7B2AEBD921E88EDF000E7DD9 /* SeeYu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeeYu.entitlements; sourceTree = "<group>"; };
+		7B2E76BD223F460200D8F1CD /* SYAnchorsOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsOrderVC.h; sourceTree = "<group>"; };
+		7B2E76BE223F460200D8F1CD /* SYAnchorsOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsOrderVC.m; sourceTree = "<group>"; };
+		7B2E76C0223F464600D8F1CD /* SYAnchorsOrderVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsOrderVM.h; sourceTree = "<group>"; };
+		7B2E76C1223F464600D8F1CD /* SYAnchorsOrderVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsOrderVM.m; sourceTree = "<group>"; };
+		7B59092F223F776100EE5ACF /* SYAnchorsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsListVC.h; sourceTree = "<group>"; };
+		7B590930223F776100EE5ACF /* SYAnchorsListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsListVC.m; sourceTree = "<group>"; };
+		7B590932223F77B200EE5ACF /* SYAnchorsListVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsListVM.h; sourceTree = "<group>"; };
+		7B590933223F77B200EE5ACF /* SYAnchorsListVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsListVM.m; sourceTree = "<group>"; };
+		7B590937223F8B0300EE5ACF /* SYAnchorsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsModel.h; sourceTree = "<group>"; };
+		7B590938223F8B0300EE5ACF /* SYAnchorsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsModel.m; sourceTree = "<group>"; };
+		7B59093B223F9C7300EE5ACF /* SYAnchorsListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsListCell.h; sourceTree = "<group>"; };
+		7B59093C223F9C7300EE5ACF /* SYAnchorsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsListCell.m; sourceTree = "<group>"; };
 		7B5A333A21F9BFC600535F8D /* SYRankingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYRankingVC.h; sourceTree = "<group>"; };
 		7B5A333B21F9BFC600535F8D /* SYRankingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYRankingVC.m; sourceTree = "<group>"; };
 		7B5A333D21F9ECF700535F8D /* SYRankingVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYRankingVM.h; sourceTree = "<group>"; };
@@ -1054,6 +1108,7 @@
 		26064AE91F5DA1F800566B95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7B590935223F8AB300EE5ACF /* MainFrame */,
 				7B656A2E21EF0E8B008FDCCA /* Contacts */,
 				26363ACC20134651000061EF /* Emoticon */,
 				261597001FEA525E00C6FD80 /* Moment */,
@@ -1090,7 +1145,6 @@
 				26064AF91F5DB46500566B95 /* Profile */,
 				26064AF41F5DB46500566B95 /* HomePage */,
 				26064AF51F5DB46500566B95 /* Login */,
-				26064AF81F5DB46500566B95 /* Other */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1152,6 +1206,7 @@
 		26064AF01F5DA21000566B95 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				7B022894223A16470045E25F /* PinYin */,
 				7BC6FC172238BD700079330A /* CountdownButton */,
 				7B747A482236229500B3F6A0 /* XFAVFoundation */,
 				7BB5199621EC783B000C1CF2 /* FSScrollContentViewLib */,
@@ -1236,21 +1291,13 @@
 		26064AF61F5DB46500566B95 /* MainFrame */ = {
 			isa = PBXGroup;
 			children = (
+				7B2E76BB223F456C00D8F1CD /* AnchorsOrder */,
 				7B5A334021FA071A00535F8D /* Nearby */,
 				7B5A333821F9BF2400535F8D /* Ranking */,
 				2605C5B91F662EA300B1F66E /* SYMainFrameVC.h */,
 				2605C5BA1F662EA300B1F66E /* SYMainFrameVC.m */,
 			);
 			path = MainFrame;
-			sourceTree = "<group>";
-		};
-		26064AF81F5DB46500566B95 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				265490521F99E905003AEED1 /* SYTestViewController.h */,
-				265490531F99E905003AEED1 /* SYTestViewController.m */,
-			);
-			path = Other;
 			sourceTree = "<group>";
 		};
 		26064AF91F5DB46500566B95 /* Profile */ = {
@@ -1499,10 +1546,8 @@
 		26225D7C1F65506E0074BFC3 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				2605C5D41F6633AC00B1F66E /* SYContactsVM.h */,
-				2605C5D51F6633AC00B1F66E /* SYContactsVM.m */,
-				7BC6FC082237C2DF0079330A /* SYFriendsListVM.h */,
-				7BC6FC092237C2DF0079330A /* SYFriendsListVM.m */,
+				7BC6FC25223911F60079330A /* friendsList */,
+				7BC6FC24223911490079330A /* chatting */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -1543,6 +1588,7 @@
 		26225D801F65506E0074BFC3 /* MainFrame */ = {
 			isa = PBXGroup;
 			children = (
+				7B2E76BC223F45DD00D8F1CD /* AnchorsOrder */,
 				7B5A334121FA072900535F8D /* Nearby */,
 				7B5A333921F9BFA100535F8D /* Ranking */,
 				2654904E1F99D59D003AEED1 /* ItemViewModel */,
@@ -1556,8 +1602,6 @@
 			isa = PBXGroup;
 			children = (
 				263C896B1F6A302300F7A0AE /* Common */,
-				265490551F99E921003AEED1 /* SYTestViewModel.h */,
-				265490561F99E921003AEED1 /* SYTestViewModel.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -1727,6 +1771,7 @@
 		263C896D1F6A305100F7A0AE /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				7B0228BB223B87490045E25F /* friendsList */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -1752,6 +1797,7 @@
 		263C89711F6A305100F7A0AE /* MainFrame */ = {
 			isa = PBXGroup;
 			children = (
+				7B59093A223F9C3900EE5ACF /* AnchorsOrder */,
 				265490491F99AF6F003AEED1 /* SYMainFrameTableViewCell.h */,
 				2654904A1F99AF6F003AEED1 /* SYMainFrameTableViewCell.m */,
 				2654904B1F99AF6F003AEED1 /* SYMainFrameTableViewCell.xib */,
@@ -1811,6 +1857,7 @@
 		263D36961F666438007267C3 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				7B0228B1223B4DEC0045E25F /* NSMutableArray */,
 				26AEEE0E1F7D1CD700A270EE /* UISearchBar */,
 				2609ED471F790738002D31CE /* UILabel */,
 				263D36971F666438007267C3 /* Common */,
@@ -2361,6 +2408,60 @@
 			path = TZImagePickerController;
 			sourceTree = "<group>";
 		};
+		7B022894223A16470045E25F /* PinYin */ = {
+			isa = PBXGroup;
+			children = (
+				7B022895223A16470045E25F /* PinyinHelper.h */,
+				7B022896223A16470045E25F /* HanyuPinyinOutputFormat.h */,
+				7B022897223A16470045E25F /* ChineseInclude.h */,
+				7B022898223A16470045E25F /* NSString+PinYin4Cocoa.m */,
+				7B022899223A16470045E25F /* unicode_to_hanyu_pinyin.txt */,
+				7B02289A223A16470045E25F /* ChineseToPinyinResource.h */,
+				7B02289B223A16470045E25F /* PinYinForObjc.h */,
+				7B02289C223A16470045E25F /* PinyinFormatter.h */,
+				7B02289D223A16470045E25F /* PinyinHelper.m */,
+				7B02289E223A16470045E25F /* NSString+PinYin4Cocoa.h */,
+				7B02289F223A16470045E25F /* ChineseInclude.m */,
+				7B0228A0223A16470045E25F /* HanyuPinyinOutputFormat.m */,
+				7B0228A1223A16470045E25F /* ChineseToPinyinResource.m */,
+				7B0228A2223A16470045E25F /* PinyinFormatter.m */,
+				7B0228A3223A16470045E25F /* PinYinForObjc.m */,
+				7B0228A4223A16470045E25F /* PinYin4Objc.h */,
+			);
+			path = PinYin;
+			sourceTree = "<group>";
+		};
+		7B0228AD223A66220045E25F /* friendsList */ = {
+			isa = PBXGroup;
+			children = (
+				7B0228AE223A66440045E25F /* SYFriendsList.h */,
+				7B0228AF223A66440045E25F /* SYFriendsList.m */,
+				7B0228B5223B55020045E25F /* SYFriendGroupModel.h */,
+				7B0228B6223B55020045E25F /* SYFriendGroupModel.m */,
+				7B0228B8223B7D9D0045E25F /* SYFriendModel.h */,
+				7B0228B9223B7D9D0045E25F /* SYFriendModel.m */,
+			);
+			path = friendsList;
+			sourceTree = "<group>";
+		};
+		7B0228B1223B4DEC0045E25F /* NSMutableArray */ = {
+			isa = PBXGroup;
+			children = (
+				7B0228B3223B4E390045E25F /* NSMutableArray+FilterElement.h */,
+				7B0228B2223B4E390045E25F /* NSMutableArray+FilterElement.m */,
+			);
+			path = NSMutableArray;
+			sourceTree = "<group>";
+		};
+		7B0228BB223B87490045E25F /* friendsList */ = {
+			isa = PBXGroup;
+			children = (
+				7B0228BC223B87810045E25F /* SYFriendsListCell.h */,
+				7B0228BD223B87810045E25F /* SYFriendsListCell.m */,
+			);
+			path = friendsList;
+			sourceTree = "<group>";
+		};
 		7B1E732E222675D2001299C0 /* Collocation */ = {
 			isa = PBXGroup;
 			children = (
@@ -2393,6 +2494,54 @@
 				7B1E734122278C5E001299C0 /* WebCacheHelpler.m */,
 			);
 			path = AVPlayer;
+			sourceTree = "<group>";
+		};
+		7B2E76BB223F456C00D8F1CD /* AnchorsOrder */ = {
+			isa = PBXGroup;
+			children = (
+				7B2E76BD223F460200D8F1CD /* SYAnchorsOrderVC.h */,
+				7B2E76BE223F460200D8F1CD /* SYAnchorsOrderVC.m */,
+				7B59092F223F776100EE5ACF /* SYAnchorsListVC.h */,
+				7B590930223F776100EE5ACF /* SYAnchorsListVC.m */,
+			);
+			path = AnchorsOrder;
+			sourceTree = "<group>";
+		};
+		7B2E76BC223F45DD00D8F1CD /* AnchorsOrder */ = {
+			isa = PBXGroup;
+			children = (
+				7B2E76C0223F464600D8F1CD /* SYAnchorsOrderVM.h */,
+				7B2E76C1223F464600D8F1CD /* SYAnchorsOrderVM.m */,
+				7B590932223F77B200EE5ACF /* SYAnchorsListVM.h */,
+				7B590933223F77B200EE5ACF /* SYAnchorsListVM.m */,
+			);
+			path = AnchorsOrder;
+			sourceTree = "<group>";
+		};
+		7B590935223F8AB300EE5ACF /* MainFrame */ = {
+			isa = PBXGroup;
+			children = (
+				7B590936223F8AC400EE5ACF /* Anchors */,
+			);
+			path = MainFrame;
+			sourceTree = "<group>";
+		};
+		7B590936223F8AC400EE5ACF /* Anchors */ = {
+			isa = PBXGroup;
+			children = (
+				7B590937223F8B0300EE5ACF /* SYAnchorsModel.h */,
+				7B590938223F8B0300EE5ACF /* SYAnchorsModel.m */,
+			);
+			path = Anchors;
+			sourceTree = "<group>";
+		};
+		7B59093A223F9C3900EE5ACF /* AnchorsOrder */ = {
+			isa = PBXGroup;
+			children = (
+				7B59093B223F9C7300EE5ACF /* SYAnchorsListCell.h */,
+				7B59093C223F9C7300EE5ACF /* SYAnchorsListCell.m */,
+			);
+			path = AnchorsOrder;
 			sourceTree = "<group>";
 		};
 		7B5A333821F9BF2400535F8D /* Ranking */ = {
@@ -2442,6 +2591,7 @@
 		7B656A2E21EF0E8B008FDCCA /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				7B0228AD223A66220045E25F /* friendsList */,
 				7B656A2F21EF0EA8008FDCCA /* chatting */,
 			);
 			path = Contacts;
@@ -2689,6 +2839,8 @@
 			children = (
 				7BC6FC052237C1ED0079330A /* SYFriendsListVC.h */,
 				7BC6FC062237C1ED0079330A /* SYFriendsListVC.m */,
+				7B0228C5223BCAF80045E25F /* SYSearchFriendsResultVC.h */,
+				7B0228C6223BCAF80045E25F /* SYSearchFriendsResultVC.m */,
 			);
 			path = friendsList;
 			sourceTree = "<group>";
@@ -2706,6 +2858,24 @@
 				7BC6FC182238BD8F0079330A /* CountDownButton.m */,
 			);
 			path = CountdownButton;
+			sourceTree = "<group>";
+		};
+		7BC6FC24223911490079330A /* chatting */ = {
+			isa = PBXGroup;
+			children = (
+				2605C5D41F6633AC00B1F66E /* SYContactsVM.h */,
+				2605C5D51F6633AC00B1F66E /* SYContactsVM.m */,
+			);
+			path = chatting;
+			sourceTree = "<group>";
+		};
+		7BC6FC25223911F60079330A /* friendsList */ = {
+			isa = PBXGroup;
+			children = (
+				7BC6FC082237C2DF0079330A /* SYFriendsListVM.h */,
+				7BC6FC092237C2DF0079330A /* SYFriendsListVM.m */,
+			);
+			path = friendsList;
 			sourceTree = "<group>";
 		};
 		7BFB9C5121DDE7C8002F1562 /* Authentication */ = {
@@ -2963,6 +3133,7 @@
 				26452BEF201200060042B2FE /* SeeYu_Moments_1.json in Resources */,
 				26D81813201F308A00DDB286 /* SYProfileInfoAlbumCell.xib in Resources */,
 				26452BF1201200120042B2FE /* SeeYu_Moments_2.json in Resources */,
+				7B0228A6223A16470045E25F /* unicode_to_hanyu_pinyin.txt in Resources */,
 				26D817FF201F0EC000DDB286 /* SYProfileInfoFooterView.xib in Resources */,
 				26CCB9D3202453700090DBC5 /* SeeYuSight.mp4 in Resources */,
 				26FE8E8B1F9514D100EC8BE0 /* TZImagePickerController.bundle in Resources */,
@@ -3537,7 +3708,6 @@
 				2605C5CD1F66323800B1F66E /* SYDiscoverVM.m in Sources */,
 				26FE8E931F9514D100EC8BE0 /* UIView+Layout.m in Sources */,
 				7BC6FC0322374CB60079330A /* SYRCIMDataSource.m in Sources */,
-				265490541F99E905003AEED1 /* SYTestViewController.m in Sources */,
 				7BA093AF21E358F0004F52F3 /* SYRechargeVC.m in Sources */,
 				26FE8E841F9514D100EC8BE0 /* UIView+SDExtension.m in Sources */,
 				265DBFE41FE0C76700A5FCC8 /* SYAboutUsViewModel.m in Sources */,
@@ -3575,6 +3745,7 @@
 				26D817F7201EF38F00DDB286 /* SYProfileInfoViewController.m in Sources */,
 				7B66335422322D64002B220E /* SYHobbyVM.m in Sources */,
 				7BC6FC222238C0C00079330A /* CountDownOperation.m in Sources */,
+				7B0228C7223BCAF80045E25F /* SYSearchFriendsResultVC.m in Sources */,
 				263D37161F66656A007267C3 /* YYReachability.m in Sources */,
 				2664F5371FEA6BE6005C10CF /* SYMomentHelper.m in Sources */,
 				2617533D1F73D03C00812E1B /* SYFeatureSignatureVM.m in Sources */,
@@ -3586,14 +3757,17 @@
 				7B61945B21D760C9004055A2 /* SYRegisterView.m in Sources */,
 				26FE8E801F9514D100EC8BE0 /* TADotView.m in Sources */,
 				26AEEE111F7D1CEC00A270EE /* UISearchBar+SYExtension.m in Sources */,
+				7B0228A5223A16470045E25F /* NSString+PinYin4Cocoa.m in Sources */,
 				263D36E41F666438007267C3 /* NSString+SYSize.m in Sources */,
 				26363AD2201346FC000061EF /* SYEmoticon.m in Sources */,
+				7B2E76BF223F460200D8F1CD /* SYAnchorsOrderVC.m in Sources */,
 				269754AF2018650E005DE59C /* SYMomentReplyItemViewModel.m in Sources */,
 				26FE8E7E1F9514D100EC8BE0 /* TAAbstractDotView.m in Sources */,
 				26225D711F654C9F0074BFC3 /* SYVC.m in Sources */,
 				263D36F01F666438007267C3 /* UIView+SYFrame.m in Sources */,
 				2654904C1F99AF6F003AEED1 /* SYMainFrameTableViewCell.m in Sources */,
 				263D36E51F666438007267C3 /* NSString+SYValid.m in Sources */,
+				7B0228A8223A16470045E25F /* ChineseInclude.m in Sources */,
 				261597531FEA5DD300C6FD80 /* SYMomentProfileView.m in Sources */,
 				26FE8E8F1F9514D100EC8BE0 /* TZPhotoPreviewCell.m in Sources */,
 				7BC6FC072237C1ED0079330A /* SYFriendsListVC.m in Sources */,
@@ -3618,6 +3792,7 @@
 				261E01561FDE2CF50041E989 /* SYSettingVM.m in Sources */,
 				7B1E733522267765001299C0 /* SYCollocationVM.m in Sources */,
 				26BEBC7F1F8B78B1004D502F /* SYReflection.m in Sources */,
+				7B0228A9223A16470045E25F /* HanyuPinyinOutputFormat.m in Sources */,
 				7B5A333F21F9ECF700535F8D /* SYRankingVM.m in Sources */,
 				261596DD1FEA515000C6FD80 /* SYMomentVC.m in Sources */,
 				7BC6FC1A2238BD8F0079330A /* CountDownButton.m in Sources */,
@@ -3625,12 +3800,14 @@
 				7B1E73382226CC52001299C0 /* SYCollocationCell.m in Sources */,
 				2617531A1F7398F000812E1B /* SYCommonAvatarItemViewModel.m in Sources */,
 				26D817F3201EF2FA00DDB286 /* SYProfileInfoViewModel.m in Sources */,
+				7B0228BE223B87810045E25F /* SYFriendsListCell.m in Sources */,
 				26FE8E8D1F9514D100EC8BE0 /* TZLocationManager.m in Sources */,
 				2609ED4A1F790833002D31CE /* UILabel+SYExtension.m in Sources */,
 				26FE8E481F95143D00EC8BE0 /* IDMPhoto.m in Sources */,
 				26FE8E8C1F9514D100EC8BE0 /* TZImagePickerController.m in Sources */,
 				261753201F739DDC00812E1B /* SYCommonQRCodeItemViewModel.m in Sources */,
 				263C898A1F6A54AE00F7A0AE /* SYCommonFooterView.m in Sources */,
+				7B590939223F8B0300EE5ACF /* SYAnchorsModel.m in Sources */,
 				263D36DE1F666438007267C3 /* NSDate+Extension.m in Sources */,
 				7BFB9C6021DE1C87002F1562 /* SYMobileBindingVM.m in Sources */,
 				26225D971F6557290074BFC3 /* SYViewModelServicesImpl.m in Sources */,
@@ -3654,6 +3831,7 @@
 				265DBFEC1FE0C8D900A5FCC8 /* SYAboutUsHeaderView.m in Sources */,
 				26FE8E4A1F95143D00EC8BE0 /* IDMPhotoBrowser.m in Sources */,
 				263D37111F666569007267C3 /* LCActionSheetViewController.m in Sources */,
+				7B2E76C2223F464600D8F1CD /* SYAnchorsOrderVM.m in Sources */,
 				26225D891F6550C80074BFC3 /* SYTableVM.m in Sources */,
 				263D37131F666569007267C3 /* YYFileHash.m in Sources */,
 				263C897E1F6A324700F7A0AE /* SYCommonCell.m in Sources */,
@@ -3662,14 +3840,15 @@
 				7BA3260821DF751800B7A352 /* SYRealnameVM.m in Sources */,
 				2615974E1FEA5DD300C6FD80 /* SYMomentMessageTipsView.m in Sources */,
 				260175821FE904BE000F6A25 /* SYGeneralViewModel.m in Sources */,
+				7B590934223F77B200EE5ACF /* SYAnchorsListVM.m in Sources */,
 				263D36E11F666438007267C3 /* NSObject+SYAlert.m in Sources */,
 				263D36EB1F666438007267C3 /* UIScrollView+SYRefresh.m in Sources */,
 				263D37101F666569007267C3 /* LCActionSheetConfig.m in Sources */,
-				265490571F99E921003AEED1 /* SYTestViewModel.m in Sources */,
 				26FE8E4C1F95143D00EC8BE0 /* IDMTapDetectingView.m in Sources */,
 				26C7BEE51F8CBED800525126 /* SAMKeychain+SYUtil.m in Sources */,
 				2605C5CA1F6631D300B1F66E /* SYProfileVM.m in Sources */,
 				263D37151F666569007267C3 /* YYKeychain.m in Sources */,
+				7B0228AC223A16470045E25F /* PinYinForObjc.m in Sources */,
 				26A7E7411F79FE550015CA71 /* SYRegisterVC.m in Sources */,
 				2618AFD11F91A5D900F82A46 /* SYPreferenceSettingHelper.m in Sources */,
 				265490511F99D6A0003AEED1 /* SYMainFrameItemViewModel.m in Sources */,
@@ -3689,13 +3868,16 @@
 				261597061FEA52CE00C6FD80 /* SYMoment.m in Sources */,
 				26003FF31F988B81000621B0 /* SYButton.m in Sources */,
 				26064AB81F5D9A1400566B95 /* main.m in Sources */,
+				7B0228B0223A66440045E25F /* SYFriendsList.m in Sources */,
 				7B747A532236229500B3F6A0 /* XFPhotoLibraryManager.m in Sources */,
 				7BC6FC132237F2780079330A /* SYLoginVC.m in Sources */,
 				263C89781F6A30E600F7A0AE /* SYCommonItemViewModel.m in Sources */,
 				26064AFC1F5DB52900566B95 /* SYNavigationControllerStack.m in Sources */,
 				2605E1061FE7924900F514B0 /* SYPrivacyViewController.m in Sources */,
 				2615975B1FEA5F5700C6FD80 /* SYControl.m in Sources */,
+				7B0228AA223A16470045E25F /* ChineseToPinyinResource.m in Sources */,
 				26363ACF201346E6000061EF /* SYEmoticonGroup.m in Sources */,
+				7B0228BA223B7D9D0045E25F /* SYFriendModel.m in Sources */,
 				264D36D71F70AEBD003BB8CE /* SYProfileHeaderCell.m in Sources */,
 				269754AC20170ACB005DE59C /* SYMomentCommentToolView.m in Sources */,
 				263D37121F666569007267C3 /* UIImage+LCActionSheet.m in Sources */,
@@ -3706,9 +3888,11 @@
 				2633E01A1FEA076600D0E187 /* SYSegmentedControlController.m in Sources */,
 				2605C5B81F66249F00B1F66E /* SYHomePageVM.m in Sources */,
 				26CCB9D120244F690090DBC5 /* SYMomentVideo.m in Sources */,
+				7B0228AB223A16470045E25F /* PinyinFormatter.m in Sources */,
 				261597491FEA5DD300C6FD80 /* SYMomentAttitudesCell.m in Sources */,
 				263D36E21F666438007267C3 /* NSObject+SYExtension.m in Sources */,
 				26FE8E871F9514D100EC8BE0 /* TZAssetModel.m in Sources */,
+				7B59093D223F9C7300EE5ACF /* SYAnchorsListCell.m in Sources */,
 				2605C5BB1F662EA300B1F66E /* SYMainFrameVC.m in Sources */,
 				263C89811F6A34D300F7A0AE /* SYCommonVC.m in Sources */,
 				26FA404A1FEB5BDF00B4AD2B /* SYPicture.m in Sources */,
@@ -3717,11 +3901,13 @@
 				7BC6FC0A2237C2DF0079330A /* SYFriendsListVM.m in Sources */,
 				263D36EF1F666438007267C3 /* UIView+SYExtension.m in Sources */,
 				26B89AB22022BB54006FBE20 /* SYMomentShareInfoView.m in Sources */,
+				7B0228B7223B55020045E25F /* SYFriendGroupModel.m in Sources */,
 				26D81812201F308A00DDB286 /* SYProfileInfoAlbumCell.m in Sources */,
 				26FA40501FEB5C9D00B4AD2B /* SYComment.m in Sources */,
 				2624CAE51F98DF9B0083923F /* RACSignal+SYHTTPServiceAdditions.m in Sources */,
 				261CB6311FAC18110080B7C1 /* SYLiveInfo.m in Sources */,
 				2634C7221FF0A33A00B1F639 /* SYTableView.m in Sources */,
+				7B0228B4223B4E390045E25F /* NSMutableArray+FilterElement.m in Sources */,
 				2624CAEC1F98DFC80083923F /* SYURLParameters.m in Sources */,
 				263D36DB1F666438007267C3 /* LCActionSheet+SYExtension.m in Sources */,
 				2605C5BE1F662EE400B1F66E /* SYMainFrameVM.m in Sources */,
@@ -3729,6 +3915,7 @@
 				7BB519A521ECEAAA000C1CF2 /* SYVipVM.m in Sources */,
 				2615974B1FEA5DD300C6FD80 /* SYMomentContentCell.m in Sources */,
 				E932C4362137925500B32A9F /* PKShortVideoRecorder.m in Sources */,
+				7B0228A7223A16470045E25F /* PinyinHelper.m in Sources */,
 				26FE8E4B1F95143D00EC8BE0 /* IDMTapDetectingImageView.m in Sources */,
 				26FE8E821F9514D100EC8BE0 /* SDCollectionViewCell.m in Sources */,
 				2624CAF21F98E97B0083923F /* SYLiveRoom.m in Sources */,
@@ -3754,6 +3941,7 @@
 				263D36EA1F666438007267C3 /* UIImage+SYExtension.m in Sources */,
 				7BB519BA21ECF74E000C1CF2 /* SYChatCoinVM.m in Sources */,
 				7BC6FC0D2237D0C10079330A /* SYGuideVC.m in Sources */,
+				7B590931223F776100EE5ACF /* SYAnchorsListVC.m in Sources */,
 				2605C5D61F6633AC00B1F66E /* SYContactsVM.m in Sources */,
 				26225D9B1F65589E0074BFC3 /* SYConstant.m in Sources */,
 				7BB5199C21EC783B000C1CF2 /* FSSegmentTitleView.m in Sources */,

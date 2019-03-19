@@ -9,7 +9,7 @@
 #import "SYMomentVM.h"
 #import "SYProfileInfoViewModel.h"
 #import "SYWebVM.h"
-#import "SYTestViewModel.h"
+
 @interface SYMomentVM ()
 /// 个人信息头部视图模型
 @property (nonatomic, readwrite, strong) SYMomentProfileViewModel *profileViewModel;
@@ -150,9 +150,6 @@
         
         if (userInfo[SYMomentLocationNameKey]) { /// 地理位置
             /// 这里仅做测试
-            SYTestViewModel *viewModel = [[SYTestViewModel alloc] initWithServices:self.services params:@{SYViewModelTitleKey:userInfo[SYMomentLocationNameKey]}];
-            /// 执行push or present
-            [self.services pushViewModel:viewModel animated:YES];
             return [RACSignal empty];
         }
         

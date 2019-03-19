@@ -30,12 +30,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self _setupNavigation];
 }
 
 #pragma mark - 设置导航栏
 - (void)_setupNavigation {
-    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 40) titles:@[@"主播",@"土豪"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
+    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, SY_APPLICATION_TOP_BAR_HEIGHT, CGRectGetWidth(self.view.frame), 40) titles:@[@"主播",@"土豪"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
     self.titleView.titleNormalColor = SYColorFromHexString(@"#999999");
     self.titleView.titleSelectColor = SYColor(159, 105, 235);
     self.titleView.backgroundColor = [UIColor whiteColor];

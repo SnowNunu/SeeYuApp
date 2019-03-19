@@ -11,13 +11,13 @@
 @implementation UISearchBar (SYExtension)
 
 + (void)load{
-    // 修改按钮标题文字属性( 颜色, 大小, 字体)
+//     修改按钮标题文字属性( 颜色, 大小, 字体)
     [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTitleTextAttributes:@{NSForegroundColorAttributeName: SY_MAIN_TINTCOLOR, NSFontAttributeName: [UIFont systemFontOfSize:16]} forState:UIControlStateNormal];
-    // 将searchBar的cancel按钮改成中文的
-    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitle:@"取消"];
+//     将searchBar的cancel按钮改成中文的
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitle:@"不取消"];
 }
 
-- (void)sy_configureSearchBar{
+- (void)sy_configureSearchBar {
     self.searchBarStyle = UISearchBarStyleProminent;
     self.barStyle = UIBarStyleDefault;
     

@@ -7,10 +7,13 @@
 //
 
 #import "SYVC.h"
+#import "SYFriendsListVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYFriendsListVC : SYVC
+
+@property (nonatomic, strong) SYFriendsListVM *viewModel;
 
 @end
 
