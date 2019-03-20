@@ -7,7 +7,6 @@
 //
 
 #import "SYMainFrameVC.h"
-#import "SYMainFrameTableViewCell.h"
 #import "SYCameraViewController.h"
 #import "SYAnchorsOrderVC.h"
 #import "SYNearbyVC.h"
@@ -33,7 +32,7 @@
     [super viewDidLoad];
     /// 设置导航栏
     [self _setupNavigation];
-    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 #pragma mark - 设置导航栏
@@ -58,7 +57,7 @@
     SYRankingVC *rankingVC = [[SYRankingVC alloc]initWithViewModel:self.viewModel.rankingVM];
     [childVCs addObject:rankingVC];
     
-    self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, SY_APPLICATION_TOP_BAR_HEIGHT, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SY_APPLICATION_TOP_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
+    self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SY_APPLICATION_TOP_BAR_HEIGHT - SY_APPLICATION_TAB_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
     [self.view addSubview:_contentView];
 }
 

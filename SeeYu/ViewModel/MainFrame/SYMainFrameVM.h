@@ -10,7 +10,6 @@
 #import "SYVM.h"
 #import "SYNearbyVM.h"
 #import "SYRankingVM.h"
-#import "SYMainFrameItemViewModel.h"
 #import "SYAnchorsOrderVM.h"
 
 @interface SYMainFrameVM : SYVM

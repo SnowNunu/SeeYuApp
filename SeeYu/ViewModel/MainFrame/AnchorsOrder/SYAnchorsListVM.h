@@ -7,6 +7,7 @@
 //
 
 #import "SYVM.h"
+#import "SYAnchorShowVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,11 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 // 主播类型
 @property (nonatomic, strong) NSString *anchorType;
 
+// 主播列表
+@property (nonatomic, strong) NSArray *anchorsArray;
+
 // 获取主播列表
 @property (nonatomic, strong) RACCommand *requestAnchorsListCommand;
 
-// 主播列表
-@property (nonatomic, strong) NSArray *anchorsArray;
+// 进入主播详情展示
+@property (nonatomic, strong) RACCommand *enterAnchorShowViewCommand;
 
 @end
 

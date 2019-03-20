@@ -22,7 +22,7 @@ NSString * const collocationCell = @"collocationCell";
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = YES;   // 隐藏导航栏
     _dataArray = [NSMutableArray new];
-    [_dataArray addObject:@"https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200ff50000bcshae7a1hap4ad0hdh0&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0"];
+    [_dataArray addObject:@"http://103.214.146.89/seeyu/show/122257.mp4"];
     [_dataArray addObject:@"https://aweme.snssdk.com/aweme/v1/play/?video_id=0013151fddac47fea5815b2537d657bd&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0"];
     [_dataArray addObject:@"https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200fe70000bbra4gq6tgq2ecgca150&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0"];
     [self _setupSubViews];

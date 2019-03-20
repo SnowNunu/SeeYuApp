@@ -72,6 +72,12 @@
 /// 获取主播列表
 #define SY_HTTTP_PATH_USER_ANCHOR_LIST   @"/application/userAnchor/queryAnchors"
 
+/// 获取当前主播的关注状态
+#define SY_HTTTP_PATH_ANCHOR_FOCUS_STATE   @"/application/userAnchor/queryFollowFlag"
+
+/// 关注或取关当前主播
+#define SY_HTTTP_PATH_ANCHOR_FOCUS_EXECUTE    @"/application/userAnchor/userFollowAnchor"
+
 ///
 //+ (NSString *)ver;          // app版本号
 //+ (NSString *)token;        // token，默认空字符串

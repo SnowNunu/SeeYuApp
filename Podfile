@@ -179,6 +179,8 @@ pod 'DZNEmptyDataSet'                   , '1.8.1'
 # 拍照和录视频
 pod 'PBJVision'
 
+pod 'JPVideoPlayer'
+
 target 'SeeYuTests' do
 end
 

@@ -29,6 +29,11 @@
     _headImageView = headImageView;
     [self.contentView addSubview:headImageView];
     
+    UIImageView *bgImageView = [UIImageView new];
+    bgImageView.image = SYImageNamed(@"shadow_bottom");
+    _bgImageView = bgImageView;
+    [self.contentView addSubview:bgImageView];
+    
     UIImageView *onlineStatusImageView = [UIImageView new];
     _onlineStatusImageView = onlineStatusImageView;
     [self.contentView addSubview:onlineStatusImageView];
@@ -38,26 +43,32 @@
     aliasLabel.textColor = [UIColor whiteColor];
     aliasLabel.font = SYRegularFont(15);
     _aliasLabel = aliasLabel;
-    [self.contentView addSubview:aliasLabel];
+    [bgImageView addSubview:aliasLabel];
     
     UIImageView *voiceImageView = [UIImageView new];
     voiceImageView.image = SYImageNamed(@"home_icon_live");
     _voiceImageView = voiceImageView;
-    [self.contentView addSubview:voiceImageView];
+    [bgImageView addSubview:voiceImageView];
     
     UILabel *voicePriceLabel = [UILabel new];
     voicePriceLabel.textAlignment = NSTextAlignmentRight;
     voicePriceLabel.textColor = [UIColor whiteColor];
     voicePriceLabel.font = SYRegularFont(13);
     _voicePriceLabel = voicePriceLabel;
-    [self.contentView addSubview:voicePriceLabel];
+    [bgImageView addSubview:voicePriceLabel];
     
     UILabel *signatureLabel = [UILabel new];
     signatureLabel.textAlignment = NSTextAlignmentLeft;
     signatureLabel.textColor = [UIColor whiteColor];
     signatureLabel.font = SYRegularFont(14);
     _signatureLabel = signatureLabel;
-    [self.contentView addSubview:signatureLabel];
+    [bgImageView addSubview:signatureLabel];
+    
+    // 添加毛玻璃效果
+    UIVisualEffectView *visual = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+    visual.frame = bgImageView.bounds;
+    visual.alpha = 0.8f;
+    [bgImageView addSubview:visual];
 }
 
 - (void)_makeSubViewsConstraints {
@@ -72,7 +83,7 @@
     }];
     [self.aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(15);
-        make.width.offset(90);
+        make.width.offset(SY_SCREEN_WIDTH * 0.5 - 15);
         make.height.offset(15);
         make.bottom.equalTo(self.signatureLabel.mas_top).offset(-20);
     }];
@@ -91,6 +102,10 @@
         make.left.equalTo(self.contentView).offset(15);
         make.right.bottom.equalTo(self.contentView).offset(-15);
         make.height.offset(15);
+    }];
+    [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.contentView);
+        make.top.equalTo(self.aliasLabel.mas_top).offset(-20);
     }];
 }
 
@@ -131,8 +146,8 @@
         [self.contentView addSubview:starImageView];
         [starImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.offset(15);
-            make.left.equalTo(self.aliasLabel.mas_right).offset(i * 20);
-            make.centerY.equalTo(self.aliasLabel);
+            make.left.equalTo(self.aliasLabel).offset(i * 20);
+            make.centerY.equalTo(self.onlineStatusImageView);
         }];
     }
 }
@@ -142,5 +157,6 @@
 
     // Configure the view for the selected state
 }
+
 
 @end

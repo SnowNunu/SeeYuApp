@@ -37,6 +37,12 @@
     [self.requestAnchorsListCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];
+    
+    self.enterAnchorShowViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSDictionary *params) {
+        SYAnchorShowVM *showVM = [[SYAnchorShowVM alloc] initWithServices:self.services params:params];
+        [self.services pushViewModel:showVM animated:YES];
+        return [RACSignal empty];
+    }];
 }
 
 @end

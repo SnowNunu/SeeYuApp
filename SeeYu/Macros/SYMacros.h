@@ -64,7 +64,7 @@
 #define SY_IS_IPHONE_5          (SY_IS_IPHONE && SY_SCREEN_MAX_LENGTH == 568.0)
 #define SY_IS_IPHONE_6          (SY_IS_IPHONE && SY_SCREEN_MAX_LENGTH == 667.0)
 #define SY_IS_IPHONE_6P         (SY_IS_IPHONE && SY_SCREEN_MAX_LENGTH == 736.0)
-#define SY_IS_IPHONE_X          (SY_IS_IPHONE && SY_SCREEN_MAX_LENGTH == 812.0)
+#define SY_IS_IPHONE_X          (SY_IS_IPHONE && SY_SCREEN_MAX_LENGTH >= 812.0)
 
 
 /// 导航条高度

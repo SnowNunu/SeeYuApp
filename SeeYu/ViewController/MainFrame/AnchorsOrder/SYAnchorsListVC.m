@@ -24,12 +24,15 @@ NSString * const anchorsListCell = @"anchorsListCell";
     [super viewDidLoad];
     [self _setupSubviews];
     [self _makeSubViewsConstraints];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.viewModel.requestAnchorsListCommand execute:nil];
 }
 
 - (void)bindViewModel {
     [RACObserve(self.viewModel, anchorsArray) subscribeNext:^(NSArray *array) {
-        NSLog(@"数组变化了");
         [self.tableView reloadData];
     }];
 }
@@ -49,8 +52,8 @@ NSString * const anchorsListCell = @"anchorsListCell";
 - (void)_makeSubViewsConstraints {
     [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(self.view);
-        make.top.equalTo(self.view).offset(40);
-        make.height.equalTo(self.view).offset(- 40 - SY_APPLICATION_TAB_BAR_HEIGHT);
+        make.top.equalTo(self.view);
+        make.height.equalTo(self.view);
     }];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.bgView);
@@ -80,6 +83,8 @@ NSString * const anchorsListCell = @"anchorsListCell";
     if (![model.userSpecialty sy_isNullOrNil] && ![model.userSpecialty isEqualToString:@""]) {
         [cell setTipsByHobby:model.userSpecialty];
     }
+    // 解决cell点击后UILabel背景色消失的情况
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setStarsByLevel:model.anchorStarLevel];
     cell.voicePriceLabel.text = [NSString stringWithFormat:@"%@钻石/分钟",model.anchorChatCost];
     cell.onlineStatusImageView.image = model.userOnline == 0 ? SYImageNamed(@"home_icon_offline") : SYImageNamed(@"home_icon_online");
@@ -89,6 +94,13 @@ NSString * const anchorsListCell = @"anchorsListCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 0.8 * SY_SCREEN_WIDTH;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SYAnchorsModel *model = self.viewModel.anchorsArray[indexPath.row];
+    NSDictionary *params = @{SYViewModelUtilKey:[model yy_modelToJSONObject]};
+    // 昵称 id号 头像 视频
+    [self.viewModel.enterAnchorShowViewCommand execute:params];
 }
 
 @end

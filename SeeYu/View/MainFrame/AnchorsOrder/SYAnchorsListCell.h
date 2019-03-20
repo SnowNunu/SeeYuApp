@@ -30,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 在线状态
 @property (nonatomic, strong) UIImageView *onlineStatusImageView;
 
+// 渐变色毛玻璃效果
+@property (nonatomic, strong) UIImageView *bgImageView;
+
 - (void)setStarsByLevel:(int)level;
 
 - (void)setTipsByHobby:(NSString*)hobby;
