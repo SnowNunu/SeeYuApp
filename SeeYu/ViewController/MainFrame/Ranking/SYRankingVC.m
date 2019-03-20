@@ -36,7 +36,7 @@
 
 #pragma mark - 设置导航栏
 - (void)_setupNavigation {
-    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, SY_APPLICATION_TOP_BAR_HEIGHT, CGRectGetWidth(self.view.frame), 40) titles:@[@"主播",@"土豪"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
+    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 40) titles:@[@"主播",@"土豪"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
     self.titleView.titleNormalColor = SYColorFromHexString(@"#999999");
     self.titleView.titleSelectColor = SYColor(159, 105, 235);
     self.titleView.backgroundColor = [UIColor whiteColor];
@@ -51,7 +51,7 @@
     SYRicherVC *richerVC = [[SYRicherVC alloc] init];
     [childVCs addObject:richerVC];
     
-    self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, 40.f, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 40.f) childVCs:childVCs parentVC:self delegate:self];
+    self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, 40.f, SY_SCREEN_WIDTH, SY_SCREEN_HEIGHT - 40 - SY_APPLICATION_TAB_BAR_HEIGHT - SY_APPLICATION_TOP_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
     [self.view addSubview:_contentView];
 }
 

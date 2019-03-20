@@ -275,6 +275,8 @@
 		7B9A1BBD2240997E00B7BFC2 /* SYAnchorShowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BBC2240997E00B7BFC2 /* SYAnchorShowVC.m */; };
 		7B9A1BC02240999D00B7BFC2 /* SYAnchorShowVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BBF2240999D00B7BFC2 /* SYAnchorShowVM.m */; };
 		7B9A1BC32241409800B7BFC2 /* SYAnchorFocusStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BC22241409800B7BFC2 /* SYAnchorFocusStateModel.m */; };
+		7B9A1BC72241F25C00B7BFC2 /* SYAnchorsRandomVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BC62241F25C00B7BFC2 /* SYAnchorsRandomVC.m */; };
+		7B9A1BCB2241F30E00B7BFC2 /* SYAnchorsRandomVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BCA2241F30E00B7BFC2 /* SYAnchorsRandomVM.m */; };
 		7BA093AF21E358F0004F52F3 /* SYRechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA093AE21E358F0004F52F3 /* SYRechargeVC.m */; };
 		7BA093B321E3646E004F52F3 /* SYRechargeVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA093B221E3646E004F52F3 /* SYRechargeVM.m */; };
 		7BA3260421DF74E400B7A352 /* SYRealnameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA3260321DF74E400B7A352 /* SYRealnameVC.m */; };
@@ -878,6 +880,10 @@
 		7B9A1BBF2240999D00B7BFC2 /* SYAnchorShowVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorShowVM.m; sourceTree = "<group>"; };
 		7B9A1BC12241409800B7BFC2 /* SYAnchorFocusStateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorFocusStateModel.h; sourceTree = "<group>"; };
 		7B9A1BC22241409800B7BFC2 /* SYAnchorFocusStateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorFocusStateModel.m; sourceTree = "<group>"; };
+		7B9A1BC52241F25C00B7BFC2 /* SYAnchorsRandomVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsRandomVC.h; sourceTree = "<group>"; };
+		7B9A1BC62241F25C00B7BFC2 /* SYAnchorsRandomVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsRandomVC.m; sourceTree = "<group>"; };
+		7B9A1BC92241F30E00B7BFC2 /* SYAnchorsRandomVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsRandomVM.h; sourceTree = "<group>"; };
+		7B9A1BCA2241F30E00B7BFC2 /* SYAnchorsRandomVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsRandomVM.m; sourceTree = "<group>"; };
 		7BA093AD21E358F0004F52F3 /* SYRechargeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYRechargeVC.h; sourceTree = "<group>"; };
 		7BA093AE21E358F0004F52F3 /* SYRechargeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYRechargeVC.m; sourceTree = "<group>"; };
 		7BA093B121E3646E004F52F3 /* SYRechargeVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYRechargeVM.h; sourceTree = "<group>"; };
@@ -1284,6 +1290,7 @@
 			children = (
 				7B2E76BB223F456C00D8F1CD /* AnchorsOrder */,
 				7B5A334021FA071A00535F8D /* Nearby */,
+				7B9A1BC42241F22100B7BFC2 /* AnchorsRandom */,
 				7B5A333821F9BF2400535F8D /* Ranking */,
 				2605C5B91F662EA300B1F66E /* SYMainFrameVC.h */,
 				2605C5BA1F662EA300B1F66E /* SYMainFrameVC.m */,
@@ -1581,6 +1588,7 @@
 			children = (
 				7B2E76BC223F45DD00D8F1CD /* AnchorsOrder */,
 				7B5A334121FA072900535F8D /* Nearby */,
+				7B9A1BC82241F2EF00B7BFC2 /* AnchorsRandom */,
 				7B5A333921F9BFA100535F8D /* Ranking */,
 				2605C5BC1F662EE400B1F66E /* SYMainFrameVM.h */,
 				2605C5BD1F662EE400B1F66E /* SYMainFrameVM.m */,
@@ -2645,6 +2653,24 @@
 			path = XFPhotoLibraryManager;
 			sourceTree = "<group>";
 		};
+		7B9A1BC42241F22100B7BFC2 /* AnchorsRandom */ = {
+			isa = PBXGroup;
+			children = (
+				7B9A1BC52241F25C00B7BFC2 /* SYAnchorsRandomVC.h */,
+				7B9A1BC62241F25C00B7BFC2 /* SYAnchorsRandomVC.m */,
+			);
+			path = AnchorsRandom;
+			sourceTree = "<group>";
+		};
+		7B9A1BC82241F2EF00B7BFC2 /* AnchorsRandom */ = {
+			isa = PBXGroup;
+			children = (
+				7B9A1BC92241F30E00B7BFC2 /* SYAnchorsRandomVM.h */,
+				7B9A1BCA2241F30E00B7BFC2 /* SYAnchorsRandomVM.m */,
+			);
+			path = AnchorsRandom;
+			sourceTree = "<group>";
+		};
 		7BA093AC21E33396004F52F3 /* Recharge */ = {
 			isa = PBXGroup;
 			children = (
@@ -3272,6 +3298,7 @@
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/PBJVision/PBJVision.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-17/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/SAMKeychain/SAMKeychain.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
@@ -3329,6 +3356,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PBJVision.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMKeychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
@@ -3446,6 +3474,7 @@
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/PBJVision/PBJVision.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-17/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/SAMKeychain/SAMKeychain.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
@@ -3503,6 +3532,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PBJVision.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMKeychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
@@ -3570,6 +3600,7 @@
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/PBJVision/PBJVision.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-17/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/SAMKeychain/SAMKeychain.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
@@ -3627,6 +3658,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PBJVision.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMKeychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
@@ -3676,6 +3708,7 @@
 				26B89AB72022E599006FBE20 /* SYMomentShareInfo.m in Sources */,
 				263119EE2015E4E600D589D8 /* NSMutableAttributedString+SYMoment.m in Sources */,
 				2638C5AD20450DC300C334E2 /* UIImage+ImageEffects.m in Sources */,
+				7B9A1BC72241F25C00B7BFC2 /* SYAnchorsRandomVC.m in Sources */,
 				263D370E1F666569007267C3 /* LCActionSheet.m in Sources */,
 				261753141F73710000812E1B /* SYUserInfoVC.m in Sources */,
 				2615266B1F6AE17400400BA0 /* SYTabBar.m in Sources */,
@@ -3771,6 +3804,7 @@
 				7B5A333F21F9ECF700535F8D /* SYRankingVM.m in Sources */,
 				261596DD1FEA515000C6FD80 /* SYMomentVC.m in Sources */,
 				7BC6FC1A2238BD8F0079330A /* CountDownButton.m in Sources */,
+				7B9A1BCB2241F30E00B7BFC2 /* SYAnchorsRandomVM.m in Sources */,
 				263D37181F66656A007267C3 /* YYThreadSafeDictionary.m in Sources */,
 				7B1E73382226CC52001299C0 /* SYCollocationCell.m in Sources */,
 				2617531A1F7398F000812E1B /* SYCommonAvatarItemViewModel.m in Sources */,

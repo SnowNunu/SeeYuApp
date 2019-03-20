@@ -11,6 +11,7 @@
 #import "SYNearbyVM.h"
 #import "SYRankingVM.h"
 #import "SYAnchorsOrderVM.h"
+#import "SYAnchorsRandomVM.h"
 
 @interface SYMainFrameVM : SYVM
 
@@ -19,5 +20,7 @@
 @property (nonatomic, strong) SYNearbyVM *nearbyVM;
 
 @property (nonatomic, strong) SYAnchorsOrderVM *anchorsOrderVM;
+
+@property (nonatomic, strong) SYAnchorsRandomVM *anchorsRandomVM;
 
 @end

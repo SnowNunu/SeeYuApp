@@ -112,6 +112,7 @@ PODS:
   - ReactiveCocoa/no-arc (2.5.2)
   - ReactiveCocoa/UI (2.5.2):
     - ReactiveCocoa/Core
+  - Reveal-SDK (17)
   - RongCloudIM/IMKit (2.9.7):
     - RongCloudIM/IMLib
   - RongCloudIM/IMLib (2.9.7)
@@ -189,6 +190,7 @@ DEPENDENCIES:
   - PBJVision
   - pop (= 1.0.10)
   - ReactiveCocoa (from `https://github.com/zhao0/ReactiveCocoa.git`, tag `2.5.2`)
+  - Reveal-SDK (~> 17)
   - RongCloudIM/IMKit (= 2.9.7)
   - RongCloudIM/IMLib (= 2.9.7)
   - RongCloudRTC/RongCallKit (= 2.9.7)
@@ -249,6 +251,7 @@ SPEC REPOS:
     - MJRefresh
     - PBJVision
     - pop
+    - Reveal-SDK
     - RongCloudIM
     - RongCloudRTC
     - SAMKeychain
@@ -323,6 +326,7 @@ SPEC CHECKSUMS:
   PBJVision: fe43c9a58bb1c1277d16fd802fa836d25e034a45
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   ReactiveCocoa: 3ff25b1bd992ac79c5c79b26b6c0c1713b715bb2
+  Reveal-SDK: a6df49f47319bd19a110c960c498af32df72c0af
   RongCloudIM: 0a039a658fe5e40f62d8f2a14c3df3629c12526a
   RongCloudRTC: c37e66794a21604a152c8b6599e7dba39bdfb0cc
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
@@ -348,6 +352,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: fe9650eaee147c3d5e118f93c6c59917498f1d7e
+PODFILE CHECKSUM: 7dfb293e3c08efab1459a324c40b6aea5888d2ec
 
 COCOAPODS: 1.5.3

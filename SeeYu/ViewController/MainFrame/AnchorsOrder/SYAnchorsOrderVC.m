@@ -29,7 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self _setupSecondTag];
 }
 
@@ -43,7 +42,7 @@
     self.titleView.titleFont = SYRegularFont(18);
     self.titleView.titleSelectFont = SYRegularFont(20);
     [self.view addSubview:_titleView];
-//
+
     UIImageView *line = [UIImageView new];
     line.backgroundColor = SYColorFromHexString(@"#99999");
     [self.view addSubview:line];

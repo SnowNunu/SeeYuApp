@@ -23,5 +23,7 @@
     self.nearbyVM = [[SYNearbyVM alloc]initWithServices:self.services params:nil];
     
     self.anchorsOrderVM = [[SYAnchorsOrderVM alloc] initWithServices:self.services params:nil];
+    
+    self.anchorsRandomVM = [[SYAnchorsRandomVM alloc] initWithServices:self.services params:nil];
 }
 @end

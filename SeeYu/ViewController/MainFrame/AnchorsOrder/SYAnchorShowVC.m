@@ -36,10 +36,10 @@
     @weakify(self)
     [RACObserve(self.viewModel.model, showVideo) subscribeNext:^(NSString *url) {
         @strongify(self)
-//        [self.playerView jp_playVideoWithURL:[NSURL URLWithString:url] bufferingIndicator:nil controlView:nil progressView:nil configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
-////            view jp
-//        }];
-        [self.playerView jp_playVideoWithURL:[NSURL URLWithString:url]];
+        [self.view jp_playVideoWithURL:[NSURL URLWithString:url] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
+            [view addSubview:self.containerView];
+            [view bringSubviewToFront:self.containerView];
+        }];
     }];
     [RACObserve(self.viewModel.model, userHeadImg) subscribeNext:^(NSString *url) {
         @strongify(self)

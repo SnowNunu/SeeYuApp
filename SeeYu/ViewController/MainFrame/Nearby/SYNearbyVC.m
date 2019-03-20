@@ -113,8 +113,8 @@
     [self.view addSubview:tableView];
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.left.equalTo(self.view);
-        make.top.equalTo(self.view).offset(SY_APPLICATION_STATUS_BAR_HEIGHT);
-        make.height.equalTo(self.view).offset(-SY_APPLICATION_TAB_BAR_HEIGHT);
+        make.top.equalTo(self.view);
+        make.height.equalTo(self.view);
     }];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
@@ -234,13 +234,19 @@
     
     // 昵称
     UILabel *aliasLabel = [UILabel new];
-    aliasLabel.font = SYRegularFont(18);
+    aliasLabel.font = SYRegularFont(17);
     aliasLabel.text = user.userName;
     [cell addSubview:aliasLabel];
     
+    // vip状态
+    UIImageView *vipImageView = [UIImageView new];
+    vipImageView.hidden = user.userVipStatus == 1 ? NO : YES;
+    vipImageView.image = SYImageNamed(@"vip_able");
+    [cell addSubview:vipImageView];
+    
     // 个性签名
     UILabel *signatureLabel = [UILabel new];
-    signatureLabel.font = SYRegularFont(16);
+    signatureLabel.font = SYRegularFont(15);
     signatureLabel.text = user.userSignature;
     [cell addSubview:signatureLabel];
     
@@ -262,13 +268,20 @@
     [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(headImageView.mas_right).offset(15);
         make.height.offset(17);
-        make.right.equalTo(cell).offset(-15);
+        make.width.offset(120);
         make.top.equalTo(headImageView);
     }];
+    [vipImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.offset(40);
+        make.height.offset(20);
+        make.centerY.equalTo(aliasLabel);
+        make.left.equalTo(aliasLabel.mas_right);
+    }];
     [signatureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(aliasLabel);
+        make.left.equalTo(aliasLabel);
         make.height.offset(14);
         make.top.equalTo(aliasLabel.mas_bottom).offset(15);
+        make.right.equalTo(cell.mas_right).offset(-15);
     }];
     [detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(signatureLabel);

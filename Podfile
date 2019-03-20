@@ -181,6 +181,8 @@ pod 'PBJVision'
 
 pod 'JPVideoPlayer'
 
+pod 'Reveal-SDK','~> 17',:configurations => ['Debug']
+
 target 'SeeYuTests' do
 end
 
