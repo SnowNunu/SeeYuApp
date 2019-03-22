@@ -8,7 +8,7 @@
 
 #import "SYVC.h"
 #import "SYAnchorsRandomVM.h"
-#import "JPVideoPlayerKit.h"
+#import "HSDownloadManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

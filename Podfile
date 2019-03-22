@@ -172,8 +172,6 @@ pod 'RongCloudRTC/RongCallKit'          , '2.9.7'
 pod 'DZNEmptyDataSet'                   , '1.8.1'
 # 图片浏览器
 #pod 'PYPhotoBrowser'                    , '1.5.0'
-# 类似网易新闻的标签栏
-#pod 'YZDisplayViewController', '1.0.6'
 # 苹果内购
 #pod 'RMStore', '0.7.1'
 # 拍照和录视频

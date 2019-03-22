@@ -60,6 +60,7 @@
 #import "SAMKeychain+SYUtil.h"
 #import "NSDate+Extension.h"
 #import <RongIMKit/RongIMKit.h>
+#import "MJExtension.h"
 
 #endif /* SeeYu_pch */
 

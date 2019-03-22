@@ -36,9 +36,7 @@
     @weakify(self)
     [RACObserve(self.viewModel.model, showVideo) subscribeNext:^(NSString *url) {
         @strongify(self)
-        [self.view jp_playVideoWithURL:[NSURL URLWithString:url] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
-            [view addSubview:self.containerView];
-            [view bringSubviewToFront:self.containerView];
+        [self.playerView jp_playVideoWithURL:[NSURL URLWithString:url] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
         }];
     }];
     [RACObserve(self.viewModel.model, userHeadImg) subscribeNext:^(NSString *url) {
@@ -67,7 +65,6 @@
 - (void)_setupSubviews {
     self.playerView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.view addSubview:self.playerView];
-    self.playerView.jp_videoPlayerDelegate = self;
     
     UIView *containerView = [UIView new];
     containerView.backgroundColor = [UIColor clearColor];
@@ -117,7 +114,7 @@
     }];
     [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.offset(24);
-        make.top.equalTo(self.containerView).offset(30);
+        make.top.equalTo(self.containerView).offset(40);
         make.left.equalTo(self.containerView).offset(15);
     }];
     [self.headImageView mas_makeConstraints:^(MASConstraintMaker *make) {

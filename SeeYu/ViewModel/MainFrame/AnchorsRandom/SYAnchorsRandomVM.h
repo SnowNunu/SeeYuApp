@@ -7,10 +7,18 @@
 //
 
 #import "SYVM.h"
+#import "SYAnchorsRandomModel.h"
+#import "SYAnchorRandomCellModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYAnchorsRandomVM : SYVM
+
+@property (nonatomic, assign) int onlineNumber;
+
+@property (nonatomic, strong) NSArray<SYAnchorRandomCellModel*> *datasource;
+
+@property (nonatomic, strong) RACCommand *requestOnlineAnchorsList;
 
 @end
 

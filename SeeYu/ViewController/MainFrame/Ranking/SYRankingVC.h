@@ -9,8 +9,8 @@
 #import "SYVC.h"
 #import "FSSegmentTitleView.h"
 #import "FSPageContentView.h"
-#import "SYAnchorVC.h"
-#import "SYRicherVC.h"
+#import "SYRankListVC.h"
+#import "SYRankListVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

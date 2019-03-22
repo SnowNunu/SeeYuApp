@@ -72,11 +72,17 @@
 /// 获取主播列表
 #define SY_HTTTP_PATH_USER_ANCHOR_LIST   @"/application/userAnchor/queryAnchors"
 
+/// 获取选聊主播(在线)列表
+#define SY_HTTTP_PATH_USER_ANCHOR_ONLINE_LIST  @"/application/userAnchor/chooseChatAnchors"
+
 /// 获取当前主播的关注状态
 #define SY_HTTTP_PATH_ANCHOR_FOCUS_STATE   @"/application/userAnchor/queryFollowFlag"
 
 /// 关注或取关当前主播
 #define SY_HTTTP_PATH_ANCHOR_FOCUS_EXECUTE    @"/application/userAnchor/userFollowAnchor"
+
+/// 获取榜单列表
+#define SY_HTTTP_PATH_RANKING_LIST          @"/application/user/queryTopList"
 
 ///
 //+ (NSString *)ver;          // app版本号

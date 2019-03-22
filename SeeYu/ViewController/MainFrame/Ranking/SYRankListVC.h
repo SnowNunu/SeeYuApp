@@ -1,5 +1,5 @@
 //
-//  SYAnchorVC.h
+//  SYRankListVC.h
 //  SeeYu
 //
 //  Created by 唐荣才 on 2019/1/29.
@@ -7,13 +7,14 @@
 //
 
 #import "SYVC.h"
-#import "SYAnchorVM.h"
+#import "SYRankListVM.h"
 #import "SYTableView.h"
 #import "UIScrollView+SYRefresh.h"
+#import "SYRankListModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYAnchorVC : SYVC <UITableViewDelegate, UITableViewDataSource>
+@interface SYRankListVC : SYVC <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) SYTableView *tableView;
 

@@ -1,5 +1,5 @@
 //
-//  SYAnchorVM.h
+//  SYRankListVM.h
 //  SeeYu
 //
 //  Created by 唐荣才 on 2019/1/29.
@@ -7,14 +7,17 @@
 //
 
 #import "SYVM.h"
+#import "SYRankListModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYAnchorVM : SYVM
+@interface SYRankListVM : SYVM
 
 @property (nonatomic, strong) NSArray *dataSource;
 
-@property (nonatomic, strong) RACCommand *requestAnchorsCommand;
+@property (nonatomic, strong) NSString *listType;
+
+@property (nonatomic, strong) RACCommand *requestRankListCommand;
 
 @end
 

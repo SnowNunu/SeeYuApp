@@ -44,7 +44,7 @@
     [self.view addSubview:_titleView];
 
     UIImageView *line = [UIImageView new];
-    line.backgroundColor = SYColorFromHexString(@"#99999");
+    line.backgroundColor = [UIColor grayColor];
     [self.view addSubview:line];
     [line mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.left.equalTo(self.view);
