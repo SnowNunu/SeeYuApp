@@ -8,6 +8,7 @@
 
 #import "SYDiscoverVC.h"
 #import "SYMomentVC.h"
+#import "SYPrivacyVC.h"
 #import "SYWebVC.h"
 
 @interface SYDiscoverVC ()
@@ -25,6 +26,7 @@
 @dynamic viewModel;
 
 - (void)viewDidLoad {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     /// 设置导航栏
     [self _setupNavigation];
 }
@@ -44,15 +46,16 @@
     SYMomentVC *momentVC = [[SYMomentVC alloc]init];
 //    SYMomentVC *momentVC = [[SYMomentVC alloc]initWithViewModel:self.viewModel.momentVM];
     [childVCs addObject:momentVC];
-    for (int i = 0; i < 2; i ++) {
-        UIViewController *vc = [[UIViewController alloc]init];
-        [childVCs addObject:vc];
-    }
+    // 私密
+    SYPrivacyVC *privacyVC = [[SYPrivacyVC alloc] initWithViewModel:self.viewModel.privacyVM];
+    [childVCs addObject:privacyVC];
+    UIViewController *vc = [[UIViewController alloc]init];
+    [childVCs addObject:vc];
     SYWebVM *webVM = [[SYWebVM alloc]init];
     webVM.request = [NSURLRequest requestWithURL:[NSURL URLWithString:SY_GAME_URL]];
     SYWebVC *webController = [[SYWebVC alloc]initWithViewModel:webVM];
     [childVCs addObject:webController];
-    self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, SY_APPLICATION_TOP_BAR_HEIGHT, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SY_APPLICATION_TOP_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
+    self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SY_APPLICATION_TOP_BAR_HEIGHT - SY_APPLICATION_TAB_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
     [self.view addSubview:_contentView];
 }
 

@@ -20,11 +20,12 @@
 - (void)initialize {
     self.prefersNavigationBarHidden = YES;
     self.interactivePopDisabled = YES;
+    @weakify(self)
     self.goBackCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self)
         [self.services popViewModelAnimated:YES];
         return [RACSignal empty];
     }];
-    @weakify(self)
     self.requestFocusStateCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSDictionary *params) {
         @strongify(self)
         SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];

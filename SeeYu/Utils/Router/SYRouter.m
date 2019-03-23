@@ -80,7 +80,8 @@ static SYRouter *sharedInstance_ = nil;
              @"SYDiamondsVM":@"SYDiamondsVC",
              @"SYRechargeVM":@"SYRechargeVC",
              @"SYHobbyVM":@"SYHobbyVC",
-             @"SYCollectVM":@"SYCollectVC"
+             @"SYCollectVM":@"SYCollectVC",
+             @"SYPrivacyShowVM":@"SYPrivacyShowVC"
              };
 }
 

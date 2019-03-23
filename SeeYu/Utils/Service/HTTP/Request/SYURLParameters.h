@@ -30,6 +30,9 @@
 /// 用户注册接口
 #define SY_HTTTP_PATH_USER_REGISTER     @"/application/user/register"
 
+/// 登录上报接口
+#define SY_HTTTP_PATH_LOGIN_REPORT     @"/application/user/loginByUserId"
+
 /// 获取用户资料
 #define SY_HTTTP_PATH_USER_INFO_QUERY   @"/application/user/query"
 
@@ -83,6 +86,12 @@
 
 /// 获取榜单列表
 #define SY_HTTTP_PATH_RANKING_LIST          @"/application/user/queryTopList"
+
+/// 获取速配好友列表
+#define SY_HTTTP_PATH_USER_MATCH_SPEED_LIST     @"/application/user/querySpeedMatch"
+
+/// 获取速配好友列表
+#define SY_HTTTP_PATH_USER_PRIVACY_LIST     @"/application/userShow/queryPrivateArea"
 
 ///
 //+ (NSString *)ver;          // app版本号

@@ -7,20 +7,13 @@
 //
 
 #import "SYVC.h"
+#import "SYCollocationVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYCollocationVC : SYVC <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface SYCollocationVC : SYVC
 
-@property (nonatomic, strong) UITableView *bgTableView;
-
-
-@property (nonatomic, assign) NSInteger currentIndex;
-
-// 当前播放页面是否暂停
-@property (nonatomic, assign) BOOL isCurrentPlayerPause;
-
-@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) SYCollocationVM *viewModel;
 
 @end
 

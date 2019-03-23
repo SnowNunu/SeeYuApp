@@ -34,10 +34,11 @@
     /// 设置导航栏
     [self _setupNavigation];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    [self.viewModel.loginReportCommand execute:nil];
 }
 
 #pragma mark - 设置导航栏
-- (void)_setupNavigation{
+- (void)_setupNavigation { 
     self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - 80, 44) titles:@[@"语聊",@"附近",@"选聊",@"榜单"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
     self.titleView.titleNormalColor = [UIColor whiteColor];
     self.titleView.titleSelectColor = [UIColor whiteColor];

@@ -23,4 +23,6 @@
 
 @property (nonatomic, strong) SYAnchorsRandomVM *anchorsRandomVM;
 
+@property (nonatomic, strong) RACCommand *loginReportCommand;
+
 @end

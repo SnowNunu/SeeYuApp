@@ -7,10 +7,15 @@
 //
 
 #import "SYVM.h"
+#import "SYSpeedMatchModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYCollocationVM : SYVM
+
+@property (nonatomic, strong) NSArray *speedMatchList;
+
+@property (nonatomic, strong) RACCommand *requestSpeedMatchCommand;
 
 @end
 

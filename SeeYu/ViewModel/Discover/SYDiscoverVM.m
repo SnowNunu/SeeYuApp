@@ -15,5 +15,11 @@
 - (void)initialize {
     [super initialize];
     self.title = @"动态";
+    
+//    self.momentVM = [[SYMomentVM alloc]initWithServices:self.services params:nil];
+    
+    self.privacyVM = [[SYPrivacyVM alloc]initWithServices:self.services params:nil];
+    
+//    self.webVM = [[SYWebVM alloc] initWithServices:self.services params:nil];
 }
 @end
