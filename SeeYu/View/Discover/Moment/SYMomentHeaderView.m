@@ -1,10 +1,10 @@
 //
 //  SYMomentHeaderView.m
-//  SYDevelopExample
+//  SeeYu
 //
 //  Created by senba on 2017/7/7.
 //  Copyright © 2017年 CoderMikeHe. All rights reserved.
-//  微信朋友圈正文
+//  动态正文
 
 #import "SYMomentHeaderView.h"
 #import "SYMomentPhotosView.h"
@@ -12,41 +12,57 @@
 #import "SYMomentItemViewModel.h"
 #import "SYMomentOperationMoreView.h"
 #import "SYMomentVideoView.h"
+
 @interface SYMomentHeaderView ()
+
 /// 头像
 @property (nonatomic, readwrite, weak) UIImageView *avatarView;
+
 /// 昵称
 @property (nonatomic, readwrite, weak) YYLabel *screenNameLable;
+
 /// 正文
 @property (nonatomic, readwrite, weak) YYLabel *contentLable;
+
 /// 时间
 @property (nonatomic, readwrite, weak) YYLabel *createAtLable;
+
 /// 位置
 @property (nonatomic, readwrite, weak) YYLabel *locationLable;
+
 /// 来源
 @property (nonatomic, readwrite, weak) YYLabel *sourceLable;
+
 /// 更多按钮
 @property (nonatomic, readwrite, weak) UIButton *operationMoreBtn;
+
 /// 全文/收起 按钮
 @property (nonatomic, readwrite, weak) UIButton *expandBtn;
+
 /// 配图View
 @property (nonatomic, readwrite, weak) SYMomentPhotosView *photosView;
+
 /// 分享View
 @property (nonatomic, readwrite, weak) SYMomentShareInfoView *shareInfoView;
+
 /// videoView
 @property (nonatomic, readwrite, weak) SYMomentVideoView *videoView;
+
 /// upArrow
 @property (nonatomic, readwrite, weak) UIImageView *upArrowView;
+
 /// 更多操作view
 @property (nonatomic, readwrite, weak) SYMomentOperationMoreView *operationMoreView;
+
 /// viewModel
 @property (nonatomic, readwrite, strong) SYMomentItemViewModel *viewModel;
+
 @end
 
-
 @implementation SYMomentHeaderView
+
 /// init
-+ (instancetype)headerViewWithTableView:(UITableView *)tableView{
++ (instancetype)headerViewWithTableView:(UITableView *)tableView {
     static NSString *ID = @"MomentHeader";
     SYMomentHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:ID];
     if (header == nil) {
@@ -56,14 +72,12 @@
     return header;
 }
 
-- (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier{
+- (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         // 初始化
-        [self _setup];
-        
+        self.contentView.backgroundColor = [UIColor whiteColor];
         // 初始化所有的子控件
         [self _setupSubViews];
-        
         // 所有事件处理（PS：为了将UI和事件隔离）
         [self _dealWithAction];
     }
@@ -132,7 +146,7 @@
 
 
 #pragma mark - 私有方法
-- (void)_dealWithAction{
+- (void)_dealWithAction {
     /// 该界面的所有事件监听
     @weakify(self);
     /// 用户头像 （点击、长按）事件
@@ -152,7 +166,6 @@
             LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"取消" clicked:^(LCActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
                 if (buttonIndex == 0) return ;
                 /// 处理点击事件...
-                
             } otherButtonTitles:@"设置朋友圈权限",@"投诉", nil];
             [sheet show];
         }
@@ -246,33 +259,20 @@
         @strongify(self);
         [self.viewModel.shareTapCommand execute:self.viewModel.moment.shareInfo];
     };
-   
-    
-    /// 
-}
-
-
-
-
-/// 以下UI部分 不必过多关注
-#pragma mark - 初始化
-- (void)_setup{
-    self.contentView.backgroundColor = [UIColor whiteColor];
 }
 
 #pragma mark - 创建自控制器
-- (void)_setupSubViews{
-    //// PS:这里把所有可能要显示的View全部初始化好，避免滚动过程中的动态创建，影响性能
-    
+- (void)_setupSubViews {
     /// 用户头像
     UIImageView *avatarView = [[UIImageView alloc] init];
     avatarView.backgroundColor = self.contentView.backgroundColor;
     /// 设置可交互
     avatarView.userInteractionEnabled = YES;
+    avatarView.layer.masksToBounds = YES;
+    avatarView.layer.cornerRadius = 22.5f;
     self.avatarView = avatarView;
     [self.contentView addSubview:avatarView];
     
-
     /// 昵称
     YYLabel *screenNameLable = [[YYLabel alloc] init];
     screenNameLable.backgroundColor = self.contentView.backgroundColor;

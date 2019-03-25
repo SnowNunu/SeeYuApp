@@ -93,6 +93,19 @@
 /// 获取速配好友列表
 #define SY_HTTTP_PATH_USER_PRIVACY_LIST     @"/application/userShow/queryPrivateArea"
 
+// 获取会员动态
+#define SY_HTTTP_PATH_USER_MOMENTS_LIST     @"/application/userMoment/queryMoments"
+
+// 获取论坛列表
+#define SY_HTTTP_PATH_USER_FORUM_LIST     @"/application/forum/queryForums"
+
+// 获取论坛列表
+#define SY_HTTTP_PATH_USER_FORUM_COMMENT_LIST     @"/application/forumComment/queryForumComment"
+
+// 发表评论
+#define SY_HTTTP_PATH_USER_FORUM_COMMENT_POST     @"/application/forumComment/addForumComment"
+
+
 ///
 //+ (NSString *)ver;          // app版本号
 //+ (NSString *)token;        // token，默认空字符串

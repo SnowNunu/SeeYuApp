@@ -11,4 +11,5 @@
 @interface SYMomentFooterView : UITableViewHeaderFooterView
 ///
 + (instancetype)footerViewWithTableView:(UITableView *)tableView;
+
 @end

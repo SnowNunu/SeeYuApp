@@ -9,6 +9,7 @@
 #import "SYDiscoverVC.h"
 #import "SYMomentVC.h"
 #import "SYPrivacyVC.h"
+#import "SYForumVC.h"
 #import "SYWebVC.h"
 
 @interface SYDiscoverVC ()
@@ -43,14 +44,16 @@
     self.navigationItem.titleView = self.titleView;
     
     NSMutableArray *childVCs = [[NSMutableArray alloc]init];
-    SYMomentVC *momentVC = [[SYMomentVC alloc]init];
-//    SYMomentVC *momentVC = [[SYMomentVC alloc]initWithViewModel:self.viewModel.momentVM];
+//    SYMomentVC *momentVC = [[SYMomentVC alloc] initWithViewModel:self.viewModel.momentVM];
+    UIViewController *momentVC = [UIViewController new];
     [childVCs addObject:momentVC];
     // 私密
     SYPrivacyVC *privacyVC = [[SYPrivacyVC alloc] initWithViewModel:self.viewModel.privacyVM];
     [childVCs addObject:privacyVC];
-    UIViewController *vc = [[UIViewController alloc]init];
-    [childVCs addObject:vc];
+    // 问答
+    SYForumVC *forumVC = [[SYForumVC alloc] initWithViewModel:self.viewModel.forumVM];
+    [childVCs addObject:forumVC];
+    // 游戏
     SYWebVM *webVM = [[SYWebVM alloc]init];
     webVM.request = [NSURLRequest requestWithURL:[NSURL URLWithString:SY_GAME_URL]];
     SYWebVC *webController = [[SYWebVC alloc]initWithViewModel:webVM];

@@ -64,15 +64,11 @@ static SYRouter *sharedInstance_ = nil;
              @"SYAnchorShowVM":@"SYAnchorShowVC",
              @"SYUserInfoVM":@"SYUserInfoVC",
              @"SYFeatureSignatureVM":@"SYFeatureSignatureVC",
-             @"SYSettingViewModel":@"SYSettingViewController",
              @"SYWebVM":@"SYWebVC",
              @"SYModifyNicknameVM":@"SYModifyNicknameVC",
              @"SYSettingVM":@"SYSettingVC",
-             @"SYAboutUsViewModel":@"SYAboutUsViewController",
              @"SYPrivacyViewModel":@"SYPrivacyViewController",
-             @"SYGeneralViewModel":@"SYGeneralViewController",
              @"SYMomentVM":@"SYMomentVC",
-             @"SYProfileInfoViewModel":@"SYProfileInfoViewController",
              @"SYAuthenticationVM":@"SYAuthenticationVC",
              @"SYMobileBindingVM":@"SYMobileBindingVC",
              @"SYRealnameVM":@"SYRealnameVC",
@@ -81,7 +77,9 @@ static SYRouter *sharedInstance_ = nil;
              @"SYRechargeVM":@"SYRechargeVC",
              @"SYHobbyVM":@"SYHobbyVC",
              @"SYCollectVM":@"SYCollectVC",
-             @"SYPrivacyShowVM":@"SYPrivacyShowVC"
+             @"SYPrivacyShowVM":@"SYPrivacyShowVC",
+             @"SYFriendDetailInfoVM":@"SYFriendDetailInfoVC",
+             @"SYForumCommentVM":@"SYForumCommentVC"
              };
 }
 

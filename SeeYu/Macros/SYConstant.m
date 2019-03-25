@@ -59,14 +59,16 @@ CGFloat const SYMomentProfileViewTipsViewRightInset = 11.0f;
 /// 消息tipsView内部的右箭头宽高 15
 CGFloat const SYMomentProfileViewTipsViewRightArrowWH = 15.0f;
 
-/// 说说内容距离顶部的间距 16
-CGFloat const SYMomentContentTopInset = 16.0f;
-/// 说说内容距离左右屏幕的间距 20
-CGFloat const SYMomentContentLeftOrRightInset = 20.0f;
-/// 内容（控件）之间的的间距 10
-CGFloat const SYMomentContentInnerMargin = 10.0f;
-/// 用户头像的大小 44x44
-CGFloat const SYMomentAvatarWH = 44.0f;
+/// 说说内容距离顶部的间距 15
+CGFloat const SYMomentContentTopInset = 15.0f;
+/// 说说内容距离左右屏幕的间距 15
+CGFloat const SYMomentContentLeftOrRightInset = 15.0f;
+
+/// 内容（控件）之间的的间距 15
+CGFloat const SYMomentContentInnerMargin = 15.0f;
+
+/// 用户头像的大小 45x45
+CGFloat const SYMomentAvatarWH = 45.0f;
 
 /// 向上箭头W 45
 CGFloat const SYMomentUpArrowViewWidth = 45.0f;

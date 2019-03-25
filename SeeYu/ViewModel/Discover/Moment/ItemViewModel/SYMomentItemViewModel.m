@@ -62,30 +62,30 @@
             self.screenNameLableLayout = screenNameLableLayout;
         }
         
-        /// 正文有值
-        if (SYStringIsNotEmpty(moment.text)){
-            NSMutableAttributedString *textAttr = [[NSMutableAttributedString alloc] initWithString:moment.text];
-            textAttr.yy_font = SYMomentContentFont;
-            textAttr.yy_color = SYMomentContentTextColor;
-            textAttr.yy_lineBreakMode = NSLineBreakByCharWrapping;
-            textAttr.yy_alignment = NSTextAlignmentLeft;
-            
-            /// 去正则匹配
-            [textAttr sy_regexContentWithWithEmojiImageFontSize:15];
-            
-            /// 实现布局好宽高 以及属性
-            /// PS:用这个方法计算尺寸 要比 [self.textAttr sy_sizeWithLimitWidth:limitWidth]这个计算的值要准确的多
-            YYTextContainer *contentLableContainer = [YYTextContainer containerWithSize:CGSizeMake(limitWidth, MAXFLOAT)];
-            contentLableContainer.maximumNumberOfRows = 0;
-            YYTextLayout *contentLableLayout = [YYTextLayout layoutWithContainer:contentLableContainer text:textAttr.copy];
-            self.contentLableLayout = contentLableLayout;
-        }
+//        /// 正文有值
+//        if (SYStringIsNotEmpty(moment.text)){
+//            NSMutableAttributedString *textAttr = [[NSMutableAttributedString alloc] initWithString:moment.text];
+//            textAttr.yy_font = SYMomentContentFont;
+//            textAttr.yy_color = SYMomentContentTextColor;
+//            textAttr.yy_lineBreakMode = NSLineBreakByCharWrapping;
+//            textAttr.yy_alignment = NSTextAlignmentLeft;
+//
+//            /// 去正则匹配
+//            [textAttr sy_regexContentWithWithEmojiImageFontSize:15];
+//
+//            /// 实现布局好宽高 以及属性
+//            /// PS:用这个方法计算尺寸 要比 [self.textAttr sy_sizeWithLimitWidth:limitWidth]这个计算的值要准确的多
+//            YYTextContainer *contentLableContainer = [YYTextContainer containerWithSize:CGSizeMake(limitWidth, MAXFLOAT)];
+//            contentLableContainer.maximumNumberOfRows = 0;
+//            YYTextLayout *contentLableLayout = [YYTextLayout layoutWithContainer:contentLableContainer text:textAttr.copy];
+//            self.contentLableLayout = contentLableLayout;
+//        }
         
-        /// 配图
-        self.picInfos = [moment.picInfos.rac_sequence map:^SYMomentPhotoItemViewModel *(SYPicture * picture) {
-            SYMomentPhotoItemViewModel *viewModel = [[SYMomentPhotoItemViewModel alloc] initWithPicture:picture];
-            return viewModel;
-        }].array;
+//        /// 配图
+//        self.picInfos = [moment.picInfos.rac_sequence map:^SYMomentPhotoItemViewModel *(SYPicture * picture) {
+//            SYMomentPhotoItemViewModel *viewModel = [[SYMomentPhotoItemViewModel alloc] initWithPicture:picture];
+//            return viewModel;
+//        }].array;
         
         
         /// 位置
@@ -290,37 +290,37 @@
     /// 这里要分情况
     YYTextContainer *container = [YYTextContainer containerWithSize:CGSizeMake(limitWidth, MAXFLOAT)];
     YYTextLayout *layout = nil;
-    if (SYStringIsNotEmpty(self.moment.text)) {
-        
-        /// 显示部分正文 （按钮显示 `全文`）(默认是全部显示)
-        contentLableSize = self.contentLableLayout.textBoundingSize;
-        
-        /// 计算尺寸
-        /// 首先判断是否大于正文显示行数的是否超过最大允许的最大行数值
-        /// PS： 目前还没有做
-        if (self.contentLableLayout.rowCount > SYMomentContentTextMaxCriticalRow) {
-            /// 容错
-            self.expand = NO;
-            /// 就显示单行
-            container.maximumNumberOfRows = 1;
-            layout = [YYTextLayout layoutWithContainer:container text:self.contentLableLayout.text];
-            /// 全文/收起 高度为0
-            expandBtnH = .0f;
-        }else if(self.contentLableLayout.rowCount > SYMomentContentTextExpandCriticalRow){
-            /// 重新计算
-            if(!expand){
-                /// 点击收起 -- 显示全文
-                container.maximumNumberOfRows = SYMomentContentTextExpandCriticalRow;
-                layout = [YYTextLayout layoutWithContainer:container text:self.contentLableLayout.text];
-                contentLableSize = layout.textBoundingSize;
-            }
-            /// 全文/收起 高度
-            expandBtnH = SYMomentExpandButtonHeight;
-        }
-        
-        /// 全文/收起Y
-        expandBtnY = contentLableY + contentLableSize.height +SYMomentContentInnerMargin;
-    }
+//    if (SYStringIsNotEmpty(self.moment.text)) {
+//
+//        /// 显示部分正文 （按钮显示 `全文`）(默认是全部显示)
+//        contentLableSize = self.contentLableLayout.textBoundingSize;
+//
+//        /// 计算尺寸
+//        /// 首先判断是否大于正文显示行数的是否超过最大允许的最大行数值
+//        /// PS： 目前还没有做
+//        if (self.contentLableLayout.rowCount > SYMomentContentTextMaxCriticalRow) {
+//            /// 容错
+//            self.expand = NO;
+//            /// 就显示单行
+//            container.maximumNumberOfRows = 1;
+//            layout = [YYTextLayout layoutWithContainer:container text:self.contentLableLayout.text];
+//            /// 全文/收起 高度为0
+//            expandBtnH = .0f;
+//        }else if(self.contentLableLayout.rowCount > SYMomentContentTextExpandCriticalRow){
+//            /// 重新计算
+//            if(!expand){
+//                /// 点击收起 -- 显示全文
+//                container.maximumNumberOfRows = SYMomentContentTextExpandCriticalRow;
+//                layout = [YYTextLayout layoutWithContainer:container text:self.contentLableLayout.text];
+//                contentLableSize = layout.textBoundingSize;
+//            }
+//            /// 全文/收起 高度
+//            expandBtnH = SYMomentExpandButtonHeight;
+//        }
+//
+//        /// 全文/收起Y
+//        expandBtnY = contentLableY + contentLableSize.height +SYMomentContentInnerMargin;
+//    }
 
     /// 正文
     self.contentLableFrame = CGRectMake(contentLableX, contentLableY, contentLableSize.width, contentLableSize.height);
@@ -332,9 +332,9 @@
     CGFloat pictureViewX = contentLableX;
     CGFloat pictureViewTopMargin = (expandBtnH>0)?SYMomentContentInnerMargin:0;
     CGFloat pictureViewY = CGRectGetMaxY(self.expandBtnFrame)+pictureViewTopMargin;
-    CGSize pictureViewSize = [self _pictureViewSizeWithPhotosCount:self.moment.picInfos.count];
+//    CGSize pictureViewSize = [self _pictureViewSizeWithPhotosCount:self.moment.picInfos.count];
     
-    self.photosViewFrame = (CGRect){{pictureViewX , pictureViewY},pictureViewSize};
+//    self.photosViewFrame = (CGRect){{pictureViewX , pictureViewY},pictureViewSize};
     /// 分享View
     self.shareInfoViewFrame = (self.moment.type == SYMomentExtendTypeShare) ? CGRectMake(pictureViewX, pictureViewY, (SY_SCREEN_WIDTH - pictureViewX - SYMomentContentLeftOrRightInset) , SYMomentShareInfoViewHeight) : CGRectZero;
     
@@ -344,12 +344,12 @@
     /// 地理位置
     CGFloat locationLableX = contentLableX;
     /// 顶部
-    CGFloat locationLabelTopMargin = (pictureViewSize.height>0)?SYMomentContentInnerMargin:0;
+//    CGFloat locationLabelTopMargin = (pictureViewSize.height>0)?SYMomentContentInnerMargin:0;
     
     /// 计算高度
     CGFloat locationLableTempMaxY = MAX(CGRectGetMaxY(self.photosViewFrame), CGRectGetMaxY(self.shareInfoViewFrame));
-    CGFloat locationLableY = MAX(locationLableTempMaxY, CGRectGetMaxY(self.videoViewFrame))+locationLabelTopMargin;
-    self.locationLableFrame = CGRectMake(locationLableX, locationLableY, self.locationLableLayout.textBoundingSize.width, self.locationLableLayout.textBoundingSize.height);
+//    CGFloat locationLableY = MAX(locationLableTempMaxY, CGRectGetMaxY(self.videoViewFrame))+locationLabelTopMargin;
+//    self.locationLableFrame = CGRectMake(locationLableX, locationLableY, self.locationLableLayout.textBoundingSize.width, self.locationLableLayout.textBoundingSize.height);
     
     
     /// 更多按钮
@@ -411,23 +411,23 @@
         CGFloat maxWidth = SYMomentPhotosViewSingleItemMaxWidth();
         CGFloat maxHeight = SYMomentPhotosViewSingleItemMaxHeight;
         
-        SYPicture *pic = self.moment.picInfos.firstObject;
-        SYPictureMetadata *bmiddle = pic.bmiddle;
+//        SYPicture *pic = self.moment.picInfos.firstObject;
+//        SYPictureMetadata *bmiddle = pic.bmiddle;
         
-        if (pic.keepSize || bmiddle.width < 1 || bmiddle.height < 1) {
-            /// 固定方形
-            picSize = CGSizeMake(maxWidth, maxWidth);
-        } else {
-            /// 等比显示
-            if (bmiddle.width < bmiddle.height) {
-                picSize.width = (float)bmiddle.width / (float)bmiddle.height * maxHeight;
-                picSize.height = maxHeight;
-            } else {
-                picSize.width = maxWidth;
-                picSize.height = (float)bmiddle.height / (float)bmiddle.width * maxWidth;
-            }
-        }
-        return picSize;
+//        if (pic.keepSize || bmiddle.width < 1 || bmiddle.height < 1) {
+//            /// 固定方形
+//            picSize = CGSizeMake(maxWidth, maxWidth);
+//        } else {
+//            /// 等比显示
+//            if (bmiddle.width < bmiddle.height) {
+//                picSize.width = (float)bmiddle.width / (float)bmiddle.height * maxHeight;
+//                picSize.height = maxHeight;
+//            } else {
+//                picSize.width = maxWidth;
+//                picSize.height = (float)bmiddle.height / (float)bmiddle.width * maxWidth;
+//            }
+//        }
+//        return picSize;
     }
 
     /// 大于1的情况 统统显示 九宫格样式

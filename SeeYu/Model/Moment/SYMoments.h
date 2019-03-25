@@ -9,10 +9,9 @@
 #import "SYObject.h"
 #import "SYMoment.h"
 
-//  一组说说
 @interface SYMoments : SYObject
 
-/// 多个说说
-@property (nonatomic, readwrite, copy) NSArray <SYMoment *> *moments;
+/// 多条动态
+@property (nonatomic, strong) NSArray <SYMoment *> *moments;
 
 @end

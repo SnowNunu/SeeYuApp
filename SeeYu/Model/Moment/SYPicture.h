@@ -9,10 +9,14 @@
 #import "SYObject.h"
 #import "SYPictureMetadata.h"
 @interface SYPicture : SYObject
+
 /// 图片模型id
 @property (nonatomic, readwrite, copy) NSString *picID;
+
 @property (nonatomic, readwrite, copy) NSString *objectID;
+
 @property (nonatomic, readwrite, assign) int photoTag;
+
 /// < YES:固定为方形 NO:原始宽高比
 @property (nonatomic, readwrite, assign) BOOL keepSize;
 /// < w:180

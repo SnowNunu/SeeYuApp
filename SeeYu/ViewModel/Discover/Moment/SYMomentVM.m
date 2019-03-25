@@ -7,12 +7,9 @@
 //
 
 #import "SYMomentVM.h"
-#import "SYProfileInfoViewModel.h"
 #import "SYWebVM.h"
 
 @interface SYMomentVM ()
-/// 个人信息头部视图模型
-@property (nonatomic, readwrite, strong) SYMomentProfileViewModel *profileViewModel;
 
 /// 刷新某一个section的 事件回调
 @property (nonatomic, readwrite, strong) RACSubject *reloadSectionSubject;
@@ -41,7 +38,7 @@
 
 @implementation SYMomentVM
 
-- (void)initialize{
+- (void)initialize {
     [super initialize];
     
     @weakify(self);
@@ -61,9 +58,6 @@
     /// 允许多段显示
     self.shouldMultiSections = YES;
     self.shouldEndRefreshingWithNoMoreData = YES;
-    
-    /// 个人信息头部视图
-    self.profileViewModel = [[SYMomentProfileViewModel alloc] initWithUser:self.services.client.currentUser];
     
     /// 事件操作
     //// 初始化一系列subject
@@ -126,9 +120,6 @@
     
     /// 跳转到用户信息
     self.profileInfoCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(SYUser * user) {
-        @strongify(self);
-        SYProfileInfoViewModel *viewModel = [[SYProfileInfoViewModel alloc] initWithServices:self.services params:@{SYViewModelUtilKey:user}];
-        [self.services pushViewModel:viewModel animated:YES];
         return [RACSignal empty];
     }];
     
@@ -173,10 +164,14 @@
 }
 
 /// 请求指定页的网络数据
-- (RACSignal *)requestRemoteDataSignalWithPage:(NSUInteger)page{
+- (RACSignal *)requestRemoteDataSignalWithPage:(NSUInteger)page {
     @weakify(self);
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
+//        NSDictionary *params = @{@"userId":self.services.client.currentUser.userId,@"page":@(page)};
+//        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
+//        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_MOMENTS_LIST parameters:subscript.dictionary];
+//        [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYMoments class]] sy_parsedResults] map:mapAllPrivacy] takeUntil:self.rac_willDeallocSignal];
         /// config param
         NSMutableDictionary *param = [NSMutableDictionary dictionary];
         [param setValue:@(page) forKey:@"page"];
@@ -185,10 +180,8 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.75 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             /// 获取数据
-            NSData *data = [NSData dataNamed:[NSString stringWithFormat:@"WeChat_Moments_%zd.json",page]];
+            NSData *data = [NSData dataNamed:[NSString stringWithFormat:@"SeeYu_Moments_%zd.json",page]];
             SYMoments *momentsData = [SYMoments modelWithJSON:data];
-            /// config data
-            
             
             NSLog(@"----已经加载第%zd页的数据----",self.page);
             NSArray *viewModels = @[];
@@ -208,9 +201,9 @@
             }
             
             
-            if (page==1) {
+            if (page == 1) {
                 self.dataSource = viewModels ?:@[];
-            }else{
+            } else {
                 //// 类似于拼接
                 self.dataSource = @[ (self.dataSource ?:@[]).rac_sequence , viewModels.rac_sequence].rac_sequence.flatten.array;
             }

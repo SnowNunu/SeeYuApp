@@ -11,23 +11,25 @@
 #import "SYMomentFooterView.h"
 #import "SYMomentCommentCell.h"
 #import "SYMomentAttitudesCell.h"
-#import "SYMomentProfileView.h"
 #import "SYMomentOperationMoreView.h"
 #import "LCActionSheet.h"
 #import "SYEmoticonManager.h"
 #import "SYMomentHelper.h"
 #import "SYMomentCommentToolView.h"
+
 @interface SYMomentVC ()
 /// viewModel
 @property (nonatomic, readonly, strong) SYMomentVM *viewModel;
-/// tableHeaderView
-@property (nonatomic, readwrite, weak) SYMomentProfileView *tableHeaderView;
+
 /// commentToolView
-@property (nonatomic, readwrite, weak) SYMomentCommentToolView *commentToolView;
+//@property (nonatomic, readwrite, weak) SYMomentCommentToolView *commentToolView;
+
 /// 选中的索引 selectedIndexPath
 @property (nonatomic, readwrite, strong) NSIndexPath * selectedIndexPath;
+
 /// 记录键盘高度
 @property (nonatomic, readwrite, assign) CGFloat keyboardHeight;
+
 @end
 
 @implementation SYMomentVC
@@ -37,39 +39,48 @@
     SYDealloc;
 }
 
+- (instancetype)initWithViewModel:(SYVM *)viewModel {
+    self = [super initWithViewModel:viewModel];
+    if (self) {
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // 初始化子控件
     [self _setupSubViews];
+}
+
+- (void)_setupSubViews {
+    /// 配置tableView
+    self.tableView.backgroundColor = [UIColor whiteColor];
+    /// 固定高度-这样写比使用代理性能好，且使用代理会获取每次刷新数据会调用两次代理 ，苹果的bug
+//    self.tableView.sectionFooterHeight =  SYMomentFooterViewHeight;
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
     
-    /// 初始化导航栏Item
-    [self _setupNavigationItem];
+//    /// 添加评论View
+//    SYMomentCommentToolView *commentToolView = [[SYMomentCommentToolView alloc] init];
+//    self.commentToolView = commentToolView;
+//    [self.view addSubview:commentToolView];
+//    [commentToolView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.and.right.equalTo(self.view);
+//        make.height.mas_equalTo(60);
+//        make.bottom.equalTo(self.view).with.offset(60);
+//    }];
 }
 
 #pragma mark - Override
-- (UIEdgeInsets)contentInset{
-    return UIEdgeInsetsMake(SY_IS_IPHONE_X?-40:-64, 0, 0, 0);
-}
+//- (UIEdgeInsets)contentInset{
+//    return UIEdgeInsetsMake(SY_IS_IPHONE_X?-40:-64, 0, 0, 0);
+//}
 
 - (void)bindViewModel{
     [super bindViewModel];
     /// ... 事件处理...
     @weakify(self);
-    /// 动态更新tableHeaderView的高度. PS:单纯的设置其高度无效的
-    [[[RACObserve(self.viewModel.profileViewModel, unread)
-      distinctUntilChanged]
-     deliverOnMainThread]
-     subscribeNext:^(NSNumber * unread) {
-         @strongify(self);
-         self.tableHeaderView.sy_height = self.viewModel.profileViewModel.height;
-         [self.tableView beginUpdates];  // 过度动画
-         self.tableView.tableHeaderView = self.tableHeaderView;
-         [self.tableView endUpdates];
-     }];
-    
-    
-    
     /// 全文/收起
     [[self.viewModel.reloadSectionSubject deliverOnMainThread] subscribeNext:^(NSNumber * section) {
         @strongify(self);
@@ -101,8 +112,6 @@
         
     }];
     
-    
-    
     /// 监听键盘 高度
     /// 监听按钮
     [[[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillChangeFrameNotification object:nil] takeUntil:self.rac_willDeallocSignal ]
@@ -112,16 +121,16 @@
          @weakify(self);
          [self sy_convertNotification:notification completion:^(CGFloat duration, UIViewAnimationOptions options, CGFloat keyboardH) {
              @strongify(self);
-             if (keyboardH <= 0) {
-                 keyboardH = -1 * self.commentToolView.sy_height;
-             }
+//             if (keyboardH <= 0) {
+//                 keyboardH = -1 * self.commentToolView.sy_height;
+//             }
              self.keyboardHeight = keyboardH;
              /// 全局记录keyboardH
              AppDelegate.sharedDelegate.showKeyboard = (keyboardH > 0);
              // bottomToolBar距离底部的高
-             [self.commentToolView mas_updateConstraints:^(MASConstraintMaker *make) {
-                 make.bottom.equalTo(self.view).with.offset(-1 *keyboardH);
-             }];
+//             [self.commentToolView mas_updateConstraints:^(MASConstraintMaker *make) {
+//                 make.bottom.equalTo(self.view).with.offset(-1 *keyboardH);
+//             }];
              // 执行动画
              [UIView animateWithDuration:duration delay:0.0f options:options animations:^{
                  // 如果是Masonry或者autoLayout UITextField或者UITextView 布局 必须layoutSubviews，否则文字会跳动
@@ -132,22 +141,21 @@
          }];
      }];
     
-    
-    //// 监听commentToolView的高度变化
-    [[RACObserve(self.commentToolView, toHeight) distinctUntilChanged] subscribeNext:^(NSNumber * toHeight) {
-        @strongify(self);
-        if (toHeight.floatValue < SYMomentCommentToolViewMinHeight) return ;
-        /// 更新CommentView的高度
-        [self.commentToolView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(toHeight);
-        }];
-        [UIView animateWithDuration:.25f animations:^{
-            // 适当时候更新布局
-            [self.view layoutSubviews];
-            /// 滚动表格
-            [self _scrollTheTableViewForComment];
-        }];
-    }];
+//    //// 监听commentToolView的高度变化
+//    [[RACObserve(self.commentToolView, toHeight) distinctUntilChanged] subscribeNext:^(NSNumber * toHeight) {
+//        @strongify(self);
+//        if (toHeight.floatValue < SYMomentCommentToolViewMinHeight) return ;
+//        /// 更新CommentView的高度
+//        [self.commentToolView mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.height.mas_equalTo(toHeight);
+//        }];
+//        [UIView animateWithDuration:.25f animations:^{
+//            // 适当时候更新布局
+//            [self.view layoutSubviews];
+//            /// 滚动表格
+//            [self _scrollTheTableViewForComment];
+//        }];
+//    }];
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
@@ -160,67 +168,20 @@
     [cell bindViewModel:model];
 }
 
-#pragma mark - 初始化子控件
-- (void)_setupSubViews{
-    /// 配置tableView
-    self.tableView.backgroundColor = [UIColor whiteColor];
-    /// 固定高度-这样写比使用代理性能好，且使用代理会获取每次刷新数据会调用两次代理 ，苹果的bug
-    self.tableView.sectionFooterHeight =  SYMomentFooterViewHeight;
-    
-    /// 个人信息view
-    SYMomentProfileView *tableHeaderView = [[SYMomentProfileView alloc] init];
-    [tableHeaderView bindViewModel:self.viewModel.profileViewModel];
-    self.tableView.tableHeaderView = tableHeaderView;
-    self.tableView.tableHeaderView.sy_height = self.viewModel.profileViewModel.height;
-    self.tableHeaderView = tableHeaderView;
-
-    /// 这里设置下拉黑色的背景图
-    UIImageView *backgroundView = [[UIImageView alloc] initWithFrame:SY_SCREEN_BOUNDS];
-    backgroundView.sy_size = SY_SCREEN_BOUNDS.size;
-    backgroundView.image = SYImageNamed(@"wx_around-friends_bg_320x568");
-    backgroundView.sy_y = -backgroundView.sy_height;
-    [self.tableView addSubview:backgroundView];
-    
-    
-    /// 添加评论View
-    SYMomentCommentToolView *commentToolView = [[SYMomentCommentToolView alloc] init];
-    self.commentToolView = commentToolView;
-    [self.view addSubview:commentToolView];
-    [commentToolView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.equalTo(self.view);
-        make.height.mas_equalTo(60);
-        make.bottom.equalTo(self.view).with.offset(60);
-    }];
-}
-
-#pragma mark - 初始化道导航栏
-- (void)_setupNavigationItem{
-    @weakify(self);
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"barbuttonicon_Camera_30x30" target:nil selector:nil textType:NO];
-    self.navigationItem.rightBarButtonItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"取消" clicked:^(LCActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
-            if (buttonIndex == 0) return ;
-            ///
-        } otherButtonTitles:@"拍摄",@"从手机相册选择", nil];
-        [sheet show];
-        return [RACSignal empty];
-    }];
-}
-
-
 /// PS:这里复写了 SYTableVC 里面的UITableViewDelegate和UITableViewDataSource的方法，所以大家不需要过多关注 SYTableVC的里面的UITableViewDataSource方法
 #pragma mark - UITableViewDataSource & UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSLog(@"section:%lu",self.viewModel.dataSource.count);
     return self.viewModel.dataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     SYMomentItemViewModel *itemViewModel =  self.viewModel.dataSource[section];
+    NSLog(@"section:%lu",itemViewModel.dataSource.count);
     return itemViewModel.dataSource.count;
 }
 
-// custom view for header. will be adjusted to default or specified header height
+// 动态正文
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     SYMomentHeaderView *headerView = [SYMomentHeaderView headerViewWithTableView:tableView];
     /// 传递section 后期需要用到
@@ -228,7 +189,20 @@
     [headerView bindViewModel:self.viewModel.dataSource[section]];
     return headerView;
 }
-// custom view for footer. will be adjusted to default or specified footer height
+
+// 评论
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self tableView:tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    // fetch object 报错 why???
+    //    id object  = [self.viewModel.dataSource[indexPath.section] dataSource][indexPath.row];
+    SYMomentItemViewModel *itemViewModel = self.viewModel.dataSource[indexPath.section];
+    id object = itemViewModel.dataSource[indexPath.row];
+    /// bind model
+    [self configureCell:cell atIndexPath:indexPath withObject:(id)object];
+    return cell;
+}
+
+// 底部下划线
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     return [SYMomentFooterView footerViewWithTableView:tableView];
 }
@@ -245,7 +219,7 @@
     SYMomentContentItemViewModel *contentItemViewModel = itemViweModel.dataSource[row];
     /// 去掉点赞
     if ([contentItemViewModel isKindOfClass:SYMomentAttitudesItemViewModel.class]) {
-        [self.commentToolView sy_resignFirstResponder];
+//        [self.commentToolView sy_resignFirstResponder];
         return;
     }
 
@@ -253,7 +227,7 @@
     SYMomentCommentItemViewModel *commentItemViewModel = (SYMomentCommentItemViewModel *)contentItemViewModel;
     if ([commentItemViewModel.comment.fromUser.idstr isEqualToString: self.viewModel.services.client.currentUser.idstr]) {
         /// 关掉键盘
-        [self.commentToolView  sy_resignFirstResponder];
+//        [self.commentToolView  sy_resignFirstResponder];
         
         /// 自己评论的活回复他人
         @weakify(self);
@@ -271,25 +245,12 @@
     }
     
     /// 键盘已经显示 你就先关掉键盘
-    if (SYSharedAppDelegate.isShowKeyboard) {
-        [self.commentToolView sy_resignFirstResponder];
-        return;
-    }
+//    if (SYSharedAppDelegate.isShowKeyboard) {
+//        [self.commentToolView sy_resignFirstResponder];
+//        return;
+//    }
     /// 评论
     [self _commentOrReplyWithItemViewModel:contentItemViewModel indexPath:indexPath];
-}
-
-
-// custom view for cell
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self tableView:tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
-    // fetch object 报错 why???
-//    id object  = [self.viewModel.dataSource[indexPath.section] dataSource][indexPath.row];
-    SYMomentItemViewModel *itemViewModel = self.viewModel.dataSource[indexPath.section];
-    id object = itemViewModel.dataSource[indexPath.row];    
-    /// bind model
-    [self configureCell:cell atIndexPath:indexPath withObject:(id)object];
-    return cell;
 }
 
 /// 设置高度
@@ -323,9 +284,9 @@
     viewModel.section = indexPath.section;
     viewModel.commentCommand = self.viewModel.commentCommand;
     self.selectedIndexPath = indexPath; /// 记录indexPath
-    [self.commentToolView bindViewModel:viewModel];
+//    [self.commentToolView bindViewModel:viewModel];
     /// 键盘弹起
-    [self.commentToolView  sy_becomeFirstResponder];
+//    [self.commentToolView  sy_becomeFirstResponder];
 }
 
 /// 评论的时候 滚动tableView
@@ -346,8 +307,8 @@
     }
     if (self.keyboardHeight > 0) { /// 键盘抬起 才允许滚动
         /// 这个就是你需要滚动差值
-        CGFloat delta = self.commentToolView.sy_top - rect1.origin.y - rect1.size.height;
-        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y-delta) animated:NO];
+//        CGFloat delta = self.commentToolView.sy_top - rect1.origin.y - rect1.size.height;
+//        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y-delta) animated:NO];
     }
 }
 

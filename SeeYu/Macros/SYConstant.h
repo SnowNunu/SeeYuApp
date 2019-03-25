@@ -290,5 +290,5 @@ static inline CGFloat SYMomentPhotosViewSingleItemMaxWidth(){
 
 /// 计算微信说说正文的limitWidth或者评论View的宽度
 static inline CGFloat SYMomentCommentViewWidth() {
-    return ([UIScreen mainScreen].bounds.size.width - SYMomentContentLeftOrRightInset*2 -SYMomentAvatarWH - SYMomentContentInnerMargin);
+    return ([UIScreen mainScreen].bounds.size.width - SYMomentContentLeftOrRightInset * 2 -SYMomentAvatarWH - SYMomentContentInnerMargin);
 }

@@ -10,7 +10,5 @@
 
 /// 多条说说
 @implementation SYMoments
-+ (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"moments" : [SYMoment class]};
-}
+
 @end

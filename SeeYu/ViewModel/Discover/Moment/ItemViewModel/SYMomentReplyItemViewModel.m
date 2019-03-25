@@ -33,8 +33,8 @@
         
         if ([itemViewModel isKindOfClass:SYMomentItemViewModel.class]) { /// 点击 `评论按钮`  评论该说说
             SYMomentItemViewModel *viewModel = (SYMomentItemViewModel *)itemViewModel;
-            self.idstr = viewModel.moment.idstr;
-            self.momentIdstr = viewModel.moment.idstr;
+//            self.idstr = viewModel.moment.idstr;
+//            self.momentIdstr = viewModel.moment.idstr;
             self.reply = NO; /// 这里不是回复
             
             

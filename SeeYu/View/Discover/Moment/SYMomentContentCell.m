@@ -68,13 +68,12 @@
 }
 
 #pragma mark - 创建自控制器
-- (void)_setupSubViews{
+- (void)_setupSubViews {
     /// 点击选中的颜色
     UIView *selectedView = [[UIView alloc] init];
     selectedView.backgroundColor = SYMomentCommentViewSelectedBackgroundColor;
     self.selectedBackgroundView = selectedView;
-    
-    
+
     /// 正文
     YYLabel *contentLable = [[YYLabel alloc] init];
     contentLable.backgroundColor = self.contentView.backgroundColor;

@@ -10,12 +10,10 @@
 #import "SYMomentItemViewModel.h"
 #import "SYMomentAttitudesItemViewModel.h"
 #import "SYMomentCommentItemViewModel.h"
-#import "SYMomentProfileViewModel.h"
 #import "SYMomentReplyItemViewModel.h"
 
 @interface SYMomentVM : SYTableVM
-/// 个人信息头部视图模型
-@property (nonatomic, readonly, strong) SYMomentProfileViewModel *profileViewModel;
+
 /// 刷新某一个section的 事件回调
 @property (nonatomic, readonly, strong) RACSubject *reloadSectionSubject;
 /// 评论回调

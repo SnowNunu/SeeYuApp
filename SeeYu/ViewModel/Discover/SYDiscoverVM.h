@@ -8,6 +8,7 @@
 
 #import "SYMomentVM.h"
 #import "SYPrivacyVM.h"
+#import "SYForumVM.h"
 #import "SYWebVM.h"
 
 @interface SYDiscoverVM : SYVM
@@ -15,6 +16,8 @@
 @property (nonatomic, strong) SYMomentVM *momentVM;
 
 @property (nonatomic, strong) SYPrivacyVM *privacyVM;
+
+@property (nonatomic, strong) SYForumVM *forumVM;
 
 @property (nonatomic, strong) SYWebVM *webVM;
 
