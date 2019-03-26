@@ -45,6 +45,7 @@
     
     UIButton *likeBtn = [UIButton new];
     [likeBtn setImage:SYImageNamed(@"news_icon_good") forState:UIControlStateNormal];
+    [likeBtn setImage:SYImageNamed(@"news_icon_good_selected") forState:UIControlStateSelected];
     _likeBtn = likeBtn;
     [self addSubview:likeBtn];
     

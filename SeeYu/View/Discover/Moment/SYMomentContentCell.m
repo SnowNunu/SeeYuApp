@@ -12,7 +12,7 @@
 /// 正文
 @property (nonatomic, readwrite, weak) YYLabel *contentLable;
 
-@property (nonatomic , readwrite , strong) SYMomentContentItemViewModel *viewModel;
+//@property (nonatomic , readwrite , strong) SYMomentContentItemViewModel *viewModel;
 @end
 
 @implementation SYMomentContentCell
@@ -49,16 +49,16 @@
     return self;
 }
 
-#pragma mark - BindViewModel 子类重写
-- (void)bindViewModel:(SYMomentContentItemViewModel *)viewModel{
-    self.viewModel = viewModel;
-    /// 文本
-    self.contentLable.textLayout = viewModel.contentLableLayout;
-    self.contentLable.frame = viewModel.contentLableFrame;
-    
-    self.selectionStyle = (viewModel.type == SYMomentContentTypeComment)?UITableViewCellSelectionStyleDefault:UITableViewCellSelectionStyleNone;
-    self.divider.hidden = viewModel.type == SYMomentContentTypeComment;
-}
+//#pragma mark - BindViewModel 子类重写
+//- (void)bindViewModel:(SYMomentContentItemViewModel *)viewModel{
+//    self.viewModel = viewModel;
+//    /// 文本
+//    self.contentLable.textLayout = viewModel.contentLableLayout;
+//    self.contentLable.frame = viewModel.contentLableFrame;
+//
+//    self.selectionStyle = (viewModel.type == SYMomentContentTypeComment)?UITableViewCellSelectionStyleDefault:UITableViewCellSelectionStyleNone;
+//    self.divider.hidden = viewModel.type == SYMomentContentTypeComment;
+//}
 
 #pragma mark - 初始化
 - (void)_setup
@@ -105,7 +105,7 @@
         NSDictionary *userInfo = highlight.userInfo;
         if (userInfo.count == 0) return;
         /// 回调数据
-        [self.viewModel.attributedTapCommand execute:userInfo];
+//        [self.viewModel.attributedTapCommand execute:userInfo];
         
     };
     

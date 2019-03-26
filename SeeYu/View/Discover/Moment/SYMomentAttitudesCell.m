@@ -7,16 +7,16 @@
 //
 
 #import "SYMomentAttitudesCell.h"
-#import "SYMomentAttitudesItemViewModel.h"
+//#import "SYMomentAttitudesItemViewModel.h"
 
 @interface SYMomentAttitudesCell ()
 /// viewModel
-@property (nonatomic, readwrite, strong) SYMomentAttitudesItemViewModel *viewModel;
+//@property (nonatomic, readwrite, strong) SYMomentAttitudesItemViewModel *viewModel;
 
 @end
 
 @implementation SYMomentAttitudesCell
-@dynamic viewModel;
+//@dynamic viewModel;
 
 
 

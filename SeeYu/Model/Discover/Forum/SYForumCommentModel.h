@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString* commentLiked;
 
+@property (nonatomic, strong) NSString *likedStatus;
+
 @end
 
 NS_ASSUME_NONNULL_END

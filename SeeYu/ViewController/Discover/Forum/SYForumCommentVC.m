@@ -96,15 +96,23 @@
         NSLog(@"%@",self.commentToolView.textView.text);
     }];
     [self.viewModel.postCommentCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYForumResultModel *model) {
+        @strongify(self)
         [MBProgressHUD sy_hideHUDForView:self.view];
-        if ([model.commentStatus isEqualToString:@"2"]) {
-            [MBProgressHUD sy_showTips:@"评论发布成功"];
-        } else {
-            [MBProgressHUD sy_showTips:@"评论审核中，敬请等待"];
-        }
+        [MBProgressHUD sy_showTips:@"评论发布成功"];
+        self.commentToolView.textView.text = nil;
+        [self.commentToolView.textView resignFirstResponder];
     }];
     [self.viewModel.postCommentCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_hideHUDForView:self.view];
+        [MBProgressHUD sy_showErrorTips:error];
+    }];
+    [self.viewModel.likeCommentCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYForumResultModel *model) {
+        @strongify(self)
+        [MBProgressHUD sy_showTips:@"操作成功"];
+        self.commentToolView.textView.text = nil;
+        [self.commentToolView.textView resignFirstResponder];
+    }];
+    [self.viewModel.likeCommentCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];
 }
@@ -116,6 +124,7 @@
     tableView.dataSource = self;
     [tableView registerClass:[SYForumCommentCell class] forCellReuseIdentifier:@"forumCommentCell"];
     [tableView registerClass:[SYForumHeaderCell class] forCellReuseIdentifier:@"forumHeaderCell"];
+    tableView.tableFooterView = [UIView new];
     _tableView = tableView;
     [self.view addSubview:tableView];
     SYMomentCommentToolView *commentToolView = [[SYMomentCommentToolView alloc] init];
@@ -166,16 +175,36 @@
         cell.genderImageView.image = [model.userGender isEqualToString:@"男"] ? SYImageNamed(@"news_icon_male") : SYImageNamed(@"news_icon_female");
         cell.likeNumLabel.text = model.commentLiked;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [[cell.likeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            if ([model.likedStatus isEqualToString:@"1"]) {
+                // 取消点赞
+                model.likedStatus = @"0";
+                int num = [model.commentLiked intValue];
+                model.commentLiked = [NSString stringWithFormat:@"%d",num - 1];
+                cell.likeNumLabel.text = model.commentLiked;
+                cell.likeBtn.selected = NO;
+            } else {
+                // 取消点赞
+                model.likedStatus = @"1";
+                int num = [model.commentLiked intValue];
+                model.commentLiked = [NSString stringWithFormat:@"%d",num + 1];
+                cell.likeNumLabel.text = model.commentLiked;
+                cell.likeBtn.selected = YES;
+            }
+            [self.viewModel.likeCommentCommand execute:model.commentId];
+        }];
+        if ([model.likedStatus isEqualToString:@"1"]) {
+            cell.likeBtn.selected = YES;
+        } else {
+            cell.likeBtn.selected = NO;
+        }
         return cell;
     }
 }
 
 /// 评论的时候 滚动tableView
 - (void)_scrollTheTableViewForComment {
-//    if (self.keyboardHeight > 0) { /// 键盘抬起 才允许滚动
-        /// 这个就是你需要滚动差值
     [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + self.keyboardHeight) animated:NO];
-//    }
 }
 
 @end

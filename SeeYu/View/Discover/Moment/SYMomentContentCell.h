@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SYReactiveView.h"
-#import "SYMomentContentItemViewModel.h"
+//#import "SYMomentContentItemViewModel.h"
 
 
 @interface SYMomentContentCell : UITableViewCell<SYReactiveView>
@@ -18,7 +18,7 @@
 /// divider
 @property (nonatomic, readwrite, weak) UIImageView *divider;
 /// viewModel
-@property (nonatomic , readonly , strong) SYMomentContentItemViewModel *viewModel;
+//@property (nonatomic , readonly , strong) SYMomentContentItemViewModel *viewModel;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 

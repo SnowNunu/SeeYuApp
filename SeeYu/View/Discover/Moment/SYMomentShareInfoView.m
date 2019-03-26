@@ -7,11 +7,11 @@
 //  用户分享的内容
 
 #import "SYMomentShareInfoView.h"
-#import "SYMomentItemViewModel.h"
+//#import "SYMomentItemViewModel.h"
 
 @interface SYMomentShareInfoView ()
 /// viewModel
-@property (nonatomic, readwrite, strong) SYMomentItemViewModel *viewModel;
+//@property (nonatomic, readwrite, strong) SYMomentItemViewModel *viewModel;
 /// avatarView
 @property (weak, readwrite, nonatomic)  UIImageView *avatarView;
 /// playBtn
@@ -25,21 +25,21 @@
 
 @implementation SYMomentShareInfoView
 
-/// bind data
-- (void)bindViewModel:(SYMomentItemViewModel *)viewModel{
-    self.viewModel = viewModel;
-    [self.avatarView yy_setImageWithURL:viewModel.moment.shareInfo.thumbImage placeholder:SYWebImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
-    self.titleLabel.text = viewModel.moment.shareInfo.title;
-    self.detailLabel.text = viewModel.moment.shareInfo.descr;
-    
-    // 更新一下布局
-    [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        CGFloat margin = SYStringIsNotEmpty(viewModel.moment.shareInfo.descr)? -15 : 0;
-        make.bottom.equalTo(self.avatarView.mas_bottom).with.offset(margin);
-    }];
-    
-    self.playBtn.hidden = (viewModel.moment.shareInfo.shareInfoType != SYMomentShareInfoTypeMusic);
-}
+///// bind data
+//- (void)bindViewModel:(SYMomentItemViewModel *)viewModel{
+//    self.viewModel = viewModel;
+//    [self.avatarView yy_setImageWithURL:viewModel.moment.shareInfo.thumbImage placeholder:SYWebImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+//    self.titleLabel.text = viewModel.moment.shareInfo.title;
+//    self.detailLabel.text = viewModel.moment.shareInfo.descr;
+//
+//    // 更新一下布局
+//    [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+//        CGFloat margin = SYStringIsNotEmpty(viewModel.moment.shareInfo.descr)? -15 : 0;
+//        make.bottom.equalTo(self.avatarView.mas_bottom).with.offset(margin);
+//    }];
+//
+//    self.playBtn.hidden = (viewModel.moment.shareInfo.shareInfoType != SYMomentShareInfoTypeMusic);
+//}
 
 + (instancetype)shareInfoView{
     return [[self alloc] init];

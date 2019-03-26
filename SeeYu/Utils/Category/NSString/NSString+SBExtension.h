@@ -23,4 +23,7 @@
 // string转url
 - (NSURL *)urlScheme:(NSString *)scheme;
 
+// 根据服务器返回的时间转换成某分钟/天/月前
++ (NSString *)compareCurrentTime:(NSString *)str;
+
 @end

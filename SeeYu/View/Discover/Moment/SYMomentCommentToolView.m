@@ -7,7 +7,7 @@
 //
 
 #import "SYMomentCommentToolView.h"
-#import "SYMomentReplyItemViewModel.h"
+//#import "SYMomentReplyItemViewModel.h"
 
 @interface SYMomentCommentToolView () <YYTextViewDelegate>
 
@@ -25,7 +25,7 @@
 /// toHeight (随着文字的输入，SYMomentCommentToolView 将要到达的高度)
 @property (nonatomic, readwrite, assign) CGFloat toHeight;
 
-@property (nonatomic, readwrite, strong) SYMomentReplyItemViewModel *viewModel;
+//@property (nonatomic, readwrite, strong) SYMomentReplyItemViewModel *viewModel;
 
 @end
 
@@ -50,13 +50,13 @@
     return self;
 }
 
-/// 绑定数据模型
-- (void)bindViewModel:(SYMomentReplyItemViewModel *)viewModel{
-    self.viewModel = viewModel;
-    
-    /// 修改textView的placeholder
-    self.textView.placeholderText = self.viewModel.isReply?[NSString stringWithFormat:@"回复%@:",self.viewModel.toUser.screenName]:@"评论";
-}
+///// 绑定数据模型
+//- (void)bindViewModel:(SYMomentReplyItemViewModel *)viewModel{
+//    self.viewModel = viewModel;
+//
+//    /// 修改textView的placeholder
+//    self.textView.placeholderText = self.viewModel.isReply?[NSString stringWithFormat:@"回复%@:",self.viewModel.toUser.screenName]:@"评论";
+//}
 
 #pragma mark - 初始化
 - (void)_setup {
@@ -141,18 +141,18 @@
 }
 
 - (BOOL)textView:(YYTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    if ([text isEqualToString:@"\n"]) { //判断输入的字是否是回车，即按下return
-        //在这里做你响应return键的代码 （发送）
-        /// 传递文本内容
-//        self.viewModel.text = textView.text;
-        /// 传递数据
-//        [self.viewModel.commentCommand execute:self.viewModel];
-        /// 轻空TextView
-        textView.text = nil;
-        /// 键盘掉下
-        [textView resignFirstResponder];
-        return NO; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
-    }
+//    if ([text isEqualToString:@"\n"]) { //判断输入的字是否是回车，即按下return
+//        //在这里做你响应return键的代码 （发送）
+//        /// 传递文本内容
+////        self.viewModel.text = textView.text;
+//        /// 传递数据
+////        [self.viewModel.commentCommand execute:self.viewModel];
+//        /// 轻空TextView
+//        textView.text = nil;
+//        /// 键盘掉下
+//        [textView resignFirstResponder];
+//        return NO; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
+//    }
     return YES;
 }
 

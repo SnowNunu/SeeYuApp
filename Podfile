@@ -68,7 +68,7 @@ pod 'ReactiveCocoa', :git => 'https://github.com/zhao0/ReactiveCocoa.git', :tag 
 pod 'AFNetworking'                      , '3.1.0'
 
 # 图片缓存
-pod 'SDWebImage'                        , '4.0.0'
+pod 'SDWebImage'                       
 
 # UIView模糊
 pod 'FXBlurView'                        , '1.6.4'
@@ -171,7 +171,7 @@ pod 'RongCloudRTC/RongCallKit'          , '2.9.7'
 # 空占位
 pod 'DZNEmptyDataSet'                   , '1.8.1'
 # 图片浏览器
-#pod 'PYPhotoBrowser'                    , '1.5.0'
+pod 'YBImageBrowser'
 # 苹果内购
 #pod 'RMStore', '0.7.1'
 # 拍照和录视频

@@ -105,6 +105,9 @@
 // 发表评论
 #define SY_HTTTP_PATH_USER_FORUM_COMMENT_POST     @"/application/forumComment/addForumComment"
 
+// 点赞评论
+#define SY_HTTTP_PATH_USER_FORUM_COMMENT_LIKE     @"/application/forumComment/likeForumComment"
+
 
 ///
 //+ (NSString *)ver;          // app版本号

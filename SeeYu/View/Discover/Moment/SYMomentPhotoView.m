@@ -8,11 +8,11 @@
 
 #import "SYMomentPhotoView.h"
 
-#import "SYMomentPhotoItemViewModel.h"
+//#import "SYMomentPhotoItemViewModel.h"
 @interface SYMomentPhotoView ()
 
 /// viewModel
-@property (nonatomic, readwrite, strong) SYMomentPhotoItemViewModel *viewModel;
+//@property (nonatomic, readwrite, strong) SYMomentPhotoItemViewModel *viewModel;
 
 
 
@@ -30,45 +30,42 @@
     return self;
 }
 
-- (void)bindViewModel:(SYMomentPhotoItemViewModel *)viewModel
-{
-    self.viewModel = viewModel;
-    
+- (void)bindViewModel:(NSString *)url {
     /// 设置
     /// 移除动画
     [self.layer removeAnimationForKey:@"contents"];
     
     /// 请求图片
     @weakify(self);
-    [self.layer yy_setImageWithURL:viewModel.picture.bmiddle.url
-                       placeholder:SYPicturePlaceholder()
-                           options:YYWebImageOptionAvoidSetImage
-                        completion:^(UIImage *image, NSURL *url, YYWebImageFromType from, YYWebImageStage stage, NSError *error) {
-                              @strongify(self);
-                              
-                              if (image && stage == YYWebImageStageFinished) {
-                                  int width = viewModel.picture.bmiddle.width;
-                                  int height = viewModel.picture.bmiddle.height;
-                                  CGFloat scale = (height / width) / (self.sy_height / self.sy_width);
-                                  if (scale < 0.99 || isnan(scale)) {
-                                      // 宽图把左右两边裁掉
-                                      self.contentMode = UIViewContentModeScaleAspectFill;
-                                      self.layer.contentsRect = CGRectMake(0, 0, 1, 1);
-                                  } else {
-                                      // 高图只保留顶部
-                                      self.contentMode = UIViewContentModeScaleToFill;
-                                      self.layer.contentsRect = CGRectMake(0, 0, 1, (float)width / height);
-                                  }
-                                  self.image = image;
-                                  if (from != YYWebImageFromMemoryCacheFast) {
-                                      CATransition *transition = [CATransition animation];
-                                      transition.duration = 0.15;
-                                      transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-                                      transition.type = kCATransitionFade;
-                                      [self.layer addAnimation:transition forKey:@"contents"];
-                                  }
-                              }
-                          }];
+//    [self.layer yy_setImageWithURL:[NSURL URLWithString:url]
+//                       placeholder:SYPicturePlaceholder()
+//                           options:YYWebImageOptionAvoidSetImage
+//                        completion:^(UIImage *image, NSURL *url, YYWebImageFromType from, YYWebImageStage stage, NSError *error) {
+//                              @strongify(self);
+//                            
+//                              if (image && stage == YYWebImageStageFinished) {
+//                                  int width = viewModel.picture.bmiddle.width;
+//                                  int height = viewModel.picture.bmiddle.height;
+//                                  CGFloat scale = (height / width) / (self.sy_height / self.sy_width);
+//                                  if (scale < 0.99 || isnan(scale)) {
+//                                      // 宽图把左右两边裁掉
+//                                      self.contentMode = UIViewContentModeScaleAspectFill;
+//                                      self.layer.contentsRect = CGRectMake(0, 0, 1, 1);
+//                                  } else {
+//                                      // 高图只保留顶部
+//                                      self.contentMode = UIViewContentModeScaleToFill;
+//                                      self.layer.contentsRect = CGRectMake(0, 0, 1, (float)width / height);
+//                                  }
+//                                  self.image = image;
+//                                  if (from != YYWebImageFromMemoryCacheFast) {
+//                                      CATransition *transition = [CATransition animation];
+//                                      transition.duration = 0.15;
+//                                      transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+//                                      transition.type = kCATransitionFade;
+//                                      [self.layer addAnimation:transition forKey:@"contents"];
+//                                  }
+//                              }
+//                          }];
 
 }
 

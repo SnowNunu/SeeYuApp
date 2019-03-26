@@ -277,7 +277,7 @@ FOUNDATION_EXTERN CGFloat const SYMomentCommentToolViewWithNoTextViewHeight;
 
 /// 图片的宽度 （九宫格）
 static inline CGFloat SYMomentPhotosViewItemWidth(){
-    CGFloat itemW = ([UIScreen mainScreen].bounds.size.width<=320)? SYMomentPhotosViewItemWH2:SYMomentPhotosViewItemWH1;
+    CGFloat itemW = ([UIScreen mainScreen].bounds.size.width <= 320)? SYMomentPhotosViewItemWH2:SYMomentPhotosViewItemWH1;
     return itemW;
 }
 

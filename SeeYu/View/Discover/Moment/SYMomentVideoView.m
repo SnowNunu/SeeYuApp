@@ -7,7 +7,7 @@
 //
 
 #import "SYMomentVideoView.h"
-#import "SYMomentItemViewModel.h"
+
 @interface SYMomentVideoView ()
 
 /// coverView
@@ -16,23 +16,16 @@
 /// playBtn
 @property (nonatomic, readwrite, weak) UIButton *playBtn;
 
-/// viewModel
-@property (nonatomic, readwrite, strong) SYMomentItemViewModel *viewModel;
 @end
 
 
 @implementation SYMomentVideoView
 
-- (void)bindViewModel:(SYMomentItemViewModel *)viewModel{
-    self.viewModel = viewModel;
-    self.coverView.image = viewModel.moment.videoInfo.coverImage;
-}
-
-+ (instancetype)videoView{
++ (instancetype)videoView {
     return [[self alloc] init];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         

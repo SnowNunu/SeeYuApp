@@ -8,7 +8,7 @@
 
 #import "SYMomentOperationMoreView.h"
 #import "SYMomentOperationMoreItemView.h"
-#import "SYMomentItemViewModel.h"
+//#import "SYMomentItemViewModel.h"
 
 /// Hide Notification
 static NSString * const SYMomentOperationMoreViewHideNotification = @"SYMomentOperationMoreViewHideNotification";
@@ -17,7 +17,7 @@ static NSString * const SYMomentOperationMoreViewHideUserInfoKey = @"SYMomentOpe
 
 @interface SYMomentOperationMoreView ()
 /// viewModel
-@property (nonatomic, readwrite, strong) SYMomentItemViewModel *viewModel;
+//@property (nonatomic, readwrite, strong) SYMomentItemViewModel *viewModel;
 /// 点赞
 @property (nonatomic, readwrite, weak) SYMomentOperationMoreItemView *attitudesBtn;
 /// 评论
@@ -176,12 +176,12 @@ static NSString * const SYMomentOperationMoreViewHideUserInfoKey = @"SYMomentOpe
 }
 
 
-#pragma mark - BinderData
-- (void)bindViewModel:(SYMomentItemViewModel *)viewModel{
-    self.viewModel = viewModel;
-    /// 直接设置 normal 状态下文字即可
-    [self.attitudesBtn setTitle:viewModel.moment.attitudesStatus==0?@"赞":@"取消" forState:UIControlStateNormal];
-}
+//#pragma mark - BinderData
+//- (void)bindViewModel:(SYMomentItemViewModel *)viewModel{
+//    self.viewModel = viewModel;
+//    /// 直接设置 normal 状态下文字即可
+//    [self.attitudesBtn setTitle:viewModel.moment.attitudesStatus==0?@"赞":@"取消" forState:UIControlStateNormal];
+//}
 
 
 - (void)setFrame:(CGRect)frame{

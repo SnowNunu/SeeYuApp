@@ -43,9 +43,16 @@
     [self.requestForumsCommentsCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];
+    self.likeCommentCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *commentId) {
+        @strongify(self)
+        NSDictionary *params = @{@"userId":self.services.client.currentUser.userId,@"commentId":commentId};
+        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_FORUM_COMMENT_LIKE parameters:subscript.dictionary];
+        return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYForumResultModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];
+    }];
     self.postCommentCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *commentContent) {
         @strongify(self)
-        NSDictionary *params = @{@"commentUserid":self.services.client.currentUser.userId,@"commentId":self.model.forumId,@"commentContent":commentContent};
+        NSDictionary *params = @{@"commentUserid":self.services.client.currentUser.userId,@"commentForumid":self.model.forumId,@"commentContent":commentContent};
         SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
         SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_FORUM_COMMENT_POST parameters:subscript.dictionary];
         return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYForumResultModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];

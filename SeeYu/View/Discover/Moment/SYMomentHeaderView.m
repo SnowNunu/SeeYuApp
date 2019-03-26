@@ -9,7 +9,7 @@
 #import "SYMomentHeaderView.h"
 #import "SYMomentPhotosView.h"
 #import "SYMomentShareInfoView.h"
-#import "SYMomentItemViewModel.h"
+//#import "SYMomentItemViewModel.h"
 #import "SYMomentOperationMoreView.h"
 #import "SYMomentVideoView.h"
 
@@ -55,7 +55,7 @@
 @property (nonatomic, readwrite, weak) SYMomentOperationMoreView *operationMoreView;
 
 /// viewModel
-@property (nonatomic, readwrite, strong) SYMomentItemViewModel *viewModel;
+//@property (nonatomic, readwrite, strong) SYMomentItemViewModel *viewModel;
 
 @end
 
@@ -86,63 +86,63 @@
 
 
 #pragma mark - 公共方法
-- (void)bindViewModel:(SYMomentItemViewModel *)viewModel{
-    self.viewModel = viewModel;
-    /// 头像
-    self.avatarView.frame = viewModel.avatarViewFrame;
-    [self.avatarView yy_setImageWithURL:viewModel.moment.user.profileImageUrl placeholder:SYDefaultAvatar(SYDefaultAvatarTypeDefualt) options:YYWebImageOptionAllowInvalidSSLCertificates|YYWebImageOptionAllowBackgroundTask completion:nil];
-    /// 昵称
-    self.screenNameLable.textLayout = viewModel.screenNameLableLayout;
-    self.screenNameLable.frame = viewModel.screenNameLableFrame;
-    
-    /// 正文
-    self.contentLable.textLayout = viewModel.contentLableLayout;
-    self.contentLable.frame = viewModel.contentLableFrame;
-    
-    /// 全文/收起
-    self.expandBtn.frame = viewModel.expandBtnFrame;
-    [self.expandBtn setTitle:viewModel.isExpand?@"收起":@"全文" forState:UIControlStateNormal];
-    
-    /// 配图
-    self.photosView.frame = viewModel.photosViewFrame;
-    [self.photosView bindViewModel:viewModel];
-    
-    /// 分享
-    self.shareInfoView.hidden = !(viewModel.moment.type == SYMomentExtendTypeShare);
-    self.shareInfoView.frame = viewModel.shareInfoViewFrame;
-    [self.shareInfoView bindViewModel:viewModel];
-    
-    /// 视频
-    self.videoView.hidden = !(viewModel.moment.type == SYMomentExtendTypeVideo);
-    self.videoView.frame = viewModel.videoViewFrame;
-    [self.videoView bindViewModel:viewModel];
-    
-    /// 位置
-    self.locationLable.textLayout = viewModel.locationLableLayout;
-    self.locationLable.frame = viewModel.locationLableFrame;
-    
-    
-    /// 时间
-    self.createAtLable.textLayout = viewModel.createAtLableLayout;
-    self.createAtLable.frame = viewModel.createAtLableFrame;
-    
-    /// 来源
-    self.sourceLable.textLayout = viewModel.sourceLableLayout;
-    self.sourceLable.frame = viewModel.sourceLableFrame;
-    
-    
-    /// 更多操作按钮
-    self.operationMoreBtn.frame = viewModel.operationMoreBtnFrame;
-    
-    /// 更多View
-    self.operationMoreView.right = self.operationMoreBtn.sy_x - SYMomentContentInnerMargin;
-    self.operationMoreView.sy_centerY = self.operationMoreBtn.sy_centerY;
-    self.operationMoreView.sy_width = 0;
-    [self.operationMoreView bindViewModel:viewModel];
-    
-    /// 箭头
-    self.upArrowView.frame = viewModel.upArrowViewFrame;
-}
+//- (void)bindViewModel:(SYMomentItemViewModel *)viewModel{
+//    self.viewModel = viewModel;
+//    /// 头像
+//    self.avatarView.frame = viewModel.avatarViewFrame;
+//    [self.avatarView yy_setImageWithURL:viewModel.moment.user.profileImageUrl placeholder:SYDefaultAvatar(SYDefaultAvatarTypeDefualt) options:YYWebImageOptionAllowInvalidSSLCertificates|YYWebImageOptionAllowBackgroundTask completion:nil];
+//    /// 昵称
+//    self.screenNameLable.textLayout = viewModel.screenNameLableLayout;
+//    self.screenNameLable.frame = viewModel.screenNameLableFrame;
+//
+//    /// 正文
+//    self.contentLable.textLayout = viewModel.contentLableLayout;
+//    self.contentLable.frame = viewModel.contentLableFrame;
+//
+//    /// 全文/收起
+//    self.expandBtn.frame = viewModel.expandBtnFrame;
+//    [self.expandBtn setTitle:viewModel.isExpand?@"收起":@"全文" forState:UIControlStateNormal];
+//
+//    /// 配图
+//    self.photosView.frame = viewModel.photosViewFrame;
+//    [self.photosView bindViewModel:viewModel];
+//
+//    /// 分享
+//    self.shareInfoView.hidden = !(viewModel.moment.type == SYMomentExtendTypeShare);
+//    self.shareInfoView.frame = viewModel.shareInfoViewFrame;
+//    [self.shareInfoView bindViewModel:viewModel];
+//
+//    /// 视频
+//    self.videoView.hidden = !(viewModel.moment.type == SYMomentExtendTypeVideo);
+//    self.videoView.frame = viewModel.videoViewFrame;
+//    [self.videoView bindViewModel:viewModel];
+//
+//    /// 位置
+//    self.locationLable.textLayout = viewModel.locationLableLayout;
+//    self.locationLable.frame = viewModel.locationLableFrame;
+//
+//
+//    /// 时间
+//    self.createAtLable.textLayout = viewModel.createAtLableLayout;
+//    self.createAtLable.frame = viewModel.createAtLableFrame;
+//
+//    /// 来源
+//    self.sourceLable.textLayout = viewModel.sourceLableLayout;
+//    self.sourceLable.frame = viewModel.sourceLableFrame;
+//
+//
+//    /// 更多操作按钮
+//    self.operationMoreBtn.frame = viewModel.operationMoreBtnFrame;
+//
+//    /// 更多View
+//    self.operationMoreView.right = self.operationMoreBtn.sy_x - SYMomentContentInnerMargin;
+//    self.operationMoreView.sy_centerY = self.operationMoreBtn.sy_centerY;
+//    self.operationMoreView.sy_width = 0;
+//    [self.operationMoreView bindViewModel:viewModel];
+//
+//    /// 箭头
+//    self.upArrowView.frame = viewModel.upArrowViewFrame;
+//}
 
 
 #pragma mark - 私有方法
@@ -157,7 +157,7 @@
     [tapGr.rac_gestureSignal subscribeNext:^(UIGestureRecognizer * gr) {
         /// 点击事件
         @strongify(self);
-        [self.viewModel.profileInfoCommand execute:self.viewModel.moment.user];
+//        [self.viewModel.profileInfoCommand execute:self.viewModel.moment.user];
     }];
     [longGr.rac_gestureSignal subscribeNext:^(UIGestureRecognizer * gr) {
         /// 长按事件
@@ -175,7 +175,7 @@
     [self.screenNameLable setHighlightTapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
         /// 点击事件
         @strongify(self);
-        [self.viewModel.profileInfoCommand execute:self.viewModel.moment.user];
+//        [self.viewModel.profileInfoCommand execute:self.viewModel.moment.user];
     }];
     
     /// 正文点击事件
@@ -187,7 +187,7 @@
         NSDictionary *userInfo = highlight.userInfo;
         if (userInfo.count == 0) return;
         /// 回调数据
-        [self.viewModel.attributedTapCommand execute:userInfo];
+//        [self.viewModel.attributedTapCommand execute:userInfo];
     }];
     
     /// 地理位置
@@ -199,7 +199,7 @@
         NSDictionary *userInfo = highlight.userInfo;
         if (userInfo.count == 0) return;
         /// 回调数据
-        [self.viewModel.attributedTapCommand execute:userInfo];
+//        [self.viewModel.attributedTapCommand execute:userInfo];
     }];
     
     /// 来源
@@ -211,7 +211,7 @@
         NSDictionary *userInfo = highlight.userInfo;
         if (userInfo.count == 0) return;
         /// 回调数据
-        [self.viewModel.attributedTapCommand execute:userInfo];
+//        [self.viewModel.attributedTapCommand execute:userInfo];
     }];
     
     
@@ -221,7 +221,7 @@
      subscribeNext:^(UIButton *sender) {
          @strongify(self);
          /// 更新子控件的frame
-         [self.viewModel.expandOperationCmd execute:@(self.section)];
+//         [self.viewModel.expandOperationCmd execute:@(self.section)];
      }];
     
     /// 更多按钮点击
@@ -245,19 +245,19 @@
     self.operationMoreView.attitudesClickedCallback = ^(SYMomentOperationMoreView *operationMoreView) {
         @strongify(self);
         /// 执行点赞
-        [self.viewModel.attitudeOperationCmd execute:@(self.section)];
+//        [self.viewModel.attitudeOperationCmd execute:@(self.section)];
     };
     
     /// 评论
     self.operationMoreView.commentClickedCallback = ^(SYMomentOperationMoreView *operationMoreView) {
         @strongify(self);
-        [self.viewModel.commentSubject sendNext:@(self.section)];
+//        [self.viewModel.commentSubject sendNext:@(self.section)];
     };
 
     /// 分享View的点击事件
     self.shareInfoView.touchBlock = ^(SYMomentBackgroundView *view) {
         @strongify(self);
-        [self.viewModel.shareTapCommand execute:self.viewModel.moment.shareInfo];
+//        [self.viewModel.shareTapCommand execute:self.viewModel.moment.shareInfo];
     };
 }
 

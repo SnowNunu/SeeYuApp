@@ -123,9 +123,9 @@ PODS:
   - RongCloudRTC/RongCallLib (2.9.7):
     - RongCloudIM/IMLib (~> 2.9.7)
   - SAMKeychain (1.5.2)
-  - SDWebImage (4.0.0):
-    - SDWebImage/Core (= 4.0.0)
-  - SDWebImage/Core (4.0.0)
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
   - SocketRocket (0.5.1)
   - SSZipArchive (1.8.1)
   - SVProgressHUD (2.1.2)
@@ -135,6 +135,9 @@ PODS:
   - "UIImage+ImageWithColor (1.4.0)"
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - WZLBadge (1.2.6)
+  - YBImageBrowser (2.1.4):
+    - SDWebImage
+    - YYImage
   - YYAsyncLayer (1.0)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
@@ -196,7 +199,7 @@ DEPENDENCIES:
   - RongCloudRTC/RongCallKit (= 2.9.7)
   - RongCloudRTC/RongCallLib (= 2.9.7)
   - SAMKeychain (= 1.5.2)
-  - SDWebImage (= 4.0.0)
+  - SDWebImage
   - SocketRocket (= 0.5.1)
   - SSZipArchive (= 1.8.1)
   - SVProgressHUD (= 2.1.2)
@@ -206,6 +209,7 @@ DEPENDENCIES:
   - "UIImage+ImageWithColor (= 1.4.0)"
   - "UITableView+FDTemplateLayoutCell (= 1.6)"
   - WZLBadge (= 1.2.6)
+  - YBImageBrowser
   - YYAsyncLayer (= 1.0)
   - YYCache (= 1.0.4)
   - YYCategories (= 1.0.4)
@@ -265,6 +269,7 @@ SPEC REPOS:
     - "UIImage+ImageWithColor"
     - "UITableView+FDTemplateLayoutCell"
     - WZLBadge
+    - YBImageBrowser
     - YYAsyncLayer
     - YYCache
     - YYCategories
@@ -330,7 +335,7 @@ SPEC CHECKSUMS:
   RongCloudIM: 0a039a658fe5e40f62d8f2a14c3df3629c12526a
   RongCloudRTC: c37e66794a21604a152c8b6599e7dba39bdfb0cc
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
-  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SSZipArchive: 04547dfa448be5ed7ecbaf7eaf8a6e9eb9b42997
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
@@ -340,6 +345,7 @@ SPEC CHECKSUMS:
   "UIImage+ImageWithColor": 891401f732f2f332fefe68c2332c6c955c2a879c
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
+  YBImageBrowser: e3c514dd3bdc6efef379eabd57988eae3c109e38
   YYAsyncLayer: df6b01ebc695c5f6b4c15dd5c23fa3e081eb25c0
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
@@ -352,6 +358,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 7dfb293e3c08efab1459a324c40b6aea5888d2ec
+PODFILE CHECKSUM: 7002bc27b4044f90d987d18d2f18fa559199d4d9
 
 COCOAPODS: 1.5.3

@@ -26,6 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 // 请求所有的话题列表
 @property (nonatomic, strong) RACCommand *requestForumsCommentsCommand;
 
+// 点赞评论
+@property (nonatomic, strong) RACCommand *likeCommentCommand;
+
+// 发布评论
 @property (nonatomic, strong) RACCommand *postCommentCommand;
 
 @end

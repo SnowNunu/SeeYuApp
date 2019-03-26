@@ -7,16 +7,16 @@
 //
 
 #import "SYMomentCommentCell.h"
-#import "SYMomentCommentItemViewModel.h"
+//#import "SYMomentCommentItemViewModel.h"
 
 @interface SYMomentCommentCell ()
 
 /// viewModel
-@property (nonatomic, readwrite, strong) SYMomentCommentItemViewModel *viewModel;
+//@property (nonatomic, readwrite, strong) SYMomentCommentItemViewModel *viewModel;
 @end
 
 @implementation SYMomentCommentCell
-@dynamic viewModel;
+//@dynamic viewModel;
 
 
 

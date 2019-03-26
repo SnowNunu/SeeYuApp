@@ -23,7 +23,7 @@
     if (self) {
         if ([viewModel shouldRequestRemoteDataOnViewDidLoad]) {
             @weakify(self)
-            [[self rac_signalForSelector:@selector(viewDidLoad)] subscribeNext:^(id x) {
+            [[self rac_signalForSelector:@selector(viewWillAppear:)] subscribeNext:^(id x) {
                 @strongify(self)
                 /// 请求第一页的网络数据
                 [self.viewModel.requestForumsCommand execute:@1];
@@ -53,6 +53,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     [tableView registerClass:[SYForumListCell class] forCellReuseIdentifier:@"forumListCell"];
+    tableView.tableFooterView = [UIView new];
     _tableView = tableView;
     [self.view addSubview:tableView];
 }

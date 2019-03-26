@@ -44,8 +44,7 @@
     self.navigationItem.titleView = self.titleView;
     
     NSMutableArray *childVCs = [[NSMutableArray alloc]init];
-//    SYMomentVC *momentVC = [[SYMomentVC alloc] initWithViewModel:self.viewModel.momentVM];
-    UIViewController *momentVC = [UIViewController new];
+    SYMomentVC *momentVC = [[SYMomentVC alloc] initWithViewModel:self.viewModel.momentVM];
     [childVCs addObject:momentVC];
     // 私密
     SYPrivacyVC *privacyVC = [[SYPrivacyVC alloc] initWithViewModel:self.viewModel.privacyVM];
