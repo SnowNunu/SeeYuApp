@@ -299,4 +299,9 @@
     return 100.f;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SYUser *user = self.viewModel.dataSource[indexPath.row];
+    [self.viewModel.enterFriendDetailCommand execute:user.userId];
+}
+
 @end

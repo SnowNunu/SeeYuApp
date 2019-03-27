@@ -96,6 +96,9 @@
 // 获取会员动态
 #define SY_HTTTP_PATH_USER_MOMENTS_LIST     @"/application/userMoment/queryMoments"
 
+// 获取好友详情
+#define SY_HTTTP_PATH_USER_FRIENDS_DETAIL     @"/application/user/queryPersonalPage"
+
 // 获取论坛列表
 #define SY_HTTTP_PATH_USER_FORUM_LIST     @"/application/forum/queryForums"
 

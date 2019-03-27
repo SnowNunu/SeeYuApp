@@ -260,6 +260,7 @@
 		7B78812E2249D5AD00B25CA3 /* SYMomentVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78812D2249D5AD00B25CA3 /* SYMomentVM.m */; };
 		7B7881312249D80000B25CA3 /* SYMomentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7881302249D80000B25CA3 /* SYMomentsModel.m */; };
 		7B7881342249DC1200B25CA3 /* SYMomentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7881332249DC1200B25CA3 /* SYMomentListCell.m */; };
+		7B78814A224B1EE300B25CA3 /* SYFriendDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788149224B1EE300B25CA3 /* SYFriendDetialModel.m */; };
 		7B92871D22450AC100CABC5F /* SYSpeedMatchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B92871C22450AC100CABC5F /* SYSpeedMatchModel.m */; };
 		7B9A1BBD2240997E00B7BFC2 /* SYAnchorShowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BBC2240997E00B7BFC2 /* SYAnchorShowVC.m */; };
 		7B9A1BC02240999D00B7BFC2 /* SYAnchorShowVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BBF2240999D00B7BFC2 /* SYAnchorShowVM.m */; };
@@ -852,6 +853,8 @@
 		7B7881302249D80000B25CA3 /* SYMomentsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMomentsModel.m; sourceTree = "<group>"; };
 		7B7881322249DC1200B25CA3 /* SYMomentListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMomentListCell.h; sourceTree = "<group>"; };
 		7B7881332249DC1200B25CA3 /* SYMomentListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMomentListCell.m; sourceTree = "<group>"; };
+		7B788148224B1EE300B25CA3 /* SYFriendDetialModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYFriendDetialModel.h; sourceTree = "<group>"; };
+		7B788149224B1EE300B25CA3 /* SYFriendDetialModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYFriendDetialModel.m; sourceTree = "<group>"; };
 		7B92871B22450AC100CABC5F /* SYSpeedMatchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSpeedMatchModel.h; sourceTree = "<group>"; };
 		7B92871C22450AC100CABC5F /* SYSpeedMatchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSpeedMatchModel.m; sourceTree = "<group>"; };
 		7B9A1BBB2240997E00B7BFC2 /* SYAnchorShowVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorShowVC.h; sourceTree = "<group>"; };
@@ -1084,6 +1087,7 @@
 		26064AE91F5DA1F800566B95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7B788146224B1EAE00B25CA3 /* FriendDetailInfo */,
 				7B590935223F8AB300EE5ACF /* MainFrame */,
 				7B656A2E21EF0E8B008FDCCA /* Contacts */,
 				7B92871A22450A6F00CABC5F /* Collocation */,
@@ -2651,6 +2655,15 @@
 			path = Forum;
 			sourceTree = "<group>";
 		};
+		7B788146224B1EAE00B25CA3 /* FriendDetailInfo */ = {
+			isa = PBXGroup;
+			children = (
+				7B788148224B1EE300B25CA3 /* SYFriendDetialModel.h */,
+				7B788149224B1EE300B25CA3 /* SYFriendDetialModel.m */,
+			);
+			path = FriendDetailInfo;
+			sourceTree = "<group>";
+		};
 		7B92871A22450A6F00CABC5F /* Collocation */ = {
 			isa = PBXGroup;
 			children = (
@@ -4038,6 +4051,7 @@
 				261597031FEA527400C6FD80 /* SYMoments.m in Sources */,
 				7B7881192248BD9E00B25CA3 /* SYForumCommentVC.m in Sources */,
 				2615974A1FEA5DD300C6FD80 /* SYMomentCommentCell.m in Sources */,
+				7B78814A224B1EE300B25CA3 /* SYFriendDetialModel.m in Sources */,
 				263D36DA1F666438007267C3 /* FBKVOController+SYExtension.m in Sources */,
 				2605C5B51F66241D00B1F66E /* SYHomePageVC.m in Sources */,
 				2605E10A1FE7929300F514B0 /* SYPrivacyViewModel.m in Sources */,

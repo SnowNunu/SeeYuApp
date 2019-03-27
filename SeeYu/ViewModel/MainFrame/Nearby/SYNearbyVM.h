@@ -8,6 +8,7 @@
 
 #import "SYTableVM.h"
 #import "SYVM.h"
+#import "SYFriendDetailInfoVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readwrite, assign) BOOL shouldEndRefreshingWithNoMoreData;
 
 @property (nonatomic, strong) RACCommand *requestNearbyFriendsCommand;
+
+@property (nonatomic, strong) RACCommand *enterFriendDetailCommand;
 
 @end
 

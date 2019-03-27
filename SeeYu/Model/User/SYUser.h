@@ -98,6 +98,9 @@
 /** 用户认证状态 */
 @property (nonatomic, assign) int identityStatus;
 
+/** 用户在线状态 */
+@property (nonatomic, strong) NSString *userOnline;
+
 //------------------------------------------------------------------
 /// 昵称
 @property (nonatomic, readwrite, copy) NSString *screenName;

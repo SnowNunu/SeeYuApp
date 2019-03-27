@@ -7,12 +7,22 @@
 //
 
 #import "SYVM.h"
+#import "SYFriendDetialModel.h"
+#import "SYUser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYFriendDetailInfoVM : SYVM
 
+@property (nonatomic, strong) NSString *userId;
+
+@property (nonatomic, strong) NSArray *datasource;
+
+@property (nonatomic, strong) SYUser *friendInfo;
+
 @property (nonatomic, strong) RACCommand *goBackCommand;
+
+@property (nonatomic, strong) RACCommand *requestFriendDetailInfoCommand;
 
 @end
 
