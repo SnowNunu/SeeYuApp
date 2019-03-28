@@ -53,4 +53,9 @@
  */
 - (NSData *)resetSizeOfImageData:(UIImage *)sourceImage maxSize:(NSInteger)maxSize;
 
+/*
+ *  获取网络视频第一帧
+ */
+- (UIImage *) getVideoPreviewImage:(NSURL *)path;
+
 @end

@@ -47,8 +47,9 @@
     _photoContainerView = photoContainerView;
     [self.contentView addSubview:photoContainerView];
     
-    UIView *videoContainerView = [UIView new];
+    UIImageView *videoContainerView = [UIImageView new];
     videoContainerView.backgroundColor = [UIColor whiteColor];
+    videoContainerView.userInteractionEnabled = YES;
     _videoContainerView = videoContainerView;
     [self.contentView addSubview:videoContainerView];
     
@@ -126,6 +127,30 @@
     }
 }
 
+- (void)_setupVideoShowViewBy:(NSString*)url {
+    UIImageView *playImageView = [UIImageView new];
+    playImageView.image = SYImageNamed(@"play_btn_normal_120x120");
+    [self.videoContainerView addSubview:playImageView];
+    [self.videoContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.offset(100);
+        make.height.offset(180);
+    }];
+    [playImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.videoContainerView);
+        make.width.height.offset(40);
+    }];
+    self.videoUrl = [NSURL URLWithString:url];
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] init];
+    [recognizer addTarget:self action:@selector(_tapVideo:)];
+    [self.videoContainerView addGestureRecognizer:recognizer];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        UIImage *image = [[UIImage alloc] getVideoPreviewImage:[NSURL URLWithString:url]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.videoContainerView.image = image;
+        });
+    });
+}
+
 - (void)_tapPhoto:(UITapGestureRecognizer *)sender {
     /// 图片浏览
     NSMutableArray *item = [NSMutableArray new];
@@ -133,11 +158,24 @@
         YBImageBrowseCellData *data = [YBImageBrowseCellData new];
         data.url = self.photos[i];
         data.sourceObject = [self viewWithTag:i];
+        data.allowSaveToPhotoAlbum = NO;
         [item addObject:data];
     }
     YBImageBrowser *browser = [YBImageBrowser new];
     browser.dataSourceArray = item;
     browser.currentIndex = sender.view.tag;
+    [browser show];
+}
+
+- (void)_tapVideo:(UITapGestureRecognizer *)sender {
+    YBVideoBrowseCellData *data = [YBVideoBrowseCellData new];
+    data.url = self.videoUrl;
+    data.sourceObject = self.videoContainerView;
+    data.autoPlayCount = 1;
+    data.allowSaveToPhotoAlbum = NO;
+    YBImageBrowser *browser = [YBImageBrowser new];
+    browser.dataSourceArray = @[data];
+    browser.currentIndex = 0;
     [browser show];
 }
 

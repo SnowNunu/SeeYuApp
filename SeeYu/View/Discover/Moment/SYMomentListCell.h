@@ -22,11 +22,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSMutableArray *photos;
 
-@property (nonatomic, strong) UIView *videoContainerView;
+@property (nonatomic, strong) NSURL *videoUrl;
+
+@property (nonatomic, strong) UIImageView *videoContainerView;
 
 @property (nonatomic, strong) UILabel *timeLabel;
 
 - (void)_setupPhotosViewByUrls:(NSString*)photosUrl;
+
+- (void)_setupVideoShowViewBy:(NSString*)url;
 
 @end
 

@@ -72,20 +72,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //填充视频数据
-    SYMomentListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentListCell" forIndexPath:indexPath];
-    if(!cell) {
-        cell = [[SYMomentListCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"momentListCell"];
+    NSString *identifier = [NSString stringWithFormat:@"momentListCell%ld%ld",indexPath.section,indexPath.row];
+    SYMomentListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
+    if (!cell) {
+        cell = [[SYMomentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        SYMomentsModel *model = self.viewModel.datasource[indexPath.row];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+        cell.aliasLabel.text = model.userName;
+        cell.contentLabel.text = model.momentContent;
+        if (model.momentPhotos != nil && model.momentPhotos.length > 0) {
+            [cell _setupPhotosViewByUrls:model.momentPhotos];
+        }
+        if (model.momentVideo != nil && model.momentVideo.length > 0) {
+            [cell _setupVideoShowViewBy:model.momentVideo];
+        }
+        cell.timeLabel.text = [NSString compareCurrentTime:model.momentTime];
     }
-    SYMomentsModel *model = self.viewModel.datasource[indexPath.row];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
-    cell.aliasLabel.text = model.userName;
-    cell.contentLabel.text = model.momentContent;
-    if (model.momentPhotos != nil && model.momentPhotos.length > 0) {
-        [cell _setupPhotosViewByUrls:model.momentPhotos];
-    }
-    cell.timeLabel.text = [NSString compareCurrentTime:model.momentTime];
     return cell;
 }
 
