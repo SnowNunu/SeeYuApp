@@ -24,11 +24,11 @@ NSString * const anchorsListCell = @"anchorsListCell";
     [super viewDidLoad];
     [self _setupSubviews];
     [self _makeSubViewsConstraints];
+    [self.viewModel.requestAnchorsListCommand execute:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.viewModel.requestAnchorsListCommand execute:nil];
 }
 
 - (void)bindViewModel {

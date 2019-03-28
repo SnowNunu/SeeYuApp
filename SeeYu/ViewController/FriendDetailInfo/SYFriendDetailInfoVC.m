@@ -24,6 +24,15 @@
 // 在线状态
 @property (nonatomic, strong) UIImageView *onlineImageView;
 
+// 真人认证
+@property (nonatomic, strong) UIImageView *personImageView;
+
+// 手机认证
+@property (nonatomic, strong) UIImageView *mobileImageView;
+
+// 视频认证
+@property (nonatomic, strong) UIImageView *videoImageView;
+
 // 签名文本
 @property (nonatomic, strong) UILabel *signatureLabel;
 
@@ -227,7 +236,45 @@
         }
         self.IDInfoLabel.attributedText = idString;
     }];
+    [RACObserve(self.viewModel, authInfo) subscribeNext:^(SYAuthentication *authInfo) {
+        if ([authInfo.mobileFlag isEqualToString:@"1"]) {
+            UIImageView *passed = [UIImageView new];
+            passed.image = SYImageNamed(@"profile_icon_passed");
+            [self.headerView addSubview:passed];
+            [passed mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.width.height.offset(6);
+                make.bottom.right.equalTo(self.mobileImageView);
+            }];
+        }
+        if ([authInfo.selfieFlag isEqualToString:@"3"]) {
+            UIImageView *passed = [UIImageView new];
+            passed.image = SYImageNamed(@"profile_icon_passed");
+            [self.headerView addSubview:passed];
+            [passed mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.width.height.offset(6);
+                make.bottom.right.equalTo(self.videoImageView);
+            }];
+        }
+        if ([authInfo.identityFlag isEqualToString:@"3"]) {
+            UIImageView *passed = [UIImageView new];
+            passed.image = SYImageNamed(@"profile_icon_passed");
+            [self.headerView addSubview:passed];
+            [passed mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.width.height.offset(6);
+                make.bottom.right.equalTo(self.personImageView);
+            }];
+        }
+    }];
     self.backBtn.rac_command = self.viewModel.goBackCommand;
+    [[self.sendMsgBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        RCConversationViewController *conversationVC = [[RCConversationViewController alloc]init];
+        conversationVC.conversationType = ConversationType_PRIVATE;
+        conversationVC.targetId = self.viewModel.userId;
+        // 从缓存获取用户信息，用户昵称变动一般不大
+        RCUserInfo *userInfo = [[RCIM sharedRCIM] getUserInfoCache:self.viewModel.userId];
+        conversationVC.title = userInfo.name;
+        [self.navigationController pushViewController:conversationVC animated:YES];
+    }];
 }
 
 - (void)_setupSubViews {
@@ -266,6 +313,21 @@
     UIImageView *onlineImageView = [UIImageView new];
     _onlineImageView = onlineImageView;
     [headerView addSubview:onlineImageView];
+    
+    UIImageView *personImageView = [UIImageView new];
+    personImageView.image = SYImageNamed(@"profile_icon_baseInfo");
+    _personImageView = personImageView;
+    [headerView addSubview:personImageView];
+    
+    UIImageView *mobileImageView = [UIImageView new];
+    mobileImageView.image = SYImageNamed(@"profile_icon_mobile");
+    _mobileImageView = mobileImageView;
+    [headerView addSubview:mobileImageView];
+    
+    UIImageView *videoImageView = [UIImageView new];
+    videoImageView.image = SYImageNamed(@"profile_icon_selfie");
+    _videoImageView = videoImageView;
+    [headerView addSubview:videoImageView];
     
     UILabel *signatureLabel = [UILabel new];
     signatureLabel.textColor = [UIColor whiteColor];
@@ -471,6 +533,19 @@
         make.width.offset(40);
         make.height.offset(15);
         make.centerY.equalTo(self.aliasLabel);
+    }];
+    [self.personImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.width.height.equalTo(self.mobileImageView);
+        make.right.equalTo(self.mobileImageView.mas_left).offset(-15);
+    }];
+    [self.mobileImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.width.height.equalTo(self.videoImageView);
+        make.right.equalTo(self.videoImageView.mas_left).offset(-15);
+    }];
+    [self.videoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.offset(14);
+        make.centerY.equalTo(self.onlineImageView);
+        make.right.equalTo(self.headerView).offset(-15);
     }];
     [self.signatureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headImageView).offset(20);

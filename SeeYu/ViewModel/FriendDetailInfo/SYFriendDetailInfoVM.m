@@ -37,6 +37,7 @@
     [self.requestFriendDetailInfoCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYFriendDetialModel *model) {
         self.friendInfo = model.userBase;
         self.datasource = model.userMoments;
+        self.authInfo = model.userAuth;
     }];
     [self.requestFriendDetailInfoCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];

@@ -9,6 +9,7 @@
 #import "SYVM.h"
 #import "SYFriendDetialModel.h"
 #import "SYUser.h"
+#import "SYAuthentication.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray *datasource;
 
 @property (nonatomic, strong) SYUser *friendInfo;
+
+@property (nonatomic, strong) SYAuthentication *authInfo;
 
 @property (nonatomic, strong) RACCommand *goBackCommand;
 

@@ -9,6 +9,7 @@
 #import "SYObject.h"
 #import "SYUser.h"
 #import "SYMomentsModel.h"
+#import "SYAuthentication.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) SYUser *userBase;
 
 @property (nonatomic, strong) NSArray<SYMomentsModel *> *userMoments;
+
+@property (nonatomic, strong) SYAuthentication *userAuth;
 
 @end
 

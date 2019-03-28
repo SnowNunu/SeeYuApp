@@ -69,6 +69,9 @@
 /// 手机验证码登录
 #define SY_HTTTP_PATH_USER_AUTH_LOGIN   @"/application/user/loginByMobile"
 
+/// 绑定手机号
+#define SY_HTTTP_PATH_USER_MOBILE_BIND   @"/application/user/bingingMobile"
+
 /// 获取用户的好友列表
 #define SY_HTTTP_PATH_USER_FRIENDS_LIST   @"/application/userFriendRelation/queryFriendList"
 

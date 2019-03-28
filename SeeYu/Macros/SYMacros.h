@@ -40,11 +40,10 @@
 
 
 /// 开发环境后台地址
-//#define SYURL @"http://192.168.31.220:8080/"
+//#define SYURL @"http://192.168.31.23:8080/"
 
 /// 正式环境后台地址
-//#define SYURL @"http://103.214.147.194:8080/"
-#define SYURL @"http://103.214.146.89:8080/"
+#define SYURL @"http://103.214.147.194:8080/"
 
 #define SY_GAME_URL @"http://103.214.146.89/seeyu_game/xyx/index.html"
 

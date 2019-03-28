@@ -49,7 +49,7 @@
             [MBProgressHUD sy_showError:@"请输入正确的手机号"];
             return;
         }
-        NSDictionary *parameters = @{@"userMobile":self.mobileTextField.text};
+        NSDictionary *parameters = @{@"userMobile":self.mobileTextField.text,@"type":@"1"};
         [self.viewModel.getAuthCodeCommand execute:parameters];
     }];
     [[self.loginBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
