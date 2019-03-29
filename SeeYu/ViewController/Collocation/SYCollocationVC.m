@@ -59,12 +59,6 @@
             self.datasource = [NSMutableArray arrayWithArray:array];
             YYCache *cache = [YYCache cacheWithName:@"seeyu"];
             [cache setObject:self.datasource forKey:@"speedMatch"];
-            if ((([self.page intValue] - 1) * 10 + self.datasource.count) == self.viewModel.total) {
-                // 没有更多数据了
-//                [cache setObject:@"0" forKey:@"speedMatchLoad"];
-                [cache setObject:@"1" forKey:@"speedMatchPage"];
-                self.page = @"0";
-            }
             [self startUserShow];
         }
     }];
@@ -159,7 +153,6 @@
 
 // 切换用户
 - (void)changeUser {
-    NSLog(@"%lu",(unsigned long)self.datasource.count);
     if (self.datasource.count > 1) {
         [self.datasource removeObjectAtIndex:0];
         [self.singleShowView jp_stopPlay];
@@ -171,15 +164,10 @@
         }];
     } else {
         YYCache *cache = [YYCache cacheWithName:@"seeyu"];
-        id loadValue = [cache objectForKey:@"speedMatchLoad"];
-        NSString *load = (NSString*)loadValue;
-        if ([load isEqualToString:@"0"]) {
-            [MBProgressHUD sy_showError:@"没有更多数据了"];
-        } else {
-            self.page = [NSString stringWithFormat:@"%d",self.page.intValue + 1];
-            [cache setObject:self.page forKey:@"speedMatchPage"];
-            [self.viewModel.requestSpeedMatchCommand execute:self.page];
-        }
+        
+        self.page = [NSString stringWithFormat:@"%d",self.page.intValue + 1];
+        [cache setObject:self.page forKey:@"speedMatchPage"];
+        [self.viewModel.requestSpeedMatchCommand execute:self.page];
     }
 }
 

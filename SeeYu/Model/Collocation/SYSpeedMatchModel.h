@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYSpeedMatchModel : SYObject
 
-@property (nonatomic, assign) int total;
+@property (nonatomic, strong) NSString *userId;
 
-@property (nonatomic, strong) NSArray *list;
+@property (nonatomic, strong) NSString *showVideo;
 
 @end
 

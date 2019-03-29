@@ -55,8 +55,8 @@
     // 游戏
     SYWebVM *webVM = [[SYWebVM alloc]init];
     webVM.request = [NSURLRequest requestWithURL:[NSURL URLWithString:SY_GAME_URL]];
-    SYWebVC *webController = [[SYWebVC alloc]initWithViewModel:webVM];
-    [childVCs addObject:webController];
+    SYWebVC *webVC = [[SYWebVC alloc]initWithViewModel:webVM];
+    [childVCs addObject:webVC];
     self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SY_APPLICATION_TOP_BAR_HEIGHT - SY_APPLICATION_TAB_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
     [self.view addSubview:_contentView];
 }

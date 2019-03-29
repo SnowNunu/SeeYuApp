@@ -29,14 +29,8 @@
         SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_MATCH_SPEED_LIST parameters:subscript.dictionary];
         return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYSpeedMatchModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];
     }];
-    [self.requestSpeedMatchCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYSpeedMatchModel *model) {
-        NSMutableArray *temp = [NSMutableArray new];
-        for (NSDictionary *dict in model.list) {
-            SYMatchCellModel *model = [SYMatchCellModel modelWithDictionary:dict];
-            [temp addObject:model];
-        }
-        self.total = model.total;
-        self.speedMatchList = [NSArray arrayWithArray:temp];
+    [self.requestSpeedMatchCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(NSArray *array) {
+        self.speedMatchList = array;
     }];
     [self.requestSpeedMatchCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];

@@ -38,9 +38,8 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
 
 @dynamic viewModel;
 
-- (void)dealloc{
+- (void)dealloc {
     SYDealloc;
-    /// remove observer ,otherwise will crash
     [_webView stopLoading];
 }
 
@@ -91,13 +90,16 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
     [userContentController addUserScript:userScript];
     /// 赋值userContentController
     configuration.userContentController = userContentController;
-    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:configuration];
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
     webView.navigationDelegate = self;
     webView.UIDelegate = self;
     
     if ((SYIOSVersion >= 9.0)) webView.customUserAgent = userAgent;
     self.webView = webView;
     [self.view addSubview:webView];
+    [webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
     
     /// oc调用js
     [webView evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {
@@ -151,7 +153,7 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
     /// 可以返回到上一个网页，就返回到上一个网页
     if (self.webView.canGoBack) {
         [self.webView goBack];
-    }else{/// 不能返回上一个网页，就返回到上一个界面
+    } else {/// 不能返回上一个网页，就返回到上一个界面
         /// 判断 是Push还是Present进来的，
         if (self.presentingViewController) {
             [self.viewModel.services dismissViewModelAnimated:YES completion:NULL];
@@ -161,7 +163,7 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
     }
 }
 
-- (void)_closeItemDidClicked{
+- (void)_closeItemDidClicked {
     /// 判断 是Push还是Present进来的
     if (self.presentingViewController) {
         [self.viewModel.services dismissViewModelAnimated:YES completion:NULL];
@@ -178,7 +180,7 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
 
 
 #pragma mark - WKScriptMessageHandler
-- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     /// js call OC function
     
 }

@@ -176,7 +176,6 @@ pod 'YBImageBrowser'
 #pod 'RMStore', '0.7.1'
 # 拍照和录视频
 pod 'PBJVision'
-
 pod 'JPVideoPlayer'
 
 pod 'Reveal-SDK','~> 17',:configurations => ['Debug']

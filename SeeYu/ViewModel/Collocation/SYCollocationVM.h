@@ -8,7 +8,6 @@
 
 #import "SYVM.h"
 #import "SYSpeedMatchModel.h"
-#import "SYMatchCellModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,8 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) RACCommand *requestSpeedMatchCommand;
 
 @property (nonatomic, strong) RACCommand *matchLikeCommand;
-
-@property (nonatomic, assign) int total;
 
 @end
 

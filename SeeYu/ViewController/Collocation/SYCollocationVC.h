@@ -8,7 +8,7 @@
 
 #import "SYVC.h"
 #import "SYCollocationVM.h"
-#import "SYMatchCellModel.h"
+#import "SYSpeedMatchModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) SYCollocationVM *viewModel;
 
-@property (nonatomic, strong) SYMatchCellModel *matchModel;
+@property (nonatomic, strong) SYSpeedMatchModel *matchModel;
 
 @property (nonatomic, strong) NSMutableArray *datasource;
 

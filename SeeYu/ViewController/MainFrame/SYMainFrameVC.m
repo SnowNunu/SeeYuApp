@@ -7,7 +7,6 @@
 //
 
 #import "SYMainFrameVC.h"
-#import "SYCameraViewController.h"
 #import "SYAnchorsOrderVC.h"
 #import "SYNearbyVC.h"
 #import "SYRankingVC.h"
