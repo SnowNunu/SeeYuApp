@@ -24,8 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 每页的数据
 @property (nonatomic, readwrite, assign) NSUInteger pageSize;
 
-@property (nonatomic, readwrite, assign) BOOL shouldEndRefreshingWithNoMoreData;
-
 @property (nonatomic, strong) RACCommand *requestNearbyFriendsCommand;
 
 @property (nonatomic, strong) RACCommand *enterFriendDetailCommand;

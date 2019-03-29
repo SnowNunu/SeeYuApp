@@ -11,7 +11,6 @@
 @implementation SYNearbyVM
 
 - (void)initialize {
-    self.shouldEndRefreshingWithNoMoreData = NO;
     self.pageSize = 10; // 每次加载10页
     self.pageNum = 1;   // 默认从第一页开始加载
     @weakify(self)

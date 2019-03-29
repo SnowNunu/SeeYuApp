@@ -28,6 +28,6 @@
 /// 数据data
 #define SYHTTPServiceResponseDataKey   @"data"
 /// 数据data{"list":[]}
-#define SYHTTPServiceResponseDataListKey   @"List"
+#define SYHTTPServiceResponseDataListKey   @"list"
 
 #endif /* SYHTTPServiceConstant_h */

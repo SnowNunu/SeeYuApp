@@ -134,16 +134,6 @@
         @strongify(self);
         [self tableViewDidTriggerFooterRefresh];
     }];
-    
-    /// 隐藏footer or 无更多数据
-    RAC(self.tableView.mj_footer, hidden) = [[RACObserve(self.viewModel, dataSource) deliverOnMainThread] map:^(NSArray *dataSource) {
-        @strongify(self)
-        NSUInteger count = dataSource.count;
-        /// 无数据，默认隐藏mj_footer
-        if (count == 0) return @1;
-        if (self.viewModel.shouldEndRefreshingWithNoMoreData) return @(0);
-        return (count % self.viewModel.pageSize)?@1:@0;
-    }];
     if (@available(iOS 11.0, *)) {
         /// CoderMikeHe: 适配 iPhone X + iOS 11，
         SYAdjustsScrollViewInsets_Never(tableView);
@@ -168,7 +158,7 @@
          @strongify(self)
          self.viewModel.pageNum = 1;
          /// 重置没有更多的状态
-         if (self.viewModel.shouldEndRefreshingWithNoMoreData) [self.tableView.mj_footer resetNoMoreData];
+         [self.tableView.mj_footer resetNoMoreData];
      } error:^(NSError *error) {
          @strongify(self)
          /// 已经在bindViewModel中添加了对viewModel.dataSource的变化的监听来刷新数据,所以reload = NO即可
@@ -205,7 +195,7 @@
 - (void)_requestDataCompleted {
     NSUInteger count = self.viewModel.dataSource.count;
     /// CoderMikeHe Fixed: 这里必须要等到，底部控件结束刷新后，再来设置无更多数据，否则被叠加无效
-    if (self.viewModel.shouldEndRefreshingWithNoMoreData && count%self.viewModel.pageSize) [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    if (count%self.viewModel.pageSize) [self.tableView.mj_footer endRefreshingWithNoMoreData];
 }
 
 #pragma mark - UITableViewDataSource

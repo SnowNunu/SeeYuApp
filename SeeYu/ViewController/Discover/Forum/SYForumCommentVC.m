@@ -10,6 +10,7 @@
 #import "SYForumHeaderCell.h"
 #import "SYMomentCommentToolView.h"
 #import "SYForumResultModel.h"
+#import "UIScrollView+SYRefresh.h"
 
 @interface SYForumCommentVC() <UITableViewDelegate, UITableViewDataSource>
 
@@ -127,6 +128,23 @@
     tableView.tableFooterView = [UIView new];
     _tableView = tableView;
     [self.view addSubview:tableView];
+    
+    // 添加下拉刷新控件
+    @weakify(self);
+    [self.tableView sy_addHeaderRefresh:^(MJRefreshNormalHeader *header) {
+        /// 加载下拉刷新的数据
+        @strongify(self);
+        [self tableViewDidTriggerHeaderRefresh];
+    }];
+    [self.tableView.mj_header beginRefreshing];
+    
+    /// 上拉加载
+    [self.tableView sy_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
+        /// 加载上拉刷新的数据
+        @strongify(self);
+        [self tableViewDidTriggerFooterRefresh];
+    }];
+    
     SYMomentCommentToolView *commentToolView = [[SYMomentCommentToolView alloc] init];
     self.commentToolView = commentToolView;
     [self.view addSubview:commentToolView];
@@ -141,6 +159,39 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
         make.bottom.equalTo(self.view).offset(-60);
+    }];
+}
+
+#pragma mark - 下拉刷新事件
+- (void)tableViewDidTriggerHeaderRefresh {
+    @weakify(self)
+    [[[self.viewModel.requestForumsCommentsCommand execute:@1] deliverOnMainThread] subscribeNext:^(id x) {
+        @strongify(self)
+        self.viewModel.pageNum = 1;
+        [self.tableView.mj_footer resetNoMoreData];
+    } error:^(NSError *error) {
+        @strongify(self)
+        [self.tableView.mj_header endRefreshing];
+    } completed:^{
+        @strongify(self)
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer resetNoMoreData];
+    }];
+}
+
+#pragma mark - 上拉刷新事件
+- (void)tableViewDidTriggerFooterRefresh {
+    @weakify(self);
+    [[[self.viewModel.requestForumsCommentsCommand execute:@(self.viewModel.pageNum + 1)] deliverOnMainThread] subscribeNext:^(id x) {
+        @strongify(self)
+        self.viewModel.pageNum += 1;
+    } error:^(NSError *error) {
+        @strongify(self);
+        [self.tableView.mj_footer endRefreshing];
+    } completed:^{
+        @strongify(self)
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }];
 }
 

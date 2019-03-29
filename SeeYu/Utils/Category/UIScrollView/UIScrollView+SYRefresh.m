@@ -31,7 +31,7 @@
         !refreshingBlock?:refreshingBlock((MJRefreshAutoNormalFooter *)strongSelf.mj_footer);
     }];
     // Configure normal mj_footer
-    [mj_footer setTitle:@"别拉了，已经到底了..." forState:MJRefreshStateNoMoreData];
+    [mj_footer setTitle:@"没有更多数据了..." forState:MJRefreshStateNoMoreData];
     self.mj_footer = mj_footer;
     return mj_footer;
 }

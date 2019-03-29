@@ -12,17 +12,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYForumModel : SYObject
 
-/* 评论id */
+/* 帖子id */
 @property (nonatomic, strong) NSString *forumId;
 
-/* 评论标题 */
+/* 帖子标题 */
 @property (nonatomic, strong) NSString *forumTitle;
 
-/* 评论文本 */
+/* 帖子文本 */
 @property (nonatomic, strong) NSString *forumContent;
 
-/* 评论数 */
+/* 帖子图片 */
+@property (nonatomic, strong) NSString *forumPhoto;
+
+/* 帖子评论数 */
 @property (nonatomic, strong) NSString *counts;
+
+
+
 
 @end
 

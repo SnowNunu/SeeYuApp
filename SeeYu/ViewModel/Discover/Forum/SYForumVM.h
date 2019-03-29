@@ -12,12 +12,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYForumVM : SYVM
 
+// 当前页数
 @property (nonatomic, assign) int pageNum;
 
+// 每页条数
 @property (nonatomic, assign) int pageSize;
 
-// 论坛列表数组
+// 数据源数组
 @property (nonatomic, strong) NSArray *datasource;
+
+// 论坛列表数组
+@property (nonatomic, strong) NSArray *forums;
 
 // 请求所有的话题列表
 @property (nonatomic, strong) RACCommand *requestForumsCommand;

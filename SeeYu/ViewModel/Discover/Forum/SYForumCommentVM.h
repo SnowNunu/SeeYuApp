@@ -14,12 +14,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYForumCommentVM : SYVM
 
+// 当前页数
 @property (nonatomic, assign) int pageNum;
 
+// 每页条数
 @property (nonatomic, assign) int pageSize;
 
-// 论坛评论数组
+// 数据源数组
 @property (nonatomic, strong) NSArray *datasource;
+
+// 评论列表数组
+@property (nonatomic, strong) NSArray *comments;
 
 @property (nonatomic, strong) SYForumModel *model;
 
