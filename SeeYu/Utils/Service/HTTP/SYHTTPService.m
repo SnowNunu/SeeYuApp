@@ -564,6 +564,7 @@ static id service_ = nil;
                 return;
             }
             /// 这里继续取出数据 data{"list":[]}
+            /// 这里我不需要直接返回list数组，因为我还需要获取一些其他相关的参数
             NSArray * JSONArray = JSONDictionary[SYHTTPServiceResponseDataListKey];
             if ([JSONArray isKindOfClass:[NSArray class]]) {
                 /// 字典数组 转对应的模型

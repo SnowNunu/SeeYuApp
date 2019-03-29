@@ -93,7 +93,10 @@
 /// 获取速配好友列表
 #define SY_HTTTP_PATH_USER_MATCH_SPEED_LIST     @"/application/user/querySpeedMatch"
 
-/// 获取速配好友列表
+// 添加好友
+#define SY_HTTTP_PATH_USER_FRIEND_ADD        @"/application/userFriendRelation/addFriend"
+
+/// 获取私密列表
 #define SY_HTTTP_PATH_USER_PRIVACY_LIST     @"/application/userShow/queryPrivateArea"
 
 // 获取会员动态
