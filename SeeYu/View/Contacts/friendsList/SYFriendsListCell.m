@@ -31,6 +31,18 @@
     aliasLabel.textAlignment = NSTextAlignmentLeft;
     _aliasLabel = aliasLabel;
     [self.contentView addSubview:aliasLabel];
+    
+    // 未读消息数角标
+    JSBadgeView *badgeView = [[JSBadgeView alloc] initWithParentView:self.contentView alignment:JSBadgeViewAlignmentCenterRight];
+    badgeView.badgeBackgroundColor = [UIColor redColor];   //setting color
+    badgeView.badgePositionAdjustment = CGPointMake(-30, 0); //微调小红点位置
+    badgeView.badgeOverlayColor = [UIColor clearColor]; //设置外圈颜色
+    badgeView.badgeStrokeColor = [UIColor redColor];
+    [badgeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@10);
+        make.height.equalTo(@10);
+    }];
+    _badgeView = badgeView;
 }
 
 - (void)_makeSubViewsConstraints {

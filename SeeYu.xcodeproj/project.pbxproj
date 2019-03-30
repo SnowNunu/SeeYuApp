@@ -147,7 +147,6 @@
 		26A7E7411F79FE550015CA71 /* SYRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A7E73F1F79FE550015CA71 /* SYRegisterVC.m */; };
 		26A7E7451F79FEB00015CA71 /* SYRegisterVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A7E7441F79FEB00015CA71 /* SYRegisterVM.m */; };
 		26AEEE0D1F7D16F600A270EE /* SYSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AEEE0C1F7D16F600A270EE /* SYSearchBar.m */; };
-		26AEEE111F7D1CEC00A270EE /* UISearchBar+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AEEE101F7D1CEC00A270EE /* UISearchBar+SYExtension.m */; };
 		26B89AB22022BB54006FBE20 /* SYMomentShareInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B89AB12022BB54006FBE20 /* SYMomentShareInfoView.m */; };
 		26B89AB72022E599006FBE20 /* SYMomentShareInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B89AB62022E599006FBE20 /* SYMomentShareInfo.m */; };
 		26BE2B522010C02C00F28AA0 /* SYMomentBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BE2B512010C02C00F28AA0 /* SYMomentBackgroundView.m */; };
@@ -263,6 +262,15 @@
 		7B78814A224B1EE300B25CA3 /* SYFriendDetialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788149224B1EE300B25CA3 /* SYFriendDetialModel.m */; };
 		7B788154224E5CBE00B25CA3 /* SYChattingListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788153224E5CBE00B25CA3 /* SYChattingListCell.m */; };
 		7B788157224E727100B25CA3 /* SYTimeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788156224E727100B25CA3 /* SYTimeTool.m */; };
+		7B78815A224F13E400B25CA3 /* SYSingleChattingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788159224F13E400B25CA3 /* SYSingleChattingVC.m */; };
+		7B78815D224F453400B25CA3 /* SYAddFriendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78815C224F453400B25CA3 /* SYAddFriendsVC.m */; };
+		7B788160224F455700B25CA3 /* SYAddFriendsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78815F224F455700B25CA3 /* SYAddFriendsVM.m */; };
+		7B788163224F7A4300B25CA3 /* SYSearchResultHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788162224F7A4300B25CA3 /* SYSearchResultHandle.m */; };
+		7B788166224F990000B25CA3 /* SYInfoEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788165224F990000B25CA3 /* SYInfoEditVC.m */; };
+		7B788169224F994100B25CA3 /* SYInfoEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788168224F994100B25CA3 /* SYInfoEditVM.m */; };
+		7B78816C224FB6C800B25CA3 /* SYNewFriendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78816B224FB6C800B25CA3 /* SYNewFriendsVC.m */; };
+		7B78816F224FB74700B25CA3 /* SYNewFriendsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78816E224FB74700B25CA3 /* SYNewFriendsVM.m */; };
+		7B788172224FBB8300B25CA3 /* SYNewFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788171224FBB8300B25CA3 /* SYNewFriendModel.m */; };
 		7B92871D22450AC100CABC5F /* SYSpeedMatchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B92871C22450AC100CABC5F /* SYSpeedMatchModel.m */; };
 		7B9A1BBD2240997E00B7BFC2 /* SYAnchorShowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BBC2240997E00B7BFC2 /* SYAnchorShowVC.m */; };
 		7B9A1BC02240999D00B7BFC2 /* SYAnchorShowVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BBF2240999D00B7BFC2 /* SYAnchorShowVM.m */; };
@@ -622,8 +630,6 @@
 		26A7E7441F79FEB00015CA71 /* SYRegisterVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYRegisterVM.m; sourceTree = "<group>"; };
 		26AEEE0B1F7D16F600A270EE /* SYSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSearchBar.h; sourceTree = "<group>"; };
 		26AEEE0C1F7D16F600A270EE /* SYSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYSearchBar.m; sourceTree = "<group>"; };
-		26AEEE0F1F7D1CEC00A270EE /* UISearchBar+SYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+SYExtension.h"; sourceTree = "<group>"; };
-		26AEEE101F7D1CEC00A270EE /* UISearchBar+SYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+SYExtension.m"; sourceTree = "<group>"; };
 		26B89AB02022BB54006FBE20 /* SYMomentShareInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMomentShareInfoView.h; sourceTree = "<group>"; };
 		26B89AB12022BB54006FBE20 /* SYMomentShareInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMomentShareInfoView.m; sourceTree = "<group>"; };
 		26B89AB52022E599006FBE20 /* SYMomentShareInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMomentShareInfo.h; sourceTree = "<group>"; };
@@ -856,6 +862,24 @@
 		7B788153224E5CBE00B25CA3 /* SYChattingListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYChattingListCell.m; sourceTree = "<group>"; };
 		7B788155224E727100B25CA3 /* SYTimeTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTimeTool.h; sourceTree = "<group>"; };
 		7B788156224E727100B25CA3 /* SYTimeTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTimeTool.m; sourceTree = "<group>"; };
+		7B788158224F13E400B25CA3 /* SYSingleChattingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSingleChattingVC.h; sourceTree = "<group>"; };
+		7B788159224F13E400B25CA3 /* SYSingleChattingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSingleChattingVC.m; sourceTree = "<group>"; };
+		7B78815B224F453400B25CA3 /* SYAddFriendsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAddFriendsVC.h; sourceTree = "<group>"; };
+		7B78815C224F453400B25CA3 /* SYAddFriendsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAddFriendsVC.m; sourceTree = "<group>"; };
+		7B78815E224F455700B25CA3 /* SYAddFriendsVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAddFriendsVM.h; sourceTree = "<group>"; };
+		7B78815F224F455700B25CA3 /* SYAddFriendsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAddFriendsVM.m; sourceTree = "<group>"; };
+		7B788161224F7A4300B25CA3 /* SYSearchResultHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSearchResultHandle.h; sourceTree = "<group>"; };
+		7B788162224F7A4300B25CA3 /* SYSearchResultHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSearchResultHandle.m; sourceTree = "<group>"; };
+		7B788164224F990000B25CA3 /* SYInfoEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYInfoEditVC.h; sourceTree = "<group>"; };
+		7B788165224F990000B25CA3 /* SYInfoEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYInfoEditVC.m; sourceTree = "<group>"; };
+		7B788167224F994100B25CA3 /* SYInfoEditVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYInfoEditVM.h; sourceTree = "<group>"; };
+		7B788168224F994100B25CA3 /* SYInfoEditVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYInfoEditVM.m; sourceTree = "<group>"; };
+		7B78816A224FB6C700B25CA3 /* SYNewFriendsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYNewFriendsVC.h; sourceTree = "<group>"; };
+		7B78816B224FB6C800B25CA3 /* SYNewFriendsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYNewFriendsVC.m; sourceTree = "<group>"; };
+		7B78816D224FB74700B25CA3 /* SYNewFriendsVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYNewFriendsVM.h; sourceTree = "<group>"; };
+		7B78816E224FB74700B25CA3 /* SYNewFriendsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYNewFriendsVM.m; sourceTree = "<group>"; };
+		7B788170224FBB8300B25CA3 /* SYNewFriendModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYNewFriendModel.h; sourceTree = "<group>"; };
+		7B788171224FBB8300B25CA3 /* SYNewFriendModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYNewFriendModel.m; sourceTree = "<group>"; };
 		7B92871B22450AC100CABC5F /* SYSpeedMatchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSpeedMatchModel.h; sourceTree = "<group>"; };
 		7B92871C22450AC100CABC5F /* SYSpeedMatchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSpeedMatchModel.m; sourceTree = "<group>"; };
 		7B9A1BBB2240997E00B7BFC2 /* SYAnchorShowVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorShowVC.h; sourceTree = "<group>"; };
@@ -1392,6 +1416,8 @@
 		261753101F7370CA00812E1B /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
+				7B788164224F990000B25CA3 /* SYInfoEditVC.h */,
+				7B788165224F990000B25CA3 /* SYInfoEditVC.m */,
 				261753121F73710000812E1B /* SYUserInfoVC.h */,
 				261753131F73710000812E1B /* SYUserInfoVC.m */,
 			);
@@ -1401,6 +1427,8 @@
 		261753111F7370E500812E1B /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
+				7B788167224F994100B25CA3 /* SYInfoEditVM.h */,
+				7B788168224F994100B25CA3 /* SYInfoEditVM.m */,
 				261753151F73712200812E1B /* SYUserInfoVM.h */,
 				261753161F73712200812E1B /* SYUserInfoVM.m */,
 			);
@@ -1793,7 +1821,6 @@
 			isa = PBXGroup;
 			children = (
 				7B0228B1223B4DEC0045E25F /* NSMutableArray */,
-				26AEEE0E1F7D1CD700A270EE /* UISearchBar */,
 				2609ED471F790738002D31CE /* UILabel */,
 				263D36971F666438007267C3 /* Common */,
 				263D36991F666438007267C3 /* FBKVOController */,
@@ -2091,15 +2118,6 @@
 			path = SQL;
 			sourceTree = "<group>";
 		};
-		26AEEE0E1F7D1CD700A270EE /* UISearchBar */ = {
-			isa = PBXGroup;
-			children = (
-				26AEEE0F1F7D1CEC00A270EE /* UISearchBar+SYExtension.h */,
-				26AEEE101F7D1CEC00A270EE /* UISearchBar+SYExtension.m */,
-			);
-			path = UISearchBar;
-			sourceTree = "<group>";
-		};
 		26BEBC6B1F8B76D6004D502F /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -2310,6 +2328,10 @@
 				7B0228B6223B55020045E25F /* SYFriendGroupModel.m */,
 				7B0228B8223B7D9D0045E25F /* SYFriendModel.h */,
 				7B0228B9223B7D9D0045E25F /* SYFriendModel.m */,
+				7B788161224F7A4300B25CA3 /* SYSearchResultHandle.h */,
+				7B788162224F7A4300B25CA3 /* SYSearchResultHandle.m */,
+				7B788170224FBB8300B25CA3 /* SYNewFriendModel.h */,
+				7B788171224FBB8300B25CA3 /* SYNewFriendModel.m */,
 			);
 			path = friendsList;
 			sourceTree = "<group>";
@@ -2838,6 +2860,8 @@
 			children = (
 				7BB5199F21EC8052000C1CF2 /* SYChattingVC.h */,
 				7BB519A021EC8052000C1CF2 /* SYChattingVC.m */,
+				7B788158224F13E400B25CA3 /* SYSingleChattingVC.h */,
+				7B788159224F13E400B25CA3 /* SYSingleChattingVC.m */,
 			);
 			path = chatting;
 			sourceTree = "<group>";
@@ -2912,6 +2936,10 @@
 				7BC6FC062237C1ED0079330A /* SYFriendsListVC.m */,
 				7B0228C5223BCAF80045E25F /* SYSearchFriendsResultVC.h */,
 				7B0228C6223BCAF80045E25F /* SYSearchFriendsResultVC.m */,
+				7B78815B224F453400B25CA3 /* SYAddFriendsVC.h */,
+				7B78815C224F453400B25CA3 /* SYAddFriendsVC.m */,
+				7B78816A224FB6C700B25CA3 /* SYNewFriendsVC.h */,
+				7B78816B224FB6C800B25CA3 /* SYNewFriendsVC.m */,
 			);
 			path = friendsList;
 			sourceTree = "<group>";
@@ -2945,6 +2973,10 @@
 			children = (
 				7BC6FC082237C2DF0079330A /* SYFriendsListVM.h */,
 				7BC6FC092237C2DF0079330A /* SYFriendsListVM.m */,
+				7B78815E224F455700B25CA3 /* SYAddFriendsVM.h */,
+				7B78815F224F455700B25CA3 /* SYAddFriendsVM.m */,
+				7B78816D224FB74700B25CA3 /* SYNewFriendsVM.h */,
+				7B78816E224FB74700B25CA3 /* SYNewFriendsVM.m */,
 			);
 			path = friendsList;
 			sourceTree = "<group>";
@@ -3731,6 +3763,7 @@
 				263D37171F66656A007267C3 /* YYThreadSafeArray.m in Sources */,
 				261E015D1FDE2E010041E989 /* SYCommonSwitchItemViewModel.m in Sources */,
 				26B89AB72022E599006FBE20 /* SYMomentShareInfo.m in Sources */,
+				7B78815A224F13E400B25CA3 /* SYSingleChattingVC.m in Sources */,
 				263119EE2015E4E600D589D8 /* NSMutableAttributedString+SYMoment.m in Sources */,
 				2638C5AD20450DC300C334E2 /* UIImage+ImageEffects.m in Sources */,
 				7B9A1BC72241F25C00B7BFC2 /* SYAnchorsRandomVC.m in Sources */,
@@ -3788,7 +3821,6 @@
 				7B747A542236229500B3F6A0 /* XFCameraController.m in Sources */,
 				7B61945B21D760C9004055A2 /* SYRegisterView.m in Sources */,
 				26FE8E801F9514D100EC8BE0 /* TADotView.m in Sources */,
-				26AEEE111F7D1CEC00A270EE /* UISearchBar+SYExtension.m in Sources */,
 				7B0228A5223A16470045E25F /* NSString+PinYin4Cocoa.m in Sources */,
 				263D36E41F666438007267C3 /* NSString+SYSize.m in Sources */,
 				26363AD2201346FC000061EF /* SYEmoticon.m in Sources */,
@@ -3832,12 +3864,14 @@
 				26FE8E481F95143D00EC8BE0 /* IDMPhoto.m in Sources */,
 				26FE8E8C1F9514D100EC8BE0 /* TZImagePickerController.m in Sources */,
 				261753201F739DDC00812E1B /* SYCommonQRCodeItemViewModel.m in Sources */,
+				7B788163224F7A4300B25CA3 /* SYSearchResultHandle.m in Sources */,
 				263C898A1F6A54AE00F7A0AE /* SYCommonFooterView.m in Sources */,
 				7B590939223F8B0300EE5ACF /* SYAnchorsModel.m in Sources */,
 				263D36DE1F666438007267C3 /* NSDate+Extension.m in Sources */,
 				7BFB9C6021DE1C87002F1562 /* SYMobileBindingVM.m in Sources */,
 				26225D971F6557290074BFC3 /* SYViewModelServicesImpl.m in Sources */,
 				26FE8E911F9514D100EC8BE0 /* TZProgressView.m in Sources */,
+				7B78816C224FB6C800B25CA3 /* SYNewFriendsVC.m in Sources */,
 				7B9A1BC32241409800B7BFC2 /* SYAnchorFocusStateModel.m in Sources */,
 				26FE8E901F9514D100EC8BE0 /* TZPhotoPreviewController.m in Sources */,
 				263D37231F668408007267C3 /* SYRouter.m in Sources */,
@@ -3849,6 +3883,7 @@
 				7BA3261221DFB4E100B7A352 /* SYSelfieVC.m in Sources */,
 				263D37191F66656A007267C3 /* YYTimer.m in Sources */,
 				26FE8E811F9514D100EC8BE0 /* TAPageControl.m in Sources */,
+				7B788166224F990000B25CA3 /* SYInfoEditVC.m in Sources */,
 				26FE8E8A1F9514D100EC8BE0 /* TZImageManager.m in Sources */,
 				7B78811C2248BDC000B25CA3 /* SYForumCommentVM.m in Sources */,
 				263D36D91F666438007267C3 /* Foundation+Log.m in Sources */,
@@ -3882,6 +3917,7 @@
 				26064ABB1F5D9A1400566B95 /* SYAppDelegate.m in Sources */,
 				7BC6FC232238C0C00079330A /* CountDownQueue.m in Sources */,
 				26FE8E851F9514D100EC8BE0 /* NSBundle+TZImagePicker.m in Sources */,
+				7B788160224F455700B25CA3 /* SYAddFriendsVM.m in Sources */,
 				7B724BE922462B1F0096F40B /* SYPrivacyShowVM.m in Sources */,
 				2618AFDF1F91BDA300F82A46 /* SYModifyNicknameVC.m in Sources */,
 				26225D8F1F65545E0074BFC3 /* SYTabBarViewModel.m in Sources */,
@@ -3893,6 +3929,7 @@
 				263D36DC1F666438007267C3 /* MBProgressHUD+SYExtension.m in Sources */,
 				261597061FEA52CE00C6FD80 /* SYMoment.m in Sources */,
 				7B78812B2249D58A00B25CA3 /* SYMomentVC.m in Sources */,
+				7B78815D224F453400B25CA3 /* SYAddFriendsVC.m in Sources */,
 				26003FF31F988B81000621B0 /* SYButton.m in Sources */,
 				26064AB81F5D9A1400566B95 /* main.m in Sources */,
 				7B0228B0223A66440045E25F /* SYFriendsList.m in Sources */,
@@ -3914,6 +3951,7 @@
 				262ADA4D1FCA75C700B0F4FD /* SYConfigureManager.m in Sources */,
 				7B724BDE2245E2A10096F40B /* SYPrivacyVM.m in Sources */,
 				7B9A1BE82243CECD00B7BFC2 /* SYListVideoOperation.m in Sources */,
+				7B788169224F994100B25CA3 /* SYInfoEditVM.m in Sources */,
 				2633E01A1FEA076600D0E187 /* SYSegmentedControlController.m in Sources */,
 				2605C5B81F66249F00B1F66E /* SYHomePageVM.m in Sources */,
 				26CCB9D120244F690090DBC5 /* SYMomentVideo.m in Sources */,
@@ -3924,6 +3962,7 @@
 				26FE8E871F9514D100EC8BE0 /* TZAssetModel.m in Sources */,
 				7B59093D223F9C7300EE5ACF /* SYAnchorsListCell.m in Sources */,
 				2605C5BB1F662EA300B1F66E /* SYMainFrameVC.m in Sources */,
+				7B788172224FBB8300B25CA3 /* SYNewFriendModel.m in Sources */,
 				263C89811F6A34D300F7A0AE /* SYCommonVC.m in Sources */,
 				26FA404A1FEB5BDF00B4AD2B /* SYPicture.m in Sources */,
 				26FE8E921F9514D100EC8BE0 /* TZVideoPlayerController.m in Sources */,
@@ -3999,6 +4038,7 @@
 				261597501FEA5DD300C6FD80 /* SYMomentOperationMoreView.m in Sources */,
 				7B9A1BE02243B21F00B7BFC2 /* NSString+Hash.m in Sources */,
 				261597031FEA527400C6FD80 /* SYMoments.m in Sources */,
+				7B78816F224FB74700B25CA3 /* SYNewFriendsVM.m in Sources */,
 				7B7881192248BD9E00B25CA3 /* SYForumCommentVC.m in Sources */,
 				2615974A1FEA5DD300C6FD80 /* SYMomentCommentCell.m in Sources */,
 				7B78814A224B1EE300B25CA3 /* SYFriendDetialModel.m in Sources */,

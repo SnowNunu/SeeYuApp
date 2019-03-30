@@ -7,6 +7,7 @@
 //
 
 #import "SYFriendsListVM.h"
+#import "SYNewFriendsVM.h"
 
 @implementation SYFriendsListVM
 
@@ -24,6 +25,11 @@
     [[[self.getFriendsListCommand.executionSignals switchToLatest] deliverOnMainThread] subscribeNext:^(SYFriendsList *friendsList) {
         self.freshFriendCount = [friendsList.freshFriendCount intValue];
         self.userFriendsArray = friendsList.userFriends;
+    }];
+    self.enterNewFriendsViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        SYNewFriendsVM *vm = [[SYNewFriendsVM alloc] initWithServices:self.services params:nil];
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
     }];
 }
 

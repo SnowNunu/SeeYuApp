@@ -55,7 +55,6 @@
 #import "UITextField+SYExtension.h"
 #import "UITextView+SYExtension.h"
 #import "UILabel+SYExtension.h"
-#import "UISearchBar+SYExtension.h"
 #import "UITableView+SYExtension.h"
 #import "SAMKeychain+SYUtil.h"
 #import "NSDate+Extension.h"

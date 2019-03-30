@@ -7,6 +7,8 @@
 //
 
 #import "SYFriendDetailInfoVC.h"
+#import "SYSingleChattingVC.h"
+#import "SYUserInfoManager.h"
 
 @interface SYFriendDetailInfoVC () <UITableViewDelegate, UITableViewDataSource>
 
@@ -267,13 +269,13 @@
     }];
     self.backBtn.rac_command = self.viewModel.goBackCommand;
     [[self.sendMsgBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        RCConversationViewController *conversationVC = [[RCConversationViewController alloc]init];
-        conversationVC.conversationType = ConversationType_PRIVATE;
-        conversationVC.targetId = self.viewModel.userId;
-        // 从缓存获取用户信息，用户昵称变动一般不大
-        RCUserInfo *userInfo = [[RCIM sharedRCIM] getUserInfoCache:self.viewModel.userId];
-        conversationVC.title = userInfo.name;
-        [self.navigationController pushViewController:conversationVC animated:YES];
+        [[SYUserInfoManager shareInstance] getUserInfo:self.viewModel.userId completion:^(RCUserInfo * _Nonnull userInfo) {
+            SYSingleChattingVC *conversationVC = [[SYSingleChattingVC alloc] init];
+            conversationVC.conversationType = ConversationType_PRIVATE;
+            conversationVC.targetId = userInfo.userId;
+            conversationVC.title = userInfo.name;
+            [self.navigationController pushViewController:conversationVC animated:YES];
+        }];
     }];
 }
 

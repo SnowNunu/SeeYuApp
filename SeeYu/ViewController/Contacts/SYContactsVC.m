@@ -61,6 +61,7 @@
     self.contentView.contentViewCanScroll = NO;
     [self.view addSubview:_contentView];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"btn_addFriend" target:nil selector:nil textType:NO];
+    self.navigationItem.rightBarButtonItem.rac_command = self.viewModel.enterAddFriendsCommand;
 }
 
 - (void)FSSegmentTitleView:(FSSegmentTitleView *)titleView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {

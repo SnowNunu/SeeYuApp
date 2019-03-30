@@ -10,4 +10,6 @@
 
 @interface SYContactsVM : SYTableVM
 
+@property (nonatomic, strong) RACCommand *enterAddFriendsCommand;
+
 @end

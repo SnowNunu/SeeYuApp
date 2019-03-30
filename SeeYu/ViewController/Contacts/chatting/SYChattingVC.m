@@ -11,6 +11,7 @@
 #import "SYChattingListCell.h"
 #import "SYUserInfoManager.h"
 #import "SYTimeTool.h"
+#import "SYSingleChattingVC.h"
 
 @interface SYChattingVC ()
 
@@ -52,6 +53,9 @@
         RCConversationModel *model = dataSource[i];
         if(model.conversationType == ConversationType_PRIVATE){
             model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
+            [[SYUserInfoManager shareInstance] getUserInfo:model.targetId completion:^(RCUserInfo * _Nonnull userInfo) {
+                model.conversationTitle = userInfo.name;
+            }];
         }
     }
     return dataSource;
@@ -110,6 +114,16 @@
         }
     }];
     return cell;
+}
+
+- (void)onSelectedTableRow:(RCConversationModelType)conversationModelType conversationModel:(RCConversationModel *)model atIndexPath:(NSIndexPath *)indexPath {
+    if (model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION) {
+        SYSingleChattingVC *conversationVC = [[SYSingleChattingVC alloc] init];
+        conversationVC.conversationType = model.conversationType;
+        conversationVC.targetId = model.targetId;
+        conversationVC.title = model.conversationTitle;
+        [self.navigationController pushViewController:conversationVC animated:YES];
+    }
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSBadgeView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UILabel *aliasLabel;
 
-@property (nonatomic, strong) UIView *badgeView;
+/// 角标
+@property (nonatomic, strong) JSBadgeView *badgeView;
 
 @end
 

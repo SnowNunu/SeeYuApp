@@ -75,6 +75,12 @@
 /// 获取用户的好友列表
 #define SY_HTTTP_PATH_USER_FRIENDS_LIST   @"/application/userFriendRelation/queryFriendList"
 
+/// 按昵称或者id搜索好友
+#define SY_HTTTP_PATH_USER_FRIENDS_SEARCH   @"/application/user/searchUser"
+
+/// 查询所有的好友请求列表
+#define SY_HTTTP_PATH_USER_NEW_FRIENDS_LIST   @"/application/userFriendRelation/queryNewFriendList"
+
 /// 获取主播列表
 #define SY_HTTTP_PATH_USER_ANCHOR_LIST   @"/application/userAnchor/queryAnchors"
 
@@ -95,6 +101,9 @@
 
 // 添加好友
 #define SY_HTTTP_PATH_USER_FRIEND_ADD        @"/application/userFriendRelation/addFriend"
+
+// 同意好友请求
+#define SY_HTTTP_PATH_USER_FRIEND_AGREE   @"/application/userFriendRelation/agreeAddFriend"
 
 /// 获取私密列表
 #define SY_HTTTP_PATH_USER_PRIVACY_LIST     @"/application/userShow/queryPrivateArea"

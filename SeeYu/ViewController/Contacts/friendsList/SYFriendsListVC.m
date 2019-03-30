@@ -14,6 +14,8 @@
 #import "SYFriendsListCell.h"
 #import "SYFriendModel.h"
 #import "SYSearchFriendsResultVC.h"
+#import "SYSearchResultHandle.h"
+#import "SYSingleChattingVC.h"
 
 @interface SYFriendsListVC () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate>
 
@@ -27,9 +29,9 @@
 
 @property (nonatomic, strong) NSMutableArray *searchList; // 搜索结果的数组
 
-@property (nonatomic, strong) UISearchController *searchFriendsController;  // 好友搜索框
+@property (nonatomic, strong) UISearchController *searchFriendsVC;  // 好友搜索框
 
-@property (nonatomic, strong) SYSearchFriendsResultVC *searchResultController;  // 好友搜索结果
+@property (nonatomic, strong) SYSearchFriendsResultVC *searchResultVC;  // 好友搜索结果
 
 @end
 
@@ -61,17 +63,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    [self.viewModel.getFriendsListCommand execute:nil];
     [self _setupSubviews];
     [self _makeSubViewsConstraints];
-    [self _setupSearchController];
+    [self _setupSearchVC];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.viewModel.getFriendsListCommand execute:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.array removeAllObjects];
+    [self.sectionIndexArray removeAllObjects];
 }
 
 - (void)bindViewModel {
     @weakify(self)
-    [RACObserve(self.viewModel, freshFriendCount) subscribeNext:^(NSString *count) {
-        NSLog(@"新的朋友数量：%d",[count intValue]);
-    }];
+//    [RACObserve(self.viewModel, freshFriendCount) subscribeNext:^(NSString *count) {
+//        NSLog(@"新的朋友数量：%d",[count intValue]);
+//        if ([count intValue] > 0) {
+//            SYFriendsListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"SYFriendsListCell" forIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+//            cell.badgeView.badgeText = count;
+//            [cell.badgeView setNeedsLayout];
+//        }
+//    }];
     [RACObserve(self.viewModel, userFriendsArray) subscribeNext:^(NSArray *friendsList) {
         if (friendsList.count > 1) {
             @strongify(self)
@@ -135,25 +152,26 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+//    [_tableView registerClass:[SYFriendsListCell class] forCellReuseIdentifier:@"SYFriendsListCell"];
     [self.view addSubview:_tableView];
 }
 
-- (void)_setupSearchController {
-    self.searchResultController = [[SYSearchFriendsResultVC alloc] init];
-//    self.searchResultController.delegate = self;
-    _searchFriendsController = [[UISearchController alloc] initWithSearchResultsController:self.searchResultController];
-    _searchFriendsController.delegate = self;
+- (void)_setupSearchVC {
+    _searchResultVC = [[SYSearchFriendsResultVC alloc] init];
+//    self.searchResultVC.delegate = self;
+    _searchFriendsVC = [[UISearchController alloc] initWithSearchResultsController:self.searchResultVC];
+    _searchFriendsVC.delegate = self;
 //    _searchController.delegateCustom = self;
-    _searchFriendsController.searchResultsUpdater = self;
-    _searchFriendsController.dimsBackgroundDuringPresentation = NO;
-    _searchFriendsController.hidesNavigationBarDuringPresentation = NO;
-    _searchFriendsController.searchBar.delegate = self;
-    _searchFriendsController.searchBar.frame = CGRectMake(self.searchFriendsController.searchBar.frame.origin.x, 0, self.searchFriendsController.searchBar.frame.size.width, 50);
-    _searchFriendsController.searchBar.placeholder = @"用户昵称";
-    _searchFriendsController.searchBar.searchBarStyle = UISearchBarStyleProminent;
-    _searchFriendsController.searchBar.returnKeyType = UIReturnKeyDone;
-    _searchFriendsController.searchBar.backgroundColor = SYColorFromHexString(@"#9F69EB");
-    self.tableView.tableHeaderView = self.searchFriendsController.searchBar;
+    _searchFriendsVC.searchResultsUpdater = self;
+    _searchFriendsVC.dimsBackgroundDuringPresentation = NO;
+    _searchFriendsVC.hidesNavigationBarDuringPresentation = YES;
+    _searchFriendsVC.searchBar.delegate = self;
+    _searchFriendsVC.searchBar.frame = CGRectMake(0, 0, SY_SCREEN_WIDTH, 44);
+    _searchFriendsVC.searchBar.placeholder = @"请输入搜索的的内容";
+    _searchFriendsVC.searchBar.searchBarStyle = UISearchBarStyleProminent;
+    _searchFriendsVC.searchBar.returnKeyType = UIReturnKeyDone;
+    _searchFriendsVC.searchBar.backgroundImage = [UIImage imageWithColor:SYColorFromHexString(@"#9F69EB") size:CGSizeMake(_searchFriendsVC.searchBar.width,44)];
+    self.tableView.tableHeaderView = self.searchFriendsVC.searchBar;
 }
 
 - (void)_makeSubViewsConstraints {
@@ -165,11 +183,11 @@
 
 #pragma mark UITableViewDatasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.searchFriendsController.active ? 1 : self.array.count;
+    return self.searchFriendsVC.active ? 1 : self.array.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.searchFriendsController.active) {
+    if (self.searchFriendsVC.active) {
         return 0;
     }
     SYFriendGroupModel *group = self.array[section];
@@ -189,6 +207,13 @@
     cell.aliasLabel.text = friendModel.userFriendName;
     if ([friendModel.userFriendName isEqualToString:@"新的朋友"]) {
         cell.headImageView.image = SYImageNamed(@"icon_newFriend");
+        if (self.viewModel.freshFriendCount > 0) {
+            cell.badgeView.badgeText = [NSString stringWithFormat:@"%d",self.viewModel.freshFriendCount];
+            [cell.badgeView setNeedsLayout];
+        } else {
+            cell.badgeView.badgeText = nil;
+            [cell.badgeView setNeedsLayout];
+        }
     } else if ([friendModel.userFriendName isEqualToString:@"红娘客服"]) {
         cell.headImageView.image = SYImageNamed(@"icon_cusService");
     } else {
@@ -203,7 +228,7 @@
 
 // 右侧的索引标题数组
 - (NSArray *)sectionIndexArrayAtIndexes:(NSIndexSet *)indexes {
-    return self.searchFriendsController.active ? nil : self.sectionIndexArray;
+    return self.searchFriendsVC.active ? nil : self.sectionIndexArray;
 }
 
 // 返回cell行高
@@ -226,7 +251,7 @@
 
 // 设置表头的高度。如果使用自定义表头，该方法必须要实现，否则自定义表头无法执行，也不会报错
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (self.searchFriendsController.active || section == 0) {
+    if (self.searchFriendsVC.active || section == 0) {
         return 0;
     } else {
         return 42;
@@ -236,43 +261,46 @@
 // cell点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    SYFriendGroupModel *group = self.array[indexPath.section];
+    SYFriendModel *friendModel = group.friends[indexPath.row];
+    if ([friendModel.userFriendName isEqualToString:@"新的朋友"]) {
+        [self.viewModel.enterNewFriendsViewCommand execute:nil];
+    } else {
+        SYSingleChattingVC *conversationVC = [[SYSingleChattingVC alloc] init];
+        conversationVC.conversationType = ConversationType_PRIVATE;
+        NSNumber *friendId = (NSNumber*)friendModel.userFriendId;
+        conversationVC.targetId = [friendId stringValue];
+        conversationVC.title = friendModel.userFriendName;
+        [self.navigationController pushViewController:conversationVC animated:YES];
+    }
 }
 
 #pragma mark - UISearchResultsUpdating
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-//    NSString *searchString = [self.searchFriendsController.searchBar text];
+    NSString *searchString = [self.searchFriendsVC.searchBar text];
     // 移除搜索结果数组的数据
-//    [self.searchList removeAllObjects];
-//    //过滤数据
-//    self.searchList= [SearchResultHandle getSearchResultBySearchText:searchString dataArray:self.dataArray];
-//    if (searchString.length==0&&self.searchList!= nil) {
-//        [self.searchList removeAllObjects];
-//    }
-//    self.searchList = [self.searchList filterTheSameElement];
-//    NSMutableArray *dataSource = nil;
-//    if ([self.searchList count]>0) {
-//        dataSource = [NSMutableArray array];
-//        // 结局了数据重复的问题
-//        for (NSString *str in self.searchList) {
-//            FollowModel *model = [[FollowModel alloc] init];
-//            model.nickname = str;
+    [self.searchList removeAllObjects];
+    //过滤数据
+    self.searchList= [SYSearchResultHandle getSearchResultBySearchText:searchString dataArray:self.array];
+    if (searchString.length == 0 && self.searchList!= nil) {
+        [self.searchList removeAllObjects];
+    }
+    self.searchList = [self.searchList filterTheSameElement];
+    NSMutableArray *dataSource = nil;
+    if ([self.searchList count] > 0) {
+        dataSource = [NSMutableArray array];
+        // 结局了数据重复的问题
+        for (NSString *str in self.searchList) {
+            SYFriendModel *model = [[SYFriendModel alloc] init];
+            model.userFriendName = str;
 //            model.img_Url = nil;
-//            [dataSource addObject:model];
-//        }
-//    }
-//    //刷新表格
-//    self.searchResultController.dataSource = dataSource;
-//    [self.searchResultController.tableView reloadData];
-//    [self.tableView reloadData];
+            [dataSource addObject:model];
+        }
+    }
+    //刷新表格
+    self.searchResultVC.dataSource = dataSource;
+    [self.searchResultVC.tableView reloadData];
+    [self.tableView reloadData];
 }
-
-#pragma mark - UISearchBarDelegate
-//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-//    [self searchControllerDissmiss];
-//}
-//- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-//{
-//    [self searchControllerDissmiss];
-//}
 
 @end
