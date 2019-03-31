@@ -38,7 +38,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
-    [self.conversationListTableView reloadData];
+//    [self.conversationListTableView reloadData];
 }
 
 // 高度

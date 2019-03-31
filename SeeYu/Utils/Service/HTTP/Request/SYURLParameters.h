@@ -87,6 +87,9 @@
 /// 获取选聊主播(在线)列表
 #define SY_HTTTP_PATH_USER_ANCHOR_ONLINE_LIST  @"/application/userAnchor/chooseChatAnchors"
 
+/// 获取礼物列表
+#define SY_HTTTP_PATH_USER_PRESENTS_LIST        @"/application/giveGift/queryGiveOrReceiveGift"
+
 /// 获取当前主播的关注状态
 #define SY_HTTTP_PATH_ANCHOR_FOCUS_STATE   @"/application/userAnchor/queryFollowFlag"
 
