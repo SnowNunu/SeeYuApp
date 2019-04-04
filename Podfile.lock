@@ -134,6 +134,10 @@ PODS:
   - UICollectionViewLeftAlignedLayout (1.0.2)
   - "UIImage+ImageWithColor (1.4.0)"
   - "UITableView+FDTemplateLayoutCell (1.6)"
+  - UMCCommon (2.0.0)
+  - UMCPush (3.2.4):
+    - UMCCommon
+  - UMCSecurityPlugins (1.0.6)
   - WZLBadge (1.2.6)
   - YBImageBrowser (2.1.4):
     - SDWebImage
@@ -208,6 +212,9 @@ DEPENDENCIES:
   - UICollectionViewLeftAlignedLayout (= 1.0.2)
   - "UIImage+ImageWithColor (= 1.4.0)"
   - "UITableView+FDTemplateLayoutCell (= 1.6)"
+  - UMCCommon
+  - UMCPush
+  - UMCSecurityPlugins
   - WZLBadge (= 1.2.6)
   - YBImageBrowser
   - YYAsyncLayer (= 1.0)
@@ -268,6 +275,9 @@ SPEC REPOS:
     - UICollectionViewLeftAlignedLayout
     - "UIImage+ImageWithColor"
     - "UITableView+FDTemplateLayoutCell"
+    - UMCCommon
+    - UMCPush
+    - UMCSecurityPlugins
     - WZLBadge
     - YBImageBrowser
     - YYAsyncLayer
@@ -344,6 +354,9 @@ SPEC CHECKSUMS:
   UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
   "UIImage+ImageWithColor": 891401f732f2f332fefe68c2332c6c955c2a879c
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  UMCCommon: 79b5a614c958db367113eed5740109d9a98e1223
+  UMCPush: 1edd856027dcf905333effb4040ace5d236a7316
+  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
   YBImageBrowser: e3c514dd3bdc6efef379eabd57988eae3c109e38
   YYAsyncLayer: df6b01ebc695c5f6b4c15dd5c23fa3e081eb25c0
@@ -358,6 +371,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: e1a6fc4d20bcb3f6d0abed1c4cffefb44b7a7dcf
+PODFILE CHECKSUM: 4cce123eccb1a68706f71dd19b6818f3ca2964ed
 
 COCOAPODS: 1.5.3

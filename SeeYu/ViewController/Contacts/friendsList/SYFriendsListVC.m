@@ -96,8 +96,10 @@
                 [self.aliasArray addObject:dict[@"userFriendName"]];
             }
             for (NSString *string in self.aliasArray) {
-                NSString *header = [PinYinForObjc chineseConvertToPinYinHead:string];
-                [self.sectionIndexArray addObject:header];
+                if (![string isEqualToString:@"红娘客服"]) {
+                    NSString *header = [PinYinForObjc chineseConvertToPinYinHead:string];
+                    [self.sectionIndexArray addObject:header];
+                }
             }
             // 去除数组中相同的元素
             self.sectionIndexArray = [self.sectionIndexArray filterTheSameElement];
@@ -152,6 +154,9 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.tableFooterView = [UIView new];
+    _tableView.sectionIndexColor = [UIColor blackColor]; // 设置默认时索引值颜色
+//    _tableView.sectionIndexTrackingBackgroundColor = [UIColor grayColor]; // 设置选中时，索引背景颜色
 //    [_tableView registerClass:[SYFriendsListCell class] forCellReuseIdentifier:@"SYFriendsListCell"];
     [self.view addSubview:_tableView];
 }
@@ -197,7 +202,7 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"SYFriendsListCell";
     SYFriendsListCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell = [tableView cellForRowAtIndexPath:indexPath];
     if(!cell) {
         cell = [[SYFriendsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
@@ -218,7 +223,7 @@
         cell.headImageView.image = SYImageNamed(@"icon_cusService");
     } else {
         if ([friendModel.userHeadImg sy_isNullOrNil]) {
-            cell.headImageView.image = SYImageNamed(@"icon_cusService");
+            cell.headImageView.image = SYImageNamed(@"header_default_100x100");
         } else {
             [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:friendModel.userHeadImg] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
         }
@@ -227,7 +232,7 @@
 }
 
 // 右侧的索引标题数组
-- (NSArray *)sectionIndexArrayAtIndexes:(NSIndexSet *)indexes {
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return self.searchFriendsVC.active ? nil : self.sectionIndexArray;
 }
 
@@ -281,7 +286,7 @@
     // 移除搜索结果数组的数据
     [self.searchList removeAllObjects];
     //过滤数据
-    self.searchList= [SYSearchResultHandle getSearchResultBySearchText:searchString dataArray:self.array];
+    self.searchList = [SYSearchResultHandle getSearchResultBySearchText:searchString dataArray:self.array];
     if (searchString.length == 0 && self.searchList!= nil) {
         [self.searchList removeAllObjects];
     }

@@ -11,6 +11,9 @@
 #import "SYRegisterVM.h"
 #import "SYRCIMDataSource.h"
 #import "SYGuideVM.h"
+//#import <UMCommon/UMCommon.h>
+//#import <UMPush/UMessage.h>
+#import <FFToast/FFToast.h>
 
 #if defined(DEBUG)||defined(_DEBUG)
 #import <JPFPSStatus/JPFPSStatus.h>
@@ -19,7 +22,8 @@
 //#import "CacheCleanerPlugin.h"
 //#import "RetainCycleLoggerPlugin.h"
 #endif
-@interface AppDelegate ()
+
+@interface AppDelegate () <RCIMReceiveMessageDelegate>
 
 /// APP管理的导航栏的堆栈
 @property (nonatomic, readwrite, strong) SYNavigationControllerStack *navigationControllerStack;
@@ -99,7 +103,28 @@
     
     // 初始化融云服务
     [[RCIM sharedRCIM] initWithAppKey:@"c9kqb3rdc4vbj"];
+    [RCIM sharedRCIM].enablePersistentUserInfoCache = YES;  // 开启用户信息持久化
+    [RCIM sharedRCIM].receiveMessageDelegate = self;    // 设置接收消息代理
     [RCIM sharedRCIM].userInfoDataSource = [SYRCIMDataSource shareInstance];
+    [RCIM sharedRCIM].enableTypingStatus = YES; // 开启输入状态监听
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(didReceiveMessageNotification:)
+//                                                 name:RCKitDispatchMessageNotification
+//                                               object:nil];
+//    // 初始化友盟推送服务
+//    [UMConfigure initWithAppkey:@"5ca1a3aa3fc195e05e0000df" channel:@"App Store"];
+//    UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
+//    //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
+//    entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound|UMessageAuthorizationOptionAlert;
+//    [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+//    [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
+//        if (granted) {
+//
+//        } else {
+//
+//        }
+//    }];
     
     // 注册推送, 用于iOS8以及iOS8之后的系统
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
@@ -237,8 +262,42 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     // userInfo为远程推送的内容
-    NSLog(@"收到的远程推送内容为:%@",userInfo);
+    NSDictionary *pushServiceData = [[RCIMClient sharedRCIMClient] getPushExtraFromRemoteNotification:userInfo];
+    if (pushServiceData) {
+        NSLog(@"该远程推送包含来自融云的推送服务");
+        for (id key in [pushServiceData allKeys]) {
+            NSLog(@"key = %@, value = %@", key, pushServiceData[key]);
+        }
+    } else {
+        NSLog(@"该远程推送不包含来自融云的推送服务");
+    }
 }
+
+- (void)onRCIMReceiveMessage:(RCMessage *)message left:(int)left {
+    NSLog(@"%@",message);
+    if ([message.content isMemberOfClass:[RCInformationNotificationMessage class]]) {
+        RCInformationNotificationMessage *msg = (RCInformationNotificationMessage *)message.content;
+        // NSString *str = [NSString stringWithFormat:@"%@",msg.message];
+        NSLog(@"%@",msg.message);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FFToast showToastWithTitle:@"系统" message:msg.message iconImage:SYImageNamed(@"header_default_100x100") duration:2 toastType:FFToastTypeDefault];
+        });
+    }
+}
+
+//- (void)didReceiveMessageNotification:(NSNotification *)notification {
+//    NSLog(@"测试效果%@",notification);
+//    NSNumber *left = [notification.userInfo objectForKey:@"left"];
+//    if ([RCIMClient sharedRCIMClient].sdkRunningMode == RCSDKRunningMode_Background && 0 == left.integerValue) {
+//        int unreadMsgCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
+//                                                                             @(ConversationType_PRIVATE), @(ConversationType_DISCUSSION), @(ConversationType_APPSERVICE),
+//                                                                             @(ConversationType_PUBLICSERVICE), @(ConversationType_GROUP)
+//                                                                             ]];
+//        dispatch_async(dispatch_get_main_queue(),^{
+//            [UIApplication sharedApplication].applicationIconBadgeNumber = unreadMsgCount;
+//        });
+//    }
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

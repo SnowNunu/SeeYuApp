@@ -46,6 +46,18 @@
     return 75.f;
 }
 
+//左滑删除
+- (void)rcConversationListTableView:(UITableView *)tableView
+                 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+                  forRowAtIndexPath:(NSIndexPath *)indexPath {
+    //可以从数据库删除数据
+    RCConversationModel *model = self.conversationListDataSource[indexPath.row];
+    [[RCIMClient sharedRCIMClient] removeConversation:ConversationType_PRIVATE targetId:model.targetId];
+    [self.conversationListDataSource removeObjectAtIndex:indexPath.row];
+    [self.conversationListTableView reloadData];
+    [super rcConversationListTableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
+}
+
 //插入自定义会话model
 - (NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource {
     // 目前仅有私聊会话消息类型，因此暂只需要修改私聊会话的类型
@@ -125,5 +137,6 @@
         [self.navigationController pushViewController:conversationVC animated:YES];
     }
 }
+
 
 @end

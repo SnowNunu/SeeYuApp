@@ -131,6 +131,9 @@ pod 'LBXScan/UI'                        ,'2.0'
 # 极光推送
 # pod 'JPush'                             , '3.0.6'
 # 友盟相关
+pod 'UMCCommon'
+pod 'UMCPush'
+pod 'UMCSecurityPlugins'
 # pod 'UMengAnalytics-NO-IDFA'            , '4.2.5'
 # U-Share SDK UI模块（分享面板，建议添加）
 # pod 'UMengUShare/UI'                    , '6.4.5'
