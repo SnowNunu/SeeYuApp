@@ -36,6 +36,9 @@
 /// 获取用户资料
 #define SY_HTTTP_PATH_USER_INFO_QUERY   @"/application/user/query"
 
+/// 获取用户展示资料
+#define SY_HTTTP_PATH_USER_COVER_QUERY   @"/application/userShow/queryMineShow"
+
 /// 获取IM用户资料
 #define SY_HTTTP_PATH_USER_IMINFO   @"/application/user/iminfo"
 
@@ -44,6 +47,9 @@
 
 /// 头像上传
 #define SY_HTTTP_PATH_USER_HEAD_UPLOAD  @"/application/user/headimage/upload"
+
+/// 封面或视频上传
+#define SY_HTTTP_PATH_USER_SHOW_UPLOAD  @"/application/userShow/addShow"
 
 /// 用户签到
 #define SY_HTTTP_PATH_USER_SIGN  @"/application/user/userSign"

@@ -375,7 +375,13 @@ static id service_ = nil;
             // 设置时间格式
             [formatter setDateFormat:@"yyyyMMddHHmmss"];
             NSString *dateString = [formatter stringFromDate:[NSDate date]];
-            NSString *fileName = [NSString  stringWithFormat:@"%@_%d.jpg", dateString , i];
+            NSString *fileSuffix;
+            if ([mimeType isEqualToString:@"image/png"]) {
+                fileSuffix = @".png";
+            } else if ([mimeType isEqualToString:@"video/mpeg4"]) {
+                fileSuffix = @".mp4";
+            }
+            NSString *fileName = [NSString  stringWithFormat:@"%@_%d%@", dateString, i, fileSuffix];
             [formData appendPartWithFileData:fileData name:name fileName:fileName mimeType:SYStringIsNotEmpty(mimeType)?mimeType:@"application/octet-stream"];
         }
     }]
