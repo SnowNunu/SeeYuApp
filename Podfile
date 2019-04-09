@@ -131,9 +131,9 @@ pod 'LBXScan/UI'                        ,'2.0'
 # 极光推送
 # pod 'JPush'                             , '3.0.6'
 # 友盟相关
-pod 'UMCCommon'
-pod 'UMCPush'
-pod 'UMCSecurityPlugins'
+#pod 'UMCCommon'
+#pod 'UMCPush'
+#pod 'UMCSecurityPlugins'
 # pod 'UMengAnalytics-NO-IDFA'            , '4.2.5'
 # U-Share SDK UI模块（分享面板，建议添加）
 # pod 'UMengUShare/UI'                    , '6.4.5'
@@ -166,10 +166,10 @@ pod 'CHTCollectionViewWaterfallLayout'  , '0.9.6'
 pod 'ActionSheetPicker-3.0'             , '2.3.0'
 
 # 融云即时聊天服务
-pod 'RongCloudIM/IMLib'                 , '2.9.7'
-pod 'RongCloudIM/IMKit'                 , '2.9.7'
-pod 'RongCloudRTC/RongCallLib'          , '2.9.7'
-pod 'RongCloudRTC/RongCallKit'          , '2.9.7'
+pod 'RongCloudIM/IMLib'                 , '2.9.11'
+pod 'RongCloudIM/IMKit'                 , '2.9.11'
+pod 'RongCloudRTC/RongCallLib'          , '2.9.11'
+pod 'RongCloudRTC/RongCallKit'          , '2.9.11'
 
 # 空占位
 pod 'DZNEmptyDataSet'                   , '1.8.1'

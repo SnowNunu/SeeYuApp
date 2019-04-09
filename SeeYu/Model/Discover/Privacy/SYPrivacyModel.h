@@ -7,6 +7,7 @@
 //
 
 #import "SYObject.h"
+#import "SYPrivacyDetailModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *userHeadImg;
 
 @property (nonatomic, strong) NSString *userSignature;
+
+@property (nonatomic, strong) SYPrivacyDetailModel *detailModel;
 
 @end
 

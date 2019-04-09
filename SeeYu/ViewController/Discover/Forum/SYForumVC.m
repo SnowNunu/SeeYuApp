@@ -133,6 +133,9 @@
     cell.titleLabel.text = model.forumTitle;
     cell.contentLabel.text = model.forumContent;
     cell.commentsNumLabel.text = model.counts;
+    if (model.forumPhoto != nil && model.forumPhoto.length > 0) {
+        [cell setTitleImageViewByUrl:model.forumPhoto];
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

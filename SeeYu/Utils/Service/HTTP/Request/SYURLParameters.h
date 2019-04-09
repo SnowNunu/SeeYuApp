@@ -111,6 +111,12 @@
 /// 获取私密列表
 #define SY_HTTTP_PATH_USER_PRIVACY_LIST     @"/application/userShow/queryPrivateArea"
 
+/// 获取私密用户关注详情
+#define SY_HTTTP_PATH_USER_PRIVACY_DETAIL     @"/application/userShow/privateAreaDetail"
+
+/// 私密用户封面视频点赞
+#define SY_HTTTP_PATH_USER_PRIVACY_VIDEO_LIKED  @"/application/userShow/likeShowVideo"
+
 // 获取会员动态
 #define SY_HTTTP_PATH_USER_MOMENTS_LIST     @"/application/userMoment/queryMoments"
 

@@ -27,6 +27,12 @@
     _titleLabel = titleLabel;
     [self addSubview:titleLabel];
     
+    UIImageView *titleImageView = [UIImageView new];
+    titleImageView.layer.cornerRadius = 6.f;
+    titleImageView.clipsToBounds = YES;
+    _titleImageView = titleImageView;
+    [self addSubview:titleImageView];
+    
     YYLabel *contentLabel = [YYLabel new];
     contentLabel.numberOfLines = 2;   // 开启多行显示
     contentLabel.preferredMaxLayoutWidth = SY_SCREEN_WIDTH - 60;
@@ -61,8 +67,13 @@
         make.top.equalTo(self).offset(15);
         make.height.offset(20);
     }];
+    [self.titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLabel.mas_bottom);
+        make.left.width.equalTo(self.titleLabel);
+        make.height.offset(0);
+    }];
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(15);
+        make.top.equalTo(self.titleImageView.mas_bottom).offset(15);
         make.left.width.equalTo(self.titleLabel);
     }];
     [self.commentImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -81,6 +92,14 @@
         make.width.offset(60);
         make.height.centerY.equalTo(self.commentImageView);
     }];
+}
+
+- (void)setTitleImageViewByUrl:(NSString *)url {
+    [self.titleImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(15);
+        make.height.equalTo(self.titleImageView.mas_width).multipliedBy(0.476);
+    }];
+    [self.titleImageView yy_setImageWithURL:[NSURL URLWithString:url] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
 }
 
 @end

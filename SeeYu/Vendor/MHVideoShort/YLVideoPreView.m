@@ -29,14 +29,14 @@
         self.backgroundColor = [UIColor blackColor];
         //取消按钮
         _cancleBtn = [UIButton buttonWithType:0];
-        [_cancleBtn setImage:[UIImage imageNamed:@"cha"] forState:0];
+        [_cancleBtn setImage:[UIImage imageNamed:@"icon_return_n"] forState:0];
         [_cancleBtn addTarget:self action:@selector(cancleItemSelected) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_cancleBtn];
         _cancleBtn.sd_layout.leftSpaceToView(self, 60).bottomSpaceToView(self, 70).widthIs(65).heightEqualToWidth();
         
         //确认按钮
         _sureBtn = [UIButton buttonWithType:0];
-        [_sureBtn setImage:[UIImage imageNamed:@"hao"] forState:0];
+        [_sureBtn setImage:[UIImage imageNamed:@"icon_finish_p"] forState:0];
         [_sureBtn addTarget:self action:@selector(sureItemClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_sureBtn];
         _sureBtn.sd_layout.rightSpaceToView(self, 60).bottomSpaceToView(self, 70).widthIs(65).heightEqualToWidth();

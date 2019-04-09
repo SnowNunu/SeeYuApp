@@ -111,6 +111,7 @@
             [cell addSubview:headImageView];
             
             UIImageView *backImageView = [UIImageView new];
+            backImageView.userInteractionEnabled = YES;
             backImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"home_Head frame_%d",i]];
             [cell addSubview:backImageView];
             [cell bringSubviewToFront:backImageView];
@@ -144,6 +145,17 @@
             consumLabel.textColor = SYColorFromHexString(@"#999999");
             [cell addSubview:consumLabel];
             
+            UIView *bgView = [UIView new];
+            bgView.backgroundColor = [UIColor clearColor];
+            [cell addSubview:bgView];
+            [cell bringSubviewToFront:bgView];
+            UITapGestureRecognizer *tapGesture = [UITapGestureRecognizer new];
+            [[tapGesture rac_gestureSignal] subscribeNext:^(id x) {
+                SYRankListModel *model = self.viewModel.dataSource[i];
+                [self.viewModel.enterFriendDetailInfoCommand execute:model.userId];
+            }];
+            [bgView addGestureRecognizer:tapGesture];
+            
             [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (i == 0) {
                     make.width.offset(80.f);
@@ -176,8 +188,11 @@
                 make.top.equalTo(aliasLabel.mas_bottom).offset(5);
                 make.width.height.centerX.equalTo(aliasLabel);
             }];
+            [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(backImageView);
+                make.bottom.left.right.equalTo(consumLabel);
+            }];
         }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
         UILabel *orderNum = [UILabel new];
         orderNum.text = [NSString stringWithFormat:@"%ld", indexPath.row + 3];
@@ -237,6 +252,7 @@
         make.left.top.width.equalTo(cell);
         make.height.offset(1);
     }];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -245,6 +261,13 @@
         return 170.f;
     }
     return 50.f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row != 0) {
+        SYRankListModel *model = self.viewModel.dataSource[indexPath.row + 2];
+        [self.viewModel.enterFriendDetailInfoCommand execute:model.userId];
+    }
 }
 
 @end

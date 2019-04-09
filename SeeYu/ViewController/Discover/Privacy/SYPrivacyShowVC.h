@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *discussBtn;
 
 // 评论数量文本
-@property (nonatomic, strong) UILabel *discussLabel;
+//@property (nonatomic, strong) UILabel *discussLabel;
 
 // 视频按钮
 @property (nonatomic, strong) UIButton *videoBtn;

@@ -66,12 +66,10 @@
 
 - (void)FSSegmentTitleView:(FSSegmentTitleView *)titleView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {
     self.contentView.contentViewCurrentIndex = endIndex;
-    self.title = @[@"推荐",@"新人",@"三星",@"四星",@"五星",@"关注"][endIndex];
 }
 
 - (void)FSContenViewDidEndDecelerating:(FSPageContentView *)contentView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {
     self.titleView.selectIndex = endIndex;
-    self.title = @[@"推荐",@"新人",@"三星",@"四星",@"五星",@"关注"][endIndex];
 }
 
 @end

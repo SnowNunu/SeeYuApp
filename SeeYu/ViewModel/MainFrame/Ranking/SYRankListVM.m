@@ -7,6 +7,7 @@
 //
 
 #import "SYRankListVM.h"
+#import "SYFriendDetailInfoVM.h"
 
 @implementation SYRankListVM
 
@@ -34,6 +35,11 @@
     }];
     [self.requestRankListCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
+    }];
+    self.enterFriendDetailInfoCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *userId) {
+        SYFriendDetailInfoVM *vm = [[SYFriendDetailInfoVM alloc] initWithServices:self.services params:@{SYViewModelIDKey:userId}];
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
     }];
 }
 

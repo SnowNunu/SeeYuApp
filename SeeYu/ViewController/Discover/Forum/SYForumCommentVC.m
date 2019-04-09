@@ -26,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"回复话题";
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self _setupSubViews];
     [self _makeSubViewsConstraints];
     [self.viewModel.requestForumsCommentsCommand execute:@1];
@@ -212,6 +213,9 @@
         }
         cell.titleLabel.text = self.viewModel.model.forumTitle;
         cell.contentLabel.text = self.viewModel.model.forumContent;
+        if (self.viewModel.model.forumPhoto != nil && self.viewModel.model.forumPhoto.length > 0) {
+            [cell setTitleImageViewByUrl:self.viewModel.model.forumPhoto];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else {

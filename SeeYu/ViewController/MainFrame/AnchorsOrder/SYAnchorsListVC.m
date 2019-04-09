@@ -24,11 +24,11 @@ NSString * const anchorsListCell = @"anchorsListCell";
     [super viewDidLoad];
     [self _setupSubviews];
     [self _makeSubViewsConstraints];
-    [self.viewModel.requestAnchorsListCommand execute:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.viewModel.requestAnchorsListCommand execute:nil];
 }
 
 - (void)bindViewModel {
@@ -45,6 +45,7 @@ NSString * const anchorsListCell = @"anchorsListCell";
     tableView.delegate = self;
     tableView.dataSource = self;
     [tableView sy_registerCell:SYAnchorsListCell.class forCellReuseIdentifier:anchorsListCell];
+    tableView.tableFooterView = [UIView new];
     _tableView = tableView;
     [bgView addSubview:tableView];
 }

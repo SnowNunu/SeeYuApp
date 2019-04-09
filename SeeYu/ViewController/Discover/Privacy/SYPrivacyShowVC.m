@@ -7,6 +7,8 @@
 //
 
 #import "SYPrivacyShowVC.h"
+#import "SYUserInfoManager.h"
+#import "SYSingleChattingVC.h"
 
 @interface SYPrivacyShowVC ()
 
@@ -16,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.viewModel.requestPrivacyStateCommand execute:nil];
     [self _setupSubviews];
     [self _makeSubViewsConstraints];
 }
@@ -55,7 +58,32 @@
             self.signatureLabel.text = signature;
         }
     }];
+    [RACObserve(self.viewModel.model, detailModel) subscribeNext:^(SYPrivacyDetailModel *detailModel) {
+        @strongify(self)
+        if (detailModel != nil) {
+            if (![detailModel.likedCount sy_isNullOrNil] && detailModel.likedCount.length > 0) {
+                self.likeLabel.text = detailModel.likedCount;
+            }
+            if (![detailModel.liked sy_isNullOrNil] && detailModel.liked.length > 0) {
+                if ([detailModel.liked isEqualToString:@"0"]) {
+                    self.likeBtn.selected = NO;
+                } else {
+                    self.likeBtn.selected = YES;
+                }
+            }
+        }
+    }];
     self.backBtn.rac_command = self.viewModel.goBackCommand;
+    [self.viewModel.privacyVideoLikedCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYPrivacyDetailModel *model) {
+        if ([model.liked isEqualToString:@"0"]) {
+            self.likeBtn.selected = NO;
+        } else {
+            self.likeBtn.selected = YES;
+        }
+        if (![model.likedCount sy_isNullOrNil] && model.likedCount.length > 0) {
+            self.likeLabel.text = model.likedCount;
+        }
+    }];
 }
 
 - (void)_setupSubviews {
@@ -75,18 +103,21 @@
     
     UIImageView *headImageView = [UIImageView new];
     headImageView.layer.masksToBounds = YES;
-    headImageView.layer.cornerRadius = 22.5f;
+    headImageView.layer.cornerRadius = 22.f;
     _headImageView = headImageView;
     [self.containerView addSubview:headImageView];
     
     UIButton *addFriendsBtn = [UIButton new];
     [addFriendsBtn setImage:SYImageNamed(@"news_profile_border") forState:UIControlStateNormal];
+    addFriendsBtn.rac_command = self.viewModel.sendAddFriendsRequestCommand;
     _addFriendsBtn = addFriendsBtn;
     [self.containerView addSubview:addFriendsBtn];
     [self.containerView bringSubviewToFront:addFriendsBtn];
     
     UIButton *likeBtn = [UIButton new];
     [likeBtn setImage:SYImageNamed(@"news_like_normal") forState:UIControlStateNormal];
+    [likeBtn setImage:SYImageNamed(@"news_like_pressed") forState:UIControlStateSelected];
+    likeBtn.rac_command = self.viewModel.privacyVideoLikedCommand;
     _likeBtn = likeBtn;
     [self.containerView addSubview:likeBtn];
     
@@ -94,22 +125,35 @@
     likeLabel.textColor = [UIColor whiteColor];
     likeLabel.textAlignment = NSTextAlignmentCenter;
     likeLabel.font = SYRegularFont(12);
-    likeLabel.text = @"958";
     _likeLabel = likeLabel;
     [self.containerView addSubview:likeLabel];
     
     UIButton *discussBtn = [UIButton new];
     [discussBtn setImage:SYImageNamed(@"news_message") forState:UIControlStateNormal];
+    [[discussBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if ([self.viewModel.model.detailModel.isFriend isEqualToString:@"0"]) {
+            // 不是好友关系
+            [MBProgressHUD sy_showTips:@"请先添加对方为好友"];
+        } else {
+            [[SYUserInfoManager shareInstance] getUserInfo:self.viewModel.model.showUserid completion:^(RCUserInfo * _Nonnull userInfo) {
+                SYSingleChattingVC *conversationVC = [[SYSingleChattingVC alloc] init];
+                conversationVC.conversationType = ConversationType_PRIVATE;
+                conversationVC.targetId = userInfo.userId;
+                conversationVC.title = userInfo.name;
+                [self.navigationController pushViewController:conversationVC animated:YES];
+            }];
+        }
+    }];
     _discussBtn = discussBtn;
     [self.containerView addSubview:discussBtn];
     
-    UILabel *discussLabel = [UILabel new];
-    discussLabel.textColor = [UIColor whiteColor];
-    discussLabel.textAlignment = NSTextAlignmentCenter;
-    discussLabel.font = SYRegularFont(12);
-    discussLabel.text = @"12138";
-    _discussLabel = discussLabel;
-    [self.containerView addSubview:discussLabel];
+//    UILabel *discussLabel = [UILabel new];
+//    discussLabel.textColor = [UIColor whiteColor];
+//    discussLabel.textAlignment = NSTextAlignmentCenter;
+//    discussLabel.font = SYRegularFont(12);
+//    discussLabel.text = @"12138";
+//    _discussLabel = discussLabel;
+//    [self.containerView addSubview:discussLabel];
     
     UIButton *videoBtn = [UIButton new];
     [videoBtn setImage:SYImageNamed(@"news_live") forState:UIControlStateNormal];
@@ -155,7 +199,7 @@
     }];
     [self.headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.addFriendsBtn);
-        make.width.height.offset(45);
+        make.width.height.offset(44);
     }];
     [self.likeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.offset(45);
@@ -171,14 +215,14 @@
     [self.discussBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.offset(45);
         make.right.equalTo(self.containerView).offset(-15);
-        make.bottom.equalTo(self.discussLabel.mas_top);
-    }];
-    [self.discussLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.videoBtn);
-        make.height.offset(20);
-        make.width.offset(100);
         make.bottom.equalTo(self.videoBtn.mas_top).offset(-15);
     }];
+//    [self.discussLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.equalTo(self.videoBtn);
+//        make.height.offset(20);
+//        make.width.offset(100);
+//        make.bottom.equalTo(self.videoBtn.mas_top).offset(-15);
+//    }];
     [self.videoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.offset(45);
         make.right.equalTo(self.containerView).offset(-15);

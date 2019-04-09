@@ -50,6 +50,9 @@
     UIImageView *videoContainerView = [UIImageView new];
     videoContainerView.backgroundColor = [UIColor whiteColor];
     videoContainerView.userInteractionEnabled = YES;
+    videoContainerView.contentMode = UIViewContentModeScaleAspectFill;
+    videoContainerView.clipsToBounds = YES;
+    [videoContainerView setContentScaleFactor:[[UIScreen mainScreen] scale]];
     _videoContainerView = videoContainerView;
     [self.contentView addSubview:videoContainerView];
     
@@ -107,6 +110,9 @@
     }];
     for (int i = 0; i < photosArray.count; i++) {
         UIImageView *photoView = [[UIImageView alloc] init];
+        photoView.contentMode = UIViewContentModeScaleAspectFill;
+        photoView.clipsToBounds = YES;
+        [photoView setContentScaleFactor:[[UIScreen mainScreen] scale]];
         photoView.backgroundColor = [UIColor blueColor];
         photoView.tag = i;
         photoView.userInteractionEnabled = YES;

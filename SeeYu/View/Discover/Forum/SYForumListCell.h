@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) YYLabel *titleLabel;
 
+@property (nonatomic, strong) UIImageView *titleImageView;
+
 @property (nonatomic, strong) YYLabel *contentLabel;
 
 @property (nonatomic, strong) UIImageView *commentImageView;
@@ -21,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *commentsNumLabel;
 
 @property (nonatomic, strong) UILabel *toAnswerLabel;
+
+- (void)setTitleImageViewByUrl:(NSString *)url;
 
 @end
 

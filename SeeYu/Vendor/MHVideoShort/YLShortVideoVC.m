@@ -183,7 +183,7 @@
     [self.goBackBtn setImage:[UIImage imageNamed:@"btn_moment_back"] forState:0];
     [self.goBackBtn addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.goBackBtn];
-    self.goBackBtn.sd_layout.centerXIs(SY_SCREEN_WIDTH/2-Width(90)-Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(28)).heightIs(16);
+    self.goBackBtn.sd_layout.centerXIs(SY_SCREEN_WIDTH/2-Width(90)-Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(24)).heightIs(13.5);
     
     //切换摄像头按钮
     self.changeSXTBtn = [UIButton buttonWithType:0];//48*40

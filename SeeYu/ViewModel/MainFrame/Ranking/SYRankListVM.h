@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) RACCommand *requestRankListCommand;
 
+@property (nonatomic, strong) RACCommand *enterFriendDetailInfoCommand;
+
 @end
 
 NS_ASSUME_NONNULL_END

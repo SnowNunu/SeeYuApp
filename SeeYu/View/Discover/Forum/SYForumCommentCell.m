@@ -65,7 +65,6 @@
     [self.aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headPhotoView.mas_right).offset(15);
         make.top.equalTo(self).offset(20);
-        make.width.offset(120);
         make.height.offset(17);
     }];
     [self.genderImageView mas_makeConstraints:^(MASConstraintMaker *make) {

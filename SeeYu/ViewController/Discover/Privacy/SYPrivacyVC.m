@@ -89,9 +89,9 @@
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
     blurEffectView.frame = cell.contentView.bounds;
-    if (indexPath.row > 4) {
-        [photoShowView addSubview:blurEffectView];
-    }
+//    if (indexPath.row > 4) {
+//        [photoShowView addSubview:blurEffectView];
+//    }
 
     // 播放图标
     UIImageView *playImageView = [UIImageView new];

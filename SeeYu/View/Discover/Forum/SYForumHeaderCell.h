@@ -14,9 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UIView *bgView;
 
+@property (nonatomic, strong) UIImageView *titleImageView;
+
 @property (nonatomic, strong) YYLabel *titleLabel;
 
 @property (nonatomic, strong) YYLabel *contentLabel;
+
+- (void)setTitleImageViewByUrl:(NSString *)url;
 
 @end
 

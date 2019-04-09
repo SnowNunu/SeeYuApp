@@ -298,6 +298,7 @@
 		7B788172224FBB8300B25CA3 /* SYNewFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788171224FBB8300B25CA3 /* SYNewFriendModel.m */; };
 		7B78817722507D5700B25CA3 /* SYPresentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78817622507D5700B25CA3 /* SYPresentVC.m */; };
 		7B78817A22507D7500B25CA3 /* SYPresentVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78817922507D7500B25CA3 /* SYPresentVM.m */; };
+		7B7B1AA3225B2FAF008C7EEA /* SYPrivacyDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B1AA2225B2FAF008C7EEA /* SYPrivacyDetailModel.m */; };
 		7B92871D22450AC100CABC5F /* SYSpeedMatchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B92871C22450AC100CABC5F /* SYSpeedMatchModel.m */; };
 		7B9A1BBD2240997E00B7BFC2 /* SYAnchorShowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BBC2240997E00B7BFC2 /* SYAnchorShowVC.m */; };
 		7B9A1BC02240999D00B7BFC2 /* SYAnchorShowVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BBF2240999D00B7BFC2 /* SYAnchorShowVM.m */; };
@@ -956,6 +957,8 @@
 		7B78817622507D5700B25CA3 /* SYPresentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPresentVC.m; sourceTree = "<group>"; };
 		7B78817822507D7500B25CA3 /* SYPresentVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPresentVM.h; sourceTree = "<group>"; };
 		7B78817922507D7500B25CA3 /* SYPresentVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPresentVM.m; sourceTree = "<group>"; };
+		7B7B1AA1225B2FAF008C7EEA /* SYPrivacyDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPrivacyDetailModel.h; sourceTree = "<group>"; };
+		7B7B1AA2225B2FAF008C7EEA /* SYPrivacyDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPrivacyDetailModel.m; sourceTree = "<group>"; };
 		7B92871B22450AC100CABC5F /* SYSpeedMatchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSpeedMatchModel.h; sourceTree = "<group>"; };
 		7B92871C22450AC100CABC5F /* SYSpeedMatchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSpeedMatchModel.m; sourceTree = "<group>"; };
 		7B9A1BBB2240997E00B7BFC2 /* SYAnchorShowVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorShowVC.h; sourceTree = "<group>"; };
@@ -2736,6 +2739,8 @@
 			children = (
 				7B724BE12245E7890096F40B /* SYPrivacyModel.h */,
 				7B724BE22245E7890096F40B /* SYPrivacyModel.m */,
+				7B7B1AA1225B2FAF008C7EEA /* SYPrivacyDetailModel.h */,
+				7B7B1AA2225B2FAF008C7EEA /* SYPrivacyDetailModel.m */,
 			);
 			path = Privacy;
 			sourceTree = "<group>";
@@ -4010,6 +4015,7 @@
 				7B747A522236229500B3F6A0 /* XFCameraButton.m in Sources */,
 				7BA3261B21E0ADE300B7A352 /* SYDiamondsVC.m in Sources */,
 				263D36E91F666438007267C3 /* UIFont+SYExtension.m in Sources */,
+				7B7B1AA3225B2FAF008C7EEA /* SYPrivacyDetailModel.m in Sources */,
 				7B66335422322D64002B220E /* SYHobbyVM.m in Sources */,
 				7B4BF43F2250B91700CCD286 /* SYPresentModel.m in Sources */,
 				7B788157224E727100B25CA3 /* SYTimeTool.m in Sources */,

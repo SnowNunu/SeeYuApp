@@ -113,15 +113,15 @@ PODS:
   - ReactiveCocoa/UI (2.5.2):
     - ReactiveCocoa/Core
   - Reveal-SDK (17)
-  - RongCloudIM/IMKit (2.9.7):
+  - RongCloudIM/IMKit (2.9.11):
     - RongCloudIM/IMLib
-  - RongCloudIM/IMLib (2.9.7)
-  - RongCloudRTC/RongCallKit (2.9.7):
-    - RongCloudIM/IMKit (~> 2.9.7)
-    - RongCloudIM/IMLib (~> 2.9.7)
+  - RongCloudIM/IMLib (2.9.11)
+  - RongCloudRTC/RongCallKit (2.9.11):
+    - RongCloudIM/IMKit (~> 2.9.11)
+    - RongCloudIM/IMLib (~> 2.9.11)
     - RongCloudRTC/RongCallLib
-  - RongCloudRTC/RongCallLib (2.9.7):
-    - RongCloudIM/IMLib (~> 2.9.7)
+  - RongCloudRTC/RongCallLib (2.9.11):
+    - RongCloudIM/IMLib (~> 2.9.11)
   - SAMKeychain (1.5.2)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
@@ -134,10 +134,6 @@ PODS:
   - UICollectionViewLeftAlignedLayout (1.0.2)
   - "UIImage+ImageWithColor (1.4.0)"
   - "UITableView+FDTemplateLayoutCell (1.6)"
-  - UMCCommon (2.0.0)
-  - UMCPush (3.2.4):
-    - UMCCommon
-  - UMCSecurityPlugins (1.0.6)
   - WZLBadge (1.2.6)
   - YBImageBrowser (2.1.4):
     - SDWebImage
@@ -198,10 +194,10 @@ DEPENDENCIES:
   - pop (= 1.0.10)
   - ReactiveCocoa (from `https://github.com/zhao0/ReactiveCocoa.git`, tag `2.5.2`)
   - Reveal-SDK (~> 17)
-  - RongCloudIM/IMKit (= 2.9.7)
-  - RongCloudIM/IMLib (= 2.9.7)
-  - RongCloudRTC/RongCallKit (= 2.9.7)
-  - RongCloudRTC/RongCallLib (= 2.9.7)
+  - RongCloudIM/IMKit (= 2.9.11)
+  - RongCloudIM/IMLib (= 2.9.11)
+  - RongCloudRTC/RongCallKit (= 2.9.11)
+  - RongCloudRTC/RongCallLib (= 2.9.11)
   - SAMKeychain (= 1.5.2)
   - SDWebImage
   - SocketRocket (= 0.5.1)
@@ -212,9 +208,6 @@ DEPENDENCIES:
   - UICollectionViewLeftAlignedLayout (= 1.0.2)
   - "UIImage+ImageWithColor (= 1.4.0)"
   - "UITableView+FDTemplateLayoutCell (= 1.6)"
-  - UMCCommon
-  - UMCPush
-  - UMCSecurityPlugins
   - WZLBadge (= 1.2.6)
   - YBImageBrowser
   - YYAsyncLayer (= 1.0)
@@ -275,9 +268,6 @@ SPEC REPOS:
     - UICollectionViewLeftAlignedLayout
     - "UIImage+ImageWithColor"
     - "UITableView+FDTemplateLayoutCell"
-    - UMCCommon
-    - UMCPush
-    - UMCSecurityPlugins
     - WZLBadge
     - YBImageBrowser
     - YYAsyncLayer
@@ -342,8 +332,8 @@ SPEC CHECKSUMS:
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   ReactiveCocoa: 3ff25b1bd992ac79c5c79b26b6c0c1713b715bb2
   Reveal-SDK: a6df49f47319bd19a110c960c498af32df72c0af
-  RongCloudIM: 0a039a658fe5e40f62d8f2a14c3df3629c12526a
-  RongCloudRTC: c37e66794a21604a152c8b6599e7dba39bdfb0cc
+  RongCloudIM: ffcc2966e7715176fc810dcec8f5ea2c3e31f8de
+  RongCloudRTC: 7ce7051f6b5290e7cf149baa88f23a801bcb54e3
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
@@ -354,9 +344,6 @@ SPEC CHECKSUMS:
   UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
   "UIImage+ImageWithColor": 891401f732f2f332fefe68c2332c6c955c2a879c
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
-  UMCCommon: 79b5a614c958db367113eed5740109d9a98e1223
-  UMCPush: 1edd856027dcf905333effb4040ace5d236a7316
-  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
   YBImageBrowser: e3c514dd3bdc6efef379eabd57988eae3c109e38
   YYAsyncLayer: df6b01ebc695c5f6b4c15dd5c23fa3e081eb25c0
@@ -371,6 +358,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 4cce123eccb1a68706f71dd19b6818f3ca2964ed
+PODFILE CHECKSUM: 6b085c228c431971f50a200bc8560c8442747791
 
 COCOAPODS: 1.5.3
