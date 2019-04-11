@@ -1,5 +1,5 @@
 //
-//  SYProfileVC.h
+//  SYDiamondsVC.h
 //  SeeYu
 //
 //  Created by 唐荣才 on 2019/4/11.
@@ -7,13 +7,13 @@
 //
 
 #import "SYVC.h"
-#import "SYProfileVM.h"
+#import "SYDiamondsVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYProfileVC : SYVC
+@interface SYDiamondsVC : SYVC
 
-@property (nonatomic, strong) SYProfileVM *viewModel;
+@property (nonatomic, strong) SYDiamondsVM *viewModel;
 
 @end
 

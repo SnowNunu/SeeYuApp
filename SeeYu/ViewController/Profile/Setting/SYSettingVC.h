@@ -1,5 +1,5 @@
 //
-//  SYProfileVC.h
+//  SYSettingVC.h
 //  SeeYu
 //
 //  Created by 唐荣才 on 2019/4/11.
@@ -7,13 +7,13 @@
 //
 
 #import "SYVC.h"
-#import "SYProfileVM.h"
+#import "SYSettingVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYProfileVC : SYVC
+@interface SYSettingVC : SYVC
 
-@property (nonatomic, strong) SYProfileVM *viewModel;
+@property (nonatomic, strong) SYSettingVM *viewModel;
 
 @end
 

@@ -10,7 +10,10 @@
 #import "SYReactiveView.h"
 
 @interface SYCommonCell : UITableViewCell<SYReactiveView>
+
 + (instancetype)cellWithTableView:(UITableView *)tableView;
+
 + (instancetype)cellWithTableView:(UITableView *)tableView style:(UITableViewCellStyle)style;
+
 - (void)setIndexPath:(NSIndexPath *)indexPath rowsInSection:(NSInteger)rows;
 @end

@@ -1,24 +1,22 @@
 //
-//  SYCommonViewModel.m
-//  WeChat
+//  SYCommonVM.m
+//  SeeYu
 //
 //  Created by senba on 2017/9/14.
 //  Copyright © 2017年 CoderMikeHe. All rights reserved.
 //
 
-#import "SYCommonViewModel.h"
+#import "SYCommonVM.h"
 
-@implementation SYCommonViewModel
+@implementation SYCommonVM
 
-- (void)initialize{
+- (void)initialize {
     [super initialize];
-    
     @weakify(self);
     /// 选中cell的命令
-    /// UI Test
     self.didSelectCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSIndexPath *indexPath) {
         @strongify(self);
-        SYCommonGroupViewModel *groupViewModel = self.dataSource[indexPath.section] ;
+        SYCommonGroupVM *groupViewModel = self.dataSource[indexPath.section] ;
         SYCommonItemViewModel *itemViewModel = groupViewModel.itemViewModels[indexPath.row];
         
         if (itemViewModel.operation) {

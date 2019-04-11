@@ -75,10 +75,10 @@
 		263C89781F6A30E600F7A0AE /* SYCommonItemViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C89771F6A30E600F7A0AE /* SYCommonItemViewModel.m */; };
 		263C897E1F6A324700F7A0AE /* SYCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C897D1F6A324700F7A0AE /* SYCommonCell.m */; };
 		263C89811F6A34D300F7A0AE /* SYCommonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C89801F6A34D300F7A0AE /* SYCommonVC.m */; };
-		263C89841F6A355C00F7A0AE /* SYCommonViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C89831F6A355C00F7A0AE /* SYCommonViewModel.m */; };
+		263C89841F6A355C00F7A0AE /* SYCommonVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C89831F6A355C00F7A0AE /* SYCommonVM.m */; };
 		263C89871F6A549800F7A0AE /* SYCommonHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C89861F6A549800F7A0AE /* SYCommonHeaderView.m */; };
 		263C898A1F6A54AE00F7A0AE /* SYCommonFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C89891F6A54AE00F7A0AE /* SYCommonFooterView.m */; };
-		263C898D1F6A617700F7A0AE /* SYCommonGroupViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C898C1F6A617700F7A0AE /* SYCommonGroupViewModel.m */; };
+		263C898D1F6A617700F7A0AE /* SYCommonGroupVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C898C1F6A617700F7A0AE /* SYCommonGroupVM.m */; };
 		263C89921F6A74F400F7A0AE /* SYCommonArrowItemViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C89911F6A74F400F7A0AE /* SYCommonArrowItemViewModel.m */; };
 		263D36D91F666438007267C3 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 263D36981F666438007267C3 /* Foundation+Log.m */; };
 		263D36DA1F666438007267C3 /* FBKVOController+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 263D369B1F666438007267C3 /* FBKVOController+SYExtension.m */; };
@@ -298,6 +298,10 @@
 		7BE971C3225E36AD00FF6A25 /* RongCallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE971C2225E36AD00FF6A25 /* RongCallKit.framework */; };
 		7BE971C8225ECB0500FF6A25 /* SYProfileVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971C7225ECB0500FF6A25 /* SYProfileVM.m */; };
 		7BE971CB225ECB2C00FF6A25 /* SYProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971CA225ECB2C00FF6A25 /* SYProfileVC.m */; };
+		7BE971D3225F283600FF6A25 /* SYSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971D2225F283600FF6A25 /* SYSettingVC.m */; };
+		7BE971D7225F289200FF6A25 /* SYSettingVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971D6225F289200FF6A25 /* SYSettingVM.m */; };
+		7BE971DC225F434900FF6A25 /* SYDiamondsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971DB225F434900FF6A25 /* SYDiamondsVC.m */; };
+		7BE971DF225F435F00FF6A25 /* SYDiamondsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971DE225F435F00FF6A25 /* SYDiamondsVM.m */; };
 		864BB5E20D5521374F720EC0 /* Pods_SeeYu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F38DBDD0C5EE456B831E4A /* Pods_SeeYu.framework */; };
 		AD21F790DBB21B99763DBF6A /* Pods_SeeYu_SeeYuUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F007961429C86520F15C504 /* Pods_SeeYu_SeeYuUITests.framework */; };
 		FF517F8EEC68B750C774C0C7 /* Pods_SeeYu_SeeYuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F609A3FCDE82ED766B6FC1F9 /* Pods_SeeYu_SeeYuTests.framework */; };
@@ -468,14 +472,14 @@
 		263C897D1F6A324700F7A0AE /* SYCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonCell.m; sourceTree = "<group>"; };
 		263C897F1F6A34D300F7A0AE /* SYCommonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonVC.h; sourceTree = "<group>"; };
 		263C89801F6A34D300F7A0AE /* SYCommonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonVC.m; sourceTree = "<group>"; };
-		263C89821F6A355C00F7A0AE /* SYCommonViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonViewModel.h; sourceTree = "<group>"; };
-		263C89831F6A355C00F7A0AE /* SYCommonViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonViewModel.m; sourceTree = "<group>"; };
+		263C89821F6A355C00F7A0AE /* SYCommonVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonVM.h; sourceTree = "<group>"; };
+		263C89831F6A355C00F7A0AE /* SYCommonVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonVM.m; sourceTree = "<group>"; };
 		263C89851F6A549800F7A0AE /* SYCommonHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonHeaderView.h; sourceTree = "<group>"; };
 		263C89861F6A549800F7A0AE /* SYCommonHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonHeaderView.m; sourceTree = "<group>"; };
 		263C89881F6A54AE00F7A0AE /* SYCommonFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonFooterView.h; sourceTree = "<group>"; };
 		263C89891F6A54AE00F7A0AE /* SYCommonFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonFooterView.m; sourceTree = "<group>"; };
-		263C898B1F6A617700F7A0AE /* SYCommonGroupViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonGroupViewModel.h; sourceTree = "<group>"; };
-		263C898C1F6A617700F7A0AE /* SYCommonGroupViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonGroupViewModel.m; sourceTree = "<group>"; };
+		263C898B1F6A617700F7A0AE /* SYCommonGroupVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonGroupVM.h; sourceTree = "<group>"; };
+		263C898C1F6A617700F7A0AE /* SYCommonGroupVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonGroupVM.m; sourceTree = "<group>"; };
 		263C898F1F6A68A400F7A0AE /* SYReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYReactiveView.h; sourceTree = "<group>"; };
 		263C89901F6A74F400F7A0AE /* SYCommonArrowItemViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCommonArrowItemViewModel.h; sourceTree = "<group>"; };
 		263C89911F6A74F400F7A0AE /* SYCommonArrowItemViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCommonArrowItemViewModel.m; sourceTree = "<group>"; };
@@ -909,6 +913,14 @@
 		7BE971C7225ECB0500FF6A25 /* SYProfileVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYProfileVM.m; sourceTree = "<group>"; };
 		7BE971C9225ECB2C00FF6A25 /* SYProfileVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYProfileVC.h; sourceTree = "<group>"; };
 		7BE971CA225ECB2C00FF6A25 /* SYProfileVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYProfileVC.m; sourceTree = "<group>"; };
+		7BE971D1225F283600FF6A25 /* SYSettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSettingVC.h; sourceTree = "<group>"; };
+		7BE971D2225F283600FF6A25 /* SYSettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSettingVC.m; sourceTree = "<group>"; };
+		7BE971D5225F289200FF6A25 /* SYSettingVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSettingVM.h; sourceTree = "<group>"; };
+		7BE971D6225F289200FF6A25 /* SYSettingVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSettingVM.m; sourceTree = "<group>"; };
+		7BE971DA225F434900FF6A25 /* SYDiamondsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYDiamondsVC.h; sourceTree = "<group>"; };
+		7BE971DB225F434900FF6A25 /* SYDiamondsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYDiamondsVC.m; sourceTree = "<group>"; };
+		7BE971DD225F435F00FF6A25 /* SYDiamondsVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYDiamondsVM.h; sourceTree = "<group>"; };
+		7BE971DE225F435F00FF6A25 /* SYDiamondsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYDiamondsVM.m; sourceTree = "<group>"; };
 		94F38DBDD0C5EE456B831E4A /* Pods_SeeYu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeYu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971B7041FF0A7CD187AB3BEE /* Pods-SeeYu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeYu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeeYu/Pods-SeeYu.debug.xcconfig"; sourceTree = "<group>"; };
 		AB79D87EFBDD8EDD42D99FD8 /* Pods-SeeYu-SeeYuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeYu-SeeYuUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1038,6 +1050,7 @@
 				263C89711F6A305100F7A0AE /* MainFrame */,
 				263C896D1F6A305100F7A0AE /* Contacts */,
 				263C896E1F6A305100F7A0AE /* Discover */,
+				7BE971CC225EE48000FF6A25 /* Profile */,
 				263C89701F6A305100F7A0AE /* Login */,
 				263C89731F6A305100F7A0AE /* Other */,
 			);
@@ -1327,8 +1340,8 @@
 				26225D8B1F6554140074BFC3 /* SYWebVM.m */,
 				26225D8D1F65545E0074BFC3 /* SYTabBarViewModel.h */,
 				26225D8E1F65545E0074BFC3 /* SYTabBarViewModel.m */,
-				263C89821F6A355C00F7A0AE /* SYCommonViewModel.h */,
-				263C89831F6A355C00F7A0AE /* SYCommonViewModel.m */,
+				263C89821F6A355C00F7A0AE /* SYCommonVM.h */,
+				263C89831F6A355C00F7A0AE /* SYCommonVM.m */,
 				2633E01B1FEA07E300D0E187 /* SYSegmentedControlViewModel.h */,
 				2633E01C1FEA07E300D0E187 /* SYSegmentedControlViewModel.m */,
 			);
@@ -1491,8 +1504,8 @@
 		263C896B1F6A302300F7A0AE /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				263C898B1F6A617700F7A0AE /* SYCommonGroupViewModel.h */,
-				263C898C1F6A617700F7A0AE /* SYCommonGroupViewModel.m */,
+				263C898B1F6A617700F7A0AE /* SYCommonGroupVM.h */,
+				263C898C1F6A617700F7A0AE /* SYCommonGroupVM.m */,
 				263C89761F6A30E600F7A0AE /* SYCommonItemViewModel.h */,
 				263C89771F6A30E600F7A0AE /* SYCommonItemViewModel.m */,
 				263C89901F6A74F400F7A0AE /* SYCommonArrowItemViewModel.h */,
@@ -2649,6 +2662,8 @@
 		7BE971C4225ECA9500FF6A25 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7BE971D8225F39DF00FF6A25 /* Diamonds */,
+				7BE971D0225F27E700FF6A25 /* Setting */,
 				7BE971C9225ECB2C00FF6A25 /* SYProfileVC.h */,
 				7BE971CA225ECB2C00FF6A25 /* SYProfileVC.m */,
 			);
@@ -2658,10 +2673,55 @@
 		7BE971C5225ECAD800FF6A25 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7BE971D9225F39ED00FF6A25 /* Diamonds */,
+				7BE971D4225F287A00FF6A25 /* Setting */,
 				7BE971C6225ECB0500FF6A25 /* SYProfileVM.h */,
 				7BE971C7225ECB0500FF6A25 /* SYProfileVM.m */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		7BE971CC225EE48000FF6A25 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		7BE971D0225F27E700FF6A25 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				7BE971D1225F283600FF6A25 /* SYSettingVC.h */,
+				7BE971D2225F283600FF6A25 /* SYSettingVC.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		7BE971D4225F287A00FF6A25 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				7BE971D5225F289200FF6A25 /* SYSettingVM.h */,
+				7BE971D6225F289200FF6A25 /* SYSettingVM.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		7BE971D8225F39DF00FF6A25 /* Diamonds */ = {
+			isa = PBXGroup;
+			children = (
+				7BE971DA225F434900FF6A25 /* SYDiamondsVC.h */,
+				7BE971DB225F434900FF6A25 /* SYDiamondsVC.m */,
+			);
+			path = Diamonds;
+			sourceTree = "<group>";
+		};
+		7BE971D9225F39ED00FF6A25 /* Diamonds */ = {
+			isa = PBXGroup;
+			children = (
+				7BE971DD225F435F00FF6A25 /* SYDiamondsVM.h */,
+				7BE971DE225F435F00FF6A25 /* SYDiamondsVM.m */,
+			);
+			path = Diamonds;
 			sourceTree = "<group>";
 		};
 		DB1E4F3D3B653F9FE4DEFF73 /* Frameworks */ = {
@@ -3543,7 +3603,7 @@
 				7B724BE922462B1F0096F40B /* SYPrivacyShowVM.m in Sources */,
 				7B4BF4772251B09300CCD286 /* MHAssetGroupViewController.m in Sources */,
 				26225D8F1F65545E0074BFC3 /* SYTabBarViewModel.m in Sources */,
-				263C89841F6A355C00F7A0AE /* SYCommonViewModel.m in Sources */,
+				263C89841F6A355C00F7A0AE /* SYCommonVM.m in Sources */,
 				2617531D1F739C1900812E1B /* SYCommonLabelItemViewModel.m in Sources */,
 				263D36E31F666438007267C3 /* NSAttributedString+SYSize.m in Sources */,
 				2605C5D01F66326000B1F66E /* SYDiscoverVC.m in Sources */,
@@ -3573,6 +3633,7 @@
 				7B724BDE2245E2A10096F40B /* SYPrivacyVM.m in Sources */,
 				7B9A1BE82243CECD00B7BFC2 /* SYListVideoOperation.m in Sources */,
 				2633E01A1FEA076600D0E187 /* SYSegmentedControlController.m in Sources */,
+				7BE971DF225F435F00FF6A25 /* SYDiamondsVM.m in Sources */,
 				2605C5B81F66249F00B1F66E /* SYHomePageVM.m in Sources */,
 				26CCB9D120244F690090DBC5 /* SYMomentVideo.m in Sources */,
 				7B0228AB223A16470045E25F /* PinyinFormatter.m in Sources */,
@@ -3613,7 +3674,7 @@
 				26FE8E8E1F9514D100EC8BE0 /* TZPhotoPickerController.m in Sources */,
 				263D36ED1F666438007267C3 /* UITextField+SYExtension.m in Sources */,
 				7B7881122248939600B25CA3 /* SYFriendDetailInfoVM.m in Sources */,
-				263C898D1F6A617700F7A0AE /* SYCommonGroupViewModel.m in Sources */,
+				263C898D1F6A617700F7A0AE /* SYCommonGroupVM.m in Sources */,
 				263D36E61F666438007267C3 /* NSString+SBExtension.m in Sources */,
 				26BEBC7E1F8B78B1004D502F /* SYObject.m in Sources */,
 				26225D861F6550840074BFC3 /* SYVM.m in Sources */,
@@ -3644,6 +3705,7 @@
 				7B9A1BBD2240997E00B7BFC2 /* SYAnchorShowVC.m in Sources */,
 				26FE8E4D1F95143D00EC8BE0 /* IDMZoomingScrollView.m in Sources */,
 				261597581FEA5E4200C6FD80 /* YYPhotoGroupView.m in Sources */,
+				7BE971D3225F283600FF6A25 /* SYSettingVC.m in Sources */,
 				7B7881032248894500B25CA3 /* SYForumVC.m in Sources */,
 				7B7881312249D80000B25CA3 /* SYMomentsModel.m in Sources */,
 				7B4BF4872251B3BC00CCD286 /* UIView+SDAutoLayout.m in Sources */,
@@ -3651,7 +3713,9 @@
 				7B66335B22325302002B220E /* SYUserHobby.m in Sources */,
 				263D36E71F666438007267C3 /* UIAlertController+SYColor.m in Sources */,
 				7B4BF47F2251B09300CCD286 /* MHAssetViewController.m in Sources */,
+				7BE971DC225F434900FF6A25 /* SYDiamondsVC.m in Sources */,
 				2624CAED1F98DFC80083923F /* SYHTTPRequest.m in Sources */,
+				7BE971D7225F289200FF6A25 /* SYSettingVM.m in Sources */,
 				26C7BEEE1F8CCA2C00525126 /* SYHTTPService.m in Sources */,
 				261597501FEA5DD300C6FD80 /* SYMomentOperationMoreView.m in Sources */,
 				7B9A1BE02243B21F00B7BFC2 /* NSString+Hash.m in Sources */,

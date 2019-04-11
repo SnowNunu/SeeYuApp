@@ -9,7 +9,7 @@
 #import "SYCommonItemViewModel.h"
 
 @implementation SYCommonItemViewModel
-+ (instancetype)itemViewModelWithTitle:(NSString *)title icon:(NSString *)icon{
++ (instancetype)itemViewModelWithTitle:(NSString *)title icon:(NSString *)icon {
     SYCommonItemViewModel *item = [[self alloc] init];
     item.title = title;
     item.icon = icon;

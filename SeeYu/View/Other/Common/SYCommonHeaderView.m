@@ -7,10 +7,10 @@
 //
 
 #import "SYCommonHeaderView.h"
-#import "SYCommonGroupViewModel.h"
+#import "SYCommonGroupVM.h"
 @interface SYCommonHeaderView ()
 /// viewModel
-@property (nonatomic, readwrite, strong) SYCommonGroupViewModel *viewModel;
+@property (nonatomic, readwrite, strong) SYCommonGroupVM *viewModel;
 /// contentLabel
 @property (nonatomic, readwrite, weak) UILabel *contentLabel;
 
@@ -27,7 +27,7 @@
     return header;
 }
 
-- (void)bindViewModel:(SYCommonGroupViewModel *)viewModel {
+- (void)bindViewModel:(SYCommonGroupVM *)viewModel {
     self.viewModel = viewModel;
     
     self.contentLabel.text = viewModel.header;

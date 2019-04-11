@@ -42,11 +42,11 @@
 @implementation SYCommonCell
 
 #pragma mark - 公共方法
-+ (instancetype)cellWithTableView:(UITableView *)tableView{
++ (instancetype)cellWithTableView:(UITableView *)tableView {
     return [self cellWithTableView:tableView style:UITableViewCellStyleValue1];
 }
 
-+ (instancetype)cellWithTableView:(UITableView *)tableView style:(UITableViewCellStyle)style{
++ (instancetype)cellWithTableView:(UITableView *)tableView style:(UITableViewCellStyle)style {
     static NSString *ID = @"CommonCell";
     SYCommonCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (!cell) {
@@ -55,7 +55,7 @@
     return cell;
 }
 
-- (void)setIndexPath:(NSIndexPath *)indexPath rowsInSection:(NSInteger)rows{
+- (void)setIndexPath:(NSIndexPath *)indexPath rowsInSection:(NSInteger)rows {
     self.divider0.hidden = NO;
     self.divider1.hidden = NO;
     self.divider2.hidden = NO;
@@ -74,7 +74,7 @@
 }
 
 
-- (void)bindViewModel:(SYCommonItemViewModel *)viewModel{
+- (void)bindViewModel:(SYCommonItemViewModel *)viewModel {
     self.viewModel = viewModel;
     
     self.avatarView.hidden = YES;
@@ -102,7 +102,7 @@
         self.centerRightView.hidden = NO;
         self.centerRightView.image = SYImageNamed(viewModel.centerRightViewName);
         self.centerRightView.sy_size = self.centerRightView.image.size;
-    }else{
+    } else {
         self.centerRightView.hidden = YES;;
     }
 

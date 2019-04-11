@@ -1,20 +1,20 @@
 //
-//  SYCommonGroupViewModel.m
-//  WeChat
+//  SYCommonGroupVM.m
+//  SeeYu
 //
 //  Created by senba on 2017/9/14.
 //  Copyright © 2017年 CoderMikeHe. All rights reserved.
 //
 
-#import "SYCommonGroupViewModel.h"
+#import "SYCommonGroupVM.h"
 
-@implementation SYCommonGroupViewModel
-+ (instancetype)groupViewModel{
+@implementation SYCommonGroupVM
+
++ (instancetype)groupViewModel {
     return [[self alloc] init];
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         _footerHeight = 21;
