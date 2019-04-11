@@ -88,11 +88,11 @@
     /// 我的
     UINavigationController *profileNavigationController = ({
         SYProfileVC *profileViewController = [[SYProfileVC alloc] initWithViewModel:self.viewModel.profileViewModel];
-        
+
         SYTabBarItemTagType tagType = SYTabBarItemTagTypeProfile;
         /// 配置
         [self _configViewController:profileViewController imageName:imageNamesArray[tagType] selectedImageName:selectedImageNamesArray[tagType] title:titlesArray[tagType] itemTag:tagType];
-        
+
         [[SYNavigationController alloc] initWithRootViewController:profileViewController];
     });
     
