@@ -7,6 +7,8 @@
 //
 
 #import "SYProfileVM.h"
+#import "SYPresentVM.h"
+#import "SYRechargeVM.h"
 #import "SYDiamondsVM.h"
 #import "SYSettingVM.h"
 
@@ -43,14 +45,19 @@
         if ([kind isEqual:@(0)]) {
             
         } else if ([kind isEqual:@(1)]) {
-            
+            SYPresentVM *vm = [[SYPresentVM alloc] initWithServices:self.services params:nil];
+            [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(2)]) {
-            
+            SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"coin"}];
+            [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(3)]) {
             SYDiamondsVM *vm = [[SYDiamondsVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
-        } else {
+        } else if ([kind isEqual:@(4)]){
             SYSettingVM *vm = [[SYSettingVM alloc] initWithServices:self.services params:nil];
+            [self.services pushViewModel:vm animated:YES];
+        } if ([kind isEqual:@(5)]) {
+            SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"vip"}];
             [self.services pushViewModel:vm animated:YES];
         }
         return [RACSignal empty];

@@ -1,14 +1,14 @@
 //
-//  SYDiamondsVM.m
+//  SYPresentVM.m
 //  SeeYu
 //
-//  Created by 唐荣才 on 2019/4/11.
+//  Created by 唐荣才 on 2019/4/12.
 //  Copyright © 2019 fljj. All rights reserved.
 //
 
-#import "SYDiamondsVM.h"
+#import "SYPresentVM.h"
 
-@implementation SYDiamondsVM
+@implementation SYPresentVM
 
 - (instancetype)initWithServices:(id<SYViewModelServices>)services params:(NSDictionary *)params {
     if (self = [super initWithServices:services params:params]) {
@@ -19,7 +19,7 @@
 
 - (void)initialize {
     [super initialize];
-    self.title = @"我的钻石";
+    self.title = @"我的礼物";
     self.backTitle = @"";
     self.prefersNavigationBarBottomLineHidden = YES;
 }

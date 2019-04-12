@@ -60,7 +60,6 @@
         [childVCs addObject:anchorsListVC];
     }
     self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, 40, SY_SCREEN_WIDTH, SY_SCREEN_HEIGHT - 40 - SY_APPLICATION_TAB_BAR_HEIGHT - SY_APPLICATION_TOP_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
-    self.contentView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_contentView];
 }
 

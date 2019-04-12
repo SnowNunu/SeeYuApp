@@ -148,7 +148,7 @@ pod 'LBXScan/UI'                        ,'2.0'
 # pod 'AMapLocation'                      , '2.4.0'
 
 # 文字滚动的label
-pod 'TXScrollLabelView'                 , '1.3.1'
+pod 'TXScrollLabelView'                 , '1.3.2'
 
 # iOS程序调试神器
 # http://neater.github.io/blog/2014/07/31/flex!iosdiao-shi-li-qi/

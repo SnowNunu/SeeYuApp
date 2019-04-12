@@ -141,6 +141,13 @@
     UIView *vipBgView = [UIView new];
     _vipBgView = vipBgView;
     [headerView addSubview:vipBgView];
+    UITapGestureRecognizer *vipTap = [[UITapGestureRecognizer alloc] init];
+    @weakify(self)
+    [[vipTap rac_gestureSignal] subscribeNext:^(id x) {
+        @strongify(self)
+        [self.viewModel.enterNextViewCommand execute:@(5)];
+    }];
+    [vipBgView addGestureRecognizer:vipTap];
     
     // vip状态
     UIImageView *vipImageView = [UIImageView new];

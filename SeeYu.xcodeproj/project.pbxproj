@@ -302,6 +302,17 @@
 		7BE971D7225F289200FF6A25 /* SYSettingVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971D6225F289200FF6A25 /* SYSettingVM.m */; };
 		7BE971DC225F434900FF6A25 /* SYDiamondsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971DB225F434900FF6A25 /* SYDiamondsVC.m */; };
 		7BE971DF225F435F00FF6A25 /* SYDiamondsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971DE225F435F00FF6A25 /* SYDiamondsVM.m */; };
+		7BE971E4225F9F7600FF6A25 /* SYPresentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971E3225F9F7600FF6A25 /* SYPresentVC.m */; };
+		7BE971E7225F9F8700FF6A25 /* SYPresentVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971E6225F9F8700FF6A25 /* SYPresentVM.m */; };
+		7BE971EA2260201500FF6A25 /* SYPresentListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971E92260201500FF6A25 /* SYPresentListVC.m */; };
+		7BE971ED2260204700FF6A25 /* SYPresentListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971EC2260204700FF6A25 /* SYPresentListVM.m */; };
+		7BE971F12260254500FF6A25 /* SYPresentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971F02260254500FF6A25 /* SYPresentModel.m */; };
+		7BE971F62260347100FF6A25 /* SYRechargeVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971F52260347100FF6A25 /* SYRechargeVM.m */; };
+		7BE971F9226034EB00FF6A25 /* SYRechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971F8226034EB00FF6A25 /* SYRechargeVC.m */; };
+		7BE971FE2260411300FF6A25 /* SYVipVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971FD2260411300FF6A25 /* SYVipVC.m */; };
+		7BE972012260412D00FF6A25 /* SYVipVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE972002260412D00FF6A25 /* SYVipVM.m */; };
+		7BE972042260443000FF6A25 /* SYCoinVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE972032260443000FF6A25 /* SYCoinVM.m */; };
+		7BE972072260450100FF6A25 /* SYCoinVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE972062260450100FF6A25 /* SYCoinVC.m */; };
 		864BB5E20D5521374F720EC0 /* Pods_SeeYu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F38DBDD0C5EE456B831E4A /* Pods_SeeYu.framework */; };
 		AD21F790DBB21B99763DBF6A /* Pods_SeeYu_SeeYuUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F007961429C86520F15C504 /* Pods_SeeYu_SeeYuUITests.framework */; };
 		FF517F8EEC68B750C774C0C7 /* Pods_SeeYu_SeeYuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F609A3FCDE82ED766B6FC1F9 /* Pods_SeeYu_SeeYuTests.framework */; };
@@ -921,6 +932,28 @@
 		7BE971DB225F434900FF6A25 /* SYDiamondsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYDiamondsVC.m; sourceTree = "<group>"; };
 		7BE971DD225F435F00FF6A25 /* SYDiamondsVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYDiamondsVM.h; sourceTree = "<group>"; };
 		7BE971DE225F435F00FF6A25 /* SYDiamondsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYDiamondsVM.m; sourceTree = "<group>"; };
+		7BE971E2225F9F7600FF6A25 /* SYPresentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPresentVC.h; sourceTree = "<group>"; };
+		7BE971E3225F9F7600FF6A25 /* SYPresentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPresentVC.m; sourceTree = "<group>"; };
+		7BE971E5225F9F8700FF6A25 /* SYPresentVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPresentVM.h; sourceTree = "<group>"; };
+		7BE971E6225F9F8700FF6A25 /* SYPresentVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPresentVM.m; sourceTree = "<group>"; };
+		7BE971E82260201500FF6A25 /* SYPresentListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPresentListVC.h; sourceTree = "<group>"; };
+		7BE971E92260201500FF6A25 /* SYPresentListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPresentListVC.m; sourceTree = "<group>"; };
+		7BE971EB2260204700FF6A25 /* SYPresentListVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPresentListVM.h; sourceTree = "<group>"; };
+		7BE971EC2260204700FF6A25 /* SYPresentListVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPresentListVM.m; sourceTree = "<group>"; };
+		7BE971EF2260254500FF6A25 /* SYPresentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPresentModel.h; sourceTree = "<group>"; };
+		7BE971F02260254500FF6A25 /* SYPresentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPresentModel.m; sourceTree = "<group>"; };
+		7BE971F42260347100FF6A25 /* SYRechargeVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYRechargeVM.h; sourceTree = "<group>"; };
+		7BE971F52260347100FF6A25 /* SYRechargeVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYRechargeVM.m; sourceTree = "<group>"; };
+		7BE971F7226034EB00FF6A25 /* SYRechargeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYRechargeVC.h; sourceTree = "<group>"; };
+		7BE971F8226034EB00FF6A25 /* SYRechargeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYRechargeVC.m; sourceTree = "<group>"; };
+		7BE971FC2260411300FF6A25 /* SYVipVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYVipVC.h; sourceTree = "<group>"; };
+		7BE971FD2260411300FF6A25 /* SYVipVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYVipVC.m; sourceTree = "<group>"; };
+		7BE971FF2260412D00FF6A25 /* SYVipVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYVipVM.h; sourceTree = "<group>"; };
+		7BE972002260412D00FF6A25 /* SYVipVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYVipVM.m; sourceTree = "<group>"; };
+		7BE972022260443000FF6A25 /* SYCoinVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCoinVM.h; sourceTree = "<group>"; };
+		7BE972032260443000FF6A25 /* SYCoinVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCoinVM.m; sourceTree = "<group>"; };
+		7BE972052260450100FF6A25 /* SYCoinVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCoinVC.h; sourceTree = "<group>"; };
+		7BE972062260450100FF6A25 /* SYCoinVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCoinVC.m; sourceTree = "<group>"; };
 		94F38DBDD0C5EE456B831E4A /* Pods_SeeYu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeYu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971B7041FF0A7CD187AB3BEE /* Pods-SeeYu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeYu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeeYu/Pods-SeeYu.debug.xcconfig"; sourceTree = "<group>"; };
 		AB79D87EFBDD8EDD42D99FD8 /* Pods-SeeYu-SeeYuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeYu-SeeYuUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1035,6 +1068,7 @@
 				7B656A2E21EF0E8B008FDCCA /* Contacts */,
 				7B92871A22450A6F00CABC5F /* Collocation */,
 				7B724BDF2245E7350096F40B /* Discover */,
+				7BE971FA2260352500FF6A25 /* Profile */,
 				26363ACC20134651000061EF /* Emoticon */,
 				261597001FEA525E00C6FD80 /* Moment */,
 				26BEBC761F8B78B1004D502F /* BaseClass */,
@@ -1108,7 +1142,6 @@
 			children = (
 				2667A3ED1F7B987600A3D7A2 /* Data */,
 				2667A3EF1F7B987600A3D7A2 /* Pictures */,
-				2667A3F01F7B987600A3D7A2 /* SQL */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1897,13 +1930,6 @@
 			path = Pictures;
 			sourceTree = "<group>";
 		};
-		2667A3F01F7B987600A3D7A2 /* SQL */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SQL;
-			sourceTree = "<group>";
-		};
 		26BEBC6B1F8B76D6004D502F /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -2662,6 +2688,8 @@
 		7BE971C4225ECA9500FF6A25 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7BE971F32260345700FF6A25 /* Recharge */,
+				7BE971E1225F9EB000FF6A25 /* Present */,
 				7BE971D8225F39DF00FF6A25 /* Diamonds */,
 				7BE971D0225F27E700FF6A25 /* Setting */,
 				7BE971C9225ECB2C00FF6A25 /* SYProfileVC.h */,
@@ -2673,6 +2701,8 @@
 		7BE971C5225ECAD800FF6A25 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7BE971F22260344100FF6A25 /* Recharge */,
+				7BE971E0225F9EA500FF6A25 /* Present */,
 				7BE971D9225F39ED00FF6A25 /* Diamonds */,
 				7BE971D4225F287A00FF6A25 /* Setting */,
 				7BE971C6225ECB0500FF6A25 /* SYProfileVM.h */,
@@ -2722,6 +2752,71 @@
 				7BE971DE225F435F00FF6A25 /* SYDiamondsVM.m */,
 			);
 			path = Diamonds;
+			sourceTree = "<group>";
+		};
+		7BE971E0225F9EA500FF6A25 /* Present */ = {
+			isa = PBXGroup;
+			children = (
+				7BE971E5225F9F8700FF6A25 /* SYPresentVM.h */,
+				7BE971E6225F9F8700FF6A25 /* SYPresentVM.m */,
+				7BE971EB2260204700FF6A25 /* SYPresentListVM.h */,
+				7BE971EC2260204700FF6A25 /* SYPresentListVM.m */,
+			);
+			path = Present;
+			sourceTree = "<group>";
+		};
+		7BE971E1225F9EB000FF6A25 /* Present */ = {
+			isa = PBXGroup;
+			children = (
+				7BE971E2225F9F7600FF6A25 /* SYPresentVC.h */,
+				7BE971E3225F9F7600FF6A25 /* SYPresentVC.m */,
+				7BE971E82260201500FF6A25 /* SYPresentListVC.h */,
+				7BE971E92260201500FF6A25 /* SYPresentListVC.m */,
+			);
+			path = Present;
+			sourceTree = "<group>";
+		};
+		7BE971F22260344100FF6A25 /* Recharge */ = {
+			isa = PBXGroup;
+			children = (
+				7BE971F42260347100FF6A25 /* SYRechargeVM.h */,
+				7BE971F52260347100FF6A25 /* SYRechargeVM.m */,
+				7BE971FF2260412D00FF6A25 /* SYVipVM.h */,
+				7BE972002260412D00FF6A25 /* SYVipVM.m */,
+				7BE972022260443000FF6A25 /* SYCoinVM.h */,
+				7BE972032260443000FF6A25 /* SYCoinVM.m */,
+			);
+			path = Recharge;
+			sourceTree = "<group>";
+		};
+		7BE971F32260345700FF6A25 /* Recharge */ = {
+			isa = PBXGroup;
+			children = (
+				7BE971F7226034EB00FF6A25 /* SYRechargeVC.h */,
+				7BE971F8226034EB00FF6A25 /* SYRechargeVC.m */,
+				7BE971FC2260411300FF6A25 /* SYVipVC.h */,
+				7BE971FD2260411300FF6A25 /* SYVipVC.m */,
+				7BE972052260450100FF6A25 /* SYCoinVC.h */,
+				7BE972062260450100FF6A25 /* SYCoinVC.m */,
+			);
+			path = Recharge;
+			sourceTree = "<group>";
+		};
+		7BE971FA2260352500FF6A25 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7BE971FB2260353800FF6A25 /* Presents */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		7BE971FB2260353800FF6A25 /* Presents */ = {
+			isa = PBXGroup;
+			children = (
+				7BE971EF2260254500FF6A25 /* SYPresentModel.h */,
+				7BE971F02260254500FF6A25 /* SYPresentModel.m */,
+			);
+			path = Presents;
 			sourceTree = "<group>";
 		};
 		DB1E4F3D3B653F9FE4DEFF73 /* Frameworks */ = {
@@ -3480,6 +3575,7 @@
 				26FE8E881F9514D100EC8BE0 /* TZGifPhotoPreviewController.m in Sources */,
 				26CCB9CE20244D370090DBC5 /* SYMomentVideoView.m in Sources */,
 				2611AC651F61992F00418FB9 /* SYNavigationController.m in Sources */,
+				7BE971F9226034EB00FF6A25 /* SYRechargeVC.m in Sources */,
 				26225D7A1F654E410074BFC3 /* SYTabBarController.m in Sources */,
 				26FE8E831F9514D100EC8BE0 /* SDCycleScrollView.m in Sources */,
 				7B4BF4602251AE4C00CCD286 /* YLShortVideoVC.m in Sources */,
@@ -3535,9 +3631,11 @@
 				26BEBC821F8B7B1D004D502F /* NSError+SYModelException.m in Sources */,
 				7BC6FC162237F28C0079330A /* SYLoginVM.m in Sources */,
 				261E014F1FDE2A400041E989 /* SYCommonValueItemViewModel.m in Sources */,
+				7BE971E4225F9F7600FF6A25 /* SYPresentVC.m in Sources */,
 				2605C5D31F6632AA00B1F66E /* SYContactsVC.m in Sources */,
 				7B4BF4622251AE4C00CCD286 /* VideoEditingView.m in Sources */,
 				7B78811622489A2000B25CA3 /* SYForumListCell.m in Sources */,
+				7BE972042260443000FF6A25 /* SYCoinVM.m in Sources */,
 				7B1E733522267765001299C0 /* SYCollocationVM.m in Sources */,
 				26BEBC7F1F8B78B1004D502F /* SYReflection.m in Sources */,
 				7B0228A9223A16470045E25F /* HanyuPinyinOutputFormat.m in Sources */,
@@ -3551,6 +3649,7 @@
 				26FE8E8D1F9514D100EC8BE0 /* TZLocationManager.m in Sources */,
 				2609ED4A1F790833002D31CE /* UILabel+SYExtension.m in Sources */,
 				26FE8E481F95143D00EC8BE0 /* IDMPhoto.m in Sources */,
+				7BE971ED2260204700FF6A25 /* SYPresentListVM.m in Sources */,
 				26FE8E8C1F9514D100EC8BE0 /* TZImagePickerController.m in Sources */,
 				261753201F739DDC00812E1B /* SYCommonQRCodeItemViewModel.m in Sources */,
 				7B788163224F7A4300B25CA3 /* SYSearchResultHandle.m in Sources */,
@@ -3582,16 +3681,20 @@
 				263C897E1F6A324700F7A0AE /* SYCommonCell.m in Sources */,
 				7B590934223F77B200EE5ACF /* SYAnchorsListVM.m in Sources */,
 				7B9A1BDF2243B21F00B7BFC2 /* HSSessionModel.m in Sources */,
+				7BE971F62260347100FF6A25 /* SYRechargeVM.m in Sources */,
 				263D36E11F666438007267C3 /* NSObject+SYAlert.m in Sources */,
 				263D36EB1F666438007267C3 /* UIScrollView+SYRefresh.m in Sources */,
 				263D37101F666569007267C3 /* LCActionSheetConfig.m in Sources */,
+				7BE971FE2260411300FF6A25 /* SYVipVC.m in Sources */,
 				26FE8E4C1F95143D00EC8BE0 /* IDMTapDetectingView.m in Sources */,
 				7B9A1BD622439BED00B7BFC2 /* SYAnchorRandomCellModel.m in Sources */,
 				26C7BEE51F8CBED800525126 /* SAMKeychain+SYUtil.m in Sources */,
 				263D37151F666569007267C3 /* YYKeychain.m in Sources */,
 				7B0228AC223A16470045E25F /* PinYinForObjc.m in Sources */,
+				7BE972072260450100FF6A25 /* SYCoinVC.m in Sources */,
 				26A7E7411F79FE550015CA71 /* SYRegisterVC.m in Sources */,
 				2618AFD11F91A5D900F82A46 /* SYPreferenceSettingHelper.m in Sources */,
+				7BE971F12260254500FF6A25 /* SYPresentModel.m in Sources */,
 				7B5A333C21F9BFC600535F8D /* SYRankingVC.m in Sources */,
 				7BE971C8225ECB0500FF6A25 /* SYProfileVM.m in Sources */,
 				26FE8E461F95143D00EC8BE0 /* IDMCaptionView.m in Sources */,
@@ -3606,6 +3709,7 @@
 				263C89841F6A355C00F7A0AE /* SYCommonVM.m in Sources */,
 				2617531D1F739C1900812E1B /* SYCommonLabelItemViewModel.m in Sources */,
 				263D36E31F666438007267C3 /* NSAttributedString+SYSize.m in Sources */,
+				7BE971E7225F9F8700FF6A25 /* SYPresentVM.m in Sources */,
 				2605C5D01F66326000B1F66E /* SYDiscoverVC.m in Sources */,
 				263D36DC1F666438007267C3 /* MBProgressHUD+SYExtension.m in Sources */,
 				261597061FEA52CE00C6FD80 /* SYMoment.m in Sources */,
@@ -3691,6 +3795,8 @@
 				7BB5199C21EC783B000C1CF2 /* FSSegmentTitleView.m in Sources */,
 				263D371A1F66656A007267C3 /* YYWeakProxy.m in Sources */,
 				263C89871F6A549800F7A0AE /* SYCommonHeaderView.m in Sources */,
+				7BE971EA2260201500FF6A25 /* SYPresentListVC.m in Sources */,
+				7BE972012260412D00FF6A25 /* SYVipVM.m in Sources */,
 				7B78812E2249D5AD00B25CA3 /* SYMomentVM.m in Sources */,
 				7B9A1BD322439BB200B7BFC2 /* SYAnchorsRandomModel.m in Sources */,
 				26003FF61F988BA1000621B0 /* SYImageView.m in Sources */,
