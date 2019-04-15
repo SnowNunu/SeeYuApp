@@ -8,7 +8,7 @@
 
 #import "SYVC.h"
 #import "SYFriendDetailInfoVM.h"
-#import "SYAuthentication.h"
+#import "SYAuthenticationModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

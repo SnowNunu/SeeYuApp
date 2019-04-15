@@ -174,6 +174,12 @@
     UIView *authenticationBgView = [UIView new];
     _authenticationBgView = authenticationBgView;
     [headerView addSubview:authenticationBgView];
+    UITapGestureRecognizer *authenticationTap = [[UITapGestureRecognizer alloc] init];
+    [[authenticationTap rac_gestureSignal] subscribeNext:^(id x) {
+        @strongify(self)
+        [self.viewModel.enterNextViewCommand execute:@(6)];
+    }];
+    [authenticationBgView addGestureRecognizer:authenticationTap];
     
     // 真人认证状态
     UIImageView *authenticationImageView = [UIImageView new];

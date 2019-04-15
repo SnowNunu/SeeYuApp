@@ -175,6 +175,8 @@ pod 'RongCloudRTC/RongCallKit'          , '2.9.11'
 pod 'DZNEmptyDataSet'                   , '1.8.1'
 # 图片浏览器
 pod 'YBImageBrowser'
+# 图片选取与裁剪
+pod 'JQImagePicker'
 # 苹果内购
 #pod 'RMStore', '0.7.1'
 # 拍照和录视频

@@ -1,13 +1,13 @@
 //
-//  SYAuthentication.m
+//  SYAuthenticationModel.m
 //  SeeYu
 //
 //  Created by 唐荣才 on 2019/3/4.
 //  Copyright © 2019 fljj. All rights reserved.
 //
 
-#import "SYAuthentication.h"
+#import "SYAuthenticationModel.h"
 
-@implementation SYAuthentication
+@implementation SYAuthenticationModel
 
 @end

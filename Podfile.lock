@@ -56,6 +56,7 @@ PODS:
   - IQKeyboardManager (5.0.2)
   - JPFPSStatus (0.1)
   - JPVideoPlayer (3.1.1)
+  - JQImagePicker (1.0.1)
   - JSBadgeView (1.4.1)
   - KVOController (1.2.0)
   - LBXScan/LBXNative (2.0)
@@ -178,6 +179,7 @@ DEPENDENCIES:
   - IQKeyboardManager (= 5.0.2)
   - JPFPSStatus (= 0.1)
   - JPVideoPlayer
+  - JQImagePicker
   - JSBadgeView (= 1.4.1)
   - KVOController (= 1.2.0)
   - LBXScan/LBXNative (= 2.0)
@@ -244,6 +246,7 @@ SPEC REPOS:
     - IQKeyboardManager
     - JPFPSStatus
     - JPVideoPlayer
+    - JQImagePicker
     - JSBadgeView
     - KVOController
     - LBXScan
@@ -319,6 +322,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 5ab84749f20f682f784160c2c63bef4f19d10d26
   JPFPSStatus: 4467a17488382e4c1700bd9d18c92ae581fd6305
   JPVideoPlayer: 234c2fc5c9dfd67b969a5dd8233815eb872472c6
+  JQImagePicker: d2db45f8e91b8a29e62ff5ab3e4eb65f0f99cf23
   JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   LBXScan: 458f4b7a6688504a1415dc4a0f9822100e099f66
@@ -358,6 +362,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: d23174dcd25ee8fb7ef06342b265d241147fa9bb
+PODFILE CHECKSUM: 42c26e596c40c5d748a9b872013063cdf20462dc
 
 COCOAPODS: 1.5.3

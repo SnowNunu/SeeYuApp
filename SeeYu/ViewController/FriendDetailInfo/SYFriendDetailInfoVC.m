@@ -238,8 +238,8 @@
         }
         self.IDInfoLabel.attributedText = idString;
     }];
-    [RACObserve(self.viewModel, authInfo) subscribeNext:^(SYAuthentication *authInfo) {
-        if ([authInfo.mobileFlag isEqualToString:@"1"]) {
+    [RACObserve(self.viewModel, authInfo) subscribeNext:^(SYAuthenticationModel *authInfo) {
+        if (authInfo.mobileFlag == 1) {
             UIImageView *passed = [UIImageView new];
             passed.image = SYImageNamed(@"profile_icon_passed");
             [self.headerView addSubview:passed];
@@ -248,7 +248,7 @@
                 make.bottom.right.equalTo(self.mobileImageView);
             }];
         }
-        if ([authInfo.selfieFlag isEqualToString:@"3"]) {
+        if (authInfo.selfieFlag == 3) {
             UIImageView *passed = [UIImageView new];
             passed.image = SYImageNamed(@"profile_icon_passed");
             [self.headerView addSubview:passed];
@@ -257,7 +257,7 @@
                 make.bottom.right.equalTo(self.videoImageView);
             }];
         }
-        if ([authInfo.identityFlag isEqualToString:@"3"]) {
+        if (authInfo.identityFlag == 3) {
             UIImageView *passed = [UIImageView new];
             passed.image = SYImageNamed(@"profile_icon_passed");
             [self.headerView addSubview:passed];

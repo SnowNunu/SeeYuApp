@@ -11,6 +11,7 @@
 #import "SYRechargeVM.h"
 #import "SYDiamondsVM.h"
 #import "SYSettingVM.h"
+#import "SYAuthenticationVM.h"
 
 @implementation SYProfileVM
 
@@ -56,8 +57,11 @@
         } else if ([kind isEqual:@(4)]){
             SYSettingVM *vm = [[SYSettingVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
-        } if ([kind isEqual:@(5)]) {
+        } else if ([kind isEqual:@(5)]) {
             SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"vip"}];
+            [self.services pushViewModel:vm animated:YES];
+        } else if ([kind isEqual:@(6)]) {
+            SYAuthenticationVM *vm = [[SYAuthenticationVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
         }
         return [RACSignal empty];

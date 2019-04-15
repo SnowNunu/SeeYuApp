@@ -7,7 +7,7 @@
 //  用户信息模型
 
 #import "SYObject.h"
-#import "SYAuthentication.h"
+#import "SYAuthenticationModel.h"
 
 @interface SYUser : SYObject
 
