@@ -74,6 +74,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self _setupSubViews];
     [self _makeSubViewsConstraints];
+    [self checkCache];
 }
 
 - (void)bindViewModel {
@@ -90,7 +91,6 @@
                 weakSelf.imagePicker.imageSorceType = sourceType_camera;
                 weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
                     weakSelf.idCardBackImage = clippedImage;
-                    [weakSelf.idCardBackBtn setImage:clippedImage forState:UIControlStateNormal];
                 };
                 [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
             } else {
@@ -99,7 +99,6 @@
                 weakSelf.imagePicker.imageSorceType = sourceType_SavedPhotosAlbum;
                 weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
                     weakSelf.idCardBackImage = clippedImage;
-                    [weakSelf.idCardBackBtn setImage:clippedImage forState:UIControlStateNormal];
                 };
                 [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
             }
@@ -117,7 +116,6 @@
                 weakSelf.imagePicker.imageSorceType = sourceType_camera;
                 weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
                     weakSelf.idCardFrontImage = clippedImage;
-                    [weakSelf.idCardFrontBtn setImage:clippedImage forState:UIControlStateNormal];
                 };
                 [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
             } else {
@@ -126,7 +124,6 @@
                 weakSelf.imagePicker.imageSorceType = sourceType_SavedPhotosAlbum;
                 weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
                     weakSelf.idCardFrontImage = clippedImage;
-                    [weakSelf.idCardFrontBtn setImage:clippedImage forState:UIControlStateNormal];
                 };
                 [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
             }
@@ -144,7 +141,6 @@
                 weakSelf.imagePicker.imageSorceType = sourceType_camera;
                 weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
                     weakSelf.idCardHandImage = clippedImage;
-                    [weakSelf.idCardHandBtn setImage:clippedImage forState:UIControlStateNormal];
                 };
                 [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
             } else {
@@ -153,7 +149,6 @@
                 weakSelf.imagePicker.imageSorceType = sourceType_SavedPhotosAlbum;
                 weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
                     weakSelf.idCardHandImage = clippedImage;
-                    [weakSelf.idCardHandBtn setImage:clippedImage forState:UIControlStateNormal];
                 };
                 [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
             }
@@ -191,15 +186,32 @@
         SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:@{@"userId":self.viewModel.services.client.currentUser.userId,@"userRealName":self.realnameTextField.text,@"userIdCard":self.idNumberTextField.text}];
         SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_IDENTITY_UPLOAD parameters:subscript.dictionary];
         [MBProgressHUD sy_showProgressHUD:@"资料上传中，请稍候"];
-        [[self.viewModel.services.client enqueueUploadRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUserIdentityAuth class] fileDatas:@[UIImagePNGRepresentation(self.idCardBackImage),UIImagePNGRepresentation(self.idCardFrontImage),UIImagePNGRepresentation(self.idCardHandImage)] namesArray:@[@"idBehind",@"idFront",@"idWithUser"] mimeType:@"image/png"] subscribeNext:^(SYUserIdentityAuth *auth) {
+        [[[self.viewModel.services.client enqueueUploadRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUserIdentityAuth class] fileDatas:@[[self.idCardBackImage resetSizeOfImageData:self.idCardBackImage maxSize:300],[self.idCardFrontImage resetSizeOfImageData:self.idCardFrontImage maxSize:300],[self.idCardHandImage resetSizeOfImageData:self.idCardHandImage maxSize:300]] namesArray:@[@"idBehind-jpg",@"idFront-jpg",@"idWithUser-jpg"] mimeType:@"image/png"] sy_parsedResults] subscribeNext:^(SYUserIdentityAuth *auth) {
             [MBProgressHUD sy_hideHUD];
-            NSLog(@"%@",auth);
+            // 写入缓存，审核不通过的情况下可以显示之前的上传的文件记录
+            YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+            [cache setObject:auth forKey:@"SYUserIdentityAuth"];
         } error:^(NSError *error) {
             [MBProgressHUD sy_showErrorTips:error];
         } completed:^{
             [MBProgressHUD sy_showTips:@"资料上传成功，请等待审核"];
             [self.viewModel.services popViewModelAnimated:YES];
         }];
+    }];
+    [RACObserve(self, idCardBackImage) subscribeNext:^(UIImage *image) {
+        if (image != nil) {
+            [self.idCardBackBtn setImage:image forState:UIControlStateNormal];
+        }
+    }];
+    [RACObserve(self, idCardFrontImage) subscribeNext:^(UIImage *image) {
+        if (image != nil) {
+            [self.idCardFrontBtn setImage:image forState:UIControlStateNormal];
+        }
+    }];
+    [RACObserve(self, idCardHandImage) subscribeNext:^(UIImage *image) {
+        if (image != nil) {
+            [self.idCardHandBtn setImage:image forState:UIControlStateNormal];
+        }
     }];
 }
 
@@ -356,6 +368,20 @@
         make.left.width.bottom.equalTo(self.view);
         make.height.offset(50);
     }];
+}
+
+// 审核不通过的情况下读取之前的缓存显示
+- (void)checkCache {
+    YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+    if ([cache containsObjectForKey:@"SYUserIdentityAuth"]) {
+        id auth = [cache objectForKey:@"SYUserIdentityAuth"];
+        SYUserIdentityAuth *identityAuth = (SYUserIdentityAuth*)auth;
+        self.realnameTextField.text = identityAuth.identityRealname;
+        self.idNumberTextField.text = identityAuth.identityIdcardNum;
+        self.idCardBackImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:identityAuth.identityIdBehind]]];
+        self.idCardFrontImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:identityAuth.identityIdFront]]];
+        self.idCardHandImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:identityAuth.identityIdWithUser]]];
+    }
 }
 
 @end

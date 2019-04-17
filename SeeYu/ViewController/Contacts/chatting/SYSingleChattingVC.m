@@ -21,6 +21,7 @@
     [RCIM sharedRCIM].globalMessageAvatarStyle = RC_USER_AVATAR_CYCLE;
     [RCIM sharedRCIM].globalMessagePortraitSize = CGSizeMake(45, 45);
     [self initSendPresentBtn];
+    [self _setupAction];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -29,14 +30,19 @@
     [self.chatSessionInputBarControl.pluginBoardView removeItemAtIndex:PLUGIN_BOARD_ITEM_LOCATION_TAG];
 }
 
+- (void)_setupAction {
+    [[_sendPresentBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [[RCCall sharedRCCall] startSingleCall:@"12337" mediaType:RCCallMediaVideo];
+    }];
+}
+
 - (void)initSendPresentBtn {
     UIButton *sendPresentBtn = [[UIButton alloc] initWithFrame:CGRectMake(SY_SCREEN_WIDTH - 71, 400, 60, 60)];
     [sendPresentBtn setImage:SYImageNamed(@"message_icon_sendGift") forState:UIControlStateNormal];
-    sendPresentBtn.tag = 0;
+    sendPresentBtn.tag = 0;                                                                 
     sendPresentBtn.layer.cornerRadius = 8;
     [self.view addSubview:sendPresentBtn];
     _sendPresentBtn = sendPresentBtn;
-//    [sendPresentBtn addTarget:self action:@selector(addEvent:) forControlEvents:UIControlEventTouchUpInside];
     //添加手势
     UIPanGestureRecognizer *panRcognize = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
     [panRcognize setMinimumNumberOfTouches:1];
@@ -49,7 +55,7 @@
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)recognizer {
     //移动状态
-    UIGestureRecognizerState recState =  recognizer.state;
+    UIGestureRecognizerState recState = recognizer.state;
     switch (recState) {
         case UIGestureRecognizerStateBegan:
             break;

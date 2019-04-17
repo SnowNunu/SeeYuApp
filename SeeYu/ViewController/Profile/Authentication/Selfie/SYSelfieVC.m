@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UILabel *takePhotoLabel;
 
-@property (nonatomic, strong) UIView *takePhotoBgView;
+@property (nonatomic, strong) UIImageView *takePhotoBgView;
 
 @property (nonatomic, strong) UIImageView *takePhotoImageView;
 
@@ -20,7 +20,7 @@
 
 @property (nonatomic, strong) UILabel *takeVideoLabel;
 
-@property (nonatomic, strong) UIView *takeVideoBgView;
+@property (nonatomic, strong) UIImageView *takeVideoBgView;
 
 @property (nonatomic, strong) UIImageView *takeVideoImageView;
 
@@ -28,9 +28,28 @@
 
 @property (nonatomic, strong) UIButton *uploadBtn;
 
+@property (nonatomic, strong) ZYImagePicker *imagePicker;
+
+@property (nonatomic, strong) NSURL *contentUrl;
+
 @end
 
 @implementation SYSelfieVC
+
+- (ZYImagePicker *)imagePicker {
+    if (_imagePicker == nil) {
+        _imagePicker = [[ZYImagePicker alloc]init];
+        _imagePicker.resizableClipArea = NO;
+        _imagePicker.clipSize = CGSizeMake(SY_SCREEN_WIDTH - 50, (SY_SCREEN_WIDTH - 50) * 1.5);
+        _imagePicker.slideColor = [UIColor whiteColor];
+        _imagePicker.slideWidth = 4;
+        _imagePicker.slideLength = 40;
+        _imagePicker.didSelectedImageBlock = ^BOOL(UIImage *selectedImage) {
+            return YES;
+        };
+    }
+    return _imagePicker;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,6 +60,27 @@
 
 - (void)bindViewModel {
     [super bindViewModel];
+    [[self.uploadBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (self.takePhotoBgView.image == nil) {
+            [MBProgressHUD sy_showTips:@"请先上传自拍照"];
+        } else if (self.takeVideoBgView.image == nil) {
+            [MBProgressHUD sy_showTips:@"请先上传自拍视频"];
+        }
+        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:@{@"userId":self.viewModel.services.client.currentUser.userId}];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_SELFIE_UPLOAD parameters:subscript.dictionary];
+        [MBProgressHUD sy_showProgressHUD:@"资料上传中，请稍候"];
+        [[[self.viewModel.services.client enqueueUploadRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYSelfieModel class] fileDatas:@[[self.takePhotoBgView.image resetSizeOfImageData:self.takePhotoBgView.image maxSize:300],[NSData dataWithContentsOfURL:self.contentUrl]] namesArray:@[@"selfiePhoto-jpg",@"selfieVideo-mp4"] mimeType:nil] sy_parsedResults] subscribeNext:^(SYSelfieModel *model) {
+            [MBProgressHUD sy_hideHUD];
+            // 写入缓存，审核不通过的情况下可以显示之前的上传的文件记录
+            YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+            [cache setObject:model forKey:@"SYSelfieModel"];
+        } error:^(NSError *error) {
+            [MBProgressHUD sy_showErrorTips:error];
+        } completed:^{
+            [MBProgressHUD sy_showTips:@"资料上传成功，请等待审核"];
+            [self.viewModel.services popViewModelAnimated:YES];
+        }];
+    }];
 }
 
 - (void)_setupSubViews {
@@ -52,10 +92,41 @@
     _takePhotoLabel = takePhotoLabel;
     [self.view addSubview:takePhotoLabel];
     
-    UIView *takePhotoBgView = [UIView new];
+    UIImageView *takePhotoBgView = [UIImageView new];
     takePhotoBgView.backgroundColor = SYColorFromHexString(@"#E9E9E9");
     takePhotoBgView.layer.borderWidth = 1.f;
     takePhotoBgView.layer.borderColor = SYColorFromHexString(@"#CCCCCC").CGColor;
+    takePhotoBgView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *takePhotoTap = [UITapGestureRecognizer new];
+    @weakify(self)
+    [[takePhotoTap rac_gestureSignal] subscribeNext:^(id x) {
+        @strongify(self)
+        __weak typeof(self) weakSelf = self;
+        LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"取消" clicked:^(LCActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
+            if (buttonIndex == 0) return ;
+            if (buttonIndex == 1) {
+                // 拍照
+                weakSelf.imagePicker.isCustomCamera = YES;
+                weakSelf.imagePicker.imageSorceType = sourceType_camera;
+                weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
+                    weakSelf.takePhotoBgView.image = clippedImage;
+                    weakSelf.takePhotoImageView.hidden = YES;
+                };
+                [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
+            } else {
+                // 相册
+                weakSelf.imagePicker.isCustomCamera = YES;
+                weakSelf.imagePicker.imageSorceType = sourceType_SavedPhotosAlbum;
+                weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
+                    weakSelf.takePhotoBgView.image = clippedImage;
+                    weakSelf.takePhotoImageView.hidden = YES;
+                };
+                [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
+            }
+        } otherButtonTitles:@"拍照",@"从手机相册选择", nil];
+        [sheet show];
+    }];
+    [takePhotoBgView addGestureRecognizer:takePhotoTap];
     _takePhotoBgView = takePhotoBgView;
     [self.view addSubview:takePhotoBgView];
     
@@ -80,10 +151,22 @@
     _takeVideoLabel = takeVideoLabel;
     [self.view addSubview:takeVideoLabel];
     
-    UIView *takeVideoBgView = [UIView new];
+    UIImageView *takeVideoBgView = [UIImageView new];
     takeVideoBgView.backgroundColor = SYColorFromHexString(@"#E9E9E9");
     takeVideoBgView.layer.borderWidth = 1.f;
     takeVideoBgView.layer.borderColor = SYColorFromHexString(@"#CCCCCC").CGColor;
+    takeVideoBgView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *takeVideoTap = [UITapGestureRecognizer new];
+    [[takeVideoTap rac_gestureSignal] subscribeNext:^(id x) {
+        YLShortVideoVC *videoVC = [YLShortVideoVC new];
+        videoVC.shortVideoBack = ^(NSURL *videoUrl) {
+            self.takeVideoImageView.hidden = YES;
+            self.contentUrl = videoUrl;
+            self.takeVideoBgView.image = [UIImage sy_thumbnailImageForVideo:videoUrl atTime:1];
+        };
+        [self presentViewController:videoVC animated:YES completion:nil];
+    }];
+    [takeVideoBgView addGestureRecognizer:takeVideoTap];
     _takeVideoBgView = takeVideoBgView;
     [self.view addSubview:takeVideoBgView];
     

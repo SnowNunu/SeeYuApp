@@ -429,9 +429,10 @@ static id service_ = nil;
             });
             // 设置时间格式
             [formatter setDateFormat:@"yyyyMMddHHmmss"];
+            NSArray *nameArr = [namesArray[i] componentsSeparatedByString:@"-"];
             NSString *dateString = [formatter stringFromDate:[NSDate date]];
-            NSString *fileName = [NSString  stringWithFormat:@"%@_%d.jpg", dateString , i];
-            [formData appendPartWithFileData:fileData name:namesArray[i] fileName:fileName mimeType:SYStringIsNotEmpty(mimeType)?mimeType:@"application/octet-stream"];
+            NSString *fileName = [NSString  stringWithFormat:@"%@_%d.%@", dateString , i,nameArr[1]];
+            [formData appendPartWithFileData:fileData name:nameArr[0] fileName:fileName mimeType:SYStringIsNotEmpty(mimeType)?mimeType:@"application/octet-stream"];
         }
     }]
              reduceEach:^RACStream *(NSURLResponse *response, NSDictionary * responseObject){

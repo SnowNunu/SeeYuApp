@@ -258,6 +258,8 @@
 		7B747A532236229500B3F6A0 /* XFPhotoLibraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B747A4E2236229500B3F6A0 /* XFPhotoLibraryManager.m */; };
 		7B747A542236229500B3F6A0 /* XFCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B747A4F2236229500B3F6A0 /* XFCameraController.m */; };
 		7B747A552236229500B3F6A0 /* XFCameraController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B747A502236229500B3F6A0 /* XFCameraController.xib */; };
+		7B76B87F2266E58300153249 /* RongCallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE971C2225E36AD00FF6A25 /* RongCallKit.framework */; };
+		7B76B88422671D5500153249 /* SYSelfieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B88322671D5500153249 /* SYSelfieModel.m */; };
 		7B7881032248894500B25CA3 /* SYForumVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7881022248894500B25CA3 /* SYForumVC.m */; };
 		7B7881062248898000B25CA3 /* SYForumVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7881052248898000B25CA3 /* SYForumVM.m */; };
 		7B78810A22488D2F00B25CA3 /* SYForumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78810922488D2F00B25CA3 /* SYForumModel.m */; };
@@ -315,7 +317,6 @@
 		7BC6FC1D2238BFEF0079330A /* UIView+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6FC1C2238BFEF0079330A /* UIView+CountDown.m */; };
 		7BC6FC222238C0C00079330A /* CountDownOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6FC1E2238C0C00079330A /* CountDownOperation.m */; };
 		7BC6FC232238C0C00079330A /* CountDownQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6FC1F2238C0C00079330A /* CountDownQueue.m */; };
-		7BE971C3225E36AD00FF6A25 /* RongCallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE971C2225E36AD00FF6A25 /* RongCallKit.framework */; };
 		7BE971C8225ECB0500FF6A25 /* SYProfileVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971C7225ECB0500FF6A25 /* SYProfileVM.m */; };
 		7BE971CB225ECB2C00FF6A25 /* SYProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971CA225ECB2C00FF6A25 /* SYProfileVC.m */; };
 		7BE971D3225F283600FF6A25 /* SYSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971D2225F283600FF6A25 /* SYSettingVC.m */; };
@@ -864,6 +865,8 @@
 		7B747A4F2236229500B3F6A0 /* XFCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFCameraController.m; sourceTree = "<group>"; };
 		7B747A502236229500B3F6A0 /* XFCameraController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFCameraController.xib; sourceTree = "<group>"; };
 		7B747A512236229500B3F6A0 /* XFCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFCameraController.h; sourceTree = "<group>"; };
+		7B76B88222671D5500153249 /* SYSelfieModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSelfieModel.h; sourceTree = "<group>"; };
+		7B76B88322671D5500153249 /* SYSelfieModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSelfieModel.m; sourceTree = "<group>"; };
 		7B7881012248894500B25CA3 /* SYForumVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYForumVC.h; sourceTree = "<group>"; };
 		7B7881022248894500B25CA3 /* SYForumVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYForumVC.m; sourceTree = "<group>"; };
 		7B7881042248898000B25CA3 /* SYForumVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYForumVM.h; sourceTree = "<group>"; };
@@ -1025,7 +1028,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BE971C3225E36AD00FF6A25 /* RongCallKit.framework in Frameworks */,
+				7B76B87F2266E58300153249 /* RongCallKit.framework in Frameworks */,
 				864BB5E20D5521374F720EC0 /* Pods_SeeYu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1995,8 +1998,6 @@
 			children = (
 				26BEBC731F8B7844004D502F /* SYUser.h */,
 				26BEBC741F8B7844004D502F /* SYUser.m */,
-				7B734037222E46C500152750 /* SYUserIdentityAuth.h */,
-				7B734038222E46C500152750 /* SYUserIdentityAuth.m */,
 				7B66335922325302002B220E /* SYUserHobby.h */,
 				7B66335A22325302002B220E /* SYUserHobby.m */,
 			);
@@ -2413,6 +2414,8 @@
 		7B3599212260F2B000FDC6FE /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				7B76B88122671D3400153249 /* Selfie */,
+				7B76B88022671D2200153249 /* Realname */,
 				7B734034222CE72100152750 /* SYAuthenticationModel.h */,
 				7B734035222CE72100152750 /* SYAuthenticationModel.m */,
 			);
@@ -2530,10 +2533,10 @@
 		7B4BF4822251B3BB00CCD286 /* SDAutoLayout */ = {
 			isa = PBXGroup;
 			children = (
+				7B4BF4862251B3BB00CCD286 /* UIView+SDAutoLayout.h */,
 				7B4BF4832251B3BB00CCD286 /* UIView+SDAutoLayout.m */,
 				7B4BF4842251B3BB00CCD286 /* UITableView+SDAutoTableViewCellHeight.h */,
 				7B4BF4852251B3BB00CCD286 /* UITableView+SDAutoTableViewCellHeight.m */,
-				7B4BF4862251B3BB00CCD286 /* UIView+SDAutoLayout.h */,
 			);
 			path = SDAutoLayout;
 			sourceTree = "<group>";
@@ -2699,6 +2702,24 @@
 				7B747A4E2236229500B3F6A0 /* XFPhotoLibraryManager.m */,
 			);
 			path = XFPhotoLibraryManager;
+			sourceTree = "<group>";
+		};
+		7B76B88022671D2200153249 /* Realname */ = {
+			isa = PBXGroup;
+			children = (
+				7B734037222E46C500152750 /* SYUserIdentityAuth.h */,
+				7B734038222E46C500152750 /* SYUserIdentityAuth.m */,
+			);
+			path = Realname;
+			sourceTree = "<group>";
+		};
+		7B76B88122671D3400153249 /* Selfie */ = {
+			isa = PBXGroup;
+			children = (
+				7B76B88222671D5500153249 /* SYSelfieModel.h */,
+				7B76B88322671D5500153249 /* SYSelfieModel.m */,
+			);
+			path = Selfie;
 			sourceTree = "<group>";
 		};
 		7B7880FE2248824900B25CA3 /* Moments */ = {
@@ -4036,6 +4057,7 @@
 				26B89AB22022BB54006FBE20 /* SYMomentShareInfoView.m in Sources */,
 				7B0228B7223B55020045E25F /* SYFriendGroupModel.m in Sources */,
 				26FA40501FEB5C9D00B4AD2B /* SYComment.m in Sources */,
+				7B76B88422671D5500153249 /* SYSelfieModel.m in Sources */,
 				2624CAE51F98DF9B0083923F /* RACSignal+SYHTTPServiceAdditions.m in Sources */,
 				7B78810F2248923000B25CA3 /* SYFriendDetailInfoVC.m in Sources */,
 				2634C7221FF0A33A00B1F639 /* SYTableView.m in Sources */,

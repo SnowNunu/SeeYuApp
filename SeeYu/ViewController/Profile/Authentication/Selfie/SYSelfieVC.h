@@ -8,6 +8,9 @@
 
 #import "SYVC.h"
 #import "SYSelfieVM.h"
+#import "ZYImagePicker.h"
+#import "YLShortVideoVC.h"
+#import "SYSelfieModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

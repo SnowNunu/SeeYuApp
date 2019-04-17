@@ -60,6 +60,9 @@
 /// 实名认证信息上传
 #define SY_HTTTP_PATH_USER_IDENTITY_UPLOAD @"/application/userIdentityAuth/addUserIdentity"
 
+/// 自拍认证信息上传
+#define SY_HTTTP_PATH_USER_SELFIE_UPLOAD @"/application/userSelfieAuth/addUserSelfie"
+
 /// 获取附近的人
 #define SY_HTTTP_PATH_USER_NEARBY   @"/application/user/nearby"
 

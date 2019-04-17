@@ -13,23 +13,21 @@
 #import "VideoEditingView.h"//视频处理菊花
 #import "YLVideoPreView.h"//视频预览view
 #import "MHGetPermission.h"//权限
-#import "UIView+SDAutoLayout.h"
 
 #define kMaxVideoLength 15
 #define kProgressTimerTimeInterval 0.015
-#define Width(i) i*(SY_SCREEN_WIDTH/375)
 // 视频URL路径
 #define KVideoUrlPath   \
 [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"VideoURL"]
 
-@interface YLShortVideoVC () <AVCaptureFileOutputRecordingDelegate, UIGestureRecognizerDelegate,MHAssetPickerControllerDelegate,UINavigationControllerDelegate,YLVideoPreViewDelegate>
+@interface YLShortVideoVC ()<AVCaptureFileOutputRecordingDelegate, UIGestureRecognizerDelegate,MHAssetPickerControllerDelegate,UINavigationControllerDelegate,YLVideoPreViewDelegate>
 
-@property (strong, nonatomic) AVCaptureSession *captureSession;//负责输入和输出设备之间的数据传递
-@property (strong, nonatomic) AVCaptureDeviceInput *captureDeviceInput;//负责从AVCaptureDevice获得输入数据
-@property (strong, nonatomic) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;//相机拍摄预览图层
-@property (strong, nonatomic) AVCaptureMovieFileOutput *captureMovieFileOutput;//视频输出流
-@property (nonatomic, assign) BOOL canShort;//摄像头是否可用
-@property (nonatomic, assign) BOOL canAudioUse;//麦克风是否可用
+@property (strong,nonatomic) AVCaptureSession *captureSession;//负责输入和输出设备之间的数据传递
+@property (strong,nonatomic) AVCaptureDeviceInput *captureDeviceInput;//负责从AVCaptureDevice获得输入数据
+@property (strong,nonatomic) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;//相机拍摄预览图层
+@property (strong,nonatomic) AVCaptureMovieFileOutput *captureMovieFileOutput;//视频输出流
+@property(nonatomic,assign)BOOL canShort;//摄像头是否可用
+@property(nonatomic,assign)BOOL canAudioUse;//麦克风是否可用
 @property (strong, nonatomic) UIButton *takeButton;//拍照按钮
 @property (nonatomic, strong) CAShapeLayer *btnOutLayer;//开始录制按钮 外框
 @property (nonatomic, strong) CAShapeLayer *progressLayer;//录制按钮 圆环进度
@@ -37,14 +35,14 @@
 @property (strong, nonatomic) UIButton *changeSXTBtn;//切换前后摄像头按钮
 @property (strong, nonatomic) UIButton *goBackBtn;//返回按钮
 @property (nonatomic, strong) NSTimer *progressTimer;//录制定时器
-@property (assign, nonatomic) UIBackgroundTaskIdentifier backgroundTaskIdentifier;//后台任务标识
+@property (assign,nonatomic) UIBackgroundTaskIdentifier backgroundTaskIdentifier;//后台任务标识
 @property (nonatomic, assign) CGFloat videoLength;//视频录制时长
-@property (nonatomic, copy) NSURL * curentVideoUrl;//未处理的视频的地址
-@property (nonatomic, copy) NSURL * videoUrl;//最终视频的地址
+@property(nonatomic,copy)NSURL * curentVideoUrl;//未处理的视频的地址
+@property(nonatomic,copy)NSURL * videoUrl;//最终视频的地址
 /*拍摄完 或 选择之后 视频预览*/
-@property(nonatomic, strong) YLVideoPreView * playerPreView;//视频预览view
+@property(nonatomic,strong)YLVideoPreView * playerPreView;//视频预览view
 
-@property(nonatomic, assign) BOOL isFirstTime;//是否是第一次进入该vc
+@property(nonatomic,assign)BOOL isFirstTime;//是否是第一次进入该vc
 
 @end
 
@@ -63,11 +61,11 @@
             [self.captureSession startRunning];
         }
     }
-//    [UIApplication sharedApplication].statusBarHidden = YES;
+    [UIApplication sharedApplication].statusBarHidden = YES;
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-//    [UIApplication sharedApplication].statusBarHidden = NO;
+    [UIApplication sharedApplication].statusBarHidden = NO;
     if (_canShort) {
         [self.captureSession stopRunning];
     }
@@ -88,7 +86,7 @@
                 if (!has) {
                     NSLog(@"-----没有麦克风权限--------");
                 }else{
-                    self.canAudioUse = YES;
+                    _canAudioUse = YES;
                 }
                 [self setupCaptureSession];
                 [self setupView];
@@ -167,11 +165,11 @@
     [self.takeButton addTarget:self action:@selector(endRecordingVideo) forControlEvents:UIControlEventTouchUpOutside];
     self.takeButton.enabled = _canShort && _canAudioUse;
     [self.view addSubview:self.takeButton];
-    self.takeButton.sd_layout.centerXEqualToView(self.view).centerYIs(SY_SCREEN_HEIGHT-Width(95)).widthIs(Width(80)).heightEqualToWidth();
+    self.takeButton.sd_layout.centerXEqualToView(self.view).centerYIs(Screen_HEIGTH-Width(95)).widthIs(Width(80)).heightEqualToWidth();
     self.takeButton.sd_cornerRadiusFromWidthRatio = @(0.5);
     UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(Width(40), Width(40)) radius:Width(40) startAngle:-M_PI_2 endAngle:-M_PI_2 +M_PI*2 clockwise:YES];
     self.btnOutLayer = [CAShapeLayer layer];
-    self.btnOutLayer.strokeColor = SYColorFromHexString(@"#C8C8C8").CGColor;
+    self.btnOutLayer.strokeColor = HexRGBAlpha(0xc8c8c8, 1).CGColor;
     self.btnOutLayer.lineWidth = Width(30);
     self.btnOutLayer.fillColor =  [UIColor clearColor].CGColor;
     self.btnOutLayer.lineCap = kCALineCapRound;
@@ -180,10 +178,10 @@
     
     //返回按钮
     self.goBackBtn = [UIButton buttonWithType:0];
-    [self.goBackBtn setImage:[UIImage imageNamed:@"btn_moment_back"] forState:0];
+    [self.goBackBtn setImage:[UIImage imageNamed:@"short_back"] forState:0];
     [self.goBackBtn addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.goBackBtn];
-    self.goBackBtn.sd_layout.centerXIs(SY_SCREEN_WIDTH/2-Width(90)-Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(24)).heightIs(13.5);
+    self.goBackBtn.sd_layout.centerXIs(Screen_WIDTH/2-Width(90)-Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(30)).heightIs(Width(20));
     
     //切换摄像头按钮
     self.changeSXTBtn = [UIButton buttonWithType:0];//48*40
@@ -191,15 +189,15 @@
     self.changeSXTBtn.enabled = _canShort && _canAudioUse;;
     [self.changeSXTBtn addTarget:self action:@selector(toggleButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.changeSXTBtn];
-    self.changeSXTBtn.sd_layout.rightSpaceToView(self.view, 20).widthIs(28).heightIs(22).topSpaceToView(self.view, 30);
+    self.changeSXTBtn.sd_layout.rightSpaceToView(self.view, 20).widthIs(Width(30)).heightIs(Width(25)).topSpaceToView(self.view, 30);
     
     //相册选择按钮
     self.chooseLib = [UIButton buttonWithType:0];
     [self.chooseLib setImage:[UIImage imageNamed:@"btn_pic"] forState:0];
     [self.chooseLib addTarget:self action:@selector(chooseFromXIngce) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.chooseLib];
-    self.chooseLib.sd_layout.centerXIs(SY_SCREEN_WIDTH/2 + Width(90)+Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(25)).heightIs(Width(19));
-
+    self.chooseLib.sd_layout.centerXIs(Screen_WIDTH/2 + Width(90)+Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(30)).heightIs(22);
+    
     //视频预览view
     self.playerPreView = [[YLVideoPreView alloc] init];
     self.playerPreView.hidden = YES;
@@ -256,10 +254,10 @@
     self.goBackBtn.enabled = NO;
     self.changeSXTBtn.enabled = NO;
     self.chooseLib.enabled = NO;
-    self.takeButton.sd_resetLayout.centerXEqualToView(self.view).centerYIs(SY_SCREEN_HEIGHT-Width(95)).widthIs(Width(120)).heightEqualToWidth();
-    self.goBackBtn.sd_resetLayout.centerXIs(SY_SCREEN_WIDTH/2-Width(90)-Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(50)).heightEqualToWidth();
-    self.chooseLib.sd_resetLayout.centerXIs(SY_SCREEN_WIDTH/2 + Width(90)+Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(50)).heightEqualToWidth();
-
+    self.takeButton.sd_resetLayout.centerXEqualToView(self.view).centerYIs(Screen_HEIGTH-Width(95)).widthIs(Width(120)).heightEqualToWidth();
+    self.goBackBtn.sd_resetLayout.centerXIs(Screen_WIDTH/2-Width(90)-Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(30)).heightIs(Width(20));
+    self.chooseLib.sd_resetLayout.centerXIs(Screen_WIDTH/2 + Width(90)+Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(30)).heightIs(22);
+    
     [CATransaction begin];
     [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     [CATransaction setAnimationDuration:0.3];
@@ -272,7 +270,7 @@
     _progressLayer = [CAShapeLayer layer];//创建一个track shape layer
     _progressLayer.frame = CGRectMake(0, 0, Width(120), Width(120));
     _progressLayer.fillColor = [[UIColor clearColor] CGColor];  //填充色为无色
-    _progressLayer.strokeColor = SYColorFromHexString(@"#4FB530").CGColor;  //指定path的渲染颜色,这里可以设置任意不透明颜色
+    _progressLayer.strokeColor = [HexRGBAlpha(0x4fb530, 1) CGColor]; //指定path的渲染颜色,这里可以设置任意不透明颜色
     _progressLayer.opacity = 1; //背景颜色的透明度
     _progressLayer.lineCap = kCALineCapButt;
     _progressLayer.lineWidth = Width(16);//线的宽度
@@ -289,9 +287,9 @@
     self.goBackBtn.enabled = YES;
     self.changeSXTBtn.enabled = YES;
     self.chooseLib.enabled = YES;
-    self.takeButton.sd_resetLayout.centerXEqualToView(self.view).centerYIs(SY_SCREEN_HEIGHT-Width(95)).widthIs(Width(80)).heightEqualToWidth();
-    self.goBackBtn.sd_resetLayout.centerXIs(SY_SCREEN_WIDTH/2-Width(90)-Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(50)).heightEqualToWidth();
-    self.chooseLib.sd_resetLayout.centerXIs(SY_SCREEN_WIDTH/2 + Width(90)+Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(50)).heightEqualToWidth();
+    self.takeButton.sd_resetLayout.centerXEqualToView(self.view).centerYIs(Screen_HEIGTH-Width(95)).widthIs(Width(80)).heightEqualToWidth();
+    self.goBackBtn.sd_resetLayout.centerXIs(Screen_WIDTH/2-Width(90)-Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(30)).heightIs(22);
+    self.chooseLib.sd_resetLayout.centerXIs(Screen_WIDTH/2 + Width(90)+Width(25)).centerYEqualToView(self.takeButton).widthIs(Width(30)).heightIs(22);
     
     [_progressLayer removeFromSuperlayer];
     [CATransaction begin];
@@ -424,7 +422,7 @@
                     return YES;
                 }
             }];
-//            [UIApplication sharedApplication].statusBarHidden = NO;
+            [UIApplication sharedApplication].statusBarHidden = NO;
             [self presentViewController:picker animated:YES completion:^{
             }];
         }else{
@@ -438,10 +436,10 @@
 {
     //显示预览及取消和确认按钮
     [self showPlayerPreview:videoUrl];
-//
-//    self.videoUrl = videoUrl;
-//    self.shortVideoBack(self.videoUrl);
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    //
+    //    self.videoUrl = videoUrl;
+    //    self.shortVideoBack(self.videoUrl);
+    //    [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark - 退出界面
 -(void)goBack

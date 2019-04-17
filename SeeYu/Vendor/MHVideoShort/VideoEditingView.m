@@ -92,7 +92,7 @@
             }
         });
     }];
-
+    
 }
 + (AVMutableVideoComposition *)getVideoComposition:(AVAsset *)asset {
     AVAssetTrack *videoTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
@@ -119,7 +119,7 @@
     AVMutableVideoCompositionInstruction *inst = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
     inst.timeRange = CMTimeRangeMake(kCMTimeZero, asset.duration);
     inst.layerInstructions = [NSArray arrayWithObject:layerInst];
-
+    
     
     AVMutableCompositionTrack *compositionVideoTrack = [composition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
     [compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, asset.duration) ofTrack:videoTrack atTime:kCMTimeZero error:nil];
@@ -173,7 +173,7 @@
             [fileManage removeItemAtPath:[NSString stringWithFormat:@"%@VideoCompressionTemp.mp4",path] error:nil];
         }
         NSURL *compressionVideoURL = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@VideoCompressionTemp.mp4",path]];
-
+        
         AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:firstAsset presetName:AVAssetExportPresetMediumQuality];
         exporter.outputURL=compressionVideoURL;
         exporter.outputFileType = AVFileTypeMPEG4;
@@ -192,17 +192,17 @@
                          handler(NO,nil, nil);
                          break;
                      }default: {
-//                         AVAsset * tAsset = [AVAsset assetWithURL:compressionVideoURL];
-//                         AVAssetTrack *tAssetTrack = [[tAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
-//                         CGAffineTransform firstTransform = tAssetTrack.preferredTransform;
-//                         CGSize videoSize = tAssetTrack.naturalSize;
-//                         NSLog(@"%f--%f",videoSize.width,videoSize.height);
+                         //                         AVAsset * tAsset = [AVAsset assetWithURL:compressionVideoURL];
+                         //                         AVAssetTrack *tAssetTrack = [[tAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+                         //                         CGAffineTransform firstTransform = tAssetTrack.preferredTransform;
+                         //                         CGSize videoSize = tAssetTrack.naturalSize;
+                         //                         NSLog(@"%f--%f",videoSize.width,videoSize.height);
                          handler(YES,exporter,compressionVideoURL);
                          break;
                      }
                          
                  }
-
+                 
              });
          }];
     }else{
@@ -210,6 +210,5 @@
         handler(NO,nil, nil);
     }
 }
-
 
 @end
