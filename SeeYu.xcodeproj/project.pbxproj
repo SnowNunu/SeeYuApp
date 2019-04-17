@@ -192,6 +192,18 @@
 		7B0228BA223B7D9D0045E25F /* SYFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228B9223B7D9D0045E25F /* SYFriendModel.m */; };
 		7B0228BE223B87810045E25F /* SYFriendsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228BD223B87810045E25F /* SYFriendsListCell.m */; };
 		7B0228C7223BCAF80045E25F /* SYSearchFriendsResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228C6223BCAF80045E25F /* SYSearchFriendsResultVC.m */; };
+		7B15EC6D2265BAF100A80BD5 /* ZYClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC4E2265BAF000A80BD5 /* ZYClipViewController.m */; };
+		7B15EC6E2265BAF100A80BD5 /* ZYImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC502265BAF000A80BD5 /* ZYImagePickerController.m */; };
+		7B15EC6F2265BAF100A80BD5 /* ZYCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC552265BAF000A80BD5 /* ZYCameraController.m */; };
+		7B15EC702265BAF100A80BD5 /* ZYImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC562265BAF000A80BD5 /* ZYImageController.m */; };
+		7B15EC712265BAF100A80BD5 /* ZYImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC5A2265BAF000A80BD5 /* ZYImagePicker.m */; };
+		7B15EC722265BAF100A80BD5 /* ZYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC5D2265BAF000A80BD5 /* ZYPhoto.m */; };
+		7B15EC732265BAF100A80BD5 /* ZYClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC622265BAF000A80BD5 /* ZYClipView.m */; };
+		7B15EC742265BAF100A80BD5 /* ZYClipBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC632265BAF000A80BD5 /* ZYClipBorderView.m */; };
+		7B15EC752265BAF100A80BD5 /* ZYImageTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC672265BAF000A80BD5 /* ZYImageTopBar.m */; };
+		7B15EC762265BAF100A80BD5 /* ZYImageReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC682265BAF000A80BD5 /* ZYImageReusableView.m */; };
+		7B15EC772265BAF100A80BD5 /* ZYImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC692265BAF000A80BD5 /* ZYImageCell.m */; };
+		7B15EC782265BAF100A80BD5 /* Camera.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B15EC6C2265BAF000A80BD5 /* Camera.bundle */; };
 		7B1E733122267684001299C0 /* SYCollocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E733022267684001299C0 /* SYCollocationVC.m */; };
 		7B1E733522267765001299C0 /* SYCollocationVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E733422267765001299C0 /* SYCollocationVM.m */; };
 		7B2E76BF223F460200D8F1CD /* SYAnchorsOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E76BE223F460200D8F1CD /* SYAnchorsOrderVC.m */; };
@@ -728,6 +740,29 @@
 		7B0228BD223B87810045E25F /* SYFriendsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYFriendsListCell.m; sourceTree = "<group>"; };
 		7B0228C5223BCAF80045E25F /* SYSearchFriendsResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSearchFriendsResultVC.h; sourceTree = "<group>"; };
 		7B0228C6223BCAF80045E25F /* SYSearchFriendsResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSearchFriendsResultVC.m; sourceTree = "<group>"; };
+		7B15EC4D2265BAF000A80BD5 /* ZYClipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClipViewController.h; sourceTree = "<group>"; };
+		7B15EC4E2265BAF000A80BD5 /* ZYClipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClipViewController.m; sourceTree = "<group>"; };
+		7B15EC502265BAF000A80BD5 /* ZYImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImagePickerController.m; sourceTree = "<group>"; };
+		7B15EC512265BAF000A80BD5 /* ZYImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImagePickerController.h; sourceTree = "<group>"; };
+		7B15EC532265BAF000A80BD5 /* ZYCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCameraController.h; sourceTree = "<group>"; };
+		7B15EC542265BAF000A80BD5 /* ZYImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImageController.h; sourceTree = "<group>"; };
+		7B15EC552265BAF000A80BD5 /* ZYCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCameraController.m; sourceTree = "<group>"; };
+		7B15EC562265BAF000A80BD5 /* ZYImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageController.m; sourceTree = "<group>"; };
+		7B15EC592265BAF000A80BD5 /* ZYImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImagePicker.h; sourceTree = "<group>"; };
+		7B15EC5A2265BAF000A80BD5 /* ZYImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImagePicker.m; sourceTree = "<group>"; };
+		7B15EC5C2265BAF000A80BD5 /* ZYPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYPhoto.h; sourceTree = "<group>"; };
+		7B15EC5D2265BAF000A80BD5 /* ZYPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYPhoto.m; sourceTree = "<group>"; };
+		7B15EC602265BAF000A80BD5 /* ZYClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClipView.h; sourceTree = "<group>"; };
+		7B15EC612265BAF000A80BD5 /* ZYClipBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClipBorderView.h; sourceTree = "<group>"; };
+		7B15EC622265BAF000A80BD5 /* ZYClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClipView.m; sourceTree = "<group>"; };
+		7B15EC632265BAF000A80BD5 /* ZYClipBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClipBorderView.m; sourceTree = "<group>"; };
+		7B15EC652265BAF000A80BD5 /* ZYImageReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImageReusableView.h; sourceTree = "<group>"; };
+		7B15EC662265BAF000A80BD5 /* ZYImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImageCell.h; sourceTree = "<group>"; };
+		7B15EC672265BAF000A80BD5 /* ZYImageTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageTopBar.m; sourceTree = "<group>"; };
+		7B15EC682265BAF000A80BD5 /* ZYImageReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageReusableView.m; sourceTree = "<group>"; };
+		7B15EC692265BAF000A80BD5 /* ZYImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImageCell.m; sourceTree = "<group>"; };
+		7B15EC6A2265BAF000A80BD5 /* ZYImageTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYImageTopBar.h; sourceTree = "<group>"; };
+		7B15EC6C2265BAF000A80BD5 /* Camera.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Camera.bundle; sourceTree = "<group>"; };
 		7B1E732F22267684001299C0 /* SYCollocationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCollocationVC.h; sourceTree = "<group>"; };
 		7B1E733022267684001299C0 /* SYCollocationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCollocationVC.m; sourceTree = "<group>"; };
 		7B1E733322267765001299C0 /* SYCollocationVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCollocationVM.h; sourceTree = "<group>"; };
@@ -1188,6 +1223,7 @@
 		26064AF01F5DA21000566B95 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				7B15EC4A2265BAF000A80BD5 /* ZYImagePicker */,
 				7B4BF4822251B3BB00CCD286 /* SDAutoLayout */,
 				7B4BF4592251AE0E00CCD286 /* MHVideoShort */,
 				7B9A1BE22243CECD00B7BFC2 /* SYVideoPlayer */,
@@ -2188,6 +2224,124 @@
 			path = friendsList;
 			sourceTree = "<group>";
 		};
+		7B15EC4A2265BAF000A80BD5 /* ZYImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC4B2265BAF000A80BD5 /* Controller */,
+				7B15EC572265BAF000A80BD5 /* Model */,
+				7B15EC5E2265BAF000A80BD5 /* View */,
+				7B15EC6B2265BAF000A80BD5 /* Resource */,
+			);
+			path = ZYImagePicker;
+			sourceTree = "<group>";
+		};
+		7B15EC4B2265BAF000A80BD5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC4C2265BAF000A80BD5 /* Clip */,
+				7B15EC4F2265BAF000A80BD5 /* System */,
+				7B15EC522265BAF000A80BD5 /* Custom */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7B15EC4C2265BAF000A80BD5 /* Clip */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC4D2265BAF000A80BD5 /* ZYClipViewController.h */,
+				7B15EC4E2265BAF000A80BD5 /* ZYClipViewController.m */,
+			);
+			path = Clip;
+			sourceTree = "<group>";
+		};
+		7B15EC4F2265BAF000A80BD5 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC502265BAF000A80BD5 /* ZYImagePickerController.m */,
+				7B15EC512265BAF000A80BD5 /* ZYImagePickerController.h */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		7B15EC522265BAF000A80BD5 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC532265BAF000A80BD5 /* ZYCameraController.h */,
+				7B15EC542265BAF000A80BD5 /* ZYImageController.h */,
+				7B15EC552265BAF000A80BD5 /* ZYCameraController.m */,
+				7B15EC562265BAF000A80BD5 /* ZYImageController.m */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		7B15EC572265BAF000A80BD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC582265BAF000A80BD5 /* Main */,
+				7B15EC5B2265BAF000A80BD5 /* Custom */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7B15EC582265BAF000A80BD5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC592265BAF000A80BD5 /* ZYImagePicker.h */,
+				7B15EC5A2265BAF000A80BD5 /* ZYImagePicker.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7B15EC5B2265BAF000A80BD5 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC5C2265BAF000A80BD5 /* ZYPhoto.h */,
+				7B15EC5D2265BAF000A80BD5 /* ZYPhoto.m */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		7B15EC5E2265BAF000A80BD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC5F2265BAF000A80BD5 /* Clip */,
+				7B15EC642265BAF000A80BD5 /* Custom */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B15EC5F2265BAF000A80BD5 /* Clip */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC602265BAF000A80BD5 /* ZYClipView.h */,
+				7B15EC612265BAF000A80BD5 /* ZYClipBorderView.h */,
+				7B15EC622265BAF000A80BD5 /* ZYClipView.m */,
+				7B15EC632265BAF000A80BD5 /* ZYClipBorderView.m */,
+			);
+			path = Clip;
+			sourceTree = "<group>";
+		};
+		7B15EC642265BAF000A80BD5 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC652265BAF000A80BD5 /* ZYImageReusableView.h */,
+				7B15EC662265BAF000A80BD5 /* ZYImageCell.h */,
+				7B15EC672265BAF000A80BD5 /* ZYImageTopBar.m */,
+				7B15EC682265BAF000A80BD5 /* ZYImageReusableView.m */,
+				7B15EC692265BAF000A80BD5 /* ZYImageCell.m */,
+				7B15EC6A2265BAF000A80BD5 /* ZYImageTopBar.h */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		7B15EC6B2265BAF000A80BD5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				7B15EC6C2265BAF000A80BD5 /* Camera.bundle */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		7B1E732E222675D2001299C0 /* Collocation */ = {
 			isa = PBXGroup;
 			children = (
@@ -3098,6 +3252,7 @@
 				7B4BF47E2251B09300CCD286 /* AssetsPickerLocked@2x.png in Resources */,
 				7B0228A6223A16470045E25F /* unicode_to_hanyu_pinyin.txt in Resources */,
 				26CCB9D3202453700090DBC5 /* SeeYuSight.mp4 in Resources */,
+				7B15EC782265BAF100A80BD5 /* Camera.bundle in Resources */,
 				26FE8E8B1F9514D100EC8BE0 /* TZImagePickerController.bundle in Resources */,
 				7BA3260A21DFA62100B7A352 /* Assets.xcassets in Resources */,
 				7B66334E223178F2002B220E /* address.json in Resources */,
@@ -3251,7 +3406,6 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JPFPSStatus/JPFPSStatus.framework",
 				"${BUILT_PRODUCTS_DIR}/JPVideoPlayer/JPVideoPlayer.framework",
-				"${BUILT_PRODUCTS_DIR}/JQImagePicker/JQImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/JSBadgeView/JSBadgeView.framework",
 				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
 				"${BUILT_PRODUCTS_DIR}/LBXScan/LBXScan.framework",
@@ -3311,7 +3465,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPFPSStatus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPVideoPlayer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JQImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSBadgeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBXScan.framework",
@@ -3431,7 +3584,6 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JPFPSStatus/JPFPSStatus.framework",
 				"${BUILT_PRODUCTS_DIR}/JPVideoPlayer/JPVideoPlayer.framework",
-				"${BUILT_PRODUCTS_DIR}/JQImagePicker/JQImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/JSBadgeView/JSBadgeView.framework",
 				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
 				"${BUILT_PRODUCTS_DIR}/LBXScan/LBXScan.framework",
@@ -3491,7 +3643,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPFPSStatus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPVideoPlayer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JQImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSBadgeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBXScan.framework",
@@ -3561,7 +3712,6 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JPFPSStatus/JPFPSStatus.framework",
 				"${BUILT_PRODUCTS_DIR}/JPVideoPlayer/JPVideoPlayer.framework",
-				"${BUILT_PRODUCTS_DIR}/JQImagePicker/JQImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/JSBadgeView/JSBadgeView.framework",
 				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
 				"${BUILT_PRODUCTS_DIR}/LBXScan/LBXScan.framework",
@@ -3621,7 +3771,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPFPSStatus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPVideoPlayer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JQImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSBadgeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBXScan.framework",
@@ -3706,6 +3855,7 @@
 				7B9A1BC02240999D00B7BFC2 /* SYAnchorShowVM.m in Sources */,
 				2615974C1FEA5DD300C6FD80 /* SYMomentFooterView.m in Sources */,
 				26BE2B522010C02C00F28AA0 /* SYMomentBackgroundView.m in Sources */,
+				7B15EC712265BAF100A80BD5 /* ZYImagePicker.m in Sources */,
 				7B724BDB2245E14E0096F40B /* SYPrivacyVC.m in Sources */,
 				2624CAE31F98DF9B0083923F /* RACSubscriber+AFProgressCallbacks.m in Sources */,
 				7BC6FC102237D0F90079330A /* SYGuideVM.m in Sources */,
@@ -3718,6 +3868,8 @@
 				7B7B1AA3225B2FAF008C7EEA /* SYPrivacyDetailModel.m in Sources */,
 				7B788157224E727100B25CA3 /* SYTimeTool.m in Sources */,
 				7BC6FC222238C0C00079330A /* CountDownOperation.m in Sources */,
+				7B15EC742265BAF100A80BD5 /* ZYClipBorderView.m in Sources */,
+				7B15EC702265BAF100A80BD5 /* ZYImageController.m in Sources */,
 				7B0228C7223BCAF80045E25F /* SYSearchFriendsResultVC.m in Sources */,
 				263D37161F66656A007267C3 /* YYReachability.m in Sources */,
 				7B9A1BCF22437D6F00B7BFC2 /* SYRankListModel.m in Sources */,
@@ -3774,6 +3926,7 @@
 				7BE971ED2260204700FF6A25 /* SYPresentListVM.m in Sources */,
 				26FE8E8C1F9514D100EC8BE0 /* TZImagePickerController.m in Sources */,
 				261753201F739DDC00812E1B /* SYCommonQRCodeItemViewModel.m in Sources */,
+				7B15EC6E2265BAF100A80BD5 /* ZYImagePickerController.m in Sources */,
 				7B788163224F7A4300B25CA3 /* SYSearchResultHandle.m in Sources */,
 				263C898A1F6A54AE00F7A0AE /* SYCommonFooterView.m in Sources */,
 				7B590939223F8B0300EE5ACF /* SYAnchorsModel.m in Sources */,
@@ -3782,6 +3935,7 @@
 				26FE8E911F9514D100EC8BE0 /* TZProgressView.m in Sources */,
 				7B78816C224FB6C800B25CA3 /* SYNewFriendsVC.m in Sources */,
 				7B9A1BC32241409800B7BFC2 /* SYAnchorFocusStateModel.m in Sources */,
+				7B15EC762265BAF100A80BD5 /* ZYImageReusableView.m in Sources */,
 				26FE8E901F9514D100EC8BE0 /* TZPhotoPreviewController.m in Sources */,
 				263D37231F668408007267C3 /* SYRouter.m in Sources */,
 				7B60DEEE22002FC1005D83E8 /* SYRankListVM.m in Sources */,
@@ -3815,6 +3969,7 @@
 				263D37151F666569007267C3 /* YYKeychain.m in Sources */,
 				7B0228AC223A16470045E25F /* PinYinForObjc.m in Sources */,
 				7BE972072260450100FF6A25 /* SYCoinVC.m in Sources */,
+				7B15EC6D2265BAF100A80BD5 /* ZYClipViewController.m in Sources */,
 				26A7E7411F79FE550015CA71 /* SYRegisterVC.m in Sources */,
 				2618AFD11F91A5D900F82A46 /* SYPreferenceSettingHelper.m in Sources */,
 				7BE971F12260254500FF6A25 /* SYPresentModel.m in Sources */,
@@ -3896,10 +4051,13 @@
 				26FE8E821F9514D100EC8BE0 /* SDCollectionViewCell.m in Sources */,
 				7B724BE622462B090096F40B /* SYPrivacyShowVC.m in Sources */,
 				2624CAE41F98DF9B0083923F /* AFHTTPSessionManager+RACSupport.m in Sources */,
+				7B15EC752265BAF100A80BD5 /* ZYImageTopBar.m in Sources */,
 				261597511FEA5DD300C6FD80 /* SYMomentPhotosView.m in Sources */,
+				7B15EC772265BAF100A80BD5 /* ZYImageCell.m in Sources */,
 				7B5A334421FA074900535F8D /* SYNearbyVC.m in Sources */,
 				26FE8E891F9514D100EC8BE0 /* TZImageCropManager.m in Sources */,
 				7B1E733122267684001299C0 /* SYCollocationVC.m in Sources */,
+				7B15EC6F2265BAF100A80BD5 /* ZYCameraController.m in Sources */,
 				26FE8E8E1F9514D100EC8BE0 /* TZPhotoPickerController.m in Sources */,
 				263D36ED1F666438007267C3 /* UITextField+SYExtension.m in Sources */,
 				7B7881122248939600B25CA3 /* SYFriendDetailInfoVM.m in Sources */,
@@ -3943,6 +4101,7 @@
 				7B4BF4872251B3BC00CCD286 /* UIView+SDAutoLayout.m in Sources */,
 				263D36DF1F666438007267C3 /* NSDateFormatter+Extension.m in Sources */,
 				7B66335B22325302002B220E /* SYUserHobby.m in Sources */,
+				7B15EC732265BAF100A80BD5 /* ZYClipView.m in Sources */,
 				263D36E71F666438007267C3 /* UIAlertController+SYColor.m in Sources */,
 				7B4BF47F2251B09300CCD286 /* MHAssetViewController.m in Sources */,
 				7BE971DC225F434900FF6A25 /* SYDiamondsVC.m in Sources */,
@@ -3954,6 +4113,7 @@
 				261597031FEA527400C6FD80 /* SYMoments.m in Sources */,
 				7B78816F224FB74700B25CA3 /* SYNewFriendsVM.m in Sources */,
 				7B7881192248BD9E00B25CA3 /* SYForumCommentVC.m in Sources */,
+				7B15EC722265BAF100A80BD5 /* ZYPhoto.m in Sources */,
 				2615974A1FEA5DD300C6FD80 /* SYMomentCommentCell.m in Sources */,
 				7B78814A224B1EE300B25CA3 /* SYFriendDetialModel.m in Sources */,
 				263D36DA1F666438007267C3 /* FBKVOController+SYExtension.m in Sources */,

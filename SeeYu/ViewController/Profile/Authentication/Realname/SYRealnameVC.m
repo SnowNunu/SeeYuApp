@@ -7,6 +7,8 @@
 //
 
 #import "SYRealnameVC.h"
+#import "NSString+SYValid.h"
+#import "SYUserIdentityAuth.h"
 
 @interface SYRealnameVC ()
 
@@ -24,13 +26,19 @@
 
 @property (nonatomic, strong) UIButton *idCardBackBtn;
 
+@property (nonatomic, strong) UIImage *idCardBackImage;
+
 @property (nonatomic, strong) UILabel *idCardBackLabel;
 
 @property (nonatomic, strong) UIButton *idCardFrontBtn;
 
+@property (nonatomic, strong) UIImage *idCardFrontImage;
+
 @property (nonatomic, strong) UILabel *idCardFrontLabel;
 
 @property (nonatomic, strong) UIButton *idCardHandBtn;
+
+@property (nonatomic, strong) UIImage *idCardHandImage;
 
 @property (nonatomic, strong) UILabel *idCardHandLabel;
 
@@ -38,9 +46,28 @@
 
 @property (nonatomic, strong) UIButton *uploadBtn;
 
+@property (nonatomic, strong) ZYImagePicker *imagePicker;
+
+
+
 @end
 
 @implementation SYRealnameVC
+
+- (ZYImagePicker *)imagePicker {
+    if (_imagePicker == nil) {
+        _imagePicker = [[ZYImagePicker alloc]init];
+        _imagePicker.resizableClipArea = NO;
+        _imagePicker.clipSize = CGSizeMake(SY_SCREEN_WIDTH, SY_SCREEN_WIDTH / 3 * 2);
+        _imagePicker.slideColor = [UIColor whiteColor];
+        _imagePicker.slideWidth = 4;
+        _imagePicker.slideLength = 40;
+        _imagePicker.didSelectedImageBlock = ^BOOL(UIImage *selectedImage) {
+            return YES;
+        };
+    }
+    return _imagePicker;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,6 +78,129 @@
 
 - (void)bindViewModel {
     [super bindViewModel];
+    @weakify(self)
+    [[self.idCardBackBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        __weak typeof(self) weakSelf = self;
+        LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"取消" clicked:^(LCActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
+            if (buttonIndex == 0) return ;
+            if (buttonIndex == 1) {
+                // 拍照
+                weakSelf.imagePicker.isCustomCamera = YES;
+                weakSelf.imagePicker.imageSorceType = sourceType_camera;
+                weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
+                    weakSelf.idCardBackImage = clippedImage;
+                    [weakSelf.idCardBackBtn setImage:clippedImage forState:UIControlStateNormal];
+                };
+                [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
+            } else {
+                // 相册
+                weakSelf.imagePicker.isCustomCamera = YES;
+                weakSelf.imagePicker.imageSorceType = sourceType_SavedPhotosAlbum;
+                weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
+                    weakSelf.idCardBackImage = clippedImage;
+                    [weakSelf.idCardBackBtn setImage:clippedImage forState:UIControlStateNormal];
+                };
+                [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
+            }
+        } otherButtonTitles:@"拍照",@"从手机相册选择", nil];
+        [sheet show];
+    }];
+    [[self.idCardFrontBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        __weak typeof(self) weakSelf = self;
+        LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"取消" clicked:^(LCActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
+            if (buttonIndex == 0) return ;
+            if (buttonIndex == 1) {
+                // 拍照
+                weakSelf.imagePicker.isCustomCamera = YES;
+                weakSelf.imagePicker.imageSorceType = sourceType_camera;
+                weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
+                    weakSelf.idCardFrontImage = clippedImage;
+                    [weakSelf.idCardFrontBtn setImage:clippedImage forState:UIControlStateNormal];
+                };
+                [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
+            } else {
+                // 相册
+                weakSelf.imagePicker.isCustomCamera = YES;
+                weakSelf.imagePicker.imageSorceType = sourceType_SavedPhotosAlbum;
+                weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
+                    weakSelf.idCardFrontImage = clippedImage;
+                    [weakSelf.idCardFrontBtn setImage:clippedImage forState:UIControlStateNormal];
+                };
+                [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
+            }
+        } otherButtonTitles:@"拍照",@"从手机相册选择", nil];
+        [sheet show];
+    }];
+    [[self.idCardHandBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        __weak typeof(self) weakSelf = self;
+        LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"取消" clicked:^(LCActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
+            if (buttonIndex == 0) return ;
+            if (buttonIndex == 1) {
+                // 拍照
+                weakSelf.imagePicker.isCustomCamera = YES;
+                weakSelf.imagePicker.imageSorceType = sourceType_camera;
+                weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
+                    weakSelf.idCardHandImage = clippedImage;
+                    [weakSelf.idCardHandBtn setImage:clippedImage forState:UIControlStateNormal];
+                };
+                [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
+            } else {
+                // 相册
+                weakSelf.imagePicker.isCustomCamera = YES;
+                weakSelf.imagePicker.imageSorceType = sourceType_SavedPhotosAlbum;
+                weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
+                    weakSelf.idCardHandImage = clippedImage;
+                    [weakSelf.idCardHandBtn setImage:clippedImage forState:UIControlStateNormal];
+                };
+                [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
+            }
+        } otherButtonTitles:@"拍照",@"从手机相册选择", nil];
+        [sheet show];
+    }];
+    [[self.uploadBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        if (self.realnameTextField.text.length == 0) {
+            [MBProgressHUD sy_showTips:@"请先输入真实姓名"];
+            return;
+        } else if (![NSString sy_isContainChinese:self.realnameTextField.text]) {
+            [MBProgressHUD sy_showTips:@"请输入正确的姓名"];
+            return;
+        }
+        if (self.idNumberTextField.text.length == 0) {
+            [MBProgressHUD sy_showTips:@"请先输入身份证号码"];
+            return;
+        } else if (![NSString sy_validateIDCardNumber:self.idNumberTextField.text]) {
+            [MBProgressHUD sy_showTips:@"请输入正确的身份证号码"];
+            return;
+        }
+        if (self.idCardBackImage == nil) {
+            [MBProgressHUD sy_showTips:@"请先上传身份证背面照"];
+            return;
+        }
+        if (self.idCardFrontImage == nil) {
+            [MBProgressHUD sy_showTips:@"请先上传身份证正面照"];
+            return;
+        }
+        if (self.idCardHandImage == nil) {
+            [MBProgressHUD sy_showTips:@"请先上传身份证手持照"];
+            return;
+        }
+        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:@{@"userId":self.viewModel.services.client.currentUser.userId,@"userRealName":self.realnameTextField.text,@"userIdCard":self.idNumberTextField.text}];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_IDENTITY_UPLOAD parameters:subscript.dictionary];
+        [MBProgressHUD sy_showProgressHUD:@"资料上传中，请稍候"];
+        [[self.viewModel.services.client enqueueUploadRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUserIdentityAuth class] fileDatas:@[UIImagePNGRepresentation(self.idCardBackImage),UIImagePNGRepresentation(self.idCardFrontImage),UIImagePNGRepresentation(self.idCardHandImage)] namesArray:@[@"idBehind",@"idFront",@"idWithUser"] mimeType:@"image/png"] subscribeNext:^(SYUserIdentityAuth *auth) {
+            [MBProgressHUD sy_hideHUD];
+            NSLog(@"%@",auth);
+        } error:^(NSError *error) {
+            [MBProgressHUD sy_showErrorTips:error];
+        } completed:^{
+            [MBProgressHUD sy_showTips:@"资料上传成功，请等待审核"];
+            [self.viewModel.services popViewModelAnimated:YES];
+        }];
+    }];
 }
 
 - (void)_setupSubViews {
@@ -63,7 +213,7 @@
     [self.view addSubview:realnameLabel];
     
     UITextField *realnameTextField = [UITextField new];
-    realnameTextField.placeholder = @"请输入手机号";
+    realnameTextField.placeholder = @"请输入真实姓名";
     realnameTextField.textAlignment = NSTextAlignmentLeft;
     realnameTextField.font = SYRegularFont(14);
     _realnameTextField = realnameTextField;

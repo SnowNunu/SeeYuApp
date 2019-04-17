@@ -166,17 +166,15 @@ pod 'CHTCollectionViewWaterfallLayout'  , '0.9.6'
 pod 'ActionSheetPicker-3.0'             , '2.3.0'
 
 # 融云即时聊天服务
-pod 'RongCloudIM/IMLib'                 , '2.9.11'
-pod 'RongCloudIM/IMKit'                 , '2.9.11'
-pod 'RongCloudRTC/RongCallLib'          , '2.9.11'
-pod 'RongCloudRTC/RongCallKit'          , '2.9.11'
+pod 'RongCloudIM/IMLib'                 , '2.9.14'
+pod 'RongCloudIM/IMKit'                 , '2.9.14'
+pod 'RongCloudRTC/RongCallLib'          , '2.9.14'
+pod 'RongCloudRTC/RongCallKit'          , '2.9.14'
 
 # 空占位
 pod 'DZNEmptyDataSet'                   , '1.8.1'
 # 图片浏览器
 pod 'YBImageBrowser'
-# 图片选取与裁剪
-pod 'JQImagePicker'
 # 苹果内购
 #pod 'RMStore', '0.7.1'
 # 拍照和录视频

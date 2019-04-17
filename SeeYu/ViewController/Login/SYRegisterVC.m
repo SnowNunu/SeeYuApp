@@ -2,8 +2,8 @@
 //  SYRegisterVC.m
 //  Seeyu
 //
-//  Created by senba on 2017/9/26.
-//  Copyright © 2017年 CoderMikeHe. All rights reserved.
+//  Created by 唐荣才 on 2017/9/26.
+//  Copyright © 2019年 fljj. All rights reserved.
 //
 
 #import "SYRegisterVC.h"

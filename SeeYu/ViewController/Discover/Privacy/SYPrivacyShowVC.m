@@ -7,7 +7,7 @@
 //
 
 #import "SYPrivacyShowVC.h"
-#import "SYUserInfoManager.h"
+#import "SYRCIMDataSource.h"
 #import "SYSingleChattingVC.h"
 
 @interface SYPrivacyShowVC ()
@@ -135,7 +135,7 @@
             // 不是好友关系
             [MBProgressHUD sy_showTips:@"请先添加对方为好友"];
         } else {
-            [[SYUserInfoManager shareInstance] getUserInfo:self.viewModel.model.showUserid completion:^(RCUserInfo * _Nonnull userInfo) {
+            [[SYRCIMDataSource shareInstance] getUserInfoWithUserId:self.viewModel.model.showUserid completion:^(RCUserInfo * _Nonnull userInfo) {
                 SYSingleChattingVC *conversationVC = [[SYSingleChattingVC alloc] init];
                 conversationVC.conversationType = ConversationType_PRIVATE;
                 conversationVC.targetId = userInfo.userId;

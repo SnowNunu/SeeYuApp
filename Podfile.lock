@@ -56,7 +56,6 @@ PODS:
   - IQKeyboardManager (5.0.2)
   - JPFPSStatus (0.1)
   - JPVideoPlayer (3.1.1)
-  - JQImagePicker (1.0.1)
   - JSBadgeView (1.4.1)
   - KVOController (1.2.0)
   - LBXScan/LBXNative (2.0)
@@ -114,15 +113,15 @@ PODS:
   - ReactiveCocoa/UI (2.5.2):
     - ReactiveCocoa/Core
   - Reveal-SDK (17)
-  - RongCloudIM/IMKit (2.9.11):
+  - RongCloudIM/IMKit (2.9.14):
     - RongCloudIM/IMLib
-  - RongCloudIM/IMLib (2.9.11)
-  - RongCloudRTC/RongCallKit (2.9.11):
-    - RongCloudIM/IMKit (~> 2.9.11)
-    - RongCloudIM/IMLib (~> 2.9.11)
+  - RongCloudIM/IMLib (2.9.14)
+  - RongCloudRTC/RongCallKit (2.9.14):
+    - RongCloudIM/IMKit (~> 2.9.14)
+    - RongCloudIM/IMLib (~> 2.9.14)
     - RongCloudRTC/RongCallLib
-  - RongCloudRTC/RongCallLib (2.9.11):
-    - RongCloudIM/IMLib (~> 2.9.11)
+  - RongCloudRTC/RongCallLib (2.9.14):
+    - RongCloudIM/IMLib (~> 2.9.14)
   - SAMKeychain (1.5.2)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
@@ -179,7 +178,6 @@ DEPENDENCIES:
   - IQKeyboardManager (= 5.0.2)
   - JPFPSStatus (= 0.1)
   - JPVideoPlayer
-  - JQImagePicker
   - JSBadgeView (= 1.4.1)
   - KVOController (= 1.2.0)
   - LBXScan/LBXNative (= 2.0)
@@ -196,10 +194,10 @@ DEPENDENCIES:
   - pop (= 1.0.10)
   - ReactiveCocoa (from `https://github.com/zhao0/ReactiveCocoa.git`, tag `2.5.2`)
   - Reveal-SDK (~> 17)
-  - RongCloudIM/IMKit (= 2.9.11)
-  - RongCloudIM/IMLib (= 2.9.11)
-  - RongCloudRTC/RongCallKit (= 2.9.11)
-  - RongCloudRTC/RongCallLib (= 2.9.11)
+  - RongCloudIM/IMKit (= 2.9.14)
+  - RongCloudIM/IMLib (= 2.9.14)
+  - RongCloudRTC/RongCallKit (= 2.9.14)
+  - RongCloudRTC/RongCallLib (= 2.9.14)
   - SAMKeychain (= 1.5.2)
   - SDWebImage
   - SocketRocket (= 0.5.1)
@@ -246,7 +244,6 @@ SPEC REPOS:
     - IQKeyboardManager
     - JPFPSStatus
     - JPVideoPlayer
-    - JQImagePicker
     - JSBadgeView
     - KVOController
     - LBXScan
@@ -322,7 +319,6 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 5ab84749f20f682f784160c2c63bef4f19d10d26
   JPFPSStatus: 4467a17488382e4c1700bd9d18c92ae581fd6305
   JPVideoPlayer: 234c2fc5c9dfd67b969a5dd8233815eb872472c6
-  JQImagePicker: d2db45f8e91b8a29e62ff5ab3e4eb65f0f99cf23
   JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   LBXScan: 458f4b7a6688504a1415dc4a0f9822100e099f66
@@ -336,8 +332,8 @@ SPEC CHECKSUMS:
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   ReactiveCocoa: 3ff25b1bd992ac79c5c79b26b6c0c1713b715bb2
   Reveal-SDK: a6df49f47319bd19a110c960c498af32df72c0af
-  RongCloudIM: ffcc2966e7715176fc810dcec8f5ea2c3e31f8de
-  RongCloudRTC: 7ce7051f6b5290e7cf149baa88f23a801bcb54e3
+  RongCloudIM: 7283628517deaf3500c004d207b2db9836458163
+  RongCloudRTC: 48112881c17b32d20bfc0c9d7caafeef555613ef
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
@@ -362,6 +358,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 42c26e596c40c5d748a9b872013063cdf20462dc
+PODFILE CHECKSUM: 7d96910d32d195378cc16304208855b225e204ec
 
 COCOAPODS: 1.5.3

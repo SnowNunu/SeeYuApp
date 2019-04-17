@@ -8,6 +8,7 @@
 
 #import "SYVC.h"
 #import "SYRealnameVM.h"
+#import "ZYImagePicker.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

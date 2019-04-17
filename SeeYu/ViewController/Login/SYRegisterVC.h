@@ -2,9 +2,8 @@
 //  SYRegisterVC.h
 //  SeeYu
 //
-//  Created by senba on 2017/9/26.
-//  Copyright © 2017年 CoderMikeHe. All rights reserved.
-//  `首次`使用微信的选择登录Or注册界面
+//  Created by 唐荣才 on 2017/9/26.
+//  Copyright © 2019年 fljj. All rights reserved.
 
 #import "SYVC.h"
 #import "SYRegisterVM.h"

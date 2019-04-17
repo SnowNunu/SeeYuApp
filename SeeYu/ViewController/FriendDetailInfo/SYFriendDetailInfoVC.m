@@ -8,7 +8,7 @@
 
 #import "SYFriendDetailInfoVC.h"
 #import "SYSingleChattingVC.h"
-#import "SYUserInfoManager.h"
+#import "SYRCIMDataSource.h"
 
 @interface SYFriendDetailInfoVC () <UITableViewDelegate, UITableViewDataSource>
 
@@ -269,7 +269,7 @@
     }];
     self.backBtn.rac_command = self.viewModel.goBackCommand;
     [[self.sendMsgBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [[SYUserInfoManager shareInstance] getUserInfo:self.viewModel.userId completion:^(RCUserInfo * _Nonnull userInfo) {
+        [[SYRCIMDataSource shareInstance] getUserInfoWithUserId:self.viewModel.userId completion:^(RCUserInfo *userInfo) {
             SYSingleChattingVC *conversationVC = [[SYSingleChattingVC alloc] init];
             conversationVC.conversationType = ConversationType_PRIVATE;
             conversationVC.targetId = userInfo.userId;

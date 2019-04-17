@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYRealnameVM : SYVM
 
+@property (nonatomic, strong) RACCommand *uploadRealnameAuthticationCommand;
+
 @end
 
 NS_ASSUME_NONNULL_END

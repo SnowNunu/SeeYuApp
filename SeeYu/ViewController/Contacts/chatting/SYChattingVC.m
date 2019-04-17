@@ -9,9 +9,9 @@
 #import "SYChattingVC.h"
 #import "SYUserInfoManager.h"
 #import "SYChattingListCell.h"
-#import "SYUserInfoManager.h"
 #import "SYTimeTool.h"
 #import "SYSingleChattingVC.h"
+#import "SYRCIMDataSource.h"
 
 @interface SYChattingVC ()
 
@@ -65,7 +65,7 @@
         RCConversationModel *model = dataSource[i];
         if(model.conversationType == ConversationType_PRIVATE){
             model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
-            [[SYUserInfoManager shareInstance] getUserInfo:model.targetId completion:^(RCUserInfo * _Nonnull userInfo) {
+            [[SYRCIMDataSource shareInstance] getUserInfoWithUserId:model.targetId completion:^(RCUserInfo *userInfo) {
                 model.conversationTitle = userInfo.name;
             }];
         }
@@ -90,7 +90,7 @@
     }
     [cell.badgeView setNeedsLayout];
     // 根据targetId 获取用户头像昵称等信息
-    [[SYUserInfoManager shareInstance] getUserInfo:model.targetId completion:^(RCUserInfo * userInfo) {
+    [[SYRCIMDataSource shareInstance] getUserInfoWithUserId:model.targetId completion:^(RCUserInfo * userInfo) {
         cell.aliasLabel.text = userInfo.name;
         [cell.avatarImageView yy_setImageWithURL:[NSURL URLWithString:userInfo.portraitUri] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
         if ([model.lastestMessage isKindOfClass:[RCTextMessage class]]) {
