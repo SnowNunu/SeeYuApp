@@ -48,8 +48,6 @@
 
 @property (nonatomic, strong) ZYImagePicker *imagePicker;
 
-
-
 @end
 
 @implementation SYRealnameVC

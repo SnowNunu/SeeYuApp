@@ -91,6 +91,9 @@
             self.authenticationImageView.image = SYImageNamed(@"truePerson_disable");
         }
     }];
+    [[self.detailBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.viewModel.enterNextViewCommand execute:@(0)];
+    }];
 }
 
 - (void)_setupSubViews {
@@ -104,6 +107,11 @@
     headerView.backgroundColor = [UIColor whiteColor];
     _headerView = headerView;
     tableView.tableHeaderView = headerView;
+    UITapGestureRecognizer *infoTap = [UITapGestureRecognizer new];
+    [[infoTap rac_gestureSignal] subscribeNext:^(id x) {
+        [self.viewModel.enterNextViewCommand execute:@(0)];
+    }];
+    [headerView addGestureRecognizer:infoTap];
     _tableView = tableView;
     [self.view addSubview:tableView];
     

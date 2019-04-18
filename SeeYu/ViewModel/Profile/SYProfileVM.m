@@ -7,6 +7,7 @@
 //
 
 #import "SYProfileVM.h"
+#import "SYInfoEditVM.h"
 #import "SYPresentVM.h"
 #import "SYRechargeVM.h"
 #import "SYDiamondsVM.h"
@@ -44,7 +45,8 @@
     }];
     self.enterNextViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *kind) {
         if ([kind isEqual:@(0)]) {
-            
+            SYInfoEditVM *vm = [[SYInfoEditVM alloc] initWithServices:self.services params:nil];
+            [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(1)]) {
             SYPresentVM *vm = [[SYPresentVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
