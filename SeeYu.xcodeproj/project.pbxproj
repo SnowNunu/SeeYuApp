@@ -258,18 +258,20 @@
 		7B747A532236229500B3F6A0 /* XFPhotoLibraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B747A4E2236229500B3F6A0 /* XFPhotoLibraryManager.m */; };
 		7B747A542236229500B3F6A0 /* XFCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B747A4F2236229500B3F6A0 /* XFCameraController.m */; };
 		7B747A552236229500B3F6A0 /* XFCameraController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B747A502236229500B3F6A0 /* XFCameraController.xib */; };
-		7B76B87F2266E58300153249 /* RongCallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE971C2225E36AD00FF6A25 /* RongCallKit.framework */; };
 		7B76B88422671D5500153249 /* SYSelfieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B88322671D5500153249 /* SYSelfieModel.m */; };
 		7B76B88C2267232B00153249 /* SYInfoEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B88B2267232B00153249 /* SYInfoEditVC.m */; };
 		7B76B88F2267233B00153249 /* SYInfoEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B88E2267233B00153249 /* SYInfoEditVM.m */; };
-		7B76B8922267291F00153249 /* SYBaseInfoEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8912267291F00153249 /* SYBaseInfoEditVC.m */; };
+		7B76B8922267291F00153249 /* SYBaseInfoDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8912267291F00153249 /* SYBaseInfoDetailVC.m */; };
 		7B76B8952267294400153249 /* SYCoverInfoEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8942267294400153249 /* SYCoverInfoEditVC.m */; };
-		7B76B89B22672A2300153249 /* SYBaseInfoEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B89A22672A2300153249 /* SYBaseInfoEditVM.m */; };
+		7B76B89B22672A2300153249 /* SYBaseInfoDetailVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B89A22672A2300153249 /* SYBaseInfoDetailVM.m */; };
 		7B76B89E22672A3600153249 /* SYCoverInfoEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B89D22672A3600153249 /* SYCoverInfoEditVM.m */; };
 		7B76B8A422672A7400153249 /* SYVideoInfoEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8A322672A7400153249 /* SYVideoInfoEditVM.m */; };
 		7B76B8A82267576E00153249 /* SYUserInfoEditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8A72267576E00153249 /* SYUserInfoEditModel.m */; };
 		7B76B8AB2268024F00153249 /* SYVideoInfoEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8AA2268024F00153249 /* SYVideoInfoEditVC.m */; };
 		7B76B8AE22680D8400153249 /* SYUserShowInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8AD22680D8400153249 /* SYUserShowInfoModel.m */; };
+		7B76B8B122682BCD00153249 /* SYBaseInfoEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8B022682BCD00153249 /* SYBaseInfoEditVC.m */; };
+		7B76B8B422682BEE00153249 /* SYBaseInfoEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8B322682BEE00153249 /* SYBaseInfoEditVM.m */; };
+		7B76B8B52268BAA000153249 /* RongCallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE971C2225E36AD00FF6A25 /* RongCallKit.framework */; };
 		7B7881032248894500B25CA3 /* SYForumVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7881022248894500B25CA3 /* SYForumVC.m */; };
 		7B7881062248898000B25CA3 /* SYForumVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7881052248898000B25CA3 /* SYForumVM.m */; };
 		7B78810A22488D2F00B25CA3 /* SYForumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78810922488D2F00B25CA3 /* SYForumModel.m */; };
@@ -881,12 +883,12 @@
 		7B76B88B2267232B00153249 /* SYInfoEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYInfoEditVC.m; sourceTree = "<group>"; };
 		7B76B88D2267233B00153249 /* SYInfoEditVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYInfoEditVM.h; sourceTree = "<group>"; };
 		7B76B88E2267233B00153249 /* SYInfoEditVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYInfoEditVM.m; sourceTree = "<group>"; };
-		7B76B8902267291F00153249 /* SYBaseInfoEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYBaseInfoEditVC.h; sourceTree = "<group>"; };
-		7B76B8912267291F00153249 /* SYBaseInfoEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYBaseInfoEditVC.m; sourceTree = "<group>"; };
+		7B76B8902267291F00153249 /* SYBaseInfoDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYBaseInfoDetailVC.h; sourceTree = "<group>"; };
+		7B76B8912267291F00153249 /* SYBaseInfoDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYBaseInfoDetailVC.m; sourceTree = "<group>"; };
 		7B76B8932267294400153249 /* SYCoverInfoEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCoverInfoEditVC.h; sourceTree = "<group>"; };
 		7B76B8942267294400153249 /* SYCoverInfoEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCoverInfoEditVC.m; sourceTree = "<group>"; };
-		7B76B89922672A2300153249 /* SYBaseInfoEditVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYBaseInfoEditVM.h; sourceTree = "<group>"; };
-		7B76B89A22672A2300153249 /* SYBaseInfoEditVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYBaseInfoEditVM.m; sourceTree = "<group>"; };
+		7B76B89922672A2300153249 /* SYBaseInfoDetailVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYBaseInfoDetailVM.h; sourceTree = "<group>"; };
+		7B76B89A22672A2300153249 /* SYBaseInfoDetailVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYBaseInfoDetailVM.m; sourceTree = "<group>"; };
 		7B76B89C22672A3600153249 /* SYCoverInfoEditVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCoverInfoEditVM.h; sourceTree = "<group>"; };
 		7B76B89D22672A3600153249 /* SYCoverInfoEditVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCoverInfoEditVM.m; sourceTree = "<group>"; };
 		7B76B8A222672A7400153249 /* SYVideoInfoEditVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYVideoInfoEditVM.h; sourceTree = "<group>"; };
@@ -897,6 +899,10 @@
 		7B76B8AA2268024F00153249 /* SYVideoInfoEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYVideoInfoEditVC.m; sourceTree = "<group>"; };
 		7B76B8AC22680D8400153249 /* SYUserShowInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYUserShowInfoModel.h; sourceTree = "<group>"; };
 		7B76B8AD22680D8400153249 /* SYUserShowInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYUserShowInfoModel.m; sourceTree = "<group>"; };
+		7B76B8AF22682BCD00153249 /* SYBaseInfoEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYBaseInfoEditVC.h; sourceTree = "<group>"; };
+		7B76B8B022682BCD00153249 /* SYBaseInfoEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYBaseInfoEditVC.m; sourceTree = "<group>"; };
+		7B76B8B222682BEE00153249 /* SYBaseInfoEditVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYBaseInfoEditVM.h; sourceTree = "<group>"; };
+		7B76B8B322682BEE00153249 /* SYBaseInfoEditVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYBaseInfoEditVM.m; sourceTree = "<group>"; };
 		7B7881012248894500B25CA3 /* SYForumVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYForumVC.h; sourceTree = "<group>"; };
 		7B7881022248894500B25CA3 /* SYForumVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYForumVC.m; sourceTree = "<group>"; };
 		7B7881042248898000B25CA3 /* SYForumVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYForumVM.h; sourceTree = "<group>"; };
@@ -1058,7 +1064,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B76B87F2266E58300153249 /* RongCallKit.framework in Frameworks */,
+				7B76B8B52268BAA000153249 /* RongCallKit.framework in Frameworks */,
 				864BB5E20D5521374F720EC0 /* Pods_SeeYu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2757,8 +2763,10 @@
 			children = (
 				7B76B88A2267232B00153249 /* SYInfoEditVC.h */,
 				7B76B88B2267232B00153249 /* SYInfoEditVC.m */,
-				7B76B8902267291F00153249 /* SYBaseInfoEditVC.h */,
-				7B76B8912267291F00153249 /* SYBaseInfoEditVC.m */,
+				7B76B8902267291F00153249 /* SYBaseInfoDetailVC.h */,
+				7B76B8912267291F00153249 /* SYBaseInfoDetailVC.m */,
+				7B76B8AF22682BCD00153249 /* SYBaseInfoEditVC.h */,
+				7B76B8B022682BCD00153249 /* SYBaseInfoEditVC.m */,
 				7B76B8932267294400153249 /* SYCoverInfoEditVC.h */,
 				7B76B8942267294400153249 /* SYCoverInfoEditVC.m */,
 				7B76B8A92268024F00153249 /* SYVideoInfoEditVC.h */,
@@ -2772,8 +2780,10 @@
 			children = (
 				7B76B88D2267233B00153249 /* SYInfoEditVM.h */,
 				7B76B88E2267233B00153249 /* SYInfoEditVM.m */,
-				7B76B89922672A2300153249 /* SYBaseInfoEditVM.h */,
-				7B76B89A22672A2300153249 /* SYBaseInfoEditVM.m */,
+				7B76B89922672A2300153249 /* SYBaseInfoDetailVM.h */,
+				7B76B89A22672A2300153249 /* SYBaseInfoDetailVM.m */,
+				7B76B8B222682BEE00153249 /* SYBaseInfoEditVM.h */,
+				7B76B8B322682BEE00153249 /* SYBaseInfoEditVM.m */,
 				7B76B89C22672A3600153249 /* SYCoverInfoEditVM.h */,
 				7B76B89D22672A3600153249 /* SYCoverInfoEditVM.m */,
 				7B76B8A222672A7400153249 /* SYVideoInfoEditVM.h */,
@@ -3216,7 +3226,7 @@
 				26064AB01F5D9A1400566B95 /* Frameworks */,
 				26064AB11F5D9A1400566B95 /* Resources */,
 				D7CFF80ED10617A757312352 /* [CP] Embed Pods Frameworks */,
-				4AE4529BB8AC1EF168102B86 /* [CP] Copy Pods Resources */,
+				3828DD739B428E3521A2C20D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3236,7 +3246,7 @@
 				26064AC91F5D9A1400566B95 /* Frameworks */,
 				26064ACA1F5D9A1400566B95 /* Resources */,
 				DD3D17E8141AD6941437CC1F /* [CP] Embed Pods Frameworks */,
-				7937ED45A5C7F2FAB32C8B15 /* [CP] Copy Pods Resources */,
+				7FC1F7E4BE6D3BF20C2D44B9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3257,7 +3267,7 @@
 				26064AD41F5D9A1400566B95 /* Frameworks */,
 				26064AD51F5D9A1400566B95 /* Resources */,
 				85A8866729BE72E7764E86D9 /* [CP] Embed Pods Frameworks */,
-				967A2F85350CEA851AC03373 /* [CP] Copy Pods Resources */,
+				5EFC0963628D4BFB7869EC87 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3391,7 +3401,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4AE4529BB8AC1EF168102B86 /* [CP] Copy Pods Resources */ = {
+		3828DD739B428E3521A2C20D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3423,6 +3433,38 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu/Pods-SeeYu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5EFC0963628D4BFB7869EC87 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-resources.sh",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/en.lproj",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/zh-Hans.lproj",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/Emoji.plist",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCColor.plist",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RongCloud.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Emoji.plist",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCColor.plist",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCConfig.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		748D37CD935E850473BDF270 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3441,7 +3483,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7937ED45A5C7F2FAB32C8B15 /* [CP] Copy Pods Resources */ = {
+		7FC1F7E4BE6D3BF20C2D44B9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3617,38 +3659,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		967A2F85350CEA851AC03373 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-resources.sh",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/en.lproj",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/zh-Hans.lproj",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/Emoji.plist",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCColor.plist",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RongCloud.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Emoji.plist",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCColor.plist",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCConfig.plist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D7CFF80ED10617A757312352 /* [CP] Embed Pods Frameworks */ = {
@@ -4057,6 +4067,7 @@
 				7B590934223F77B200EE5ACF /* SYAnchorsListVM.m in Sources */,
 				7B9A1BDF2243B21F00B7BFC2 /* HSSessionModel.m in Sources */,
 				7BE971F62260347100FF6A25 /* SYRechargeVM.m in Sources */,
+				7B76B8B122682BCD00153249 /* SYBaseInfoEditVC.m in Sources */,
 				263D36E11F666438007267C3 /* NSObject+SYAlert.m in Sources */,
 				263D36EB1F666438007267C3 /* UIScrollView+SYRefresh.m in Sources */,
 				263D37101F666569007267C3 /* LCActionSheetConfig.m in Sources */,
@@ -4070,6 +4081,7 @@
 				7B15EC6D2265BAF100A80BD5 /* ZYClipViewController.m in Sources */,
 				26A7E7411F79FE550015CA71 /* SYRegisterVC.m in Sources */,
 				2618AFD11F91A5D900F82A46 /* SYPreferenceSettingHelper.m in Sources */,
+				7B76B8B422682BEE00153249 /* SYBaseInfoEditVM.m in Sources */,
 				7BE971F12260254500FF6A25 /* SYPresentModel.m in Sources */,
 				7B5A333C21F9BFC600535F8D /* SYRankingVC.m in Sources */,
 				7BE971C8225ECB0500FF6A25 /* SYProfileVM.m in Sources */,
@@ -4125,7 +4137,7 @@
 				261597491FEA5DD300C6FD80 /* SYMomentAttitudesCell.m in Sources */,
 				263D36E21F666438007267C3 /* NSObject+SYExtension.m in Sources */,
 				26FE8E871F9514D100EC8BE0 /* TZAssetModel.m in Sources */,
-				7B76B89B22672A2300153249 /* SYBaseInfoEditVM.m in Sources */,
+				7B76B89B22672A2300153249 /* SYBaseInfoDetailVM.m in Sources */,
 				7B59093D223F9C7300EE5ACF /* SYAnchorsListCell.m in Sources */,
 				2605C5BB1F662EA300B1F66E /* SYMainFrameVC.m in Sources */,
 				7B788172224FBB8300B25CA3 /* SYNewFriendModel.m in Sources */,
@@ -4163,7 +4175,7 @@
 				7B1E733122267684001299C0 /* SYCollocationVC.m in Sources */,
 				7B15EC6F2265BAF100A80BD5 /* ZYCameraController.m in Sources */,
 				26FE8E8E1F9514D100EC8BE0 /* TZPhotoPickerController.m in Sources */,
-				7B76B8922267291F00153249 /* SYBaseInfoEditVC.m in Sources */,
+				7B76B8922267291F00153249 /* SYBaseInfoDetailVC.m in Sources */,
 				263D36ED1F666438007267C3 /* UITextField+SYExtension.m in Sources */,
 				7B7881122248939600B25CA3 /* SYFriendDetailInfoVM.m in Sources */,
 				263C898D1F6A617700F7A0AE /* SYCommonGroupVM.m in Sources */,

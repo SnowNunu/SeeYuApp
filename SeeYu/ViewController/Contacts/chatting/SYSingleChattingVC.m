@@ -32,7 +32,7 @@
 
 - (void)_setupAction {
     [[_sendPresentBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [[RCCall sharedRCCall] startSingleCall:@"12337" mediaType:RCCallMediaVideo];
+        [[RCCall sharedRCCall] startSingleCall:@"12346" mediaType:RCCallMediaVideo];
     }];
 }
 

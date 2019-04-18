@@ -2,12 +2,11 @@
 //  SYBaseInfoEditVM.h
 //  SeeYu
 //
-//  Created by 唐荣才 on 2019/4/17.
+//  Created by 唐荣才 on 2019/4/18.
 //  Copyright © 2019 fljj. All rights reserved.
 //
 
 #import "SYVM.h"
-#import "SYUser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) SYUser *user;
 
-@property (nonatomic, strong) RACCommand *requestUserShowInfoCommand;
+@property (nonatomic, strong) RACCommand *uploadAvatarImageCommand;
+
+@property (nonatomic, strong) RACCommand *updateUserInfoCommand;
 
 @end
 

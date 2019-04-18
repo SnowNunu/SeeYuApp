@@ -29,7 +29,7 @@
     
     // 用户昵称
     UILabel *aliasLabel = [UILabel new];
-    aliasLabel.font = SYRegularFont(16);
+    aliasLabel.font = SYRegularFont(18);
     aliasLabel.textAlignment = NSTextAlignmentLeft;
     aliasLabel.textColor = SYColor(51, 51, 51);
     _aliasLabel = aliasLabel;
@@ -81,17 +81,16 @@
         make.top.equalTo(self.avatarImageView);
         make.height.offset(20);
         make.left.equalTo(self.avatarImageView.mas_right).offset(15);
-        make.right.equalTo(self.timeLabel.mas_left).offset(-15);
     }];
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.avatarImageView);
-        make.height.left.right.equalTo(self.aliasLabel);
+        make.height.left.equalTo(self.aliasLabel);
+        make.right.equalTo(self.timeLabel.mas_left).offset(-15);
     }];
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-15);
         make.centerY.equalTo(self.avatarImageView);
         make.height.offset(20);
-        make.width.offset(60);
     }];
     [self.badgeBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.avatarImageView);

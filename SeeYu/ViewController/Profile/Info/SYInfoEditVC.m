@@ -9,8 +9,8 @@
 #import "SYInfoEditVC.h"
 #import "FSSegmentTitleView.h"
 #import "FSPageContentView.h"
-#import "SYBaseInfoEditVC.h"
-#import "SYBaseInfoEditVM.h"
+#import "SYBaseInfoDetailVC.h"
+#import "SYBaseInfoDetailVM.h"
 #import "SYCoverInfoEditVC.h"
 #import "SYCoverInfoEditVM.h"
 #import "SYVideoInfoEditVC.h"
@@ -43,8 +43,8 @@
     [self.view addSubview:_titleView];
     
     NSMutableArray *childVCs = [[NSMutableArray alloc]init];
-    SYBaseInfoEditVM *baseInfoViewModel = [[SYBaseInfoEditVM alloc] initWithServices:self.viewModel.services params:nil];
-    SYBaseInfoEditVC *baseInfoVC = [[SYBaseInfoEditVC alloc] initWithViewModel:baseInfoViewModel];
+    SYBaseInfoDetailVM *baseInfoViewModel = [[SYBaseInfoDetailVM alloc] initWithServices:self.viewModel.services params:nil];
+    SYBaseInfoDetailVC *baseInfoVC = [[SYBaseInfoDetailVC alloc] initWithViewModel:baseInfoViewModel];
     [childVCs addObject:baseInfoVC];
     
     SYCoverInfoEditVM *coverInfoViewModel = [[SYCoverInfoEditVM alloc] initWithServices:self.viewModel.services params:nil];

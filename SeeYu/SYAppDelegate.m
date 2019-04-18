@@ -50,7 +50,7 @@
     // 重置rootViewController
     SYVM *vm = [self _createInitialViewModel];
     if ([vm isKindOfClass:[SYHomePageVM class]]) {
-        [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
+        [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken success:^(NSString *userId) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 RCUserInfo *rcUser = [[RCUserInfo alloc]initWithUserId:userId name:self.services.client.currentUser.userName portrait:self.services.client.currentUser.userHeadImg];
                 [RCIM sharedRCIM].currentUserInfo = rcUser;
@@ -87,8 +87,7 @@
 
 
 #pragma mark - 在初始化UI之前配置
-- (void)_configureApplication:(UIApplication *)application initialParamsBeforeInitUI:(NSDictionary *)launchOptions
-{
+- (void)_configureApplication:(UIApplication *)application initialParamsBeforeInitUI:(NSDictionary *)launchOptions {
     /// 显示状态栏
     [application setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     
@@ -188,7 +187,7 @@
         /// 切换根控制器
         SYVM *vm = [self _createInitialViewModel];
         if ([vm isKindOfClass:[SYHomePageVM class]]) {
-            [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken     success:^(NSString *userId) {
+            [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken success:^(NSString *userId) {
                 NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     RCUserInfo *rcUser = [[RCUserInfo alloc]initWithUserId:userId name:self.services.client.currentUser.userName portrait:self.services.client.currentUser.userHeadImg];

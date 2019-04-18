@@ -48,7 +48,7 @@
         queue = dispatch_queue_create("AnswerQueue", DISPATCH_QUEUE_SERIAL);
         [self registerForegroundNotification];
         [_callSession setDelegate:self];
-        [RCCallKitUtility setScreenForceOn];
+        [RCCallKitUtility setScreenForceOn];    // 设置不自动锁屏
         self.needPlayingRingAfterForeground = YES;
     }
     return self;

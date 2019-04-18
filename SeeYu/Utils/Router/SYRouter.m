@@ -83,7 +83,8 @@ static SYRouter *sharedInstance_ = nil;
              @"SYAddFriendsVM":@"SYAddFriendsVC",
              @"SYNewFriendsVM":@"SYNewFriendsVC",
              @"SYPresentVM":@"SYPresentVC",
-             @"SYInfoEditVM":@"SYInfoEditVC"
+             @"SYInfoEditVM":@"SYInfoEditVC",
+             @"SYBaseInfoEditVM":@"SYBaseInfoEditVC"
              };
 }
 
