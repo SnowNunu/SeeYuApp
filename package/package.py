@@ -14,9 +14,9 @@ import shutil
     
 '''
 
-appFileFullPath = '/Users/Mandora/Library/Developer/Xcode/DerivedData/SeeYu-fvkvgndnyjrrikgynosnupwlfdfc/Build/Products/Debug-iphoneos/SeeYu.app'
-PayLoadPath = '/Users/Mandora/Desktop/SeeYu/Payload'
-packBagPath = '/Users/Mandora/Desktop/SeeYu/ProgramBag'
+appFileFullPath = '/Users/Mandora/Library/Developer/Xcode/DerivedData/SeeYu-cbefmrqtsodfykcljsqzeeiphizv/Build/Products/Debug-iphoneos/SeeYu.app'
+PayLoadPath = '/Users/Mandora/Desktop/company/SeeYuApp/Payload'
+packBagPath = '/Users/Mandora/Desktop/company/SeeYuApp/ProgramBag'
 openUrlPath = 'https://pgyer.com/TgyH'
 
 

@@ -322,6 +322,9 @@
             // 选择星座
             NSMutableArray *constellationArray = [@[@"白羊座",@"金牛座",@"双子座",@"巨蟹座",@"狮子座",@"处女座",@"天秤座",@"天蝎座",@"射手座",@"摩羯座",@"水瓶座",@"双鱼座"] mutableCopy];
             [self showPickerWithTitle:@"请选择学历" andDataArrays:constellationArray andSelectedValue:self.viewModel.user.userConstellation andType:@"constellation"];
+        } else {
+            // 选择爱好
+            [self.viewModel.enterHobbyChooseViewCommand execute:nil];
         }
     }
 }

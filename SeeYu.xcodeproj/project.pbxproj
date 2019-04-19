@@ -272,6 +272,9 @@
 		7B76B8B122682BCD00153249 /* SYBaseInfoEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8B022682BCD00153249 /* SYBaseInfoEditVC.m */; };
 		7B76B8B422682BEE00153249 /* SYBaseInfoEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8B322682BEE00153249 /* SYBaseInfoEditVM.m */; };
 		7B76B8B52268BAA000153249 /* RongCallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE971C2225E36AD00FF6A25 /* RongCallKit.framework */; };
+		7B76B8B92268CE0900153249 /* SYHobbyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8B82268CE0900153249 /* SYHobbyVC.m */; };
+		7B76B8BD2268CE3500153249 /* SYHobbyVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8BC2268CE3500153249 /* SYHobbyVM.m */; };
+		7B76B8C02268D75600153249 /* SYHobbyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8BF2268D75600153249 /* SYHobbyModel.m */; };
 		7B7881032248894500B25CA3 /* SYForumVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7881022248894500B25CA3 /* SYForumVC.m */; };
 		7B7881062248898000B25CA3 /* SYForumVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7881052248898000B25CA3 /* SYForumVM.m */; };
 		7B78810A22488D2F00B25CA3 /* SYForumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78810922488D2F00B25CA3 /* SYForumModel.m */; };
@@ -903,6 +906,12 @@
 		7B76B8B022682BCD00153249 /* SYBaseInfoEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYBaseInfoEditVC.m; sourceTree = "<group>"; };
 		7B76B8B222682BEE00153249 /* SYBaseInfoEditVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYBaseInfoEditVM.h; sourceTree = "<group>"; };
 		7B76B8B322682BEE00153249 /* SYBaseInfoEditVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYBaseInfoEditVM.m; sourceTree = "<group>"; };
+		7B76B8B72268CE0900153249 /* SYHobbyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHobbyVC.h; sourceTree = "<group>"; };
+		7B76B8B82268CE0900153249 /* SYHobbyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHobbyVC.m; sourceTree = "<group>"; };
+		7B76B8BB2268CE3500153249 /* SYHobbyVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHobbyVM.h; sourceTree = "<group>"; };
+		7B76B8BC2268CE3500153249 /* SYHobbyVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHobbyVM.m; sourceTree = "<group>"; };
+		7B76B8BE2268D75600153249 /* SYHobbyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHobbyModel.h; sourceTree = "<group>"; };
+		7B76B8BF2268D75600153249 /* SYHobbyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHobbyModel.m; sourceTree = "<group>"; };
 		7B7881012248894500B25CA3 /* SYForumVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYForumVC.h; sourceTree = "<group>"; };
 		7B7881022248894500B25CA3 /* SYForumVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYForumVC.m; sourceTree = "<group>"; };
 		7B7881042248898000B25CA3 /* SYForumVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYForumVM.h; sourceTree = "<group>"; };
@@ -2761,6 +2770,7 @@
 		7B76B8852267219C00153249 /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				7B76B8B62268CDEB00153249 /* Hobby */,
 				7B76B88A2267232B00153249 /* SYInfoEditVC.h */,
 				7B76B88B2267232B00153249 /* SYInfoEditVC.m */,
 				7B76B8902267291F00153249 /* SYBaseInfoDetailVC.h */,
@@ -2778,6 +2788,7 @@
 		7B76B886226721B400153249 /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				7B76B8BA2268CE1B00153249 /* Hobby */,
 				7B76B88D2267233B00153249 /* SYInfoEditVM.h */,
 				7B76B88E2267233B00153249 /* SYInfoEditVM.m */,
 				7B76B89922672A2300153249 /* SYBaseInfoDetailVM.h */,
@@ -2799,8 +2810,28 @@
 				7B76B8A72267576E00153249 /* SYUserInfoEditModel.m */,
 				7B76B8AC22680D8400153249 /* SYUserShowInfoModel.h */,
 				7B76B8AD22680D8400153249 /* SYUserShowInfoModel.m */,
+				7B76B8BE2268D75600153249 /* SYHobbyModel.h */,
+				7B76B8BF2268D75600153249 /* SYHobbyModel.m */,
 			);
 			path = Info;
+			sourceTree = "<group>";
+		};
+		7B76B8B62268CDEB00153249 /* Hobby */ = {
+			isa = PBXGroup;
+			children = (
+				7B76B8B72268CE0900153249 /* SYHobbyVC.h */,
+				7B76B8B82268CE0900153249 /* SYHobbyVC.m */,
+			);
+			path = Hobby;
+			sourceTree = "<group>";
+		};
+		7B76B8BA2268CE1B00153249 /* Hobby */ = {
+			isa = PBXGroup;
+			children = (
+				7B76B8BB2268CE3500153249 /* SYHobbyVM.h */,
+				7B76B8BC2268CE3500153249 /* SYHobbyVM.m */,
+			);
+			path = Hobby;
 			sourceTree = "<group>";
 		};
 		7B7880FE2248824900B25CA3 /* Moments */ = {
@@ -3931,6 +3962,7 @@
 				7B3599202260F00200FDC6FE /* SYAuthenticationVC.m in Sources */,
 				7B656A3521EF11C7008FDCCA /* SYUserInfoManager.m in Sources */,
 				263D37171F66656A007267C3 /* YYThreadSafeArray.m in Sources */,
+				7B76B8B92268CE0900153249 /* SYHobbyVC.m in Sources */,
 				261E015D1FDE2E010041E989 /* SYCommonSwitchItemViewModel.m in Sources */,
 				26B89AB72022E599006FBE20 /* SYMomentShareInfo.m in Sources */,
 				7B78815A224F13E400B25CA3 /* SYSingleChattingVC.m in Sources */,
@@ -3950,6 +3982,7 @@
 				26CCB9CE20244D370090DBC5 /* SYMomentVideoView.m in Sources */,
 				2611AC651F61992F00418FB9 /* SYNavigationController.m in Sources */,
 				7BE971F9226034EB00FF6A25 /* SYRechargeVC.m in Sources */,
+				7B76B8C02268D75600153249 /* SYHobbyModel.m in Sources */,
 				26225D7A1F654E410074BFC3 /* SYTabBarController.m in Sources */,
 				26FE8E831F9514D100EC8BE0 /* SDCycleScrollView.m in Sources */,
 				7B4BF4602251AE4C00CCD286 /* YLShortVideoVC.m in Sources */,
@@ -4140,6 +4173,7 @@
 				7B76B89B22672A2300153249 /* SYBaseInfoDetailVM.m in Sources */,
 				7B59093D223F9C7300EE5ACF /* SYAnchorsListCell.m in Sources */,
 				2605C5BB1F662EA300B1F66E /* SYMainFrameVC.m in Sources */,
+				7B76B8BD2268CE3500153249 /* SYHobbyVM.m in Sources */,
 				7B788172224FBB8300B25CA3 /* SYNewFriendModel.m in Sources */,
 				7B76B8A82267576E00153249 /* SYUserInfoEditModel.m in Sources */,
 				263C89811F6A34D300F7A0AE /* SYCommonVC.m in Sources */,

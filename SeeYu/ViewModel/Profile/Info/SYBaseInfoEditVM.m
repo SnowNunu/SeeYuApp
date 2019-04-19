@@ -49,9 +49,18 @@
     }];
     [self.updateUserInfoCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYUser *user) {
         self.user = user;
+        [self.services.client saveUser:user];
     }];
     [self.updateUserInfoCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
+    }];
+    self.enterHobbyChooseViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        SYHobbyVM *vm = [[SYHobbyVM alloc] initWithServices:self.services params:nil];
+        vm.hobbyBlock = ^(NSString * _Nonnull hobby) {
+            [self.updateUserInfoCommand execute:@{@"userId":self.user.userId,@"userSpecialty":hobby}];
+        };
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
     }];
 }
 

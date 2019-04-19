@@ -7,6 +7,7 @@
 //
 
 #import "SYVM.h"
+#import "SYHobbyVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) RACCommand *uploadAvatarImageCommand;
 
 @property (nonatomic, strong) RACCommand *updateUserInfoCommand;
+
+@property (nonatomic, strong) RACCommand *enterHobbyChooseViewCommand;
 
 @end
 
