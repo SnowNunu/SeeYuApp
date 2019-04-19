@@ -559,11 +559,6 @@
         _acceptButton = [[UIButton alloc] init];
         [_acceptButton setImage:[RCCallKitUtility imageFromVoIPBundle:@"voip/answer.png"]
                        forState:UIControlStateNormal];
-        [_acceptButton setImage:[RCCallKitUtility imageFromVoIPBundle:@"voip/answer_hover.png"]
-                       forState:UIControlStateHighlighted];
-        [_acceptButton setTitle:NSLocalizedStringFromTable(@"VoIPCallAccept", @"RongCloudKit", nil)
-                       forState:UIControlStateNormal];
-
         [_acceptButton addTarget:self
                           action:@selector(acceptButtonClicked)
                 forControlEvents:UIControlEventTouchUpInside];
@@ -589,11 +584,6 @@
         _hangupButton = [[UIButton alloc] init];
         [_hangupButton setImage:[RCCallKitUtility imageFromVoIPBundle:@"voip/hang_up.png"]
                        forState:UIControlStateNormal];
-        [_hangupButton setImage:[RCCallKitUtility imageFromVoIPBundle:@"voip/hang_up_hover.png"]
-                       forState:UIControlStateHighlighted];
-        [_hangupButton setTitle:NSLocalizedStringFromTable(@"VoIPCallHangup", @"RongCloudKit", nil)
-                       forState:UIControlStateNormal];
-
         [_hangupButton addTarget:self
                           action:@selector(hangupButtonClicked)
                 forControlEvents:UIControlEventTouchUpInside];
@@ -949,9 +939,9 @@
             self.acceptButton.hidden = YES;
         } else if (callStatus == RCCallIncoming || callStatus == RCCallRinging) {
             self.hangupButton.frame = CGRectMake(
-                RCCallHorizontalMargin, self.view.frame.size.height - RCCallVerticalMargin - RCCallButtonLength - RCCallExtraSpace,
-                RCCallButtonLength, RCCallButtonLength);
-            [self layoutTextUnderImageButton:self.hangupButton];
+                60.f, self.view.frame.size.height - 45.f - 60.f,
+                60.f, 60.f);
+//            [self layoutTextUnderImageButton:self.hangupButton];
             self.hangupButton.hidden = NO;
 
             self.acceptButton.frame =

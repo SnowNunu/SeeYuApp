@@ -143,7 +143,6 @@
 		26C7BEF31F8CD2DA00525126 /* SYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C7BEF21F8CD2DA00525126 /* SYFileManager.m */; };
 		26CCB9CE20244D370090DBC5 /* SYMomentVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CCB9CD20244D370090DBC5 /* SYMomentVideoView.m */; };
 		26CCB9D120244F690090DBC5 /* SYMomentVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CCB9D020244F690090DBC5 /* SYMomentVideo.m */; };
-		26CCB9D3202453700090DBC5 /* SeeYuSight.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 26CCB9D2202453700090DBC5 /* SeeYuSight.mp4 */; };
 		26FA404A1FEB5BDF00B4AD2B /* SYPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA40491FEB5BDF00B4AD2B /* SYPicture.m */; };
 		26FA404D1FEB5C5B00B4AD2B /* SYPictureMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA404C1FEB5C5B00B4AD2B /* SYPictureMetadata.m */; };
 		26FA40501FEB5C9D00B4AD2B /* SYComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA404F1FEB5C9D00B4AD2B /* SYComment.m */; };
@@ -275,6 +274,10 @@
 		7B76B8B92268CE0900153249 /* SYHobbyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8B82268CE0900153249 /* SYHobbyVC.m */; };
 		7B76B8BD2268CE3500153249 /* SYHobbyVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8BC2268CE3500153249 /* SYHobbyVM.m */; };
 		7B76B8C02268D75600153249 /* SYHobbyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8BF2268D75600153249 /* SYHobbyModel.m */; };
+		7B76B8C52269AA8A00153249 /* SYOutboundVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8C42269AA8A00153249 /* SYOutboundVC.m */; };
+		7B76B8C82269AAD000153249 /* SYOutboundVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8C72269AAD000153249 /* SYOutboundVM.m */; };
+		7B76B8CB226A167600153249 /* Opening.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 7B76B8CA226A167600153249 /* Opening.m4r */; };
+		7B76B8CF226A1ADC00153249 /* JX_GCDTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8CE226A1ADB00153249 /* JX_GCDTimerManager.m */; };
 		7B7881032248894500B25CA3 /* SYForumVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7881022248894500B25CA3 /* SYForumVC.m */; };
 		7B7881062248898000B25CA3 /* SYForumVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7881052248898000B25CA3 /* SYForumVM.m */; };
 		7B78810A22488D2F00B25CA3 /* SYForumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78810922488D2F00B25CA3 /* SYForumModel.m */; };
@@ -654,7 +657,6 @@
 		26CCB9CD20244D370090DBC5 /* SYMomentVideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMomentVideoView.m; sourceTree = "<group>"; };
 		26CCB9CF20244F690090DBC5 /* SYMomentVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMomentVideo.h; sourceTree = "<group>"; };
 		26CCB9D020244F690090DBC5 /* SYMomentVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMomentVideo.m; sourceTree = "<group>"; };
-		26CCB9D2202453700090DBC5 /* SeeYuSight.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SeeYuSight.mp4; sourceTree = "<group>"; };
 		26FA40481FEB5BDF00B4AD2B /* SYPicture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPicture.h; sourceTree = "<group>"; };
 		26FA40491FEB5BDF00B4AD2B /* SYPicture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPicture.m; sourceTree = "<group>"; };
 		26FA404B1FEB5C5B00B4AD2B /* SYPictureMetadata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPictureMetadata.h; sourceTree = "<group>"; };
@@ -912,6 +914,13 @@
 		7B76B8BC2268CE3500153249 /* SYHobbyVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHobbyVM.m; sourceTree = "<group>"; };
 		7B76B8BE2268D75600153249 /* SYHobbyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHobbyModel.h; sourceTree = "<group>"; };
 		7B76B8BF2268D75600153249 /* SYHobbyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHobbyModel.m; sourceTree = "<group>"; };
+		7B76B8C32269AA8A00153249 /* SYOutboundVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYOutboundVC.h; sourceTree = "<group>"; };
+		7B76B8C42269AA8A00153249 /* SYOutboundVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYOutboundVC.m; sourceTree = "<group>"; };
+		7B76B8C62269AAD000153249 /* SYOutboundVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYOutboundVM.h; sourceTree = "<group>"; };
+		7B76B8C72269AAD000153249 /* SYOutboundVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYOutboundVM.m; sourceTree = "<group>"; };
+		7B76B8CA226A167600153249 /* Opening.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = Opening.m4r; sourceTree = "<group>"; };
+		7B76B8CD226A1ADB00153249 /* JX_GCDTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JX_GCDTimerManager.h; sourceTree = "<group>"; };
+		7B76B8CE226A1ADB00153249 /* JX_GCDTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JX_GCDTimerManager.m; sourceTree = "<group>"; };
 		7B7881012248894500B25CA3 /* SYForumVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYForumVC.h; sourceTree = "<group>"; };
 		7B7881022248894500B25CA3 /* SYForumVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYForumVC.m; sourceTree = "<group>"; };
 		7B7881042248898000B25CA3 /* SYForumVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYForumVM.h; sourceTree = "<group>"; };
@@ -1247,6 +1256,7 @@
 		26064AEE1F5DA21000566B95 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7B76B8C9226A166500153249 /* Ringtones */,
 				2667A3ED1F7B987600A3D7A2 /* Data */,
 				2667A3EF1F7B987600A3D7A2 /* Pictures */,
 			);
@@ -1271,6 +1281,7 @@
 		26064AF01F5DA21000566B95 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				7B76B8CC226A1ADB00153249 /* JX_GCDTimer */,
 				7B15EC4A2265BAF000A80BD5 /* ZYImagePicker */,
 				7B4BF4822251B3BB00CCD286 /* SDAutoLayout */,
 				7B4BF4592251AE0E00CCD286 /* MHVideoShort */,
@@ -1317,6 +1328,7 @@
 		26064AF21F5DB46500566B95 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				7B76B8C12269A98600153249 /* Outbound */,
 				7BC6FC042237C12A0079330A /* friendsList */,
 				7BB5199E21EC7F6B000C1CF2 /* chatting */,
 				2605C5D11F6632AA00B1F66E /* SYContactsVC.h */,
@@ -1492,6 +1504,7 @@
 		26225D7C1F65506E0074BFC3 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				7B76B8C22269A9A900153249 /* Outbound */,
 				7BC6FC25223911F60079330A /* friendsList */,
 				7BC6FC24223911490079330A /* chatting */,
 			);
@@ -2018,7 +2031,6 @@
 		2667A3ED1F7B987600A3D7A2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				26CCB9D2202453700090DBC5 /* SeeYuSight.mp4 */,
 				26452BF4201200250042B2FE /* SeeYu_Moments_4.json */,
 				26452BF22012001C0042B2FE /* SeeYu_Moments_3.json */,
 				26452BF0201200120042B2FE /* SeeYu_Moments_2.json */,
@@ -2834,6 +2846,41 @@
 			path = Hobby;
 			sourceTree = "<group>";
 		};
+		7B76B8C12269A98600153249 /* Outbound */ = {
+			isa = PBXGroup;
+			children = (
+				7B76B8C32269AA8A00153249 /* SYOutboundVC.h */,
+				7B76B8C42269AA8A00153249 /* SYOutboundVC.m */,
+			);
+			path = Outbound;
+			sourceTree = "<group>";
+		};
+		7B76B8C22269A9A900153249 /* Outbound */ = {
+			isa = PBXGroup;
+			children = (
+				7B76B8C62269AAD000153249 /* SYOutboundVM.h */,
+				7B76B8C72269AAD000153249 /* SYOutboundVM.m */,
+			);
+			path = Outbound;
+			sourceTree = "<group>";
+		};
+		7B76B8C9226A166500153249 /* Ringtones */ = {
+			isa = PBXGroup;
+			children = (
+				7B76B8CA226A167600153249 /* Opening.m4r */,
+			);
+			path = Ringtones;
+			sourceTree = "<group>";
+		};
+		7B76B8CC226A1ADB00153249 /* JX_GCDTimer */ = {
+			isa = PBXGroup;
+			children = (
+				7B76B8CD226A1ADB00153249 /* JX_GCDTimerManager.h */,
+				7B76B8CE226A1ADB00153249 /* JX_GCDTimerManager.m */,
+			);
+			path = JX_GCDTimer;
+			sourceTree = "<group>";
+		};
 		7B7880FE2248824900B25CA3 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
@@ -3387,12 +3434,12 @@
 				26452BF1201200120042B2FE /* SeeYu_Moments_2.json in Resources */,
 				7B4BF47E2251B09300CCD286 /* AssetsPickerLocked@2x.png in Resources */,
 				7B0228A6223A16470045E25F /* unicode_to_hanyu_pinyin.txt in Resources */,
-				26CCB9D3202453700090DBC5 /* SeeYuSight.mp4 in Resources */,
 				7B15EC782265BAF100A80BD5 /* Camera.bundle in Resources */,
 				26FE8E8B1F9514D100EC8BE0 /* TZImagePickerController.bundle in Resources */,
 				7BA3260A21DFA62100B7A352 /* Assets.xcassets in Resources */,
 				7B66334E223178F2002B220E /* address.json in Resources */,
 				7B747A552236229500B3F6A0 /* XFCameraController.xib in Resources */,
+				7B76B8CB226A167600153249 /* Opening.m4r in Resources */,
 				7B4BF47C2251B09300CCD286 /* public_pic_choose@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4013,6 +4060,7 @@
 				263D37161F66656A007267C3 /* YYReachability.m in Sources */,
 				7B9A1BCF22437D6F00B7BFC2 /* SYRankListModel.m in Sources */,
 				2664F5371FEA6BE6005C10CF /* SYMomentHelper.m in Sources */,
+				7B76B8CF226A1ADC00153249 /* JX_GCDTimerManager.m in Sources */,
 				7B734036222CE72100152750 /* SYAuthenticationModel.m in Sources */,
 				26225D771F654DEE0074BFC3 /* SYWebVC.m in Sources */,
 				7B7881062248898000B25CA3 /* SYForumVM.m in Sources */,
@@ -4271,7 +4319,9 @@
 				263D36DA1F666438007267C3 /* FBKVOController+SYExtension.m in Sources */,
 				2605C5B51F66241D00B1F66E /* SYHomePageVC.m in Sources */,
 				7BE971CB225ECB2C00FF6A25 /* SYProfileVC.m in Sources */,
+				7B76B8C52269AA8A00153249 /* SYOutboundVC.m in Sources */,
 				26FE8E7F1F9514D100EC8BE0 /* TAAnimatedDotView.m in Sources */,
+				7B76B8C82269AAD000153249 /* SYOutboundVM.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

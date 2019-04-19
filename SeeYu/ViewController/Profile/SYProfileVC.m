@@ -97,6 +97,7 @@
 }
 
 - (void)_setupSubViews {
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"btn_checkin_cricle" target:nil selector:nil textType:NO];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;

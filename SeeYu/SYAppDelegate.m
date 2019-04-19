@@ -14,6 +14,9 @@
 //#import <UMCommon/UMCommon.h>
 //#import <UMPush/UMessage.h>
 #import <FFToast/FFToast.h>
+#import <RongCallKit/RongCallKit.h>
+#import "SYOutboundVC.h"
+#import "SYOutboundVM.h"
 
 #if defined(DEBUG)||defined(_DEBUG)
 #import <JPFPSStatus/JPFPSStatus.h>
@@ -109,6 +112,8 @@
     
 //    [[RCIMClient sharedRCIMClient] setLogLevel:RC_Log_Level_Info];
 //    [self redirectNSlogToDocumentFolder];
+    
+    _callWindows = [NSMutableArray new];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(didReceiveMessageNotification:)
@@ -281,8 +286,16 @@
         RCInformationNotificationMessage *msg = (RCInformationNotificationMessage *)message.content;
         // NSString *str = [NSString stringWithFormat:@"%@",msg.message];
         NSLog(@"%@",msg.message);
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [FFToast showToastWithTitle:@"系统" message:msg.message iconImage:SYImageNamed(@"header_default_100x100") duration:2 toastType:FFToastTypeDefault];
+//        });
         dispatch_async(dispatch_get_main_queue(), ^{
-            [FFToast showToastWithTitle:@"系统" message:msg.message iconImage:SYImageNamed(@"header_default_100x100") duration:2 toastType:FFToastTypeDefault];
+//            SYOutboundVM *outboundVM = [[SYOutboundVM alloc] initWithServices:self.services params:@{SYViewModelIDKey:@"12284"}];
+            SYOutboundVM *outboundVM = [[SYOutboundVM alloc] initWithServices:self.services params:nil];
+            outboundVM.callerId = @"12284";
+            outboundVM.interval = @"20";
+            SYOutboundVC *outboundVC = [[SYOutboundVC alloc] initWithViewModel:outboundVM];
+            [self presentCallViewController:outboundVC];
         });
     }
 }
@@ -341,5 +354,42 @@
     
 }
 
+
+- (void)presentCallViewController:(UIViewController *)viewController {
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    UIWindow *activityWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    activityWindow.windowLevel = UIWindowLevelAlert;
+    activityWindow.rootViewController = viewController;
+    [activityWindow makeKeyAndVisible];
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionMoveIn;     //可更改为其他方式
+    animation.subtype = kCATransitionFromTop; //可更改为其他方式
+    [[activityWindow layer] addAnimation:animation forKey:nil];
+    [_callWindows addObject:activityWindow];
+}
+
+- (void)dismissCallViewController:(UIViewController *)viewController {
+    
+    if ([viewController isKindOfClass:[RCCallBaseViewController class]]) {
+        UIViewController *rootVC = viewController;
+        while (rootVC.parentViewController) {
+            rootVC = rootVC.parentViewController;
+        }
+        viewController = rootVC;
+    }
+    
+    for (UIWindow *window in self.callWindows) {
+        if (window.rootViewController == viewController) {
+            [window resignKeyWindow];
+            window.hidden = YES;
+            [[UIApplication sharedApplication].delegate.window makeKeyWindow];
+            [self.callWindows removeObject:window];
+            break;
+        }
+    }
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+//    [self stopReceiveCallVibrate];
+}
 
 @end

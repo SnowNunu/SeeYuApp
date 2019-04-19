@@ -101,6 +101,9 @@
 /** 用户在线状态 */
 @property (nonatomic, strong) NSString *userOnline;
 
+/** 用户展示视频 */
+@property (nonatomic, strong) NSString *showVideo;
+
 //------------------------------------------------------------------
 /// 昵称
 @property (nonatomic, readwrite, copy) NSString *screenName;
