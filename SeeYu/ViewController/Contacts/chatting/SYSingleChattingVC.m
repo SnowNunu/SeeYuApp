@@ -7,6 +7,9 @@
 //
 
 #import "SYSingleChattingVC.h"
+#import "SYAppDelegate.h"
+#import "SYGiftVC.h"
+#import "SYGiftVM.h"
 
 @interface SYSingleChattingVC ()
 
@@ -32,7 +35,9 @@
 
 - (void)_setupAction {
     [[_sendPresentBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [[RCCall sharedRCCall] startSingleCall:@"12346" mediaType:RCCallMediaVideo];
+        SYGiftVM *giftVM = [SYGiftVM new];
+        SYGiftVC *giftVC = [[SYGiftVC alloc] initWithViewModel:giftVM];
+        [[SYAppDelegate sharedDelegate] presentViewController:giftVC];
     }];
 }
 

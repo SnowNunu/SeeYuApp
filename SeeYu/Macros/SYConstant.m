@@ -18,8 +18,8 @@ NSString * const SYSwitchRootViewControllerUserInfoKey = @"SYSwitchRootViewContr
 /// 全局分割线高度 .5
 CGFloat const SYGlobalBottomLineHeight = 0.5f;
 
-/// 个性签名的最大字数为30
-NSUInteger const SYFeatureSignatureMaxWords = 30;
+/// 个性签名的最大字数为20
+NSUInteger const SYFeatureSignatureMaxWords = 20;
 
 /// 用户昵称的最大字数为12
 NSUInteger const SYNicknameMaxWords = 12;

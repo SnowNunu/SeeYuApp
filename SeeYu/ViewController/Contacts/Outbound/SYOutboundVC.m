@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "JPVideoPlayerKit.h"
 #import "SYAppDelegate.h"
+#import "SYOutboundModel.h"
 
 @interface SYOutboundVC ()
 
@@ -47,26 +48,27 @@
     [super viewDidLoad];
     [self _setupSubviews];
     [self _makeSubViewsConstraints];
-    [self.viewModel.requestCallerInfoCommand execute:nil];
-    [self startCallShow];
-    [self startTimer];
 }
 
 - (void)bindViewModel {
     [super bindViewModel];
     @weakify(self)
-    [RACObserve(self.viewModel, callerInfo) subscribeNext:^(SYUser *user) {
+    [RACObserve(self.viewModel, model) subscribeNext:^(SYOutboundModel *model) {
         @strongify(self)
-        if (user != nil) {
-            [self.headImageView yy_setImageWithURL:[NSURL URLWithString:user.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
-            self.aliasLabel.text = user.userName;
-            
-            [self.videoShowView jp_playVideoWithURL:[NSURL URLWithString:user.showVideo] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
-            }];
+        if (model != nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.videoShowView jp_playVideoWithURL:[NSURL URLWithString:model.videoShow] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
+                    [self.headImageView yy_setImageWithURL:[NSURL URLWithString:model.avatarImage] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+                    self.aliasLabel.text = model.alias;
+                    [self startCallShow];
+                    [self startTimer];
+                }];
+            });
         }
     }];
     [[self.hangUpBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
+        
         [self stopCallShow];
     }];
 }
@@ -96,6 +98,16 @@
     _aliasLabel = aliasLabel;
     [controlPanelView addSubview:aliasLabel];
     
+    UILabel *tipsLabel = [UILabel new];
+    tipsLabel.textAlignment = NSTextAlignmentCenter;
+    tipsLabel.text = @"邀请你进行视频聊天\n\n对方正在等待...";
+    tipsLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    tipsLabel.numberOfLines = 0;
+    tipsLabel.textColor = [UIColor whiteColor];
+    tipsLabel.font = SYRegularFont(14);
+    _tipsLabel = tipsLabel;
+    [controlPanelView addSubview:tipsLabel];
+    
     UIButton *hangUpBtn = [UIButton new];
     [hangUpBtn setImage:SYImageNamed(@"hang_up") forState:UIControlStateNormal];
     _hangUpBtn = hangUpBtn;
@@ -123,6 +135,11 @@
         make.top.equalTo(self.headImageView.mas_bottom).offset(15);
         make.centerX.equalTo(self.controlPanelView);
         make.height.offset(20);
+    }];
+    [_tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.controlPanelView);
+        make.top.equalTo(self.aliasLabel.mas_bottom).offset(15);
+        make.height.offset(65);
     }];
     [_hangUpBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.offset(60);
@@ -194,14 +211,15 @@
 
 - (void)stopCallShow {
     dispatch_async(dispatch_get_main_queue(), ^{
+        [[JX_GCDTimerManager sharedInstance] cancelTimerWithName:@"stopCallShow"];
         [self.videoShowView jp_stopPlay];
         [self stopPlayRing];
-        [[AppDelegate sharedDelegate] dismissCallViewController:self];
+        [[SYAppDelegate sharedDelegate] dismissViewController:self];
     });
 }
 
 - (void)startTimer {
-    [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"stopCallShow" timeInterval:[self.viewModel.interval doubleValue]  queue:dispatch_get_main_queue() repeats:NO fireInstantly:NO action:^{
+    [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"stopCallShow" timeInterval:[self.viewModel.model.interval doubleValue]  queue:dispatch_get_main_queue() repeats:NO fireInstantly:NO action:^{
         [self stopCallShow];
     }];
 }

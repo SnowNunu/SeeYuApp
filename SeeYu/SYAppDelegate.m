@@ -13,6 +13,8 @@
 #import "SYGuideVM.h"
 //#import <UMCommon/UMCommon.h>
 //#import <UMPush/UMessage.h>
+#import "SYNotificationModel.h"
+#import "SYOutboundModel.h"
 #import <FFToast/FFToast.h>
 #import <RongCallKit/RongCallKit.h>
 #import "SYOutboundVC.h"
@@ -26,7 +28,7 @@
 //#import "RetainCycleLoggerPlugin.h"
 #endif
 
-@interface AppDelegate () <RCIMReceiveMessageDelegate>
+@interface SYAppDelegate () <RCIMReceiveMessageDelegate>
 
 /// APP管理的导航栏的堆栈
 @property (nonatomic, readwrite, strong) SYNavigationControllerStack *navigationControllerStack;
@@ -35,7 +37,7 @@
 
 @end
 
-@implementation AppDelegate
+@implementation SYAppDelegate
 
 //// 应用启动会调用的
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -246,8 +248,8 @@
     }
 }
 #pragma mark- 获取appDelegate
-+ (AppDelegate *)sharedDelegate{
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
++ (SYAppDelegate *)sharedDelegate{
+    return (SYAppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 // 注册用户通知设置
@@ -281,22 +283,31 @@
 }
 
 - (void)onRCIMReceiveMessage:(RCMessage *)message left:(int)left {
-    NSLog(@"%@",message);
     if ([message.content isMemberOfClass:[RCInformationNotificationMessage class]]) {
         RCInformationNotificationMessage *msg = (RCInformationNotificationMessage *)message.content;
-        // NSString *str = [NSString stringWithFormat:@"%@",msg.message];
-        NSLog(@"%@",msg.message);
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [FFToast showToastWithTitle:@"系统" message:msg.message iconImage:SYImageNamed(@"header_default_100x100") duration:2 toastType:FFToastTypeDefault];
-//        });
-        dispatch_async(dispatch_get_main_queue(), ^{
-//            SYOutboundVM *outboundVM = [[SYOutboundVM alloc] initWithServices:self.services params:@{SYViewModelIDKey:@"12284"}];
-            SYOutboundVM *outboundVM = [[SYOutboundVM alloc] initWithServices:self.services params:nil];
-            outboundVM.callerId = @"12284";
-            outboundVM.interval = @"20";
-            SYOutboundVC *outboundVC = [[SYOutboundVC alloc] initWithViewModel:outboundVM];
-            [self presentCallViewController:outboundVC];
-        });
+        SYNotificationModel *model = [SYNotificationModel yy_modelWithJSON:msg.message];
+        if ([model.type isEqualToString:@"video"]) {
+            SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:@{@"userId":model.senderId}];
+            SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_IMINFO parameters:subscript.dictionary];
+            [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUser class]] sy_parsedResults] subscribeNext:^(SYUser *user) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    SYOutboundVM *outboundVM = [[SYOutboundVM alloc] initWithServices:self.services params:nil];
+                    SYOutboundModel *outboundModel = [SYOutboundModel new];
+                    outboundModel.alias = user.userName;
+                    outboundModel.avatarImage = user.userHeadImg;
+                    outboundModel.videoShow = user.showVideo;
+                    outboundModel.interval = model.time;
+                    outboundVM.model = outboundModel;
+                    SYOutboundVC *outboundVC = [[SYOutboundVC alloc] initWithViewModel:outboundVM];
+                    [self presentViewController:outboundVC];
+                });
+            }];
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [FFToast showToastWithTitle:@"系统" message:model.content iconImage:SYImageNamed(@"header_default_100x100") duration:2 toastType:FFToastTypeDefault];
+                
+            });
+        }
     }
 }
 
@@ -355,7 +366,7 @@
 }
 
 
-- (void)presentCallViewController:(UIViewController *)viewController {
+- (void)presentViewController:(UIViewController *)viewController {
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     UIWindow *activityWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     activityWindow.windowLevel = UIWindowLevelAlert;
@@ -369,7 +380,7 @@
     [_callWindows addObject:activityWindow];
 }
 
-- (void)dismissCallViewController:(UIViewController *)viewController {
+- (void)dismissViewController:(UIViewController *)viewController {
     
     if ([viewController isKindOfClass:[RCCallBaseViewController class]]) {
         UIViewController *rootVC = viewController;
@@ -389,7 +400,6 @@
         }
     }
     [viewController dismissViewControllerAnimated:YES completion:nil];
-//    [self stopReceiveCallVibrate];
 }
 
 @end
