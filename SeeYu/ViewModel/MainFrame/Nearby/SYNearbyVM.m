@@ -30,7 +30,7 @@
     }];
 }
 
-- (RACSignal *)requestRemoteDataSignalWithPage:(NSUInteger)page{
+- (RACSignal *)requestRemoteDataSignalWithPage:(NSUInteger)page {
     NSArray * (^mapNearbyFriends)(NSArray *) = ^(NSArray *friends) {
         if (page == 1) {
             /// 下拉刷新

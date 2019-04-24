@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYGiftVM : SYVM
 
+@property (nonatomic, strong) NSString *friendId;
+
+@property (nonatomic, strong) SYUser *user;
+
+@property (nonatomic, strong) RACCommand *sendGiftCommand;
+
 @end
 
 NS_ASSUME_NONNULL_END

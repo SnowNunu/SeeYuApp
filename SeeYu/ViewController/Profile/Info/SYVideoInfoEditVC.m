@@ -38,7 +38,7 @@
     [RACObserve(self.viewModel, model) subscribeNext:^(SYUserInfoEditModel *model) {
         @strongify(self)
         if (model != nil && ![model.showVideo isEqualToString:@""]) {
-            if (model.showVideo == nil) {
+            if (model.showVideo == nil || model.showVideo.length == 0) {
                 self.videoTips1Label.hidden = NO;
                 self.videoTips2Label.hidden = NO;
                 self.playBtn.hidden = YES;

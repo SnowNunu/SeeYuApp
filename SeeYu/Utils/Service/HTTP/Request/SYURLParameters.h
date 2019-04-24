@@ -84,6 +84,11 @@
 /// 获取用户的好友列表
 #define SY_HTTTP_PATH_USER_FRIENDS_LIST   @"/application/userFriendRelation/queryFriendList"
 
+/// 获取用户钻石和服务器端礼物列表
+#define SY_HTTTP_PATH_USER_GIFT_LIST_QUERY   @"/application/gift/queryGifts"
+
+#define SY_HTTTP_PATH_USER_GIFT_SEND        @"/application/giveGift/giveGift"
+
 /// 按昵称或者id搜索好友
 #define SY_HTTTP_PATH_USER_FRIENDS_SEARCH   @"/application/user/searchUser"
 

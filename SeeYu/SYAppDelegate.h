@@ -15,11 +15,15 @@
 /// 窗口
 @property (strong, nonatomic) UIWindow *window;
 
-/// APP管理的导航栏的堆栈
-@property (nonatomic, readonly, strong) SYNavigationControllerStack *navigationControllerStack;
 
 /// 获取AppDelegate
 + (SYAppDelegate *)sharedDelegate;
+
+/// APP管理的导航栏的堆栈
+@property (nonatomic, readwrite, strong) SYNavigationControllerStack *navigationControllerStack;
+
+/// APP的服务层
+@property (nonatomic, readwrite, strong) SYViewModelServicesImpl *services;
 
 /// 是否已经弹出键盘 主要用于微信朋友圈的判断
 @property (nonatomic, readwrite, assign , getter = isShowKeyboard) BOOL showKeyboard;

@@ -53,7 +53,7 @@
     [RACObserve(self.viewModel, model) subscribeNext:^(SYUserInfoEditModel *model) {
         @strongify(self)
         if (model != nil) {
-            if (model.showPhoto == nil) {
+            if (model.showPhoto == nil || model.showPhoto.length == 0) {
                 self.coverTips1Label.hidden = NO;
                 self.coverTips2Label.hidden = NO;
                 [self.modifyCoverBtn setTitle:@"添加封面" forState:UIControlStateNormal];

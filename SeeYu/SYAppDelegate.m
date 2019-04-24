@@ -30,11 +30,6 @@
 
 @interface SYAppDelegate () <RCIMReceiveMessageDelegate>
 
-/// APP管理的导航栏的堆栈
-@property (nonatomic, readwrite, strong) SYNavigationControllerStack *navigationControllerStack;
-/// APP的服务层
-@property (nonatomic, readwrite, strong) SYViewModelServicesImpl *services;
-
 @end
 
 @implementation SYAppDelegate
@@ -305,7 +300,6 @@
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [FFToast showToastWithTitle:@"系统" message:model.content iconImage:SYImageNamed(@"header_default_100x100") duration:2 toastType:FFToastTypeDefault];
-                
             });
         }
     }

@@ -32,6 +32,19 @@
     [self _makeSubViewsConstraints];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [UIApplication sharedApplication].statusBarHidden = NO;
+//    if([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]){
+//        [self prefersStatusBarHidden];
+//        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+//    }
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+
 - (void)bindViewModel {
     [super bindViewModel];
     [RACObserve(self.viewModel, user) subscribeNext:^(SYUser *user) {

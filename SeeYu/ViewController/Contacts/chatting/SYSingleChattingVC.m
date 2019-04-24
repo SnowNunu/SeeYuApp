@@ -10,10 +10,14 @@
 #import "SYAppDelegate.h"
 #import "SYGiftVC.h"
 #import "SYGiftVM.h"
+#import "SYGiftModel.h"
+#import "SYNavigationController.h"
 
 @interface SYSingleChattingVC ()
 
 @property (nonatomic, strong) UIButton *sendPresentBtn;
+
+@property (nonatomic, assign) BOOL btnEnabled;
 
 @end
 
@@ -25,6 +29,8 @@
     [RCIM sharedRCIM].globalMessagePortraitSize = CGSizeMake(45, 45);
     [self initSendPresentBtn];
     [self _setupAction];
+    self.btnEnabled = NO;
+    [self requestGiftList];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -34,10 +40,16 @@
 }
 
 - (void)_setupAction {
+    @weakify(self)
     [[_sendPresentBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        SYGiftVM *giftVM = [SYGiftVM new];
-        SYGiftVC *giftVC = [[SYGiftVC alloc] initWithViewModel:giftVM];
-        [[SYAppDelegate sharedDelegate] presentViewController:giftVC];
+        @strongify(self)
+        if (self.btnEnabled) {
+            SYGiftVM *giftVM = [[SYGiftVM alloc] initWithServices:SYAppDelegate.sharedDelegate.services params:nil];
+            giftVM.friendId = self.targetId;
+            SYGiftVC *giftVC = [[SYGiftVC alloc] initWithViewModel:giftVM];
+            SYNavigationController *navigationController = [[SYNavigationController alloc]initWithRootViewController:giftVC];
+            [[SYAppDelegate sharedDelegate] presentViewController:navigationController];
+        }
     }];
 }
 
@@ -79,11 +91,11 @@
                     } else {
                         stopPoint = CGPointMake(_sendPresentBtn.width/2.0, recognizer.view.center.y);
                     }
-                }else{
+                } else {
                     //左下
                     if (recognizer.view.center.x  >= SY_SCREEN_HEIGHT - recognizer.view.center.y) {
                         stopPoint = CGPointMake(recognizer.view.center.x, SY_SCREEN_HEIGHT - _sendPresentBtn.width/2.0);
-                    }else{
+                    } else {
                         stopPoint = CGPointMake(_sendPresentBtn.width/2.0, recognizer.view.center.y);
                         //                        stopPoint = CGPointMake(recognizer.view.center.x, SCREEN_HEIGHT - self.spButton.width/2.0);
                     }
@@ -128,6 +140,20 @@
             break;
     }
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+}
+
+- (void)requestGiftList {
+    NSDictionary *params = @{@"userId":SYAppDelegate.sharedDelegate.services.client.currentUser.userId};
+    SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
+    SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_GIFT_LIST_QUERY parameters:subscript.dictionary];
+    [[[[SYAppDelegate.sharedDelegate.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYGiftModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(SYGiftModel *giftModel) {
+        YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+        [cache setObject:giftModel forKey:@"giftModel"];
+    } error:^(NSError *error) {
+        [MBProgressHUD sy_showErrorTips:error];
+    } completed:^{
+        self.btnEnabled = YES;
+    }];
 }
 
 @end
