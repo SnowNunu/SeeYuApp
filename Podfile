@@ -180,6 +180,10 @@ pod 'YBImageBrowser'
 # 拍照和录视频
 pod 'PBJVision'
 pod 'JPVideoPlayer'
+# 文件操作
+pod 'FCFileManager'
+# 文件下载
+pod 'HYBNetworking', '~> 3.3.0'
 
 pod 'Reveal-SDK','~> 17',:configurations => ['Debug']
 

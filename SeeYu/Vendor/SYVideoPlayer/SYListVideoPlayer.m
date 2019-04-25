@@ -22,7 +22,7 @@ static SYListVideoPlayer *_instance = nil;
         _instance.videoOperationDict = [NSMutableDictionary dictionary];
         //初始化一个视频播放操作队列，并设置最大并发数（随意）
         _instance.videoOperationQueue = [[NSOperationQueue alloc] init];
-        _instance.videoOperationQueue.maxConcurrentOperationCount = 10;
+        _instance.videoOperationQueue.maxConcurrentOperationCount = 1000;
     });
     return _instance;
 }

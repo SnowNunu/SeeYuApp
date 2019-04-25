@@ -18,7 +18,7 @@
     NSString *urlStr = [[NSBundle mainBundle]pathForResource:fileName ofType:nil];
     self.playUrl = [NSURL fileURLWithPath:urlStr];
     
-    /// 获取视频第一政
+    /// 获取视频第一帧
     self.coverImage = [UIImage sy_thumbnailImageForVideo:self.playUrl atTime:1];
 }
 

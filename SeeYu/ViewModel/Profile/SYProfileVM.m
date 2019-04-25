@@ -7,6 +7,7 @@
 //
 
 #import "SYProfileVM.h"
+#import "SYMyMomentsVM.h"
 #import "SYInfoEditVM.h"
 #import "SYPresentVM.h"
 #import "SYRechargeVM.h"
@@ -45,7 +46,7 @@
     }];
     self.enterNextViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *kind) {
         if ([kind isEqual:@(0)]) {
-            SYInfoEditVM *vm = [[SYInfoEditVM alloc] initWithServices:self.services params:nil];
+            SYMyMomentsVM *vm = [[SYMyMomentsVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(1)]) {
             SYPresentVM *vm = [[SYPresentVM alloc] initWithServices:self.services params:nil];
@@ -64,6 +65,9 @@
             [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(6)]) {
             SYAuthenticationVM *vm = [[SYAuthenticationVM alloc] initWithServices:self.services params:nil];
+            [self.services pushViewModel:vm animated:YES];
+        } else if ([kind isEqual:@(7)]) {
+            SYInfoEditVM *vm = [[SYInfoEditVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
         }
         return [RACSignal empty];

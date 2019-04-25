@@ -38,7 +38,7 @@ static inline void SYCreateDirectoryAtPath(NSString *path){
         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
     }
 }
-/// 微信重要数据备份的文件夹路径，通过NSFileManager来访问
+/// 重要数据备份的文件夹路径，通过NSFileManager来访问
 static inline NSString *SYSeeYuDocDirPath(){
     return [SYDocumentDirectory stringByAppendingPathComponent:SY_SEEYU_DOC_NAME];
 }

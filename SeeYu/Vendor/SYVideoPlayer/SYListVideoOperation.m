@@ -14,6 +14,9 @@
 - (void)videoPlayTask:(NSString *)videoFilePath
 {
     //初始化AVUrlAsset获取对应视频的详细信息（AVAsset具有多种有用的方法和属性,比如时长,创建日期和元数据等）
+    if ([[videoFilePath substringToIndex:7] isEqualToString:@"file://"]) {
+        videoFilePath = [videoFilePath substringFromIndex:7];
+    }
     NSURL *url = [NSURL fileURLWithPath:videoFilePath];
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:url options:nil];
     

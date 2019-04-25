@@ -8,7 +8,9 @@
 
 #import "SYVC.h"
 #import "SYAnchorsRandomVM.h"
-#import "HSDownloadManager.h"
+#import "HYBNetworking.h"
+#import "CocoaSecurity.h"
+#import "FCFileManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

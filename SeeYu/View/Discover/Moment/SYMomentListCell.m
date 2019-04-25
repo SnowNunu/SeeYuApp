@@ -22,7 +22,7 @@
 
 - (void)_setupSubviews {
     UIImageView *headImageView = [UIImageView new];
-    headImageView.layer.masksToBounds = YES;
+    headImageView.masksToBounds = YES;
     headImageView.layer.cornerRadius = 22.5f;
     _headImageView = headImageView;
     [self.contentView addSubview:headImageView];
@@ -127,8 +127,13 @@
         
         [photoView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.offset(width);
-            make.left.equalTo(self.photoContainerView).offset(i % 3 * (width + 5));
-            make.top.equalTo(self.photoContainerView).offset(i / 3 * (width + 5));
+            if (photosArray.count == 4) {
+                make.left.equalTo(self.photoContainerView).offset(i % 2 * (width + 5));
+                make.top.equalTo(self.photoContainerView).offset(i / 2 * (width + 5));
+            } else {
+                make.left.equalTo(self.photoContainerView).offset(i % 3 * (width + 5));
+                make.top.equalTo(self.photoContainerView).offset(i / 3 * (width + 5));
+            }
         }];
     }
 }

@@ -79,6 +79,7 @@
     }];
     [self.viewModel.sendGiftCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYUser *user) {
         self.viewModel.user = user;
+        [self.viewModel.services.client saveUser:user];
         [MBProgressHUD sy_showTips:@"礼物赠送成功" addedToView:self.view];
     }];
     [self.viewModel.sendGiftCommand.errors subscribeNext:^(NSError *error) {
@@ -167,7 +168,7 @@
     diamondsLabel.textAlignment = NSTextAlignmentLeft;
     diamondsLabel.textColor = SYColorFromHexString(@"#9F69EB");
     diamondsLabel.font =SYRegularFont(16);
-    diamondsLabel.text = [NSString stringWithFormat:@"我的钻石：%d",_giftModel.Diamonds];
+    diamondsLabel.text = [NSString stringWithFormat:@"我的钻石：%d",self.viewModel.user.userDiamond];
     _diamondsLabel = diamondsLabel;
     [bgView addSubview:diamondsLabel];
     

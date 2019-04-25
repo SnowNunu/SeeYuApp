@@ -97,7 +97,7 @@
 }
 
 - (void)_setupSubViews {
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"btn_checkin_cricle" target:nil selector:nil textType:NO];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"btn_checkin_cricle" target:self selector:@selector(openSigninView) textType:NO];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -110,7 +110,7 @@
     tableView.tableHeaderView = headerView;
     UITapGestureRecognizer *infoTap = [UITapGestureRecognizer new];
     [[infoTap rac_gestureSignal] subscribeNext:^(id x) {
-        [self.viewModel.enterNextViewCommand execute:@(0)];
+        [self.viewModel.enterNextViewCommand execute:@(7)];
     }];
     [headerView addGestureRecognizer:infoTap];
     _tableView = tableView;
@@ -276,6 +276,12 @@
         make.bottom.left.right.equalTo(self.headerView);
         make.height.offset(15);
     }];
+}
+
+- (void)openSigninView {
+    SYSigninVM *signVM = [[SYSigninVM alloc] initWithServices:SYAppDelegate.sharedDelegate.services params:nil];
+    SYSigninVC *signVC = [[SYSigninVC alloc] initWithViewModel:signVM];
+    [[SYAppDelegate sharedDelegate] presentViewController:signVC];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

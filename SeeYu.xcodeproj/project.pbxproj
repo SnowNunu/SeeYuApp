@@ -231,6 +231,10 @@
 		7B4BF4812251B09300CCD286 /* MHGetPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF4762251B09300CCD286 /* MHGetPermission.m */; };
 		7B4BF4872251B3BC00CCD286 /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF4832251B3BB00CCD286 /* UIView+SDAutoLayout.m */; };
 		7B4BF4882251B3BC00CCD286 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF4852251B3BB00CCD286 /* UITableView+SDAutoTableViewCellHeight.m */; };
+		7B5210EB227095CA00D7EEFC /* SYSigninVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210EA227095CA00D7EEFC /* SYSigninVC.m */; };
+		7B5210EE227095F200D7EEFC /* SYSigninVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210ED227095F200D7EEFC /* SYSigninVM.m */; };
+		7B5210F32270AF8000D7EEFC /* SYMyMomentsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210F22270AF8000D7EEFC /* SYMyMomentsVM.m */; };
+		7B5210F62270AFA100D7EEFC /* SYMyMomentsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210F52270AFA100D7EEFC /* SYMyMomentsVC.m */; };
 		7B590931223F776100EE5ACF /* SYAnchorsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590930223F776100EE5ACF /* SYAnchorsListVC.m */; };
 		7B590934223F77B200EE5ACF /* SYAnchorsListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590933223F77B200EE5ACF /* SYAnchorsListVM.m */; };
 		7B590939223F8B0300EE5ACF /* SYAnchorsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590938223F8B0300EE5ACF /* SYAnchorsModel.m */; };
@@ -306,6 +310,7 @@
 		7B78816C224FB6C800B25CA3 /* SYNewFriendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78816B224FB6C800B25CA3 /* SYNewFriendsVC.m */; };
 		7B78816F224FB74700B25CA3 /* SYNewFriendsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78816E224FB74700B25CA3 /* SYNewFriendsVM.m */; };
 		7B788172224FBB8300B25CA3 /* SYNewFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788171224FBB8300B25CA3 /* SYNewFriendModel.m */; };
+		7B7A77A5227153CA00D8F109 /* VideoToGifManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A77A4227153CA00D8F109 /* VideoToGifManager.m */; };
 		7B7B1AA3225B2FAF008C7EEA /* SYPrivacyDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B1AA2225B2FAF008C7EEA /* SYPrivacyDetailModel.m */; };
 		7B92871D22450AC100CABC5F /* SYSpeedMatchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B92871C22450AC100CABC5F /* SYSpeedMatchModel.m */; };
 		7B9A1BBD2240997E00B7BFC2 /* SYAnchorShowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BBC2240997E00B7BFC2 /* SYAnchorShowVC.m */; };
@@ -843,6 +848,14 @@
 		7B4BF4842251B3BB00CCD286 /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
 		7B4BF4852251B3BB00CCD286 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
 		7B4BF4862251B3BB00CCD286 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
+		7B5210E9227095CA00D7EEFC /* SYSigninVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSigninVC.h; sourceTree = "<group>"; };
+		7B5210EA227095CA00D7EEFC /* SYSigninVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSigninVC.m; sourceTree = "<group>"; };
+		7B5210EC227095F200D7EEFC /* SYSigninVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSigninVM.h; sourceTree = "<group>"; };
+		7B5210ED227095F200D7EEFC /* SYSigninVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSigninVM.m; sourceTree = "<group>"; };
+		7B5210F12270AF8000D7EEFC /* SYMyMomentsVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyMomentsVM.h; sourceTree = "<group>"; };
+		7B5210F22270AF8000D7EEFC /* SYMyMomentsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyMomentsVM.m; sourceTree = "<group>"; };
+		7B5210F42270AFA100D7EEFC /* SYMyMomentsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyMomentsVC.h; sourceTree = "<group>"; };
+		7B5210F52270AFA100D7EEFC /* SYMyMomentsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyMomentsVC.m; sourceTree = "<group>"; };
 		7B59092F223F776100EE5ACF /* SYAnchorsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsListVC.h; sourceTree = "<group>"; };
 		7B590930223F776100EE5ACF /* SYAnchorsListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsListVC.m; sourceTree = "<group>"; };
 		7B590932223F77B200EE5ACF /* SYAnchorsListVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsListVM.h; sourceTree = "<group>"; };
@@ -987,6 +1000,8 @@
 		7B78816E224FB74700B25CA3 /* SYNewFriendsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYNewFriendsVM.m; sourceTree = "<group>"; };
 		7B788170224FBB8300B25CA3 /* SYNewFriendModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYNewFriendModel.h; sourceTree = "<group>"; };
 		7B788171224FBB8300B25CA3 /* SYNewFriendModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYNewFriendModel.m; sourceTree = "<group>"; };
+		7B7A77A3227153CA00D8F109 /* VideoToGifManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoToGifManager.h; sourceTree = "<group>"; };
+		7B7A77A4227153CA00D8F109 /* VideoToGifManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoToGifManager.m; sourceTree = "<group>"; };
 		7B7B1AA1225B2FAF008C7EEA /* SYPrivacyDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPrivacyDetailModel.h; sourceTree = "<group>"; };
 		7B7B1AA2225B2FAF008C7EEA /* SYPrivacyDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPrivacyDetailModel.m; sourceTree = "<group>"; };
 		7B92871B22450AC100CABC5F /* SYSpeedMatchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSpeedMatchModel.h; sourceTree = "<group>"; };
@@ -1312,6 +1327,7 @@
 		26064AF01F5DA21000566B95 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				7B7A77A22271539400D8F109 /* VideoToGif */,
 				7B76B8CC226A1ADB00153249 /* JX_GCDTimer */,
 				7B15EC4A2265BAF000A80BD5 /* ZYImagePicker */,
 				7B4BF4822251B3BB00CCD286 /* SDAutoLayout */,
@@ -2631,6 +2647,42 @@
 			path = SDAutoLayout;
 			sourceTree = "<group>";
 		};
+		7B5210E72270958600D7EEFC /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				7B5210EC227095F200D7EEFC /* SYSigninVM.h */,
+				7B5210ED227095F200D7EEFC /* SYSigninVM.m */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		7B5210E8227095B500D7EEFC /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				7B5210E9227095CA00D7EEFC /* SYSigninVC.h */,
+				7B5210EA227095CA00D7EEFC /* SYSigninVC.m */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		7B5210EF2270AF5D00D7EEFC /* MyMoments */ = {
+			isa = PBXGroup;
+			children = (
+				7B5210F42270AFA100D7EEFC /* SYMyMomentsVC.h */,
+				7B5210F52270AFA100D7EEFC /* SYMyMomentsVC.m */,
+			);
+			path = MyMoments;
+			sourceTree = "<group>";
+		};
+		7B5210F02270AF6D00D7EEFC /* MyMoments */ = {
+			isa = PBXGroup;
+			children = (
+				7B5210F12270AF8000D7EEFC /* SYMyMomentsVM.h */,
+				7B5210F22270AF8000D7EEFC /* SYMyMomentsVM.m */,
+			);
+			path = MyMoments;
+			sourceTree = "<group>";
+		};
 		7B590935223F8AB300EE5ACF /* MainFrame */ = {
 			isa = PBXGroup;
 			children = (
@@ -3032,6 +3084,15 @@
 			path = chatting;
 			sourceTree = "<group>";
 		};
+		7B7A77A22271539400D8F109 /* VideoToGif */ = {
+			isa = PBXGroup;
+			children = (
+				7B7A77A3227153CA00D8F109 /* VideoToGifManager.h */,
+				7B7A77A4227153CA00D8F109 /* VideoToGifManager.m */,
+			);
+			path = VideoToGif;
+			sourceTree = "<group>";
+		};
 		7B92871A22450A6F00CABC5F /* Collocation */ = {
 			isa = PBXGroup;
 			children = (
@@ -3261,6 +3322,8 @@
 		7BE971C4225ECA9500FF6A25 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7B5210EF2270AF5D00D7EEFC /* MyMoments */,
+				7B5210E8227095B500D7EEFC /* Signin */,
 				7B76B8852267219C00153249 /* Info */,
 				7B35991D2260EFF100FDC6FE /* Authentication */,
 				7BE971F32260345700FF6A25 /* Recharge */,
@@ -3276,6 +3339,8 @@
 		7BE971C5225ECAD800FF6A25 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7B5210F02270AF6D00D7EEFC /* MyMoments */,
+				7B5210E72270958600D7EEFC /* Signin */,
 				7B76B886226721B400153249 /* Info */,
 				7B3599192260EFAF00FDC6FE /* Authentication */,
 				7BE971F22260344100FF6A25 /* Recharge */,
@@ -3743,6 +3808,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBAllocationTracker/FBAllocationTracker.framework",
 				"${BUILT_PRODUCTS_DIR}/FBMemoryProfiler/FBMemoryProfiler.framework",
 				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
+				"${BUILT_PRODUCTS_DIR}/FCFileManager/FCFileManager.framework",
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/FFToast/FFToast.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
@@ -3750,6 +3816,7 @@
 				"${BUILT_PRODUCTS_DIR}/FXBlurView/FXBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/HJCornerRadius/HJCornerRadius.framework",
 				"${BUILT_PRODUCTS_DIR}/HYBImageCliped/HYBImageCliped.framework",
+				"${BUILT_PRODUCTS_DIR}/HYBNetworking/HYBNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JPFPSStatus/JPFPSStatus.framework",
 				"${BUILT_PRODUCTS_DIR}/JPVideoPlayer/JPVideoPlayer.framework",
@@ -3802,6 +3869,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAllocationTracker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBMemoryProfiler.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FCFileManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFToast.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
@@ -3809,6 +3877,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FXBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HJCornerRadius.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBImageCliped.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPFPSStatus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPVideoPlayer.framework",
@@ -3889,6 +3958,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBAllocationTracker/FBAllocationTracker.framework",
 				"${BUILT_PRODUCTS_DIR}/FBMemoryProfiler/FBMemoryProfiler.framework",
 				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
+				"${BUILT_PRODUCTS_DIR}/FCFileManager/FCFileManager.framework",
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/FFToast/FFToast.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
@@ -3896,6 +3966,7 @@
 				"${BUILT_PRODUCTS_DIR}/FXBlurView/FXBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/HJCornerRadius/HJCornerRadius.framework",
 				"${BUILT_PRODUCTS_DIR}/HYBImageCliped/HYBImageCliped.framework",
+				"${BUILT_PRODUCTS_DIR}/HYBNetworking/HYBNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JPFPSStatus/JPFPSStatus.framework",
 				"${BUILT_PRODUCTS_DIR}/JPVideoPlayer/JPVideoPlayer.framework",
@@ -3948,6 +4019,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAllocationTracker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBMemoryProfiler.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FCFileManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFToast.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
@@ -3955,6 +4027,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FXBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HJCornerRadius.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBImageCliped.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPFPSStatus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPVideoPlayer.framework",
@@ -4017,6 +4090,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBAllocationTracker/FBAllocationTracker.framework",
 				"${BUILT_PRODUCTS_DIR}/FBMemoryProfiler/FBMemoryProfiler.framework",
 				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
+				"${BUILT_PRODUCTS_DIR}/FCFileManager/FCFileManager.framework",
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/FFToast/FFToast.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
@@ -4024,6 +4098,7 @@
 				"${BUILT_PRODUCTS_DIR}/FXBlurView/FXBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/HJCornerRadius/HJCornerRadius.framework",
 				"${BUILT_PRODUCTS_DIR}/HYBImageCliped/HYBImageCliped.framework",
+				"${BUILT_PRODUCTS_DIR}/HYBNetworking/HYBNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JPFPSStatus/JPFPSStatus.framework",
 				"${BUILT_PRODUCTS_DIR}/JPVideoPlayer/JPVideoPlayer.framework",
@@ -4076,6 +4151,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAllocationTracker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBMemoryProfiler.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FCFileManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFToast.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
@@ -4083,6 +4159,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FXBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HJCornerRadius.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBImageCliped.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPFPSStatus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPVideoPlayer.framework",
@@ -4168,6 +4245,7 @@
 				26FE8E831F9514D100EC8BE0 /* SDCycleScrollView.m in Sources */,
 				7B4BF4602251AE4C00CCD286 /* YLShortVideoVC.m in Sources */,
 				7B76B8AB2268024F00153249 /* SYVideoInfoEditVC.m in Sources */,
+				7B5210EE227095F200D7EEFC /* SYSigninVM.m in Sources */,
 				26225D741F654D330074BFC3 /* SYTableVC.m in Sources */,
 				7B4BF4802251B09300CCD286 /* MHAssetPickerViewController.m in Sources */,
 				26C7BEF31F8CD2DA00525126 /* SYFileManager.m in Sources */,
@@ -4178,6 +4256,7 @@
 				7B15EC712265BAF100A80BD5 /* ZYImagePicker.m in Sources */,
 				7B724BDB2245E14E0096F40B /* SYPrivacyVC.m in Sources */,
 				2624CAE31F98DF9B0083923F /* RACSubscriber+AFProgressCallbacks.m in Sources */,
+				7B7A77A5227153CA00D8F109 /* VideoToGifManager.m in Sources */,
 				7BC6FC102237D0F90079330A /* SYGuideVM.m in Sources */,
 				263C89921F6A74F400F7A0AE /* SYCommonArrowItemViewModel.m in Sources */,
 				266E15D01F8F2086000E31C5 /* SYTextField.m in Sources */,
@@ -4235,6 +4314,7 @@
 				7BC56A79226F0304005C1F81 /* SYSignatureView.m in Sources */,
 				7BE972042260443000FF6A25 /* SYCoinVM.m in Sources */,
 				7B1E733522267765001299C0 /* SYCollocationVM.m in Sources */,
+				7B5210F62270AFA100D7EEFC /* SYMyMomentsVC.m in Sources */,
 				26BEBC7F1F8B78B1004D502F /* SYReflection.m in Sources */,
 				7B0228A9223A16470045E25F /* HanyuPinyinOutputFormat.m in Sources */,
 				7B5A333F21F9ECF700535F8D /* SYRankingVM.m in Sources */,
@@ -4289,6 +4369,7 @@
 				263D36E11F666438007267C3 /* NSObject+SYAlert.m in Sources */,
 				263D36EB1F666438007267C3 /* UIScrollView+SYRefresh.m in Sources */,
 				263D37101F666569007267C3 /* LCActionSheetConfig.m in Sources */,
+				7B5210EB227095CA00D7EEFC /* SYSigninVC.m in Sources */,
 				7BE971FE2260411300FF6A25 /* SYVipVC.m in Sources */,
 				26FE8E4C1F95143D00EC8BE0 /* IDMTapDetectingView.m in Sources */,
 				7B9A1BD622439BED00B7BFC2 /* SYAnchorRandomCellModel.m in Sources */,
@@ -4396,6 +4477,7 @@
 				7BC56A81226F0F5E005C1F81 /* SYNicknameModifyVC.m in Sources */,
 				26FE8E8E1F9514D100EC8BE0 /* TZPhotoPickerController.m in Sources */,
 				7BC56A72226EFDFC005C1F81 /* SYSignatureVM.m in Sources */,
+				7B5210F32270AF8000D7EEFC /* SYMyMomentsVM.m in Sources */,
 				7B76B8922267291F00153249 /* SYBaseInfoDetailVC.m in Sources */,
 				263D36ED1F666438007267C3 /* UITextField+SYExtension.m in Sources */,
 				7B7881122248939600B25CA3 /* SYFriendDetailInfoVM.m in Sources */,

@@ -145,34 +145,38 @@
             NSNumber *index0 = array[0];
             SYAnchorRandomCellModel *model0 = self.viewModel.datasource[[index0 intValue]];
             if (![model0.showVideo isEqualToString:self.firstAnchorUrl]) {
-                [[SYListVideoPlayer sharedPlayer] cancelVideo:[[HSDownloadManager sharedInstance] getLocalFilePath:self.firstAnchorUrl]];
+                [[SYListVideoPlayer sharedPlayer] cancelVideo:[self returnFilePathByUrl:self.firstAnchorUrl]];
                 self.firstAnchorUrl = model0.showVideo;
             }
             NSNumber *index1 = array[1];
             SYAnchorRandomCellModel *model1 = self.viewModel.datasource[[index1 intValue]];
             if (![model1.showVideo isEqualToString:self.secondAnchorUrl]) {
-                [[SYListVideoPlayer sharedPlayer] cancelVideo:[[HSDownloadManager sharedInstance] getLocalFilePath:self.secondAnchorUrl]];
+                [[SYListVideoPlayer sharedPlayer] cancelVideo:[self returnFilePathByUrl:self.self.secondAnchorUrl]];
                 self.secondAnchorUrl = model1.showVideo;
             }
             NSNumber *index2 = array[2];
             SYAnchorRandomCellModel *model2 = self.viewModel.datasource[[index2 intValue]];
             if (![model2.showVideo isEqualToString:self.thirdAnchorUrl]) {
-                [[SYListVideoPlayer sharedPlayer] cancelVideo:[[HSDownloadManager sharedInstance] getLocalFilePath:self.thirdAnchorUrl]];
+                [[SYListVideoPlayer sharedPlayer] cancelVideo:[self returnFilePathByUrl:self.self.self.thirdAnchorUrl]];
                 self.thirdAnchorUrl = model2.showVideo;
             }
         }
     }];
     [RACObserve(self,firstAnchorUrl) subscribeNext:^(NSString *url) {
         @strongify(self)
-        if (![url sy_isNullOrNil] && url.length >0) {
-            [[HSDownloadManager sharedInstance] download:url progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
-                // 返回文件下载进度
-            } state:^(DownloadState state) {
-                // 返回文件下载状态
-                if (state == DownloadStateCompleted) {
-                    [self playVideo:[[HSDownloadManager sharedInstance] getLocalFilePath:url] andIndex:1];
-                }
-            }];
+        if (![url sy_isNullOrNil] && url.length > 0) {
+            if ([FCFileManager existsItemAtPath:[self returnFilePathByUrl:url]]) {
+                NSLog(@"已经存在");
+                [self playVideo:[self returnFilePathByUrl:url] andIndex:0];
+            } else {
+                [HYBNetworking downloadWithUrl:url saveToPath:[self returnFilePathByUrl:url] progress:^(int64_t bytesRead, int64_t totalBytesRead) {
+                    
+                } success:^(NSString *filePath) {
+                    [self playVideo:[self returnFilePathByUrl:url] andIndex:0];
+                } failure:^(NSError *error) {
+                    NSLog(@"%@",error);
+                }];
+            }
             // 更改视频的同时更改爱好和价格
             NSNumber *index = self.anchorsIndexArray[0];
             SYAnchorRandomCellModel *model = self.viewModel.datasource[[index intValue]];
@@ -182,14 +186,18 @@
     }];
     [RACObserve(self,secondAnchorUrl) subscribeNext:^(NSString *url) {
         if (![url sy_isNullOrNil] && url.length >0) {
-            [[HSDownloadManager sharedInstance] download:url progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
-                // 返回文件下载进度
-            } state:^(DownloadState state) {
-                // 返回文件下载状态
-                if (state == DownloadStateCompleted) {
-                    [self playVideo:[[HSDownloadManager sharedInstance] getLocalFilePath:url] andIndex:2];
-                }
-            }];
+            if ([FCFileManager existsItemAtPath:[self returnFilePathByUrl:url]]) {
+                NSLog(@"已经存在");
+                [self playVideo:[self returnFilePathByUrl:url] andIndex:1];
+            } else {
+                [HYBNetworking downloadWithUrl:url saveToPath:[self returnFilePathByUrl:url] progress:^(int64_t bytesRead, int64_t totalBytesRead) {
+                    
+                } success:^(NSString *filePath) {
+                    [self playVideo:[self returnFilePathByUrl:url] andIndex:1];
+                } failure:^(NSError *error) {
+                    NSLog(@"%@",error);
+                }];
+            }
             // 更改视频的同时更改爱好和价格
             NSNumber *index = self.anchorsIndexArray[1];
             SYAnchorRandomCellModel *model = self.viewModel.datasource[[index intValue]];
@@ -199,14 +207,18 @@
     }];
     [RACObserve(self,thirdAnchorUrl) subscribeNext:^(NSString *url) {
         if (![url sy_isNullOrNil] && url.length >0) {
-            [[HSDownloadManager sharedInstance] download:url progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
-                // 返回文件下载进度
-            } state:^(DownloadState state) {
-                // 返回文件下载状态
-                if (state == DownloadStateCompleted) {
-                    [self playVideo:[[HSDownloadManager sharedInstance] getLocalFilePath:url] andIndex:3];
-                }
-            }];
+            if ([FCFileManager existsItemAtPath:[self returnFilePathByUrl:url]]) {
+                NSLog(@"已经存在");
+                [self playVideo:[self returnFilePathByUrl:url] andIndex:2];
+            } else {
+                [HYBNetworking downloadWithUrl:url saveToPath:[self returnFilePathByUrl:url] progress:^(int64_t bytesRead, int64_t totalBytesRead) {
+                    
+                } success:^(NSString *filePath) {
+                    [self playVideo:[self returnFilePathByUrl:url] andIndex:2];
+                } failure:^(NSError *error) {
+                    NSLog(@"%@",error);
+                }];
+            }
             // 更改视频的同时更改爱好和价格
             NSNumber *index = self.anchorsIndexArray[2];
             SYAnchorRandomCellModel *model = self.viewModel.datasource[[index intValue]];
@@ -216,6 +228,7 @@
     }];
     [[self.randomBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         // 点击了换一换按钮
+//        [[SYListVideoPlayer sharedPlayer] cancelAllVideo];
         [self randomSelectAnchors];
     }];
     [[self.firstChangeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -498,9 +511,9 @@
     @weakify(self)
     [[SYListVideoPlayer sharedPlayer] startPlayVideo:url withVideoDecode:^(CGImageRef videoImageRef, NSString *videoFilePath) {
         @strongify(self)
-        if (index == 1) {
+        if (index == 0) {
             self.firstAnchorView.layer.contents = (__bridge id _Nullable)(videoImageRef);
-        } else if (index == 2) {
+        } else if (index == 1) {
             self.secondAnchorView.layer.contents = (__bridge id _Nullable)(videoImageRef);
         } else {
             self.thirdAnchorView.layer.contents = (__bridge id _Nullable)(videoImageRef);
@@ -536,6 +549,11 @@
         }
     }
     self.anchorsIndexArray = [anchorsSet allObjects];
+}
+
+- (NSString *)returnFilePathByUrl:(NSString *) url {
+    CocoaSecurityResult *result = [CocoaSecurity md5:url];
+    return [NSString stringWithFormat:@"%@/chooseVideo_%@.mp4",SYSeeYuCacheDirPath(),result.hexLower];
 }
 
 @end

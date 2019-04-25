@@ -44,6 +44,7 @@ PODS:
     - FBAllocationTracker (~> 0.1)
     - FBRetainCycleDetector (~> 0.1)
   - FBRetainCycleDetector (0.1.4)
+  - FCFileManager (1.0.20)
   - FDFullscreenPopGesture (1.1)
   - FFToast (1.2.0)
   - FLEX (2.4.0)
@@ -53,6 +54,8 @@ PODS:
   - FXBlurView (1.6.4)
   - HJCornerRadius (0.0.1)
   - HYBImageCliped (2.2.4)
+  - HYBNetworking (3.3.1):
+    - AFNetworking (~> 3.1.0)
   - IQKeyboardManager (5.0.2)
   - JPFPSStatus (0.1)
   - JPVideoPlayer (3.1.1)
@@ -168,6 +171,7 @@ DEPENDENCIES:
   - DACircularProgress (= 2.3.1)
   - DZNEmptyDataSet (= 1.8.1)
   - FBMemoryProfiler (= 0.1.3)
+  - FCFileManager
   - FDFullscreenPopGesture (= 1.1)
   - FFToast
   - FLEX (= 2.4.0)
@@ -175,6 +179,7 @@ DEPENDENCIES:
   - FXBlurView (= 1.6.4)
   - HJCornerRadius (from `https://github.com/panghaijiao/HJCornerRadius.git`)
   - HYBImageCliped (= 2.2.4)
+  - HYBNetworking (~> 3.3.0)
   - IQKeyboardManager (= 5.0.2)
   - JPFPSStatus (= 0.1)
   - JPVideoPlayer
@@ -235,12 +240,14 @@ SPEC REPOS:
     - FBAllocationTracker
     - FBMemoryProfiler
     - FBRetainCycleDetector
+    - FCFileManager
     - FDFullscreenPopGesture
     - FFToast
     - FLEX
     - FMDB
     - FXBlurView
     - HYBImageCliped
+    - HYBNetworking
     - IQKeyboardManager
     - JPFPSStatus
     - JPVideoPlayer
@@ -309,6 +316,7 @@ SPEC CHECKSUMS:
   FBAllocationTracker: dfdca3f71aceca6a85e95e3c6ec76a9785eba0f1
   FBMemoryProfiler: 623fc5f8a61f7d02ec75c87e3b97c90f621d8b02
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
+  FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FFToast: 60e0f3c9fd8fc473205015055ee39cd200404e01
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
@@ -316,6 +324,7 @@ SPEC CHECKSUMS:
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   HJCornerRadius: 0af191386b5f2e9c4465739b5db22c0acc52923b
   HYBImageCliped: 22d14431324bc9d056353d6f1490a3bd03fc7dff
+  HYBNetworking: 5b350e2eacfbf6db7d3f4253274b2f2bb68e881c
   IQKeyboardManager: 5ab84749f20f682f784160c2c63bef4f19d10d26
   JPFPSStatus: 4467a17488382e4c1700bd9d18c92ae581fd6305
   JPVideoPlayer: 234c2fc5c9dfd67b969a5dd8233815eb872472c6
@@ -358,6 +367,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 7d96910d32d195378cc16304208855b225e204ec
+PODFILE CHECKSUM: ec4786ab66bfd2ce28544e0302e8586b9ecc83e2
 
 COCOAPODS: 1.5.3

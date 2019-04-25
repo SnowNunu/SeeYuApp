@@ -79,7 +79,6 @@
     NSInteger unreadCount = model.unreadMessageCount;
     SYChattingListCell *cell = [[SYChattingListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chattingListCell"];
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:model.receivedTime / 1000];
-    NSLog(@"%@",[SYTimeTool getTimeStringAutoShort2:date mustIncludeTime:NO]);
     cell.timeLabel.text = [SYTimeTool getTimeStringAutoShort2:date mustIncludeTime:NO];
     if (unreadCount == 0) {
         cell.badgeView.badgeText = nil;
@@ -122,6 +121,26 @@
                 cell.contentLabel.attributedText = str;
             } else {
                 cell.contentLabel.text = @"[位置]";
+            }
+        } else if ([model.lastestMessage isKindOfClass:[RCCallSummaryMessage class]]) {
+            RCCallSummaryMessage *message = (RCCallSummaryMessage*)model.lastestMessage;
+            // 音视频消息
+            if (unreadCount > 0) {
+                if (message.mediaType == RCCallMediaAudio) {
+                    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"[音频通话]"];
+                    [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, str.length)];
+                    cell.contentLabel.attributedText = str;
+                } else {
+                    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"[视频通话]"];
+                    [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, str.length)];
+                    cell.contentLabel.attributedText = str;
+                }
+            } else {
+                if (message.mediaType == RCCallMediaAudio) {
+                    cell.contentLabel.text = @"[音频通话]";
+                } else {
+                    cell.contentLabel.text = @"[视频通话]";
+                }
             }
         }
     }];

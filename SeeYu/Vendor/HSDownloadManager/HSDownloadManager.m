@@ -92,6 +92,7 @@ static HSDownloadManager *_downloadManager;
  */
 - (void)download:(NSString *)url progress:(void (^)(NSInteger, NSInteger, CGFloat))progressBlock state:(void (^)(DownloadState))stateBlock
 {
+    NSLog(@"播放开始下载:%@",url);
     if (!url) return;
     if ([self isCompletion:url]) {
         stateBlock(DownloadStateCompleted);
