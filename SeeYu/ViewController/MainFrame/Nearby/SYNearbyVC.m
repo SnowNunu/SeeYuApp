@@ -230,8 +230,18 @@
     
     // vip状态
     UIImageView *vipImageView = [UIImageView new];
-    vipImageView.hidden = user.userVipStatus == 1 ? NO : YES;
-    vipImageView.image = SYImageNamed(@"vip_able");
+    if (user.userVipStatus == 1) {
+        // 再判断是否已过期
+        NSTimeInterval seconds = [user.userVipExpiresAt timeIntervalSinceDate:[NSDate new]];//间隔的秒数
+        if (seconds > 0) {
+            vipImageView.hidden = NO;
+        } else {
+            vipImageView.hidden = YES;
+        }
+    } else {
+        vipImageView.hidden = YES;
+    }
+    vipImageView.image = SYImageNamed(@"VIP");
     [cell addSubview:vipImageView];
     
     // 个性签名

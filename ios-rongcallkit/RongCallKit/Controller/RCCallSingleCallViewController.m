@@ -190,7 +190,7 @@
             [self.callSession setVideoView:self.mainVideoView userId:self.callSession.targetId];
             self.blurView.hidden = YES;
         } else {
-            self.mainVideoView.hidden = YES;
+            self.mainVideoView.hidden = YES;    // 全屏view
         }
 
         if (callStatus == RCCallActive) {
@@ -214,6 +214,7 @@
             self.remoteNameLabel.hidden = NO;
             self.remoteNameLabel.textAlignment = NSTextAlignmentCenter;
         } else if (callStatus == RCCallIncoming || callStatus == RCCallRinging) {
+            // 呼入视频请求
             self.remotePortraitView.frame =
                 CGRectMake((self.view.frame.size.width - RCCallHeaderLength) / 2, RCCallVerticalMargin * 3,
                            RCCallHeaderLength, RCCallHeaderLength);

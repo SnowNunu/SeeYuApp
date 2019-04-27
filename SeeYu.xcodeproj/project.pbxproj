@@ -261,6 +261,8 @@
 		7B747A532236229500B3F6A0 /* XFPhotoLibraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B747A4E2236229500B3F6A0 /* XFPhotoLibraryManager.m */; };
 		7B747A542236229500B3F6A0 /* XFCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B747A4F2236229500B3F6A0 /* XFCameraController.m */; };
 		7B747A552236229500B3F6A0 /* XFCameraController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B747A502236229500B3F6A0 /* XFCameraController.xib */; };
+		7B7602D522745F5E004C9936 /* SYGiftPackageVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7602D422745F5E004C9936 /* SYGiftPackageVM.m */; };
+		7B7602D822745F72004C9936 /* SYGiftPackageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7602D722745F72004C9936 /* SYGiftPackageVC.m */; };
 		7B76B88422671D5500153249 /* SYSelfieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B88322671D5500153249 /* SYSelfieModel.m */; };
 		7B76B88C2267232B00153249 /* SYInfoEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B88B2267232B00153249 /* SYInfoEditVC.m */; };
 		7B76B88F2267233B00153249 /* SYInfoEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B88E2267233B00153249 /* SYInfoEditVM.m */; };
@@ -367,6 +369,9 @@
 		7BE972012260412D00FF6A25 /* SYVipVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE972002260412D00FF6A25 /* SYVipVM.m */; };
 		7BE972042260443000FF6A25 /* SYCoinVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE972032260443000FF6A25 /* SYCoinVM.m */; };
 		7BE972072260450100FF6A25 /* SYCoinVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE972062260450100FF6A25 /* SYCoinVC.m */; };
+		7BF37C3C2272F9790042BC4F /* SYSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C3B2272F9790042BC4F /* SYSocketManager.m */; };
+		7BF37C3F227349D90042BC4F /* SYMomentsEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C3E227349D90042BC4F /* SYMomentsEditVC.m */; };
+		7BF37C4222734A380042BC4F /* SYMomentsEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C4122734A380042BC4F /* SYMomentsEditVM.m */; };
 		864BB5E20D5521374F720EC0 /* Pods_SeeYu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F38DBDD0C5EE456B831E4A /* Pods_SeeYu.framework */; };
 		AD21F790DBB21B99763DBF6A /* Pods_SeeYu_SeeYuUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F007961429C86520F15C504 /* Pods_SeeYu_SeeYuUITests.framework */; };
 		FF517F8EEC68B750C774C0C7 /* Pods_SeeYu_SeeYuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F609A3FCDE82ED766B6FC1F9 /* Pods_SeeYu_SeeYuTests.framework */; };
@@ -905,6 +910,10 @@
 		7B747A4F2236229500B3F6A0 /* XFCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFCameraController.m; sourceTree = "<group>"; };
 		7B747A502236229500B3F6A0 /* XFCameraController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFCameraController.xib; sourceTree = "<group>"; };
 		7B747A512236229500B3F6A0 /* XFCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFCameraController.h; sourceTree = "<group>"; };
+		7B7602D322745F5E004C9936 /* SYGiftPackageVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGiftPackageVM.h; sourceTree = "<group>"; };
+		7B7602D422745F5E004C9936 /* SYGiftPackageVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGiftPackageVM.m; sourceTree = "<group>"; };
+		7B7602D622745F72004C9936 /* SYGiftPackageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGiftPackageVC.h; sourceTree = "<group>"; };
+		7B7602D722745F72004C9936 /* SYGiftPackageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGiftPackageVC.m; sourceTree = "<group>"; };
 		7B76B88222671D5500153249 /* SYSelfieModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSelfieModel.h; sourceTree = "<group>"; };
 		7B76B88322671D5500153249 /* SYSelfieModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSelfieModel.m; sourceTree = "<group>"; };
 		7B76B88A2267232B00153249 /* SYInfoEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYInfoEditVC.h; sourceTree = "<group>"; };
@@ -1116,6 +1125,12 @@
 		7BE972032260443000FF6A25 /* SYCoinVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCoinVM.m; sourceTree = "<group>"; };
 		7BE972052260450100FF6A25 /* SYCoinVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCoinVC.h; sourceTree = "<group>"; };
 		7BE972062260450100FF6A25 /* SYCoinVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCoinVC.m; sourceTree = "<group>"; };
+		7BF37C3A2272F9790042BC4F /* SYSocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSocketManager.h; sourceTree = "<group>"; };
+		7BF37C3B2272F9790042BC4F /* SYSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSocketManager.m; sourceTree = "<group>"; };
+		7BF37C3D227349D90042BC4F /* SYMomentsEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMomentsEditVC.h; sourceTree = "<group>"; };
+		7BF37C3E227349D90042BC4F /* SYMomentsEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMomentsEditVC.m; sourceTree = "<group>"; };
+		7BF37C4022734A380042BC4F /* SYMomentsEditVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMomentsEditVM.h; sourceTree = "<group>"; };
+		7BF37C4122734A380042BC4F /* SYMomentsEditVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMomentsEditVM.m; sourceTree = "<group>"; };
 		94F38DBDD0C5EE456B831E4A /* Pods_SeeYu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeYu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971B7041FF0A7CD187AB3BEE /* Pods-SeeYu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeYu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeeYu/Pods-SeeYu.debug.xcconfig"; sourceTree = "<group>"; };
 		AB79D87EFBDD8EDD42D99FD8 /* Pods-SeeYu-SeeYuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeYu-SeeYuUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1422,6 +1437,7 @@
 		26064AF61F5DB46500566B95 /* MainFrame */ = {
 			isa = PBXGroup;
 			children = (
+				7B7602D122745F0D004C9936 /* GiftPackage */,
 				7B2E76BB223F456C00D8F1CD /* AnchorsOrder */,
 				7B5A334021FA071A00535F8D /* Nearby */,
 				7B9A1BC42241F22100B7BFC2 /* AnchorsRandom */,
@@ -1597,6 +1613,7 @@
 		26225D801F65506E0074BFC3 /* MainFrame */ = {
 			isa = PBXGroup;
 			children = (
+				7B7602D222745F31004C9936 /* GiftPackage */,
 				7B2E76BC223F45DD00D8F1CD /* AnchorsOrder */,
 				7B5A334121FA072900535F8D /* Nearby */,
 				7B9A1BC82241F2EF00B7BFC2 /* AnchorsRandom */,
@@ -2156,6 +2173,7 @@
 		26C7BEEF1F8CD2BF00525126 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				7BF37C392272F9540042BC4F /* WebSocket */,
 				26363AC620134243000061EF /* Emoticon */,
 				262ADA4A1FCA75B800B0F4FD /* Config */,
 				26FE8E301F95119F00EC8BE0 /* Photo */,
@@ -2670,6 +2688,8 @@
 			children = (
 				7B5210F42270AFA100D7EEFC /* SYMyMomentsVC.h */,
 				7B5210F52270AFA100D7EEFC /* SYMyMomentsVC.m */,
+				7BF37C3D227349D90042BC4F /* SYMomentsEditVC.h */,
+				7BF37C3E227349D90042BC4F /* SYMomentsEditVC.m */,
 			);
 			path = MyMoments;
 			sourceTree = "<group>";
@@ -2679,6 +2699,8 @@
 			children = (
 				7B5210F12270AF8000D7EEFC /* SYMyMomentsVM.h */,
 				7B5210F22270AF8000D7EEFC /* SYMyMomentsVM.m */,
+				7BF37C4022734A380042BC4F /* SYMomentsEditVM.h */,
+				7BF37C4122734A380042BC4F /* SYMomentsEditVM.m */,
 			);
 			path = MyMoments;
 			sourceTree = "<group>";
@@ -2847,6 +2869,24 @@
 				7B747A4E2236229500B3F6A0 /* XFPhotoLibraryManager.m */,
 			);
 			path = XFPhotoLibraryManager;
+			sourceTree = "<group>";
+		};
+		7B7602D122745F0D004C9936 /* GiftPackage */ = {
+			isa = PBXGroup;
+			children = (
+				7B7602D622745F72004C9936 /* SYGiftPackageVC.h */,
+				7B7602D722745F72004C9936 /* SYGiftPackageVC.m */,
+			);
+			path = GiftPackage;
+			sourceTree = "<group>";
+		};
+		7B7602D222745F31004C9936 /* GiftPackage */ = {
+			isa = PBXGroup;
+			children = (
+				7B7602D322745F5E004C9936 /* SYGiftPackageVM.h */,
+				7B7602D422745F5E004C9936 /* SYGiftPackageVM.m */,
+			);
+			path = GiftPackage;
 			sourceTree = "<group>";
 		};
 		7B76B88022671D2200153249 /* Realname */ = {
@@ -3464,6 +3504,15 @@
 			path = Presents;
 			sourceTree = "<group>";
 		};
+		7BF37C392272F9540042BC4F /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				7BF37C3A2272F9790042BC4F /* SYSocketManager.h */,
+				7BF37C3B2272F9790042BC4F /* SYSocketManager.m */,
+			);
+			path = WebSocket;
+			sourceTree = "<group>";
+		};
 		DB1E4F3D3B653F9FE4DEFF73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3681,10 +3730,8 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu/Pods-SeeYu-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SeeYu/Pods-SeeYu-resources.sh",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/en.lproj",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/zh-Hans.lproj",
@@ -3693,8 +3740,6 @@
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RongCloud.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
@@ -3705,7 +3750,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu/Pods-SeeYu-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeeYu/Pods-SeeYu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5EFC0963628D4BFB7869EC87 /* [CP] Copy Pods Resources */ = {
@@ -3713,10 +3758,8 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-resources.sh",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/en.lproj",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/zh-Hans.lproj",
@@ -3725,8 +3768,6 @@
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RongCloud.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
@@ -3737,7 +3778,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		748D37CD935E850473BDF270 /* [CP] Check Pods Manifest.lock */ = {
@@ -3763,10 +3804,8 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-resources.sh",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/en.lproj",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/zh-Hans.lproj",
@@ -3775,8 +3814,6 @@
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RongCloud.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
@@ -3787,7 +3824,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		85A8866729BE72E7764E86D9 /* [CP] Embed Pods Frameworks */ = {
@@ -3796,7 +3833,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
@@ -3919,7 +3956,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8A2071C5D8268FBABC59F3A8 /* [CP] Check Pods Manifest.lock */ = {
@@ -3946,7 +3983,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu/Pods-SeeYu-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SeeYu/Pods-SeeYu-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
@@ -4069,7 +4106,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu/Pods-SeeYu-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeeYu/Pods-SeeYu-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD3D17E8141AD6941437CC1F /* [CP] Embed Pods Frameworks */ = {
@@ -4078,7 +4115,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
@@ -4201,7 +4238,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -4235,6 +4272,7 @@
 				7B76B8D7226A310200153249 /* SYGiftVM.m in Sources */,
 				26FE8E841F9514D100EC8BE0 /* UIView+SDExtension.m in Sources */,
 				26BEBC7D1F8B78B1004D502F /* SYEXTRuntimeExtensions.m in Sources */,
+				7BF37C4222734A380042BC4F /* SYMomentsEditVM.m in Sources */,
 				263D36EC1F666438007267C3 /* UITableView+SYExtension.m in Sources */,
 				26FE8E881F9514D100EC8BE0 /* TZGifPhotoPreviewController.m in Sources */,
 				26CCB9CE20244D370090DBC5 /* SYMomentVideoView.m in Sources */,
@@ -4330,6 +4368,7 @@
 				7BE971ED2260204700FF6A25 /* SYPresentListVM.m in Sources */,
 				26FE8E8C1F9514D100EC8BE0 /* TZImagePickerController.m in Sources */,
 				261753201F739DDC00812E1B /* SYCommonQRCodeItemViewModel.m in Sources */,
+				7BF37C3F227349D90042BC4F /* SYMomentsEditVC.m in Sources */,
 				7B15EC6E2265BAF100A80BD5 /* ZYImagePickerController.m in Sources */,
 				7B788163224F7A4300B25CA3 /* SYSearchResultHandle.m in Sources */,
 				263C898A1F6A54AE00F7A0AE /* SYCommonFooterView.m in Sources */,
@@ -4527,9 +4566,12 @@
 				7B15EC732265BAF100A80BD5 /* ZYClipView.m in Sources */,
 				263D36E71F666438007267C3 /* UIAlertController+SYColor.m in Sources */,
 				7B4BF47F2251B09300CCD286 /* MHAssetViewController.m in Sources */,
+				7BF37C3C2272F9790042BC4F /* SYSocketManager.m in Sources */,
+				7B7602D522745F5E004C9936 /* SYGiftPackageVM.m in Sources */,
 				7BE971DC225F434900FF6A25 /* SYDiamondsVC.m in Sources */,
 				2624CAED1F98DFC80083923F /* SYHTTPRequest.m in Sources */,
 				7BE971D7225F289200FF6A25 /* SYSettingVM.m in Sources */,
+				7B7602D822745F72004C9936 /* SYGiftPackageVC.m in Sources */,
 				26C7BEEE1F8CCA2C00525126 /* SYHTTPService.m in Sources */,
 				261597501FEA5DD300C6FD80 /* SYMomentOperationMoreView.m in Sources */,
 				7B9A1BE02243B21F00B7BFC2 /* NSString+Hash.m in Sources */,
@@ -4695,15 +4737,81 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SeeYu/SeeYu.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SRLXHCX26Y;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SeeYu/SeeYu.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking/AFNetworking.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlocksKit/BlocksKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CocoaSecurity/CocoaSecurity.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Colours/Colours.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DACircularProgress/DACircularProgress.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBAllocationTracker/FBAllocationTracker.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBMemoryProfiler/FBMemoryProfiler.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FCFileManager/FCFileManager.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FFToast/FFToast.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FLEX/FLEX.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FMDB/FMDB.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FXBlurView/FXBlurView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HJCornerRadius/HJCornerRadius.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HYBImageCliped/HYBImageCliped.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HYBNetworking/HYBNetworking.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager/IQKeyboardManager.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/JPFPSStatus/JPFPSStatus.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/JPVideoPlayer/JPVideoPlayer.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/JSBadgeView/JSBadgeView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/KVOController/KVOController.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LBXScan/LBXScan.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD/MBProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJExtension/MJExtension.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh/MJRefresh.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry/Masonry.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PBJVision/PBJVision.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveCocoa/ReactiveCocoa.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SAMKeychain/SAMKeychain.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SSZipArchive/SSZipArchive.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD/SVProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SocketRocket/SocketRocket.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TXScrollLabelView/TXScrollLabelView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UICollectionViewLeftAlignedLayout/UICollectionViewLeftAlignedLayout.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UIImage+ImageWithColor/UIImageWithColor.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/WZLBadge/WZLBadge.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YBImageBrowser/YBImageBrowser.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYAsyncLayer/YYAsyncLayer.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYCache/YYCache.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYCategories/YYCategories.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYDispatchQueuePool/YYDispatchQueuePool.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYImage/YYImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYKeyboardManager/YYKeyboardManager.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel/YYModel.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYText/YYText.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYWebImage/YYWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ZBarSDK/ZBarSDK.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ZYCornerRadius/ZYCornerRadius.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/libextobjc/libextobjc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/pop/pop.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/LxDBAnything\"",
+					"\"$(SRCROOT)/../\"",
+				);
 				INFOPLIST_FILE = SeeYu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fljj.SeeYu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WARNING_CFLAGS = (
 					"-Wno-documentation",
 					"-Wno-ambiguous-macro",
@@ -4720,14 +4828,79 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SeeYu/SeeYu.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SRLXHCX26Y;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SeeYu/SeeYu.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking/AFNetworking.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlocksKit/BlocksKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CocoaSecurity/CocoaSecurity.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Colours/Colours.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DACircularProgress/DACircularProgress.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBAllocationTracker/FBAllocationTracker.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBMemoryProfiler/FBMemoryProfiler.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FCFileManager/FCFileManager.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FFToast/FFToast.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FLEX/FLEX.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FMDB/FMDB.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FXBlurView/FXBlurView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HJCornerRadius/HJCornerRadius.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HYBImageCliped/HYBImageCliped.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HYBNetworking/HYBNetworking.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager/IQKeyboardManager.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/JPFPSStatus/JPFPSStatus.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/JPVideoPlayer/JPVideoPlayer.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/JSBadgeView/JSBadgeView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/KVOController/KVOController.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LBXScan/LBXScan.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD/MBProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJExtension/MJExtension.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh/MJRefresh.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry/Masonry.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PBJVision/PBJVision.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveCocoa/ReactiveCocoa.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SAMKeychain/SAMKeychain.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SSZipArchive/SSZipArchive.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD/SVProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SocketRocket/SocketRocket.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TXScrollLabelView/TXScrollLabelView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UICollectionViewLeftAlignedLayout/UICollectionViewLeftAlignedLayout.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UIImage+ImageWithColor/UIImageWithColor.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/WZLBadge/WZLBadge.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YBImageBrowser/YBImageBrowser.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYAsyncLayer/YYAsyncLayer.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYCache/YYCache.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYCategories/YYCategories.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYDispatchQueuePool/YYDispatchQueuePool.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYImage/YYImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYKeyboardManager/YYKeyboardManager.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel/YYModel.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYText/YYText.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYWebImage/YYWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ZBarSDK/ZBarSDK.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ZYCornerRadius/ZYCornerRadius.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/libextobjc/libextobjc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/pop/pop.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/LxDBAnything\"",
+				);
 				INFOPLIST_FILE = SeeYu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fljj.SeeYu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WARNING_CFLAGS = (
 					"-Wno-documentation",
 					"-Wno-ambiguous-macro",

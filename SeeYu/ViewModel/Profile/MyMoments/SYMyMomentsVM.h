@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYMyMomentsVM : SYVM
 
+@property (nonatomic, strong) RACCommand *enterMomentsEditView;
+
 @end
 
 NS_ASSUME_NONNULL_END

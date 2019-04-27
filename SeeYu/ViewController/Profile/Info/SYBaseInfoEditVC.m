@@ -32,9 +32,9 @@
 
 @property (nonatomic, strong) NSArray *dayArray; // 日
 
-@property (nonatomic, assign) NSInteger index1; // 省下标
+@property (nonatomic, assign) int index1; // 省下标
 
-@property (nonatomic, assign) NSInteger index2; // 市下标
+@property (nonatomic, assign) int index2; // 市下标
 
 @end
 
@@ -361,7 +361,9 @@
                 }
             } else {
                 // 未设置过城市
+                [self loadFirstMenuData];   // 先查询出省级数组
                 self.index1 = 0;
+                [self loadSecondMenuData];  // 查询出市级数组
                 self.index2 = 0;
             }
             self.customPicker = [[ActionSheetCustomPicker alloc]initWithTitle:@"请选择城市" delegate:self showCancelButton:YES origin:self.view initialSelections:@[@(self.index1),@(self.index2)]];
@@ -387,7 +389,11 @@
         if (indexPath.row == 0) {
             // 选择学历
             NSMutableArray *eduArray = [@[@"初中",@"中专",@"高中",@"大专",@"本科",@"本科以上"] mutableCopy];
-            [self showPickerWithTitle:@"请选择学历" andDataArrays:eduArray andSelectedValue:self.viewModel.user.userEdu andType:@"edu"];
+            if (self.viewModel.user.userEdu != nil && self.viewModel.user.userEdu.length > 0) {
+                [self showPickerWithTitle:@"请选择学历" andDataArrays:eduArray andSelectedValue:self.viewModel.user.userEdu andType:@"edu"];
+            } else {
+                [self showPickerWithTitle:@"请选择学历" andDataArrays:eduArray andSelectedValue:eduArray[0] andType:@"edu"];
+            }
         } else if (indexPath.row == 1) {
             // 选择职业
             NSMutableArray *jobArray = [@[@"教师",@"工人",@"记者",@"演员",@"厨师",@"医生",@"护士",@"司机",@"军人",@"律师",@"商人",@"会计",@"店员",@"出纳",@"作家",@"导游",@"模特",@"警察",@"歌手",@"画家",@"裁缝",@"翻译",@"法官",@"保安",@"花匠",@"服务员",@"清洁工",@"建筑师",@"理发师",@"采购员",@"设计师",@"消防员",@"机修工",@"推销员",@"魔术师",@"模特儿",@"邮递员",@"售货员",@"救生员",@"运动员",@"工程师",@"飞行员",@"管理员",@"机械师",@"经纪人",@"审计员",@"漫画家",@"园艺师",@"科学家",@"主持人",@"程序员"] mutableCopy];
@@ -413,7 +419,9 @@
                 }
             } else {
                 // 未设置过生日
+                [self loadFirstMenuData];
                 self.index1 = 0;
+                [self loadSecondMenuData];
                 self.index2 = 0;
             }
             self.customPicker = [[ActionSheetCustomPicker alloc]initWithTitle:@"请选择生日" delegate:self showCancelButton:YES origin:self.view initialSelections:@[@(self.index1),@(self.index2)]];
@@ -425,11 +433,19 @@
             for (int i = 0 ; i < 170; i++) {
                 [weightArray addObject:[NSString stringWithFormat:@"%d",30 + i]];
             }
-            [self showPickerWithTitle:@"请选择体重" andDataArrays:weightArray andSelectedValue:self.viewModel.user.userWeight andType:@"weight"];
+            if (self.viewModel.user.userWeight != nil && self.viewModel.user.userWeight.length > 0) {
+                [self showPickerWithTitle:@"请选择体重" andDataArrays:weightArray andSelectedValue:self.viewModel.user.userWeight andType:@"weight"];
+            } else {
+                [self showPickerWithTitle:@"请选择体重" andDataArrays:weightArray andSelectedValue:weightArray[0] andType:@"weight"];
+            }
         } else if (indexPath.row == 4) {
             // 选择星座
             NSMutableArray *constellationArray = [@[@"白羊座",@"金牛座",@"双子座",@"巨蟹座",@"狮子座",@"处女座",@"天秤座",@"天蝎座",@"射手座",@"摩羯座",@"水瓶座",@"双鱼座"] mutableCopy];
-            [self showPickerWithTitle:@"请选择学历" andDataArrays:constellationArray andSelectedValue:self.viewModel.user.userConstellation andType:@"constellation"];
+            if (self.viewModel.user.userConstellation != nil && self.viewModel.user.userConstellation.length > 0) {
+                [self showPickerWithTitle:@"请选择星座" andDataArrays:constellationArray andSelectedValue:self.viewModel.user.userConstellation andType:@"weight"];
+            } else {
+                [self showPickerWithTitle:@"请选择星座" andDataArrays:constellationArray andSelectedValue:constellationArray[0] andType:@"weight"];
+            }
         } else {
             // 选择爱好
             [self.viewModel.enterHobbyChooseViewCommand execute:nil];

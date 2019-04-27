@@ -40,6 +40,7 @@
 
 @implementation RCCallBaseViewController
 #pragma mark - init
+// 呼入会话
 - (instancetype)initWithIncomingCall:(RCCallSession *)callSession {
     self = [super init];
     if (self) {
@@ -217,8 +218,7 @@
 - (void)checkApplicationStateAndAlert {
     if (self.callSession.callStatus == RCCallDialing) {
         if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-            NSString *ringPath = [[[NSBundle mainBundle] pathForResource:@"RongCloud" ofType:@"bundle"]
-                                  stringByAppendingPathComponent:@"voip/voip_calling_ring.mp3"];
+            NSString *ringPath = [[NSBundle mainBundle] pathForResource:@"Opening" ofType:@"m4r"];
             [self startPlayRing:ringPath];
             self.needPlayingAlertAfterForeground = NO;
         } else {
@@ -749,6 +749,7 @@
 #pragma mark - layout
 - (void)resetLayout:(BOOL)isMultiCall mediaType:(RCCallMediaType)mediaType callStatus:(RCCallStatus)callStatus {
     if (mediaType == RCCallMediaAudio && !isMultiCall) {
+        // 单聊语音
         self.backgroundView.backgroundColor = RongVoIPUIColorFromRGB(0x262e42);
         self.backgroundView.hidden = NO;
         self.topGradientView.hidden = YES;
@@ -837,17 +838,17 @@
 
             self.acceptButton.hidden = YES;
         } else if (callStatus == RCCallIncoming || callStatus == RCCallRinging) {
-            self.hangupButton.frame = CGRectMake(
-                RCCallHorizontalMargin, self.view.frame.size.height - RCCallVerticalMargin - RCCallButtonLength - RCCallExtraSpace,
-                RCCallButtonLength, RCCallButtonLength);
-            [self layoutTextUnderImageButton:self.hangupButton];
+            [self.hangupButton makeConstraints:^(MASConstraintMaker *make) {
+                make.width.height.offset(60);
+                make.left.equalTo(self.view).offset(60);
+                make.bottom.equalTo(self.view).offset(-45);
+            }];
             self.hangupButton.hidden = NO;
-
-            self.acceptButton.frame =
-                CGRectMake(self.view.frame.size.width - RCCallHorizontalMargin - RCCallButtonLength,
-                           self.view.frame.size.height - RCCallVerticalMargin - RCCallButtonLength - RCCallExtraSpace, RCCallButtonLength,
-                           RCCallButtonLength);
-            [self layoutTextUnderImageButton:self.acceptButton];
+            [self.acceptButton makeConstraints:^(MASConstraintMaker *make) {
+                make.width.height.offset(60);
+                make.right.equalTo(self.view).offset(-60);
+                make.bottom.equalTo(self.view).offset(-45);
+            }];
             self.acceptButton.hidden = NO;
         } else if (callStatus == RCCallActive) {
             self.hangupButton.frame =
@@ -864,6 +865,7 @@
         self.cameraSwitchButton.hidden = YES;
 
     } else if (mediaType == RCCallMediaVideo && !isMultiCall) {
+        // 单聊视频
         self.backgroundView.hidden = NO;
 
         self.blurView.hidden = YES;
@@ -938,17 +940,17 @@
 
             self.acceptButton.hidden = YES;
         } else if (callStatus == RCCallIncoming || callStatus == RCCallRinging) {
-            self.hangupButton.frame = CGRectMake(
-                60.f, self.view.frame.size.height - 45.f - 60.f,
-                60.f, 60.f);
-//            [self layoutTextUnderImageButton:self.hangupButton];
+            [self.hangupButton makeConstraints:^(MASConstraintMaker *make) {
+                make.width.height.offset(60);
+                make.left.equalTo(self.view).offset(60);
+                make.bottom.equalTo(self.view).offset(-45);
+            }];
             self.hangupButton.hidden = NO;
-
-            self.acceptButton.frame =
-                CGRectMake(self.view.frame.size.width - RCCallHorizontalMargin - RCCallButtonLength,
-                           self.view.frame.size.height - RCCallVerticalMargin - RCCallButtonLength - RCCallExtraSpace, RCCallButtonLength,
-                           RCCallButtonLength);
-            [self layoutTextUnderImageButton:self.acceptButton];
+            [self.acceptButton makeConstraints:^(MASConstraintMaker *make) {
+                make.width.height.offset(60);
+                make.right.equalTo(self.view).offset(-60);
+                make.bottom.equalTo(self.view).offset(-45);
+            }];
             self.acceptButton.hidden = NO;
         } else if (callStatus == RCCallActive) {
             self.hangupButton.frame =
@@ -1425,8 +1427,7 @@
  */
 - (void)shouldRingForIncomingCall {
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-        NSString *ringPath = [[[NSBundle mainBundle] pathForResource:@"RongCloud" ofType:@"bundle"]
-            stringByAppendingPathComponent:@"voip/voip_call.mp3"];
+        NSString *ringPath = [[NSBundle mainBundle] pathForResource:@"Opening" ofType:@"m4r"];
         [self startPlayRing:ringPath];
         self.needPlayingRingAfterForeground = NO;
     } else {

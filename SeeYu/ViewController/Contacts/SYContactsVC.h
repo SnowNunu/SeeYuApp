@@ -10,6 +10,7 @@
 #import "SYContactsVM.h"
 #import "FSSegmentTitleView.h"
 #import "FSPageContentView.h"
+#import "SYSocketManager.h"
 
 @interface SYContactsVC : SYTableVC <FSSegmentTitleViewDelegate,FSPageContentViewDelegate>
 

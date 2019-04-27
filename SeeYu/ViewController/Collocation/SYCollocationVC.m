@@ -54,12 +54,22 @@
 
 - (void)bindViewModel {
     [RACObserve(self.viewModel, speedMatchList) subscribeNext:^(NSArray *array) {
-        if (array.count > 0) {
-            // 从服务器上拉取到的新数据
-            self.datasource = [NSMutableArray arrayWithArray:array];
-            YYCache *cache = [YYCache cacheWithName:@"seeyu"];
-            [cache setObject:self.datasource forKey:@"speedMatch"];
-            [self startUserShow];
+        if (array != nil) {
+            if (array.count == 0) {
+                // 此时服务器中没有更多的数据了，重置页码为0
+                YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+                [cache setObject:@"1" forKey:@"speedMatchPage"];
+                self.page = @"1";
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.viewModel.requestSpeedMatchCommand execute:@"1"];
+                });
+            } else {
+                // 从服务器上拉取到的新数据
+                self.datasource = [NSMutableArray arrayWithArray:array];
+                YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+                [cache setObject:self.datasource forKey:@"speedMatch"];
+                [self startUserShow];
+            }
         }
     }];
     [[self.likeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -164,7 +174,6 @@
         }];
     } else {
         YYCache *cache = [YYCache cacheWithName:@"seeyu"];
-        
         self.page = [NSString stringWithFormat:@"%d",self.page.intValue + 1];
         [cache setObject:self.page forKey:@"speedMatchPage"];
         [self.viewModel.requestSpeedMatchCommand execute:self.page];

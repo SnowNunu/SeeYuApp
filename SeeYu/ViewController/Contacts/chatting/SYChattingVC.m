@@ -33,6 +33,9 @@
     self.conversationListTableView.tableFooterView = [UIView new];
     // 设置在NavigatorBar中显示连接中的提示
     self.showConnectingStatusOnNavigatorBar = YES;
+//    [self.conversationListTableView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(self.view).offset(-SY_APPLICATION_TAB_BAR_HEIGHT);
+//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

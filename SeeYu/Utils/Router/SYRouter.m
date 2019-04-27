@@ -65,6 +65,8 @@ static SYRouter *sharedInstance_ = nil;
              @"SYUserInfoVM":@"SYUserInfoVC",
              @"SYSignatureVM":@"SYSignatureVC",
              @"SYMyMomentsVM":@"SYMyMomentsVC",
+             @"SYMomentsEditVM":@"SYMomentsEditVC",
+             @"SYGiftPackageVM":@"SYGiftPackageVC",
              @"SYWebVM":@"SYWebVC",
              @"SYNicknameModifyVM":@"SYNicknameModifyVC",
              @"SYSettingVM":@"SYSettingVC",

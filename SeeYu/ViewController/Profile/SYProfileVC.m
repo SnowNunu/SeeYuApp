@@ -7,6 +7,7 @@
 //
 
 #import "SYProfileVC.h"
+#import "NSDate+Extension.h"
 
 @interface SYProfileVC () <UITableViewDelegate, UITableViewDataSource>
 
@@ -90,6 +91,12 @@
         } else {
             self.authenticationImageView.image = SYImageNamed(@"truePerson_disable");
         }
+        if (user.userRegisterTime != nil && user.userRegisterTime.length > 0) {
+            NSTimeInterval seconds = [[NSDate new] timeIntervalSinceDate:[NSDate sy_dateWithTimestamp:user.userRegisterTime]];//间隔的秒数
+            if (seconds > 7 * 24 * 3600) {
+                self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"btn_checkin_cricle" target:self selector:@selector(openSigninView) textType:NO];
+            }
+        }
     }];
     [[self.detailBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.viewModel.enterNextViewCommand execute:@(0)];
@@ -97,7 +104,6 @@
 }
 
 - (void)_setupSubViews {
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"btn_checkin_cricle" target:self selector:@selector(openSigninView) textType:NO];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -281,7 +287,11 @@
 - (void)openSigninView {
     SYSigninVM *signVM = [[SYSigninVM alloc] initWithServices:SYAppDelegate.sharedDelegate.services params:nil];
     SYSigninVC *signVC = [[SYSigninVC alloc] initWithViewModel:signVM];
-    [[SYAppDelegate sharedDelegate] presentViewController:signVC];
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionMoveIn;
+    [[SYAppDelegate sharedDelegate] presentVC:signVC withAnimation:animation];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

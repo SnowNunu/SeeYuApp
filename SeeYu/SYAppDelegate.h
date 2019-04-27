@@ -30,9 +30,9 @@
 
 @property(nonatomic, strong) NSMutableArray *callWindows;
 
-- (void)presentViewController:(UIViewController *)viewController;
+- (void)presentVC:(UIViewController *)vc withAnimation:(CATransition *)animation;
 
-- (void)dismissViewController:(UIViewController *)viewController;
+- (void)dismissVC:(UIViewController *)vc;
 
 @end
 

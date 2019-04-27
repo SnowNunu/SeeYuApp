@@ -123,7 +123,11 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[PBJVision sharedInstance] stopPreview];
-//    [[SYListVideoPlayer sharedPlayer] cancelAllVideo];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[SYListVideoPlayer sharedPlayer] cancelAllVideo];
 }
 
 - (void)bindViewModel {
@@ -166,12 +170,14 @@
         @strongify(self)
         if (![url sy_isNullOrNil] && url.length > 0) {
             if ([FCFileManager existsItemAtPath:[self returnFilePathByUrl:url]]) {
-                NSLog(@"已经存在");
+                NSLog(@"已经存在,filepath,%@",[self returnFilePathByUrl:url]);
                 [self playVideo:[self returnFilePathByUrl:url] andIndex:0];
             } else {
+                NSLog(@"开始下载:url%@,filepath:%@",url,[self returnFilePathByUrl:url]);
                 [HYBNetworking downloadWithUrl:url saveToPath:[self returnFilePathByUrl:url] progress:^(int64_t bytesRead, int64_t totalBytesRead) {
                     
                 } success:^(NSString *filePath) {
+                    NSLog(@"下载完成:url%@,filepath:%@",url,[self returnFilePathByUrl:url]);
                     [self playVideo:[self returnFilePathByUrl:url] andIndex:0];
                 } failure:^(NSError *error) {
                     NSLog(@"%@",error);
@@ -187,12 +193,15 @@
     [RACObserve(self,secondAnchorUrl) subscribeNext:^(NSString *url) {
         if (![url sy_isNullOrNil] && url.length >0) {
             if ([FCFileManager existsItemAtPath:[self returnFilePathByUrl:url]]) {
-                NSLog(@"已经存在");
+//                NSLog([NSString stringWithFormat:@"已经存在%@",[self returnFilePathByUrl:url]]);
+                NSLog(@"已经存在,filepath,%@",[self returnFilePathByUrl:url]);
                 [self playVideo:[self returnFilePathByUrl:url] andIndex:1];
             } else {
+                NSLog(@"开始下载:url%@,filepath:%@",url,[self returnFilePathByUrl:url]);
                 [HYBNetworking downloadWithUrl:url saveToPath:[self returnFilePathByUrl:url] progress:^(int64_t bytesRead, int64_t totalBytesRead) {
                     
                 } success:^(NSString *filePath) {
+                    NSLog(@"下载完成:url%@,filepath:%@",url,[self returnFilePathByUrl:url]);
                     [self playVideo:[self returnFilePathByUrl:url] andIndex:1];
                 } failure:^(NSError *error) {
                     NSLog(@"%@",error);
@@ -208,12 +217,14 @@
     [RACObserve(self,thirdAnchorUrl) subscribeNext:^(NSString *url) {
         if (![url sy_isNullOrNil] && url.length >0) {
             if ([FCFileManager existsItemAtPath:[self returnFilePathByUrl:url]]) {
-                NSLog(@"已经存在");
+                NSLog(@"已经存在,filepath,%@",[self returnFilePathByUrl:url]);
                 [self playVideo:[self returnFilePathByUrl:url] andIndex:2];
             } else {
+                NSLog(@"开始下载:url%@,filepath:%@",url,[self returnFilePathByUrl:url]);
                 [HYBNetworking downloadWithUrl:url saveToPath:[self returnFilePathByUrl:url] progress:^(int64_t bytesRead, int64_t totalBytesRead) {
                     
                 } success:^(NSString *filePath) {
+                    NSLog(@"下载完成:url%@,filepath:%@",url,[self returnFilePathByUrl:url]);
                     [self playVideo:[self returnFilePathByUrl:url] andIndex:2];
                 } failure:^(NSError *error) {
                     NSLog(@"%@",error);

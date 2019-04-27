@@ -21,6 +21,7 @@
 #import <YYCategories/YYCategories.h>
 #import <Colours/Colours.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#define MAS_SHORTHAND
 #import <Masonry/Masonry.h>
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 #import <BlocksKit/BlocksKit.h>

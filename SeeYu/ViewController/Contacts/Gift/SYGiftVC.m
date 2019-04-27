@@ -88,11 +88,11 @@
 }
 
 - (void)_setupSubViews {
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = SYColorAlpha(255, 255, 255, 0.2);
     UITapGestureRecognizer *tap = [UITapGestureRecognizer new];
     [[tap rac_gestureSignal] subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[SYAppDelegate sharedDelegate] dismissViewController:self.navigationController];
+            [[SYAppDelegate sharedDelegate] dismissVC:self.navigationController];
         });
     }];
     [self.view addGestureRecognizer:tap];

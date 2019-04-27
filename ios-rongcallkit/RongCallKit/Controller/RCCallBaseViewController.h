@@ -9,6 +9,10 @@
 #import <RongCallLib/RongCallLib.h>
 #import <RongIMLib/RongIMLib.h>
 #import <UIKit/UIKit.h>
+#define MAS_SHORTHAND
+#define MAS_SHORTHAND_GLOBALS
+//#import <Masonry/Masonry.h>
+#import "Masonry.h"
 
 /*!
  通话的ViewController基类

@@ -294,7 +294,11 @@
                     outboundModel.interval = model.time;
                     outboundVM.model = outboundModel;
                     SYOutboundVC *outboundVC = [[SYOutboundVC alloc] initWithViewModel:outboundVM];
-                    [self presentViewController:outboundVC];
+                    CATransition *animation = [CATransition animation];
+                    [animation setDuration:0.3];
+                    animation.type = kCATransitionFade;
+                    animation.subtype = kCATransitionMoveIn;
+                    [self presentVC:outboundVC withAnimation:animation];
                 });
             }];
         } else {
@@ -360,32 +364,26 @@
 }
 
 
-- (void)presentViewController:(UIViewController *)viewController {
+- (void)presentVC:(UIViewController *)vc withAnimation:(CATransition *)animation {
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     UIWindow *activityWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     activityWindow.windowLevel = UIWindowLevelAlert;
-    activityWindow.rootViewController = viewController;
+    activityWindow.rootViewController = vc;
     [activityWindow makeKeyAndVisible];
-    CATransition *animation = [CATransition animation];
-    [animation setDuration:0.3];
-    animation.type = kCATransitionMoveIn;     //可更改为其他方式
-    animation.subtype = kCATransitionFromTop; //可更改为其他方式
     [[activityWindow layer] addAnimation:animation forKey:nil];
     [_callWindows addObject:activityWindow];
 }
 
-- (void)dismissViewController:(UIViewController *)viewController {
-    
-    if ([viewController isKindOfClass:[RCCallBaseViewController class]]) {
-        UIViewController *rootVC = viewController;
+- (void)dismissVC:(UIViewController *)vc {
+    if ([vc isKindOfClass:[RCCallBaseViewController class]]) {
+        UIViewController *rootVC = vc;
         while (rootVC.parentViewController) {
             rootVC = rootVC.parentViewController;
         }
-        viewController = rootVC;
+        vc = rootVC;
     }
-    
     for (UIWindow *window in self.callWindows) {
-        if (window.rootViewController == viewController) {
+        if (window.rootViewController == vc) {
             [window resignKeyWindow];
             window.hidden = YES;
             [[UIApplication sharedApplication].delegate.window makeKeyWindow];
@@ -393,7 +391,7 @@
             break;
         }
     }
-    [viewController dismissViewControllerAnimated:YES completion:nil];
+    [vc dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

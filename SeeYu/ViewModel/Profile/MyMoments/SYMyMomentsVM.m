@@ -7,6 +7,7 @@
 //
 
 #import "SYMyMomentsVM.h"
+#import "SYMomentsEditVM.h"
 
 @implementation SYMyMomentsVM
 
@@ -19,9 +20,14 @@
 
 - (void)initialize {
     [super initialize];
-    self.title = @"设置";
-    self.backTitle = @"我的动态";
+    self.title = @"我的动态";
+    self.backTitle = @"";
     self.prefersNavigationBarBottomLineHidden = YES;
+    self.enterMomentsEditView = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        SYMomentsEditVM *vm = [[SYMomentsEditVM alloc] initWithServices:self.services params:nil];
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
+    }];
 }
 
 @end

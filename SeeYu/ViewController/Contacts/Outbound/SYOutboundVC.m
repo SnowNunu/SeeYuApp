@@ -214,7 +214,7 @@
         [[JX_GCDTimerManager sharedInstance] cancelTimerWithName:@"stopCallShow"];
         [self.videoShowView jp_stopPlay];
         [self stopPlayRing];
-        [[SYAppDelegate sharedDelegate] dismissViewController:self];
+        [[SYAppDelegate sharedDelegate] dismissVC:self];
     });
 }
 

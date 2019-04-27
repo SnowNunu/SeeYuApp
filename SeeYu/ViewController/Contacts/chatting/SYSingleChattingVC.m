@@ -48,7 +48,10 @@
             giftVM.friendId = self.targetId;
             SYGiftVC *giftVC = [[SYGiftVC alloc] initWithViewModel:giftVM];
             SYNavigationController *navigationController = [[SYNavigationController alloc]initWithRootViewController:giftVC];
-            [[SYAppDelegate sharedDelegate] presentViewController:navigationController];
+            CATransition *animation = [CATransition animation];
+            [animation setDuration:0.3];
+            animation.type = kCATransitionFade;
+            [[SYAppDelegate sharedDelegate] presentVC:navigationController withAnimation:animation];
         }
     }];
 }
