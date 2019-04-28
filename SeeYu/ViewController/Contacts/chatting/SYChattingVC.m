@@ -125,7 +125,8 @@
             } else {
                 cell.contentLabel.text = @"[位置]";
             }
-        } else if ([model.lastestMessage isKindOfClass:[RCCallSummaryMessage class]]) {
+        }
+        else if ([model.lastestMessage isKindOfClass:[RCCallSummaryMessage class]]) {
             RCCallSummaryMessage *message = (RCCallSummaryMessage*)model.lastestMessage;
             // 音视频消息
             if (unreadCount > 0) {

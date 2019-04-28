@@ -277,7 +277,6 @@
 		7B76B8AE22680D8400153249 /* SYUserShowInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8AD22680D8400153249 /* SYUserShowInfoModel.m */; };
 		7B76B8B122682BCD00153249 /* SYBaseInfoEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8B022682BCD00153249 /* SYBaseInfoEditVC.m */; };
 		7B76B8B422682BEE00153249 /* SYBaseInfoEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8B322682BEE00153249 /* SYBaseInfoEditVM.m */; };
-		7B76B8B52268BAA000153249 /* RongCallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE971C2225E36AD00FF6A25 /* RongCallKit.framework */; };
 		7B76B8B92268CE0900153249 /* SYHobbyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8B82268CE0900153249 /* SYHobbyVC.m */; };
 		7B76B8BD2268CE3500153249 /* SYHobbyVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8BC2268CE3500153249 /* SYHobbyVM.m */; };
 		7B76B8C02268D75600153249 /* SYHobbyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B76B8BF2268D75600153249 /* SYHobbyModel.m */; };
@@ -316,6 +315,26 @@
 		7B7A77A5227153CA00D8F109 /* VideoToGifManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A77A4227153CA00D8F109 /* VideoToGifManager.m */; };
 		7B7B1AA3225B2FAF008C7EEA /* SYPrivacyDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B1AA2225B2FAF008C7EEA /* SYPrivacyDetailModel.m */; };
 		7B92871D22450AC100CABC5F /* SYSpeedMatchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B92871C22450AC100CABC5F /* SYSpeedMatchModel.m */; };
+		7B98B8F82275DA380074D0A0 /* RCCallVideoMultiCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8A82275DA350074D0A0 /* RCCallVideoMultiCallViewController.m */; };
+		7B98B8F92275DA380074D0A0 /* RCCallSingleCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8AA2275DA350074D0A0 /* RCCallSingleCallViewController.m */; };
+		7B98B8FA2275DA380074D0A0 /* RCCallSelectMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8AC2275DA350074D0A0 /* RCCallSelectMemberViewController.m */; };
+		7B98B8FB2275DA380074D0A0 /* RCCallBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8AD2275DA350074D0A0 /* RCCallBaseViewController.m */; };
+		7B98B8FC2275DA380074D0A0 /* RCCallAudioMultiCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8AF2275DA350074D0A0 /* RCCallAudioMultiCallViewController.m */; };
+		7B98B8FD2275DA380074D0A0 /* RCAudioMultiCallUserCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8B42275DA350074D0A0 /* RCAudioMultiCallUserCollectionLayout.m */; };
+		7B98B8FE2275DA380074D0A0 /* RCVideoMultiCallUserCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8B52275DA350074D0A0 /* RCVideoMultiCallUserCollectionLayout.m */; };
+		7B98B8FF2275DA380074D0A0 /* RCCallTipMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8B82275DA360074D0A0 /* RCCallTipMessageCell.m */; };
+		7B98B9002275DA380074D0A0 /* RCCallMultiCallUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8BA2275DA360074D0A0 /* RCCallMultiCallUserCell.m */; };
+		7B98B9012275DA380074D0A0 /* RCCallSelectingMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8BB2275DA360074D0A0 /* RCCallSelectingMemberCell.m */; };
+		7B98B9022275DA380074D0A0 /* RCCallDetailMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8BC2275DA360074D0A0 /* RCCallDetailMessageCell.m */; };
+		7B98B9032275DA380074D0A0 /* UICollectionView+BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8C12275DA360074D0A0 /* UICollectionView+BackgroundView.m */; };
+		7B98B9042275DA380074D0A0 /* RCCallUserCallInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8C42275DA360074D0A0 /* RCCallUserCallInfoModel.m */; };
+		7B98B9052275DA380074D0A0 /* RCCall.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8CB2275DA360074D0A0 /* RCCall.mm */; };
+		7B98B9062275DA380074D0A0 /* RCCallKitExtensionModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8CE2275DA360074D0A0 /* RCCallKitExtensionModule.m */; };
+		7B98B9072275DA380074D0A0 /* WhiteBoardWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8D22275DA370074D0A0 /* WhiteBoardWebView.m */; };
+		7B98B9082275DA380074D0A0 /* RCCXCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8D42275DA370074D0A0 /* RCCXCall.m */; };
+		7B98B9092275DA380074D0A0 /* RCCallKitUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8D62275DA370074D0A0 /* RCCallKitUtility.m */; };
+		7B98B9142275DA380074D0A0 /* RCCallFloatingBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8F22275DA370074D0A0 /* RCCallFloatingBoard.m */; };
+		7B98B9152275DA380074D0A0 /* KxCallMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98B8F42275DA370074D0A0 /* KxCallMenu.m */; };
 		7B9A1BBD2240997E00B7BFC2 /* SYAnchorShowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BBC2240997E00B7BFC2 /* SYAnchorShowVC.m */; };
 		7B9A1BC02240999D00B7BFC2 /* SYAnchorShowVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BBF2240999D00B7BFC2 /* SYAnchorShowVM.m */; };
 		7B9A1BC32241409800B7BFC2 /* SYAnchorFocusStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BC22241409800B7BFC2 /* SYAnchorFocusStateModel.m */; };
@@ -1018,6 +1037,51 @@
 		7B7B1AA2225B2FAF008C7EEA /* SYPrivacyDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPrivacyDetailModel.m; sourceTree = "<group>"; };
 		7B92871B22450AC100CABC5F /* SYSpeedMatchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSpeedMatchModel.h; sourceTree = "<group>"; };
 		7B92871C22450AC100CABC5F /* SYSpeedMatchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSpeedMatchModel.m; sourceTree = "<group>"; };
+		7B98B8A62275DA350074D0A0 /* RCCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCall.h; sourceTree = "<group>"; };
+		7B98B8A82275DA350074D0A0 /* RCCallVideoMultiCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallVideoMultiCallViewController.m; sourceTree = "<group>"; };
+		7B98B8A92275DA350074D0A0 /* RCCallBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallBaseViewController.h; sourceTree = "<group>"; };
+		7B98B8AA2275DA350074D0A0 /* RCCallSingleCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallSingleCallViewController.m; sourceTree = "<group>"; };
+		7B98B8AB2275DA350074D0A0 /* RCCallAudioMultiCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallAudioMultiCallViewController.h; sourceTree = "<group>"; };
+		7B98B8AC2275DA350074D0A0 /* RCCallSelectMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallSelectMemberViewController.m; sourceTree = "<group>"; };
+		7B98B8AD2275DA350074D0A0 /* RCCallBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallBaseViewController.m; sourceTree = "<group>"; };
+		7B98B8AE2275DA350074D0A0 /* RCCallVideoMultiCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallVideoMultiCallViewController.h; sourceTree = "<group>"; };
+		7B98B8AF2275DA350074D0A0 /* RCCallAudioMultiCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallAudioMultiCallViewController.m; sourceTree = "<group>"; };
+		7B98B8B02275DA350074D0A0 /* RCCallSingleCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallSingleCallViewController.h; sourceTree = "<group>"; };
+		7B98B8B12275DA350074D0A0 /* RCCallSelectMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallSelectMemberViewController.h; sourceTree = "<group>"; };
+		7B98B8B32275DA350074D0A0 /* RCVideoMultiCallUserCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCVideoMultiCallUserCollectionLayout.h; sourceTree = "<group>"; };
+		7B98B8B42275DA350074D0A0 /* RCAudioMultiCallUserCollectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCAudioMultiCallUserCollectionLayout.m; sourceTree = "<group>"; };
+		7B98B8B52275DA350074D0A0 /* RCVideoMultiCallUserCollectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCVideoMultiCallUserCollectionLayout.m; sourceTree = "<group>"; };
+		7B98B8B62275DA350074D0A0 /* RCAudioMultiCallUserCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCAudioMultiCallUserCollectionLayout.h; sourceTree = "<group>"; };
+		7B98B8B82275DA360074D0A0 /* RCCallTipMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallTipMessageCell.m; sourceTree = "<group>"; };
+		7B98B8B92275DA360074D0A0 /* RCCallDetailMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallDetailMessageCell.h; sourceTree = "<group>"; };
+		7B98B8BA2275DA360074D0A0 /* RCCallMultiCallUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallMultiCallUserCell.m; sourceTree = "<group>"; };
+		7B98B8BB2275DA360074D0A0 /* RCCallSelectingMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallSelectingMemberCell.m; sourceTree = "<group>"; };
+		7B98B8BC2275DA360074D0A0 /* RCCallDetailMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallDetailMessageCell.m; sourceTree = "<group>"; };
+		7B98B8BD2275DA360074D0A0 /* RCCallTipMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallTipMessageCell.h; sourceTree = "<group>"; };
+		7B98B8BE2275DA360074D0A0 /* RCCallSelectingMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallSelectingMemberCell.h; sourceTree = "<group>"; };
+		7B98B8BF2275DA360074D0A0 /* RCCallMultiCallUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallMultiCallUserCell.h; sourceTree = "<group>"; };
+		7B98B8C12275DA360074D0A0 /* UICollectionView+BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+BackgroundView.m"; sourceTree = "<group>"; };
+		7B98B8C22275DA360074D0A0 /* UICollectionView+BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+BackgroundView.h"; sourceTree = "<group>"; };
+		7B98B8C42275DA360074D0A0 /* RCCallUserCallInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallUserCallInfoModel.m; sourceTree = "<group>"; };
+		7B98B8C52275DA360074D0A0 /* RCCallUserCallInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallUserCallInfoModel.h; sourceTree = "<group>"; };
+		7B98B8C72275DA360074D0A0 /* RongIMKitExtensionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongIMKitExtensionModel.h; sourceTree = "<group>"; };
+		7B98B8C82275DA360074D0A0 /* RCUserInfoCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCUserInfoCacheManager.h; sourceTree = "<group>"; };
+		7B98B8C92275DA360074D0A0 /* RCloudImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCloudImageLoader.h; sourceTree = "<group>"; };
+		7B98B8CA2275DA360074D0A0 /* RCloudImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCloudImageView.h; sourceTree = "<group>"; };
+		7B98B8CB2275DA360074D0A0 /* RCCall.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RCCall.mm; sourceTree = "<group>"; };
+		7B98B8CC2275DA360074D0A0 /* RongCallKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RongCallKit.h; sourceTree = "<group>"; };
+		7B98B8CE2275DA360074D0A0 /* RCCallKitExtensionModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallKitExtensionModule.m; sourceTree = "<group>"; };
+		7B98B8CF2275DA360074D0A0 /* RCCallKitExtensionModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallKitExtensionModule.h; sourceTree = "<group>"; };
+		7B98B8D12275DA370074D0A0 /* WhiteBoardWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteBoardWebView.h; sourceTree = "<group>"; };
+		7B98B8D22275DA370074D0A0 /* WhiteBoardWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteBoardWebView.m; sourceTree = "<group>"; };
+		7B98B8D32275DA370074D0A0 /* RCCXCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCXCall.h; sourceTree = "<group>"; };
+		7B98B8D42275DA370074D0A0 /* RCCXCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCXCall.m; sourceTree = "<group>"; };
+		7B98B8D62275DA370074D0A0 /* RCCallKitUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallKitUtility.m; sourceTree = "<group>"; };
+		7B98B8D72275DA370074D0A0 /* RCCallFloatingBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallFloatingBoard.h; sourceTree = "<group>"; };
+		7B98B8F22275DA370074D0A0 /* RCCallFloatingBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallFloatingBoard.m; sourceTree = "<group>"; };
+		7B98B8F42275DA370074D0A0 /* KxCallMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxCallMenu.m; sourceTree = "<group>"; };
+		7B98B8F52275DA370074D0A0 /* KxCallMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxCallMenu.h; sourceTree = "<group>"; };
+		7B98B8F62275DA370074D0A0 /* RCCallKitUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallKitUtility.h; sourceTree = "<group>"; };
 		7B9A1BBB2240997E00B7BFC2 /* SYAnchorShowVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorShowVC.h; sourceTree = "<group>"; };
 		7B9A1BBC2240997E00B7BFC2 /* SYAnchorShowVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorShowVC.m; sourceTree = "<group>"; };
 		7B9A1BBE2240999D00B7BFC2 /* SYAnchorShowVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorShowVM.h; sourceTree = "<group>"; };
@@ -1146,7 +1210,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B76B8B52268BAA000153249 /* RongCallKit.framework in Frameworks */,
 				864BB5E20D5521374F720EC0 /* Pods_SeeYu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1279,6 +1342,7 @@
 				26064AF61F5DB46500566B95 /* MainFrame */,
 				7B1E732E222675D2001299C0 /* Collocation */,
 				26064AF21F5DB46500566B95 /* Contacts */,
+				7B98B8A52275D9E40074D0A0 /* RongCallKit */,
 				26064AF31F5DB46500566B95 /* Discover */,
 				7BE971C4225ECA9500FF6A25 /* Profile */,
 				26064AF41F5DB46500566B95 /* HomePage */,
@@ -3155,6 +3219,138 @@
 			path = Collocation;
 			sourceTree = "<group>";
 		};
+		7B98B8A52275D9E40074D0A0 /* RongCallKit */ = {
+			isa = PBXGroup;
+			children = (
+				7B98B8C02275DA360074D0A0 /* Category */,
+				7B98B8B72275DA360074D0A0 /* Cell */,
+				7B98B8A72275DA350074D0A0 /* Controller */,
+				7B98B8CD2275DA360074D0A0 /* Extension */,
+				7B98B8C62275DA360074D0A0 /* Header */,
+				7B98B8B22275DA350074D0A0 /* Layout */,
+				7B98B8C32275DA360074D0A0 /* Model */,
+				7B98B8A62275DA350074D0A0 /* RCCall.h */,
+				7B98B8CB2275DA360074D0A0 /* RCCall.mm */,
+				7B98B8D32275DA370074D0A0 /* RCCXCall.h */,
+				7B98B8D42275DA370074D0A0 /* RCCXCall.m */,
+				7B98B8CC2275DA360074D0A0 /* RongCallKit.h */,
+				7B98B8D52275DA370074D0A0 /* Utility */,
+				7B98B8D02275DA370074D0A0 /* View */,
+			);
+			path = RongCallKit;
+			sourceTree = "<group>";
+		};
+		7B98B8A72275DA350074D0A0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B98B8A92275DA350074D0A0 /* RCCallBaseViewController.h */,
+				7B98B8AD2275DA350074D0A0 /* RCCallBaseViewController.m */,
+				7B98B8B02275DA350074D0A0 /* RCCallSingleCallViewController.h */,
+				7B98B8AA2275DA350074D0A0 /* RCCallSingleCallViewController.m */,
+				7B98B8AE2275DA350074D0A0 /* RCCallVideoMultiCallViewController.h */,
+				7B98B8A82275DA350074D0A0 /* RCCallVideoMultiCallViewController.m */,
+				7B98B8AB2275DA350074D0A0 /* RCCallAudioMultiCallViewController.h */,
+				7B98B8AF2275DA350074D0A0 /* RCCallAudioMultiCallViewController.m */,
+				7B98B8AC2275DA350074D0A0 /* RCCallSelectMemberViewController.m */,
+				7B98B8B12275DA350074D0A0 /* RCCallSelectMemberViewController.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7B98B8B22275DA350074D0A0 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7B98B8B32275DA350074D0A0 /* RCVideoMultiCallUserCollectionLayout.h */,
+				7B98B8B42275DA350074D0A0 /* RCAudioMultiCallUserCollectionLayout.m */,
+				7B98B8B52275DA350074D0A0 /* RCVideoMultiCallUserCollectionLayout.m */,
+				7B98B8B62275DA350074D0A0 /* RCAudioMultiCallUserCollectionLayout.h */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7B98B8B72275DA360074D0A0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7B98B8BD2275DA360074D0A0 /* RCCallTipMessageCell.h */,
+				7B98B8B82275DA360074D0A0 /* RCCallTipMessageCell.m */,
+				7B98B8B92275DA360074D0A0 /* RCCallDetailMessageCell.h */,
+				7B98B8BC2275DA360074D0A0 /* RCCallDetailMessageCell.m */,
+				7B98B8BF2275DA360074D0A0 /* RCCallMultiCallUserCell.h */,
+				7B98B8BA2275DA360074D0A0 /* RCCallMultiCallUserCell.m */,
+				7B98B8BE2275DA360074D0A0 /* RCCallSelectingMemberCell.h */,
+				7B98B8BB2275DA360074D0A0 /* RCCallSelectingMemberCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7B98B8C02275DA360074D0A0 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				7B98B8C22275DA360074D0A0 /* UICollectionView+BackgroundView.h */,
+				7B98B8C12275DA360074D0A0 /* UICollectionView+BackgroundView.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		7B98B8C32275DA360074D0A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B98B8C52275DA360074D0A0 /* RCCallUserCallInfoModel.h */,
+				7B98B8C42275DA360074D0A0 /* RCCallUserCallInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7B98B8C62275DA360074D0A0 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				7B98B8C72275DA360074D0A0 /* RongIMKitExtensionModel.h */,
+				7B98B8C82275DA360074D0A0 /* RCUserInfoCacheManager.h */,
+				7B98B8C92275DA360074D0A0 /* RCloudImageLoader.h */,
+				7B98B8CA2275DA360074D0A0 /* RCloudImageView.h */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		7B98B8CD2275DA360074D0A0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7B98B8CF2275DA360074D0A0 /* RCCallKitExtensionModule.h */,
+				7B98B8CE2275DA360074D0A0 /* RCCallKitExtensionModule.m */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		7B98B8D02275DA370074D0A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B98B8D12275DA370074D0A0 /* WhiteBoardWebView.h */,
+				7B98B8D22275DA370074D0A0 /* WhiteBoardWebView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B98B8D52275DA370074D0A0 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				7B98B8F62275DA370074D0A0 /* RCCallKitUtility.h */,
+				7B98B8D62275DA370074D0A0 /* RCCallKitUtility.m */,
+				7B98B8D72275DA370074D0A0 /* RCCallFloatingBoard.h */,
+				7B98B8F22275DA370074D0A0 /* RCCallFloatingBoard.m */,
+				7B98B8F32275DA370074D0A0 /* KxCallMenu */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		7B98B8F32275DA370074D0A0 /* KxCallMenu */ = {
+			isa = PBXGroup;
+			children = (
+				7B98B8F42275DA370074D0A0 /* KxCallMenu.m */,
+				7B98B8F52275DA370074D0A0 /* KxCallMenu.h */,
+			);
+			path = KxCallMenu;
+			sourceTree = "<group>";
+		};
 		7B9A1BC42241F22100B7BFC2 /* AnchorsRandom */ = {
 			isa = PBXGroup;
 			children = (
@@ -3563,7 +3759,7 @@
 				26064AB01F5D9A1400566B95 /* Frameworks */,
 				26064AB11F5D9A1400566B95 /* Resources */,
 				D7CFF80ED10617A757312352 /* [CP] Embed Pods Frameworks */,
-				3828DD739B428E3521A2C20D /* [CP] Copy Pods Resources */,
+				44A58CF16A3C1A32975FF070 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3583,7 +3779,7 @@
 				26064AC91F5D9A1400566B95 /* Frameworks */,
 				26064ACA1F5D9A1400566B95 /* Resources */,
 				DD3D17E8141AD6941437CC1F /* [CP] Embed Pods Frameworks */,
-				7FC1F7E4BE6D3BF20C2D44B9 /* [CP] Copy Pods Resources */,
+				C8496A3AB64EC4BF9627D9EB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3604,7 +3800,7 @@
 				26064AD41F5D9A1400566B95 /* Frameworks */,
 				26064AD51F5D9A1400566B95 /* Resources */,
 				85A8866729BE72E7764E86D9 /* [CP] Embed Pods Frameworks */,
-				5EFC0963628D4BFB7869EC87 /* [CP] Copy Pods Resources */,
+				61FAD040FFD11C4AFA111DC4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3738,7 +3934,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3828DD739B428E3521A2C20D /* [CP] Copy Pods Resources */ = {
+		44A58CF16A3C1A32975FF070 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3766,7 +3962,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeeYu/Pods-SeeYu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5EFC0963628D4BFB7869EC87 /* [CP] Copy Pods Resources */ = {
+		61FAD040FFD11C4AFA111DC4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3810,34 +4006,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7FC1F7E4BE6D3BF20C2D44B9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-resources.sh",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/en.lproj",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/zh-Hans.lproj",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/Emoji.plist",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCColor.plist",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RongCloud.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Emoji.plist",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCColor.plist",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCConfig.plist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		85A8866729BE72E7764E86D9 /* [CP] Embed Pods Frameworks */ = {
@@ -3988,6 +4156,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8496A3AB64EC4BF9627D9EB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-resources.sh",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/en.lproj",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/zh-Hans.lproj",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/Emoji.plist",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCColor.plist",
+				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RongCloud.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Emoji.plist",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCColor.plist",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCConfig.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeeYu-SeeYuTests/Pods-SeeYu-SeeYuTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D7CFF80ED10617A757312352 /* [CP] Embed Pods Frameworks */ = {
@@ -4269,6 +4465,7 @@
 				7B656A3521EF11C7008FDCCA /* SYUserInfoManager.m in Sources */,
 				263D37171F66656A007267C3 /* YYThreadSafeArray.m in Sources */,
 				7B76B8B92268CE0900153249 /* SYHobbyVC.m in Sources */,
+				7B98B9052275DA380074D0A0 /* RCCall.mm in Sources */,
 				7BE372C9226DB22D00555C41 /* SYNotificationModel.m in Sources */,
 				261E015D1FDE2E010041E989 /* SYCommonSwitchItemViewModel.m in Sources */,
 				26B89AB72022E599006FBE20 /* SYMomentShareInfo.m in Sources */,
@@ -4285,6 +4482,7 @@
 				7B76B8D7226A310200153249 /* SYGiftVM.m in Sources */,
 				26FE8E841F9514D100EC8BE0 /* UIView+SDExtension.m in Sources */,
 				26BEBC7D1F8B78B1004D502F /* SYEXTRuntimeExtensions.m in Sources */,
+				7B98B9062275DA380074D0A0 /* RCCallKitExtensionModule.m in Sources */,
 				7BF37C4222734A380042BC4F /* SYMomentsEditVM.m in Sources */,
 				263D36EC1F666438007267C3 /* UITableView+SYExtension.m in Sources */,
 				26FE8E881F9514D100EC8BE0 /* TZGifPhotoPreviewController.m in Sources */,
@@ -4386,12 +4584,14 @@
 				7B15EC6E2265BAF100A80BD5 /* ZYImagePickerController.m in Sources */,
 				7B788163224F7A4300B25CA3 /* SYSearchResultHandle.m in Sources */,
 				263C898A1F6A54AE00F7A0AE /* SYCommonFooterView.m in Sources */,
+				7B98B9022275DA380074D0A0 /* RCCallDetailMessageCell.m in Sources */,
 				7B590939223F8B0300EE5ACF /* SYAnchorsModel.m in Sources */,
 				263D36DE1F666438007267C3 /* NSDate+Extension.m in Sources */,
 				26225D971F6557290074BFC3 /* SYViewModelServicesImpl.m in Sources */,
 				26FE8E911F9514D100EC8BE0 /* TZProgressView.m in Sources */,
 				7BC56A75226EFE60005C1F81 /* SYSignatureVC.m in Sources */,
 				7B78816C224FB6C800B25CA3 /* SYNewFriendsVC.m in Sources */,
+				7B98B9002275DA380074D0A0 /* RCCallMultiCallUserCell.m in Sources */,
 				7B9A1BC32241409800B7BFC2 /* SYAnchorFocusStateModel.m in Sources */,
 				7B15EC762265BAF100A80BD5 /* ZYImageReusableView.m in Sources */,
 				26FE8E901F9514D100EC8BE0 /* TZPhotoPreviewController.m in Sources */,
@@ -4410,11 +4610,13 @@
 				26FE8E4A1F95143D00EC8BE0 /* IDMPhotoBrowser.m in Sources */,
 				263D37111F666569007267C3 /* LCActionSheetViewController.m in Sources */,
 				7B359932226455FD00FDC6FE /* SYRealnameVM.m in Sources */,
+				7B98B9142275DA380074D0A0 /* RCCallFloatingBoard.m in Sources */,
 				7B2E76C2223F464600D8F1CD /* SYAnchorsOrderVM.m in Sources */,
 				26225D891F6550C80074BFC3 /* SYTableVM.m in Sources */,
 				263D37131F666569007267C3 /* YYFileHash.m in Sources */,
 				263C897E1F6A324700F7A0AE /* SYCommonCell.m in Sources */,
 				7B76B88C2267232B00153249 /* SYInfoEditVC.m in Sources */,
+				7B98B9152275DA380074D0A0 /* KxCallMenu.m in Sources */,
 				7B590934223F77B200EE5ACF /* SYAnchorsListVM.m in Sources */,
 				7B9A1BDF2243B21F00B7BFC2 /* HSSessionModel.m in Sources */,
 				7BE971F62260347100FF6A25 /* SYRechargeVM.m in Sources */,
@@ -4436,6 +4638,7 @@
 				7B76B8B422682BEE00153249 /* SYBaseInfoEditVM.m in Sources */,
 				7BE971F12260254500FF6A25 /* SYPresentModel.m in Sources */,
 				7B5A333C21F9BFC600535F8D /* SYRankingVC.m in Sources */,
+				7B98B9042275DA380074D0A0 /* RCCallUserCallInfoModel.m in Sources */,
 				7BE971C8225ECB0500FF6A25 /* SYProfileVM.m in Sources */,
 				26FE8E461F95143D00EC8BE0 /* IDMCaptionView.m in Sources */,
 				7B78811F2248C69D00B25CA3 /* SYForumCommentCell.m in Sources */,
@@ -4444,14 +4647,17 @@
 				26FE8E851F9514D100EC8BE0 /* NSBundle+TZImagePicker.m in Sources */,
 				7B788160224F455700B25CA3 /* SYAddFriendsVM.m in Sources */,
 				7B724BE922462B1F0096F40B /* SYPrivacyShowVM.m in Sources */,
+				7B98B9072275DA380074D0A0 /* WhiteBoardWebView.m in Sources */,
 				7B4BF4772251B09300CCD286 /* MHAssetGroupViewController.m in Sources */,
 				26225D8F1F65545E0074BFC3 /* SYTabBarViewModel.m in Sources */,
+				7B98B8FE2275DA380074D0A0 /* RCVideoMultiCallUserCollectionLayout.m in Sources */,
 				263C89841F6A355C00F7A0AE /* SYCommonVM.m in Sources */,
 				2617531D1F739C1900812E1B /* SYCommonLabelItemViewModel.m in Sources */,
 				263D36E31F666438007267C3 /* NSAttributedString+SYSize.m in Sources */,
 				7BE971E7225F9F8700FF6A25 /* SYPresentVM.m in Sources */,
 				2605C5D01F66326000B1F66E /* SYDiscoverVC.m in Sources */,
 				263D36DC1F666438007267C3 /* MBProgressHUD+SYExtension.m in Sources */,
+				7B98B8F92275DA380074D0A0 /* RCCallSingleCallViewController.m in Sources */,
 				7B3599252260FAD700FDC6FE /* SYMobileBindingVC.m in Sources */,
 				261597061FEA52CE00C6FD80 /* SYMoment.m in Sources */,
 				7B78812B2249D58A00B25CA3 /* SYMomentVC.m in Sources */,
@@ -4492,6 +4698,8 @@
 				7B76B89B22672A2300153249 /* SYBaseInfoDetailVM.m in Sources */,
 				7B59093D223F9C7300EE5ACF /* SYAnchorsListCell.m in Sources */,
 				2605C5BB1F662EA300B1F66E /* SYMainFrameVC.m in Sources */,
+				7B98B8FC2275DA380074D0A0 /* RCCallAudioMultiCallViewController.m in Sources */,
+				7B98B9092275DA380074D0A0 /* RCCallKitUtility.m in Sources */,
 				7B76B8BD2268CE3500153249 /* SYHobbyVM.m in Sources */,
 				7B788172224FBB8300B25CA3 /* SYNewFriendModel.m in Sources */,
 				7B76B8A82267576E00153249 /* SYUserInfoEditModel.m in Sources */,
@@ -4510,6 +4718,7 @@
 				2634C7221FF0A33A00B1F639 /* SYTableView.m in Sources */,
 				7B0228B4223B4E390045E25F /* NSMutableArray+FilterElement.m in Sources */,
 				7B92871D22450AC100CABC5F /* SYSpeedMatchModel.m in Sources */,
+				7B98B9032275DA380074D0A0 /* UICollectionView+BackgroundView.m in Sources */,
 				2624CAEC1F98DFC80083923F /* SYURLParameters.m in Sources */,
 				263D36DB1F666438007267C3 /* LCActionSheet+SYExtension.m in Sources */,
 				2605C5BE1F662EE400B1F66E /* SYMainFrameVM.m in Sources */,
@@ -4528,6 +4737,7 @@
 				7B1E733122267684001299C0 /* SYCollocationVC.m in Sources */,
 				7B15EC6F2265BAF100A80BD5 /* ZYCameraController.m in Sources */,
 				7BC56A81226F0F5E005C1F81 /* SYNicknameModifyVC.m in Sources */,
+				7B98B9012275DA380074D0A0 /* RCCallSelectingMemberCell.m in Sources */,
 				26FE8E8E1F9514D100EC8BE0 /* TZPhotoPickerController.m in Sources */,
 				7BC56A72226EFDFC005C1F81 /* SYSignatureVM.m in Sources */,
 				7B5210F32270AF8000D7EEFC /* SYMyMomentsVM.m in Sources */,
@@ -4541,6 +4751,7 @@
 				2615974F1FEA5DD300C6FD80 /* SYMomentOperationMoreItemView.m in Sources */,
 				7B76B8AE22680D8400153249 /* SYUserShowInfoModel.m in Sources */,
 				7B4BF4612251AE4C00CCD286 /* YLVideoPreView.m in Sources */,
+				7B98B8FA2275DA380074D0A0 /* RCCallSelectMemberViewController.m in Sources */,
 				263D36EA1F666438007267C3 /* UIImage+SYExtension.m in Sources */,
 				7B4BF4882251B3BC00CCD286 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				7B9A1BE12243B21F00B7BFC2 /* HSDownloadManager.m in Sources */,
@@ -4550,6 +4761,7 @@
 				26225D9B1F65589E0074BFC3 /* SYConstant.m in Sources */,
 				7B788154224E5CBE00B25CA3 /* SYChattingListCell.m in Sources */,
 				7BB5199C21EC783B000C1CF2 /* FSSegmentTitleView.m in Sources */,
+				7B98B8F82275DA380074D0A0 /* RCCallVideoMultiCallViewController.m in Sources */,
 				263D371A1F66656A007267C3 /* YYWeakProxy.m in Sources */,
 				263C89871F6A549800F7A0AE /* SYCommonHeaderView.m in Sources */,
 				7BE971EA2260201500FF6A25 /* SYPresentListVC.m in Sources */,
@@ -4557,10 +4769,13 @@
 				7BE972012260412D00FF6A25 /* SYVipVM.m in Sources */,
 				7B78812E2249D5AD00B25CA3 /* SYMomentVM.m in Sources */,
 				7B76B8D4226A30EB00153249 /* SYGiftVC.m in Sources */,
+				7B98B8FD2275DA380074D0A0 /* RCAudioMultiCallUserCollectionLayout.m in Sources */,
 				7B9A1BD322439BB200B7BFC2 /* SYAnchorsRandomModel.m in Sources */,
 				26003FF61F988BA1000621B0 /* SYImageView.m in Sources */,
 				7BB519A121EC8052000C1CF2 /* SYChattingVC.m in Sources */,
+				7B98B8FF2275DA380074D0A0 /* RCCallTipMessageCell.m in Sources */,
 				7B4BF4812251B09300CCD286 /* MHGetPermission.m in Sources */,
+				7B98B9082275DA380074D0A0 /* RCCXCall.m in Sources */,
 				263D371F1F667DF2007267C3 /* SYControllerHelper.m in Sources */,
 				263D36E01F666438007267C3 /* NSError+SYExtension.m in Sources */,
 				7B78812822493CE500B25CA3 /* SYForumResultModel.m in Sources */,
@@ -4587,6 +4802,7 @@
 				7BE971D7225F289200FF6A25 /* SYSettingVM.m in Sources */,
 				7B7602D822745F72004C9936 /* SYGiftPackageVC.m in Sources */,
 				26C7BEEE1F8CCA2C00525126 /* SYHTTPService.m in Sources */,
+				7B98B8FB2275DA380074D0A0 /* RCCallBaseViewController.m in Sources */,
 				261597501FEA5DD300C6FD80 /* SYMomentOperationMoreView.m in Sources */,
 				7B9A1BE02243B21F00B7BFC2 /* NSString+Hash.m in Sources */,
 				261597031FEA527400C6FD80 /* SYMoments.m in Sources */,
@@ -4749,7 +4965,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = SeeYu/SeeYu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -4840,7 +5056,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = SeeYu/SeeYu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;

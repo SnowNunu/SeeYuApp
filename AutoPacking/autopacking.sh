@@ -282,7 +282,7 @@ xcodebuild -exportArchive -archivePath ${__EXPORT_ARCHIVE_PATH} \
 -exportPath ${__EXPORT_IPA_PATH} \
 -destination generic/platform=ios \
 -exportOptionsPlist ${ExportOptionsPlistPath} \
--allowProvisioningUpdates
+${__EXPORT_OPTIONS_PLIST_PATH}
 
 # 修改ipa文件名称
 mv ${__EXPORT_IPA_PATH}/${__SCHEME_NAME}.ipa ${__EXPORT_IPA_PATH}/${__IPA_NAME}.ipa
@@ -297,9 +297,8 @@ if test -f "${__EXPORT_IPA_PATH}/${__IPA_NAME}.ipa" ; then
   elif [[ $__UPLOAD_IPA_OPTION -eq 2 ]]; then
 
     curl -F "file=@${__EXPORT_IPA_PATH}/${__IPA_NAME}.ipa" \
-    -F "uKey=$__PGYER_U_KEY" \
     -F "_api_key=$__PGYER_API_KEY" \
-    "http://www.pgyer.com/apiv1/app/upload"
+    "https://www.pgyer.com/apiv2/app/upload"
 
     printMessage "上传 ${__IPA_NAME}.ipa 包 到 pgyer 成功 🎉 🎉 🎉"
 

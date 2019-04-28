@@ -7,7 +7,7 @@
 //
 
 #import <RongIMKit/RongIMKit.h>
-#import <RongCallKit/RCCall.h>
+#import "RCCall.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

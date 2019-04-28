@@ -16,7 +16,7 @@
 #import "SYNotificationModel.h"
 #import "SYOutboundModel.h"
 #import <FFToast/FFToast.h>
-#import <RongCallKit/RongCallKit.h>
+#import "RongCallKit.h"
 #import "SYOutboundVC.h"
 #import "SYOutboundVM.h"
 
@@ -303,7 +303,7 @@
             }];
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [FFToast showToastWithTitle:@"系统" message:model.content iconImage:SYImageNamed(@"header_default_100x100") duration:2 toastType:FFToastTypeDefault];
+                [FFToast showToastWithTitle:@"红娘客服" message:model.content iconImage:SYImageNamed(@"header_default_100x100") duration:2 toastType:FFToastTypeDefault];
             });
         }
     }

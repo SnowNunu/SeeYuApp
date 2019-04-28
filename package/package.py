@@ -31,13 +31,13 @@ def uploadIPA(IPAPath):
         return
     else:
         print("\n***************开始上传到蒲公英*********************\n")
-        url='http://www.pgyer.com/apiv1/app/upload'
+        url='https://www.pgyer.com/apiv2/app/upload'
         data={
-            'uKey':USER_KEY,
+            # 'uKey':USER_KEY,
             '_api_key':API_KEY,
-            'installType':'2',
+            'buildInstallType':'1',
             'password':'',
-            'updateDescription':""
+            'buildUpdateDescription':""
         }
         files={'file':open(IPAPath,'rb')}
         r=requests.post(url,data=data,files=files)
