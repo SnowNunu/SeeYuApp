@@ -180,7 +180,15 @@
     return [calendar components:unit fromDate:self toDate:[NSDate date] options:0];
 }
 
++ (void)sy_daySinceNow:(NSDate *)date {
+    NSDate *nowDate = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone timeZoneForSecondsFromGMT:8];
+    
+    NSInteger interval = [zone secondsFromGMTForDate: date];
+    
+    NSDate *localeDate = [date  dateByAddingTimeInterval: interval];
 
+}
 
 
 //////////// MVC&MVVM的商品的发布时间的描述 ////////////

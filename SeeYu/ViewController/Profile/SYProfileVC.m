@@ -91,8 +91,8 @@
         } else {
             self.authenticationImageView.image = SYImageNamed(@"truePerson_disable");
         }
-        if (user.userRegisterTime != nil && user.userRegisterTime.length > 0) {
-            NSTimeInterval seconds = [[NSDate new] timeIntervalSinceDate:[NSDate sy_dateWithTimestamp:user.userRegisterTime]];//间隔的秒数
+        if (user.userRegisterTime != nil) {
+            NSTimeInterval seconds = [[NSDate new] timeIntervalSinceDate:user.userRegisterTime];//间隔的秒数
             if (seconds > 7 * 24 * 3600) {
                 self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"btn_checkin_cricle" target:self selector:@selector(openSigninView) textType:NO];
             }

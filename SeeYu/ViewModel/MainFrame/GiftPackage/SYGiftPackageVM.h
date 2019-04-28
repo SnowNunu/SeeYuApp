@@ -7,10 +7,15 @@
 //
 
 #import "SYVM.h"
+#import "SYGiftPackageModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYGiftPackageVM : SYVM
+
+@property (nonatomic, strong) NSArray *giftPackagesArray;
+
+@property (nonatomic, strong) RACCommand *receiveGiftCommand;
 
 @end
 

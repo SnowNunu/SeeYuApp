@@ -8,6 +8,7 @@
 
 #import "SYVC.h"
 #import "SYGiftPackageVM.h"
+#import "SYGiftPackageModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

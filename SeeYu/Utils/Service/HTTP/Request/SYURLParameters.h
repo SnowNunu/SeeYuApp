@@ -54,6 +54,12 @@
 /// 用户签到
 #define SY_HTTTP_PATH_USER_SIGN  @"/application/user/userSign"
 
+/// 获取新手礼包详情接口
+#define SY_HTTTP_PATH_GIFT_PACKAGE_INFO @"/application/newGiftPackage/queryNewGiftPackage"
+
+/// 领取新手礼包接口
+#define SY_HTTTP_PATH_GIFT_PACKAGE_RECEIVE @"application/newGiftPackage/receiveNewGiftPackage"
+
 /// 获取用户认证状态
 #define SY_HTTTP_PATH_USER_IDENTITY_SATUS  @"/application/user/queryAuth"
 

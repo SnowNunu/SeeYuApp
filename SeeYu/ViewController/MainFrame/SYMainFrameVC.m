@@ -11,6 +11,9 @@
 #import "SYNearbyVC.h"
 #import "SYRankingVC.h"
 #import "SYAnchorsRandomVC.h"
+#import "SYGiftPackageVM.h"
+#import "SYGiftPackageVC.h"
+#import "SYGiftPackageModel.h"
 
 @interface SYMainFrameVC ()
 
@@ -21,11 +24,19 @@
 
 @property (nonatomic, strong) FSPageContentView *contentView;
 
+@property (nonatomic, strong) SYUser *user;
+
 @end
 
 @implementation SYMainFrameVC
 
 @dynamic viewModel;
+
+- (instancetype)initWithViewModel:(SYVM *)viewModel {
+    self = [super initWithViewModel:viewModel];
+    self.user = viewModel.services.client.currentUser;
+    return self;
+}
 
 /// 子类代码逻辑
 - (void)viewDidLoad {
@@ -34,6 +45,36 @@
     [self _setupNavigation];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.viewModel.loginReportCommand execute:nil];
+}
+
+- (void)bindViewModel {
+    [super bindViewModel];
+    [RACObserve(self, user) subscribeNext:^(SYUser *user) {
+        if (user != nil) {
+            // 这里没有去服务器重新请求一下当前用户的信息，因为考虑到注册时间不会变
+            if (!([[NSDate new] timeIntervalSinceDate:self.user.userRegisterTime] > 3600 * 24 * 7)) {
+                // 可以参与新手活动
+                [self.viewModel.requestGiftPackageInfoCommand execute:nil];
+            }
+        }
+    }];
+    [RACObserve(self.viewModel, datasource) subscribeNext:^(NSArray *array) {
+        if (array != nil) {
+            // 请求完服务器后判断当天的签到状态再打开礼包页面
+            int day = [[NSDate new] timeIntervalSinceDate:self.user.userRegisterTime] / 3600 / 24;  //获取当前是注册完之后的第几天
+            SYGiftPackageModel *model = self.viewModel.datasource[day];
+            if (model.isReceive == 0) {
+                SYGiftPackageVM *giftVM = [[SYGiftPackageVM alloc] initWithServices:SYAppDelegate.sharedDelegate.services params:nil];
+                giftVM.giftPackagesArray = array;
+                SYGiftPackageVC *giftVC = [[SYGiftPackageVC alloc] initWithViewModel:giftVM];
+                CATransition *animation = [CATransition animation];
+                [animation setDuration:0.3];
+                animation.type = kCATransitionPush;
+                animation.subtype = kCATransitionMoveIn;
+                [[SYAppDelegate sharedDelegate] presentVC:giftVC withAnimation:animation];
+            }
+        }
+    }];
 }
 
 #pragma mark - 设置导航栏

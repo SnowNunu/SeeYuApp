@@ -169,7 +169,7 @@ pod 'ActionSheetPicker-3.0'             , '2.3.0'
 pod 'RongCloudIM/IMLib'                 , '2.9.14'
 pod 'RongCloudIM/IMKit'                 , '2.9.14'
 pod 'RongCloudRTC/RongCallLib'          , '2.9.14'
-pod 'RongCloudRTC/RongCallKit'          , '2.9.14'
+#pod 'RongCloudRTC/RongCallKit'          , '2.9.14'
 
 # 空占位
 pod 'DZNEmptyDataSet'                   , '1.8.1'

@@ -21,10 +21,10 @@
 - (BOOL)isEqual:(SYUser *)object
 {
     /// 重写比对规则
-    if([object isKindOfClass:[self class]])
-    {
-        return [self.idstr isEqualToString:object.idstr];
-    }
+//    if([object isKindOfClass:[self class]])
+//    {
+//        return [self.idstr isEqualToString:object.idstr];
+//    }
     return [super isEqual:object];
 }
 
@@ -33,7 +33,7 @@
 {
     self = [super init];
     if (self) {
-        _coverImage = SYImageNamed(@"Kris");
+        
     }
     return self;
 }

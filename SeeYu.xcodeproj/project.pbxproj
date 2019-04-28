@@ -191,6 +191,7 @@
 		7B0228BA223B7D9D0045E25F /* SYFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228B9223B7D9D0045E25F /* SYFriendModel.m */; };
 		7B0228BE223B87810045E25F /* SYFriendsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228BD223B87810045E25F /* SYFriendsListCell.m */; };
 		7B0228C7223BCAF80045E25F /* SYSearchFriendsResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228C6223BCAF80045E25F /* SYSearchFriendsResultVC.m */; };
+		7B1279E62274B0AA0007833A /* SYGiftPackageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1279E52274B0AA0007833A /* SYGiftPackageModel.m */; };
 		7B15EC6D2265BAF100A80BD5 /* ZYClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC4E2265BAF000A80BD5 /* ZYClipViewController.m */; };
 		7B15EC6E2265BAF100A80BD5 /* ZYImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC502265BAF000A80BD5 /* ZYImagePickerController.m */; };
 		7B15EC6F2265BAF100A80BD5 /* ZYCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC552265BAF000A80BD5 /* ZYCameraController.m */; };
@@ -778,6 +779,8 @@
 		7B0228BD223B87810045E25F /* SYFriendsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYFriendsListCell.m; sourceTree = "<group>"; };
 		7B0228C5223BCAF80045E25F /* SYSearchFriendsResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSearchFriendsResultVC.h; sourceTree = "<group>"; };
 		7B0228C6223BCAF80045E25F /* SYSearchFriendsResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSearchFriendsResultVC.m; sourceTree = "<group>"; };
+		7B1279E42274B0AA0007833A /* SYGiftPackageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGiftPackageModel.h; sourceTree = "<group>"; };
+		7B1279E52274B0AA0007833A /* SYGiftPackageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGiftPackageModel.m; sourceTree = "<group>"; };
 		7B15EC4D2265BAF000A80BD5 /* ZYClipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClipViewController.h; sourceTree = "<group>"; };
 		7B15EC4E2265BAF000A80BD5 /* ZYClipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClipViewController.m; sourceTree = "<group>"; };
 		7B15EC502265BAF000A80BD5 /* ZYImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYImagePickerController.m; sourceTree = "<group>"; };
@@ -2349,6 +2352,15 @@
 			path = friendsList;
 			sourceTree = "<group>";
 		};
+		7B1279E32274B08B0007833A /* GiftPackage */ = {
+			isa = PBXGroup;
+			children = (
+				7B1279E42274B0AA0007833A /* SYGiftPackageModel.h */,
+				7B1279E52274B0AA0007833A /* SYGiftPackageModel.m */,
+			);
+			path = GiftPackage;
+			sourceTree = "<group>";
+		};
 		7B15EC4A2265BAF000A80BD5 /* ZYImagePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -2708,6 +2720,7 @@
 		7B590935223F8AB300EE5ACF /* MainFrame */ = {
 			isa = PBXGroup;
 			children = (
+				7B1279E32274B08B0007833A /* GiftPackage */,
 				7B9A1BD022439B8A00B7BFC2 /* AnchorsRandom */,
 				7B9A1BCC22437D5100B7BFC2 /* Ranking */,
 				7B590936223F8AC400EE5ACF /* AnchorsOrder */,
@@ -4308,6 +4321,7 @@
 				7B15EC742265BAF100A80BD5 /* ZYClipBorderView.m in Sources */,
 				7B15EC702265BAF100A80BD5 /* ZYImageController.m in Sources */,
 				7B0228C7223BCAF80045E25F /* SYSearchFriendsResultVC.m in Sources */,
+				7B1279E62274B0AA0007833A /* SYGiftPackageModel.m in Sources */,
 				263D37161F66656A007267C3 /* YYReachability.m in Sources */,
 				7B9A1BCF22437D6F00B7BFC2 /* SYRankListModel.m in Sources */,
 				2664F5371FEA6BE6005C10CF /* SYMomentHelper.m in Sources */,

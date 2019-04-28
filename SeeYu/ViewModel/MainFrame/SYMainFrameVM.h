@@ -12,8 +12,11 @@
 #import "SYRankingVM.h"
 #import "SYAnchorsOrderVM.h"
 #import "SYAnchorsRandomVM.h"
+#import "SYGiftPackageModel.h"
 
 @interface SYMainFrameVM : SYVM
+
+@property (nonatomic, strong) NSArray *datasource;
 
 @property (nonatomic, strong) SYRankingVM *rankingVM;
 
@@ -24,5 +27,7 @@
 @property (nonatomic, strong) SYAnchorsRandomVM *anchorsRandomVM;
 
 @property (nonatomic, strong) RACCommand *loginReportCommand;
+
+@property (nonatomic, strong) RACCommand *requestGiftPackageInfoCommand;
 
 @end
