@@ -11,6 +11,7 @@
 #import "SYPrivacyVC.h"
 #import "SYForumVC.h"
 #import "SYWebVC.h"
+#import "SYWebVM.h"
 
 @interface SYDiscoverVC ()
 
@@ -53,10 +54,16 @@
     SYForumVC *forumVC = [[SYForumVC alloc] initWithViewModel:self.viewModel.forumVM];
     [childVCs addObject:forumVC];
     // 游戏
-    SYWebVM *webVM = [[SYWebVM alloc]init];
-    webVM.request = [NSURLRequest requestWithURL:[NSURL URLWithString:SY_GAME_URL]];
-    SYWebVC *webVC = [[SYWebVC alloc]initWithViewModel:webVM];
+//    SYWebVM *webVM = [[SYWebVM alloc]init];
+//    webVM.request = [NSURLRequest requestWithURL:[NSURL URLWithString:SY_GAME_URL]];
+//    SYWebVC *webVC = [[SYWebVC alloc]initWithViewModel:webVM];
+    CYWebViewController *webVC = [[CYWebViewController alloc] init];
+    webVC.url = [NSURL URLWithString:SY_GAME_URL];
+    webVC.loadingBarTintColor = SYColor(159, 105, 235);
+//    webVC.navigationButtonsHidden = NO;
+    webVC.showCustomView = YES;
     [childVCs addObject:webVC];
+    
     self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SY_APPLICATION_TOP_BAR_HEIGHT - SY_APPLICATION_TAB_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
     [self.view addSubview:_contentView];
 }

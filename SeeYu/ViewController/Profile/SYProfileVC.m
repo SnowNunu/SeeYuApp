@@ -99,7 +99,7 @@
         }
     }];
     [[self.detailBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.viewModel.enterNextViewCommand execute:@(0)];
+        [self.viewModel.enterNextViewCommand execute:@(7)];
     }];
 }
 

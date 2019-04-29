@@ -11,6 +11,7 @@
 #import "FSPageContentView.h"
 #import "SYDiscoverVM.h"
 #import "SYVC.h"
+#import "CYWebViewController.h"
 
 @interface SYDiscoverVC : SYVC <FSSegmentTitleViewDelegate,FSPageContentViewDelegate>
 
