@@ -54,13 +54,9 @@
     SYForumVC *forumVC = [[SYForumVC alloc] initWithViewModel:self.viewModel.forumVM];
     [childVCs addObject:forumVC];
     // 游戏
-//    SYWebVM *webVM = [[SYWebVM alloc]init];
-//    webVM.request = [NSURLRequest requestWithURL:[NSURL URLWithString:SY_GAME_URL]];
-//    SYWebVC *webVC = [[SYWebVC alloc]initWithViewModel:webVM];
     CYWebViewController *webVC = [[CYWebViewController alloc] init];
     webVC.url = [NSURL URLWithString:SY_GAME_URL];
     webVC.loadingBarTintColor = SYColor(159, 105, 235);
-//    webVC.navigationButtonsHidden = NO;
     webVC.showCustomView = YES;
     [childVCs addObject:webVC];
     

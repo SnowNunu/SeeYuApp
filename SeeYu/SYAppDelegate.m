@@ -11,8 +11,10 @@
 #import "SYRegisterVM.h"
 #import "SYRCIMDataSource.h"
 #import "SYGuideVM.h"
-//#import <UMCommon/UMCommon.h>
+#import <UMCommon/UMCommon.h>
+#import <UMAnalytics/MobClick.h>
 //#import <UMPush/UMessage.h>
+#import <Bugly/Bugly.h>
 #import "SYNotificationModel.h"
 #import "SYOutboundModel.h"
 #import <FFToast/FFToast.h>
@@ -51,6 +53,8 @@
     SYVM *vm = [self _createInitialViewModel];
     if ([vm isKindOfClass:[SYHomePageVM class]]) {
         [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken success:^(NSString *userId) {
+            [Bugly setUserIdentifier:userId];
+            [MobClick profileSignInWithPUID:userId];
             dispatch_async(dispatch_get_main_queue(), ^{
                 RCUserInfo *rcUser = [[RCUserInfo alloc]initWithUserId:userId name:self.services.client.currentUser.userName portrait:self.services.client.currentUser.userHeadImg];
                 [RCIM sharedRCIM].currentUserInfo = rcUser;
@@ -116,8 +120,10 @@
 //                                             selector:@selector(didReceiveMessageNotification:)
 //                                                 name:RCKitDispatchMessageNotification
 //                                               object:nil];
-//    // 初始化友盟推送服务
-//    [UMConfigure initWithAppkey:@"5ca1a3aa3fc195e05e0000df" channel:@"App Store"];
+    // 使用bugly收集崩溃日志
+    [Bugly startWithAppId:@"665d87c560"];
+//    // 初始化友盟服务
+    [UMConfigure initWithAppkey:@"5ca1a3aa3fc195e05e0000df" channel:@"App Store"];
 //    UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
 //    //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
 //    entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound|UMessageAuthorizationOptionAlert;
@@ -194,6 +200,8 @@
         if ([vm isKindOfClass:[SYHomePageVM class]]) {
             [[RCIM sharedRCIM] connectWithToken:self.services.client.currentUser.userToken success:^(NSString *userId) {
                 NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
+                [MobClick profileSignInWithPUID:userId];
+                [Bugly setUserIdentifier:userId];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     RCUserInfo *rcUser = [[RCUserInfo alloc]initWithUserId:userId name:self.services.client.currentUser.userName portrait:self.services.client.currentUser.userHeadImg];
                     [RCIM sharedRCIM].currentUserInfo = rcUser;
@@ -307,25 +315,25 @@
             });
         }
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshBadgeValue" object:nil];
 }
 
-//- (void)didReceiveMessageNotification:(NSNotification *)notification {
-//    NSLog(@"测试效果%@",notification);
-//    NSNumber *left = [notification.userInfo objectForKey:@"left"];
-//    if ([RCIMClient sharedRCIMClient].sdkRunningMode == RCSDKRunningMode_Background && 0 == left.integerValue) {
-//        int unreadMsgCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-//                                                                             @(ConversationType_PRIVATE), @(ConversationType_DISCUSSION), @(ConversationType_APPSERVICE),
-//                                                                             @(ConversationType_PUBLICSERVICE), @(ConversationType_GROUP)
-//                                                                             ]];
-//        dispatch_async(dispatch_get_main_queue(),^{
-//            [UIApplication sharedApplication].applicationIconBadgeNumber = unreadMsgCount;
-//        });
-//    }
-//}
+- (void)didReceiveMessageNotification:(NSNotification *)notification {
+    NSNumber *left = [notification.userInfo objectForKey:@"left"];
+    if ([RCIMClient sharedRCIMClient].sdkRunningMode == RCSDKRunningMode_Background && 0 == left.integerValue) {
+        int unreadMsgCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[@(ConversationType_PRIVATE)]];
+        dispatch_async(dispatch_get_main_queue(),^{
+            [UIApplication sharedApplication].applicationIconBadgeNumber = unreadMsgCount;
+        });
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    RCConnectionStatus status = [[RCIMClient sharedRCIMClient] getConnectionStatus];
+    if (status != ConnectionStatus_SignUp) {
+        int unreadMsgCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[@(ConversationType_PRIVATE)]];
+        application.applicationIconBadgeNumber = unreadMsgCount;
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

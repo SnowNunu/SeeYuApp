@@ -71,7 +71,7 @@
              }
              self.keyboardHeight = keyboardH;
              /// 全局记录keyboardH
-             SYAppDelegate.sharedDelegate.showKeyboard = (keyboardH > 0);
+             SYSharedAppDelegate.showKeyboard = (keyboardH > 0);
              if (keyboardH > 0) {
                  [self.commentToolView mas_updateConstraints:^(MASConstraintMaker *make) {
                      make.bottom.equalTo(self.view).with.offset(-1 *keyboardH);

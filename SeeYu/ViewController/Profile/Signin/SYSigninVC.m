@@ -39,7 +39,7 @@
     UITapGestureRecognizer *tap = [UITapGestureRecognizer new];
     [[tap rac_gestureSignal] subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[SYAppDelegate sharedDelegate] dismissVC:self];
+            [SYSharedAppDelegate dismissVC:self];
         });
     }];
     [self.view addGestureRecognizer:tap];

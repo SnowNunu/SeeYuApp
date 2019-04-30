@@ -60,7 +60,7 @@
     UITapGestureRecognizer *tap = [UITapGestureRecognizer new];
     [[tap rac_gestureSignal] subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[SYAppDelegate sharedDelegate] dismissVC:self];
+            [SYSharedAppDelegate dismissVC:self];
         });
     }];
     [self.view addGestureRecognizer:tap];
@@ -100,12 +100,15 @@
         
         SYGiftPackageModel *model = self.viewModel.giftPackagesArray[i];
         UIImageView *iconImageView = [UIImageView new];
-        if (model.giftType == 1) {
+        if (model.giftRecordType == 1) {
             // 钻石
             iconImageView.image = SYImageNamed(@"icon_check_diamond");
-        } else {
+        } else if (model.giftRecordType == 2) {
             // VIP
             iconImageView.image = SYImageNamed(@"icon_check_vip");
+        } else {
+            // 礼物类型
+            [iconImageView yy_setImageWithURL:[NSURL URLWithString:model.giftRecordGiftUrl] placeholder:SYImageNamed(@"icon_check_gift") options:SYWebImageOptionAutomatic completion:NULL];
         }
         [cellBgView addSubview:iconImageView];
         
@@ -120,10 +123,12 @@
         numberLabel.textAlignment = NSTextAlignmentCenter;
         numberLabel.textColor = SYColor(159, 105, 235);
         numberLabel.font = SYRegularFont(13);
-        if (model.giftType == 1) {
-            numberLabel.text = [NSString stringWithFormat:@"%d钻石",model.giftNum];
+        if (model.giftRecordType == 1) {
+            numberLabel.text = [NSString stringWithFormat:@"%d钻石",model.giftRecordNum];
+        } else if (model.giftRecordType == 2) {
+            numberLabel.text = [NSString stringWithFormat:@"%d天会员",model.giftRecordNum];
         } else {
-            numberLabel.text = [NSString stringWithFormat:@"%d天会员",model.giftNum];
+            numberLabel.text = [NSString stringWithFormat:@"%d * %@",model.giftRecordNum,model.giftRecordGiftName];
         }
         [cellBgView addSubview:numberLabel];
         
@@ -131,7 +136,7 @@
         signinStateImageView.image = SYImageNamed(@"icon_check_lips");
         signinStateImageView.tag = 888 + i;
         [cellBgView addSubview:signinStateImageView];
-        signinStateImageView.hidden = model.isReceive == 0 ? YES : NO;
+        signinStateImageView.hidden = model.giftRecordIsReceive == 0 ? YES : NO;
         
         if (i < 4) {
             [cellBgView mas_makeConstraints:^(MASConstraintMaker *make) {

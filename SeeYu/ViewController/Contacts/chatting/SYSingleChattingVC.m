@@ -7,7 +7,6 @@
 //
 
 #import "SYSingleChattingVC.h"
-#import "SYAppDelegate.h"
 #import "SYGiftVC.h"
 #import "SYGiftVM.h"
 #import "SYGiftModel.h"
@@ -44,14 +43,14 @@
     [[_sendPresentBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
         if (self.btnEnabled) {
-            SYGiftVM *giftVM = [[SYGiftVM alloc] initWithServices:SYAppDelegate.sharedDelegate.services params:nil];
+            SYGiftVM *giftVM = [[SYGiftVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
             giftVM.friendId = self.targetId;
             SYGiftVC *giftVC = [[SYGiftVC alloc] initWithViewModel:giftVM];
             SYNavigationController *navigationController = [[SYNavigationController alloc]initWithRootViewController:giftVC];
             CATransition *animation = [CATransition animation];
             [animation setDuration:0.3];
             animation.type = kCATransitionFade;
-            [[SYAppDelegate sharedDelegate] presentVC:navigationController withAnimation:animation];
+            [SYSharedAppDelegate presentVC:navigationController withAnimation:animation];
         }
     }];
 }
@@ -146,10 +145,10 @@
 }
 
 - (void)requestGiftList {
-    NSDictionary *params = @{@"userId":SYAppDelegate.sharedDelegate.services.client.currentUser.userId};
+    NSDictionary *params = @{@"userId":SYSharedAppDelegate.services.client.currentUser.userId};
     SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
     SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_GIFT_LIST_QUERY parameters:subscript.dictionary];
-    [[[[SYAppDelegate.sharedDelegate.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYGiftModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(SYGiftModel *giftModel) {
+    [[[[SYSharedAppDelegate.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYGiftModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(SYGiftModel *giftModel) {
         YYCache *cache = [YYCache cacheWithName:@"seeyu"];
         [cache setObject:giftModel forKey:@"giftModel"];
     } error:^(NSError *error) {

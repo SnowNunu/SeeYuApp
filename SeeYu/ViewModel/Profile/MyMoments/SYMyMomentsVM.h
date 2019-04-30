@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) RACCommand *enterMomentsEditView;
 
+@property (nonatomic, strong) RACCommand *requestAllMineMomentsCommand;
+
 @end
 
 NS_ASSUME_NONNULL_END

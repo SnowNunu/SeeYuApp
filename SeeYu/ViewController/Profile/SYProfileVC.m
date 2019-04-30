@@ -285,13 +285,13 @@
 }
 
 - (void)openSigninView {
-    SYSigninVM *signVM = [[SYSigninVM alloc] initWithServices:SYAppDelegate.sharedDelegate.services params:nil];
+    SYSigninVM *signVM = [[SYSigninVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
     SYSigninVC *signVC = [[SYSigninVC alloc] initWithViewModel:signVM];
     CATransition *animation = [CATransition animation];
     [animation setDuration:0.3];
     animation.type = kCATransitionPush;
     animation.subtype = kCATransitionMoveIn;
-    [[SYAppDelegate sharedDelegate] presentVC:signVC withAnimation:animation];
+    [SYSharedAppDelegate presentVC:signVC withAnimation:animation];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -9,7 +9,6 @@
 #import "SYOutboundVC.h"
 #import <AVFoundation/AVFoundation.h>
 #import "JPVideoPlayerKit.h"
-#import "SYAppDelegate.h"
 #import "SYOutboundModel.h"
 
 @interface SYOutboundVC ()
@@ -214,7 +213,7 @@
         [[JX_GCDTimerManager sharedInstance] cancelTimerWithName:@"stopCallShow"];
         [self.videoShowView jp_stopPlay];
         [self stopPlayRing];
-        [[SYAppDelegate sharedDelegate] dismissVC:self];
+        [SYSharedAppDelegate dismissVC:self];
     });
 }
 

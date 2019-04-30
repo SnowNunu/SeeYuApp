@@ -149,7 +149,7 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
 }
 
 #pragma mark - 事件处理
-- (void)_backItemDidClicked{ /// 返回按钮事件处理
+- (void)_backItemDidClicked { /// 返回按钮事件处理
     /// 可以返回到上一个网页，就返回到上一个网页
     if (self.webView.canGoBack) {
         [self.webView goBack];

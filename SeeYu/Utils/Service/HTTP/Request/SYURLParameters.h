@@ -39,6 +39,9 @@
 /// 获取用户展示资料
 #define SY_HTTTP_PATH_USER_COVER_QUERY   @"/application/userShow/queryMineShow"
 
+/// 获取当前用户的全部动态
+#define SY_HTTTP_PATH_USER_MINE_MOMENTS_QUERY   @"/application/userMoment/queryMineMoments"
+
 /// 获取IM用户资料
 #define SY_HTTTP_PATH_USER_IMINFO   @"/application/user/iminfo"
 
@@ -210,4 +213,5 @@
  @return 返回一个参数实例
  */
 +(instancetype)urlParametersWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters;
+
 @end

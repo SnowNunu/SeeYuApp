@@ -58,7 +58,7 @@
         }
     }];
     [[self.rechargeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        SYDiamondsVM *diamondsVM = [[SYDiamondsVM alloc] initWithServices:SYAppDelegate.sharedDelegate.services params:nil];
+        SYDiamondsVM *diamondsVM = [[SYDiamondsVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
         SYDiamondsVC *diamondsVC = [[SYDiamondsVC alloc] initWithViewModel:diamondsVM];
         [self.navigationController pushViewController:diamondsVC animated:YES];
     }];
@@ -92,7 +92,7 @@
     UITapGestureRecognizer *tap = [UITapGestureRecognizer new];
     [[tap rac_gestureSignal] subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[SYAppDelegate sharedDelegate] dismissVC:self.navigationController];
+            [SYSharedAppDelegate dismissVC:self.navigationController];
         });
     }];
     [self.view addGestureRecognizer:tap];

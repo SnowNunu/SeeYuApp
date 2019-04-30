@@ -63,15 +63,15 @@
             // 请求完服务器后判断当天的签到状态再打开礼包页面
             int day = [[NSDate new] timeIntervalSinceDate:self.user.userRegisterTime] / 3600 / 24;  //获取当前是注册完之后的第几天
             SYGiftPackageModel *model = self.viewModel.datasource[day];
-            if (model.isReceive == 0) {
-                SYGiftPackageVM *giftVM = [[SYGiftPackageVM alloc] initWithServices:SYAppDelegate.sharedDelegate.services params:nil];
+            if (model.giftRecordIsReceive == 0) {
+                SYGiftPackageVM *giftVM = [[SYGiftPackageVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
                 giftVM.giftPackagesArray = array;
                 SYGiftPackageVC *giftVC = [[SYGiftPackageVC alloc] initWithViewModel:giftVM];
                 CATransition *animation = [CATransition animation];
                 [animation setDuration:0.3];
                 animation.type = kCATransitionPush;
                 animation.subtype = kCATransitionMoveIn;
-                [[SYAppDelegate sharedDelegate] presentVC:giftVC withAnimation:animation];
+                [SYSharedAppDelegate presentVC:giftVC withAnimation:animation];
             }
         }
     }];

@@ -25,13 +25,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     /// 初始化所有的子控制器
     [self _setupAllChildViewController];
-    
     /// set delegate
     self.tabBarController.delegate = self;
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshBadgeValue) name:@"refreshBadgeValue" object:nil];
 }
 
 #pragma mark - 初始化所有的子视图控制器
@@ -63,7 +61,7 @@
         [[SYNavigationController alloc] initWithRootViewController:collocationViewController];
     });
     
-    /// 联系人
+    /// 消息
     UINavigationController *contactsNavigationController = ({
         SYContactsVC *contactsViewController = [[SYContactsVC alloc] initWithViewModel:self.viewModel.contactsViewModel];
         
@@ -74,7 +72,7 @@
         [[SYNavigationController alloc] initWithRootViewController:contactsViewController];
     });
     
-    /// 发现
+    /// 动态
     UINavigationController *discoverNavigationController = ({
         SYDiscoverVC *discoverViewController = [[SYDiscoverVC alloc] initWithViewModel:self.viewModel.discoverViewModel];
         
@@ -125,6 +123,12 @@
     
     [viewController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, 0)];
     [viewController.tabBarItem setImageInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    if (tagType == SYTabBarItemTagTypeContacts) {
+        int totalUnreadCount = [[RCIMClient sharedRCIMClient] getTotalUnreadCount];
+        if (totalUnreadCount > 0) {
+            viewController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",totalUnreadCount];
+        }
+    }
 }
 
 
@@ -156,11 +160,28 @@
 //    return NO;
 //}
 //
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     NSLog(@"viewController   %@  %zd",viewController,viewController.tabBarItem.tag);
     [SYSharedAppDelegate.navigationControllerStack popNavigationController];
     [SYSharedAppDelegate.navigationControllerStack pushNavigationController:(UINavigationController *)viewController];
+}
+
+- (void)refreshBadgeValue {
+    int totalUnreadCount = [[RCIMClient sharedRCIMClient] getTotalUnreadCount];
+    UIViewController *vc = self.tabBarController.viewControllers[2];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (totalUnreadCount > 0) {
+            vc.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",totalUnreadCount];
+        } else {
+            vc.tabBarItem.badgeValue = nil;
+        }
+    });
+}
+
+- (void)dealloc {
+    SYDealloc;
+    // 移除观察者
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshBadgeValue" object:nil];
 }
 
 @end

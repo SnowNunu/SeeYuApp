@@ -30,6 +30,7 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - Bugly (2.5.0)
   - CHTCollectionViewWaterfallLayout (0.9.6):
     - CHTCollectionViewWaterfallLayout/ObjC (= 0.9.6)
   - CHTCollectionViewWaterfallLayout/ObjC (0.9.6)
@@ -133,6 +134,10 @@ PODS:
   - UICollectionViewLeftAlignedLayout (1.0.2)
   - "UIImage+ImageWithColor (1.4.0)"
   - "UITableView+FDTemplateLayoutCell (1.6)"
+  - UMCAnalytics (6.0.3):
+    - UMCCommon
+  - UMCCommon (2.0.1)
+  - UMCSecurityPlugins (1.0.6)
   - WZLBadge (1.2.6)
   - YBImageBrowser (2.2.0):
     - SDWebImage (~> 5.0.0)
@@ -161,6 +166,7 @@ DEPENDENCIES:
   - ActionSheetPicker-3.0 (= 2.3.0)
   - AFNetworking (= 3.1.0)
   - BlocksKit (= 2.2.5)
+  - Bugly
   - CHTCollectionViewWaterfallLayout (= 0.9.6)
   - CocoaSecurity (= 1.2.4)
   - Colours (= 5.13.0)
@@ -208,6 +214,9 @@ DEPENDENCIES:
   - UICollectionViewLeftAlignedLayout (= 1.0.2)
   - "UIImage+ImageWithColor (= 1.4.0)"
   - "UITableView+FDTemplateLayoutCell (= 1.6)"
+  - UMCAnalytics
+  - UMCCommon
+  - UMCSecurityPlugins
   - WZLBadge (= 1.2.6)
   - YBImageBrowser
   - YYAsyncLayer (= 1.0)
@@ -227,6 +236,7 @@ SPEC REPOS:
     - ActionSheetPicker-3.0
     - AFNetworking
     - BlocksKit
+    - Bugly
     - CHTCollectionViewWaterfallLayout
     - CocoaSecurity
     - Colours
@@ -270,6 +280,9 @@ SPEC REPOS:
     - UICollectionViewLeftAlignedLayout
     - "UIImage+ImageWithColor"
     - "UITableView+FDTemplateLayoutCell"
+    - UMCAnalytics
+    - UMCCommon
+    - UMCSecurityPlugins
     - WZLBadge
     - YBImageBrowser
     - YYAsyncLayer
@@ -303,6 +316,7 @@ SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   CHTCollectionViewWaterfallLayout: f4dab06db57b36dcf29e802594175acc76c56615
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
   Colours: f24220c38f13deac88612667e9b4a7fb96b871d4
@@ -348,6 +362,9 @@ SPEC CHECKSUMS:
   UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
   "UIImage+ImageWithColor": 891401f732f2f332fefe68c2332c6c955c2a879c
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  UMCAnalytics: ff58714ada407682c4a07548156f94bcec92f055
+  UMCCommon: 0263a057a2e1ae1da4c8308541e56904a493ce13
+  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
   YBImageBrowser: f5e19374191925257a0495954c81c42ce9019310
   YYAsyncLayer: df6b01ebc695c5f6b4c15dd5c23fa3e081eb25c0
@@ -362,6 +379,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 76c9a5090c5b47c68c96ff070b889cf8beb7a6f7
+PODFILE CHECKSUM: fda7d3418500c4dd6e950a2ae3fb4294affb2845
 
 COCOAPODS: 1.7.0.beta.3

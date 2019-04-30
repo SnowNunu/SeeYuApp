@@ -127,14 +127,14 @@ pod 'LBXScan/UI'                        ,'2.0'
 
 #######---------- 企业第三方 ------------------########
 # 集成腾讯bugly，用于打包测试和bug异常收集
-# pod 'Bugly'                             , '2.4.8'
+pod 'Bugly'
 # 极光推送
 # pod 'JPush'                             , '3.0.6'
 # 友盟相关
-#pod 'UMCCommon'
+pod 'UMCCommon'
 #pod 'UMCPush'
-#pod 'UMCSecurityPlugins'
-# pod 'UMengAnalytics-NO-IDFA'            , '4.2.5'
+pod 'UMCSecurityPlugins'
+pod 'UMCAnalytics'
 # U-Share SDK UI模块（分享面板，建议添加）
 # pod 'UMengUShare/UI'                    , '6.4.5'
 # 集成微信(完整版14.4M)

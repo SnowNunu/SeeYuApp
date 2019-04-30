@@ -442,7 +442,7 @@
             // 选择星座
             NSMutableArray *constellationArray = [@[@"白羊座",@"金牛座",@"双子座",@"巨蟹座",@"狮子座",@"处女座",@"天秤座",@"天蝎座",@"射手座",@"摩羯座",@"水瓶座",@"双鱼座"] mutableCopy];
             if (self.viewModel.user.userConstellation != nil && self.viewModel.user.userConstellation.length > 0) {
-                [self showPickerWithTitle:@"请选择星座" andDataArrays:constellationArray andSelectedValue:self.viewModel.user.userConstellation andType:@"weight"];
+                [self showPickerWithTitle:@"请选择星座" andDataArrays:constellationArray andSelectedValue:self.viewModel.user.userConstellation andType:@"constellation"];
             } else {
                 [self showPickerWithTitle:@"请选择星座" andDataArrays:constellationArray andSelectedValue:constellationArray[0] andType:@"weight"];
             }
