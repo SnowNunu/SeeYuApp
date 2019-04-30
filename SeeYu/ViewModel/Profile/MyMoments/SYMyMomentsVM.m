@@ -53,9 +53,8 @@
 - (void)classifyMomentsData:(NSArray *)array {
     // 从服务器获取到的数据已经按时间进行过一次排序
     NSString *currentYear = [[NSDate sy_currentTimestamp] substringToIndex:4];
-    NSArray *yearArray;
     if (array.count == 0) {
-        yearArray = @[currentYear];
+        self.yearArray = @[currentYear];
     } else {
         NSMutableArray *tempYearArray = [NSMutableArray new];   // 所有的年份数组
         [tempYearArray addObject:currentYear];
@@ -64,10 +63,10 @@
                 [tempYearArray addObject:[model.momentTime substringToIndex:4]];
             }
         }
-        yearArray = [NSArray arrayWithArray:tempYearArray]; // 获取到所有的年份数组
+        self.yearArray = [NSArray arrayWithArray:tempYearArray]; // 获取到所有的年份数组
         // 接着按获取所有的月日数组
         tempYearArray = [NSMutableArray new];
-        for (NSString *year in yearArray) {
+        for (NSString *year in self.yearArray) {
             NSMutableArray *tempMonthArray = [NSMutableArray new];   // 所有的年份数组
             for (SYMomentsModel *model in array) {
                 if ([year isEqualToString:[model.momentTime substringToIndex:4]] && ![tempMonthArray containsObject:[model.momentTime substringWithRange:NSMakeRange(5, 5)]]) {
@@ -76,17 +75,22 @@
             }
             [tempYearArray addObject:tempMonthArray];
         }
-//        NSLog(@"去重后的年份数组为：%@",tempYearArray);
-        for (int i = 0 ; i < yearArray.count; i++) {
+        NSMutableArray *arr = [NSMutableArray new];
+        for (int i = 0 ; i < self.yearArray.count; i++) {
             NSArray *tempArray = tempYearArray[i];
+            NSMutableDictionary *cellDict = [NSMutableDictionary new];
             for (int j = 0; j < tempArray.count; j++) {
+                NSMutableArray *cellArray = [NSMutableArray new];
                 for (SYMomentsModel *model in array) {
-                    if ([yearArray[i] isEqualToString:[model.momentTime substringToIndex:4]] && [tempArray[j] isEqualToString:[model.momentTime substringWithRange:NSMakeRange(5, 5)]]) {
-                        NSLog(@"%@:年%@:%@",yearArray[i],tempArray[j],model.momentId);
+                    if ([self.yearArray[i] isEqualToString:[model.momentTime substringToIndex:4]] && [tempArray[j] isEqualToString:[model.momentTime substringWithRange:NSMakeRange(5, 5)]]) {
+                        [cellArray addObject:model];
                     }
                 }
+                [cellDict setObject:cellArray forKey:tempArray[j]];
             }
+            [arr addObject:cellDict];
         }
+        self.datasource = [NSArray arrayWithArray:arr];
     }
 }
 

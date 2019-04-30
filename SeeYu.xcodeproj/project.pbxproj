@@ -415,6 +415,8 @@
 		7BE972012260412D00FF6A25 /* SYVipVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE972002260412D00FF6A25 /* SYVipVM.m */; };
 		7BE972042260443000FF6A25 /* SYCoinVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE972032260443000FF6A25 /* SYCoinVM.m */; };
 		7BE972072260450100FF6A25 /* SYCoinVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE972062260450100FF6A25 /* SYCoinVC.m */; };
+		7BEB77C922784CCC008869A1 /* SYSigninInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB77C822784CCC008869A1 /* SYSigninInfoModel.m */; };
+		7BEB77CC22785C8A008869A1 /* SYSigninModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB77CB22785C8A008869A1 /* SYSigninModel.m */; };
 		7BF37C3C2272F9790042BC4F /* SYSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C3B2272F9790042BC4F /* SYSocketManager.m */; };
 		7BF37C3F227349D90042BC4F /* SYMomentsEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C3E227349D90042BC4F /* SYMomentsEditVC.m */; };
 		7BF37C4222734A380042BC4F /* SYMomentsEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C4122734A380042BC4F /* SYMomentsEditVM.m */; };
@@ -1268,6 +1270,10 @@
 		7BE972032260443000FF6A25 /* SYCoinVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCoinVM.m; sourceTree = "<group>"; };
 		7BE972052260450100FF6A25 /* SYCoinVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCoinVC.h; sourceTree = "<group>"; };
 		7BE972062260450100FF6A25 /* SYCoinVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCoinVC.m; sourceTree = "<group>"; };
+		7BEB77C722784CCC008869A1 /* SYSigninInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSigninInfoModel.h; sourceTree = "<group>"; };
+		7BEB77C822784CCC008869A1 /* SYSigninInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSigninInfoModel.m; sourceTree = "<group>"; };
+		7BEB77CA22785C8A008869A1 /* SYSigninModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSigninModel.h; sourceTree = "<group>"; };
+		7BEB77CB22785C8A008869A1 /* SYSigninModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSigninModel.m; sourceTree = "<group>"; };
 		7BF37C3A2272F9790042BC4F /* SYSocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSocketManager.h; sourceTree = "<group>"; };
 		7BF37C3B2272F9790042BC4F /* SYSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSocketManager.m; sourceTree = "<group>"; };
 		7BF37C3D227349D90042BC4F /* SYMomentsEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMomentsEditVC.h; sourceTree = "<group>"; };
@@ -3919,6 +3925,7 @@
 		7BE971FA2260352500FF6A25 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7BEB77C622784CAE008869A1 /* Signin */,
 				7B76B8A52267575000153249 /* Info */,
 				7B3599212260F2B000FDC6FE /* Authentication */,
 				7BE971FB2260353800FF6A25 /* Presents */,
@@ -3933,6 +3940,17 @@
 				7BE971F02260254500FF6A25 /* SYPresentModel.m */,
 			);
 			path = Presents;
+			sourceTree = "<group>";
+		};
+		7BEB77C622784CAE008869A1 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				7BEB77C722784CCC008869A1 /* SYSigninInfoModel.h */,
+				7BEB77C822784CCC008869A1 /* SYSigninInfoModel.m */,
+				7BEB77CA22785C8A008869A1 /* SYSigninModel.h */,
+				7BEB77CB22785C8A008869A1 /* SYSigninModel.m */,
+			);
+			path = Signin;
 			sourceTree = "<group>";
 		};
 		7BF37C392272F9540042BC4F /* WebSocket */ = {
@@ -5002,8 +5020,10 @@
 				7B4BF4882251B3BC00CCD286 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				7B9A1BE12243B21F00B7BFC2 /* HSDownloadManager.m in Sources */,
 				7BC6FC0D2237D0C10079330A /* SYGuideVC.m in Sources */,
+				7BEB77C922784CCC008869A1 /* SYSigninInfoModel.m in Sources */,
 				7B590931223F776100EE5ACF /* SYAnchorsListVC.m in Sources */,
 				2605C5D61F6633AC00B1F66E /* SYContactsVM.m in Sources */,
+				7BEB77CC22785C8A008869A1 /* SYSigninModel.m in Sources */,
 				26225D9B1F65589E0074BFC3 /* SYConstant.m in Sources */,
 				7B788154224E5CBE00B25CA3 /* SYChattingListCell.m in Sources */,
 				7BB5199C21EC783B000C1CF2 /* FSSegmentTitleView.m in Sources */,

@@ -138,6 +138,14 @@
 }
 
 /**
+ *  返回当前时间的年份
+ */
++ (NSString *)sy_currentYear
+{
+    return [[[NSDateFormatter sy_defaultDateFormatter] stringFromDate:[NSDate date]] substringToIndex:4];
+}
+
+/**
  * 格式化日期描述
  */
 - (NSString *)sy_formattedDateDescription

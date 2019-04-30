@@ -54,8 +54,11 @@
 /// 封面或视频上传
 #define SY_HTTTP_PATH_USER_SHOW_UPLOAD  @"/application/userShow/addShow"
 
-/// 用户签到
+/// 用户日常签到
 #define SY_HTTTP_PATH_USER_SIGN  @"/application/user/userSign"
+
+/// 获取日常签到情况
+#define SY_HTTTP_PATH_USER_SIGN_INFO @"/application/user/userSignRecord"
 
 /// 获取新手礼包详情接口
 #define SY_HTTTP_PATH_GIFT_PACKAGE_INFO @"/application/newGiftPackage/queryNewGiftPackage"

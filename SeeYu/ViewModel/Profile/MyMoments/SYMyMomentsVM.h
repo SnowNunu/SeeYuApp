@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYMyMomentsVM : SYVM
 
+@property (nonatomic, strong) NSArray *yearArray;
+
+@property (nonatomic, strong) NSArray *datasource;
+
 @property (nonatomic, strong) RACCommand *enterMomentsEditView;
 
 @property (nonatomic, strong) RACCommand *requestAllMineMomentsCommand;

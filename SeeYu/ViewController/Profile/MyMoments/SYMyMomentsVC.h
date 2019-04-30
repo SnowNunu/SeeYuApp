@@ -11,9 +11,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYMyMomentsVC : SYVC
+@interface SYMyMomentsVC : SYVC <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) SYMyMomentsVM *viewModel;
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
