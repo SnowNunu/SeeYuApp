@@ -31,14 +31,14 @@
     /// 左边按钮
     if(cancelTitle.length>0){
         UIAlertAction *cancel= [UIAlertAction actionWithTitle:cancelTitle?cancelTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) { !cancelAction?:cancelAction(); }];
-        cancel.textColor = SYColorFromHexString(@"#8E929D");
+        cancel.textColor = [UIColor blueColor];
         [alertController addAction:cancel];
     }
     
     
     if (confirmTitle.length>0) {
         UIAlertAction *confirm = [UIAlertAction actionWithTitle:confirmTitle?confirmTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) { !confirmAction?:confirmAction();}];
-        confirm.textColor = SY_MAIN_TINTCOLOR;
+        confirm.textColor = [UIColor redColor];
         [alertController addAction:confirm];
     }
     

@@ -26,7 +26,7 @@
     int unit = NSCalendarUnitDay | NSCalendarUnitMonth |  NSCalendarUnitYear;
     
     // 1.获得当前时间的年月日
-    NSDateComponents *nowCmps = [calendar components:unit fromDate:[NSDate date]];
+    NSDateComponents *nowCmps = [calendar components:unit fromDate:[self getLocalDateFormatAnyDate:[NSDate date]]];
     
     // 2.获得self的年月日
     NSDateComponents *selfCmps = [calendar components:unit fromDate:self];
@@ -188,16 +188,6 @@
     return [calendar components:unit fromDate:self toDate:[NSDate date] options:0];
 }
 
-+ (void)sy_daySinceNow:(NSDate *)date {
-    NSDate *nowDate = [NSDate date];
-    NSTimeZone *zone = [NSTimeZone timeZoneForSecondsFromGMT:8];
-    
-    NSInteger interval = [zone secondsFromGMTForDate: date];
-    
-    NSDate *localeDate = [date  dateByAddingTimeInterval: interval];
-
-}
-
 
 //////////// MVC&MVVM的商品的发布时间的描述 ////////////
 - (NSString *)sy_string_yyyy_MM_dd {
@@ -256,6 +246,19 @@
 //////////// MVC&MVVM的商品的发布时间的描述 ////////////
 
 
+- (NSDate *)getLocalDateFormatAnyDate:(NSDate *)anyDate {
+    NSTimeZone *sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];//或GMT
+    NSTimeZone *desTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:8 * 3600];
+    //得到源日期与世界标准时间的偏移量
+    NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:anyDate];
+    //目标日期与本地时区的偏移量
+    NSInteger destinationGMTOffset = [desTimeZone secondsFromGMTForDate:anyDate];
+    //得到时间偏移量的差值
+    NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
+    //转为现在时间
+    NSDate* destinationDateNow = [[NSDate alloc] initWithTimeInterval:interval sinceDate:anyDate];
+    return destinationDateNow;
+}
 
 
 

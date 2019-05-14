@@ -8,6 +8,8 @@
 
 #import "SYVC.h"
 #import "SYMyMomentsVM.h"
+#import "SYMomentsModel.h"
+#import "TZImagePickerController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

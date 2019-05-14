@@ -7,12 +7,17 @@
 //
 
 #import "SYSettingVC.h"
+#import "NSObject+SY.h"
 
 @interface SYSettingVC () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic ,strong) NSArray *dataSource;
+@property (nonatomic, strong) NSArray *dataSource;
+
+@property (nonatomic, assign) BOOL notificationState;
+
+@property (nonatomic, assign) BOOL voiceState;
 
 @end
 
@@ -21,9 +26,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    _dataSource = @[@{@"label":@"提醒通知",@"kind":@"switch"},@{@"label":@"吐槽建议",@"kind":@"arrow"},@{@"label":@"免责声明",@"kind":@"arrow"},@{@"label":@"关于我们",@"kind":@"arrow"},@{@"label":@"清理缓存",@"kind":@"label"},@{@"label":@"音效",@"kind":@"switch"},@{@"label":@"活动相关",@"kind":@"arrow"},@{@"label":@"使用规范",@"kind":@"arrow"}];
+    _dataSource = @[@{@"label":@"提醒通知",@"kind":@"switch"},@{@"label":@"免责声明",@"kind":@"arrow"},@{@"label":@"关于我们",@"kind":@"arrow"},@{@"label":@"清理缓存",@"kind":@"label"},@{@"label":@"音效",@"kind":@"switch"}];
     [self _setupSubViews];
     [self _makeSubViewsConstraints];
+}
+
+- (void)bindViewModel {
+    [super bindViewModel];
+    self.notificationState = ![RCIM sharedRCIM].disableMessageNotificaiton;
+    self.voiceState = ![RCIM sharedRCIM].disableMessageAlertSound;
 }
 
 - (void)_setupSubViews {
@@ -77,6 +88,19 @@
             make.right.equalTo(cell.contentView).offset(-15);
             make.centerY.equalTo(cell.contentView);
         }];
+        if (indexPath.row == 0) {
+            mySwitch.on = self.notificationState;
+        } else {
+            mySwitch.on = self.voiceState;
+        }
+        [[mySwitch rac_newOnChannel] subscribeNext:^(id x) {
+            NSNumber *state = (NSNumber *)x;
+            if (indexPath.row == 0) {
+                [RCIM sharedRCIM].disableMessageNotificaiton = ![state boolValue];
+            } else {
+                [RCIM sharedRCIM].disableMessageAlertSound = ![state boolValue];
+            }
+        }];
     } else if ([params[@"kind"] isEqualToString:@"arrow"]) {
         UIButton *arrowBtn = [UIButton new];
         [arrowBtn setImage:SYImageNamed(@"tableview_arrow") forState:UIControlStateNormal];
@@ -112,6 +136,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    if (indexPath.row == 1) {
+        [self.viewModel.enterDisclaimerViewCommand execute:nil];
+    } else if (indexPath.row == 2) {
+        [self.viewModel.enterAboutViewCommand execute:nil];
+    }  else if (indexPath.row == 3) {
+        [NSObject sy_showAlertViewWithTitle:@"" message:@"确定要清除所有的缓存数据吗？" confirmTitle:@"确定" cancelTitle:@"取消" confirmAction:^{
+            [self removeCache];
+        } cancelAction:^{
+            
+        }];
+    }
 }
 
 // 缓存大小
@@ -136,7 +171,7 @@
     //获取路径
     NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask,YES)objectAtIndex:0];
     //返回路径中的文件数组
-    NSArray*files = [[NSFileManager defaultManager]subpathsAtPath:cachePath];
+    NSArray *files = [[NSFileManager defaultManager]subpathsAtPath:cachePath];
     NSLog(@"文件数：%ld",[files count]);
     for(NSString *p in files){
         NSError *error;
@@ -145,9 +180,11 @@
             BOOL isRemove = [[NSFileManager defaultManager]removeItemAtPath:path error:&error];
             if(isRemove) {
                 NSLog(@"清除成功");
-                //这里发送一个通知给外界，外界接收通知，可以做一些操作（比如UIAlertViewController）
+                [MBProgressHUD sy_showTips:@"缓存清除成功"];
+                [self.tableView reloadData];
             } else {
                 NSLog(@"清除失败");
+                [MBProgressHUD sy_showTips:@"缓存清除失败"];
             }
         }
     }

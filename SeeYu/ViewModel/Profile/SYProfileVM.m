@@ -52,21 +52,18 @@
             SYPresentVM *vm = [[SYPresentVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(2)]) {
-            SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"coin"}];
+            SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"diamonds"}];
             [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(3)]) {
-            SYDiamondsVM *vm = [[SYDiamondsVM alloc] initWithServices:self.services params:nil];
-            [self.services pushViewModel:vm animated:YES];
-        } else if ([kind isEqual:@(4)]){
             SYSettingVM *vm = [[SYSettingVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
-        } else if ([kind isEqual:@(5)]) {
+        } else if ([kind isEqual:@(4)]){
             SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"vip"}];
             [self.services pushViewModel:vm animated:YES];
-        } else if ([kind isEqual:@(6)]) {
+        } else if ([kind isEqual:@(5)]) {
             SYAuthenticationVM *vm = [[SYAuthenticationVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
-        } else if ([kind isEqual:@(7)]) {
+        } else if ([kind isEqual:@(6)]) {
             SYInfoEditVM *vm = [[SYInfoEditVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
         }

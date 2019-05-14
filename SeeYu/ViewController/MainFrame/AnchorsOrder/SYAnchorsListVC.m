@@ -12,7 +12,7 @@
 
 NSString * const anchorsListCell = @"anchorsListCell";
 
-@interface SYAnchorsListVC () <UITableViewDelegate, UITableViewDataSource>
+@interface SYAnchorsListVC () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic ,strong) UIView *bgView;
 
@@ -44,6 +44,9 @@ NSString * const anchorsListCell = @"anchorsListCell";
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.emptyDataSetSource = self;
+    tableView.emptyDataSetDelegate = self;
+    tableView.estimatedRowHeight = 0.f;     // 防止出现刷新抖动的情况
     [tableView sy_registerCell:SYAnchorsListCell.class forCellReuseIdentifier:anchorsListCell];
     tableView.tableFooterView = [UIView new];
     _tableView = tableView;
@@ -102,6 +105,18 @@ NSString * const anchorsListCell = @"anchorsListCell";
     NSDictionary *params = @{SYViewModelUtilKey:[model yy_modelToJSONObject]};
     // 昵称 id号 头像 视频
     [self.viewModel.enterAnchorShowViewCommand execute:params];
+}
+
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return SYImageNamed(@"");
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *title = @"暂无更多主播数据";
+    NSDictionary *attributes = @{NSFontAttributeName:[UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName:[UIColor darkGrayColor]};
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
 }
 
 @end

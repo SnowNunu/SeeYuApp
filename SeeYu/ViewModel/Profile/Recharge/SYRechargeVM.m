@@ -22,7 +22,7 @@
     self.backTitle = @"";
     self.prefersNavigationBarBottomLineHidden = YES;
     self.vipViewModel = [[SYVipVM alloc] initWithServices:self.services params:nil];
-    self.coinViewModel = [[SYCoinVM alloc] initWithServices:self.services params:nil];
+    self.diamondsViewModel = [[SYDiamondsVM alloc] initWithServices:self.services params:nil];
 }
 
 @end

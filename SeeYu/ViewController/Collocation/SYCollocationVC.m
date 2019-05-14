@@ -157,7 +157,7 @@
 - (void)startUserShow {
     self.matchModel = self.datasource[0];
     [self.singleShowView jp_playVideoWithURL:[NSURL URLWithString:self.matchModel.showVideo] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
-    
+        
     }];
 }
 

@@ -8,7 +8,7 @@
 
 #import "SYVM.h"
 #import "SYVipVM.h"
-#import "SYCoinVM.h"
+#import "SYDiamondsVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) SYVipVM *vipViewModel;
 
-@property (nonatomic, strong) SYCoinVM *coinViewModel;
+@property (nonatomic, strong) SYDiamondsVM *diamondsViewModel;
 
 @end
 

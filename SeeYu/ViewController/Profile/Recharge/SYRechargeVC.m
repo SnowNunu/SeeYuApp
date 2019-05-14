@@ -10,7 +10,7 @@
 #import "FSSegmentTitleView.h"
 #import "FSPageContentView.h"
 #import "SYVipVC.h"
-#import "SYCoinVC.h"
+#import "SYDiamondsVC.h"
 
 @interface SYRechargeVC () <FSSegmentTitleViewDelegate,FSPageContentViewDelegate>
 
@@ -31,7 +31,7 @@
 
 #pragma mark - 设置导航栏
 - (void)_setupNavigation {
-    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - 80, 44) titles:@[@"充值VIP",@"充值聊豆"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
+    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - 80, 44) titles:@[@"充值VIP",@"充值钻石"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
     self.titleView.titleNormalColor = [UIColor whiteColor];
     self.titleView.titleSelectColor = [UIColor whiteColor];
     self.titleView.backgroundColor = [UIColor clearColor];
@@ -44,9 +44,9 @@
     // 充值vip界面
     SYVipVC *vipVC = [[SYVipVC alloc] initWithViewModel:self.viewModel.vipViewModel];
     [childVCs addObject:vipVC];
-    // 充值聊豆界面
-    SYCoinVC *coinVC = [[SYCoinVC alloc] initWithViewModel:self.viewModel.coinViewModel];
-    [childVCs addObject:coinVC];
+    // 充值钻石界面
+    SYDiamondsVC *diamondsVC = [[SYDiamondsVC alloc] initWithViewModel:self.viewModel.diamondsViewModel];
+    [childVCs addObject:diamondsVC];
     
     self.contentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SY_APPLICATION_TOP_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
     [self.view addSubview:_contentView];
@@ -61,7 +61,7 @@
 }
 
 - (void)changeFirstShowView {
-    if ([self.viewModel.rechargeType isEqualToString:@"coin"]) {
+    if ([self.viewModel.rechargeType isEqualToString:@"diamonds"]) {
         self.titleView.selectIndex = 1;
         self.contentView.contentViewCurrentIndex = 1;
     } else {

@@ -36,6 +36,12 @@
 /// 获取用户资料
 #define SY_HTTTP_PATH_USER_INFO_QUERY   @"/application/user/query"
 
+/// 查询app中充值类型数据
+#define SY_HTTTP_PATH_RECHARGE_INFO_QUERY   @"/application/recharge/queryGoods"
+
+/// 获取支付连接
+#define SY_HTTTP_PATH_PAY_INFO_URL          @"/application/recharge/userRecharge"
+
 /// 获取用户展示资料
 #define SY_HTTTP_PATH_USER_COVER_QUERY   @"/application/userShow/queryMineShow"
 

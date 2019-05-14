@@ -117,6 +117,9 @@ PODS:
   - ReactiveCocoa/UI (2.5.2):
     - ReactiveCocoa/Core
   - Reveal-SDK (17)
+  - RMStore (0.7.1):
+    - RMStore/Core (= 0.7.1)
+  - RMStore/Core (0.7.1)
   - RongCloudIM/IMKit (2.9.14):
     - RongCloudIM/IMLib
   - RongCloudIM/IMLib (2.9.14)
@@ -137,6 +140,8 @@ PODS:
   - UMCAnalytics (6.0.3):
     - UMCCommon
   - UMCCommon (2.0.1)
+  - UMCPush (3.2.4):
+    - UMCCommon
   - UMCSecurityPlugins (1.0.6)
   - WZLBadge (1.2.6)
   - YBImageBrowser (2.2.0):
@@ -201,6 +206,7 @@ DEPENDENCIES:
   - pop (= 1.0.10)
   - ReactiveCocoa (from `https://github.com/zhao0/ReactiveCocoa.git`, tag `2.5.2`)
   - Reveal-SDK (~> 17)
+  - RMStore (= 0.7.1)
   - RongCloudIM/IMKit (= 2.9.14)
   - RongCloudIM/IMLib (= 2.9.14)
   - RongCloudRTC/RongCallLib (= 2.9.14)
@@ -216,6 +222,7 @@ DEPENDENCIES:
   - "UITableView+FDTemplateLayoutCell (= 1.6)"
   - UMCAnalytics
   - UMCCommon
+  - UMCPush
   - UMCSecurityPlugins
   - WZLBadge (= 1.2.6)
   - YBImageBrowser
@@ -268,6 +275,7 @@ SPEC REPOS:
     - PBJVision
     - pop
     - Reveal-SDK
+    - RMStore
     - RongCloudIM
     - RongCloudRTC
     - SAMKeychain
@@ -282,6 +290,7 @@ SPEC REPOS:
     - "UITableView+FDTemplateLayoutCell"
     - UMCAnalytics
     - UMCCommon
+    - UMCPush
     - UMCSecurityPlugins
     - WZLBadge
     - YBImageBrowser
@@ -350,6 +359,7 @@ SPEC CHECKSUMS:
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   ReactiveCocoa: 3ff25b1bd992ac79c5c79b26b6c0c1713b715bb2
   Reveal-SDK: a6df49f47319bd19a110c960c498af32df72c0af
+  RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
   RongCloudIM: 7283628517deaf3500c004d207b2db9836458163
   RongCloudRTC: 48112881c17b32d20bfc0c9d7caafeef555613ef
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
@@ -364,6 +374,7 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UMCAnalytics: ff58714ada407682c4a07548156f94bcec92f055
   UMCCommon: 0263a057a2e1ae1da4c8308541e56904a493ce13
+  UMCPush: 1edd856027dcf905333effb4040ace5d236a7316
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
   YBImageBrowser: f5e19374191925257a0495954c81c42ce9019310
@@ -379,6 +390,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: fda7d3418500c4dd6e950a2ae3fb4294affb2845
+PODFILE CHECKSUM: b585dec141abe702c60e753212fdba4fd40ae46b
 
 COCOAPODS: 1.7.0.beta.3

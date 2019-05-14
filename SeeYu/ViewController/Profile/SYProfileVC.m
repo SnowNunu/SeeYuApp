@@ -48,7 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    _dataSource = @[@{@"label":@"我的动态",@"icon":@"icon_moment"},@{@"label":@"我的礼物",@"icon":@"icon_gift"},@{@"label":@"我的聊豆",@"icon":@"icon_chatBean"},@{@"label":@"我的钻石",@"icon":@"icon_diamond"},@{@"label":@"设置",@"icon":@"icon_setting"}];
+    _dataSource = @[@{@"label":@"我的动态",@"icon":@"icon_moment"},@{@"label":@"我的礼物",@"icon":@"icon_gift"},@{@"label":@"我的钻石",@"icon":@"icon_diamond"},@{@"label":@"设置",@"icon":@"icon_setting"}];
     [self _setupSubViews];
     [self _makeSubViewsConstraints];
 }
@@ -99,7 +99,7 @@
         }
     }];
     [[self.detailBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.viewModel.enterNextViewCommand execute:@(7)];
+        [self.viewModel.enterNextViewCommand execute:@(6)];
     }];
 }
 
@@ -116,7 +116,7 @@
     tableView.tableHeaderView = headerView;
     UITapGestureRecognizer *infoTap = [UITapGestureRecognizer new];
     [[infoTap rac_gestureSignal] subscribeNext:^(id x) {
-        [self.viewModel.enterNextViewCommand execute:@(7)];
+        [self.viewModel.enterNextViewCommand execute:@(6)];
     }];
     [headerView addGestureRecognizer:infoTap];
     _tableView = tableView;
@@ -160,7 +160,7 @@
     @weakify(self)
     [[vipTap rac_gestureSignal] subscribeNext:^(id x) {
         @strongify(self)
-        [self.viewModel.enterNextViewCommand execute:@(5)];
+        [self.viewModel.enterNextViewCommand execute:@(4)];
     }];
     [vipBgView addGestureRecognizer:vipTap];
     
@@ -192,7 +192,7 @@
     UITapGestureRecognizer *authenticationTap = [[UITapGestureRecognizer alloc] init];
     [[authenticationTap rac_gestureSignal] subscribeNext:^(id x) {
         @strongify(self)
-        [self.viewModel.enterNextViewCommand execute:@(6)];
+        [self.viewModel.enterNextViewCommand execute:@(5)];
     }];
     [authenticationBgView addGestureRecognizer:authenticationTap];
     

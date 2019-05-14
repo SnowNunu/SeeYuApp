@@ -7,10 +7,13 @@
 //
 
 #import "SYGuideVC.h"
+#import "JPVideoPlayerKit.h"
 
 @interface SYGuideVC ()
 
-@property (nonatomic, strong) UIImageView *backgroundImageView;
+//@property (nonatomic, strong) YYAnimatedImageView *gifImageView;
+
+@property (nonatomic, strong) UIView *videoShowView;
 
 @property (nonatomic, strong) UIButton *loginBtn;
 
@@ -36,11 +39,31 @@
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSURL *fileUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"login" ofType:@"mp4"]];
+    [_videoShowView jp_playVideoWithURL:fileUrl options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
+        playerModel.muted = YES;
+    }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [_videoShowView jp_stopPlay];
+}
+
 - (void)_setupSubViews {
-    UIImageView *backgroundImageView = [UIImageView new];
-    backgroundImageView.image = SYImageNamed(@"launchImage");
-    _backgroundImageView = backgroundImageView;
-    [self.view addSubview:backgroundImageView];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"login.gif" ofType:nil];
+//    YYImage *giftImage = [YYImage imageWithContentsOfFile:path];
+//    YYAnimatedImageView *gifImageView = [YYAnimatedImageView new];
+//    gifImageView.contentMode = UIViewContentModeScaleAspectFill;
+//    gifImageView.image = giftImage;
+//    _gifImageView = gifImageView;
+//    [self.view addSubview:gifImageView];
+    
+    UIView *videoShowView = [[UIView alloc] initWithFrame:self.view.bounds];
+    _videoShowView = videoShowView;
+    [self.view addSubview:videoShowView];
     
     UIButton *loginBtn = [[UIButton alloc]init];
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
@@ -65,9 +88,9 @@
 
 - (void)_makeSubViewsConstraints {
     CGFloat margin = (SY_SCREEN_WIDTH - 30 - 2 * 100 ) / 2;
-    [_backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
+//    [_gifImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.view);
+//    }];
     [_loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.offset(100);
         make.height.offset(40);

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray *yearArray;
 
-@property (nonatomic, strong) NSArray *datasource;
+@property (nonatomic, strong) NSMutableDictionary *modelDictionary;
 
 @property (nonatomic, strong) RACCommand *enterMomentsEditView;
 

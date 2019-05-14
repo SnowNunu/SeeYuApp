@@ -1,0 +1,1548 @@
+BCSymbolMap Version: 2.0
+-[JPResourceLoadingRequestTask dealloc]
+-[JPResourceLoadingRequestTask init]
+-[JPResourceLoadingRequestTask initWithLoadingRequest:requestRange:cacheFile:customURL:cached:]
++[JPResourceLoadingRequestTask requestTaskWithLoadingRequest:requestRange:cacheFile:customURL:cached:]
+-[JPResourceLoadingRequestTask requestDidReceiveResponse:]
+-[JPResourceLoadingRequestTask requestDidReceiveData:storedCompletion:]
+-[JPResourceLoadingRequestTask requestDidCompleteWithError:]
+___60-[JPResourceLoadingRequestTask requestDidCompleteWithError:]_block_invoke
+___copy_helper_block_
+___destroy_helper_block_
+-[JPResourceLoadingRequestTask start]
+-[JPResourceLoadingRequestTask startOnQueue:]
+___45-[JPResourceLoadingRequestTask startOnQueue:]_block_invoke
+___copy_helper_block_.49
+___destroy_helper_block_.50
+-[JPResourceLoadingRequestTask cancel]
+-[JPResourceLoadingRequestTask setFinished:]
+-[JPResourceLoadingRequestTask setCancelled:]
+-[JPResourceLoadingRequestTask setExecuting:]
+-[JPResourceLoadingRequestTask internalFetchUUID]
+-[JPResourceLoadingRequestTask delegate]
+-[JPResourceLoadingRequestTask setDelegate:]
+-[JPResourceLoadingRequestTask loadingRequest]
+-[JPResourceLoadingRequestTask requestRange]
+-[JPResourceLoadingRequestTask cacheFile]
+-[JPResourceLoadingRequestTask customURL]
+-[JPResourceLoadingRequestTask isCached]
+-[JPResourceLoadingRequestTask isExecuting]
+-[JPResourceLoadingRequestTask isFinished]
+-[JPResourceLoadingRequestTask isCancelled]
+-[JPResourceLoadingRequestTask lock]
+-[JPResourceLoadingRequestTask setLock:]
+-[JPResourceLoadingRequestTask .cxx_destruct]
+-[JPResourceLoadingRequestLocalTask dealloc]
+-[JPResourceLoadingRequestLocalTask initWithLoadingRequest:requestRange:cacheFile:customURL:cached:]
+-[JPResourceLoadingRequestLocalTask startOnQueue:]
+___50-[JPResourceLoadingRequestLocalTask startOnQueue:]_block_invoke
+___copy_helper_block_.158
+___destroy_helper_block_.159
+-[JPResourceLoadingRequestLocalTask start]
+-[JPResourceLoadingRequestLocalTask internalStart]
+-[JPResourceLoadingRequestLocalTask fillContentInformation]
+-[JPResourceLoadingRequestLocalTask plock]
+-[JPResourceLoadingRequestLocalTask setPlock:]
+-[JPResourceLoadingRequestWebTask dealloc]
+-[JPResourceLoadingRequestWebTask initWithLoadingRequest:requestRange:cacheFile:customURL:cached:]
+-[JPResourceLoadingRequestWebTask start]
+___40-[JPResourceLoadingRequestWebTask start]_block_invoke
+___copy_helper_block_.220
+___destroy_helper_block_.221
+-[JPResourceLoadingRequestWebTask startOnQueue:]
+___48-[JPResourceLoadingRequestWebTask startOnQueue:]_block_invoke
+___copy_helper_block_.223
+___destroy_helper_block_.224
+-[JPResourceLoadingRequestWebTask cancel]
+___41-[JPResourceLoadingRequestWebTask cancel]_block_invoke
+___copy_helper_block_.241
+___destroy_helper_block_.242
+-[JPResourceLoadingRequestWebTask shouldContinueWhenAppEntersBackground]
+-[JPResourceLoadingRequestWebTask internalStart]
+___48-[JPResourceLoadingRequestWebTask internalStart]_block_invoke
+___copy_helper_block_.268
+___destroy_helper_block_.269
+-[JPResourceLoadingRequestWebTask requestDidReceiveResponse:]
+-[JPResourceLoadingRequestWebTask requestDidReceiveData:storedCompletion:]
+___74-[JPResourceLoadingRequestWebTask requestDidReceiveData:storedCompletion:]_block_invoke
+-[JPResourceLoadingRequestWebTask requestDidCompleteWithError:]
+-[JPResourceLoadingRequestWebTask synchronizeCacheFileIfNeeded]
+-[JPResourceLoadingRequestWebTask dataTask]
+-[JPResourceLoadingRequestWebTask setDataTask:]
+-[JPResourceLoadingRequestWebTask request]
+-[JPResourceLoadingRequestWebTask setRequest:]
+-[JPResourceLoadingRequestWebTask options]
+-[JPResourceLoadingRequestWebTask setOptions:]
+-[JPResourceLoadingRequestWebTask unownedSession]
+-[JPResourceLoadingRequestWebTask setUnownedSession:]
+-[JPResourceLoadingRequestWebTask backgroundTaskId]
+-[JPResourceLoadingRequestWebTask setBackgroundTaskId:]
+-[JPResourceLoadingRequestWebTask offset]
+-[JPResourceLoadingRequestWebTask setOffset:]
+-[JPResourceLoadingRequestWebTask requestLength]
+-[JPResourceLoadingRequestWebTask setRequestLength:]
+-[JPResourceLoadingRequestWebTask haveDataSaved]
+-[JPResourceLoadingRequestWebTask setHaveDataSaved:]
+-[JPResourceLoadingRequestWebTask plock]
+-[JPResourceLoadingRequestWebTask setPlock:]
+-[JPResourceLoadingRequestWebTask .cxx_destruct]
+_kJPVideoPlayerContentRangeKey
+_OBJC_IVAR_$_JPResourceLoadingRequestTask._lock
+_OBJC_IVAR_$_JPResourceLoadingRequestTask._loadingRequest
+_OBJC_IVAR_$_JPResourceLoadingRequestTask._requestRange
+_OBJC_IVAR_$_JPResourceLoadingRequestTask._cacheFile
+_OBJC_IVAR_$_JPResourceLoadingRequestTask._customURL
+_OBJC_IVAR_$_JPResourceLoadingRequestTask._cached
+_OBJC_IVAR_$_JPResourceLoadingRequestTask._executing
+_OBJC_IVAR_$_JPResourceLoadingRequestTask._cancelled
+_OBJC_IVAR_$_JPResourceLoadingRequestTask._finished
+___block_descriptor_tmp
+___block_descriptor_tmp.51
+_OBJC_IVAR_$_JPResourceLoadingRequestTask._delegate
+_OBJC_IVAR_$_JPResourceLoadingRequestLocalTask._plock
+___block_descriptor_tmp.160
+_kJPVideoPlayerFileReadBufferSize
+_OBJC_IVAR_$_JPResourceLoadingRequestWebTask._plock
+_OBJC_IVAR_$_JPResourceLoadingRequestWebTask._haveDataSaved
+_OBJC_IVAR_$_JPResourceLoadingRequestWebTask._offset
+_OBJC_IVAR_$_JPResourceLoadingRequestWebTask._requestLength
+___block_descriptor_tmp.222
+___block_descriptor_tmp.225
+___block_descriptor_tmp.243
+___block_descriptor_tmp.270
+_requestDidReceiveData:storedCompletion:._needLog
+___block_descriptor_tmp.302
+___block_literal_global
+_OBJC_IVAR_$_JPResourceLoadingRequestWebTask._dataTask
+_OBJC_IVAR_$_JPResourceLoadingRequestWebTask._request
+_OBJC_IVAR_$_JPResourceLoadingRequestWebTask._options
+_OBJC_IVAR_$_JPResourceLoadingRequestWebTask._unownedSession
+_OBJC_IVAR_$_JPResourceLoadingRequestWebTask._backgroundTaskId
+Apple LLVM version 10.0.0 (clang-1000.11.45.5)
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPResourceLoadingRequestTask.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPResourceLoadingRequestTask.h
+__74-[JPResourceLoadingRequestWebTask requestDidReceiveData:storedCompletion:]_block_invoke
+dispatch_get_main_queue
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/include/dispatch/queue.h
+__destroy_helper_block_
+__copy_helper_block_
+__48-[JPResourceLoadingRequestWebTask internalStart]_block_invoke
+__41-[JPResourceLoadingRequestWebTask cancel]_block_invoke
+__48-[JPResourceLoadingRequestWebTask startOnQueue:]_block_invoke
+__40-[JPResourceLoadingRequestWebTask start]_block_invoke
+NSMaxRange
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSRange.h
+NSMakeRange
+__50-[JPResourceLoadingRequestLocalTask startOnQueue:]_block_invoke
+__45-[JPResourceLoadingRequestTask startOnQueue:]_block_invoke
+__60-[JPResourceLoadingRequestTask requestDidCompleteWithError:]_block_invoke
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/Target Support Files/JPVideoPlayer/JPVideoPlayer-dummy.m
+-[JPVideoPlayerModel setRate:]
+-[JPVideoPlayerModel rate]
+-[JPVideoPlayerModel setMuted:]
+-[JPVideoPlayerModel muted]
+-[JPVideoPlayerModel setVolume:]
+-[JPVideoPlayerModel volume]
+-[JPVideoPlayerModel seekToTime:]
+-[JPVideoPlayerModel pause]
+-[JPVideoPlayerModel resume]
+-[JPVideoPlayerModel currentTime]
+-[JPVideoPlayerModel stopPlay]
+-[JPVideoPlayerModel reset]
+-[JPVideoPlayerModel playerLayer]
+-[JPVideoPlayerModel setPlayerLayer:]
+-[JPVideoPlayerModel player]
+-[JPVideoPlayerModel setPlayer:]
+-[JPVideoPlayerModel resourceLoader]
+-[JPVideoPlayerModel setResourceLoader:]
+-[JPVideoPlayerModel playerOptions]
+-[JPVideoPlayerModel setPlayerOptions:]
+-[JPVideoPlayerModel url]
+-[JPVideoPlayerModel setUrl:]
+-[JPVideoPlayerModel unownedShowLayer]
+-[JPVideoPlayerModel setUnownedShowLayer:]
+-[JPVideoPlayerModel playerItem]
+-[JPVideoPlayerModel setPlayerItem:]
+-[JPVideoPlayerModel videoURLAsset]
+-[JPVideoPlayerModel setVideoURLAsset:]
+-[JPVideoPlayerModel isCancelled]
+-[JPVideoPlayerModel setCancelled:]
+-[JPVideoPlayerModel lastTime]
+-[JPVideoPlayerModel setLastTime:]
+-[JPVideoPlayerModel timeObserver]
+-[JPVideoPlayerModel setTimeObserver:]
+-[JPVideoPlayerModel videoPlayer]
+-[JPVideoPlayerModel setVideoPlayer:]
+-[JPVideoPlayerModel elapsedSeconds]
+-[JPVideoPlayerModel setElapsedSeconds:]
+-[JPVideoPlayerModel totalSeconds]
+-[JPVideoPlayerModel setTotalSeconds:]
+-[JPVideoPlayerModel .cxx_destruct]
+-[JPVideoPlayer dealloc]
+-[JPVideoPlayer init]
+-[JPVideoPlayer playExistedVideoWithURL:fullVideoCachePath:options:showOnLayer:configurationCompletion:]
+-[JPVideoPlayer playVideoWithURL:options:showLayer:configurationCompletion:]
+-[JPVideoPlayer resumePlayWithShowLayer:options:configurationCompletion:]
+-[JPVideoPlayer seekToTimeWhenRecordPlayback:]
+___46-[JPVideoPlayer seekToTimeWhenRecordPlayback:]_block_invoke
+-[JPVideoPlayer setRate:]
+-[JPVideoPlayer rate]
+-[JPVideoPlayer setMuted:]
+-[JPVideoPlayer muted]
+-[JPVideoPlayer setVolume:]
+-[JPVideoPlayer volume]
+-[JPVideoPlayer seekToTime:]
+___28-[JPVideoPlayer seekToTime:]_block_invoke
+___copy_helper_block_.274
+___destroy_helper_block_.275
+-[JPVideoPlayer elapsedSeconds]
+-[JPVideoPlayer totalSeconds]
+-[JPVideoPlayer pause]
+-[JPVideoPlayer resume]
+-[JPVideoPlayer currentTime]
+-[JPVideoPlayer stopPlay]
+-[JPVideoPlayer resourceLoader:didReceiveLoadingRequestTask:]
+-[JPVideoPlayer addObserver]
+-[JPVideoPlayer appReceivedMemoryWarning]
+-[JPVideoPlayer playerItemDidPlayToEnd:]
+-[JPVideoPlayer observeValueForKeyPath:ofObject:change:context:]
+-[JPVideoPlayer startCheckBufferingTimer]
+-[JPVideoPlayer stopCheckBufferingTimerIfNeed]
+-[JPVideoPlayer checkBufferingTimeDidChange]
+-[JPVideoPlayer resetAwakeWaitingTimeInterval]
+-[JPVideoPlayer updateAwakeWaitingTimerInterval]
+-[JPVideoPlayer startAwakeWhenBuffering]
+___40-[JPVideoPlayer startAwakeWhenBuffering]_block_invoke
+___copy_helper_block_.352
+___destroy_helper_block_.353
+-[JPVideoPlayer endAwakeFromBuffering]
+-[JPVideoPlayer seekToHeaderThenStartPlayback]
+___46-[JPVideoPlayer seekToHeaderThenStartPlayback]_block_invoke
+___copy_helper_block_.360
+___destroy_helper_block_.361
+-[JPVideoPlayer callPlayerStatusDidChangeDelegateMethod]
+-[JPVideoPlayer internalPauseWithNeedCallDelegate:]
+-[JPVideoPlayer internalResumeWithNeedCallDelegate:]
+-[JPVideoPlayer playerModelWithURL:playerItem:options:showOnLayer:]
+___67-[JPVideoPlayer playerModelWithURL:playerItem:options:showOnLayer:]_block_invoke
+___67-[JPVideoPlayer playerModelWithURL:playerItem:options:showOnLayer:]_block_invoke_2
+___copy_helper_block_.385
+___destroy_helper_block_.386
+___copy_helper_block_.388
+___destroy_helper_block_.389
+-[JPVideoPlayer setVideoGravityWithOptions:playerModel:]
+-[JPVideoPlayer handleVideoURL]
+-[JPVideoPlayer displayVideoPicturesOnShowLayer]
+___48-[JPVideoPlayer displayVideoPicturesOnShowLayer]_block_invoke
+___copy_helper_block_.415
+___destroy_helper_block_.416
+-[JPVideoPlayer callDelegateMethodWithError:]
+___45-[JPVideoPlayer callDelegateMethodWithError:]_block_invoke
+___copy_helper_block_.422
+___destroy_helper_block_.423
+-[JPVideoPlayer delegate]
+-[JPVideoPlayer setDelegate:]
+-[JPVideoPlayer playerModel]
+-[JPVideoPlayer setPlayerModel:]
+-[JPVideoPlayer playerStatus]
+-[JPVideoPlayer setPlayerStatus:]
+-[JPVideoPlayer playerStatus_beforeEnterBackground]
+-[JPVideoPlayer setPlayerStatus_beforeEnterBackground:]
+-[JPVideoPlayer lock]
+-[JPVideoPlayer setLock:]
+-[JPVideoPlayer checkBufferingTimer]
+-[JPVideoPlayer setCheckBufferingTimer:]
+-[JPVideoPlayer .cxx_destruct]
+_JPVideoPlayerURLScheme
+_JPVideoPlayerURL
+_OBJC_IVAR_$_JPVideoPlayerModel._playerLayer
+_OBJC_IVAR_$_JPVideoPlayerModel._player
+_OBJC_IVAR_$_JPVideoPlayerModel._resourceLoader
+_OBJC_IVAR_$_JPVideoPlayerModel._playerOptions
+_OBJC_IVAR_$_JPVideoPlayerModel._url
+_OBJC_IVAR_$_JPVideoPlayerModel._unownedShowLayer
+_OBJC_IVAR_$_JPVideoPlayerModel._playerItem
+_OBJC_IVAR_$_JPVideoPlayerModel._videoURLAsset
+_OBJC_IVAR_$_JPVideoPlayerModel._cancelled
+_OBJC_IVAR_$_JPVideoPlayerModel._lastTime
+_OBJC_IVAR_$_JPVideoPlayerModel._timeObserver
+_OBJC_IVAR_$_JPVideoPlayerModel._videoPlayer
+_OBJC_IVAR_$_JPVideoPlayerModel._elapsedSeconds
+_OBJC_IVAR_$_JPVideoPlayerModel._totalSeconds
+l_OBJC_PROTOCOL_$_NSObject
+l_OBJC_LABEL_PROTOCOL_$_NSObject
+l_OBJC_PROTOCOL_$_JPVideoPlayerPlaybackProtocol
+l_OBJC_LABEL_PROTOCOL_$_JPVideoPlayerPlaybackProtocol
+_OBJC_IVAR_$_JPVideoPlayer._lock
+_OBJC_IVAR_$_JPVideoPlayer._playerStatus
+___block_descriptor_tmp.276
+__awakeWaitingTimeInterval
+__isOpenAwakeWhenBuffering
+___block_descriptor_tmp.355
+___block_descriptor_tmp.362
+___block_descriptor_tmp.387
+___block_descriptor_tmp.391
+___block_descriptor_tmp.417
+___block_descriptor_tmp.424
+_OBJC_IVAR_$_JPVideoPlayer._delegate
+_OBJC_IVAR_$_JPVideoPlayer._playerModel
+_OBJC_IVAR_$_JPVideoPlayer._playerStatus_beforeEnterBackground
+_OBJC_IVAR_$_JPVideoPlayer._checkBufferingTimer
+l_OBJC_PROTOCOL_$_JPVideoPlayerResourceLoaderDelegate
+l_OBJC_LABEL_PROTOCOL_$_JPVideoPlayerResourceLoaderDelegate
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayer.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayer.h
+__45-[JPVideoPlayer callDelegateMethodWithError:]_block_invoke
+__48-[JPVideoPlayer displayVideoPicturesOnShowLayer]_block_invoke
+__67-[JPVideoPlayer playerModelWithURL:playerItem:options:showOnLayer:]_block_invoke_2
+__67-[JPVideoPlayer playerModelWithURL:playerItem:options:showOnLayer:]_block_invoke
+__inline_isnanl
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/include/math.h
+__inline_isnand
+__inline_isnanf
+__46-[JPVideoPlayer seekToHeaderThenStartPlayback]_block_invoke
+__40-[JPVideoPlayer startAwakeWhenBuffering]_block_invoke
+__28-[JPVideoPlayer seekToTime:]_block_invoke
+__46-[JPVideoPlayer seekToTimeWhenRecordPlayback:]_block_invoke
+-[JPVideoPlayerCacheConfiguration init]
+-[JPVideoPlayerCacheConfiguration maxCacheAge]
+-[JPVideoPlayerCacheConfiguration setMaxCacheAge:]
+-[JPVideoPlayerCacheConfiguration maxCacheSize]
+-[JPVideoPlayerCacheConfiguration setMaxCacheSize:]
+-[JPVideoPlayerCacheConfiguration shouldDisableiCloud]
+-[JPVideoPlayerCacheConfiguration setShouldDisableiCloud:]
+-[JPVideoPlayerCache initWithCacheConfiguration:]
+-[JPVideoPlayerCache init]
++[JPVideoPlayerCache sharedCache]
+___33+[JPVideoPlayerCache sharedCache]_block_invoke
+-[JPVideoPlayerCache diskVideoExistsWithKey:completion:]
+___56-[JPVideoPlayerCache diskVideoExistsWithKey:completion:]_block_invoke
+___56-[JPVideoPlayerCache diskVideoExistsWithKey:completion:]_block_invoke_2
+___copy_helper_block_.64
+___destroy_helper_block_.65
+___copy_helper_block_.67
+___destroy_helper_block_.68
+-[JPVideoPlayerCache queryCacheOperationForKey:completion:]
+___59-[JPVideoPlayerCache queryCacheOperationForKey:completion:]_block_invoke
+___copy_helper_block_.70
+___destroy_helper_block_.71
+___59-[JPVideoPlayerCache queryCacheOperationForKey:completion:]_block_invoke.75
+___59-[JPVideoPlayerCache queryCacheOperationForKey:completion:]_block_invoke_2
+___copy_helper_block_.76
+___destroy_helper_block_.77
+___59-[JPVideoPlayerCache queryCacheOperationForKey:completion:]_block_invoke.79
+___copy_helper_block_.80
+___destroy_helper_block_.81
+___copy_helper_block_.83
+___destroy_helper_block_.84
+-[JPVideoPlayerCache diskVideoExistsOnPath:]
+-[JPVideoPlayerCache removeVideoCacheForKey:completion:]
+___56-[JPVideoPlayerCache removeVideoCacheForKey:completion:]_block_invoke
+___56-[JPVideoPlayerCache removeVideoCacheForKey:completion:]_block_invoke_2
+___copy_helper_block_.90
+___destroy_helper_block_.91
+___copy_helper_block_.93
+___destroy_helper_block_.94
+-[JPVideoPlayerCache deleteOldFilesOnCompletion:]
+___49-[JPVideoPlayerCache deleteOldFilesOnCompletion:]_block_invoke
+___49-[JPVideoPlayerCache deleteOldFilesOnCompletion:]_block_invoke_2
+___49-[JPVideoPlayerCache deleteOldFilesOnCompletion:]_block_invoke_3
+___copy_helper_block_.143
+___destroy_helper_block_.144
+___copy_helper_block_.146
+___destroy_helper_block_.147
+-[JPVideoPlayerCache clearDiskOnCompletion:]
+___44-[JPVideoPlayerCache clearDiskOnCompletion:]_block_invoke
+___44-[JPVideoPlayerCache clearDiskOnCompletion:]_block_invoke_2
+___copy_helper_block_.153
+___destroy_helper_block_.154
+___copy_helper_block_.156
+___destroy_helper_block_.157
+-[JPVideoPlayerCache clearVideoCacheOnVersion2OnCompletion:]
+___60-[JPVideoPlayerCache clearVideoCacheOnVersion2OnCompletion:]_block_invoke
+___60-[JPVideoPlayerCache clearVideoCacheOnVersion2OnCompletion:]_block_invoke_2
+___copy_helper_block_.168
+___destroy_helper_block_.169
+___copy_helper_block_.171
+___destroy_helper_block_.172
+-[JPVideoPlayerCache cacheFileNameForKey:]
+-[JPVideoPlayerCache cachedFileNameForKey:]
+-[JPVideoPlayerCache haveFreeSizeToCacheFileWithSize:]
+-[JPVideoPlayerCache getSize]
+-[JPVideoPlayerCache getDiskCount]
+-[JPVideoPlayerCache calculateSizeOnCompletion:]
+___48-[JPVideoPlayerCache calculateSizeOnCompletion:]_block_invoke
+___48-[JPVideoPlayerCache calculateSizeOnCompletion:]_block_invoke_2
+___copy_helper_block_.209
+___destroy_helper_block_.210
+___copy_helper_block_.212
+___destroy_helper_block_.213
+-[JPVideoPlayerCache getDiskFreeSize]
+-[JPVideoPlayerCache deleteOldFiles]
+-[JPVideoPlayerCache backgroundDeleteOldFiles]
+___46-[JPVideoPlayerCache backgroundDeleteOldFiles]_block_invoke
+___copy_helper_block_.229
+___destroy_helper_block_.230
+___46-[JPVideoPlayerCache backgroundDeleteOldFiles]_block_invoke.234
+___copy_helper_block_.235
+___destroy_helper_block_.236
+-[JPVideoPlayerCache cacheConfiguration]
+-[JPVideoPlayerCache ioQueue]
+-[JPVideoPlayerCache setIoQueue:]
+-[JPVideoPlayerCache lock]
+-[JPVideoPlayerCache setLock:]
+-[JPVideoPlayerCache fileManager]
+-[JPVideoPlayerCache setFileManager:]
+-[JPVideoPlayerCache .cxx_destruct]
+-[JPVideoPlayerCache(Deprecated) removeFullCacheForKey:completion:]
+___67-[JPVideoPlayerCache(Deprecated) removeFullCacheForKey:completion:]_block_invoke
+___67-[JPVideoPlayerCache(Deprecated) removeFullCacheForKey:completion:]_block_invoke_2
+___copy_helper_block_.285
+___destroy_helper_block_.286
+___copy_helper_block_.288
+___destroy_helper_block_.289
+-[JPVideoPlayerCache(Deprecated) removeTempCacheForKey:completion:]
+___67-[JPVideoPlayerCache(Deprecated) removeTempCacheForKey:completion:]_block_invoke
+___67-[JPVideoPlayerCache(Deprecated) removeTempCacheForKey:completion:]_block_invoke_2
+___copy_helper_block_.294
+___destroy_helper_block_.295
+___copy_helper_block_.297
+___destroy_helper_block_.298
+-[JPVideoPlayerCache(Deprecated) deleteAllTempCacheOnCompletion:]
+___65-[JPVideoPlayerCache(Deprecated) deleteAllTempCacheOnCompletion:]_block_invoke
+___65-[JPVideoPlayerCache(Deprecated) deleteAllTempCacheOnCompletion:]_block_invoke_2
+___copy_helper_block_.300
+___destroy_helper_block_.301
+___copy_helper_block_.303
+___destroy_helper_block_.304
+_OBJC_IVAR_$_JPVideoPlayerCacheConfiguration._maxCacheAge
+_OBJC_IVAR_$_JPVideoPlayerCacheConfiguration._maxCacheSize
+_OBJC_IVAR_$_JPVideoPlayerCacheConfiguration._shouldDisableiCloud
+_kJPVideoPlayerVersion2CacheHasBeenClearedKey
+_OBJC_IVAR_$_JPVideoPlayerCache._ioQueue
+_OBJC_IVAR_$_JPVideoPlayerCache._lock
+_OBJC_IVAR_$_JPVideoPlayerCache._cacheConfiguration
+_OBJC_IVAR_$_JPVideoPlayerCache._fileManager
+_sharedCache.once
+_sharedCache.instance
+___block_descriptor_tmp.66
+___block_descriptor_tmp.69
+___block_descriptor_tmp.72
+___block_descriptor_tmp.78
+___block_descriptor_tmp.82
+___block_descriptor_tmp.85
+___block_descriptor_tmp.92
+___block_descriptor_tmp.95
+___block_descriptor_tmp.138
+___block_descriptor_tmp.145
+___block_descriptor_tmp.148
+___block_descriptor_tmp.155
+___block_descriptor_tmp.158
+___block_descriptor_tmp.170
+___block_descriptor_tmp.173
+___block_descriptor_tmp.211
+___block_descriptor_tmp.214
+___block_descriptor_tmp.231
+___block_descriptor_tmp.237
+___block_descriptor_tmp.287
+___block_descriptor_tmp.290
+___block_descriptor_tmp.296
+___block_descriptor_tmp.299
+___block_descriptor_tmp.305
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerCache.m
+__65-[JPVideoPlayerCache(Deprecated) deleteAllTempCacheOnCompletion:]_block_invoke_2
+__65-[JPVideoPlayerCache(Deprecated) deleteAllTempCacheOnCompletion:]_block_invoke
+__67-[JPVideoPlayerCache(Deprecated) removeTempCacheForKey:completion:]_block_invoke_2
+__67-[JPVideoPlayerCache(Deprecated) removeTempCacheForKey:completion:]_block_invoke
+__67-[JPVideoPlayerCache(Deprecated) removeFullCacheForKey:completion:]_block_invoke_2
+__67-[JPVideoPlayerCache(Deprecated) removeFullCacheForKey:completion:]_block_invoke
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerCache.h
+__46-[JPVideoPlayerCache backgroundDeleteOldFiles]_block_invoke.234
+__46-[JPVideoPlayerCache backgroundDeleteOldFiles]_block_invoke
+__48-[JPVideoPlayerCache calculateSizeOnCompletion:]_block_invoke_2
+__48-[JPVideoPlayerCache calculateSizeOnCompletion:]_block_invoke
+__60-[JPVideoPlayerCache clearVideoCacheOnVersion2OnCompletion:]_block_invoke_2
+__60-[JPVideoPlayerCache clearVideoCacheOnVersion2OnCompletion:]_block_invoke
+__44-[JPVideoPlayerCache clearDiskOnCompletion:]_block_invoke_2
+__44-[JPVideoPlayerCache clearDiskOnCompletion:]_block_invoke
+__49-[JPVideoPlayerCache deleteOldFilesOnCompletion:]_block_invoke_3
+__49-[JPVideoPlayerCache deleteOldFilesOnCompletion:]_block_invoke_2
+__49-[JPVideoPlayerCache deleteOldFilesOnCompletion:]_block_invoke
+__56-[JPVideoPlayerCache removeVideoCacheForKey:completion:]_block_invoke_2
+__56-[JPVideoPlayerCache removeVideoCacheForKey:completion:]_block_invoke
+__59-[JPVideoPlayerCache queryCacheOperationForKey:completion:]_block_invoke.79
+__59-[JPVideoPlayerCache queryCacheOperationForKey:completion:]_block_invoke_2
+__59-[JPVideoPlayerCache queryCacheOperationForKey:completion:]_block_invoke.75
+__59-[JPVideoPlayerCache queryCacheOperationForKey:completion:]_block_invoke
+__56-[JPVideoPlayerCache diskVideoExistsWithKey:completion:]_block_invoke_2
+__56-[JPVideoPlayerCache diskVideoExistsWithKey:completion:]_block_invoke
+__33+[JPVideoPlayerCache sharedCache]_block_invoke
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/include/dispatch/once.h
++[JPVideoPlayerCacheFile cacheFileWithFilePath:indexFilePath:]
+-[JPVideoPlayerCacheFile init]
+-[JPVideoPlayerCacheFile initWithFilePath:indexFilePath:]
+-[JPVideoPlayerCacheFile dealloc]
+-[JPVideoPlayerCacheFile cachedDataBound]
+-[JPVideoPlayerCacheFile isFileLengthValid]
+-[JPVideoPlayerCacheFile isCompleted]
+-[JPVideoPlayerCacheFile isEOF]
+-[JPVideoPlayerCacheFile fragmentRanges]
+-[JPVideoPlayerCacheFile mergeRangesIfNeed]
+-[JPVideoPlayerCacheFile addRange:completion:]
+___46-[JPVideoPlayerCacheFile addRange:completion:]_block_invoke
+-[JPVideoPlayerCacheFile cachedRangeForRange:]
+-[JPVideoPlayerCacheFile cachedRangeContainsPosition:]
+-[JPVideoPlayerCacheFile firstNotCachedRangeFromPosition:]
+-[JPVideoPlayerCacheFile checkIsCompleted]
+-[JPVideoPlayerCacheFile truncateFileWithFileLength:]
+_objc_exception_rethrow
+-[JPVideoPlayerCacheFile removeCache]
+-[JPVideoPlayerCacheFile storeResponse:]
+-[JPVideoPlayerCacheFile storeVideoData:atOffset:synchronize:storedCompletion:]
+-[JPVideoPlayerCacheFile dataWithRange:]
+-[JPVideoPlayerCacheFile readDataWithLength:]
+-[JPVideoPlayerCacheFile seekToPosition:]
+-[JPVideoPlayerCacheFile seekToEnd]
+-[JPVideoPlayerCacheFile serializeIndex:]
+-[JPVideoPlayerCacheFile unserializeIndex]
+-[JPVideoPlayerCacheFile synchronize]
+-[JPVideoPlayerCacheFile cacheFilePath]
+-[JPVideoPlayerCacheFile indexFilePath]
+-[JPVideoPlayerCacheFile fileLength]
+-[JPVideoPlayerCacheFile setFileLength:]
+-[JPVideoPlayerCacheFile readOffset]
+-[JPVideoPlayerCacheFile setReadOffset:]
+-[JPVideoPlayerCacheFile responseHeaders]
+-[JPVideoPlayerCacheFile setResponseHeaders:]
+-[JPVideoPlayerCacheFile internalFragmentRanges]
+-[JPVideoPlayerCacheFile setInternalFragmentRanges:]
+-[JPVideoPlayerCacheFile writeFileHandle]
+-[JPVideoPlayerCacheFile setWriteFileHandle:]
+-[JPVideoPlayerCacheFile readFileHandle]
+-[JPVideoPlayerCacheFile setReadFileHandle:]
+-[JPVideoPlayerCacheFile completed]
+-[JPVideoPlayerCacheFile setCompleted:]
+-[JPVideoPlayerCacheFile lock]
+-[JPVideoPlayerCacheFile setLock:]
+-[JPVideoPlayerCacheFile .cxx_destruct]
+_kJPVideoPlayerCacheFileZoneKey
+_kJPVideoPlayerCacheFileSizeKey
+_kJPVideoPlayerCacheFileResponseHeadersKey
+_OBJC_IVAR_$_JPVideoPlayerCacheFile._cacheFilePath
+_OBJC_IVAR_$_JPVideoPlayerCacheFile._indexFilePath
+_OBJC_IVAR_$_JPVideoPlayerCacheFile._internalFragmentRanges
+_OBJC_IVAR_$_JPVideoPlayerCacheFile._readFileHandle
+_OBJC_IVAR_$_JPVideoPlayerCacheFile._writeFileHandle
+_OBJC_IVAR_$_JPVideoPlayerCacheFile._lock
+_OBJC_IVAR_$_JPVideoPlayerCacheFile._fileLength
+_OBJC_IVAR_$_JPVideoPlayerCacheFile._readOffset
+_OBJC_IVAR_$_JPVideoPlayerCacheFile._responseHeaders
+_OBJC_IVAR_$_JPVideoPlayerCacheFile._completed
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerCacheFile.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerCacheFile.h
+NSLocationInRange
+__46-[JPVideoPlayerCacheFile addRange:completion:]_block_invoke
++[JPVideoPlayerCachePath videoCachePath]
++[JPVideoPlayerCachePath videoCachePathForKey:]
++[JPVideoPlayerCachePath createVideoFileIfNeedThenFetchItForKey:]
++[JPVideoPlayerCachePath videoCacheIndexFilePathForKey:]
++[JPVideoPlayerCachePath createVideoIndexFileIfNeedThenFetchItForKey:]
++[JPVideoPlayerCachePath videoPlaybackRecordFilePath]
++[JPVideoPlayerCachePath(Deprecated) videoCacheTemporaryPathForKey:]
++[JPVideoPlayerCachePath(Deprecated) videoCacheFullPathForKey:]
++[JPVideoPlayerCachePath(Deprecated) videoCachePathForAllTemporaryFile]
++[JPVideoPlayerCachePath(Deprecated) videoCachePathForAllFullFile]
++[JPVideoPlayerCachePath(Deprecated) getFilePathWithAppendingString:]
+_kJPVideoPlayerCacheVideoPathDomain
+_kJPVideoPlayerCacheVideoFileExtension
+_kJPVideoPlayerCacheVideoIndexFileExtension
+_kJPVideoPlayerCacheVideoPlaybackRecordFileExtension
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerCachePath.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerCompat.m
+JPErrorWithDescription
+JPRangeToHTTPRangeHeader
+JPRangeCanMerge
+JPValidFileRange
+JPValidByteRange
+JPDispatchSyncOnMainQueue
+-[JPVideoPlayerControlProgressView init]
+-[JPVideoPlayerControlProgressView layoutThatFits:nearestViewControllerInViewTree:interfaceOrientation:]
+_CGRectMake
+-[JPVideoPlayerControlProgressView viewWillAddToSuperView:]
+-[JPVideoPlayerControlProgressView viewWillPrepareToReuse]
+-[JPVideoPlayerControlProgressView cacheRangeDidChange:videoURL:]
+-[JPVideoPlayerControlProgressView playProgressDidChangeElapsedSeconds:totalSeconds:videoURL:]
+-[JPVideoPlayerControlProgressView didFetchVideoFileLength:videoURL:]
+-[JPVideoPlayerControlProgressView setUserDragging:]
+-[JPVideoPlayerControlProgressView userDragging]
+-[JPVideoPlayerControlProgressView setUserDragTimeInterval:]
+-[JPVideoPlayerControlProgressView userDragTimeInterval]
+-[JPVideoPlayerControlProgressView _setup]
+-[JPVideoPlayerControlProgressView dragSliderDidStart:]
+-[JPVideoPlayerControlProgressView dragSliderDidDrag:]
+-[JPVideoPlayerControlProgressView dragSliderDidEnd:]
+-[JPVideoPlayerControlProgressView userDidFinishDrag]
+-[JPVideoPlayerControlProgressView updateCacheProgressViewIfNeed]
+-[JPVideoPlayerControlProgressView removeCacheProgressViewIfNeed]
+-[JPVideoPlayerControlProgressView displayCacheProgressViewIfNeed]
+-[JPVideoPlayerControlProgressView fetchDragStartLocation]
+-[JPVideoPlayerControlProgressView fetchElapsedTimeInterval]
+-[JPVideoPlayerControlProgressView rangesValue]
+-[JPVideoPlayerControlProgressView setRangesValue:]
+-[JPVideoPlayerControlProgressView fileLength]
+-[JPVideoPlayerControlProgressView setFileLength:]
+-[JPVideoPlayerControlProgressView totalSeconds]
+-[JPVideoPlayerControlProgressView setTotalSeconds:]
+-[JPVideoPlayerControlProgressView elapsedSeconds]
+-[JPVideoPlayerControlProgressView setElapsedSeconds:]
+-[JPVideoPlayerControlProgressView playerView]
+-[JPVideoPlayerControlProgressView setPlayerView:]
+-[JPVideoPlayerControlProgressView dragSlider]
+-[JPVideoPlayerControlProgressView setDragSlider:]
+-[JPVideoPlayerControlProgressView cachedProgressView]
+-[JPVideoPlayerControlProgressView setCachedProgressView:]
+-[JPVideoPlayerControlProgressView trackProgressView]
+-[JPVideoPlayerControlProgressView setTrackProgressView:]
+-[JPVideoPlayerControlProgressView .cxx_destruct]
+-[JPVideoPlayerControlBar dealloc]
+-[JPVideoPlayerControlBar initWithFrame:]
+-[JPVideoPlayerControlBar initWithCoder:]
+-[JPVideoPlayerControlBar initWithProgressView:]
+-[JPVideoPlayerControlBar init]
+-[JPVideoPlayerControlBar layoutThatFits:nearestViewControllerInViewTree:interfaceOrientation:]
+-[JPVideoPlayerControlBar viewWillAddToSuperView:]
+-[JPVideoPlayerControlBar viewWillPrepareToReuse]
+-[JPVideoPlayerControlBar cacheRangeDidChange:videoURL:]
+-[JPVideoPlayerControlBar playProgressDidChangeElapsedSeconds:totalSeconds:videoURL:]
+-[JPVideoPlayerControlBar didFetchVideoFileLength:videoURL:]
+-[JPVideoPlayerControlBar videoPlayerStatusDidChange:videoURL:]
+-[JPVideoPlayerControlBar videoPlayerInterfaceOrientationDidChange:videoURL:]
+-[JPVideoPlayerControlBar updateTimeLabelWithElapsedSeconds:totalSeconds:]
+-[JPVideoPlayerControlBar convertSecondsToTimeString:]
+-[JPVideoPlayerControlBar playButtonDidClick:]
+-[JPVideoPlayerControlBar landscapeButtonDidClick:]
+-[JPVideoPlayerControlBar _setup]
+-[JPVideoPlayerControlBar observeValueForKeyPath:ofObject:change:context:]
+-[JPVideoPlayerControlBar playButton]
+-[JPVideoPlayerControlBar setPlayButton:]
+-[JPVideoPlayerControlBar progressView]
+-[JPVideoPlayerControlBar setProgressView:]
+-[JPVideoPlayerControlBar timeLabel]
+-[JPVideoPlayerControlBar setTimeLabel:]
+-[JPVideoPlayerControlBar landscapeButton]
+-[JPVideoPlayerControlBar setLandscapeButton:]
+-[JPVideoPlayerControlBar playerView]
+-[JPVideoPlayerControlBar setPlayerView:]
+-[JPVideoPlayerControlBar totalSeconds]
+-[JPVideoPlayerControlBar setTotalSeconds:]
+-[JPVideoPlayerControlBar .cxx_destruct]
+-[JPVideoPlayerControlView initWithFrame:]
+-[JPVideoPlayerControlView initWithCoder:]
+-[JPVideoPlayerControlView initWithControlBar:blurImage:]
+-[JPVideoPlayerControlView init]
+-[JPVideoPlayerControlView layoutThatFits:nearestViewControllerInViewTree:interfaceOrientation:]
+___isTargetPlatformNative
+___isTargetVariantOSVersionAtLeast
+-[JPVideoPlayerControlView viewWillAddToSuperView:]
+-[JPVideoPlayerControlView viewWillPrepareToReuse]
+-[JPVideoPlayerControlView cacheRangeDidChange:videoURL:]
+-[JPVideoPlayerControlView playProgressDidChangeElapsedSeconds:totalSeconds:videoURL:]
+-[JPVideoPlayerControlView didFetchVideoFileLength:videoURL:]
+-[JPVideoPlayerControlView videoPlayerStatusDidChange:videoURL:]
+-[JPVideoPlayerControlView videoPlayerInterfaceOrientationDidChange:videoURL:]
+-[JPVideoPlayerControlView _setup]
+-[JPVideoPlayerControlView controlBar]
+-[JPVideoPlayerControlView setControlBar:]
+-[JPVideoPlayerControlView blurImage]
+-[JPVideoPlayerControlView blurImageView]
+-[JPVideoPlayerControlView setBlurImageView:]
+-[JPVideoPlayerControlView .cxx_destruct]
+-[JPVideoPlayerProgressView init]
+-[JPVideoPlayerProgressView _setup]
+-[JPVideoPlayerProgressView layoutThatFits:nearestViewControllerInViewTree:interfaceOrientation:]
+-[JPVideoPlayerProgressView viewWillAddToSuperView:]
+-[JPVideoPlayerProgressView viewWillPrepareToReuse]
+-[JPVideoPlayerProgressView cacheRangeDidChange:videoURL:]
+-[JPVideoPlayerProgressView playProgressDidChangeElapsedSeconds:totalSeconds:videoURL:]
+-[JPVideoPlayerProgressView didFetchVideoFileLength:videoURL:]
+-[JPVideoPlayerProgressView displayCacheProgressViewIfNeed]
+-[JPVideoPlayerProgressView removeCacheProgressViewIfNeed]
+-[JPVideoPlayerProgressView fetchDragStartLocation]
+-[JPVideoPlayerProgressView rangesValue]
+-[JPVideoPlayerProgressView setRangesValue:]
+-[JPVideoPlayerProgressView fileLength]
+-[JPVideoPlayerProgressView setFileLength:]
+-[JPVideoPlayerProgressView totalSeconds]
+-[JPVideoPlayerProgressView setTotalSeconds:]
+-[JPVideoPlayerProgressView elapsedSeconds]
+-[JPVideoPlayerProgressView setElapsedSeconds:]
+-[JPVideoPlayerProgressView trackProgressView]
+-[JPVideoPlayerProgressView setTrackProgressView:]
+-[JPVideoPlayerProgressView cachedProgressView]
+-[JPVideoPlayerProgressView setCachedProgressView:]
+-[JPVideoPlayerProgressView elapsedProgressView]
+-[JPVideoPlayerProgressView setElapsedProgressView:]
+-[JPVideoPlayerProgressView .cxx_destruct]
+-[JPVideoPlayerBufferingIndicator init]
+-[JPVideoPlayerBufferingIndicator layoutThatFits:nearestViewControllerInViewTree:interfaceOrientation:]
+-[JPVideoPlayerBufferingIndicator startAnimating]
+-[JPVideoPlayerBufferingIndicator stopAnimating]
+-[JPVideoPlayerBufferingIndicator didStartBufferingVideoURL:]
+-[JPVideoPlayerBufferingIndicator didFinishBufferingVideoURL:]
+-[JPVideoPlayerBufferingIndicator _setup]
+-[JPVideoPlayerBufferingIndicator activityIndicator]
+-[JPVideoPlayerBufferingIndicator setActivityIndicator:]
+-[JPVideoPlayerBufferingIndicator blurView]
+-[JPVideoPlayerBufferingIndicator setBlurView:]
+-[JPVideoPlayerBufferingIndicator isAnimating]
+-[JPVideoPlayerBufferingIndicator setAnimating:]
+-[JPVideoPlayerBufferingIndicator blurBackgroundView]
+-[JPVideoPlayerBufferingIndicator setBlurBackgroundView:]
+-[JPVideoPlayerBufferingIndicator .cxx_destruct]
+-[JPVideoPlayerView dealloc]
+-[JPVideoPlayerView initWithNeedAutoHideControlViewWhenUserTapping:]
+-[JPVideoPlayerView setFrame:]
+-[JPVideoPlayerView setBounds:]
+-[JPVideoPlayerView setCenter:]
+-[JPVideoPlayerView videoContainerLayer]
+-[JPVideoPlayerView tapGestureDidTap]
+___37-[JPVideoPlayerView tapGestureDidTap]_block_invoke
+___37-[JPVideoPlayerView tapGestureDidTap]_block_invoke.547
+-[JPVideoPlayerView layoutContainerSubviewsWithBounds:center:frame:]
+___CGPointEqualToPoint
+-[JPVideoPlayerView callLayoutMethodForContainerSubviews]
+-[JPVideoPlayerView fetchCurrentInterfaceOrientation]
+-[JPVideoPlayerView findNearestViewControllerForView:]
+-[JPVideoPlayerView _setup]
+-[JPVideoPlayerView didReceiveUserStartDragNotification]
+-[JPVideoPlayerView didReceiveUserEndDragNotification]
+-[JPVideoPlayerView startTimer]
+-[JPVideoPlayerView endTimer]
+-[JPVideoPlayerView timeDidChange:]
+-[JPVideoPlayerView placeholderView]
+-[JPVideoPlayerView setPlaceholderView:]
+-[JPVideoPlayerView controlContainerView]
+-[JPVideoPlayerView setControlContainerView:]
+-[JPVideoPlayerView progressContainerView]
+-[JPVideoPlayerView setProgressContainerView:]
+-[JPVideoPlayerView bufferingIndicatorContainerView]
+-[JPVideoPlayerView setBufferingIndicatorContainerView:]
+-[JPVideoPlayerView userInteractionContainerView]
+-[JPVideoPlayerView setUserInteractionContainerView:]
+-[JPVideoPlayerView needAutoHideControlViewWhenUserTapping]
+-[JPVideoPlayerView videoContainerView]
+-[JPVideoPlayerView setVideoContainerView:]
+-[JPVideoPlayerView timer]
+-[JPVideoPlayerView setTimer:]
+-[JPVideoPlayerView isInterruptTimer]
+-[JPVideoPlayerView setIsInterruptTimer:]
+-[JPVideoPlayerView .cxx_destruct]
+___clang_at_available_requires_core_foundation_framework
+_OBJC_IVAR_$_JPVideoPlayerControlProgressView._rangesValue
+_OBJC_IVAR_$_JPVideoPlayerControlProgressView._userDragging
+_OBJC_IVAR_$_JPVideoPlayerControlProgressView._userDragTimeInterval
+_OBJC_IVAR_$_JPVideoPlayerControlProgressView._fileLength
+_OBJC_IVAR_$_JPVideoPlayerControlProgressView._totalSeconds
+_OBJC_IVAR_$_JPVideoPlayerControlProgressView._elapsedSeconds
+_OBJC_IVAR_$_JPVideoPlayerControlProgressView._playerView
+_OBJC_IVAR_$_JPVideoPlayerControlProgressView._dragSlider
+_OBJC_IVAR_$_JPVideoPlayerControlProgressView._cachedProgressView
+_OBJC_IVAR_$_JPVideoPlayerControlProgressView._trackProgressView
+l_OBJC_PROTOCOL_$_JPVideoPlayerLayoutProtocol
+l_OBJC_LABEL_PROTOCOL_$_JPVideoPlayerLayoutProtocol
+l_OBJC_PROTOCOL_$_JPVideoPlayerProtocol
+l_OBJC_LABEL_PROTOCOL_$_JPVideoPlayerProtocol
+l_OBJC_PROTOCOL_$_JPVideoPlayerControlProgressProtocol
+l_OBJC_LABEL_PROTOCOL_$_JPVideoPlayerControlProgressProtocol
+_OBJC_IVAR_$_JPVideoPlayerControlBar._progressView
+_OBJC_IVAR_$_JPVideoPlayerControlBar._playButton
+_OBJC_IVAR_$_JPVideoPlayerControlBar._timeLabel
+_OBJC_IVAR_$_JPVideoPlayerControlBar._landscapeButton
+_OBJC_IVAR_$_JPVideoPlayerControlBar._playerView
+_OBJC_IVAR_$_JPVideoPlayerControlBar._totalSeconds
+_OBJC_IVAR_$_JPVideoPlayerControlView._controlBar
+_OBJC_IVAR_$_JPVideoPlayerControlView._blurImage
+_OBJC_IVAR_$_JPVideoPlayerControlView._blurImageView
+_OBJC_IVAR_$_JPVideoPlayerProgressView._rangesValue
+_OBJC_IVAR_$_JPVideoPlayerProgressView._fileLength
+_OBJC_IVAR_$_JPVideoPlayerProgressView._totalSeconds
+_OBJC_IVAR_$_JPVideoPlayerProgressView._elapsedSeconds
+_OBJC_IVAR_$_JPVideoPlayerProgressView._trackProgressView
+_OBJC_IVAR_$_JPVideoPlayerProgressView._cachedProgressView
+_OBJC_IVAR_$_JPVideoPlayerProgressView._elapsedProgressView
+_OBJC_IVAR_$_JPVideoPlayerBufferingIndicator._activityIndicator
+_OBJC_IVAR_$_JPVideoPlayerBufferingIndicator._blurView
+_OBJC_IVAR_$_JPVideoPlayerBufferingIndicator._animating
+_OBJC_IVAR_$_JPVideoPlayerBufferingIndicator._blurBackgroundView
+l_OBJC_PROTOCOL_$_JPVideoPlayerBufferingProtocol
+l_OBJC_LABEL_PROTOCOL_$_JPVideoPlayerBufferingProtocol
+_OBJC_IVAR_$_JPVideoPlayerView._needAutoHideControlViewWhenUserTapping
+___block_descriptor_tmp.549
+_OBJC_IVAR_$_JPVideoPlayerView._placeholderView
+_OBJC_IVAR_$_JPVideoPlayerView._controlContainerView
+_OBJC_IVAR_$_JPVideoPlayerView._progressContainerView
+_OBJC_IVAR_$_JPVideoPlayerView._bufferingIndicatorContainerView
+_OBJC_IVAR_$_JPVideoPlayerView._userInteractionContainerView
+_OBJC_IVAR_$_JPVideoPlayerView._videoContainerView
+_OBJC_IVAR_$_JPVideoPlayerView._timer
+_OBJC_IVAR_$_JPVideoPlayerView._isInterruptTimer
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerControlViews.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerControlViews.h
+__CGPointEqualToPoint
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
+__37-[JPVideoPlayerView tapGestureDidTap]_block_invoke.547
+__37-[JPVideoPlayerView tapGestureDidTap]_block_invoke
+CGRectMake
++[JPVideoPlayerDownloader sharedDownloader]
+___43+[JPVideoPlayerDownloader sharedDownloader]_block_invoke
+-[JPVideoPlayerDownloader init]
+-[JPVideoPlayerDownloader initWithSessionConfiguration:]
+-[JPVideoPlayerDownloader downloadVideoWithRequestTask:downloadOptions:]
+-[JPVideoPlayerDownloader cancel]
+-[JPVideoPlayerDownloader startDownloadOpeartionWithRequestTask:options:]
+-[JPVideoPlayerDownloader URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:]
+-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveResponse:completionHandler:]
+___84-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveResponse:completionHandler:]_block_invoke
+___copy_helper_block_.118
+___destroy_helper_block_.119
+___84-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveResponse:completionHandler:]_block_invoke.126
+___copy_helper_block_.129
+___destroy_helper_block_.130
+___84-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveResponse:completionHandler:]_block_invoke.132
+___copy_helper_block_.139
+___destroy_helper_block_.140
+___84-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveResponse:completionHandler:]_block_invoke.142
+___copy_helper_block_.145
+___destroy_helper_block_.146
+-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveData:]
+___62-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveData:]_block_invoke
+___62-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveData:]_block_invoke_2
+___copy_helper_block_.161
+___destroy_helper_block_.162
+-[JPVideoPlayerDownloader URLSession:task:didCompleteWithError:]
+___64-[JPVideoPlayerDownloader URLSession:task:didCompleteWithError:]_block_invoke
+___copy_helper_block_.178
+___destroy_helper_block_.179
+-[JPVideoPlayerDownloader URLSession:task:didReceiveChallenge:downloadCompletionHandler:]
+___Block_byref_object_copy_
+___Block_byref_object_dispose_
+-[JPVideoPlayerDownloader URLSession:dataTask:willCacheResponse:downloadCompletionHandler:]
+-[JPVideoPlayerDownloader callCompleteDelegateIfNeedWithError:]
+-[JPVideoPlayerDownloader reset]
+-[JPVideoPlayerDownloader urlCredential]
+-[JPVideoPlayerDownloader setUrlCredential:]
+-[JPVideoPlayerDownloader username]
+-[JPVideoPlayerDownloader setUsername:]
+-[JPVideoPlayerDownloader password]
+-[JPVideoPlayerDownloader setPassword:]
+-[JPVideoPlayerDownloader downloadTimeout]
+-[JPVideoPlayerDownloader setDownloadTimeout:]
+-[JPVideoPlayerDownloader runningTask]
+-[JPVideoPlayerDownloader setRunningTask:]
+-[JPVideoPlayerDownloader downloaderOptions]
+-[JPVideoPlayerDownloader delegate]
+-[JPVideoPlayerDownloader setDelegate:]
+-[JPVideoPlayerDownloader session]
+-[JPVideoPlayerDownloader setSession:]
+-[JPVideoPlayerDownloader receivedSize]
+-[JPVideoPlayerDownloader setReceivedSize:]
+-[JPVideoPlayerDownloader expectedSize]
+-[JPVideoPlayerDownloader setExpectedSize:]
+-[JPVideoPlayerDownloader lock]
+-[JPVideoPlayerDownloader setLock:]
+-[JPVideoPlayerDownloader .cxx_destruct]
+_sharedDownloader.once
+_sharedDownloader.instance
+_OBJC_IVAR_$_JPVideoPlayerDownloader._lock
+_OBJC_IVAR_$_JPVideoPlayerDownloader._expectedSize
+_OBJC_IVAR_$_JPVideoPlayerDownloader._receivedSize
+_OBJC_IVAR_$_JPVideoPlayerDownloader._runningTask
+_OBJC_IVAR_$_JPVideoPlayerDownloader._downloaderOptions
+___block_descriptor_tmp.120
+___block_descriptor_tmp.131
+___block_descriptor_tmp.141
+___block_descriptor_tmp.147
+___block_descriptor_tmp.163
+___block_descriptor_tmp.180
+_OBJC_IVAR_$_JPVideoPlayerDownloader._urlCredential
+_OBJC_IVAR_$_JPVideoPlayerDownloader._username
+_OBJC_IVAR_$_JPVideoPlayerDownloader._password
+_OBJC_IVAR_$_JPVideoPlayerDownloader._downloadTimeout
+_OBJC_IVAR_$_JPVideoPlayerDownloader._delegate
+_OBJC_IVAR_$_JPVideoPlayerDownloader._session
+l_OBJC_PROTOCOL_$_NSURLSessionDelegate
+l_OBJC_LABEL_PROTOCOL_$_NSURLSessionDelegate
+l_OBJC_PROTOCOL_$_NSURLSessionTaskDelegate
+l_OBJC_LABEL_PROTOCOL_$_NSURLSessionTaskDelegate
+l_OBJC_PROTOCOL_$_NSURLSessionDataDelegate
+l_OBJC_LABEL_PROTOCOL_$_NSURLSessionDataDelegate
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerDownloader.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerDownloader.h
+__Block_byref_object_dispose_
+__Block_byref_object_copy_
+__64-[JPVideoPlayerDownloader URLSession:task:didCompleteWithError:]_block_invoke
+__62-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveData:]_block_invoke_2
+__62-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveData:]_block_invoke
+__84-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveResponse:completionHandler:]_block_invoke.142
+__84-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveResponse:completionHandler:]_block_invoke.132
+__84-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveResponse:completionHandler:]_block_invoke.126
+__84-[JPVideoPlayerDownloader URLSession:dataTask:didReceiveResponse:completionHandler:]_block_invoke
+__43+[JPVideoPlayerDownloader sharedDownloader]_block_invoke
+-[JPVideoPlayerManagerModel videoURL]
+-[JPVideoPlayerManagerModel setVideoURL:]
+-[JPVideoPlayerManagerModel cacheType]
+-[JPVideoPlayerManagerModel setCacheType:]
+-[JPVideoPlayerManagerModel fileLength]
+-[JPVideoPlayerManagerModel setFileLength:]
+-[JPVideoPlayerManagerModel fragmentRanges]
+-[JPVideoPlayerManagerModel setFragmentRanges:]
+-[JPVideoPlayerManagerModel .cxx_destruct]
++[JPVideoPlayerManager sharedManager]
+___37+[JPVideoPlayerManager sharedManager]_block_invoke
+___37+[JPVideoPlayerManager sharedManager]_block_invoke_2
+-[JPVideoPlayerManager init]
+-[JPVideoPlayerManager initWithCache:downloader:]
++[JPVideoPlayerManager preferLogLevel:]
+-[JPVideoPlayerManager playVideoWithURL:showOnLayer:options:configurationCompletion:]
+___85-[JPVideoPlayerManager playVideoWithURL:showOnLayer:options:configurationCompletion:]_block_invoke
+___copy_helper_block_.131
+___destroy_helper_block_.132
+___85-[JPVideoPlayerManager playVideoWithURL:showOnLayer:options:configurationCompletion:]_block_invoke.141
+___copy_helper_block_.164
+___destroy_helper_block_.165
+-[JPVideoPlayerManager resumePlayWithURL:showOnLayer:options:configurationCompletion:]
+-[JPVideoPlayerManager cacheKeyForURL:]
+-[JPVideoPlayerManager SDKVersion]
+-[JPVideoPlayerManager setRate:]
+-[JPVideoPlayerManager rate]
+-[JPVideoPlayerManager setMuted:]
+-[JPVideoPlayerManager muted]
+-[JPVideoPlayerManager setVolume:]
+-[JPVideoPlayerManager volume]
+-[JPVideoPlayerManager seekToTime:]
+-[JPVideoPlayerManager elapsedSeconds]
+-[JPVideoPlayerManager totalSeconds]
+-[JPVideoPlayerManager pause]
+-[JPVideoPlayerManager resume]
+-[JPVideoPlayerManager currentTime]
+-[JPVideoPlayerManager stopPlay]
+___32-[JPVideoPlayerManager stopPlay]_block_invoke
+___copy_helper_block_.224
+___destroy_helper_block_.225
+-[JPVideoPlayerManager videoPlayer:didReceiveLoadingRequestTask:]
+-[JPVideoPlayerManager videoPlayer:shouldAutoReplayVideoForURL:]
+-[JPVideoPlayerManager videoPlayer:playerStatusDidChange:]
+-[JPVideoPlayerManager videoPlayerPlayProgressDidChange:elapsedSeconds:totalSeconds:]
+-[JPVideoPlayerManager videoPlayer:playFailedWithError:]
+-[JPVideoPlayerManager downloader:didReceiveResponse:]
+-[JPVideoPlayerManager downloader:didReceiveData:receivedSize:expectedSize:]
+-[JPVideoPlayerManager downloader:didCompleteWithError:]
+-[JPVideoPlayerManager applicationStateMonitor:applicationStateDidChange:]
+-[JPVideoPlayerManager applicationDidBecomeActiveFromBackground:]
+-[JPVideoPlayerManager applicationDidBecomeActiveFromResignActive:]
+-[JPVideoPlayerManager fetchFileSizeAtPath:]
+-[JPVideoPlayerManager reset]
+-[JPVideoPlayerManager fetchDownloadOptionsWithOptions:]
+-[JPVideoPlayerManager callVideoLengthDelegateMethodWithVideoLength:]
+___69-[JPVideoPlayerManager callVideoLengthDelegateMethodWithVideoLength:]_block_invoke
+___copy_helper_block_.292
+___destroy_helper_block_.293
+-[JPVideoPlayerManager callDownloadDelegateMethodWithFragmentRanges:expectedSize:cacheType:error:]
+___98-[JPVideoPlayerManager callDownloadDelegateMethodWithFragmentRanges:expectedSize:cacheType:error:]_block_invoke
+-[JPVideoPlayerManager callPlayDelegateMethodWithElapsedSeconds:totalSeconds:error:]
+___84-[JPVideoPlayerManager callPlayDelegateMethodWithElapsedSeconds:totalSeconds:error:]_block_invoke
+-[JPVideoPlayerManager playFragmentVideoWithURL:options:showLayer:configurationCompletion:]
+-[JPVideoPlayerManager playLocalVideoWithShowLayer:url:options:configurationCompletion:]
+-[JPVideoPlayerManager activeAudioSessionIfNeed]
+-[JPVideoPlayerManager audioSessionInterruptionNotification:]
+-[JPVideoPlayerManager fetchPlaybackRecordForVideoURL:]
+-[JPVideoPlayerManager savePlaybackElapsedSeconds:forVideoURL:]
+___63-[JPVideoPlayerManager savePlaybackElapsedSeconds:forVideoURL:]_block_invoke
+___copy_helper_block_.353
+___destroy_helper_block_.354
+-[JPVideoPlayerManager delegate]
+-[JPVideoPlayerManager setDelegate:]
+-[JPVideoPlayerManager videoCache]
+-[JPVideoPlayerManager setVideoCache:]
+-[JPVideoPlayerManager videoDownloader]
+-[JPVideoPlayerManager setVideoDownloader:]
+-[JPVideoPlayerManager managerModel]
+-[JPVideoPlayerManager setManagerModel:]
+-[JPVideoPlayerManager videoPlayer]
+-[JPVideoPlayerManager setVideoPlayer:]
+-[JPVideoPlayerManager failedURLs]
+-[JPVideoPlayerManager setFailedURLs:]
+-[JPVideoPlayerManager lock]
+-[JPVideoPlayerManager setLock:]
+-[JPVideoPlayerManager isReturnWhenApplicationDidEnterBackground]
+-[JPVideoPlayerManager setIsReturnWhenApplicationDidEnterBackground:]
+-[JPVideoPlayerManager isReturnWhenApplicationWillResignActive]
+-[JPVideoPlayerManager setIsReturnWhenApplicationWillResignActive:]
+-[JPVideoPlayerManager applicationStateMonitor]
+-[JPVideoPlayerManager setApplicationStateMonitor:]
+-[JPVideoPlayerManager .cxx_destruct]
+_OBJC_IVAR_$_JPVideoPlayerManagerModel._videoURL
+_OBJC_IVAR_$_JPVideoPlayerManagerModel._cacheType
+_OBJC_IVAR_$_JPVideoPlayerManagerModel._fileLength
+_OBJC_IVAR_$_JPVideoPlayerManagerModel._fragmentRanges
+_JPVideoPlayerSDKVersionKey
+_sharedManager.once
+_sharedManager.jpVideoPlayerManagerInstance
+___block_descriptor_tmp.49
+_OBJC_IVAR_$_JPVideoPlayerManager._videoCache
+_OBJC_IVAR_$_JPVideoPlayerManager._videoDownloader
+_OBJC_IVAR_$_JPVideoPlayerManager._failedURLs
+_OBJC_IVAR_$_JPVideoPlayerManager._lock
+_OBJC_IVAR_$_JPVideoPlayerManager._videoPlayer
+_OBJC_IVAR_$_JPVideoPlayerManager._isReturnWhenApplicationDidEnterBackground
+_OBJC_IVAR_$_JPVideoPlayerManager._isReturnWhenApplicationWillResignActive
+_OBJC_IVAR_$_JPVideoPlayerManager._applicationStateMonitor
+__logLevel
+___block_descriptor_tmp.134
+___block_descriptor_tmp.167
+___block_descriptor_tmp.226
+___block_descriptor_tmp.294
+___block_descriptor_tmp.303
+___block_descriptor_tmp.356
+_OBJC_IVAR_$_JPVideoPlayerManager._delegate
+_OBJC_IVAR_$_JPVideoPlayerManager._managerModel
+l_OBJC_PROTOCOL_$_JPVideoPlayerInternalDelegate
+l_OBJC_LABEL_PROTOCOL_$_JPVideoPlayerInternalDelegate
+l_OBJC_PROTOCOL_$_JPVideoPlayerDownloaderDelegate
+l_OBJC_LABEL_PROTOCOL_$_JPVideoPlayerDownloaderDelegate
+l_OBJC_PROTOCOL_$_JPApplicationStateMonitorDelegate
+l_OBJC_LABEL_PROTOCOL_$_JPApplicationStateMonitorDelegate
+_OBJC_IVAR_$_JPVideoPlayerManager.muted
+_OBJC_IVAR_$_JPVideoPlayerManager.volume
+_OBJC_IVAR_$_JPVideoPlayerManager.rate
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerManager.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerManager.h
+__63-[JPVideoPlayerManager savePlaybackElapsedSeconds:forVideoURL:]_block_invoke
+__84-[JPVideoPlayerManager callPlayDelegateMethodWithElapsedSeconds:totalSeconds:error:]_block_invoke
+__98-[JPVideoPlayerManager callDownloadDelegateMethodWithFragmentRanges:expectedSize:cacheType:error:]_block_invoke
+__69-[JPVideoPlayerManager callVideoLengthDelegateMethodWithVideoLength:]_block_invoke
+__32-[JPVideoPlayerManager stopPlay]_block_invoke
+__85-[JPVideoPlayerManager playVideoWithURL:showOnLayer:options:configurationCompletion:]_block_invoke.141
+__85-[JPVideoPlayerManager playVideoWithURL:showOnLayer:options:configurationCompletion:]_block_invoke
+__37+[JPVideoPlayerManager sharedManager]_block_invoke_2
+__37+[JPVideoPlayerManager sharedManager]_block_invoke
+-[JPVideoPlayerResourceLoader dealloc]
+-[JPVideoPlayerResourceLoader init]
++[JPVideoPlayerResourceLoader resourceLoaderWithCustomURL:]
+-[JPVideoPlayerResourceLoader initWithCustomURL:]
+-[JPVideoPlayerResourceLoader resourceLoader:shouldWaitForLoadingOfRequestedResource:]
+-[JPVideoPlayerResourceLoader resourceLoader:didCancelLoadingRequest:]
+-[JPVideoPlayerResourceLoader requestTask:didCompleteWithError:]
+-[JPVideoPlayerResourceLoader finishCurrentRequestWithError:]
+-[JPVideoPlayerResourceLoader findAndStartNextLoadingRequestIfNeed]
+-[JPVideoPlayerResourceLoader startCurrentRequestWithLoadingRequest:range:]
+-[JPVideoPlayerResourceLoader addTaskWithLoadingRequest:range:cached:]
+-[JPVideoPlayerResourceLoader removeCurrentRequestTaskAndResetAll]
+-[JPVideoPlayerResourceLoader startNextTaskIfNeed]
+-[JPVideoPlayerResourceLoader fetchRequestRangeWithRequest:]
+-[JPVideoPlayerResourceLoader delegate]
+-[JPVideoPlayerResourceLoader setDelegate:]
+-[JPVideoPlayerResourceLoader customURL]
+-[JPVideoPlayerResourceLoader cacheFile]
+-[JPVideoPlayerResourceLoader setCacheFile:]
+-[JPVideoPlayerResourceLoader loadingRequests]
+-[JPVideoPlayerResourceLoader setLoadingRequests:]
+-[JPVideoPlayerResourceLoader runningLoadingRequest]
+-[JPVideoPlayerResourceLoader setRunningLoadingRequest:]
+-[JPVideoPlayerResourceLoader requestTasks]
+-[JPVideoPlayerResourceLoader setRequestTasks:]
+-[JPVideoPlayerResourceLoader runningRequestTask]
+-[JPVideoPlayerResourceLoader setRunningRequestTask:]
+-[JPVideoPlayerResourceLoader lock]
+-[JPVideoPlayerResourceLoader setLock:]
+-[JPVideoPlayerResourceLoader ioQueue]
+-[JPVideoPlayerResourceLoader setIoQueue:]
+-[JPVideoPlayerResourceLoader .cxx_destruct]
+_OBJC_IVAR_$_JPVideoPlayerResourceLoader._lock
+_OBJC_IVAR_$_JPVideoPlayerResourceLoader._ioQueue
+_OBJC_IVAR_$_JPVideoPlayerResourceLoader._customURL
+_OBJC_IVAR_$_JPVideoPlayerResourceLoader._loadingRequests
+_OBJC_IVAR_$_JPVideoPlayerResourceLoader._cacheFile
+_OBJC_IVAR_$_JPVideoPlayerResourceLoader._delegate
+_OBJC_IVAR_$_JPVideoPlayerResourceLoader._runningLoadingRequest
+_OBJC_IVAR_$_JPVideoPlayerResourceLoader._requestTasks
+_OBJC_IVAR_$_JPVideoPlayerResourceLoader._runningRequestTask
+l_OBJC_PROTOCOL_$_JPResourceLoadingRequestTaskDelegate
+l_OBJC_LABEL_PROTOCOL_$_JPResourceLoadingRequestTaskDelegate
+l_OBJC_PROTOCOL_$_AVAssetResourceLoaderDelegate
+l_OBJC_LABEL_PROTOCOL_$_AVAssetResourceLoaderDelegate
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerResourceLoader.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerResourceLoader.h
+-[NSMutableString(JPURLRequestFormatter) jp_appendCommandLineArgument:]
++[JPURLRequestFormatter cURLCommandFromURLRequest:]
+-[NSURL(cURL) jp_cURLCommand]
+-[NSFileHandle(JPVideoPlayer) jp_safeWriteData:]
+-[NSHTTPURLResponse(JPVideoPlayer) jp_fileLength]
+-[NSHTTPURLResponse(JPVideoPlayer) jp_supportRange]
+-[AVAssetResourceLoadingRequest(JPVideoPlayer) jp_fillContentInformationWithResponse:]
+-[NSURLSessionTask(JPVideoPlayer) setWebTask:]
+___46-[NSURLSessionTask(JPVideoPlayer) setWebTask:]_block_invoke
+-[NSURLSessionTask(JPVideoPlayer) webTask]
++[NSObject(JPSwizzle) jp_swizzleMethod:withMethod:error:]
++[JPLog initialize]
++[JPLog logWithFlag:file:function:line:format:]
+-[JPApplicationStateMonitor init]
+-[JPApplicationStateMonitor dealloc]
+-[JPApplicationStateMonitor setup]
+-[JPApplicationStateMonitor addNotificationObserver]
+-[JPApplicationStateMonitor removeNotificationObserver]
+-[JPApplicationStateMonitor applicationWillResignActiveNotification]
+-[JPApplicationStateMonitor applicationDidEnterBackgroundNotification]
+-[JPApplicationStateMonitor applicationWillEnterForegroundNotification]
+-[JPApplicationStateMonitor applicationDidBecomeActiveNotification]
+-[JPApplicationStateMonitor callDelegateMethodWithApplicationState:]
+-[JPApplicationStateMonitor delegate]
+-[JPApplicationStateMonitor setDelegate:]
+-[JPApplicationStateMonitor applicationState]
+-[JPApplicationStateMonitor setApplicationState:]
+-[JPApplicationStateMonitor applicationStateArray]
+-[JPApplicationStateMonitor setApplicationStateArray:]
+-[JPApplicationStateMonitor .cxx_destruct]
+-[JPVideoPlayerTableViewHelper init]
+-[JPVideoPlayerTableViewHelper initWithTableView:]
+-[JPVideoPlayerTableViewHelper handleCellUnreachableTypeInVisibleCellsAfterReloadData]
+___86-[JPVideoPlayerTableViewHelper handleCellUnreachableTypeInVisibleCellsAfterReloadData]_block_invoke
+___copy_helper_block_.326
+___destroy_helper_block_.327
+-[JPVideoPlayerTableViewHelper handleCellUnreachableTypeForCell:atIndexPath:]
+-[JPVideoPlayerTableViewHelper playVideoInVisibleCellsIfNeed]
+-[JPVideoPlayerTableViewHelper stopPlayIfNeed]
+-[JPVideoPlayerTableViewHelper scrollViewDidScroll]
+-[JPVideoPlayerTableViewHelper scrollViewDidEndDraggingWillDecelerate:]
+-[JPVideoPlayerTableViewHelper scrollViewDidEndDecelerating]
+-[JPVideoPlayerTableViewHelper viewIsVisibleInVisibleFrameAtScrollViewDidScroll:]
+-[JPVideoPlayerTableViewHelper playingCellIsVisible]
+-[JPVideoPlayerTableViewHelper viewIsVisibleInTableViewVisibleFrame:]
+_CGPointMake
+-[JPVideoPlayerTableViewHelper findTheBestPlayVideoCell]
+-[JPVideoPlayerTableViewHelper fetchUnreachableCellCountWithVisibleCellsCount:]
+-[JPVideoPlayerTableViewHelper unreachableCellDictionary]
+-[JPVideoPlayerTableViewHelper playVideoWithCell:]
+-[JPVideoPlayerTableViewHelper handleQuickScrollIfNeed]
+-[JPVideoPlayerTableViewHelper handleScrollStopIfNeed]
+-[JPVideoPlayerTableViewHelper tableView]
+-[JPVideoPlayerTableViewHelper playingVideoCell]
+-[JPVideoPlayerTableViewHelper setPlayingVideoCell:]
+-[JPVideoPlayerTableViewHelper tableViewVisibleFrame]
+-[JPVideoPlayerTableViewHelper setTableViewVisibleFrame:]
+-[JPVideoPlayerTableViewHelper scrollPlayStrategyType]
+-[JPVideoPlayerTableViewHelper setScrollPlayStrategyType:]
+-[JPVideoPlayerTableViewHelper playVideoInVisibleCellsBlock]
+-[JPVideoPlayerTableViewHelper setPlayVideoInVisibleCellsBlock:]
+-[JPVideoPlayerTableViewHelper findBestCellInVisibleCellsBlock]
+-[JPVideoPlayerTableViewHelper setFindBestCellInVisibleCellsBlock:]
+-[JPVideoPlayerTableViewHelper setUnreachableCellDictionary:]
+-[JPVideoPlayerTableViewHelper delegate]
+-[JPVideoPlayerTableViewHelper setDelegate:]
+-[JPVideoPlayerTableViewHelper playVideoSection]
+-[JPVideoPlayerTableViewHelper setPlayVideoSection:]
+-[JPVideoPlayerTableViewHelper .cxx_destruct]
++[JPMigration migrateToSDKVersion:block:]
++[JPMigration lastMigrationVersion]
++[JPMigration setLastMigrationVersion:]
+_OBJC_IVAR_$_JPApplicationStateMonitor._delegate
+_OBJC_IVAR_$_JPApplicationStateMonitor._applicationState
+_OBJC_IVAR_$_JPApplicationStateMonitor._applicationStateArray
+_OBJC_IVAR_$_JPVideoPlayerTableViewHelper._tableView
+_OBJC_IVAR_$_JPVideoPlayerTableViewHelper._tableViewVisibleFrame
+___block_descriptor_tmp.329
+_OBJC_IVAR_$_JPVideoPlayerTableViewHelper._unreachableCellDictionary
+_OBJC_IVAR_$_JPVideoPlayerTableViewHelper._playingVideoCell
+_OBJC_IVAR_$_JPVideoPlayerTableViewHelper._scrollPlayStrategyType
+_OBJC_IVAR_$_JPVideoPlayerTableViewHelper._playVideoInVisibleCellsBlock
+_OBJC_IVAR_$_JPVideoPlayerTableViewHelper._findBestCellInVisibleCellsBlock
+_OBJC_IVAR_$_JPVideoPlayerTableViewHelper._delegate
+_OBJC_IVAR_$_JPVideoPlayerTableViewHelper._playVideoSection
+_JPMigrationLastSDKVersionKey
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerSupportUtils.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/JPVideoPlayerSupportUtils.h
+CGPointMake
+__86-[JPVideoPlayerTableViewHelper handleCellUnreachableTypeInVisibleCellsAfterReloadData]_block_invoke
+__46-[NSURLSessionTask(JPVideoPlayer) setWebTask:]_block_invoke
+CFBridgingRelease
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObject.h
+-[UITableView(WebVideoCache) setJp_delegate:]
+-[UITableView(WebVideoCache) jp_delegate]
+-[UITableView(WebVideoCache) jp_playingVideoCell]
+-[UITableView(WebVideoCache) setJp_tableViewVisibleFrame:]
+-[UITableView(WebVideoCache) jp_tableViewVisibleFrame]
+-[UITableView(WebVideoCache) setJp_scrollPlayStrategyType:]
+-[UITableView(WebVideoCache) jp_scrollPlayStrategyType]
+-[UITableView(WebVideoCache) setJp_unreachableCellDictionary:]
+-[UITableView(WebVideoCache) jp_unreachableCellDictionary]
+-[UITableView(WebVideoCache) setJp_playVideoInVisibleCellsBlock:]
+-[UITableView(WebVideoCache) jp_playVideoInVisibleCellsBlock]
+-[UITableView(WebVideoCache) setJp_findBestCellInVisibleCellsBlock:]
+-[UITableView(WebVideoCache) jp_findBestCellInVisibleCellsBlock]
+-[UITableView(WebVideoCache) jp_playVideoInVisibleCellsIfNeed]
+-[UITableView(WebVideoCache) jp_stopPlayIfNeed]
+-[UITableView(WebVideoCache) jp_handleCellUnreachableTypeInVisibleCellsAfterReloadData]
+-[UITableView(WebVideoCache) jp_handleCellUnreachableTypeForCell:atIndexPath:]
+-[UITableView(WebVideoCache) jp_scrollViewDidEndDraggingWillDecelerate:]
+-[UITableView(WebVideoCache) jp_scrollViewDidEndDecelerating]
+-[UITableView(WebVideoCache) jp_scrollViewDidScroll]
+-[UITableView(WebVideoCache) jp_viewIsVisibleInVisibleFrameAtScrollViewDidScroll:]
+-[UITableView(WebVideoCache) helper]
+_kJPVideoPlayerScrollViewHelperKey
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/UITableView+WebVideoCache.m
+-[UITableViewCell(WebVideoCache) setJp_videoURL:]
+-[UITableViewCell(WebVideoCache) jp_videoURL]
+-[UITableViewCell(WebVideoCache) setJp_videoPlayView:]
+-[UITableViewCell(WebVideoCache) jp_videoPlayView]
+-[UITableViewCell(WebVideoCache) setJp_unreachableCellType:]
+-[UITableViewCell(WebVideoCache) jp_unreachableCellType]
+-[UITableViewCell(WebVideoCache) jp_isEqualToCell:]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/UITableViewCell+WebVideoCache.m
+-[JPVideoPlayerHelper initWithPlayVideoView:]
+-[JPVideoPlayerHelper viewInterfaceOrientation]
+-[JPVideoPlayerHelper videoPlayerView]
+-[JPVideoPlayerHelper setVideoPlayerView:]
+-[JPVideoPlayerHelper progressView]
+-[JPVideoPlayerHelper setProgressView:]
+-[JPVideoPlayerHelper controlView]
+-[JPVideoPlayerHelper setControlView:]
+-[JPVideoPlayerHelper bufferingIndicator]
+-[JPVideoPlayerHelper setBufferingIndicator:]
+-[JPVideoPlayerHelper videoPlayerDelegate]
+-[JPVideoPlayerHelper setVideoPlayerDelegate:]
+-[JPVideoPlayerHelper setViewInterfaceOrientation:]
+-[JPVideoPlayerHelper playerStatus]
+-[JPVideoPlayerHelper setPlayerStatus:]
+-[JPVideoPlayerHelper playVideoView]
+-[JPVideoPlayerHelper setPlayVideoView:]
+-[JPVideoPlayerHelper videoURL]
+-[JPVideoPlayerHelper setVideoURL:]
+-[JPVideoPlayerHelper .cxx_destruct]
+-[UIView(WebVideoCache) jp_viewInterfaceOrientation]
+-[UIView(WebVideoCache) jp_playerStatus]
+-[UIView(WebVideoCache) jp_videoPlayerView]
+-[UIView(WebVideoCache) setJp_progressView:]
+-[UIView(WebVideoCache) jp_progressView]
+-[UIView(WebVideoCache) setJp_controlView:]
+-[UIView(WebVideoCache) jp_controlView]
+-[UIView(WebVideoCache) setJp_bufferingIndicator:]
+-[UIView(WebVideoCache) jp_bufferingIndicator]
+-[UIView(WebVideoCache) setJp_videoPlayerDelegate:]
+-[UIView(WebVideoCache) jp_videoPlayerDelegate]
+-[UIView(WebVideoCache) jp_videoURL]
+-[UIView(WebVideoCache) setJp_videoURL:]
+-[UIView(WebVideoCache) jp_playVideoWithURL:]
+-[UIView(WebVideoCache) jp_playVideoMuteWithURL:bufferingIndicator:progressView:configuration:]
+-[UIView(WebVideoCache) jp_resumeMutePlayWithURL:bufferingIndicator:progressView:configuration:]
+-[UIView(WebVideoCache) jp_playVideoWithURL:bufferingIndicator:controlView:progressView:configuration:]
+-[UIView(WebVideoCache) jp_resumePlayWithURL:bufferingIndicator:controlView:progressView:configuration:]
+-[UIView(WebVideoCache) setBufferingIndicator:controlView:progressView:needSetControlView:]
+-[UIView(WebVideoCache) jp_playVideoWithURL:options:configuration:]
+-[UIView(WebVideoCache) jp_resumePlayWithURL:options:configuration:]
+-[UIView(WebVideoCache) playVideoWithURL:options:configurationCompletion:isResume:]
+___83-[UIView(WebVideoCache) playVideoWithURL:options:configurationCompletion:isResume:]_block_invoke
+___83-[UIView(WebVideoCache) playVideoWithURL:options:configurationCompletion:isResume:]_block_invoke.203
+___copy_helper_block_.208
+___destroy_helper_block_.209
+-[UIView(WebVideoCache) setJp_rate:]
+-[UIView(WebVideoCache) jp_rate]
+-[UIView(WebVideoCache) setJp_muted:]
+-[UIView(WebVideoCache) jp_muted]
+-[UIView(WebVideoCache) setJp_volume:]
+-[UIView(WebVideoCache) jp_volume]
+-[UIView(WebVideoCache) jp_seekToTime:]
+-[UIView(WebVideoCache) jp_elapsedSeconds]
+-[UIView(WebVideoCache) jp_totalSeconds]
+-[UIView(WebVideoCache) jp_pause]
+-[UIView(WebVideoCache) jp_resume]
+-[UIView(WebVideoCache) jp_currentTime]
+-[UIView(WebVideoCache) jp_stopPlay]
+-[UIView(WebVideoCache) jp_gotoLandscape]
+-[UIView(WebVideoCache) jp_gotoLandscapeAnimated:completion:]
+___61-[UIView(WebVideoCache) jp_gotoLandscapeAnimated:completion:]_block_invoke
+___copy_helper_block_.252
+___destroy_helper_block_.253
+___61-[UIView(WebVideoCache) jp_gotoLandscapeAnimated:completion:]_block_invoke.255
+___61-[UIView(WebVideoCache) jp_gotoLandscapeAnimated:completion:]_block_invoke_2
+___copy_helper_block_.256
+___destroy_helper_block_.257
+___copy_helper_block_.263
+___destroy_helper_block_.264
+___61-[UIView(WebVideoCache) jp_gotoLandscapeAnimated:completion:]_block_invoke.269
+___copy_helper_block_.270
+___destroy_helper_block_.271
+-[UIView(WebVideoCache) jp_gotoPortrait]
+-[UIView(WebVideoCache) jp_gotoPortraitAnimated:completion:]
+___60-[UIView(WebVideoCache) jp_gotoPortraitAnimated:completion:]_block_invoke
+___copy_helper_block_.281
+___destroy_helper_block_.282
+___60-[UIView(WebVideoCache) jp_gotoPortraitAnimated:completion:]_block_invoke.284
+___copy_helper_block_.287
+___destroy_helper_block_.288
+-[UIView(WebVideoCache) callOrientationDelegateWithInterfaceOrientation:]
+-[UIView(WebVideoCache) callStartBufferingDelegate]
+-[UIView(WebVideoCache) callFinishBufferingDelegate]
+-[UIView(WebVideoCache) finishPortrait]
+___39-[UIView(WebVideoCache) finishPortrait]_block_invoke
+___copy_helper_block_.304
+___destroy_helper_block_.305
+-[UIView(WebVideoCache) executePortrait]
+-[UIView(WebVideoCache) executeLandscape]
+-[UIView(WebVideoCache) refreshStatusBarOrientation:]
+-[UIView(WebVideoCache) helper]
+-[UIView(WebVideoCache) videoPlayerManager:shouldDownloadVideoForURL:]
+-[UIView(WebVideoCache) videoPlayerManager:shouldAutoReplayForURL:]
+-[UIView(WebVideoCache) videoPlayerManager:playerStatusDidChanged:]
+-[UIView(WebVideoCache) videoPlayerManager:didFetchVideoFileLength:]
+-[UIView(WebVideoCache) videoPlayerManagerDownloadProgressDidChange:cacheType:fragmentRanges:expectedSize:error:]
+-[UIView(WebVideoCache) videoPlayerManagerPlayProgressDidChange:elapsedSeconds:totalSeconds:error:]
+-[UIView(WebVideoCache) videoPlayerManager:shouldPausePlaybackWhenApplicationWillResignActiveForURL:]
+-[UIView(WebVideoCache) videoPlayerManager:shouldPausePlaybackWhenApplicationDidEnterBackgroundForURL:]
+-[UIView(WebVideoCache) videoPlayerManager:shouldResumePlaybackWhenApplicationDidBecomeActiveFromBackgroundForURL:]
+-[UIView(WebVideoCache) videoPlayerManager:shouldResumePlaybackWhenApplicationDidBecomeActiveFromResignActiveForURL:]
+-[UIView(WebVideoCache) videoPlayerManager:shouldTranslateIntoPlayVideoFromResumePlayForURL:]
+-[UIView(WebVideoCache) videoPlayerManager:shouldPausePlaybackWhenReceiveAudioSessionInterruptionNotificationForURL:]
+-[UIView(WebVideoCache) videoPlayerManagerPreferAudioSessionCategory:]
+-[UIView(WebVideoCache) videoPlayerManager:shouldResumePlaybackFromPlaybackRecordForURL:elapsedSeconds:]
+_OBJC_IVAR_$_JPVideoPlayerHelper._playVideoView
+_OBJC_IVAR_$_JPVideoPlayerHelper._viewInterfaceOrientation
+_OBJC_IVAR_$_JPVideoPlayerHelper._videoPlayerView
+_OBJC_IVAR_$_JPVideoPlayerHelper._progressView
+_OBJC_IVAR_$_JPVideoPlayerHelper._controlView
+_OBJC_IVAR_$_JPVideoPlayerHelper._bufferingIndicator
+_OBJC_IVAR_$_JPVideoPlayerHelper._videoPlayerDelegate
+_OBJC_IVAR_$_JPVideoPlayerHelper._playerStatus
+_OBJC_IVAR_$_JPVideoPlayerHelper._videoURL
+___block_descriptor_tmp.254
+___block_descriptor_tmp.258
+___block_descriptor_tmp.266
+___block_descriptor_tmp.272
+___block_descriptor_tmp.283
+___block_descriptor_tmp.289
+___block_descriptor_tmp.306
+l_OBJC_PROTOCOL_$_JPVideoPlayerManagerDelegate
+l_OBJC_LABEL_PROTOCOL_$_JPVideoPlayerManagerDelegate
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/JPVideoPlayer/JPVideoPlayer/UIView+WebVideoCache.m
+__39-[UIView(WebVideoCache) finishPortrait]_block_invoke
+__60-[UIView(WebVideoCache) jp_gotoPortraitAnimated:completion:]_block_invoke.284
+__60-[UIView(WebVideoCache) jp_gotoPortraitAnimated:completion:]_block_invoke
+__61-[UIView(WebVideoCache) jp_gotoLandscapeAnimated:completion:]_block_invoke.269
+__61-[UIView(WebVideoCache) jp_gotoLandscapeAnimated:completion:]_block_invoke_2
+__61-[UIView(WebVideoCache) jp_gotoLandscapeAnimated:completion:]_block_invoke.255
+__61-[UIView(WebVideoCache) jp_gotoLandscapeAnimated:completion:]_block_invoke
+__83-[UIView(WebVideoCache) playVideoWithURL:options:configurationCompletion:isResume:]_block_invoke.203
+__83-[UIView(WebVideoCache) playVideoWithURL:options:configurationCompletion:isResume:]_block_invoke
+/Users/Mandora/Library/Developer/Xcode/DerivedData/SeeYu-cbefmrqtsodfykcljsqzeeiphizv/Build/Intermediates.noindex/ArchiveIntermediates/SeeYu/IntermediateBuildFilesPath/Pods.build/Debug-iphoneos/JPVideoPlayer.build/DerivedSources/JPVideoPlayer_vers.c
+__ZL15__ARCLite__loadv
+__ZL30add_image_hook_autoreleasepoolPK11mach_headerl
+__ZL34__arclite_objc_autoreleasePoolPushv
+__ZL33__arclite_objc_autoreleasePoolPopPv
+__ZL19patch_lazy_pointersPK11mach_headerP7patch_tm
+__ZL42__arclite_NSArray_objectAtIndexedSubscriptP7NSArrayP13objc_selectorj
+__ZL53__arclite_NSMutableArray_setObject_atIndexedSubscriptP14NSMutableArrayP13objc_selectorP11objc_objectj
+__ZL46__arclite_NSDictionary_objectForKeyedSubscriptP12NSDictionaryP13objc_selectorP11objc_object
+__ZL47__arclite_NSOrderedSet_objectAtIndexedSubscriptP12NSOrderedSetP13objc_selectorj
+__ZL58__arclite_NSMutableOrderedSet_setObject_atIndexedSubscriptP19NSMutableOrderedSetP13objc_selectorP11objc_objectj
+__ZL58__arclite_NSMutableDictionary__setObject_forKeyedSubscriptP19NSMutableDictionaryP13objc_selectorP11objc_objectS4_
+__ZL18add_image_hook_ARCPK11mach_headerl
+__ZL36__arclite_object_setInstanceVariableP11objc_objectPKcPv
+__ZL24__arclite_object_setIvarP11objc_objectP9objc_ivarS0_
+__ZL21__arclite_object_copyP11objc_objectm
+__ZL21__arclite_objc_retainP11objc_object
+__ZL26__arclite_objc_retainBlockP11objc_object
+__ZL22__arclite_objc_releaseP11objc_object
+__ZL26__arclite_objc_autoreleaseP11objc_object
+__ZL32__arclite_objc_retainAutoreleaseP11objc_object
+__ZL37__arclite_objc_autoreleaseReturnValueP11objc_object
+__ZL43__arclite_objc_retainAutoreleaseReturnValueP11objc_object
+__ZL44__arclite_objc_retainAutoreleasedReturnValueP11objc_object
+__ZL26__arclite_objc_storeStrongPP11objc_objectS0_
+__ZL22add_image_hook_swiftV1PK11mach_headerl
+__ZL42__arclite_NSUndoManagerProxy_isKindOfClassP11objc_objectP13objc_selectorP10objc_class
+__ZL30__arclite_NSManagedObject_initP11objc_objectP13objc_selector
+__ZL41__arclite_NSManagedObject_allocWithEntityP11objc_objectP13objc_selectorS0_
+__ZL36__arclite_NSManagedObject_allocBatchP11objc_objectP13objc_selectorPS0_S0_j
+__ZL37__arclite_NSKKMS_fastIndexForKnownKeyP11objc_objectP13objc_selectorS0_
+__ZL28__arclite_NSKKMS_indexForKeyP11objc_objectP13objc_selectorS0_
+__ZL29__arclite_NSKKsD_objectForKeyP11objc_objectP13objc_selectorS0_
+__ZL35__arclite_NSKKsD_removeObjectForKeyP11objc_objectP13objc_selectorS0_
+__ZL33__arclite_NSKKsD_setObject_forKeyP11objc_objectP13objc_selectorS0_S0_
+__ZL41__arclite_NSKKsD_addEntriesFromDictionaryP11objc_objectP13objc_selectorP12NSDictionary
+__ZL28__arclite_objc_readClassPairP10objc_classPK15objc_image_info
+__ZL32__arclite_objc_allocateClassPairP10objc_classPKcm
+__ZL32__arclite_object_getIndexedIvarsP11objc_object
+__ZL23__arclite_objc_getClassPKc
+__ZL27__arclite_objc_getMetaClassPKc
+__ZL31__arclite_objc_getRequiredClassPKc
+__ZL26__arclite_objc_lookUpClassPKc
+__ZL26__arclite_objc_getProtocolPKc
+__ZL23__arclite_class_getNameP10objc_class
+__ZL26__arclite_protocol_getNameP8Protocol
+__ZL37__arclite_objc_copyClassNamesForImagePKcPj
+__ZL17transcribeMethodsP10objc_classP15glue_class_ro_t
+__ZL19transcribeProtocolsP10objc_classP15glue_class_ro_t
+__ZL20transcribePropertiesP10objc_classP15glue_class_ro_t
+__ZL14initialize_impP11objc_objectP13objc_selector
+__ZL18allocateMaybeSwiftP18glue_swift_class_tm
+__ZL22copySwiftV1MangledNamePKcb
+__ZL13demangledNamePKcb
+__ZL16scanMangledFieldRPKcS0_S1_Ri
+__ZL30arclite_uninitialized_functionv
+__ZL12cxxConstructP11objc_object
+__ZL20fixStringForCoreDataP11objc_object
+_OBJC_METACLASS_$___ARCLite__
+__ZL24OBJC_CLASS_$___ARCLite__
+__ZL31OBJC_METACLASS_RO_$___ARCLite__
+__non_lazy_classes
+__ZL27OBJC_CLASS_RO_$___ARCLite__
+__ZL11_class_name
+__ZL32OBJC_$_CLASS_METHODS___ARCLite__
+__ZL17_load_method_name
+__ZL17_load_method_type
+__ZL23NSAutoreleasePool_class
+__ZZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
+__ZGVZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
+l_OBJC_PROTOCOL_$___ARCLiteIndexedSubscripting__
+l_OBJC_LABEL_PROTOCOL_$___ARCLiteIndexedSubscripting__
+l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteIndexedSubscripting__
+l_OBJC_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_LABEL_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteKeyedSubscripting__
+__ZZL18add_image_hook_ARCPK11mach_headerlE7patches
+__ZGVZL18add_image_hook_ARCPK11mach_headerlE7patches
+__ZL30NSUndoManagerProxy_targetClass
+__ZL29original_NSManagedObject_init
+__ZL40original_NSManagedObject_allocWithEntity
+__ZL35original_NSManagedObject_allocBatch
+__ZL25NSMutableDictionary_class
+__ZL22NSConstantString_class
+__ZL14NSString_class
+__ZL36original_NSKKMS_fastIndexForKnownKey
+__ZL27original_NSKKMS_indexForKey
+__ZL28original_NSKKsD_objectForKey
+__ZL34original_NSKKsD_removeObjectForKey
+__ZL32original_NSKKsD_setObject_forKey
+__ZL40original_NSKKsD_addEntriesFromDictionary
+__ZZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+__ZGVZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+__ZL31original_objc_allocateClassPair
+__ZL31original_object_getIndexedIvars
+__ZL22original_objc_getClass
+__ZL26original_objc_getMetaClass
+__ZL30original_objc_getRequiredClass
+__ZL25original_objc_lookUpClass
+__ZL25original_objc_getProtocol
+__ZL22original_class_getName
+__ZL25original_protocol_getName
+__ZL36original_objc_copyClassNamesForImage
+__ZL12demangleLock
+__ZL9Demangled
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c++11 -Wno-trigraphs -fno-exceptions -fno-rtti -fno-sanitize=vptr -mpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-objc-interface-ivars -Wno-arc-repeated-use-of-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -D NDEBUG=1 -D OBJC_OLD_DISPATCH_PROTOTYPES=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.Internal.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -miphoneos-version-min=4.3 -g -fno-threadsafe-statics -Wno-sign-conversion -Wno-infinite-recursion -Wno-move -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -Wno-range-loop-analysis -Wno-semicolon-before-method-body -fembed-bitcode=all -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-generated-files.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-own-target-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-all-target-headers.hmap -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-project-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/Symbols/BuiltProducts/include -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources/armv7 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources -F/Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/Symbols/BuiltProducts -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.Internal.sdk/System/Library/PrivateFrameworks -Wall -Wextra -Wno-gcc-compat -Wno-error=incomplete-umbrella -Wno-error=invalid-ios-deployment-target -Wno-error=incomplete-umbrella -Wno-error=invalid-ios-deployment-target -MMD -MT dependencies -MF /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.d --serialize-diagnostics /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.dia -c /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-70/source/arclite.mm -o /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.o -mlinker-version=409.12 -march=armv7a
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-70/source/arclite.mm
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-70
+fixStringForCoreData
+cxxConstruct
+arclite_uninitialized_function
+scanMangledField
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.Internal.sdk/usr/include/_ctype.h
+__isctype
+demangledName
+copySwiftV1DemangledName
+copySwiftV1MangledName
+allocateMaybeSwift
+word_align
+isSwift
+initialize_imp
+transcribeProperties
+property_list_nth
+transcribeProtocols
+transcribeMethods
+data
+method_list_nth
+__arclite_objc_copyClassNamesForImage
+__arclite_protocol_getName
+__arclite_class_getName
+__arclite_objc_getProtocol
+__arclite_objc_lookUpClass
+__arclite_objc_getRequiredClass
+__arclite_objc_getMetaClass
+__arclite_objc_getClass
+__arclite_object_getIndexedIvars
+__arclite_objc_allocateClassPair
+metaclass
+__arclite_objc_readClassPair
+transcribeIvars
+ivar_list_nth
+max
+alignment
+ro
+fastFlags
+__arclite_NSKKsD_addEntriesFromDictionary
+__arclite_NSKKsD_setObject_forKey
+__arclite_NSKKsD_removeObjectForKey
+__arclite_NSKKsD_objectForKey
+__arclite_NSKKMS_indexForKey
+__arclite_NSKKMS_fastIndexForKnownKey
+__arclite_NSManagedObject_allocBatch
+__arclite_NSManagedObject_allocWithEntity
+__arclite_NSManagedObject_init
+__arclite_NSUndoManagerProxy_isKindOfClass
+add_image_hook_swiftV1
+patch_t<const char **(const char *, unsigned int *)>
+patch_t<const char *(Protocol *)>
+patch_t<const char *(Class)>
+patch_t<Protocol *(const char *)>
+patch_t<Class (const char *)>
+patch_t<void *(id)>
+patch_t<Class (Class, const char *, unsigned long)>
+patch_t<Class (Class, const objc_image_info *)>
+__arclite_objc_storeStrong
+__arclite_objc_release
+__arclite_objc_retain
+__arclite_objc_retainAutoreleasedReturnValue
+__arclite_objc_retainAutoreleaseReturnValue
+__arclite_objc_autoreleaseReturnValue
+__arclite_objc_retainAutorelease
+__arclite_objc_autorelease
+__arclite_objc_retainBlock
+__arclite_object_copy
+fixupCopiedReferences
+_class_getInstanceStart
+alignedInstanceStart
+__arclite_class_usesAutomaticRetainRelease
+classOrSuperClassesUseARR
+__arclite_object_setIvar
+isScannedOffset
+_ivar_getClass
+__arclite_object_setInstanceVariable
+add_image_hook_ARC
+patch_t<void (id *, id)>
+patch_t<id (id)>
+patch_t<void (id)>
+patch_t<id (id, unsigned long)>
+patch_t<void (id, objc_ivar *, id)>
+patch_t<objc_ivar *(id, const char *, void *)>
+__arclite_NSMutableDictionary__setObject_forKeyedSubscript
+__arclite_NSMutableOrderedSet_setObject_atIndexedSubscript
+__arclite_NSOrderedSet_objectAtIndexedSubscript
+__arclite_NSDictionary_objectForKeyedSubscript
+__arclite_NSMutableArray_setObject_atIndexedSubscript
+__arclite_NSArray_objectAtIndexedSubscript
+patch_lazy_pointers
+__arclite_objc_autoreleasePoolPop
+__arclite_objc_autoreleasePoolPush
+add_image_hook_autoreleasepool
+patch_t<void (void *)>
+patch_t<void *()>
+__ARCLite__load
+install_swiftV1
+replaceMethod
+install_ARC
+install_dict_nil_value
+addOrReplaceMethod
+keyedGetter
+install_subscripting
+addMethod
+indexedGetter
+install_autoreleasepool

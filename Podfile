@@ -128,11 +128,9 @@ pod 'LBXScan/UI'                        ,'2.0'
 #######---------- 企业第三方 ------------------########
 # 集成腾讯bugly，用于打包测试和bug异常收集
 pod 'Bugly'
-# 极光推送
-# pod 'JPush'                             , '3.0.6'
 # 友盟相关
 pod 'UMCCommon'
-#pod 'UMCPush'
+pod 'UMCPush'
 pod 'UMCSecurityPlugins'
 pod 'UMCAnalytics'
 # U-Share SDK UI模块（分享面板，建议添加）
@@ -175,8 +173,10 @@ pod 'RongCloudRTC/RongCallLib'          , '2.9.14'
 pod 'DZNEmptyDataSet'                   , '1.8.1'
 # 图片浏览器
 pod 'YBImageBrowser'
+# 图片浏览和选择
+#pod 'ZLPhotoBrowser'
 # 苹果内购
-#pod 'RMStore', '0.7.1'
+pod 'RMStore', '0.7.1'
 # 拍照和录视频
 pod 'PBJVision'
 pod 'JPVideoPlayer'

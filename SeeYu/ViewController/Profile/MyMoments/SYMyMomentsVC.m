@@ -7,8 +7,9 @@
 //
 
 #import "SYMyMomentsVC.h"
+#import "SYMyMomentsListCell.h"
 
-@interface SYMyMomentsVC ()
+@interface SYMyMomentsVC () <TZImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UIView *headerView;
 
@@ -32,10 +33,23 @@
 
 - (void)bindViewModel {
     [super bindViewModel];
-    [RACObserve(self.viewModel, datasource) subscribeNext:^(NSArray *array) {
+    [RACObserve(self.viewModel, yearArray) subscribeNext:^(NSArray *array) {
         if (array != nil) {
             [self.tableView reloadData];
         }
+    }];
+    [self.uploadImageView bk_whenTapped:^{
+        LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"取消" clicked:^(LCActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                
+            } else if (buttonIndex == 2) {
+                TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:9 columnNumber:4 delegate:self pushPhotoPickerVc:YES];
+                [self presentViewController:imagePicker animated:YES completion:nil];
+            } else {
+                return;
+            }
+        } otherButtonTitles:@"拍摄",@"从手机相册选择", nil];
+        [sheet show];
     }];
 }
 
@@ -44,15 +58,14 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.tableFooterView = [UIView new];
-    tableView.backgroundColor = SYColorFromHexString(@"#F8F8F8");
     tableView.separatorInset = UIEdgeInsetsZero;
+    tableView.estimatedRowHeight = 80.f;    // 动态计算行高
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 155)];
+    _headerView = headerView;
+    tableView.tableHeaderView = headerView;
     _tableView = tableView;
     [self.view addSubview:tableView];
-    
-    UIView *headerView = [UIView new];
-    _headerView = headerView;
-    _tableView.tableHeaderView = headerView;
-    [self.view addSubview:headerView];
     
     UILabel *currentYearLabel = [UILabel new];
     currentYearLabel.font = SYRegularFont(32);
@@ -81,10 +94,6 @@
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    [_headerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.equalTo(self.tableView);
-        make.bottom.equalTo(self.uploadImageView);
-    }];
     [_currentYearLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.headerView).offset(30);
         make.left.equalTo(self.headerView).offset(15);
@@ -96,7 +105,7 @@
         make.top.equalTo(self.currentYearLabel.mas_bottom).offset(15);
     }];
     [_uploadImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.currentDayLabel.mas_right).offset(15);
+        make.left.equalTo(self.view).offset(103);
         make.width.height.offset(80);
         make.top.equalTo(self.currentDayLabel);
     }];
@@ -107,35 +116,82 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *array = self.viewModel.datasource[section - 1];
-    NSLog(@"%@",self.viewModel.datasource);
-    NSLog(@"%@",self.viewModel.datasource[section]);
-    return 0;
+    NSString *year = self.viewModel.yearArray[section];
+    NSArray *modelArray = self.viewModel.modelDictionary[year];
+    return modelArray.count;
 }
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    return [UIView new];
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    if (section == 0) {
-//        return 0;
-//    } else {
-//        return 15.f;
-//    }
-//}
-//
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 0;
+    } else {
+        return 75.f;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return [UIView new];
+    } else {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 75)];
+        UILabel *yearLabel = [UILabel new];
+        yearLabel.textAlignment = NSTextAlignmentLeft;
+        yearLabel.font = [UIFont boldSystemFontOfSize:32];
+        yearLabel.textColor = SYColor(51, 51, 51);
+        yearLabel.text = [NSString stringWithFormat:@"%@年",self.viewModel.yearArray[section]];
+        [view addSubview:yearLabel];
+        [yearLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(view).offset(15);
+            make.height.offset(30);
+            make.bottom.equalTo(view);
+        }];
+        return view;
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 45.f;
+    return 110.f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
+    NSString *identifier = [NSString stringWithFormat:@"momentListCell%ld%ld",indexPath.section,indexPath.row];
+    SYMyMomentsListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
+    if (!cell) {
+        cell = [[SYMyMomentsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    cell.layoutMargins = UIEdgeInsetsZero;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSString *year = self.viewModel.yearArray[indexPath.section];
+    NSArray *modelArray = self.viewModel.modelDictionary[year];
+    SYMomentsModel *model = modelArray[indexPath.row];
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        if (![[model.momentTime substringToIndex:10] isEqualToString:[[NSDate sy_currentTimestamp] substringToIndex:10]]) {
+            // 首条数据为当天的数据，则不显示月日
+            [cell setDayAndMonthLabel:model.momentTime];
+        }
+    } else if (indexPath.row == 0) {
+        // 非当年的首条显示日月
+        [cell setDayAndMonthLabel:model.momentTime];
+    } else {
+        // 判断与上一条的年月日是否相同，不相同再显示
+        SYMomentsModel *lastModel = modelArray[indexPath.row - 1];
+        if (![[lastModel.momentTime substringToIndex:10] isEqualToString:[model.momentTime substringToIndex:10]]) {
+            [cell setDayAndMonthLabel:model.momentTime];
+        }
+    }
+    if (model.momentContent != nil && model.momentContent.length > 0) {
+        cell.contentLabel.text = model.momentContent;
+    }
+    if (model.momentPhotos != nil && model.momentPhotos.length > 0) {
+        [cell setPhotosShowView:model.momentPhotos];
+    }
+    if (model.momentVideo != nil && model.momentVideo.length > 0) {
+        [cell setVideoShowView:model.momentVideo];
+    }
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
 @end

@@ -460,36 +460,68 @@
     ActionSheetStringPicker *picker = [[ActionSheetStringPicker alloc] initWithTitle:title rows:array initialSelection:row doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
         @strongify(self)
         if ([type isEqualToString:@"age"]) {
-            if (selectedIndex != row) {
+            if (self.viewModel.user.userAge == nil || self.viewModel.user.userAge.length == 0) {
                 [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userAge":array[selectedIndex]}];
+            } else {
+                if (selectedIndex != row) {
+                    [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userAge":array[selectedIndex]}];
+                }
             }
         } else if ([type isEqualToString:@"job"]) {
-            if (selectedIndex != row) {
+            if (self.viewModel.user.userProfession == nil || self.viewModel.user.userProfession.length == 0) {
                 [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userProfession":array[selectedIndex]}];
+            } else {
+                if (selectedIndex != row) {
+                    [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userProfession":array[selectedIndex]}];
+                }
             }
         } else if ([type isEqualToString:@"income"]) {
-            if (selectedIndex != row) {
+            if (self.viewModel.user.userIncome == nil || self.viewModel.user.userIncome.length == 0) {
                 [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userIncome":array[selectedIndex]}];
+            } else {
+                if (selectedIndex != row) {
+                    [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userIncome":array[selectedIndex]}];
+                }
             }
         } else if ([type isEqualToString:@"height"]) {
-            if (selectedIndex != row) {
+            if (self.viewModel.user.userHeight == nil || self.viewModel.user.userHeight.length == 0) {
                 [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userHeight":array[selectedIndex]}];
+            } else {
+                if (selectedIndex != row) {
+                    [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userHeight":array[selectedIndex]}];
+                }
             }
         } else if ([type isEqualToString:@"marry"]) {
-            if (selectedIndex != row) {
+            if (self.viewModel.user.userMarry == nil || self.viewModel.user.userMarry.length == 0) {
                 [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userMarry":array[selectedIndex]}];
+            } else {
+                if (selectedIndex != row) {
+                    [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userMarry":array[selectedIndex]}];
+                }
             }
         } else if ([type isEqualToString:@"edu"]) {
-            if (selectedIndex != row) {
+            if (self.viewModel.user.userEdu == nil || self.viewModel.user.userEdu.length == 0) {
                 [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userEdu":array[selectedIndex]}];
+            } else {
+                if (selectedIndex != row) {
+                    [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userEdu":array[selectedIndex]}];
+                }
             }
         } else if ([type isEqualToString:@"weight"]) {
-            if (selectedIndex != row) {
+            if (self.viewModel.user.userWeight == nil || self.viewModel.user.userWeight.length == 0) {
                 [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userWeight":array[selectedIndex]}];
+            } else {
+                if (selectedIndex != row) {
+                    [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userWeight":array[selectedIndex]}];
+                }
             }
         } else if ([type isEqualToString:@"constellation"]) {
-            if (selectedIndex != row) {
+            if (self.viewModel.user.userConstellation == nil || self.viewModel.user.userConstellation.length == 0) {
                 [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userConstellation":array[selectedIndex]}];
+            } else {
+                if (selectedIndex != row) {
+                    [self.viewModel.updateUserInfoCommand execute:@{@"userId":self.viewModel.user.userId,@"userConstellation":array[selectedIndex]}];
+                }
             }
         }
     } cancelBlock:^(ActionSheetStringPicker *picker) {

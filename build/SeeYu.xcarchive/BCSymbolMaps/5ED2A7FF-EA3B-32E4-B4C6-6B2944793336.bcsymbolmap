@@ -1,0 +1,2816 @@
+BCSymbolMap Version: 2.0
+-[MKAnnotationView(RACSignalSupport) rac_prepareForReuseSignal]
+Apple LLVM version 10.0.0 (clang-1000.11.45.5)
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/MKAnnotationView+RACSignalSupport.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods
+-[NSArray(RACSequenceAdditions) rac_sequence]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSArray+RACSequenceAdditions.m
++[NSData(RACSupport) rac_readContentsOfURL:options:scheduler:]
+___62+[NSData(RACSupport) rac_readContentsOfURL:options:scheduler:]_block_invoke
+___copy_helper_block_
+___destroy_helper_block_
+___block_descriptor_tmp
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSData+RACSupport.m
+__destroy_helper_block_
+__copy_helper_block_
+__62+[NSData(RACSupport) rac_readContentsOfURL:options:scheduler:]_block_invoke
+-[NSDictionary(RACSequenceAdditions) rac_sequence]
+___50-[NSDictionary(RACSequenceAdditions) rac_sequence]_block_invoke
+-[NSDictionary(RACSequenceAdditions) rac_keySequence]
+-[NSDictionary(RACSequenceAdditions) rac_valueSequence]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSDictionary+RACSequenceAdditions.m
+__50-[NSDictionary(RACSequenceAdditions) rac_sequence]_block_invoke
+-[NSEnumerator(RACSequenceAdditions) rac_sequence]
+___50-[NSEnumerator(RACSequenceAdditions) rac_sequence]_block_invoke
+___50-[NSEnumerator(RACSequenceAdditions) rac_sequence]_block_invoke.1
+___copy_helper_block_.4
+___destroy_helper_block_.5
+___block_descriptor_tmp.7
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSEnumerator+RACSequenceAdditions.m
+__50-[NSEnumerator(RACSequenceAdditions) rac_sequence]_block_invoke.1
+__50-[NSEnumerator(RACSequenceAdditions) rac_sequence]_block_invoke
+-[NSFileHandle(RACSupport) rac_readInBackground]
+___48-[NSFileHandle(RACSupport) rac_readInBackground]_block_invoke
+___Block_byref_object_copy_
+___Block_byref_object_dispose_
+___48-[NSFileHandle(RACSupport) rac_readInBackground]_block_invoke.17
+___block_literal_global
+___block_descriptor_tmp.29
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSFileHandle+RACSupport.m
+__48-[NSFileHandle(RACSupport) rac_readInBackground]_block_invoke.17
+__Block_byref_object_dispose_
+__Block_byref_object_copy_
+__48-[NSFileHandle(RACSupport) rac_readInBackground]_block_invoke
+-[NSIndexSet(RACSequenceAdditions) rac_sequence]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSIndexSet+RACSequenceAdditions.m
+-[NSInvocation(RACTypeParsing) rac_setArgument:atIndex:]
+-[NSInvocation(RACTypeParsing) rac_argumentAtIndex:]
+-[NSInvocation(RACTypeParsing) rac_argumentsTuple]
+-[NSInvocation(RACTypeParsing) setRac_argumentsTuple:]
+-[NSInvocation(RACTypeParsing) rac_returnValue]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSInvocation+RACTypeParsing.m
+-[NSNotificationCenter(RACSupport) rac_addObserverForName:object:]
+___66-[NSNotificationCenter(RACSupport) rac_addObserverForName:object:]_block_invoke
+___66-[NSNotificationCenter(RACSupport) rac_addObserverForName:object:]_block_invoke_2
+___66-[NSNotificationCenter(RACSupport) rac_addObserverForName:object:]_block_invoke.4
+___copy_helper_block_.7
+___destroy_helper_block_.8
+___copy_helper_block_.13
+___destroy_helper_block_.14
+___block_descriptor_tmp.10
+___block_descriptor_tmp.16
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSNotificationCenter+RACSupport.m
+__66-[NSNotificationCenter(RACSupport) rac_addObserverForName:object:]_block_invoke.4
+__66-[NSNotificationCenter(RACSupport) rac_addObserverForName:object:]_block_invoke_2
+__66-[NSNotificationCenter(RACSupport) rac_addObserverForName:object:]_block_invoke
+-[NSObject(RACDeallocating) rac_willDeallocSignal]
+___50-[NSObject(RACDeallocating) rac_willDeallocSignal]_block_invoke
+-[NSObject(RACDeallocating) rac_deallocDisposable]
+_swizzleDeallocIfNeeded
+-[NSObject(RACDeallocatingDeprecated) rac_didDeallocSignal]
+___59-[NSObject(RACDeallocatingDeprecated) rac_didDeallocSignal]_block_invoke
+___copy_helper_block_.18
+___destroy_helper_block_.19
+-[NSObject(RACDeallocatingDeprecated) rac_addDeallocDisposable:]
+___swizzleDeallocIfNeeded_block_invoke
+___copy_helper_block_.32
+___destroy_helper_block_.33
+_swizzledClasses
+___swizzledClasses_block_invoke
+_RACObjectCompoundDisposable
+___block_descriptor_tmp.20
+___block_descriptor_tmp.36
+_swizzledClasses.onceToken
+_swizzledClasses.swizzledClasses
+___block_descriptor_tmp.40
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSObject+RACDeallocating.m
+__swizzledClasses_block_invoke
+swizzledClasses
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/include/dispatch/once.h
+__swizzleDeallocIfNeeded_block_invoke
+__59-[NSObject(RACDeallocatingDeprecated) rac_didDeallocSignal]_block_invoke
+swizzleDeallocIfNeeded
+__50-[NSObject(RACDeallocating) rac_willDeallocSignal]_block_invoke
+-[NSObject(RACDescription) rac_description]
+-[NSValue(RACDescription) rac_description]
+-[NSString(RACDescription) rac_description]
+-[RACTuple(RACDescription) rac_description]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSObject+RACDescription.m
+-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]
+___69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke
+___69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke.38
+_rac_executeCleanupBlock
+___69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke_2
+___69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke_3
+___copy_helper_block_.57
+___destroy_helper_block_.58
+___69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke.62
+___copy_helper_block_.65
+___destroy_helper_block_.66
+___copy_helper_block_.68
+___destroy_helper_block_.69
+___69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke.72
+___copy_helper_block_.75
+___destroy_helper_block_.76
+___69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke.81
+___copy_helper_block_.94
+___destroy_helper_block_.95
+___69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke.100
+___copy_helper_block_.101
+___destroy_helper_block_.102
+-[NSObject(RACKVOWrapperDeprecated) rac_addObserver:forKeyPath:options:block:]
+___block_descriptor_tmp.59
+___block_descriptor_tmp.67
+___block_descriptor_tmp.71
+___block_descriptor_tmp.77
+___block_descriptor_tmp.97
+___block_descriptor_tmp.103
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSObject+RACKVOWrapper.m
+__69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke.100
+__69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke.81
+__69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke.72
+__69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke.62
+__69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke_3
+__69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke_2
+rac_executeCleanupBlock
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/extobjc/RACEXTScope.h
+__69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke.38
+__69-[NSObject(RACKVOWrapper) rac_observeKeyPath:options:observer:block:]_block_invoke
+-[NSObject(RACLifting) rac_liftSelector:withSignalOfArguments:]
+___63-[NSObject(RACLifting) rac_liftSelector:withSignalOfArguments:]_block_invoke
+-[NSObject(RACLifting) rac_liftSelector:withSignalsFromArray:]
+-[NSObject(RACLifting) rac_liftSelector:withSignals:]
+-[NSObject(RACLiftingDeprecated) rac_liftSelector:withObjects:]
+-[NSObject(RACLiftingDeprecated) rac_liftSelector:withObjectsFromArray:]
+_RACMapArgumentsToSignals
+-[NSObject(RACLiftingDeprecated) rac_liftBlock:withArguments:]
+-[NSObject(RACLiftingDeprecated) rac_liftBlock:withArgumentsFromArray:]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSObject+RACLifting.m
+RACMapArgumentsToSignals
+__63-[NSObject(RACLifting) rac_liftSelector:withSignalOfArguments:]_block_invoke
+-[NSObject(RACPropertySubscribing) rac_valuesForKeyPath:observer:]
+___66-[NSObject(RACPropertySubscribing) rac_valuesForKeyPath:observer:]_block_invoke
+-[NSObject(RACPropertySubscribing) rac_valuesAndChangesForKeyPath:options:observer:]
+___84-[NSObject(RACPropertySubscribing) rac_valuesAndChangesForKeyPath:options:observer:]_block_invoke
+___84-[NSObject(RACPropertySubscribing) rac_valuesAndChangesForKeyPath:options:observer:]_block_invoke_2
+___copy_helper_block_.36
+___destroy_helper_block_.37
+___84-[NSObject(RACPropertySubscribing) rac_valuesAndChangesForKeyPath:options:observer:]_block_invoke.41
+___84-[NSObject(RACPropertySubscribing) rac_valuesAndChangesForKeyPath:options:observer:]_block_invoke_2.42
+___copy_helper_block_.43
+___destroy_helper_block_.44
+___84-[NSObject(RACPropertySubscribing) rac_valuesAndChangesForKeyPath:options:observer:]_block_invoke.48
+___copy_helper_block_.63
+___destroy_helper_block_.64
++[NSObject(RACPropertySubscribingDeprecated) rac_signalFor:keyPath:observer:]
+_signalWithoutChangesFor
++[NSObject(RACPropertySubscribingDeprecated) rac_signalWithStartingValueFor:keyPath:observer:]
++[NSObject(RACPropertySubscribingDeprecated) rac_signalWithChangesFor:keyPath:options:observer:]
+___96+[NSObject(RACPropertySubscribingDeprecated) rac_signalWithChangesFor:keyPath:options:observer:]_block_invoke
+___96+[NSObject(RACPropertySubscribingDeprecated) rac_signalWithChangesFor:keyPath:options:observer:]_block_invoke_2
+___96+[NSObject(RACPropertySubscribingDeprecated) rac_signalWithChangesFor:keyPath:options:observer:]_block_invoke.82
+___copy_helper_block_.85
+___destroy_helper_block_.86
+___96+[NSObject(RACPropertySubscribingDeprecated) rac_signalWithChangesFor:keyPath:options:observer:]_block_invoke.94
+___copy_helper_block_.97
+___destroy_helper_block_.98
+___copy_helper_block_.100
+___destroy_helper_block_.101
+-[NSObject(RACPropertySubscribingDeprecated) rac_signalForKeyPath:observer:]
+-[NSObject(RACPropertySubscribingDeprecated) rac_signalWithStartingValueForKeyPath:observer:]
+-[NSObject(RACPropertySubscribingDeprecated) rac_deriveProperty:from:]
+___signalWithoutChangesFor_block_invoke
+___copy_helper_block_.145
+___destroy_helper_block_.146
+___block_descriptor_tmp.35
+___block_descriptor_tmp.38
+___block_descriptor_tmp.45
+___block_descriptor_tmp.60
+___block_descriptor_tmp.66
+___block_descriptor_tmp.78
+___block_descriptor_tmp.87
+___block_descriptor_tmp.99
+___block_descriptor_tmp.149
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSObject+RACPropertySubscribing.m
+__signalWithoutChangesFor_block_invoke
+__96+[NSObject(RACPropertySubscribingDeprecated) rac_signalWithChangesFor:keyPath:options:observer:]_block_invoke.94
+__96+[NSObject(RACPropertySubscribingDeprecated) rac_signalWithChangesFor:keyPath:options:observer:]_block_invoke.82
+__96+[NSObject(RACPropertySubscribingDeprecated) rac_signalWithChangesFor:keyPath:options:observer:]_block_invoke_2
+__96+[NSObject(RACPropertySubscribingDeprecated) rac_signalWithChangesFor:keyPath:options:observer:]_block_invoke
+signalWithoutChangesFor
+__84-[NSObject(RACPropertySubscribing) rac_valuesAndChangesForKeyPath:options:observer:]_block_invoke.48
+__84-[NSObject(RACPropertySubscribing) rac_valuesAndChangesForKeyPath:options:observer:]_block_invoke_2.42
+__84-[NSObject(RACPropertySubscribing) rac_valuesAndChangesForKeyPath:options:observer:]_block_invoke.41
+__84-[NSObject(RACPropertySubscribing) rac_valuesAndChangesForKeyPath:options:observer:]_block_invoke_2
+__84-[NSObject(RACPropertySubscribing) rac_valuesAndChangesForKeyPath:options:observer:]_block_invoke
+__66-[NSObject(RACPropertySubscribing) rac_valuesForKeyPath:observer:]_block_invoke
+-[NSObject(RACSelectorSignal) rac_signalForSelector:]
+_NSObjectRACSignalForSelector
+-[NSObject(RACSelectorSignal) rac_signalForSelector:fromProtocol:]
+_RACAliasForSelector
+_RACSwizzleClass
+___NSObjectRACSignalForSelector_block_invoke
+_RACSignatureForUndefinedSelector
+_RACCheckTypeEncoding
+_RACSwizzleForwardInvocation
+_RACSwizzleRespondsToSelector
+_RACSwizzleGetClass
+_RACSwizzleMethodSignatureForSelector
+___RACSwizzleForwardInvocation_block_invoke
+_RACForwardInvocation
+___RACSwizzleRespondsToSelector_block_invoke
+___RACSwizzleGetClass_block_invoke
+___RACSwizzleMethodSignatureForSelector_block_invoke
+_RACSignalForSelectorAliasPrefix
+_RACSubclassSuffix
+_RACSubclassAssociationKey
+_swizzledClasses.set
+_swizzledClasses.pred
+___block_descriptor_tmp.84
+___block_descriptor_tmp.98
+___block_descriptor_tmp.116
+___block_descriptor_tmp.119
+___block_descriptor_tmp.127
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSObject+RACSelectorSignal.m
+__RACSwizzleMethodSignatureForSelector_block_invoke
+__RACSwizzleGetClass_block_invoke
+__RACSwizzleRespondsToSelector_block_invoke
+RACForwardInvocation
+__RACSwizzleForwardInvocation_block_invoke
+RACSwizzleMethodSignatureForSelector
+RACSwizzleGetClass
+RACSwizzleRespondsToSelector
+RACSwizzleForwardInvocation
+RACCheckTypeEncoding
+RACSignatureForUndefinedSelector
+__NSObjectRACSignalForSelector_block_invoke
+RACSwizzleClass
+RACAliasForSelector
+NSObjectRACSignalForSelector
+-[NSOrderedSet(RACSequenceAdditions) rac_sequence]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSOrderedSet+RACSequenceAdditions.m
+-[NSSet(RACSequenceAdditions) rac_sequence]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSSet+RACSequenceAdditions.m
+-[NSString(RACKeyPathUtilities) rac_keyPathComponents]
+-[NSString(RACKeyPathUtilities) rac_keyPathByDeletingLastKeyPathComponent]
+-[NSString(RACKeyPathUtilities) rac_keyPathByDeletingFirstKeyPathComponent]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSString+RACKeyPathUtilities.m
+-[NSString(RACSequenceAdditions) rac_sequence]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSString+RACSequenceAdditions.m
++[NSString(RACSupport) rac_readContentsOfURL:usedEncoding:scheduler:]
+___69+[NSString(RACSupport) rac_readContentsOfURL:usedEncoding:scheduler:]_block_invoke
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSString+RACSupport.m
+__69+[NSString(RACSupport) rac_readContentsOfURL:usedEncoding:scheduler:]_block_invoke
++[NSURLConnection(RACSupport) rac_sendAsynchronousRequest:]
+___59+[NSURLConnection(RACSupport) rac_sendAsynchronousRequest:]_block_invoke
+___59+[NSURLConnection(RACSupport) rac_sendAsynchronousRequest:]_block_invoke_2
+___59+[NSURLConnection(RACSupport) rac_sendAsynchronousRequest:]_block_invoke.43
+___copy_helper_block_.48
+___destroy_helper_block_.49
+___copy_helper_block_.54
+___destroy_helper_block_.55
+___block_descriptor_tmp.51
+___block_descriptor_tmp.57
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSURLConnection+RACSupport.m
+__59+[NSURLConnection(RACSupport) rac_sendAsynchronousRequest:]_block_invoke.43
+__59+[NSURLConnection(RACSupport) rac_sendAsynchronousRequest:]_block_invoke_2
+__59+[NSURLConnection(RACSupport) rac_sendAsynchronousRequest:]_block_invoke
+-[NSUserDefaults(RACSupport) rac_channelTerminalForKey:]
+___56-[NSUserDefaults(RACSupport) rac_channelTerminalForKey:]_block_invoke
+___56-[NSUserDefaults(RACSupport) rac_channelTerminalForKey:]_block_invoke.15
+___56-[NSUserDefaults(RACSupport) rac_channelTerminalForKey:]_block_invoke.36
+___copy_helper_block_.39
+___destroy_helper_block_.40
+___block_descriptor_tmp.21
+___block_descriptor_tmp.42
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/NSUserDefaults+RACSupport.m
+__56-[NSUserDefaults(RACSupport) rac_channelTerminalForKey:]_block_invoke.36
+__56-[NSUserDefaults(RACSupport) rac_channelTerminalForKey:]_block_invoke.15
+__56-[NSUserDefaults(RACSupport) rac_channelTerminalForKey:]_block_invoke
++[RACArraySequence sequenceWithArray:offset:]
+-[RACArraySequence head]
+-[RACArraySequence tail]
+-[RACArraySequence countByEnumeratingWithState:objects:count:]
+-[RACArraySequence array]
+-[RACArraySequence initWithCoder:]
+-[RACArraySequence encodeWithCoder:]
+-[RACArraySequence description]
+-[RACArraySequence backingArray]
+-[RACArraySequence offset]
+-[RACArraySequence .cxx_destruct]
+_OBJC_IVAR_$_RACArraySequence._backingArray
+_OBJC_IVAR_$_RACArraySequence._offset
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACArraySequence.m
+NSMakeRange
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSRange.h
++[RACBehaviorSubject behaviorSubjectWithDefaultValue:]
+-[RACBehaviorSubject subscribe:]
+___32-[RACBehaviorSubject subscribe:]_block_invoke
+___32-[RACBehaviorSubject subscribe:]_block_invoke.14
+___copy_helper_block_.17
+___destroy_helper_block_.18
+-[RACBehaviorSubject sendNext:]
+-[RACBehaviorSubject currentValue]
+-[RACBehaviorSubject setCurrentValue:]
+-[RACBehaviorSubject .cxx_destruct]
+___block_descriptor_tmp.19
+_OBJC_IVAR_$_RACBehaviorSubject._currentValue
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACBehaviorSubject.m
+__32-[RACBehaviorSubject subscribe:]_block_invoke.14
+__32-[RACBehaviorSubject subscribe:]_block_invoke
+-[RACBlockTrampoline initWithBlock:]
++[RACBlockTrampoline invokeBlock:withArguments:]
+-[RACBlockTrampoline invokeWithArguments:]
+-[RACBlockTrampoline selectorForArgumentCount:]
+-[RACBlockTrampoline performWith:]
+-[RACBlockTrampoline performWith::]
+-[RACBlockTrampoline performWith:::]
+-[RACBlockTrampoline performWith::::]
+-[RACBlockTrampoline performWith:::::]
+-[RACBlockTrampoline performWith::::::]
+-[RACBlockTrampoline performWith:::::::]
+-[RACBlockTrampoline performWith::::::::]
+-[RACBlockTrampoline performWith:::::::::]
+-[RACBlockTrampoline performWith::::::::::]
+-[RACBlockTrampoline performWith:::::::::::]
+-[RACBlockTrampoline performWith::::::::::::]
+-[RACBlockTrampoline performWith:::::::::::::]
+-[RACBlockTrampoline performWith::::::::::::::]
+-[RACBlockTrampoline performWith:::::::::::::::]
+-[RACBlockTrampoline block]
+-[RACBlockTrampoline .cxx_destruct]
+_OBJC_IVAR_$_RACBlockTrampoline._block
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACBlockTrampoline.m
+-[RACChannel init]
+-[RACChannel leadingTerminal]
+-[RACChannel followingTerminal]
+-[RACChannel .cxx_destruct]
+-[RACChannelTerminal initWithValues:otherTerminal:]
+-[RACChannelTerminal subscribe:]
+-[RACChannelTerminal sendNext:]
+-[RACChannelTerminal sendError:]
+-[RACChannelTerminal sendCompleted]
+-[RACChannelTerminal didSubscribeWithDisposable:]
+-[RACChannelTerminal values]
+-[RACChannelTerminal otherTerminal]
+-[RACChannelTerminal .cxx_destruct]
+_OBJC_IVAR_$_RACChannel._leadingTerminal
+_OBJC_IVAR_$_RACChannel._followingTerminal
+_OBJC_IVAR_$_RACChannelTerminal._values
+_OBJC_IVAR_$_RACChannelTerminal._otherTerminal
+l_OBJC_PROTOCOL_$_NSObject
+l_OBJC_LABEL_PROTOCOL_$_NSObject
+l_OBJC_PROTOCOL_$_RACSubscriber
+l_OBJC_LABEL_PROTOCOL_$_RACSubscriber
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACChannel.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACChannel.h
+-[RACCommand allowsConcurrentExecution]
+-[RACCommand setAllowsConcurrentExecution:]
+-[RACCommand activeExecutionSignals]
+-[RACCommand addActiveExecutionSignal:]
+-[RACCommand removeActiveExecutionSignal:]
+___42-[RACCommand removeActiveExecutionSignal:]_block_invoke
+-[RACCommand init]
+-[RACCommand initWithSignalBlock:]
+-[RACCommand initWithEnabled:signalBlock:]
+___42-[RACCommand initWithEnabled:signalBlock:]_block_invoke
+___42-[RACCommand initWithEnabled:signalBlock:]_block_invoke_2
+___42-[RACCommand initWithEnabled:signalBlock:]_block_invoke_3
+___42-[RACCommand initWithEnabled:signalBlock:]_block_invoke_4
+___42-[RACCommand initWithEnabled:signalBlock:]_block_invoke_5
+-[RACCommand execute:]
+___22-[RACCommand execute:]_block_invoke
+___copy_helper_block_.195
+___destroy_helper_block_.196
+___22-[RACCommand execute:]_block_invoke.199
+___copy_helper_block_.200
+___destroy_helper_block_.201
++[RACCommand automaticallyNotifiesObserversForKey:]
+-[RACCommand executionSignals]
+-[RACCommand executing]
+-[RACCommand enabled]
+-[RACCommand errors]
+-[RACCommand immediateEnabled]
+-[RACCommand signalBlock]
+-[RACCommand .cxx_destruct]
+_OBJC_IVAR_$_RACCommand._allowsConcurrentExecution
+_OBJC_IVAR_$_RACCommand._activeExecutionSignals
+_OBJC_IVAR_$_RACCommand._signalBlock
+___block_descriptor_tmp.81
+___block_literal_global.82
+_OBJC_IVAR_$_RACCommand._executionSignals
+___block_descriptor_tmp.95
+___block_literal_global.96
+___block_descriptor_tmp.100
+___block_literal_global.101
+_OBJC_IVAR_$_RACCommand._errors
+___block_descriptor_tmp.118
+___block_literal_global.119
+_OBJC_IVAR_$_RACCommand._executing
+_OBJC_IVAR_$_RACCommand._immediateEnabled
+_OBJC_IVAR_$_RACCommand._enabled
+___block_descriptor_tmp.198
+___block_descriptor_tmp.203
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACCommand.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACCommand.h
+__22-[RACCommand execute:]_block_invoke.199
+__22-[RACCommand execute:]_block_invoke
+__42-[RACCommand initWithEnabled:signalBlock:]_block_invoke_5
+__42-[RACCommand initWithEnabled:signalBlock:]_block_invoke_4
+__42-[RACCommand initWithEnabled:signalBlock:]_block_invoke_3
+__42-[RACCommand initWithEnabled:signalBlock:]_block_invoke_2
+__42-[RACCommand initWithEnabled:signalBlock:]_block_invoke
+__42-[RACCommand removeActiveExecutionSignal:]_block_invoke
+-[RACCompoundDisposable isDisposed]
++[RACCompoundDisposable compoundDisposable]
++[RACCompoundDisposable compoundDisposableWithDisposables:]
+-[RACCompoundDisposable initWithDisposables:]
+___45-[RACCompoundDisposable initWithDisposables:]_block_invoke
+_RACCreateDisposablesArray
+_CFRangeMake
+-[RACCompoundDisposable initWithBlock:]
+-[RACCompoundDisposable dealloc]
+-[RACCompoundDisposable addDisposable:]
+-[RACCompoundDisposable removeDisposable:]
+-[RACCompoundDisposable dispose]
+_disposeEach
+-[RACCompoundDisposable .cxx_destruct]
+_OBJC_IVAR_$_RACCompoundDisposable._spinLock
+_OBJC_IVAR_$_RACCompoundDisposable._disposed
+_OBJC_IVAR_$_RACCompoundDisposable._inlineDisposables
+_OBJC_IVAR_$_RACCompoundDisposable._disposables
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACCompoundDisposable.m
+disposeEach
+CFRangeMake
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CFBase.h
+RACCreateDisposablesArray
+__45-[RACCompoundDisposable initWithDisposables:]_block_invoke
+-[RACDelegateProxy initWithProtocol:]
+-[RACDelegateProxy signalForSelector:]
+-[RACDelegateProxy isProxy]
+-[RACDelegateProxy forwardInvocation:]
+-[RACDelegateProxy methodSignatureForSelector:]
+-[RACDelegateProxy respondsToSelector:]
+-[RACDelegateProxy rac_proxiedDelegate]
+-[RACDelegateProxy setRac_proxiedDelegate:]
+-[RACDelegateProxy .cxx_destruct]
+_OBJC_IVAR_$_RACDelegateProxy._protocol
+_OBJC_IVAR_$_RACDelegateProxy._rac_proxiedDelegate
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACDelegateProxy.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACDelegateProxy.h
+-[RACDisposable isDisposed]
+-[RACDisposable init]
+-[RACDisposable initWithBlock:]
++[RACDisposable disposableWithBlock:]
+-[RACDisposable dealloc]
+-[RACDisposable dispose]
+-[RACDisposable asScopedDisposable]
+_OBJC_IVAR_$_RACDisposable._disposeBlock
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACDisposable.m
+CFBridgingRelease
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObject.h
+CFBridgingRetain
++[RACDynamicSequence sequenceWithHeadBlock:tailBlock:]
++[RACDynamicSequence sequenceWithLazyDependency:headBlock:tailBlock:]
+-[RACDynamicSequence dealloc]
+-[RACDynamicSequence head]
+-[RACDynamicSequence tail]
+-[RACDynamicSequence description]
+-[RACDynamicSequence headBlock]
+-[RACDynamicSequence setHeadBlock:]
+-[RACDynamicSequence tailBlock]
+-[RACDynamicSequence setTailBlock:]
+-[RACDynamicSequence hasDependency]
+-[RACDynamicSequence setHasDependency:]
+-[RACDynamicSequence dependencyBlock]
+-[RACDynamicSequence setDependencyBlock:]
+-[RACDynamicSequence .cxx_destruct]
+_dealloc.directDeallocCount
+_OBJC_IVAR_$_RACDynamicSequence._tail
+_OBJC_IVAR_$_RACDynamicSequence._head
+_OBJC_IVAR_$_RACDynamicSequence._dependency
+_OBJC_IVAR_$_RACDynamicSequence._headBlock
+_OBJC_IVAR_$_RACDynamicSequence._tailBlock
+_OBJC_IVAR_$_RACDynamicSequence._hasDependency
+_OBJC_IVAR_$_RACDynamicSequence._dependencyBlock
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACDynamicSequence.m
++[RACDynamicSignal createSignal:]
+-[RACDynamicSignal subscribe:]
+___30-[RACDynamicSignal subscribe:]_block_invoke
+-[RACDynamicSignal didSubscribe]
+-[RACDynamicSignal .cxx_destruct]
+_OBJC_IVAR_$_RACDynamicSignal._didSubscribe
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACDynamicSignal.m
+__30-[RACDynamicSignal subscribe:]_block_invoke
++[RACEagerSequence return:]
+-[RACEagerSequence bind:]
+-[RACEagerSequence concat:]
+-[RACEagerSequence eagerSequence]
+-[RACEagerSequence lazySequence]
+-[RACEagerSequence foldRightWithStart:reduce:]
+___46-[RACEagerSequence foldRightWithStart:reduce:]_block_invoke
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACEagerSequence.m
+__46-[RACEagerSequence foldRightWithStart:reduce:]_block_invoke
++[RACEmptySequence empty]
+___25+[RACEmptySequence empty]_block_invoke
+-[RACEmptySequence head]
+-[RACEmptySequence tail]
+-[RACEmptySequence bind:passingThroughValuesFromSequence:]
+-[RACEmptySequence classForCoder]
+-[RACEmptySequence initWithCoder:]
+-[RACEmptySequence encodeWithCoder:]
+-[RACEmptySequence description]
+-[RACEmptySequence hash]
+-[RACEmptySequence isEqual:]
+_empty.singleton
+_empty.pred
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACEmptySequence.m
+__25+[RACEmptySequence empty]_block_invoke
+-[RACEmptySignal setName:]
+-[RACEmptySignal name]
++[RACEmptySignal empty]
+-[RACEmptySignal subscribe:]
+___28-[RACEmptySignal subscribe:]_block_invoke
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACEmptySignal.m
+__28-[RACEmptySignal subscribe:]_block_invoke
++[RACErrorSignal error:]
+-[RACErrorSignal subscribe:]
+___28-[RACErrorSignal subscribe:]_block_invoke
+-[RACErrorSignal error]
+-[RACErrorSignal .cxx_destruct]
+_OBJC_IVAR_$_RACErrorSignal._error
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACErrorSignal.m
+__28-[RACErrorSignal subscribe:]_block_invoke
+-[RACEvent isFinished]
+-[RACEvent error]
+-[RACEvent value]
++[RACEvent completedEvent]
+___26+[RACEvent completedEvent]_block_invoke
++[RACEvent eventWithError:]
++[RACEvent eventWithValue:]
+-[RACEvent initWithEventType:object:]
+-[RACEvent copyWithZone:]
+-[RACEvent description]
+-[RACEvent hash]
+-[RACEvent isEqual:]
+-[RACEvent eventType]
+-[RACEvent object]
+-[RACEvent .cxx_destruct]
+_completedEvent.pred
+_completedEvent.singleton
+_OBJC_IVAR_$_RACEvent._eventType
+_OBJC_IVAR_$_RACEvent._object
+l_OBJC_PROTOCOL_$_NSCopying
+l_OBJC_LABEL_PROTOCOL_$_NSCopying
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACEvent.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACEvent.h
+__26+[RACEvent completedEvent]_block_invoke
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/extobjc/RACEXTRuntimeExtensions.m
+rac_getImmediateInstanceMethod
+rac_copyPropertyAttributes
++[RACGroupedSignal signalWithKey:]
+-[RACGroupedSignal key]
+-[RACGroupedSignal setKey:]
+-[RACGroupedSignal .cxx_destruct]
+_OBJC_IVAR_$_RACGroupedSignal._key
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACGroupedSignal.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACGroupedSignal.h
+-[RACImmediateScheduler init]
+-[RACImmediateScheduler schedule:]
+-[RACImmediateScheduler after:schedule:]
+-[RACImmediateScheduler after:repeatingEvery:withLeeway:schedule:]
+-[RACImmediateScheduler scheduleRecursiveBlock:]
+___48-[RACImmediateScheduler scheduleRecursiveBlock:]_block_invoke
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACImmediateScheduler.m
+__48-[RACImmediateScheduler scheduleRecursiveBlock:]_block_invoke
++[RACIndexSetSequence sequenceWithIndexSet:]
++[RACIndexSetSequence sequenceWithIndexSetSequence:offset:]
+-[RACIndexSetSequence head]
+-[RACIndexSetSequence tail]
+-[RACIndexSetSequence countByEnumeratingWithState:objects:count:]
+-[RACIndexSetSequence description]
+-[RACIndexSetSequence data]
+-[RACIndexSetSequence indexes]
+-[RACIndexSetSequence count]
+-[RACIndexSetSequence .cxx_destruct]
+_OBJC_IVAR_$_RACIndexSetSequence._data
+_OBJC_IVAR_$_RACIndexSetSequence._indexes
+_OBJC_IVAR_$_RACIndexSetSequence._count
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACIndexSetSequence.m
+-[RACKVOChannel currentThreadData]
+-[RACKVOChannel initWithTarget:keyPath:nilValue:]
+___49-[RACKVOChannel initWithTarget:keyPath:nilValue:]_block_invoke
+___49-[RACKVOChannel initWithTarget:keyPath:nilValue:]_block_invoke.61
+___copy_helper_block_.64
+___destroy_helper_block_.65
+___49-[RACKVOChannel initWithTarget:keyPath:nilValue:]_block_invoke.70
+___copy_helper_block_.81
+___destroy_helper_block_.82
+___49-[RACKVOChannel initWithTarget:keyPath:nilValue:]_block_invoke.85
+___copy_helper_block_.88
+___destroy_helper_block_.89
+___49-[RACKVOChannel initWithTarget:keyPath:nilValue:]_block_invoke.97
+-[RACKVOChannel createCurrentThreadData]
+-[RACKVOChannel destroyCurrentThreadData]
+___41-[RACKVOChannel destroyCurrentThreadData]_block_invoke
+___copy_helper_block_.117
+___destroy_helper_block_.118
+-[RACKVOChannel target]
+-[RACKVOChannel setTarget:]
+-[RACKVOChannel keyPath]
+-[RACKVOChannel .cxx_destruct]
+-[RACKVOChannel(RACChannelTo) objectForKeyedSubscript:]
+-[RACKVOChannel(RACChannelTo) setObject:forKeyedSubscript:]
++[RACKVOChannelData dataForChannel:]
+-[RACKVOChannelData ignoreNextUpdate]
+-[RACKVOChannelData setIgnoreNextUpdate:]
+-[RACKVOChannelData owner]
+-[RACKVOChannelData setOwner:]
+_RACKVOChannelDataDictionaryKey
+_OBJC_IVAR_$_RACKVOChannel._target
+_OBJC_IVAR_$_RACKVOChannel._keyPath
+___block_descriptor_tmp.91
+___block_descriptor_tmp.102
+___block_descriptor_tmp.120
+_OBJC_IVAR_$_RACKVOChannelData._owner
+_OBJC_IVAR_$_RACKVOChannelData._ignoreNextUpdate
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACKVOChannel.m
+__41-[RACKVOChannel destroyCurrentThreadData]_block_invoke
+__49-[RACKVOChannel initWithTarget:keyPath:nilValue:]_block_invoke.97
+__49-[RACKVOChannel initWithTarget:keyPath:nilValue:]_block_invoke.85
+__49-[RACKVOChannel initWithTarget:keyPath:nilValue:]_block_invoke.70
+__49-[RACKVOChannel initWithTarget:keyPath:nilValue:]_block_invoke.61
+__49-[RACKVOChannel initWithTarget:keyPath:nilValue:]_block_invoke
++[RACKVOProxy sharedProxy]
+___26+[RACKVOProxy sharedProxy]_block_invoke
+-[RACKVOProxy init]
+-[RACKVOProxy addObserver:forContext:]
+___38-[RACKVOProxy addObserver:forContext:]_block_invoke
+___copy_helper_block_.15
+___destroy_helper_block_.16
+-[RACKVOProxy removeObserver:forContext:]
+___41-[RACKVOProxy removeObserver:forContext:]_block_invoke
+___copy_helper_block_.20
+___destroy_helper_block_.21
+-[RACKVOProxy observeValueForKeyPath:ofObject:change:context:]
+___62-[RACKVOProxy observeValueForKeyPath:ofObject:change:context:]_block_invoke
+___copy_helper_block_.25
+___destroy_helper_block_.26
+-[RACKVOProxy trampolines]
+-[RACKVOProxy queue]
+-[RACKVOProxy .cxx_destruct]
+_sharedProxy.proxy
+_sharedProxy.onceToken
+_OBJC_IVAR_$_RACKVOProxy._queue
+_OBJC_IVAR_$_RACKVOProxy._trampolines
+___block_descriptor_tmp.17
+___block_descriptor_tmp.22
+___block_descriptor_tmp.27
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACKVOProxy.m
+__62-[RACKVOProxy observeValueForKeyPath:ofObject:change:context:]_block_invoke
+__41-[RACKVOProxy removeObserver:forContext:]_block_invoke
+__38-[RACKVOProxy addObserver:forContext:]_block_invoke
+__26+[RACKVOProxy sharedProxy]_block_invoke
+-[RACKVOTrampoline initWithTarget:observer:keyPath:options:block:]
+-[RACKVOTrampoline dealloc]
+-[RACKVOTrampoline dispose]
+-[RACKVOTrampoline observeValueForKeyPath:ofObject:change:context:]
+-[RACKVOTrampoline keyPath]
+-[RACKVOTrampoline block]
+-[RACKVOTrampoline unsafeTarget]
+-[RACKVOTrampoline weakTarget]
+-[RACKVOTrampoline observer]
+-[RACKVOTrampoline .cxx_destruct]
+_OBJC_IVAR_$_RACKVOTrampoline._keyPath
+_OBJC_IVAR_$_RACKVOTrampoline._block
+_OBJC_IVAR_$_RACKVOTrampoline._weakTarget
+_OBJC_IVAR_$_RACKVOTrampoline._unsafeTarget
+_OBJC_IVAR_$_RACKVOTrampoline._observer
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACKVOTrampoline.m
+-[RACMulticastConnection initWithSourceSignal:subject:]
+-[RACMulticastConnection connect]
+-[RACMulticastConnection autoconnect]
+___37-[RACMulticastConnection autoconnect]_block_invoke
+___37-[RACMulticastConnection autoconnect]_block_invoke_2
+-[RACMulticastConnection signal]
+-[RACMulticastConnection sourceSignal]
+-[RACMulticastConnection serialDisposable]
+-[RACMulticastConnection setSerialDisposable:]
+-[RACMulticastConnection .cxx_destruct]
+_OBJC_IVAR_$_RACMulticastConnection._sourceSignal
+_OBJC_IVAR_$_RACMulticastConnection._serialDisposable
+_OBJC_IVAR_$_RACMulticastConnection._signal
+_OBJC_IVAR_$_RACMulticastConnection._hasConnected
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACMulticastConnection.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACMulticastConnection.h
+__37-[RACMulticastConnection autoconnect]_block_invoke_2
+__37-[RACMulticastConnection autoconnect]_block_invoke
++[RACObjCRuntime createClass:inheritingFromClass:]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACObjCRuntime.m
+-[RACPassthroughSubscriber initWithSubscriber:signal:disposable:]
+-[RACPassthroughSubscriber sendNext:]
+_cleanedSignalDescription
+_cleanedDTraceString
+-[RACPassthroughSubscriber sendError:]
+-[RACPassthroughSubscriber sendCompleted]
+-[RACPassthroughSubscriber didSubscribeWithDisposable:]
+-[RACPassthroughSubscriber innerSubscriber]
+-[RACPassthroughSubscriber signal]
+-[RACPassthroughSubscriber disposable]
+-[RACPassthroughSubscriber .cxx_destruct]
+_OBJC_IVAR_$_RACPassthroughSubscriber._innerSubscriber
+_OBJC_IVAR_$_RACPassthroughSubscriber._signal
+_OBJC_IVAR_$_RACPassthroughSubscriber._disposable
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACPassthroughSubscriber.m
+cleanedDTraceString
+cleanedSignalDescription
+-[RACQueueScheduler initWithName:queue:]
++[RACQueueScheduler wallTimeWithDate:]
+-[RACQueueScheduler schedule:]
+___30-[RACQueueScheduler schedule:]_block_invoke
+-[RACQueueScheduler after:schedule:]
+___36-[RACQueueScheduler after:schedule:]_block_invoke
+___copy_helper_block_.37
+___destroy_helper_block_.38
+-[RACQueueScheduler after:repeatingEvery:withLeeway:schedule:]
+___62-[RACQueueScheduler after:repeatingEvery:withLeeway:schedule:]_block_invoke
+___copy_helper_block_.44
+___destroy_helper_block_.45
+-[RACQueueScheduler queue]
+-[RACQueueScheduler .cxx_destruct]
+_OBJC_IVAR_$_RACQueueScheduler._queue
+___block_descriptor_tmp.39
+___block_descriptor_tmp.46
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACQueueScheduler.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACQueueScheduler+Subclass.h
+__62-[RACQueueScheduler after:repeatingEvery:withLeeway:schedule:]_block_invoke
+__36-[RACQueueScheduler after:schedule:]_block_invoke
+__30-[RACQueueScheduler schedule:]_block_invoke
++[RACReplaySubject replaySubjectWithCapacity:]
+-[RACReplaySubject init]
+-[RACReplaySubject initWithCapacity:]
+-[RACReplaySubject subscribe:]
+___30-[RACReplaySubject subscribe:]_block_invoke
+-[RACReplaySubject sendNext:]
+-[RACReplaySubject sendCompleted]
+-[RACReplaySubject sendError:]
+-[RACReplaySubject capacity]
+-[RACReplaySubject valuesReceived]
+-[RACReplaySubject hasCompleted]
+-[RACReplaySubject setHasCompleted:]
+-[RACReplaySubject hasError]
+-[RACReplaySubject setHasError:]
+-[RACReplaySubject error]
+-[RACReplaySubject setError:]
+-[RACReplaySubject .cxx_destruct]
+_OBJC_IVAR_$_RACReplaySubject._capacity
+_OBJC_IVAR_$_RACReplaySubject._valuesReceived
+_OBJC_IVAR_$_RACReplaySubject._hasCompleted
+_OBJC_IVAR_$_RACReplaySubject._hasError
+_OBJC_IVAR_$_RACReplaySubject._error
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACReplaySubject.m
+__30-[RACReplaySubject subscribe:]_block_invoke
+-[RACReturnSignal setName:]
+-[RACReturnSignal name]
++[RACReturnSignal return:]
+-[RACReturnSignal subscribe:]
+___29-[RACReturnSignal subscribe:]_block_invoke
+-[RACReturnSignal value]
+-[RACReturnSignal .cxx_destruct]
+_OBJC_IVAR_$_RACReturnSignal._value
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACReturnSignal.m
+__29-[RACReturnSignal subscribe:]_block_invoke
+-[RACScheduler description]
+-[RACScheduler initWithName:]
++[RACScheduler immediateScheduler]
+___34+[RACScheduler immediateScheduler]_block_invoke
++[RACScheduler mainThreadScheduler]
+___35+[RACScheduler mainThreadScheduler]_block_invoke
++[RACScheduler schedulerWithPriority:name:]
++[RACScheduler schedulerWithPriority:]
++[RACScheduler scheduler]
++[RACScheduler subscriptionScheduler]
+___37+[RACScheduler subscriptionScheduler]_block_invoke
++[RACScheduler isOnMainThread]
++[RACScheduler currentScheduler]
+-[RACScheduler schedule:]
+-[RACScheduler after:schedule:]
+-[RACScheduler afterDelay:schedule:]
+-[RACScheduler after:repeatingEvery:withLeeway:schedule:]
+-[RACScheduler scheduleRecursiveBlock:]
+-[RACScheduler scheduleRecursiveBlock:addingToDisposable:]
+___58-[RACScheduler scheduleRecursiveBlock:addingToDisposable:]_block_invoke
+___58-[RACScheduler scheduleRecursiveBlock:addingToDisposable:]_block_invoke_2
+___58-[RACScheduler scheduleRecursiveBlock:addingToDisposable:]_block_invoke.90
+___copy_helper_block_.95
+___destroy_helper_block_.96
+___copy_helper_block_.98
+___destroy_helper_block_.99
+-[RACScheduler performAsCurrentScheduler:]
+-[RACScheduler name]
+-[RACScheduler .cxx_destruct]
++[RACScheduler(Deprecated) schedulerWithQueue:name:]
+_OBJC_IVAR_$_RACScheduler._name
+_immediateScheduler.onceToken
+_immediateScheduler.immediateScheduler
+_mainThreadScheduler.onceToken
+_mainThreadScheduler.mainThreadScheduler
+___block_literal_global.18
+_subscriptionScheduler.onceToken
+_subscriptionScheduler.subscriptionScheduler
+___block_descriptor_tmp.30
+___block_literal_global.31
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACScheduler.m
+__58-[RACScheduler scheduleRecursiveBlock:addingToDisposable:]_block_invoke.90
+__58-[RACScheduler scheduleRecursiveBlock:addingToDisposable:]_block_invoke_2
+__58-[RACScheduler scheduleRecursiveBlock:addingToDisposable:]_block_invoke
+__37+[RACScheduler subscriptionScheduler]_block_invoke
+__35+[RACScheduler mainThreadScheduler]_block_invoke
+dispatch_get_main_queue
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/include/dispatch/queue.h
+__34+[RACScheduler immediateScheduler]_block_invoke
++[RACScopedDisposable scopedDisposableWithDisposable:]
+___54+[RACScopedDisposable scopedDisposableWithDisposable:]_block_invoke
+-[RACScopedDisposable dealloc]
+-[RACScopedDisposable asScopedDisposable]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACScopedDisposable.m
+__54+[RACScopedDisposable scopedDisposableWithDisposable:]_block_invoke
+-[RACSequenceEnumerator nextObject]
+-[RACSequenceEnumerator sequence]
+-[RACSequenceEnumerator setSequence:]
+-[RACSequenceEnumerator .cxx_destruct]
++[RACSequence sequenceWithHeadBlock:tailBlock:]
+-[RACSequence head]
+-[RACSequence tail]
++[RACSequence empty]
++[RACSequence return:]
+-[RACSequence bind:]
+-[RACSequence bind:passingThroughValuesFromSequence:]
+___53-[RACSequence bind:passingThroughValuesFromSequence:]_block_invoke
+___53-[RACSequence bind:passingThroughValuesFromSequence:]_block_invoke.54
+___copy_helper_block_.55
+___destroy_helper_block_.56
+___53-[RACSequence bind:passingThroughValuesFromSequence:]_block_invoke.59
+___copy_helper_block_.60
+___destroy_helper_block_.61
+-[RACSequence concat:]
+-[RACSequence zipWith:]
+___23-[RACSequence zipWith:]_block_invoke
+___copy_helper_block_.89
+___destroy_helper_block_.90
+___23-[RACSequence zipWith:]_block_invoke.92
+-[RACSequence array]
+-[RACSequence objectEnumerator]
+-[RACSequence signal]
+-[RACSequence signalWithScheduler:]
+___35-[RACSequence signalWithScheduler:]_block_invoke
+___35-[RACSequence signalWithScheduler:]_block_invoke_2
+___copy_helper_block_.128
+___destroy_helper_block_.129
+___copy_helper_block_.134
+___destroy_helper_block_.135
+-[RACSequence foldLeftWithStart:reduce:]
+-[RACSequence foldRightWithStart:reduce:]
+___41-[RACSequence foldRightWithStart:reduce:]_block_invoke
+___copy_helper_block_.146
+___destroy_helper_block_.147
+-[RACSequence any:]
+-[RACSequence all:]
+___19-[RACSequence all:]_block_invoke
+___copy_helper_block_.160
+___destroy_helper_block_.161
+-[RACSequence objectPassingTest:]
+-[RACSequence eagerSequence]
+-[RACSequence lazySequence]
+-[RACSequence copyWithZone:]
+-[RACSequence classForCoder]
+-[RACSequence initWithCoder:]
+-[RACSequence encodeWithCoder:]
+-[RACSequence countByEnumeratingWithState:objects:count:]
+___57-[RACSequence countByEnumeratingWithState:objects:count:]_block_invoke
+___57-[RACSequence countByEnumeratingWithState:objects:count:]_block_invoke_2
+___57-[RACSequence countByEnumeratingWithState:objects:count:]_block_invoke_3
+___copy_helper_block_.181
+___destroy_helper_block_.182
+-[RACSequence hash]
+-[RACSequence isEqual:]
+-[RACSequence(Deprecated) foldLeftWithStart:combine:]
+-[RACSequence(Deprecated) foldRightWithStart:combine:]
+_OBJC_IVAR_$_RACSequenceEnumerator._sequence
+___block_descriptor_tmp.58
+___block_descriptor_tmp.62
+___block_descriptor_tmp.131
+___block_descriptor_tmp.137
+___block_descriptor_tmp.148
+___block_descriptor_tmp.163
+___block_descriptor_tmp.177
+___block_descriptor_tmp.180
+___block_descriptor_tmp.184
+l_OBJC_PROTOCOL_$_NSCoding
+l_OBJC_LABEL_PROTOCOL_$_NSCoding
+l_OBJC_PROTOCOL_$_NSFastEnumeration
+l_OBJC_LABEL_PROTOCOL_$_NSFastEnumeration
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACSequence.m
+__57-[RACSequence countByEnumeratingWithState:objects:count:]_block_invoke_3
+__57-[RACSequence countByEnumeratingWithState:objects:count:]_block_invoke_2
+__57-[RACSequence countByEnumeratingWithState:objects:count:]_block_invoke
+__19-[RACSequence all:]_block_invoke
+__41-[RACSequence foldRightWithStart:reduce:]_block_invoke
+__35-[RACSequence signalWithScheduler:]_block_invoke_2
+__35-[RACSequence signalWithScheduler:]_block_invoke
+__23-[RACSequence zipWith:]_block_invoke.92
+__23-[RACSequence zipWith:]_block_invoke
+__53-[RACSequence bind:passingThroughValuesFromSequence:]_block_invoke.59
+__53-[RACSequence bind:passingThroughValuesFromSequence:]_block_invoke.54
+__53-[RACSequence bind:passingThroughValuesFromSequence:]_block_invoke
+-[RACSerialDisposable isDisposed]
+-[RACSerialDisposable disposable]
+-[RACSerialDisposable setDisposable:]
++[RACSerialDisposable serialDisposableWithDisposable:]
+-[RACSerialDisposable initWithBlock:]
+-[RACSerialDisposable swapInDisposable:]
+-[RACSerialDisposable dispose]
+-[RACSerialDisposable .cxx_destruct]
+_OBJC_IVAR_$_RACSerialDisposable._disposed
+_OBJC_IVAR_$_RACSerialDisposable._spinLock
+_OBJC_IVAR_$_RACSerialDisposable._disposable
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACSerialDisposable.m
+-[RACSignal(Operations) doNext:]
+___32-[RACSignal(Operations) doNext:]_block_invoke
+___32-[RACSignal(Operations) doNext:]_block_invoke_2
+___32-[RACSignal(Operations) doNext:]_block_invoke.19
+___copy_helper_block_.22
+___destroy_helper_block_.23
+___32-[RACSignal(Operations) doNext:]_block_invoke.26
+___copy_helper_block_.29
+___destroy_helper_block_.30
+___copy_helper_block_.35
+___destroy_helper_block_.36
+-[RACSignal(Operations) doError:]
+___33-[RACSignal(Operations) doError:]_block_invoke
+___33-[RACSignal(Operations) doError:]_block_invoke_2
+___copy_helper_block_.47
+___destroy_helper_block_.48
+___33-[RACSignal(Operations) doError:]_block_invoke.50
+___copy_helper_block_.51
+___destroy_helper_block_.52
+___33-[RACSignal(Operations) doError:]_block_invoke.54
+___copy_helper_block_.58
+___destroy_helper_block_.59
+-[RACSignal(Operations) doCompleted:]
+___37-[RACSignal(Operations) doCompleted:]_block_invoke
+___37-[RACSignal(Operations) doCompleted:]_block_invoke_2
+___37-[RACSignal(Operations) doCompleted:]_block_invoke.66
+___copy_helper_block_.67
+___destroy_helper_block_.68
+___37-[RACSignal(Operations) doCompleted:]_block_invoke.70
+___copy_helper_block_.71
+___destroy_helper_block_.72
+___copy_helper_block_.74
+___destroy_helper_block_.75
+-[RACSignal(Operations) throttle:]
+___34-[RACSignal(Operations) throttle:]_block_invoke
+-[RACSignal(Operations) throttle:valuesPassingTest:]
+___52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke
+___52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke.100
+___copy_helper_block_.105
+___destroy_helper_block_.106
+___52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke.109
+___52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke_2
+___copy_helper_block_.112
+___destroy_helper_block_.113
+___copy_helper_block_.119
+___destroy_helper_block_.120
+___52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke.122
+___copy_helper_block_.123
+___destroy_helper_block_.124
+___52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke.126
+___copy_helper_block_.127
+___destroy_helper_block_.128
+___copy_helper_block_.132
+___destroy_helper_block_.133
+-[RACSignal(Operations) delay:]
+___31-[RACSignal(Operations) delay:]_block_invoke
+___31-[RACSignal(Operations) delay:]_block_invoke_2
+___copy_helper_block_.139
+___destroy_helper_block_.140
+___31-[RACSignal(Operations) delay:]_block_invoke.144
+___31-[RACSignal(Operations) delay:]_block_invoke_2.145
+___copy_helper_block_.149
+___destroy_helper_block_.150
+___31-[RACSignal(Operations) delay:]_block_invoke.152
+___copy_helper_block_.153
+___destroy_helper_block_.154
+___31-[RACSignal(Operations) delay:]_block_invoke.156
+___31-[RACSignal(Operations) delay:]_block_invoke_2.157
+___copy_helper_block_.158
+___destroy_helper_block_.159
+___copy_helper_block_.161
+___destroy_helper_block_.162
+___copy_helper_block_.164
+___destroy_helper_block_.165
+-[RACSignal(Operations) repeat]
+___31-[RACSignal(Operations) repeat]_block_invoke
+_subscribeForever
+___31-[RACSignal(Operations) repeat]_block_invoke_2
+___copy_helper_block_.169
+___destroy_helper_block_.170
+___31-[RACSignal(Operations) repeat]_block_invoke.172
+___copy_helper_block_.173
+___destroy_helper_block_.174
+___31-[RACSignal(Operations) repeat]_block_invoke.177
+-[RACSignal(Operations) catch:]
+___31-[RACSignal(Operations) catch:]_block_invoke
+___31-[RACSignal(Operations) catch:]_block_invoke_2
+___copy_helper_block_.188
+___destroy_helper_block_.189
+___31-[RACSignal(Operations) catch:]_block_invoke.191
+___copy_helper_block_.196
+___destroy_helper_block_.197
+___31-[RACSignal(Operations) catch:]_block_invoke.199
+___31-[RACSignal(Operations) catch:]_block_invoke.204
+___copy_helper_block_.205
+___destroy_helper_block_.206
+___copy_helper_block_.210
+___destroy_helper_block_.211
+-[RACSignal(Operations) catchTo:]
+___33-[RACSignal(Operations) catchTo:]_block_invoke
+___copy_helper_block_.215
+___destroy_helper_block_.216
+-[RACSignal(Operations) try:]
+___29-[RACSignal(Operations) try:]_block_invoke
+___copy_helper_block_.229
+___destroy_helper_block_.230
+-[RACSignal(Operations) tryMap:]
+___32-[RACSignal(Operations) tryMap:]_block_invoke
+___copy_helper_block_.239
+___destroy_helper_block_.240
+-[RACSignal(Operations) initially:]
+___35-[RACSignal(Operations) initially:]_block_invoke
+___copy_helper_block_.244
+___destroy_helper_block_.245
+-[RACSignal(Operations) finally:]
+___33-[RACSignal(Operations) finally:]_block_invoke
+___copy_helper_block_.252
+___destroy_helper_block_.253
+___33-[RACSignal(Operations) finally:]_block_invoke.257
+___copy_helper_block_.258
+___destroy_helper_block_.259
+-[RACSignal(Operations) bufferWithTime:onScheduler:]
+___52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke
+___52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke_2
+___copy_helper_block_.281
+___destroy_helper_block_.282
+___52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke.284
+___copy_helper_block_.290
+___destroy_helper_block_.291
+___52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke.294
+___copy_helper_block_.295
+___destroy_helper_block_.296
+___52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke.298
+___copy_helper_block_.299
+___destroy_helper_block_.300
+___52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke.302
+___copy_helper_block_.303
+___destroy_helper_block_.304
+___copy_helper_block_.306
+___destroy_helper_block_.307
+-[RACSignal(Operations) collect]
+___32-[RACSignal(Operations) collect]_block_invoke
+___32-[RACSignal(Operations) collect]_block_invoke_2
+-[RACSignal(Operations) takeLast:]
+___34-[RACSignal(Operations) takeLast:]_block_invoke
+___34-[RACSignal(Operations) takeLast:]_block_invoke_2
+___copy_helper_block_.329
+___destroy_helper_block_.330
+___34-[RACSignal(Operations) takeLast:]_block_invoke.332
+___copy_helper_block_.333
+___destroy_helper_block_.334
+___34-[RACSignal(Operations) takeLast:]_block_invoke.336
+___copy_helper_block_.339
+___destroy_helper_block_.340
+___copy_helper_block_.342
+___destroy_helper_block_.343
+-[RACSignal(Operations) combineLatestWith:]
+___43-[RACSignal(Operations) combineLatestWith:]_block_invoke
+___43-[RACSignal(Operations) combineLatestWith:]_block_invoke_2
+___copy_helper_block_.352
+___destroy_helper_block_.353
+___43-[RACSignal(Operations) combineLatestWith:]_block_invoke.355
+___copy_helper_block_.356
+___destroy_helper_block_.357
+___43-[RACSignal(Operations) combineLatestWith:]_block_invoke.359
+___copy_helper_block_.360
+___destroy_helper_block_.361
+___43-[RACSignal(Operations) combineLatestWith:]_block_invoke.363
+___copy_helper_block_.364
+___destroy_helper_block_.365
+___43-[RACSignal(Operations) combineLatestWith:]_block_invoke.367
+___copy_helper_block_.368
+___destroy_helper_block_.369
+___43-[RACSignal(Operations) combineLatestWith:]_block_invoke.371
+___copy_helper_block_.372
+___destroy_helper_block_.373
+___43-[RACSignal(Operations) combineLatestWith:]_block_invoke.375
+___copy_helper_block_.376
+___destroy_helper_block_.377
+___copy_helper_block_.379
+___destroy_helper_block_.380
++[RACSignal(Operations) combineLatest:]
+___39+[RACSignal(Operations) combineLatest:]_block_invoke
++[RACSignal(Operations) combineLatest:reduce:]
+-[RACSignal(Operations) merge:]
++[RACSignal(Operations) merge:]
+___31+[RACSignal(Operations) merge:]_block_invoke
+___copy_helper_block_.405
+___destroy_helper_block_.406
+-[RACSignal(Operations) flatten:]
+___33-[RACSignal(Operations) flatten:]_block_invoke
+___Block_byref_object_copy_.414
+___Block_byref_object_dispose_.415
+___Block_byref_object_copy_.416
+___Block_byref_object_dispose_.417
+___33-[RACSignal(Operations) flatten:]_block_invoke.418
+___copy_helper_block_.419
+___destroy_helper_block_.420
+___33-[RACSignal(Operations) flatten:]_block_invoke.422
+___33-[RACSignal(Operations) flatten:]_block_invoke_2
+___copy_helper_block_.423
+___destroy_helper_block_.424
+___33-[RACSignal(Operations) flatten:]_block_invoke.426
+___copy_helper_block_.427
+___destroy_helper_block_.428
+___33-[RACSignal(Operations) flatten:]_block_invoke.430
+___copy_helper_block_.437
+___destroy_helper_block_.438
+___copy_helper_block_.440
+___destroy_helper_block_.441
+___33-[RACSignal(Operations) flatten:]_block_invoke.444
+___copy_helper_block_.451
+___destroy_helper_block_.452
+___33-[RACSignal(Operations) flatten:]_block_invoke.454
+___copy_helper_block_.455
+___destroy_helper_block_.456
+___33-[RACSignal(Operations) flatten:]_block_invoke.458
+___copy_helper_block_.459
+___destroy_helper_block_.460
+___copy_helper_block_.462
+___destroy_helper_block_.463
+-[RACSignal(Operations) then:]
+-[RACSignal(Operations) concat]
+-[RACSignal(Operations) aggregateWithStartFactory:reduce:]
+___58-[RACSignal(Operations) aggregateWithStartFactory:reduce:]_block_invoke
+___copy_helper_block_.485
+___destroy_helper_block_.486
+-[RACSignal(Operations) aggregateWithStart:reduce:]
+___51-[RACSignal(Operations) aggregateWithStart:reduce:]_block_invoke
+___copy_helper_block_.490
+___destroy_helper_block_.491
+-[RACSignal(Operations) aggregateWithStart:reduceWithIndex:]
+-[RACSignal(Operations) setKeyPath:onObject:]
+-[RACSignal(Operations) setKeyPath:onObject:nilValue:]
+___54-[RACSignal(Operations) setKeyPath:onObject:nilValue:]_block_invoke
+___copy_helper_block_.518
+___destroy_helper_block_.519
+___54-[RACSignal(Operations) setKeyPath:onObject:nilValue:]_block_invoke.521
+___copy_helper_block_.524
+___destroy_helper_block_.525
+___54-[RACSignal(Operations) setKeyPath:onObject:nilValue:]_block_invoke.527
+___copy_helper_block_.528
+___destroy_helper_block_.529
+___54-[RACSignal(Operations) setKeyPath:onObject:nilValue:]_block_invoke.545
+___copy_helper_block_.548
+___destroy_helper_block_.549
+___54-[RACSignal(Operations) setKeyPath:onObject:nilValue:]_block_invoke.553
+___copy_helper_block_.554
+___destroy_helper_block_.555
++[RACSignal(Operations) interval:onScheduler:]
++[RACSignal(Operations) interval:onScheduler:withLeeway:]
+___57+[RACSignal(Operations) interval:onScheduler:withLeeway:]_block_invoke
+___57+[RACSignal(Operations) interval:onScheduler:withLeeway:]_block_invoke_2
+___copy_helper_block_.566
+___destroy_helper_block_.567
+___copy_helper_block_.571
+___destroy_helper_block_.572
+-[RACSignal(Operations) takeUntil:]
+___35-[RACSignal(Operations) takeUntil:]_block_invoke
+___35-[RACSignal(Operations) takeUntil:]_block_invoke_2
+___copy_helper_block_.576
+___destroy_helper_block_.577
+___35-[RACSignal(Operations) takeUntil:]_block_invoke.579
+___copy_helper_block_.580
+___destroy_helper_block_.581
+___35-[RACSignal(Operations) takeUntil:]_block_invoke.583
+___copy_helper_block_.584
+___destroy_helper_block_.585
+___35-[RACSignal(Operations) takeUntil:]_block_invoke.591
+___copy_helper_block_.592
+___destroy_helper_block_.593
+___35-[RACSignal(Operations) takeUntil:]_block_invoke.595
+___copy_helper_block_.596
+___destroy_helper_block_.597
+___35-[RACSignal(Operations) takeUntil:]_block_invoke.599
+___copy_helper_block_.600
+___destroy_helper_block_.601
+___copy_helper_block_.603
+___destroy_helper_block_.604
+-[RACSignal(Operations) takeUntilReplacement:]
+___46-[RACSignal(Operations) takeUntilReplacement:]_block_invoke
+___46-[RACSignal(Operations) takeUntilReplacement:]_block_invoke_2
+___copy_helper_block_.608
+___destroy_helper_block_.609
+___46-[RACSignal(Operations) takeUntilReplacement:]_block_invoke.611
+___copy_helper_block_.612
+___destroy_helper_block_.613
+___46-[RACSignal(Operations) takeUntilReplacement:]_block_invoke.615
+___copy_helper_block_.616
+___destroy_helper_block_.617
+___46-[RACSignal(Operations) takeUntilReplacement:]_block_invoke.621
+___copy_helper_block_.622
+___destroy_helper_block_.623
+___copy_helper_block_.625
+___destroy_helper_block_.626
+-[RACSignal(Operations) switchToLatest]
+___39-[RACSignal(Operations) switchToLatest]_block_invoke
+___39-[RACSignal(Operations) switchToLatest]_block_invoke_2
+___copy_helper_block_.636
+___destroy_helper_block_.637
+___39-[RACSignal(Operations) switchToLatest]_block_invoke.642
+___copy_helper_block_.643
+___destroy_helper_block_.644
+___copy_helper_block_.646
+___destroy_helper_block_.647
++[RACSignal(Operations) switch:cases:default:]
+___46+[RACSignal(Operations) switch:cases:default:]_block_invoke
+___copy_helper_block_.672
+___destroy_helper_block_.673
++[RACSignal(Operations) if:then:else:]
+___38+[RACSignal(Operations) if:then:else:]_block_invoke
+___copy_helper_block_.692
+___destroy_helper_block_.693
+-[RACSignal(Operations) first]
+-[RACSignal(Operations) firstOrDefault:]
+-[RACSignal(Operations) firstOrDefault:success:error:]
+___54-[RACSignal(Operations) firstOrDefault:success:error:]_block_invoke
+___copy_helper_block_.715
+___destroy_helper_block_.716
+___54-[RACSignal(Operations) firstOrDefault:success:error:]_block_invoke.718
+___copy_helper_block_.719
+___destroy_helper_block_.720
+___54-[RACSignal(Operations) firstOrDefault:success:error:]_block_invoke.722
+___copy_helper_block_.723
+___destroy_helper_block_.724
+-[RACSignal(Operations) waitUntilCompleted:]
++[RACSignal(Operations) defer:]
+___31+[RACSignal(Operations) defer:]_block_invoke
+___copy_helper_block_.730
+___destroy_helper_block_.731
+-[RACSignal(Operations) toArray]
+-[RACSignal(Operations) sequence]
+-[RACSignal(Operations) publish]
+-[RACSignal(Operations) multicast:]
+-[RACSignal(Operations) replay]
+-[RACSignal(Operations) replayLast]
+-[RACSignal(Operations) replayLazily]
+___37-[RACSignal(Operations) replayLazily]_block_invoke
+___copy_helper_block_.763
+___destroy_helper_block_.764
+-[RACSignal(Operations) timeout:onScheduler:]
+___45-[RACSignal(Operations) timeout:onScheduler:]_block_invoke
+___45-[RACSignal(Operations) timeout:onScheduler:]_block_invoke_2
+___copy_helper_block_.768
+___destroy_helper_block_.769
+___45-[RACSignal(Operations) timeout:onScheduler:]_block_invoke.771
+___copy_helper_block_.772
+___destroy_helper_block_.773
+___45-[RACSignal(Operations) timeout:onScheduler:]_block_invoke.775
+___copy_helper_block_.776
+___destroy_helper_block_.777
+___45-[RACSignal(Operations) timeout:onScheduler:]_block_invoke.779
+___copy_helper_block_.780
+___destroy_helper_block_.781
+___copy_helper_block_.783
+___destroy_helper_block_.784
+-[RACSignal(Operations) deliverOn:]
+___35-[RACSignal(Operations) deliverOn:]_block_invoke
+___35-[RACSignal(Operations) deliverOn:]_block_invoke_2
+___35-[RACSignal(Operations) deliverOn:]_block_invoke_3
+___copy_helper_block_.789
+___destroy_helper_block_.790
+___copy_helper_block_.794
+___destroy_helper_block_.795
+___35-[RACSignal(Operations) deliverOn:]_block_invoke.797
+___35-[RACSignal(Operations) deliverOn:]_block_invoke_2.798
+___copy_helper_block_.799
+___destroy_helper_block_.800
+___copy_helper_block_.802
+___destroy_helper_block_.803
+___35-[RACSignal(Operations) deliverOn:]_block_invoke.805
+___35-[RACSignal(Operations) deliverOn:]_block_invoke_2.806
+___copy_helper_block_.807
+___destroy_helper_block_.808
+___copy_helper_block_.810
+___destroy_helper_block_.811
+___copy_helper_block_.813
+___destroy_helper_block_.814
+-[RACSignal(Operations) subscribeOn:]
+___37-[RACSignal(Operations) subscribeOn:]_block_invoke
+___37-[RACSignal(Operations) subscribeOn:]_block_invoke_2
+___copy_helper_block_.818
+___destroy_helper_block_.819
+___copy_helper_block_.821
+___destroy_helper_block_.822
+-[RACSignal(Operations) deliverOnMainThread]
+___44-[RACSignal(Operations) deliverOnMainThread]_block_invoke
+___44-[RACSignal(Operations) deliverOnMainThread]_block_invoke_2
+___44-[RACSignal(Operations) deliverOnMainThread]_block_invoke_3
+___copy_helper_block_.829
+___destroy_helper_block_.830
+___copy_helper_block_.832
+___destroy_helper_block_.833
+___44-[RACSignal(Operations) deliverOnMainThread]_block_invoke.835
+___44-[RACSignal(Operations) deliverOnMainThread]_block_invoke_2.836
+___copy_helper_block_.837
+___destroy_helper_block_.838
+___copy_helper_block_.840
+___destroy_helper_block_.841
+___44-[RACSignal(Operations) deliverOnMainThread]_block_invoke.843
+___44-[RACSignal(Operations) deliverOnMainThread]_block_invoke_2.844
+___copy_helper_block_.845
+___destroy_helper_block_.846
+___copy_helper_block_.848
+___destroy_helper_block_.849
+___44-[RACSignal(Operations) deliverOnMainThread]_block_invoke.851
+___44-[RACSignal(Operations) deliverOnMainThread]_block_invoke_2.852
+___copy_helper_block_.853
+___destroy_helper_block_.854
+___copy_helper_block_.856
+___destroy_helper_block_.857
+___copy_helper_block_.859
+___destroy_helper_block_.860
+-[RACSignal(Operations) groupBy:transform:]
+___43-[RACSignal(Operations) groupBy:transform:]_block_invoke
+___43-[RACSignal(Operations) groupBy:transform:]_block_invoke_2
+___copy_helper_block_.869
+___destroy_helper_block_.870
+___43-[RACSignal(Operations) groupBy:transform:]_block_invoke.872
+___copy_helper_block_.875
+___destroy_helper_block_.876
+___43-[RACSignal(Operations) groupBy:transform:]_block_invoke.878
+___copy_helper_block_.881
+___destroy_helper_block_.882
+___copy_helper_block_.884
+___destroy_helper_block_.885
+-[RACSignal(Operations) groupBy:]
+-[RACSignal(Operations) any]
+___28-[RACSignal(Operations) any]_block_invoke
+-[RACSignal(Operations) any:]
+___29-[RACSignal(Operations) any:]_block_invoke
+___29-[RACSignal(Operations) any:]_block_invoke_2
+___copy_helper_block_.911
+___destroy_helper_block_.912
+___copy_helper_block_.915
+___destroy_helper_block_.916
+-[RACSignal(Operations) all:]
+___29-[RACSignal(Operations) all:]_block_invoke
+___29-[RACSignal(Operations) all:]_block_invoke_2
+___copy_helper_block_.925
+___destroy_helper_block_.926
+___copy_helper_block_.928
+___destroy_helper_block_.929
+-[RACSignal(Operations) retry:]
+___31-[RACSignal(Operations) retry:]_block_invoke
+___31-[RACSignal(Operations) retry:]_block_invoke_2
+___copy_helper_block_.933
+___destroy_helper_block_.934
+___31-[RACSignal(Operations) retry:]_block_invoke.936
+___copy_helper_block_.937
+___destroy_helper_block_.938
+___31-[RACSignal(Operations) retry:]_block_invoke.940
+___copy_helper_block_.941
+___destroy_helper_block_.942
+___copy_helper_block_.944
+___destroy_helper_block_.945
+-[RACSignal(Operations) retry]
+-[RACSignal(Operations) sample:]
+___32-[RACSignal(Operations) sample:]_block_invoke
+___32-[RACSignal(Operations) sample:]_block_invoke_2
+___copy_helper_block_.956
+___destroy_helper_block_.957
+___32-[RACSignal(Operations) sample:]_block_invoke.959
+___copy_helper_block_.960
+___destroy_helper_block_.961
+___32-[RACSignal(Operations) sample:]_block_invoke.963
+___copy_helper_block_.964
+___destroy_helper_block_.965
+___32-[RACSignal(Operations) sample:]_block_invoke.967
+___copy_helper_block_.968
+___destroy_helper_block_.969
+___32-[RACSignal(Operations) sample:]_block_invoke.971
+___copy_helper_block_.972
+___destroy_helper_block_.973
+___32-[RACSignal(Operations) sample:]_block_invoke.975
+___copy_helper_block_.976
+___destroy_helper_block_.977
+___32-[RACSignal(Operations) sample:]_block_invoke.979
+___copy_helper_block_.980
+___destroy_helper_block_.981
+___copy_helper_block_.983
+___destroy_helper_block_.984
+-[RACSignal(Operations) ignoreValues]
+___37-[RACSignal(Operations) ignoreValues]_block_invoke
+-[RACSignal(Operations) materialize]
+___36-[RACSignal(Operations) materialize]_block_invoke
+___36-[RACSignal(Operations) materialize]_block_invoke_2
+___copy_helper_block_.997
+___destroy_helper_block_.998
+___36-[RACSignal(Operations) materialize]_block_invoke.1000
+___copy_helper_block_.1003
+___destroy_helper_block_.1004
+___36-[RACSignal(Operations) materialize]_block_invoke.1006
+___copy_helper_block_.1009
+___destroy_helper_block_.1010
+___copy_helper_block_.1012
+___destroy_helper_block_.1013
+-[RACSignal(Operations) dematerialize]
+___38-[RACSignal(Operations) dematerialize]_block_invoke
+___38-[RACSignal(Operations) dematerialize]_block_invoke_2
+-[RACSignal(Operations) not]
+___28-[RACSignal(Operations) not]_block_invoke
+-[RACSignal(Operations) and]
+___28-[RACSignal(Operations) and]_block_invoke
+___28-[RACSignal(Operations) and]_block_invoke_2
+___copy_helper_block_.1045
+___destroy_helper_block_.1046
+-[RACSignal(Operations) or]
+___27-[RACSignal(Operations) or]_block_invoke
+___27-[RACSignal(Operations) or]_block_invoke_2
+___copy_helper_block_.1061
+___destroy_helper_block_.1062
+-[RACSignal(Operations) reduceApply]
+___36-[RACSignal(Operations) reduceApply]_block_invoke
+-[RACSignal(OperationsDeprecated) windowWithStart:close:]
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke_2
+___copy_helper_block_.1137
+___destroy_helper_block_.1138
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1141
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke_2.1142
+___copy_helper_block_.1143
+___destroy_helper_block_.1144
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1146
+___copy_helper_block_.1147
+___destroy_helper_block_.1148
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1150
+___copy_helper_block_.1151
+___destroy_helper_block_.1152
+___copy_helper_block_.1156
+___destroy_helper_block_.1157
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1159
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke_2.1162
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke_3
+___copy_helper_block_.1165
+___destroy_helper_block_.1166
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1168
+___copy_helper_block_.1169
+___destroy_helper_block_.1170
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1172
+___copy_helper_block_.1173
+___destroy_helper_block_.1174
+___57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1176
+___copy_helper_block_.1177
+___destroy_helper_block_.1178
+___copy_helper_block_.1180
+___destroy_helper_block_.1181
+-[RACSignal(OperationsDeprecated) buffer:]
+___42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke
+___42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke_2
+___copy_helper_block_.1187
+___destroy_helper_block_.1188
+___42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke.1192
+___copy_helper_block_.1193
+___destroy_helper_block_.1194
+___42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke.1199
+___42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke_2.1200
+___copy_helper_block_.1204
+___destroy_helper_block_.1205
+___copy_helper_block_.1207
+___destroy_helper_block_.1208
+___42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke.1210
+___copy_helper_block_.1211
+___destroy_helper_block_.1212
+___42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke.1214
+___copy_helper_block_.1215
+___destroy_helper_block_.1216
+___42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke.1218
+___copy_helper_block_.1219
+___destroy_helper_block_.1220
+___copy_helper_block_.1222
+___destroy_helper_block_.1223
+-[RACSignal(OperationsDeprecated) let:]
+___39-[RACSignal(OperationsDeprecated) let:]_block_invoke
+___39-[RACSignal(OperationsDeprecated) let:]_block_invoke_2
+___copy_helper_block_.1229
+___destroy_helper_block_.1230
+___39-[RACSignal(OperationsDeprecated) let:]_block_invoke.1232
+___copy_helper_block_.1233
+___destroy_helper_block_.1234
+___39-[RACSignal(OperationsDeprecated) let:]_block_invoke.1236
+___copy_helper_block_.1237
+___destroy_helper_block_.1238
+___39-[RACSignal(OperationsDeprecated) let:]_block_invoke.1240
+___copy_helper_block_.1241
+___destroy_helper_block_.1242
+___copy_helper_block_.1244
+___destroy_helper_block_.1245
++[RACSignal(OperationsDeprecated) interval:]
++[RACSignal(OperationsDeprecated) interval:withLeeway:]
+-[RACSignal(OperationsDeprecated) timeout:]
+-[RACSignal(OperationsDeprecated) bufferWithTime:]
+-[RACSignal(OperationsDeprecated) toProperty:onObject:]
+-[RACSignal(OperationsDeprecated) ignoreElements]
+-[RACSignal(OperationsDeprecated) sequenceNext:]
+-[RACSignal(OperationsDeprecated) aggregateWithStart:combine:]
+-[RACSignal(OperationsDeprecated) aggregateWithStartFactory:combine:]
+-[RACSignal(OperationsDeprecated) executeCommand:]
+___50-[RACSignal(OperationsDeprecated) executeCommand:]_block_invoke
+___copy_helper_block_.1260
+___destroy_helper_block_.1261
+___subscribeForever_block_invoke
+___subscribeForever_block_invoke_2
+___copy_helper_block_.1277
+___destroy_helper_block_.1278
+___subscribeForever_block_invoke.1280
+___copy_helper_block_.1281
+___destroy_helper_block_.1282
+___copy_helper_block_.1284
+___destroy_helper_block_.1285
+___subscribeForever_block_invoke.1287
+___copy_helper_block_.1290
+___destroy_helper_block_.1291
+___block_descriptor_tmp.25
+___block_descriptor_tmp.32
+___block_descriptor_tmp.49
+___block_descriptor_tmp.53
+___block_descriptor_tmp.65
+___block_descriptor_tmp.69
+___block_descriptor_tmp.73
+___block_descriptor_tmp.76
+___block_descriptor_tmp.80
+___block_descriptor_tmp.108
+___block_descriptor_tmp.114
+___block_descriptor_tmp.121
+___block_descriptor_tmp.125
+___block_descriptor_tmp.129
+___block_descriptor_tmp.136
+___block_descriptor_tmp.143
+___block_descriptor_tmp.151
+___block_descriptor_tmp.155
+___block_descriptor_tmp.160
+___block_descriptor_tmp.166
+___block_descriptor_tmp.171
+___block_descriptor_tmp.176
+___block_descriptor_tmp.179
+___block_literal_global.180
+___block_descriptor_tmp.183
+___block_descriptor_tmp.190
+___block_descriptor_tmp.202
+___block_descriptor_tmp.207
+___block_descriptor_tmp.212
+___block_descriptor_tmp.218
+___block_descriptor_tmp.232
+___block_descriptor_tmp.241
+___block_descriptor_tmp.247
+___block_descriptor_tmp.254
+___block_descriptor_tmp.260
+___block_descriptor_tmp.283
+___block_descriptor_tmp.293
+___block_descriptor_tmp.297
+___block_descriptor_tmp.301
+___block_descriptor_tmp.305
+___block_descriptor_tmp.309
+___block_descriptor_tmp.313
+___block_literal_global.314
+___block_descriptor_tmp.316
+___block_literal_global.317
+___block_descriptor_tmp.331
+___block_descriptor_tmp.335
+___block_descriptor_tmp.341
+___block_descriptor_tmp.344
+___block_descriptor_tmp.354
+___block_descriptor_tmp.358
+___block_descriptor_tmp.362
+___block_descriptor_tmp.366
+___block_descriptor_tmp.370
+___block_descriptor_tmp.374
+___block_descriptor_tmp.378
+___block_descriptor_tmp.381
+___block_descriptor_tmp.385
+___block_literal_global.386
+___block_descriptor_tmp.407
+___block_descriptor_tmp.421
+___block_descriptor_tmp.425
+___block_descriptor_tmp.429
+___block_descriptor_tmp.439
+___block_descriptor_tmp.443
+___block_descriptor_tmp.453
+___block_descriptor_tmp.457
+___block_descriptor_tmp.461
+___block_descriptor_tmp.464
+___block_descriptor_tmp.487
+___block_descriptor_tmp.493
+___block_descriptor_tmp.520
+___block_descriptor_tmp.526
+___block_descriptor_tmp.530
+_setKeyPath:onObject:nilValue:.bindingsKey
+___block_descriptor_tmp.550
+___block_descriptor_tmp.556
+___block_descriptor_tmp.568
+___block_descriptor_tmp.573
+___block_descriptor_tmp.578
+___block_descriptor_tmp.582
+___block_descriptor_tmp.586
+___block_descriptor_tmp.594
+___block_descriptor_tmp.598
+___block_descriptor_tmp.602
+___block_descriptor_tmp.605
+___block_descriptor_tmp.610
+___block_descriptor_tmp.614
+___block_descriptor_tmp.618
+___block_descriptor_tmp.624
+___block_descriptor_tmp.627
+___block_descriptor_tmp.639
+___block_descriptor_tmp.645
+___block_descriptor_tmp.648
+___block_descriptor_tmp.674
+___block_descriptor_tmp.695
+___block_descriptor_tmp.717
+___block_descriptor_tmp.721
+___block_descriptor_tmp.725
+___block_descriptor_tmp.732
+___block_descriptor_tmp.765
+___block_descriptor_tmp.770
+___block_descriptor_tmp.774
+___block_descriptor_tmp.778
+___block_descriptor_tmp.782
+___block_descriptor_tmp.786
+___block_descriptor_tmp.791
+___block_descriptor_tmp.796
+___block_descriptor_tmp.801
+___block_descriptor_tmp.804
+___block_descriptor_tmp.809
+___block_descriptor_tmp.812
+___block_descriptor_tmp.815
+___block_descriptor_tmp.820
+___block_descriptor_tmp.823
+___block_descriptor_tmp.831
+___block_descriptor_tmp.834
+___block_descriptor_tmp.839
+___block_descriptor_tmp.842
+___block_descriptor_tmp.847
+___block_descriptor_tmp.850
+___block_descriptor_tmp.855
+___block_descriptor_tmp.858
+___block_descriptor_tmp.861
+___block_descriptor_tmp.871
+___block_descriptor_tmp.877
+___block_descriptor_tmp.883
+___block_descriptor_tmp.886
+___block_descriptor_tmp.893
+___block_literal_global.894
+___block_descriptor_tmp.914
+___block_descriptor_tmp.918
+___block_descriptor_tmp.927
+___block_descriptor_tmp.930
+___block_descriptor_tmp.935
+___block_descriptor_tmp.939
+___block_descriptor_tmp.943
+___block_descriptor_tmp.946
+___block_descriptor_tmp.958
+___block_descriptor_tmp.962
+___block_descriptor_tmp.966
+___block_descriptor_tmp.970
+___block_descriptor_tmp.974
+___block_descriptor_tmp.978
+___block_descriptor_tmp.982
+___block_descriptor_tmp.985
+___block_descriptor_tmp.988
+___block_literal_global.989
+___block_descriptor_tmp.999
+___block_descriptor_tmp.1005
+___block_descriptor_tmp.1011
+___block_descriptor_tmp.1014
+___block_descriptor_tmp.1017
+___block_literal_global.1018
+___block_descriptor_tmp.1019
+___block_literal_global.1020
+___block_descriptor_tmp.1026
+___block_literal_global.1027
+___block_descriptor_tmp.1035
+___block_literal_global.1036
+___block_descriptor_tmp.1048
+___block_descriptor_tmp.1053
+___block_literal_global.1054
+___block_descriptor_tmp.1063
+___block_descriptor_tmp.1067
+___block_literal_global.1068
+___block_descriptor_tmp.1139
+___block_descriptor_tmp.1145
+___block_descriptor_tmp.1149
+___block_descriptor_tmp.1153
+___block_descriptor_tmp.1158
+___block_descriptor_tmp.1160
+___block_literal_global.1161
+___block_descriptor_tmp.1163
+___block_literal_global.1164
+___block_descriptor_tmp.1167
+___block_descriptor_tmp.1171
+___block_descriptor_tmp.1175
+___block_descriptor_tmp.1179
+___block_descriptor_tmp.1182
+___block_descriptor_tmp.1189
+___block_descriptor_tmp.1196
+___block_descriptor_tmp.1206
+___block_descriptor_tmp.1209
+___block_descriptor_tmp.1213
+___block_descriptor_tmp.1217
+___block_descriptor_tmp.1221
+___block_descriptor_tmp.1224
+___block_descriptor_tmp.1231
+___block_descriptor_tmp.1235
+___block_descriptor_tmp.1239
+___block_descriptor_tmp.1243
+___block_descriptor_tmp.1246
+___block_descriptor_tmp.1262
+___block_descriptor_tmp.1279
+___block_descriptor_tmp.1283
+___block_descriptor_tmp.1286
+___block_descriptor_tmp.1292
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACSignal+Operations.m
+__subscribeForever_block_invoke.1287
+__subscribeForever_block_invoke.1280
+__subscribeForever_block_invoke_2
+__subscribeForever_block_invoke
+__50-[RACSignal(OperationsDeprecated) executeCommand:]_block_invoke
+__39-[RACSignal(OperationsDeprecated) let:]_block_invoke.1240
+__39-[RACSignal(OperationsDeprecated) let:]_block_invoke.1236
+__39-[RACSignal(OperationsDeprecated) let:]_block_invoke.1232
+__39-[RACSignal(OperationsDeprecated) let:]_block_invoke_2
+__39-[RACSignal(OperationsDeprecated) let:]_block_invoke
+__42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke.1218
+__42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke.1214
+__42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke.1210
+__42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke_2.1200
+__42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke.1199
+__42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke.1192
+__42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke_2
+__42-[RACSignal(OperationsDeprecated) buffer:]_block_invoke
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1176
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1172
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1168
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke_3
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke_2.1162
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1159
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1150
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1146
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke_2.1142
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke.1141
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke_2
+__57-[RACSignal(OperationsDeprecated) windowWithStart:close:]_block_invoke
+__36-[RACSignal(Operations) reduceApply]_block_invoke
+__27-[RACSignal(Operations) or]_block_invoke_2
+__27-[RACSignal(Operations) or]_block_invoke
+__28-[RACSignal(Operations) and]_block_invoke_2
+__28-[RACSignal(Operations) and]_block_invoke
+__28-[RACSignal(Operations) not]_block_invoke
+__38-[RACSignal(Operations) dematerialize]_block_invoke_2
+__38-[RACSignal(Operations) dematerialize]_block_invoke
+__36-[RACSignal(Operations) materialize]_block_invoke.1006
+__36-[RACSignal(Operations) materialize]_block_invoke.1000
+__36-[RACSignal(Operations) materialize]_block_invoke_2
+__36-[RACSignal(Operations) materialize]_block_invoke
+__37-[RACSignal(Operations) ignoreValues]_block_invoke
+__32-[RACSignal(Operations) sample:]_block_invoke.979
+__32-[RACSignal(Operations) sample:]_block_invoke.975
+__32-[RACSignal(Operations) sample:]_block_invoke.971
+__32-[RACSignal(Operations) sample:]_block_invoke.967
+__32-[RACSignal(Operations) sample:]_block_invoke.963
+__32-[RACSignal(Operations) sample:]_block_invoke.959
+__32-[RACSignal(Operations) sample:]_block_invoke_2
+__32-[RACSignal(Operations) sample:]_block_invoke
+__31-[RACSignal(Operations) retry:]_block_invoke.940
+__31-[RACSignal(Operations) retry:]_block_invoke.936
+__31-[RACSignal(Operations) retry:]_block_invoke_2
+__31-[RACSignal(Operations) retry:]_block_invoke
+__29-[RACSignal(Operations) all:]_block_invoke_2
+__29-[RACSignal(Operations) all:]_block_invoke
+__29-[RACSignal(Operations) any:]_block_invoke_2
+__29-[RACSignal(Operations) any:]_block_invoke
+__28-[RACSignal(Operations) any]_block_invoke
+__43-[RACSignal(Operations) groupBy:transform:]_block_invoke.878
+__43-[RACSignal(Operations) groupBy:transform:]_block_invoke.872
+__43-[RACSignal(Operations) groupBy:transform:]_block_invoke_2
+__43-[RACSignal(Operations) groupBy:transform:]_block_invoke
+__44-[RACSignal(Operations) deliverOnMainThread]_block_invoke_2.852
+__44-[RACSignal(Operations) deliverOnMainThread]_block_invoke.851
+__44-[RACSignal(Operations) deliverOnMainThread]_block_invoke_2.844
+__44-[RACSignal(Operations) deliverOnMainThread]_block_invoke.843
+__44-[RACSignal(Operations) deliverOnMainThread]_block_invoke_2.836
+__44-[RACSignal(Operations) deliverOnMainThread]_block_invoke.835
+__44-[RACSignal(Operations) deliverOnMainThread]_block_invoke_3
+__44-[RACSignal(Operations) deliverOnMainThread]_block_invoke_2
+__44-[RACSignal(Operations) deliverOnMainThread]_block_invoke
+__37-[RACSignal(Operations) subscribeOn:]_block_invoke_2
+__37-[RACSignal(Operations) subscribeOn:]_block_invoke
+__35-[RACSignal(Operations) deliverOn:]_block_invoke_2.806
+__35-[RACSignal(Operations) deliverOn:]_block_invoke.805
+__35-[RACSignal(Operations) deliverOn:]_block_invoke_2.798
+__35-[RACSignal(Operations) deliverOn:]_block_invoke.797
+__35-[RACSignal(Operations) deliverOn:]_block_invoke_3
+__35-[RACSignal(Operations) deliverOn:]_block_invoke_2
+__35-[RACSignal(Operations) deliverOn:]_block_invoke
+__45-[RACSignal(Operations) timeout:onScheduler:]_block_invoke.779
+__45-[RACSignal(Operations) timeout:onScheduler:]_block_invoke.775
+__45-[RACSignal(Operations) timeout:onScheduler:]_block_invoke.771
+__45-[RACSignal(Operations) timeout:onScheduler:]_block_invoke_2
+__45-[RACSignal(Operations) timeout:onScheduler:]_block_invoke
+__37-[RACSignal(Operations) replayLazily]_block_invoke
+__31+[RACSignal(Operations) defer:]_block_invoke
+__54-[RACSignal(Operations) firstOrDefault:success:error:]_block_invoke.722
+__54-[RACSignal(Operations) firstOrDefault:success:error:]_block_invoke.718
+__54-[RACSignal(Operations) firstOrDefault:success:error:]_block_invoke
+__38+[RACSignal(Operations) if:then:else:]_block_invoke
+__46+[RACSignal(Operations) switch:cases:default:]_block_invoke
+__39-[RACSignal(Operations) switchToLatest]_block_invoke.642
+__39-[RACSignal(Operations) switchToLatest]_block_invoke_2
+__39-[RACSignal(Operations) switchToLatest]_block_invoke
+__46-[RACSignal(Operations) takeUntilReplacement:]_block_invoke.621
+__46-[RACSignal(Operations) takeUntilReplacement:]_block_invoke.615
+__46-[RACSignal(Operations) takeUntilReplacement:]_block_invoke.611
+__46-[RACSignal(Operations) takeUntilReplacement:]_block_invoke_2
+__46-[RACSignal(Operations) takeUntilReplacement:]_block_invoke
+__35-[RACSignal(Operations) takeUntil:]_block_invoke.599
+__35-[RACSignal(Operations) takeUntil:]_block_invoke.595
+__35-[RACSignal(Operations) takeUntil:]_block_invoke.591
+__35-[RACSignal(Operations) takeUntil:]_block_invoke.583
+__35-[RACSignal(Operations) takeUntil:]_block_invoke.579
+__35-[RACSignal(Operations) takeUntil:]_block_invoke_2
+__35-[RACSignal(Operations) takeUntil:]_block_invoke
+__57+[RACSignal(Operations) interval:onScheduler:withLeeway:]_block_invoke_2
+__57+[RACSignal(Operations) interval:onScheduler:withLeeway:]_block_invoke
+__54-[RACSignal(Operations) setKeyPath:onObject:nilValue:]_block_invoke.553
+__54-[RACSignal(Operations) setKeyPath:onObject:nilValue:]_block_invoke.545
+__54-[RACSignal(Operations) setKeyPath:onObject:nilValue:]_block_invoke.527
+__54-[RACSignal(Operations) setKeyPath:onObject:nilValue:]_block_invoke.521
+__54-[RACSignal(Operations) setKeyPath:onObject:nilValue:]_block_invoke
+__51-[RACSignal(Operations) aggregateWithStart:reduce:]_block_invoke
+__58-[RACSignal(Operations) aggregateWithStartFactory:reduce:]_block_invoke
+__33-[RACSignal(Operations) flatten:]_block_invoke.458
+__33-[RACSignal(Operations) flatten:]_block_invoke.454
+__33-[RACSignal(Operations) flatten:]_block_invoke.444
+__33-[RACSignal(Operations) flatten:]_block_invoke.430
+__33-[RACSignal(Operations) flatten:]_block_invoke.426
+__33-[RACSignal(Operations) flatten:]_block_invoke_2
+__33-[RACSignal(Operations) flatten:]_block_invoke.422
+__33-[RACSignal(Operations) flatten:]_block_invoke.418
+__33-[RACSignal(Operations) flatten:]_block_invoke
+__31+[RACSignal(Operations) merge:]_block_invoke
+__39+[RACSignal(Operations) combineLatest:]_block_invoke
+__43-[RACSignal(Operations) combineLatestWith:]_block_invoke.375
+__43-[RACSignal(Operations) combineLatestWith:]_block_invoke.371
+__43-[RACSignal(Operations) combineLatestWith:]_block_invoke.367
+__43-[RACSignal(Operations) combineLatestWith:]_block_invoke.363
+__43-[RACSignal(Operations) combineLatestWith:]_block_invoke.359
+__43-[RACSignal(Operations) combineLatestWith:]_block_invoke.355
+__43-[RACSignal(Operations) combineLatestWith:]_block_invoke_2
+__43-[RACSignal(Operations) combineLatestWith:]_block_invoke
+__34-[RACSignal(Operations) takeLast:]_block_invoke.336
+__34-[RACSignal(Operations) takeLast:]_block_invoke.332
+__34-[RACSignal(Operations) takeLast:]_block_invoke_2
+__34-[RACSignal(Operations) takeLast:]_block_invoke
+__32-[RACSignal(Operations) collect]_block_invoke_2
+__32-[RACSignal(Operations) collect]_block_invoke
+__52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke.302
+__52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke.298
+__52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke.294
+__52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke.284
+__52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke_2
+__52-[RACSignal(Operations) bufferWithTime:onScheduler:]_block_invoke
+__33-[RACSignal(Operations) finally:]_block_invoke.257
+__33-[RACSignal(Operations) finally:]_block_invoke
+__35-[RACSignal(Operations) initially:]_block_invoke
+__32-[RACSignal(Operations) tryMap:]_block_invoke
+__29-[RACSignal(Operations) try:]_block_invoke
+__33-[RACSignal(Operations) catchTo:]_block_invoke
+__31-[RACSignal(Operations) catch:]_block_invoke.204
+__31-[RACSignal(Operations) catch:]_block_invoke.199
+__31-[RACSignal(Operations) catch:]_block_invoke.191
+__31-[RACSignal(Operations) catch:]_block_invoke_2
+__31-[RACSignal(Operations) catch:]_block_invoke
+__31-[RACSignal(Operations) repeat]_block_invoke.177
+__31-[RACSignal(Operations) repeat]_block_invoke.172
+__31-[RACSignal(Operations) repeat]_block_invoke_2
+subscribeForever
+__31-[RACSignal(Operations) repeat]_block_invoke
+__31-[RACSignal(Operations) delay:]_block_invoke_2.157
+__31-[RACSignal(Operations) delay:]_block_invoke.156
+__31-[RACSignal(Operations) delay:]_block_invoke.152
+__31-[RACSignal(Operations) delay:]_block_invoke_2.145
+__31-[RACSignal(Operations) delay:]_block_invoke.144
+__31-[RACSignal(Operations) delay:]_block_invoke_2
+__31-[RACSignal(Operations) delay:]_block_invoke
+__52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke.126
+__52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke.122
+__52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke_2
+__52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke.109
+__52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke.100
+__52-[RACSignal(Operations) throttle:valuesPassingTest:]_block_invoke
+__34-[RACSignal(Operations) throttle:]_block_invoke
+__37-[RACSignal(Operations) doCompleted:]_block_invoke.70
+__37-[RACSignal(Operations) doCompleted:]_block_invoke.66
+__37-[RACSignal(Operations) doCompleted:]_block_invoke_2
+__37-[RACSignal(Operations) doCompleted:]_block_invoke
+__33-[RACSignal(Operations) doError:]_block_invoke.54
+__33-[RACSignal(Operations) doError:]_block_invoke.50
+__33-[RACSignal(Operations) doError:]_block_invoke_2
+__33-[RACSignal(Operations) doError:]_block_invoke
+__32-[RACSignal(Operations) doNext:]_block_invoke.26
+__32-[RACSignal(Operations) doNext:]_block_invoke.19
+__32-[RACSignal(Operations) doNext:]_block_invoke_2
+__32-[RACSignal(Operations) doNext:]_block_invoke
++[RACSignal createSignal:]
++[RACSignal error:]
++[RACSignal never]
+___18+[RACSignal never]_block_invoke
++[RACSignal startEagerlyWithScheduler:block:]
++[RACSignal startLazilyWithScheduler:block:]
+___44+[RACSignal startLazilyWithScheduler:block:]_block_invoke
+___44+[RACSignal startLazilyWithScheduler:block:]_block_invoke.42
+-[RACSignal description]
++[RACSignal(RACStream) empty]
++[RACSignal(RACStream) return:]
+-[RACSignal(RACStream) bind:]
+___29-[RACSignal(RACStream) bind:]_block_invoke
+___29-[RACSignal(RACStream) bind:]_block_invoke_2
+___copy_helper_block_.90
+___destroy_helper_block_.91
+___29-[RACSignal(RACStream) bind:]_block_invoke.94
+___29-[RACSignal(RACStream) bind:]_block_invoke_2.104
+___copy_helper_block_.107
+___destroy_helper_block_.108
+___29-[RACSignal(RACStream) bind:]_block_invoke.111
+___copy_helper_block_.114
+___destroy_helper_block_.115
+___29-[RACSignal(RACStream) bind:]_block_invoke.118
+___29-[RACSignal(RACStream) bind:]_block_invoke.131
+___29-[RACSignal(RACStream) bind:]_block_invoke.137
+___copy_helper_block_.138
+___destroy_helper_block_.139
+___29-[RACSignal(RACStream) bind:]_block_invoke.141
+___copy_helper_block_.142
+___destroy_helper_block_.143
+-[RACSignal(RACStream) concat:]
+___31-[RACSignal(RACStream) concat:]_block_invoke
+___31-[RACSignal(RACStream) concat:]_block_invoke_2
+___copy_helper_block_.151
+___destroy_helper_block_.152
+___31-[RACSignal(RACStream) concat:]_block_invoke.154
+___copy_helper_block_.155
+___destroy_helper_block_.156
+___31-[RACSignal(RACStream) concat:]_block_invoke.158
+___copy_helper_block_.159
+___destroy_helper_block_.160
+___copy_helper_block_.162
+___destroy_helper_block_.163
+-[RACSignal(RACStream) zipWith:]
+___32-[RACSignal(RACStream) zipWith:]_block_invoke
+___32-[RACSignal(RACStream) zipWith:]_block_invoke_2
+___copy_helper_block_.172
+___destroy_helper_block_.173
+___32-[RACSignal(RACStream) zipWith:]_block_invoke.175
+___copy_helper_block_.189
+___destroy_helper_block_.190
+___32-[RACSignal(RACStream) zipWith:]_block_invoke.192
+___copy_helper_block_.193
+___destroy_helper_block_.194
+___32-[RACSignal(RACStream) zipWith:]_block_invoke.196
+___copy_helper_block_.197
+___destroy_helper_block_.198
+___32-[RACSignal(RACStream) zipWith:]_block_invoke.200
+___copy_helper_block_.201
+___destroy_helper_block_.202
+___32-[RACSignal(RACStream) zipWith:]_block_invoke.204
+___32-[RACSignal(RACStream) zipWith:]_block_invoke.208
+___copy_helper_block_.209
+___destroy_helper_block_.210
+___32-[RACSignal(RACStream) zipWith:]_block_invoke.212
+___copy_helper_block_.213
+___destroy_helper_block_.214
+___32-[RACSignal(RACStream) zipWith:]_block_invoke.217
+___copy_helper_block_.218
+___destroy_helper_block_.219
+___copy_helper_block_.223
+___destroy_helper_block_.224
+-[RACSignal(Subscription) subscribe:]
+-[RACSignal(Subscription) subscribeNext:]
+-[RACSignal(Subscription) subscribeNext:completed:]
+-[RACSignal(Subscription) subscribeNext:error:completed:]
+-[RACSignal(Subscription) subscribeError:]
+-[RACSignal(Subscription) subscribeCompleted:]
+-[RACSignal(Subscription) subscribeNext:error:]
+-[RACSignal(Subscription) subscribeError:completed:]
+-[RACSignal(Debugging) logAll]
+-[RACSignal(Debugging) logNext]
+___31-[RACSignal(Debugging) logNext]_block_invoke
+___copy_helper_block_.260
+___destroy_helper_block_.261
+-[RACSignal(Debugging) logError]
+___32-[RACSignal(Debugging) logError]_block_invoke
+___copy_helper_block_.269
+___destroy_helper_block_.270
+-[RACSignal(Debugging) logCompleted]
+___36-[RACSignal(Debugging) logCompleted]_block_invoke
+___copy_helper_block_.276
+___destroy_helper_block_.277
+-[RACSignal(Testing) asynchronousFirstOrDefault:success:error:]
+___63-[RACSignal(Testing) asynchronousFirstOrDefault:success:error:]_block_invoke
+___63-[RACSignal(Testing) asynchronousFirstOrDefault:success:error:]_block_invoke.302
+___63-[RACSignal(Testing) asynchronousFirstOrDefault:success:error:]_block_invoke.306
+___copy_helper_block_.307
+___destroy_helper_block_.308
+-[RACSignal(Testing) asynchronouslyWaitUntilCompleted:]
++[RACSignal(Deprecated) startWithScheduler:subjectBlock:]
+___57+[RACSignal(Deprecated) startWithScheduler:subjectBlock:]_block_invoke
+___copy_helper_block_.328
+___destroy_helper_block_.329
++[RACSignal(Deprecated) start:]
++[RACSignal(Deprecated) startWithScheduler:block:]
+___50+[RACSignal(Deprecated) startWithScheduler:block:]_block_invoke
+___copy_helper_block_.337
+___destroy_helper_block_.338
+___block_descriptor_tmp.93
+___block_descriptor_tmp.110
+___block_descriptor_tmp.117
+___block_descriptor_tmp.122
+___block_descriptor_tmp.130
+___block_descriptor_tmp.140
+___block_descriptor_tmp.144
+___block_descriptor_tmp.153
+___block_descriptor_tmp.157
+___block_descriptor_tmp.161
+___block_descriptor_tmp.165
+___block_descriptor_tmp.174
+___block_descriptor_tmp.191
+___block_descriptor_tmp.195
+___block_descriptor_tmp.199
+___block_descriptor_tmp.211
+___block_descriptor_tmp.215
+___block_descriptor_tmp.220
+___block_descriptor_tmp.225
+___block_descriptor_tmp.262
+___block_descriptor_tmp.271
+___block_descriptor_tmp.278
+___block_descriptor_tmp.330
+___block_descriptor_tmp.340
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACSignal.m
+__50+[RACSignal(Deprecated) startWithScheduler:block:]_block_invoke
+__57+[RACSignal(Deprecated) startWithScheduler:subjectBlock:]_block_invoke
+__63-[RACSignal(Testing) asynchronousFirstOrDefault:success:error:]_block_invoke.306
+__63-[RACSignal(Testing) asynchronousFirstOrDefault:success:error:]_block_invoke.302
+__63-[RACSignal(Testing) asynchronousFirstOrDefault:success:error:]_block_invoke
+__36-[RACSignal(Debugging) logCompleted]_block_invoke
+__32-[RACSignal(Debugging) logError]_block_invoke
+__31-[RACSignal(Debugging) logNext]_block_invoke
+__32-[RACSignal(RACStream) zipWith:]_block_invoke.217
+__32-[RACSignal(RACStream) zipWith:]_block_invoke.212
+__32-[RACSignal(RACStream) zipWith:]_block_invoke.208
+__32-[RACSignal(RACStream) zipWith:]_block_invoke.204
+__32-[RACSignal(RACStream) zipWith:]_block_invoke.200
+__32-[RACSignal(RACStream) zipWith:]_block_invoke.196
+__32-[RACSignal(RACStream) zipWith:]_block_invoke.192
+__32-[RACSignal(RACStream) zipWith:]_block_invoke.175
+__32-[RACSignal(RACStream) zipWith:]_block_invoke_2
+__32-[RACSignal(RACStream) zipWith:]_block_invoke
+__31-[RACSignal(RACStream) concat:]_block_invoke.158
+__31-[RACSignal(RACStream) concat:]_block_invoke.154
+__31-[RACSignal(RACStream) concat:]_block_invoke_2
+__31-[RACSignal(RACStream) concat:]_block_invoke
+__29-[RACSignal(RACStream) bind:]_block_invoke.141
+__29-[RACSignal(RACStream) bind:]_block_invoke.137
+__29-[RACSignal(RACStream) bind:]_block_invoke.131
+__29-[RACSignal(RACStream) bind:]_block_invoke.118
+__29-[RACSignal(RACStream) bind:]_block_invoke.111
+__29-[RACSignal(RACStream) bind:]_block_invoke_2.104
+__29-[RACSignal(RACStream) bind:]_block_invoke.94
+__29-[RACSignal(RACStream) bind:]_block_invoke_2
+__29-[RACSignal(RACStream) bind:]_block_invoke
+__44+[RACSignal startLazilyWithScheduler:block:]_block_invoke.42
+__44+[RACSignal startLazilyWithScheduler:block:]_block_invoke
+__18+[RACSignal never]_block_invoke
++[RACSignalSequence sequenceWithSignal:]
+___40+[RACSignalSequence sequenceWithSignal:]_block_invoke
+___40+[RACSignalSequence sequenceWithSignal:]_block_invoke.7
+___copy_helper_block_.10
+___destroy_helper_block_.11
+___40+[RACSignalSequence sequenceWithSignal:]_block_invoke.14
+-[RACSignalSequence head]
+-[RACSignalSequence tail]
+-[RACSignalSequence array]
+-[RACSignalSequence description]
+___32-[RACSignalSequence description]_block_invoke
+___copy_helper_block_.45
+___destroy_helper_block_.46
+-[RACSignalSequence subject]
+-[RACSignalSequence .cxx_destruct]
+___block_descriptor_tmp.13
+_OBJC_IVAR_$_RACSignalSequence._subject
+___block_descriptor_tmp.47
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACSignalSequence.m
+__32-[RACSignalSequence description]_block_invoke
+__40+[RACSignalSequence sequenceWithSignal:]_block_invoke.14
+__40+[RACSignalSequence sequenceWithSignal:]_block_invoke.7
+__40+[RACSignalSequence sequenceWithSignal:]_block_invoke
+-[RACStream init]
++[RACStream empty]
+-[RACStream bind:]
++[RACStream return:]
+-[RACStream concat:]
+-[RACStream zipWith:]
+-[RACStream setNameWithFormat:]
+-[RACStream name]
+-[RACStream setName:]
+-[RACStream .cxx_destruct]
+-[RACStream(Operations) flattenMap:]
+___36-[RACStream(Operations) flattenMap:]_block_invoke
+___36-[RACStream(Operations) flattenMap:]_block_invoke_2
+___copy_helper_block_.50
+___destroy_helper_block_.51
+-[RACStream(Operations) flatten]
+___32-[RACStream(Operations) flatten]_block_invoke
+-[RACStream(Operations) map:]
+___29-[RACStream(Operations) map:]_block_invoke
+___copy_helper_block_.69
+___destroy_helper_block_.70
+-[RACStream(Operations) mapReplace:]
+___36-[RACStream(Operations) mapReplace:]_block_invoke
+-[RACStream(Operations) combinePreviousWithStart:reduce:]
+___57-[RACStream(Operations) combinePreviousWithStart:reduce:]_block_invoke
+___57-[RACStream(Operations) combinePreviousWithStart:reduce:]_block_invoke.103
+-[RACStream(Operations) filter:]
+___32-[RACStream(Operations) filter:]_block_invoke
+___copy_helper_block_.109
+___destroy_helper_block_.110
+-[RACStream(Operations) ignore:]
+___32-[RACStream(Operations) ignore:]_block_invoke
+-[RACStream(Operations) reduceEach:]
+___36-[RACStream(Operations) reduceEach:]_block_invoke
+-[RACStream(Operations) startWith:]
+-[RACStream(Operations) skip:]
+___30-[RACStream(Operations) skip:]_block_invoke
+___30-[RACStream(Operations) skip:]_block_invoke_2
+___copy_helper_block_.140
+___destroy_helper_block_.141
+-[RACStream(Operations) take:]
+___30-[RACStream(Operations) take:]_block_invoke
+___30-[RACStream(Operations) take:]_block_invoke_2
+___copy_helper_block_.148
+___destroy_helper_block_.149
++[RACStream(Operations) join:block:]
+___36+[RACStream(Operations) join:block:]_block_invoke
+___36+[RACStream(Operations) join:block:]_block_invoke_2
++[RACStream(Operations) zip:]
+___29+[RACStream(Operations) zip:]_block_invoke
++[RACStream(Operations) zip:reduce:]
++[RACStream(Operations) concat:]
+-[RACStream(Operations) scanWithStart:reduce:]
+___46-[RACStream(Operations) scanWithStart:reduce:]_block_invoke
+-[RACStream(Operations) scanWithStart:reduceWithIndex:]
+___55-[RACStream(Operations) scanWithStart:reduceWithIndex:]_block_invoke
+___55-[RACStream(Operations) scanWithStart:reduceWithIndex:]_block_invoke.197
+___copy_helper_block_.198
+___destroy_helper_block_.199
+___copy_helper_block_.202
+___destroy_helper_block_.203
+-[RACStream(Operations) takeUntilBlock:]
+___40-[RACStream(Operations) takeUntilBlock:]_block_invoke
+___40-[RACStream(Operations) takeUntilBlock:]_block_invoke_2
+___copy_helper_block_.214
+___destroy_helper_block_.215
+-[RACStream(Operations) takeWhileBlock:]
+___40-[RACStream(Operations) takeWhileBlock:]_block_invoke
+___copy_helper_block_.220
+___destroy_helper_block_.221
+-[RACStream(Operations) skipUntilBlock:]
+___40-[RACStream(Operations) skipUntilBlock:]_block_invoke
+___40-[RACStream(Operations) skipUntilBlock:]_block_invoke_2
+___copy_helper_block_.227
+___destroy_helper_block_.228
+___copy_helper_block_.231
+___destroy_helper_block_.232
+-[RACStream(Operations) skipWhileBlock:]
+___40-[RACStream(Operations) skipWhileBlock:]_block_invoke
+___copy_helper_block_.237
+___destroy_helper_block_.238
+-[RACStream(Operations) distinctUntilChanged]
+___45-[RACStream(Operations) distinctUntilChanged]_block_invoke
+___45-[RACStream(Operations) distinctUntilChanged]_block_invoke_2
+-[RACStream(Deprecated) sequenceMany:]
+___38-[RACStream(Deprecated) sequenceMany:]_block_invoke
+___copy_helper_block_.268
+___destroy_helper_block_.269
+-[RACStream(Deprecated) scanWithStart:combine:]
+-[RACStream(Deprecated) mapPreviousWithStart:reduce:]
+_OBJC_IVAR_$_RACStream._name
+___block_descriptor_tmp.54
+___block_descriptor_tmp.61
+___block_descriptor_tmp.72
+___block_descriptor_tmp.105
+___block_literal_global.106
+___block_descriptor_tmp.112
+___block_descriptor_tmp.134
+___block_descriptor_tmp.145
+___block_descriptor_tmp.159
+___block_literal_global.160
+___block_descriptor_tmp.162
+___block_literal_global.163
+___block_literal_global.175
+___block_descriptor_tmp.192
+___block_descriptor_tmp.201
+___block_descriptor_tmp.205
+___block_descriptor_tmp.213
+___block_descriptor_tmp.217
+___block_descriptor_tmp.222
+___block_descriptor_tmp.230
+___block_descriptor_tmp.234
+___block_descriptor_tmp.239
+___block_descriptor_tmp.249
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACStream.m
+__38-[RACStream(Deprecated) sequenceMany:]_block_invoke
+__45-[RACStream(Operations) distinctUntilChanged]_block_invoke_2
+__45-[RACStream(Operations) distinctUntilChanged]_block_invoke
+__40-[RACStream(Operations) skipWhileBlock:]_block_invoke
+__40-[RACStream(Operations) skipUntilBlock:]_block_invoke_2
+__40-[RACStream(Operations) skipUntilBlock:]_block_invoke
+__40-[RACStream(Operations) takeWhileBlock:]_block_invoke
+__40-[RACStream(Operations) takeUntilBlock:]_block_invoke_2
+__40-[RACStream(Operations) takeUntilBlock:]_block_invoke
+__55-[RACStream(Operations) scanWithStart:reduceWithIndex:]_block_invoke.197
+__55-[RACStream(Operations) scanWithStart:reduceWithIndex:]_block_invoke
+__46-[RACStream(Operations) scanWithStart:reduce:]_block_invoke
+__29+[RACStream(Operations) zip:]_block_invoke
+__36+[RACStream(Operations) join:block:]_block_invoke_2
+__36+[RACStream(Operations) join:block:]_block_invoke
+__30-[RACStream(Operations) take:]_block_invoke_2
+__30-[RACStream(Operations) take:]_block_invoke
+__30-[RACStream(Operations) skip:]_block_invoke_2
+__30-[RACStream(Operations) skip:]_block_invoke
+__36-[RACStream(Operations) reduceEach:]_block_invoke
+__32-[RACStream(Operations) ignore:]_block_invoke
+__32-[RACStream(Operations) filter:]_block_invoke
+__57-[RACStream(Operations) combinePreviousWithStart:reduce:]_block_invoke.103
+__57-[RACStream(Operations) combinePreviousWithStart:reduce:]_block_invoke
+__36-[RACStream(Operations) mapReplace:]_block_invoke
+__29-[RACStream(Operations) map:]_block_invoke
+__32-[RACStream(Operations) flatten]_block_invoke
+__36-[RACStream(Operations) flattenMap:]_block_invoke_2
+__36-[RACStream(Operations) flattenMap:]_block_invoke
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACStream.h
++[RACStringSequence sequenceWithString:offset:]
+-[RACStringSequence head]
+-[RACStringSequence tail]
+-[RACStringSequence array]
+___26-[RACStringSequence array]_block_invoke
+-[RACStringSequence description]
+-[RACStringSequence string]
+-[RACStringSequence offset]
+-[RACStringSequence .cxx_destruct]
+_OBJC_IVAR_$_RACStringSequence._string
+_OBJC_IVAR_$_RACStringSequence._offset
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACStringSequence.m
+__26-[RACStringSequence array]_block_invoke
++[RACSubject subject]
+-[RACSubject init]
+-[RACSubject dealloc]
+-[RACSubject subscribe:]
+___24-[RACSubject subscribe:]_block_invoke
+___24-[RACSubject subscribe:]_block_invoke_2
+___copy_helper_block_.42
+___destroy_helper_block_.43
+-[RACSubject enumerateSubscribersUsingBlock:]
+-[RACSubject sendNext:]
+___23-[RACSubject sendNext:]_block_invoke
+-[RACSubject sendError:]
+___24-[RACSubject sendError:]_block_invoke
+___copy_helper_block_.62
+___destroy_helper_block_.63
+-[RACSubject sendCompleted]
+___27-[RACSubject sendCompleted]_block_invoke
+-[RACSubject didSubscribeWithDisposable:]
+___41-[RACSubject didSubscribeWithDisposable:]_block_invoke
+-[RACSubject subscribers]
+-[RACSubject disposable]
+-[RACSubject .cxx_destruct]
+_OBJC_IVAR_$_RACSubject._disposable
+_OBJC_IVAR_$_RACSubject._subscribers
+___block_descriptor_tmp.64
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACSubject.m
+__41-[RACSubject didSubscribeWithDisposable:]_block_invoke
+__27-[RACSubject sendCompleted]_block_invoke
+__24-[RACSubject sendError:]_block_invoke
+__23-[RACSubject sendNext:]_block_invoke
+__24-[RACSubject subscribe:]_block_invoke_2
+__24-[RACSubject subscribe:]_block_invoke
++[RACSubscriber subscriberWithNext:error:completed:]
+-[RACSubscriber init]
+___21-[RACSubscriber init]_block_invoke
+-[RACSubscriber dealloc]
+-[RACSubscriber sendNext:]
+-[RACSubscriber sendError:]
+-[RACSubscriber sendCompleted]
+-[RACSubscriber didSubscribeWithDisposable:]
+___44-[RACSubscriber didSubscribeWithDisposable:]_block_invoke
+-[RACSubscriber next]
+-[RACSubscriber setNext:]
+-[RACSubscriber error]
+-[RACSubscriber setError:]
+-[RACSubscriber completed]
+-[RACSubscriber setCompleted:]
+-[RACSubscriber disposable]
+-[RACSubscriber .cxx_destruct]
+_OBJC_IVAR_$_RACSubscriber._next
+_OBJC_IVAR_$_RACSubscriber._error
+_OBJC_IVAR_$_RACSubscriber._completed
+_OBJC_IVAR_$_RACSubscriber._disposable
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACSubscriber.m
+__44-[RACSubscriber didSubscribeWithDisposable:]_block_invoke
+__21-[RACSubscriber init]_block_invoke
+-[RACSubscriptingAssignmentTrampoline initWithTarget:nilValue:]
+-[RACSubscriptingAssignmentTrampoline setObject:forKeyedSubscript:]
+-[RACSubscriptingAssignmentTrampoline target]
+-[RACSubscriptingAssignmentTrampoline nilValue]
+-[RACSubscriptingAssignmentTrampoline .cxx_destruct]
+_OBJC_IVAR_$_RACSubscriptingAssignmentTrampoline._target
+_OBJC_IVAR_$_RACSubscriptingAssignmentTrampoline._nilValue
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACSubscriptingAssignmentTrampoline.m
+-[RACSubscriptionScheduler init]
+-[RACSubscriptionScheduler schedule:]
+-[RACSubscriptionScheduler after:schedule:]
+-[RACSubscriptionScheduler after:repeatingEvery:withLeeway:schedule:]
+-[RACSubscriptionScheduler backgroundScheduler]
+-[RACSubscriptionScheduler .cxx_destruct]
+_OBJC_IVAR_$_RACSubscriptionScheduler._backgroundScheduler
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACSubscriptionScheduler.m
+-[RACTargetQueueScheduler initWithName:targetQueue:]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACTargetQueueScheduler.m
+-[RACTestScheduler init]
+_RACRetainScheduledAction
+_RACReleaseScheduledAction
+_RACCompareScheduledActions
+-[RACTestScheduler dealloc]
+-[RACTestScheduler step]
+-[RACTestScheduler step:]
+-[RACTestScheduler stepAll]
+-[RACTestScheduler schedule:]
+-[RACTestScheduler after:schedule:]
+-[RACTestScheduler after:repeatingEvery:withLeeway:schedule:]
+___61-[RACTestScheduler after:repeatingEvery:withLeeway:schedule:]_block_invoke
+-[RACTestScheduler scheduledActions]
+-[RACTestScheduler numberOfDirectlyScheduledBlocks]
+-[RACTestScheduler setNumberOfDirectlyScheduledBlocks:]
+-[RACTestSchedulerAction initWithDate:block:]
+-[RACTestSchedulerAction description]
+-[RACTestSchedulerAction date]
+-[RACTestSchedulerAction block]
+-[RACTestSchedulerAction disposable]
+-[RACTestSchedulerAction .cxx_destruct]
+_OBJC_IVAR_$_RACTestScheduler._scheduledActions
+_OBJC_IVAR_$_RACTestScheduler._numberOfDirectlyScheduledBlocks
+_OBJC_IVAR_$_RACTestSchedulerAction._date
+_OBJC_IVAR_$_RACTestSchedulerAction._block
+_OBJC_IVAR_$_RACTestSchedulerAction._disposable
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACTestScheduler.m
+__61-[RACTestScheduler after:repeatingEvery:withLeeway:schedule:]_block_invoke
+RACCompareScheduledActions
+RACReleaseScheduledAction
+RACRetainScheduledAction
++[RACTupleNil tupleNil]
+___23+[RACTupleNil tupleNil]_block_invoke
+-[RACTupleNil copyWithZone:]
+-[RACTupleNil initWithCoder:]
+-[RACTupleNil encodeWithCoder:]
+-[RACTuple init]
+-[RACTuple description]
+-[RACTuple isEqual:]
+-[RACTuple hash]
+-[RACTuple countByEnumeratingWithState:objects:count:]
+-[RACTuple copyWithZone:]
+-[RACTuple initWithCoder:]
+-[RACTuple encodeWithCoder:]
++[RACTuple tupleWithObjectsFromArray:]
++[RACTuple tupleWithObjectsFromArray:convertNullsToNils:]
++[RACTuple tupleWithObjects:]
+-[RACTuple objectAtIndex:]
+-[RACTuple allObjects]
+-[RACTuple tupleByAddingObject:]
+-[RACTuple count]
+-[RACTuple first]
+-[RACTuple second]
+-[RACTuple third]
+-[RACTuple fourth]
+-[RACTuple fifth]
+-[RACTuple last]
+-[RACTuple backingArray]
+-[RACTuple setBackingArray:]
+-[RACTuple .cxx_destruct]
+-[RACTuple(RACSequenceAdditions) rac_sequence]
+-[RACTuple(ObjectSubscripting) objectAtIndexedSubscript:]
++[RACTupleUnpackingTrampoline trampoline]
+___41+[RACTupleUnpackingTrampoline trampoline]_block_invoke
+___copy_helper_block_.111
+___destroy_helper_block_.112
+-[RACTupleUnpackingTrampoline setObject:forKeyedSubscript:]
+___59-[RACTupleUnpackingTrampoline setObject:forKeyedSubscript:]_block_invoke
+___copy_helper_block_.131
+___destroy_helper_block_.132
+_tupleNil.onceToken
+_tupleNil.tupleNil
+_OBJC_IVAR_$_RACTuple._backingArray
+_trampoline.onceToken
+_trampoline.trampoline
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACTuple.m
+__59-[RACTupleUnpackingTrampoline setObject:forKeyedSubscript:]_block_invoke
+__41+[RACTupleUnpackingTrampoline trampoline]_block_invoke
+__23+[RACTupleNil tupleNil]_block_invoke
++[RACTupleSequence sequenceWithTupleBackingArray:offset:]
+-[RACTupleSequence head]
+-[RACTupleSequence tail]
+-[RACTupleSequence array]
+___25-[RACTupleSequence array]_block_invoke
+-[RACTupleSequence description]
+-[RACTupleSequence tupleBackingArray]
+-[RACTupleSequence offset]
+-[RACTupleSequence .cxx_destruct]
+_OBJC_IVAR_$_RACTupleSequence._tupleBackingArray
+_OBJC_IVAR_$_RACTupleSequence._offset
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACTupleSequence.m
+__25-[RACTupleSequence array]_block_invoke
++[RACUnarySequence return:]
+-[RACUnarySequence tail]
+-[RACUnarySequence bind:]
+-[RACUnarySequence classForCoder]
+-[RACUnarySequence initWithCoder:]
+-[RACUnarySequence encodeWithCoder:]
+-[RACUnarySequence description]
+-[RACUnarySequence hash]
+-[RACUnarySequence isEqual:]
+-[RACUnarySequence head]
+-[RACUnarySequence setHead:]
+-[RACUnarySequence .cxx_destruct]
+_OBJC_IVAR_$_RACUnarySequence._head
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACUnarySequence.m
++[RACUnit defaultUnit]
+___22+[RACUnit defaultUnit]_block_invoke
+_defaultUnit.onceToken
+_defaultUnit.defaultUnit
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACUnit.m
+__22+[RACUnit defaultUnit]_block_invoke
++[RACValueTransformer allowsReverseTransformation]
+-[RACValueTransformer transformedValue:]
++[RACValueTransformer transformerWithBlock:]
+-[RACValueTransformer transformBlock]
+-[RACValueTransformer setTransformBlock:]
+-[RACValueTransformer .cxx_destruct]
+_OBJC_IVAR_$_RACValueTransformer.transformBlock
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/RACValueTransformer.m
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/Target Support Files/ReactiveCocoa/ReactiveCocoa-dummy.m
+-[UIActionSheet(RACSignalSupport) rac_delegateProxy]
+-[UIActionSheet(RACSignalSupport) rac_buttonClickedSignal]
+___58-[UIActionSheet(RACSignalSupport) rac_buttonClickedSignal]_block_invoke
+_RACUseDelegateProxy
+l_OBJC_PROTOCOL_$_UIActionSheetDelegate
+l_OBJC_LABEL_PROTOCOL_$_UIActionSheetDelegate
+l_OBJC_PROTOCOL_REFERENCE_$_UIActionSheetDelegate
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UIActionSheet+RACSignalSupport.m
+RACUseDelegateProxy
+__58-[UIActionSheet(RACSignalSupport) rac_buttonClickedSignal]_block_invoke
+-[UIAlertView(RACSignalSupport) rac_delegateProxy]
+-[UIAlertView(RACSignalSupport) rac_buttonClickedSignal]
+___56-[UIAlertView(RACSignalSupport) rac_buttonClickedSignal]_block_invoke
+-[UIAlertView(RACSignalSupport) rac_willDismissSignal]
+___54-[UIAlertView(RACSignalSupport) rac_willDismissSignal]_block_invoke
+l_OBJC_PROTOCOL_$_UIAlertViewDelegate
+l_OBJC_LABEL_PROTOCOL_$_UIAlertViewDelegate
+l_OBJC_PROTOCOL_REFERENCE_$_UIAlertViewDelegate
+___block_literal_global.73
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UIAlertView+RACSignalSupport.m
+__54-[UIAlertView(RACSignalSupport) rac_willDismissSignal]_block_invoke
+__56-[UIAlertView(RACSignalSupport) rac_buttonClickedSignal]_block_invoke
+-[UIBarButtonItem(RACCommandSupport) rac_command]
+-[UIBarButtonItem(RACCommandSupport) setRac_command:]
+-[UIBarButtonItem(RACCommandSupport) rac_hijackActionAndTargetIfNeeded]
+-[UIBarButtonItem(RACCommandSupport) rac_commandPerformAction:]
+_UIControlRACCommandKey
+_UIControlEnabledDisposableKey
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UIBarButtonItem+RACCommandSupport.m
+-[UIButton(RACCommandSupport) rac_command]
+-[UIButton(RACCommandSupport) setRac_command:]
+-[UIButton(RACCommandSupport) rac_hijackActionAndTargetIfNeeded]
+-[UIButton(RACCommandSupport) rac_commandPerformAction:]
+_UIButtonRACCommandKey
+_UIButtonEnabledDisposableKey
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UIButton+RACCommandSupport.m
+-[UICollectionReusableView(RACSignalSupport) rac_prepareForReuseSignal]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UICollectionReusableView+RACSignalSupport.m
+-[UIControl(RACSignalSupport) rac_signalForControlEvents:]
+___58-[UIControl(RACSignalSupport) rac_signalForControlEvents:]_block_invoke
+___58-[UIControl(RACSignalSupport) rac_signalForControlEvents:]_block_invoke_2
+___58-[UIControl(RACSignalSupport) rac_signalForControlEvents:]_block_invoke.12
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UIControl+RACSignalSupport.m
+__58-[UIControl(RACSignalSupport) rac_signalForControlEvents:]_block_invoke.12
+__58-[UIControl(RACSignalSupport) rac_signalForControlEvents:]_block_invoke_2
+__58-[UIControl(RACSignalSupport) rac_signalForControlEvents:]_block_invoke
+-[UIControl(RACSignalSupportPrivate) rac_channelForControlEvents:key:nilValue:]
+___79-[UIControl(RACSignalSupportPrivate) rac_channelForControlEvents:key:nilValue:]_block_invoke
+___79-[UIControl(RACSignalSupportPrivate) rac_channelForControlEvents:key:nilValue:]_block_invoke.53
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UIControl+RACSignalSupportPrivate.m
+__79-[UIControl(RACSignalSupportPrivate) rac_channelForControlEvents:key:nilValue:]_block_invoke.53
+__79-[UIControl(RACSignalSupportPrivate) rac_channelForControlEvents:key:nilValue:]_block_invoke
+-[UIDatePicker(RACSignalSupport) rac_newDateChannelWithNilValue:]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UIDatePicker+RACSignalSupport.m
+-[UIGestureRecognizer(RACSignalSupport) rac_gestureSignal]
+___58-[UIGestureRecognizer(RACSignalSupport) rac_gestureSignal]_block_invoke
+___58-[UIGestureRecognizer(RACSignalSupport) rac_gestureSignal]_block_invoke_2
+___58-[UIGestureRecognizer(RACSignalSupport) rac_gestureSignal]_block_invoke.12
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UIGestureRecognizer+RACSignalSupport.m
+__58-[UIGestureRecognizer(RACSignalSupport) rac_gestureSignal]_block_invoke.12
+__58-[UIGestureRecognizer(RACSignalSupport) rac_gestureSignal]_block_invoke_2
+__58-[UIGestureRecognizer(RACSignalSupport) rac_gestureSignal]_block_invoke
+-[UIImagePickerController(RACSignalSupport) rac_delegateProxy]
+-[UIImagePickerController(RACSignalSupport) rac_imageSelectedSignal]
+___68-[UIImagePickerController(RACSignalSupport) rac_imageSelectedSignal]_block_invoke
+l_OBJC_PROTOCOL_$_UIImagePickerControllerDelegate
+l_OBJC_LABEL_PROTOCOL_$_UIImagePickerControllerDelegate
+l_OBJC_PROTOCOL_REFERENCE_$_UIImagePickerControllerDelegate
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UIImagePickerController+RACSignalSupport.m
+__68-[UIImagePickerController(RACSignalSupport) rac_imageSelectedSignal]_block_invoke
+-[UIRefreshControl(RACCommandSupport) rac_command]
+-[UIRefreshControl(RACCommandSupport) setRac_command:]
+___54-[UIRefreshControl(RACCommandSupport) setRac_command:]_block_invoke
+___54-[UIRefreshControl(RACCommandSupport) setRac_command:]_block_invoke_2
+___copy_helper_block_.21
+___destroy_helper_block_.22
+___54-[UIRefreshControl(RACCommandSupport) setRac_command:]_block_invoke.29
+_UIRefreshControlRACCommandKey
+_UIRefreshControlDisposableKey
+___block_descriptor_tmp.24
+___block_descriptor_tmp.31
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UIRefreshControl+RACCommandSupport.m
+__54-[UIRefreshControl(RACCommandSupport) setRac_command:]_block_invoke.29
+__54-[UIRefreshControl(RACCommandSupport) setRac_command:]_block_invoke_2
+__54-[UIRefreshControl(RACCommandSupport) setRac_command:]_block_invoke
+-[UISegmentedControl(RACSignalSupport) rac_newSelectedSegmentIndexChannelWithNilValue:]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UISegmentedControl+RACSignalSupport.m
+-[UISlider(RACSignalSupport) rac_newValueChannelWithNilValue:]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UISlider+RACSignalSupport.m
+-[UIStepper(RACSignalSupport) rac_newValueChannelWithNilValue:]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UIStepper+RACSignalSupport.m
+-[UISwitch(RACSignalSupport) rac_newOnChannel]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UISwitch+RACSignalSupport.m
+-[UITableViewCell(RACSignalSupport) rac_prepareForReuseSignal]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UITableViewCell+RACSignalSupport.m
+-[UITableViewHeaderFooterView(RACSignalSupport) rac_prepareForReuseSignal]
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UITableViewHeaderFooterView+RACSignalSupport.m
+-[UITextField(RACSignalSupport) rac_textSignal]
+___47-[UITextField(RACSignalSupport) rac_textSignal]_block_invoke
+___47-[UITextField(RACSignalSupport) rac_textSignal]_block_invoke.7
+-[UITextField(RACSignalSupport) rac_newTextChannel]
+___block_descriptor_tmp.9
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UITextField+RACSignalSupport.m
+__47-[UITextField(RACSignalSupport) rac_textSignal]_block_invoke.7
+__47-[UITextField(RACSignalSupport) rac_textSignal]_block_invoke
+-[UITextView(RACSignalSupport) rac_delegateProxy]
+-[UITextView(RACSignalSupport) rac_textSignal]
+___46-[UITextView(RACSignalSupport) rac_textSignal]_block_invoke
+___46-[UITextView(RACSignalSupport) rac_textSignal]_block_invoke.113
+l_OBJC_PROTOCOL_$_UIScrollViewDelegate
+l_OBJC_LABEL_PROTOCOL_$_UIScrollViewDelegate
+l_OBJC_PROTOCOL_$_UITextViewDelegate
+l_OBJC_LABEL_PROTOCOL_$_UITextViewDelegate
+l_OBJC_PROTOCOL_REFERENCE_$_UITextViewDelegate
+___block_descriptor_tmp.115
+/Users/Mandora/Desktop/company/SeeYuApp/Pods/ReactiveCocoa/ReactiveCocoa/UITextView+RACSignalSupport.m
+__46-[UITextView(RACSignalSupport) rac_textSignal]_block_invoke.113
+__46-[UITextView(RACSignalSupport) rac_textSignal]_block_invoke
+/Users/Mandora/Library/Developer/Xcode/DerivedData/SeeYu-cbefmrqtsodfykcljsqzeeiphizv/Build/Intermediates.noindex/ArchiveIntermediates/SeeYu/IntermediateBuildFilesPath/Pods.build/Debug-iphoneos/ReactiveCocoa.build/DerivedSources/ReactiveCocoa_vers.c
+__ZL15__ARCLite__loadv
+__ZL30add_image_hook_autoreleasepoolPK11mach_headerl
+__ZL34__arclite_objc_autoreleasePoolPushv
+__ZL33__arclite_objc_autoreleasePoolPopPv
+__ZL19patch_lazy_pointersPK11mach_headerP7patch_tm
+__ZL42__arclite_NSArray_objectAtIndexedSubscriptP7NSArrayP13objc_selectorj
+__ZL53__arclite_NSMutableArray_setObject_atIndexedSubscriptP14NSMutableArrayP13objc_selectorP11objc_objectj
+__ZL46__arclite_NSDictionary_objectForKeyedSubscriptP12NSDictionaryP13objc_selectorP11objc_object
+__ZL47__arclite_NSOrderedSet_objectAtIndexedSubscriptP12NSOrderedSetP13objc_selectorj
+__ZL58__arclite_NSMutableOrderedSet_setObject_atIndexedSubscriptP19NSMutableOrderedSetP13objc_selectorP11objc_objectj
+__ZL58__arclite_NSMutableDictionary__setObject_forKeyedSubscriptP19NSMutableDictionaryP13objc_selectorP11objc_objectS4_
+__ZL18add_image_hook_ARCPK11mach_headerl
+__ZL36__arclite_object_setInstanceVariableP11objc_objectPKcPv
+__ZL24__arclite_object_setIvarP11objc_objectP9objc_ivarS0_
+__ZL21__arclite_object_copyP11objc_objectm
+__ZL21__arclite_objc_retainP11objc_object
+__ZL26__arclite_objc_retainBlockP11objc_object
+__ZL22__arclite_objc_releaseP11objc_object
+__ZL26__arclite_objc_autoreleaseP11objc_object
+__ZL32__arclite_objc_retainAutoreleaseP11objc_object
+__ZL37__arclite_objc_autoreleaseReturnValueP11objc_object
+__ZL43__arclite_objc_retainAutoreleaseReturnValueP11objc_object
+__ZL44__arclite_objc_retainAutoreleasedReturnValueP11objc_object
+__ZL26__arclite_objc_storeStrongPP11objc_objectS0_
+__ZL22add_image_hook_swiftV1PK11mach_headerl
+__ZL42__arclite_NSUndoManagerProxy_isKindOfClassP11objc_objectP13objc_selectorP10objc_class
+__ZL30__arclite_NSManagedObject_initP11objc_objectP13objc_selector
+__ZL41__arclite_NSManagedObject_allocWithEntityP11objc_objectP13objc_selectorS0_
+__ZL36__arclite_NSManagedObject_allocBatchP11objc_objectP13objc_selectorPS0_S0_j
+__ZL37__arclite_NSKKMS_fastIndexForKnownKeyP11objc_objectP13objc_selectorS0_
+__ZL28__arclite_NSKKMS_indexForKeyP11objc_objectP13objc_selectorS0_
+__ZL29__arclite_NSKKsD_objectForKeyP11objc_objectP13objc_selectorS0_
+__ZL35__arclite_NSKKsD_removeObjectForKeyP11objc_objectP13objc_selectorS0_
+__ZL33__arclite_NSKKsD_setObject_forKeyP11objc_objectP13objc_selectorS0_S0_
+__ZL41__arclite_NSKKsD_addEntriesFromDictionaryP11objc_objectP13objc_selectorP12NSDictionary
+__ZL28__arclite_objc_readClassPairP10objc_classPK15objc_image_info
+__ZL32__arclite_objc_allocateClassPairP10objc_classPKcm
+__ZL32__arclite_object_getIndexedIvarsP11objc_object
+__ZL23__arclite_objc_getClassPKc
+__ZL27__arclite_objc_getMetaClassPKc
+__ZL31__arclite_objc_getRequiredClassPKc
+__ZL26__arclite_objc_lookUpClassPKc
+__ZL26__arclite_objc_getProtocolPKc
+__ZL23__arclite_class_getNameP10objc_class
+__ZL26__arclite_protocol_getNameP8Protocol
+__ZL37__arclite_objc_copyClassNamesForImagePKcPj
+__ZL17transcribeMethodsP10objc_classP15glue_class_ro_t
+__ZL19transcribeProtocolsP10objc_classP15glue_class_ro_t
+__ZL20transcribePropertiesP10objc_classP15glue_class_ro_t
+__ZL14initialize_impP11objc_objectP13objc_selector
+__ZL18allocateMaybeSwiftP18glue_swift_class_tm
+__ZL22copySwiftV1MangledNamePKcb
+__ZL13demangledNamePKcb
+__ZL16scanMangledFieldRPKcS0_S1_Ri
+__ZL30arclite_uninitialized_functionv
+__ZL12cxxConstructP11objc_object
+__ZL20fixStringForCoreDataP11objc_object
+_OBJC_METACLASS_$___ARCLite__
+__ZL24OBJC_CLASS_$___ARCLite__
+__ZL31OBJC_METACLASS_RO_$___ARCLite__
+__non_lazy_classes
+__ZL27OBJC_CLASS_RO_$___ARCLite__
+__ZL11_class_name
+__ZL32OBJC_$_CLASS_METHODS___ARCLite__
+__ZL17_load_method_name
+__ZL17_load_method_type
+__ZL23NSAutoreleasePool_class
+__ZZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
+__ZGVZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
+l_OBJC_PROTOCOL_$___ARCLiteIndexedSubscripting__
+l_OBJC_LABEL_PROTOCOL_$___ARCLiteIndexedSubscripting__
+l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteIndexedSubscripting__
+l_OBJC_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_LABEL_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteKeyedSubscripting__
+__ZZL18add_image_hook_ARCPK11mach_headerlE7patches
+__ZGVZL18add_image_hook_ARCPK11mach_headerlE7patches
+__ZL30NSUndoManagerProxy_targetClass
+__ZL29original_NSManagedObject_init
+__ZL40original_NSManagedObject_allocWithEntity
+__ZL35original_NSManagedObject_allocBatch
+__ZL25NSMutableDictionary_class
+__ZL22NSConstantString_class
+__ZL14NSString_class
+__ZL36original_NSKKMS_fastIndexForKnownKey
+__ZL27original_NSKKMS_indexForKey
+__ZL28original_NSKKsD_objectForKey
+__ZL34original_NSKKsD_removeObjectForKey
+__ZL32original_NSKKsD_setObject_forKey
+__ZL40original_NSKKsD_addEntriesFromDictionary
+__ZZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+__ZGVZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+__ZL31original_objc_allocateClassPair
+__ZL31original_object_getIndexedIvars
+__ZL22original_objc_getClass
+__ZL26original_objc_getMetaClass
+__ZL30original_objc_getRequiredClass
+__ZL25original_objc_lookUpClass
+__ZL25original_objc_getProtocol
+__ZL22original_class_getName
+__ZL25original_protocol_getName
+__ZL36original_objc_copyClassNamesForImage
+__ZL12demangleLock
+__ZL9Demangled
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c++11 -Wno-trigraphs -fno-exceptions -fno-rtti -fno-sanitize=vptr -mpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-objc-interface-ivars -Wno-arc-repeated-use-of-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -D NDEBUG=1 -D OBJC_OLD_DISPATCH_PROTOTYPES=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.Internal.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -miphoneos-version-min=4.3 -g -fno-threadsafe-statics -Wno-sign-conversion -Wno-infinite-recursion -Wno-move -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -Wno-range-loop-analysis -Wno-semicolon-before-method-body -fembed-bitcode=all -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-generated-files.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-own-target-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-all-target-headers.hmap -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-project-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/Symbols/BuiltProducts/include -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources/armv7 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources -F/Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/Symbols/BuiltProducts -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.Internal.sdk/System/Library/PrivateFrameworks -Wall -Wextra -Wno-gcc-compat -Wno-error=incomplete-umbrella -Wno-error=invalid-ios-deployment-target -Wno-error=incomplete-umbrella -Wno-error=invalid-ios-deployment-target -MMD -MT dependencies -MF /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.d --serialize-diagnostics /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.dia -c /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-70/source/arclite.mm -o /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/install/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.o -mlinker-version=409.12 -march=armv7a
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-70/source/arclite.mm
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-70
+fixStringForCoreData
+cxxConstruct
+arclite_uninitialized_function
+scanMangledField
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.Internal.sdk/usr/include/_ctype.h
+__isctype
+demangledName
+copySwiftV1DemangledName
+copySwiftV1MangledName
+allocateMaybeSwift
+word_align
+isSwift
+initialize_imp
+transcribeProperties
+property_list_nth
+transcribeProtocols
+transcribeMethods
+data
+method_list_nth
+__arclite_objc_copyClassNamesForImage
+__arclite_protocol_getName
+__arclite_class_getName
+__arclite_objc_getProtocol
+__arclite_objc_lookUpClass
+__arclite_objc_getRequiredClass
+__arclite_objc_getMetaClass
+__arclite_objc_getClass
+__arclite_object_getIndexedIvars
+__arclite_objc_allocateClassPair
+metaclass
+__arclite_objc_readClassPair
+transcribeIvars
+ivar_list_nth
+max
+alignment
+ro
+fastFlags
+__arclite_NSKKsD_addEntriesFromDictionary
+__arclite_NSKKsD_setObject_forKey
+__arclite_NSKKsD_removeObjectForKey
+__arclite_NSKKsD_objectForKey
+__arclite_NSKKMS_indexForKey
+__arclite_NSKKMS_fastIndexForKnownKey
+__arclite_NSManagedObject_allocBatch
+__arclite_NSManagedObject_allocWithEntity
+__arclite_NSManagedObject_init
+__arclite_NSUndoManagerProxy_isKindOfClass
+add_image_hook_swiftV1
+patch_t<const char **(const char *, unsigned int *)>
+patch_t<const char *(Protocol *)>
+patch_t<const char *(Class)>
+patch_t<Protocol *(const char *)>
+patch_t<Class (const char *)>
+patch_t<void *(id)>
+patch_t<Class (Class, const char *, unsigned long)>
+patch_t<Class (Class, const objc_image_info *)>
+__arclite_objc_storeStrong
+__arclite_objc_release
+__arclite_objc_retain
+__arclite_objc_retainAutoreleasedReturnValue
+__arclite_objc_retainAutoreleaseReturnValue
+__arclite_objc_autoreleaseReturnValue
+__arclite_objc_retainAutorelease
+__arclite_objc_autorelease
+__arclite_objc_retainBlock
+__arclite_object_copy
+fixupCopiedReferences
+_class_getInstanceStart
+alignedInstanceStart
+__arclite_class_usesAutomaticRetainRelease
+classOrSuperClassesUseARR
+__arclite_object_setIvar
+isScannedOffset
+_ivar_getClass
+__arclite_object_setInstanceVariable
+add_image_hook_ARC
+patch_t<void (id *, id)>
+patch_t<id (id)>
+patch_t<void (id)>
+patch_t<id (id, unsigned long)>
+patch_t<void (id, objc_ivar *, id)>
+patch_t<objc_ivar *(id, const char *, void *)>
+__arclite_NSMutableDictionary__setObject_forKeyedSubscript
+__arclite_NSMutableOrderedSet_setObject_atIndexedSubscript
+__arclite_NSOrderedSet_objectAtIndexedSubscript
+__arclite_NSDictionary_objectForKeyedSubscript
+__arclite_NSMutableArray_setObject_atIndexedSubscript
+__arclite_NSArray_objectAtIndexedSubscript
+patch_lazy_pointers
+__arclite_objc_autoreleasePoolPop
+__arclite_objc_autoreleasePoolPush
+add_image_hook_autoreleasepool
+patch_t<void (void *)>
+patch_t<void *()>
+__ARCLite__load
+install_swiftV1
+replaceMethod
+install_ARC
+install_dict_nil_value
+addOrReplaceMethod
+keyedGetter
+install_subscripting
+addMethod
+indexedGetter
+install_autoreleasepool

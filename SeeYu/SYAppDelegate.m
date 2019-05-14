@@ -13,7 +13,7 @@
 #import "SYGuideVM.h"
 #import <UMCommon/UMCommon.h>
 #import <UMAnalytics/MobClick.h>
-//#import <UMPush/UMessage.h>
+#import <UMPush/UMessage.h>
 #import <Bugly/Bugly.h>
 #import "SYNotificationModel.h"
 #import "SYOutboundModel.h"
@@ -30,7 +30,7 @@
 //#import "RetainCycleLoggerPlugin.h"
 #endif
 
-@interface SYAppDelegate () <RCIMReceiveMessageDelegate>
+@interface SYAppDelegate () <RCIMReceiveMessageDelegate,UNUserNotificationCenterDelegate>
 
 @end
 
@@ -124,17 +124,18 @@
     [Bugly startWithAppId:@"665d87c560"];
 //    // 初始化友盟服务
     [UMConfigure initWithAppkey:@"5ca1a3aa3fc195e05e0000df" channel:@"App Store"];
-//    UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
-//    //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
-//    entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound|UMessageAuthorizationOptionAlert;
-//    [UNUserNotificationCenter currentNotificationCenter].delegate = self;
-//    [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
-//        if (granted) {
-//
-//        } else {
-//
-//        }
-//    }];
+    UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
+    //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
+    entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound|UMessageAuthorizationOptionAlert;
+    [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+    [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+
+        } else {
+
+        }
+    }];
+    [UMessage setBadgeClear:YES];   // 允许自动清空角标
     
     // 注册推送, 用于iOS8以及iOS8之后的系统
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];

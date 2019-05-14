@@ -41,6 +41,7 @@
     [super bindViewModel];
     [RACObserve(self.viewModel, infoModel) subscribeNext:^(SYSigninInfoModel *infoModel) {
         if (infoModel != nil) {
+            NSLog(@"%@",[NSDate new]);
             if (infoModel.recentTime != nil && [infoModel.recentTime sy_isToday]) {
                 // 今天已经签到过了
                 self.signinBtn.userInteractionEnabled = NO;

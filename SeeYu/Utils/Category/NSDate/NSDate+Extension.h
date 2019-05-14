@@ -81,4 +81,6 @@
 - (NSString *)sy_string_yyyy_MM_dd:(NSDate *)toDate;
 //////////// MVC&MVVM的商品的发布时间的描述 ////////////
 
+- (NSDate *)getLocalDateFormatAnyDate:(NSDate *)anyDate;
+
 @end

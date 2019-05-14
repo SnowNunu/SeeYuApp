@@ -213,8 +213,96 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
 
 // 在发送请求之前，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    NSLog(@"navigationAction.request.URL:   %@", navigationAction.request.URL);
+    
+//    NSURLRequest *request        = navigationAction.request;
+//    NSString     *scheme         = [request.URL scheme];
+    
+    static NSString *endPayRedirectURL = nil;
+    NSString *requestUrl = navigationAction.request.URL.absoluteString;
+//    https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx10165830910861b05d2a1ae31485662244&package=3537174028
+    
+    // Wechat Pay, Note : modify redirect_url to resolve we couldn't return our app from wechat client.
+//    if ([requestUrl hasPrefix:@"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb"] && ![requestUrl hasSuffix:@"redirect_url=seeyu.zhyst.cn://"]) {
+//        decisionHandler(WKNavigationActionPolicyCancel);
+
+        // 1. If the url contain "redirect_url" : We need to remember it to use our scheme replace it.
+        // 2. If the url not contain "redirect_url" , We should add it so that we will could jump to our app.
+        //  Note : 2. if the redirect_url is not last string, you should use correct strategy, because the redirect_url's value may contain some "&" special character so that my cut method may be incorrect.
+//        NSString *redirectUrl = nil;
+//        if ([requestUrl containsString:@"redirect_url="]) {
+//            NSRange redirectRange = [requestUrl rangeOfString:@"redirect_url"];
+//            endPayRedirectURL =  [absoluteString substringFromIndex:redirectRange.location+redirectRange.length+1];
+//            redirectUrl = [[absoluteString substringToIndex:redirectRange.location] stringByAppendingString:[NSString stringWithFormat:@"redirect_url=xdx.%@://",CompanyFirstDomainByWeChatRegister]];
+//        } else {
+//            redirectUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"&redirect_url=seeyu.zhyst.cn://"]];
+//        }
+//
+//        NSMutableURLRequest *newRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:redirectUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+//        newRequest.allHTTPHeaderFields = navigationAction.request.allHTTPHeaderFields;
+//        newRequest.URL = [NSURL URLWithString:redirectUrl];
+//        [webView loadRequest:newRequest];
+//        return;
+//    }
+    
+    // Judge is whether to jump to other app.
+    
+//    if (![scheme isEqualToString:@"https"] && ![scheme isEqualToString:@"http"]) {
+//        decisionHandler(WKNavigationActionPolicyCancel);
+//        if ([scheme isEqualToString:@"weixin"]) {
+//            // The var endPayRedirectURL was our saved origin url's redirect address. We need to load it when we return from wechat client.
+//            if (endPayRedirectURL) {
+//                [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:endPayRedirectURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:XDX_URL_TIMEOUT]];
+//            }
+//        }else if ([scheme isEqualToString:[NSString stringWithFormat:@"xdx.%@",CompanyFirstDomainByWeChatRegister]]) {
+//
+//        }
+//
+//        BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:request.URL];
+//        if (canOpen) {
+//            [[UIApplication sharedApplication] openURL:request.URL];
+//        }
+//        return;
+//    }
+    
+    // ------  对alipays:相关的scheme处理 -------
+    // 若遇到支付宝相关scheme，则跳转到本地支付宝App
+    if ([requestUrl hasPrefix:@"alipays://"] || [requestUrl hasPrefix:@"alipay://"]) {
+        // 跳转支付宝App
+        BOOL bSucc = [[UIApplication sharedApplication]openURL:navigationAction.request.URL];
+        
+        // 如果跳转失败，则跳转itune下载支付宝App
+        if (!bSucc) {
+            NSLog(@"跳转失败");
+            [self alertControllerWithMessage:@"未检测到支付宝客户端，请您安装后重试。"];
+        }
+    } else if ([requestUrl hasPrefix:@"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb"]) {
+        NSDictionary *header = navigationAction.request.allHTTPHeaderFields;
+        if (header[@"Referer"] == nil) {
+            decisionHandler(WKNavigationActionPolicyCancel);
+            NSMutableURLRequest *mutableRequest = [navigationAction.request mutableCopy];
+            [mutableRequest setValue:@"seeyu.zhyst.cn" forHTTPHeaderField:@"Referer"];
+            [webView loadRequest:mutableRequest];
+            return;
+        }
+        BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL];
+        if (canOpen) {
+            [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+        }
+    }
+    // 确认可以跳转
     decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+- (void)alertControllerWithMessage:(NSString *)message {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"立即安装" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // NOTE: 跳转itune下载支付宝App
+        NSString* urlStr = @"https://itunes.apple.com/cn/app/zhi-fu-bao-qian-bao-yu-e-bao/id333206289?mt=8";
+        NSURL *downloadUrl = [NSURL URLWithString:urlStr];
+        [[UIApplication sharedApplication]openURL:downloadUrl];
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
