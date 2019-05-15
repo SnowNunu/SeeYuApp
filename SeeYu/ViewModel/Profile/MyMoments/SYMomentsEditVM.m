@@ -10,4 +10,10 @@
 
 @implementation SYMomentsEditVM
 
+- (void)initialize {
+    [super initialize];
+    self.prefersNavigationBarHidden = YES;
+    self.interactivePopDisabled = YES;
+}
+
 @end

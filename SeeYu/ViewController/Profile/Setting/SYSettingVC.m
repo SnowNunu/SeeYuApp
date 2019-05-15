@@ -141,11 +141,14 @@
     } else if (indexPath.row == 2) {
         [self.viewModel.enterAboutViewCommand execute:nil];
     }  else if (indexPath.row == 3) {
-        [NSObject sy_showAlertViewWithTitle:@"" message:@"确定要清除所有的缓存数据吗？" confirmTitle:@"确定" cancelTitle:@"取消" confirmAction:^{
-            [self removeCache];
-        } cancelAction:^{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定要清除所有的缓存数据吗？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             
-        }];
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [self removeCache];
+        }]];
+        [self presentViewController:alertController animated:YES completion:nil];
     }
 }
 

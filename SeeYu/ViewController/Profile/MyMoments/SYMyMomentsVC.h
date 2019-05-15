@@ -9,7 +9,7 @@
 #import "SYVC.h"
 #import "SYMyMomentsVM.h"
 #import "SYMomentsModel.h"
-#import "TZImagePickerController.h"
+#import <ZLPhotoBrowser/ZLPhotoBrowser.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

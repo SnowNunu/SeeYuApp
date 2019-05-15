@@ -8,6 +8,7 @@
 
 #import "SYVC.h"
 #import "SYMomentsEditVM.h"
+#import <ZLPhotoBrowser/ZLPhotoBrowser.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

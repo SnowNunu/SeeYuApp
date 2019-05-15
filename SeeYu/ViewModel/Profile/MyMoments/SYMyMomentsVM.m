@@ -25,8 +25,7 @@
     self.title = @"我的动态";
     self.backTitle = @"";
     self.prefersNavigationBarBottomLineHidden = YES;
-    self.enterMomentsEditView = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        SYMomentsEditVM *vm = [[SYMomentsEditVM alloc] initWithServices:self.services params:nil];
+    self.enterMomentsEditView = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(SYMomentsEditVM *vm) {
         [self.services pushViewModel:vm animated:YES];
         return [RACSignal empty];
     }];

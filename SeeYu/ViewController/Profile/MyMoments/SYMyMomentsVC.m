@@ -8,8 +8,9 @@
 
 #import "SYMyMomentsVC.h"
 #import "SYMyMomentsListCell.h"
+#import "SYMomentsEditVM.h"
 
-@interface SYMyMomentsVC () <TZImagePickerControllerDelegate>
+@interface SYMyMomentsVC ()
 
 @property (nonatomic, strong) UIView *headerView;
 
@@ -41,10 +42,39 @@
     [self.uploadImageView bk_whenTapped:^{
         LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"取消" clicked:^(LCActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
-                
+                ZLCustomCamera *camera = [ZLCustomCamera new];
+                camera.doneBlock = ^(UIImage *image, NSURL *videoUrl) {
+//                    // 自己需要在这个地方进行图片或者视频的保存
+                    SYMomentsEditVM *vm = [[SYMomentsEditVM alloc] initWithServices:self.viewModel.services params:nil];
+                    [self.viewModel.enterMomentsEditView execute:vm];
+                };
+                [self showDetailViewController:camera sender:nil];
             } else if (buttonIndex == 2) {
-                TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:9 columnNumber:4 delegate:self pushPhotoPickerVc:YES];
-                [self presentViewController:imagePicker animated:YES completion:nil];
+                ZLPhotoActionSheet *actionSheet = [ZLPhotoActionSheet new];
+                actionSheet.configuration.maxSelectCount = 9;
+                actionSheet.configuration.maxPreviewCount = 0;
+                actionSheet.configuration.allowTakePhotoInLibrary = NO;
+                actionSheet.configuration.allowMixSelect = NO;
+                actionSheet.configuration.navBarColor = SYColorFromHexString(@"#9F69EB");
+                actionSheet.configuration.bottomBtnsNormalTitleColor = SYColorFromHexString(@"#9F69EB");
+                // 选择回调
+                [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+                    PHAsset *asset = assets[0];
+                    SYMomentsEditVM *vm = [[SYMomentsEditVM alloc] initWithServices:self.viewModel.services params:nil];
+                    if (asset.mediaType == PHAssetMediaTypeVideo) {
+                        vm.type = @"video";
+                        
+                    } else {
+                        vm.type = @"images";
+                    }
+                    vm.imagesArray = images;
+                    vm.assetArray = assets;
+                    vm.cellIsFull = images.count == 9 ? YES : NO;
+                    [self.viewModel.enterMomentsEditView execute:vm];
+                }];
+                
+                // 调用相册
+                [actionSheet showPhotoLibraryWithSender:self];
             } else {
                 return;
             }
