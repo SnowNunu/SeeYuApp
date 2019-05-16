@@ -35,10 +35,10 @@
 #pragma mark - 初始化所有的子视图控制器
 - (void)_setupAllChildViewController {
     NSArray *titlesArray = @[@"首页", @"速配" ,@"消息", @"动态", @"我的"];
-    NSArray *imageNamesArray = @[@"home_unselect",@"tab_quickmatch_normal",@"tab_message_normal",
-                                 @"tab_news_normal",@"tab_self_normal"];
-    NSArray *selectedImageNamesArray = @[@"home_selected",@"tab_quickmatch_pressed",@"tab_message_pressed",
-                                         @"tab_news_pressed",@"tab_self_pressed"];
+    NSArray *imageNamesArray = @[@"home_unselect",@"quictMatch_unselect",@"message_unselect",
+                                 @"moment_unselect",@"mine_unselect"];
+    NSArray *selectedImageNamesArray = @[@"home_selected",@"quickMatch_selected",@"message_selected",
+                                         @"moment_selected",@"mine_selected"];
     
     /// 首页
     UINavigationController *mainFrameNavigationController = ({
@@ -112,7 +112,7 @@
     UIImage *selectedImage = SYImageNamed(selectedImageName);
     selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     viewController.tabBarItem.selectedImage = selectedImage;
-    viewController.tabBarItem.title = title;
+//    viewController.tabBarItem.title = title;
     
     NSDictionary *normalAttr = @{NSForegroundColorAttributeName:SYColor(247, 247, 247),
                                  NSFontAttributeName:SYFont(11, YES)};

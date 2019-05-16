@@ -15,7 +15,19 @@
 
 @property (nonatomic, strong) UIScrollView *controlView;
 
+@property (nonatomic, strong) UIView *headBgView;
+
+@property (nonatomic, strong) UIImageView *headImageView;
+
+@property (nonatomic, strong) UILabel *aliasLabel;
+
+@property (nonatomic, strong) UILabel *signatureLabel;
+
+@property (nonatomic, strong) UIImageView *likeImageView;
+
 @property (nonatomic, strong) UIButton *likeBtn;
+
+@property (nonatomic, strong) UIImageView *unlikeImageView;
 
 @property (nonatomic, strong) UIButton *unlikeBtn;
 
@@ -93,28 +105,95 @@
     [self.view addSubview:controlView];
     [self.view bringSubviewToFront:controlView];
     
+    UIView *headBgView = [UIView new];
+    headBgView.backgroundColor = SYColorAlpha(83, 16, 114, 0.2);
+    _headBgView = headBgView;
+    [controlView addSubview:headBgView];
+    
+    UIImageView *headImageView = [UIImageView new];
+    headImageView.layer.cornerRadius = 22.f;
+    headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    headImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [headImageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
+    headImageView.clipsToBounds = YES;
+    _headImageView = headImageView;
+    [headBgView addSubview:headImageView];
+    
+    UILabel *aliasLabel = [UILabel new];
+    aliasLabel.textColor = [UIColor whiteColor];
+    aliasLabel.textAlignment = NSTextAlignmentLeft;
+    aliasLabel.font = SYFont(13, YES);
+    _aliasLabel = aliasLabel;
+    [headBgView addSubview:aliasLabel];
+    
+    UILabel *signatureLabel = [UILabel new];
+    signatureLabel.textColor = [UIColor whiteColor];
+    signatureLabel.textAlignment = NSTextAlignmentLeft;
+    signatureLabel.font = SYFont(10, YES);
+    _signatureLabel = signatureLabel;
+    [headBgView addSubview:signatureLabel];
+
+    UIImageView *unlikeImageView = [UIImageView new];
+    unlikeImageView.image = SYImageNamed(@"arrorLeft");
+    _unlikeImageView = unlikeImageView;
+    [controlView addSubview:unlikeImageView];
+    
     UIButton *unlikeBtn = [UIButton new];
-    [unlikeBtn setImage:SYImageNamed(@"btn_unlike") forState:UIControlStateNormal];
+    [unlikeBtn setImage:SYImageNamed(@"unlike") forState:UIControlStateNormal];
     _unlikeBtn = unlikeBtn;
     [controlView addSubview:unlikeBtn];
     
+    UIImageView *likeImageView = [UIImageView new];
+    likeImageView.image = SYImageNamed(@"arrorRight");
+    _likeImageView = likeImageView;
+    [controlView addSubview:likeImageView];
+    
     UIButton *likeBtn = [UIButton new];
-    [likeBtn setImage:SYImageNamed(@"btn_like") forState:UIControlStateNormal];
+    [likeBtn setImage:SYImageNamed(@"like") forState:UIControlStateNormal];
     _likeBtn = likeBtn;
     [controlView addSubview:likeBtn];
     
-    CGFloat margin = (SY_SCREEN_WIDTH - 200) / 3;
     [controlView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(singleShowView);
     }];
+    [headBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.width.equalTo(singleShowView);
+        make.height.offset(SY_APPLICATION_STATUS_BAR_HEIGHT + 54);
+    }];
+    [headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(headBgView).offset(-5);
+        make.width.height.offset(44);
+        make.left.equalTo(headBgView).offset(5);
+    }];
+    [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(headImageView).offset(5);
+        make.left.equalTo(headImageView.mas_right).offset(6);
+        make.height.offset(15);
+    }];
+    [signatureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.height.equalTo(aliasLabel);
+        make.bottom.equalTo(headBgView).offset(-13);
+    }];
+    [unlikeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(singleShowView).offset(47);
+        make.centerY.equalTo(unlikeBtn);
+        make.width.offset(14);
+        make.height.offset(19);
+    }];
     [unlikeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.offset(100);
-        make.bottom.equalTo(singleShowView).offset(-30);
-        make.left.equalTo(singleShowView).offset(margin);
+        make.width.height.offset(57);
+        make.bottom.equalTo(singleShowView).offset(-27);
+        make.left.equalTo(unlikeImageView.mas_right).offset(3);
+    }];
+    [likeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(singleShowView).offset(-47);
+        make.centerY.equalTo(likeBtn);
+        make.width.offset(14);
+        make.height.offset(19);
     }];
     [likeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.centerY.equalTo(unlikeBtn);
-        make.right.equalTo(singleShowView).offset(-margin);
+        make.right.equalTo(likeImageView.mas_left).offset(-3);
     }];
 }
 
@@ -156,9 +235,21 @@
 // 读取数组元素播放展示页
 - (void)startUserShow {
     self.matchModel = self.datasource[0];
-    [self.singleShowView jp_playVideoWithURL:[NSURL URLWithString:self.matchModel.showVideo] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
+    [_singleShowView jp_playVideoWithURL:[NSURL URLWithString:self.matchModel.showVideo] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
         
     }];
+    [_headImageView yy_setImageWithURL:[NSURL URLWithString:self.matchModel.userHeadImg] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
+    if (self.matchModel.userName != nil && self.matchModel.userName.length > 0) {
+        _aliasLabel.text = self.matchModel.userName;
+    }
+    if (self.matchModel.userSignature != nil && self.matchModel.userSignature.length > 0) {
+        _signatureLabel.text = self.matchModel.userSignature;
+    }
+    if (self.matchModel.userSpecialty != nil && self.matchModel.userSpecialty.length > 0) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [self setTipsByHobby:self.matchModel.userSpecialty];
+        });
+    }
 }
 
 // 切换用户
@@ -172,6 +263,16 @@
         [self.singleShowView jp_playVideoWithURL:[NSURL URLWithString:self.matchModel.showVideo] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
         
         }];
+        [_headImageView yy_setImageWithURL:[NSURL URLWithString:self.matchModel.userHeadImg] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
+        if (self.matchModel.userName != nil && self.matchModel.userName.length > 0) {
+            _aliasLabel.text = self.matchModel.userName;
+        }
+        if (self.matchModel.userSignature != nil && self.matchModel.userSignature.length > 0) {
+            _signatureLabel.text = self.matchModel.userSignature;
+        }
+        if (self.matchModel.userSpecialty != nil && self.matchModel.userSpecialty.length > 0) {
+            [self setTipsByHobby:self.matchModel.userSpecialty];
+        }
     } else {
         YYCache *cache = [YYCache cacheWithName:@"seeyu"];
         self.page = [NSString stringWithFormat:@"%d",self.page.intValue + 1];
@@ -195,6 +296,47 @@
         [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
     }
     [self changeUser];
+}
+
+- (void)setTipsByHobby:(NSString*)hobby {
+    for (int i = 0; i < 3; i++) {
+        UIImageView *lastImageView = [self.view viewWithTag:588 + i];
+        if (lastImageView != nil) {
+            [lastImageView removeFromSuperview];
+        }
+        UILabel *lastLabel = [self.view viewWithTag:888 + i];
+        if (lastLabel != nil) {
+            [lastLabel removeFromSuperview];
+        }
+    }
+    NSArray *hobbiesArray = [hobby componentsSeparatedByString:@","];
+    if (hobbiesArray.count > 0 && hobbiesArray.count <= 3) {
+        for (int i = 0; i < hobbiesArray.count; i++) {
+            UIImageView *bgImageView = [UIImageView new];
+            NSString *imageName = [NSString stringWithFormat:@"tag_bg%d",i];
+            bgImageView.image = SYImageNamed(imageName);
+            bgImageView.tag = 588 + i;
+            [_headBgView addSubview:bgImageView];
+            
+            UILabel *tipsLabel = [UILabel new];
+            tipsLabel.textColor = [UIColor whiteColor];
+            tipsLabel.textAlignment = NSTextAlignmentCenter;
+            tipsLabel.font = SYFont(12, YES);
+            tipsLabel.text = hobbiesArray[i];
+            tipsLabel.tag = 888 + i;
+            [_headBgView addSubview:tipsLabel];
+            
+            [bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.width.offset(45);
+                make.height.offset(17);
+                make.right.equalTo(self.headBgView).offset(- 5 + (2 - i) * (-48));
+                make.top.equalTo(self.headImageView);
+            }];
+            [tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(bgImageView);
+            }];
+        }
+    }
 }
 
 @end

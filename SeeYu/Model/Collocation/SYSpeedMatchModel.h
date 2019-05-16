@@ -16,6 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *showVideo;
 
+@property (nonatomic, strong) NSString *userHeadImg;
+
+@property (nonatomic, strong) NSString *userName;
+
+@property (nonatomic, strong) NSString *userSignature;
+
+@property (nonatomic, strong) NSString *userSpecialty;
+
 @end
 
 NS_ASSUME_NONNULL_END

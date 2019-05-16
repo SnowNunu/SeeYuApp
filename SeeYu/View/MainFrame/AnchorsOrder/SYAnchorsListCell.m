@@ -107,7 +107,8 @@
     if (hobbiesArray.count > 0 && hobbiesArray.count <= 3) {
         for (int i = 0; i < hobbiesArray.count; i++) {
             UIImageView *bgImageView = [UIImageView new];
-            bgImageView.image = SYImageNamed(@"tag_bg0");
+            NSString *imageName = [NSString stringWithFormat:@"tag_bg%d",i];
+            bgImageView.image = SYImageNamed(imageName);
             bgImageView.tag = 588 + i;
             [self.contentView addSubview:bgImageView];
             
@@ -156,7 +157,7 @@
 - (void)setScrollAliasLabel:(NSString *)alias {
     [_aliasScrolLabel removeFromSuperview];
     TXScrollLabelView *aliasScrolLabel = [TXScrollLabelView scrollWithTitle:alias type:TXScrollLabelViewTypeLeftRight];
-    aliasScrolLabel.frame = CGRectMake(3, self.contentView.height - 20, self.contentView.width - 95, 15);
+    aliasScrolLabel.frame = CGRectMake(3, self.contentView.size.height - 20, self.contentView.size.width - 95, 15);
     aliasScrolLabel.textAlignment = NSTextAlignmentLeft;
     aliasScrolLabel.font = SYFont(12, YES);
     aliasScrolLabel.backgroundColor = [UIColor clearColor];
