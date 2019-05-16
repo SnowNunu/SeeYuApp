@@ -47,7 +47,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setBarTintColor:SYColorFromHexString(@"#9F69EB")];
     /// 隐藏导航栏细线
     self.viewModel.prefersNavigationBarBottomLineHidden?[(SYNavigationController *)self.navigationController hideNavigationBottomLine]:[(SYNavigationController *)self.navigationController showNavigationBottomLine];
     /// 配置键盘

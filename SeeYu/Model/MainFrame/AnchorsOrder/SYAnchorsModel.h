@@ -45,6 +45,9 @@ NS_ASSUME_NONNULL_BEGIN
 /* 主播在线状态 */
 @property (nonatomic, assign) int userOnline;
 
+/* 主播关注状态 */
+@property (nonatomic, assign) int followFlag;
+
 @end
 
 NS_ASSUME_NONNULL_END

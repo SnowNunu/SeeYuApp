@@ -20,20 +20,18 @@
 
 - (void)initialize {
     @weakify(self)
-    self.requestAnchorsListCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        NSArray * (^mapAllAnchors)(NSArray *) = ^(NSArray *anchors) {
-            return anchors.rac_sequence.array;
-        };
+    self.pageNum = 1;
+    self.pageSize = 10;
+    self.requestAnchorsListCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *page) {
         @strongify(self)
-        NSDictionary *params = @{@"userId":self.services.client.currentUser.userId,@"type":self.anchorType};
-        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
-        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_ANCHOR_LIST parameters:subscript.dictionary];
-        return [[[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYAnchorsModel class]] sy_parsedResults] map:mapAllAnchors] takeUntil:self.rac_willDeallocSignal];
+        return [self requestRemoteAnchorsDataSignalWithPage:page.integerValue];
+    }];
+    RAC(self,anchorsArray) = self.requestAnchorsListCommand.executionSignals.switchToLatest;
+    RAC(self,datasource) = [RACObserve(self, anchorsArray) map:^id(NSArray *array) {
+        @strongify(self)
+        return [self dataSourceWithAnchors:array];
     }];
     
-    [self.requestAnchorsListCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(NSArray *array) {
-        self.anchorsArray = array;
-    }];
     [self.requestAnchorsListCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];
@@ -43,6 +41,34 @@
         [self.services pushViewModel:showVM animated:YES];
         return [RACSignal empty];
     }];
+}
+
+- (RACSignal *)requestRemoteAnchorsDataSignalWithPage:(NSUInteger)page {
+    NSArray * (^mapAnchors)(NSArray *) = ^(NSArray *array) {
+        if (page == 1) {
+            /// 下拉刷新
+        } else {
+            /// 上拉加载
+            array = @[(self.anchorsArray ?: @[]).rac_sequence, array.rac_sequence].rac_sequence.flatten.array;
+        }
+        return array;
+    };
+    SYKeyedSubscript *subscript = [SYKeyedSubscript subscript];
+    subscript[@"userId"] = self.services.client.currentUser.userId;
+    subscript[@"type"] = _anchorType;
+    subscript[@"pageNum"] = @(page);
+    subscript[@"pageSize"] = @(_pageSize);
+    SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_ANCHOR_LIST parameters:subscript.dictionary];
+    SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
+    return [[[self.services.client enqueueRequest:request resultClass:[SYAnchorsModel class]] sy_parsedResults] map:mapAnchors];
+}
+
+- (NSArray *)dataSourceWithAnchors:(NSArray *)anchors {
+    if (SYObjectIsNil(anchors) || anchors.count == 0) return nil;
+    NSArray *datasources = [anchors.rac_sequence map:^(SYAnchorsModel *model) {
+        return model;
+    }].array;
+    return datasources ?: @[] ;
 }
 
 @end

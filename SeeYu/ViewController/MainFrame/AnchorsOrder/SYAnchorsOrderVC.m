@@ -43,14 +43,14 @@
     self.titleView.titleSelectFont = SYRegularFont(20);
     [self.view addSubview:_titleView];
 
-    UIImageView *line = [UIImageView new];
-    line.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:line];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.left.equalTo(self.view);
-        make.height.offset(1);
-        make.top.equalTo(self.titleView.mas_bottom).offset(-1);
-    }];
+//    UIImageView *line = [UIImageView new];
+//    line.backgroundColor = [UIColor grayColor];
+//    [self.view addSubview:line];
+//    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.left.equalTo(self.view);
+//        make.height.offset(1);
+//        make.top.equalTo(self.titleView.mas_bottom).offset(-1);
+//    }];
 
     NSArray *typeArray = @[@"recommend",@"new",@"three",@"four",@"five",@"follow"];
     NSMutableArray *childVCs = [[NSMutableArray alloc]init];

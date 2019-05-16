@@ -28,6 +28,7 @@
     SYTabBar *tabbar = [[SYTabBar alloc] init];
     //kvc实质是修改了系统的_tabBar
     [self.tabBarController setValue:tabbar forKeyPath:@"tabBar"];
+    [[UITabBar appearance] setBackgroundImage:SYImageNamed(@"tabbar")];
 }
 
 #pragma mark - Ovveride

@@ -246,7 +246,6 @@
 		7B5210EE227095F200D7EEFC /* SYSigninVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210ED227095F200D7EEFC /* SYSigninVM.m */; };
 		7B5210F32270AF8000D7EEFC /* SYMyMomentsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210F22270AF8000D7EEFC /* SYMyMomentsVM.m */; };
 		7B5210F62270AFA100D7EEFC /* SYMyMomentsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210F52270AFA100D7EEFC /* SYMyMomentsVC.m */; };
-		7B590931223F776100EE5ACF /* SYAnchorsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590930223F776100EE5ACF /* SYAnchorsListVC.m */; };
 		7B590934223F77B200EE5ACF /* SYAnchorsListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590933223F77B200EE5ACF /* SYAnchorsListVM.m */; };
 		7B590939223F8B0300EE5ACF /* SYAnchorsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590938223F8B0300EE5ACF /* SYAnchorsModel.m */; };
 		7B59093D223F9C7300EE5ACF /* SYAnchorsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B59093C223F9C7300EE5ACF /* SYAnchorsListCell.m */; };
@@ -403,6 +402,7 @@
 		7BCDF39B2289788D00D52640 /* SYDisclaimerVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDF39A2289788D00D52640 /* SYDisclaimerVM.m */; };
 		7BCDF39F22899D0800D52640 /* SYAboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDF39E22899D0800D52640 /* SYAboutVC.m */; };
 		7BCDF3A322899D9D00D52640 /* SYAboutVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDF3A222899D9D00D52640 /* SYAboutVM.m */; };
+		7BCDF3A8228C1A9600D52640 /* SYAnchorsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDF3A7228C1A9500D52640 /* SYAnchorsListVC.m */; };
 		7BE372C9226DB22D00555C41 /* SYNotificationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE372C8226DB22D00555C41 /* SYNotificationModel.m */; };
 		7BE372CD226DD9C500555C41 /* SYOutboundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE372CC226DD9C500555C41 /* SYOutboundModel.m */; };
 		7BE971C8225ECB0500FF6A25 /* SYProfileVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE971C7225ECB0500FF6A25 /* SYProfileVM.m */; };
@@ -935,7 +935,6 @@
 		7B5210F42270AFA100D7EEFC /* SYMyMomentsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyMomentsVC.h; sourceTree = "<group>"; };
 		7B5210F52270AFA100D7EEFC /* SYMyMomentsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyMomentsVC.m; sourceTree = "<group>"; };
 		7B59092F223F776100EE5ACF /* SYAnchorsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsListVC.h; sourceTree = "<group>"; };
-		7B590930223F776100EE5ACF /* SYAnchorsListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsListVC.m; sourceTree = "<group>"; };
 		7B590932223F77B200EE5ACF /* SYAnchorsListVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsListVM.h; sourceTree = "<group>"; };
 		7B590933223F77B200EE5ACF /* SYAnchorsListVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsListVM.m; sourceTree = "<group>"; };
 		7B590937223F8B0300EE5ACF /* SYAnchorsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsModel.h; sourceTree = "<group>"; };
@@ -1250,6 +1249,7 @@
 		7BCDF39E22899D0800D52640 /* SYAboutVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAboutVC.m; sourceTree = "<group>"; };
 		7BCDF3A122899D9D00D52640 /* SYAboutVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAboutVM.h; sourceTree = "<group>"; };
 		7BCDF3A222899D9D00D52640 /* SYAboutVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAboutVM.m; sourceTree = "<group>"; };
+		7BCDF3A7228C1A9500D52640 /* SYAnchorsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsListVC.m; sourceTree = "<group>"; };
 		7BE372C7226DB22D00555C41 /* SYNotificationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYNotificationModel.h; sourceTree = "<group>"; };
 		7BE372C8226DB22D00555C41 /* SYNotificationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYNotificationModel.m; sourceTree = "<group>"; };
 		7BE372CB226DD9C500555C41 /* SYOutboundModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYOutboundModel.h; sourceTree = "<group>"; };
@@ -2716,7 +2716,7 @@
 				7B2E76BD223F460200D8F1CD /* SYAnchorsOrderVC.h */,
 				7B2E76BE223F460200D8F1CD /* SYAnchorsOrderVC.m */,
 				7B59092F223F776100EE5ACF /* SYAnchorsListVC.h */,
-				7B590930223F776100EE5ACF /* SYAnchorsListVC.m */,
+				7BCDF3A7228C1A9500D52640 /* SYAnchorsListVC.m */,
 				7B9A1BBB2240997E00B7BFC2 /* SYAnchorShowVC.h */,
 				7B9A1BBC2240997E00B7BFC2 /* SYAnchorShowVC.m */,
 			);
@@ -4941,6 +4941,7 @@
 				7B9A1BCB2241F30E00B7BFC2 /* SYAnchorsRandomVM.m in Sources */,
 				263D37181F66656A007267C3 /* YYThreadSafeDictionary.m in Sources */,
 				7B78810A22488D2F00B25CA3 /* SYForumModel.m in Sources */,
+				7BCDF3A8228C1A9600D52640 /* SYAnchorsListVC.m in Sources */,
 				2617531A1F7398F000812E1B /* SYCommonAvatarItemViewModel.m in Sources */,
 				7B0228BE223B87810045E25F /* SYFriendsListCell.m in Sources */,
 				26FE8E8D1F9514D100EC8BE0 /* TZLocationManager.m in Sources */,
@@ -5139,7 +5140,6 @@
 				7B9A1BE12243B21F00B7BFC2 /* HSDownloadManager.m in Sources */,
 				7BC6FC0D2237D0C10079330A /* SYGuideVC.m in Sources */,
 				7BEB77C922784CCC008869A1 /* SYSigninInfoModel.m in Sources */,
-				7B590931223F776100EE5ACF /* SYAnchorsListVC.m in Sources */,
 				2605C5D61F6633AC00B1F66E /* SYContactsVM.m in Sources */,
 				7BEB77CC22785C8A008869A1 /* SYSigninModel.m in Sources */,
 				26225D9B1F65589E0074BFC3 /* SYConstant.m in Sources */,
@@ -5425,7 +5425,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fljj.SeeYu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xm.lovemiyue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WARNING_CFLAGS = (
@@ -5514,7 +5514,7 @@
 				INFOPLIST_FILE = SeeYu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fljj.SeeYu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xm.lovemiyue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WARNING_CFLAGS = (

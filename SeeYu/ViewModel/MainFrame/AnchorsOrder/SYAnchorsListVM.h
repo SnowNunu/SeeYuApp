@@ -13,8 +13,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYAnchorsListVM : SYVM
 
+// 当前页数
+@property (nonatomic, assign) int pageNum;
+
+// 每页条数
+@property (nonatomic, assign) int pageSize;
+
 // 主播类型
 @property (nonatomic, strong) NSString *anchorType;
+
+// 数据源
+@property (nonatomic, strong) NSArray *datasource;
 
 // 主播列表
 @property (nonatomic, strong) NSArray *anchorsArray;

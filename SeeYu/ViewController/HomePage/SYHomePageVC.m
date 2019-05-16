@@ -35,9 +35,9 @@
 #pragma mark - 初始化所有的子视图控制器
 - (void)_setupAllChildViewController {
     NSArray *titlesArray = @[@"首页", @"速配" ,@"消息", @"动态", @"我的"];
-    NSArray *imageNamesArray = @[@"tab_home_normal",@"tab_quickmatch_normal",@"tab_message_normal",
+    NSArray *imageNamesArray = @[@"home_unselect",@"tab_quickmatch_normal",@"tab_message_normal",
                                  @"tab_news_normal",@"tab_self_normal"];
-    NSArray *selectedImageNamesArray = @[@"tab_home_pressed",@"tab_quickmatch_pressed",@"tab_message_pressed",
+    NSArray *selectedImageNamesArray = @[@"home_selected",@"tab_quickmatch_pressed",@"tab_message_pressed",
                                          @"tab_news_pressed",@"tab_self_pressed"];
     
     /// 首页
@@ -114,15 +114,15 @@
     viewController.tabBarItem.selectedImage = selectedImage;
     viewController.tabBarItem.title = title;
     
-    NSDictionary *normalAttr = @{NSForegroundColorAttributeName:SYColorFromHexString(@"#929292"),
-                                 NSFontAttributeName:SYRegularFont_10};
-    NSDictionary *selectedAttr = @{NSForegroundColorAttributeName:SYColorFromHexString(@"#9F69EB"),
-                                   NSFontAttributeName:SYRegularFont_10};
+    NSDictionary *normalAttr = @{NSForegroundColorAttributeName:SYColor(247, 247, 247),
+                                 NSFontAttributeName:SYFont(11, YES)};
+    NSDictionary *selectedAttr = @{NSForegroundColorAttributeName:SYColor(247, 247, 247),
+                                   NSFontAttributeName:SYFont(11, YES)};
     [viewController.tabBarItem setTitleTextAttributes:normalAttr forState:UIControlStateNormal];
     [viewController.tabBarItem setTitleTextAttributes:selectedAttr forState:UIControlStateSelected];
     
     [viewController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, 0)];
-    [viewController.tabBarItem setImageInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [viewController.tabBarItem setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
     if (tagType == SYTabBarItemTagTypeContacts) {
         int totalUnreadCount = [[RCIMClient sharedRCIMClient] getTotalUnreadCount];
         if (totalUnreadCount > 0) {

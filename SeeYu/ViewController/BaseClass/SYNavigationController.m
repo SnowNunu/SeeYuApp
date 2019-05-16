@@ -38,7 +38,7 @@
 }
 
 // 查询最后一条数据
-- (UIImageView *)_findHairlineImageViewUnder:(UIView *)view{
+- (UIImageView *)_findHairlineImageViewUnder:(UIView *)view {
     if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height <= 1.0) {
         return (UIImageView *)view;
     }
@@ -66,7 +66,7 @@
 /**
  *  设置UINavigationBarTheme的主题
  */
-+ (void) _setupNavigationBarTheme{
++ (void) _setupNavigationBarTheme {
     UINavigationBar *appearance = [UINavigationBar appearance];
     
     /// 设置背景
@@ -77,9 +77,8 @@
     [appearance setBarStyle:UIBarStyleDefault];
     //设置导航栏文字按钮的渲染色
     [appearance setTintColor:[UIColor whiteColor]];
-    // 设置导航栏的背景渲染色
-    CGFloat rgb = 0.1;
-    [appearance setBarTintColor:[UIColor colorWithRed:rgb green:rgb blue:rgb alpha:0.65]];
+    // 设置导航栏的背景图片
+    [appearance setBackgroundImage:SYImageNamed(@"navigationbar") forBarMetrics:UIBarMetricsDefault];
     // 设置文字属性
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
     textAttrs[NSFontAttributeName] = SYMediumFont(18.0f);
@@ -98,7 +97,7 @@
 /**
  *  设置UIBarButtonItem的主题
  */
-+ (void)_setupBarButtonItemTheme{
++ (void)_setupBarButtonItemTheme {
     // 通过appearance对象能修改整个项目中所有UIBarButtonItem的样式
     UIBarButtonItem *appearance = [UIBarButtonItem appearance];
     
@@ -135,12 +134,11 @@
 
 
 /// 能拦截所有push进来的子控制器
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     // 如果现在push的不是栈底控制器(最先push进来的那个控制器)
-    if (self.viewControllers.count > 0){
+    if (self.viewControllers.count > 0) {
         /// 隐藏底部tabbar
         viewController.hidesBottomBarWhenPushed = YES;
-        
         NSString *title = @"返回";
         
         /// eg: [A push B]
@@ -150,23 +148,19 @@
         
         /// 2.判断要被Push的控制器（B）是否是 SYVC ，
         if ([viewController isKindOfClass:[SYVC class]]) {
-            
             SYVM *viewModel = [(SYVC *)viewController viewModel];
-            
             /// 3. 查看backTitle 是否有值
             title = viewModel.backTitle?:title;
-            
-            
         }
-        
         // 4.这里可以设置导航栏的左右按钮 统一管理方法
         viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem sy_backItemWithTitle:title imageName:@"nav_btn_back" target:self action:@selector(_back)];
     }
     // push
     [super pushViewController:viewController animated:animated];
 }
+
 /// 事件处理
-- (void)_back{
+- (void)_back {
     [self popViewControllerAnimated:YES];
 }
 

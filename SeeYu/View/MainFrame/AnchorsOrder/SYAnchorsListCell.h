@@ -7,22 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TXScrollLabelView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYAnchorsListCell : UITableViewCell
+@interface SYAnchorsListCell : UICollectionViewCell
 
 // 头像
 @property (nonatomic, strong) UIImageView *headImageView;
 
 // 昵称
-@property (nonatomic, strong) UILabel *aliasLabel;
+@property (nonatomic, strong) TXScrollLabelView *aliasScrolLabel;
 
-// 签名
-@property (nonatomic, strong) UILabel *signatureLabel;
+//@property (nonatomic, strong) UILabel *aliasLabel;
 
 // 语聊图片
 @property (nonatomic, strong) UIImageView *voiceImageView;
+
+// 钻石图片
+@property (nonatomic, strong) UIImageView *diamondImageView;
 
 // 语聊价格
 @property (nonatomic, strong) UILabel *voicePriceLabel;
@@ -36,6 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setStarsByLevel:(int)level;
 
 - (void)setTipsByHobby:(NSString*)hobby;
+
+- (void)setScrollAliasLabel:(NSString *)alias;
 
 @end
 
