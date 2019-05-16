@@ -19,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 // 昵称
 @property (nonatomic, strong) TXScrollLabelView *aliasScrolLabel;
 
-//@property (nonatomic, strong) UILabel *aliasLabel;
-
 // 语聊图片
 @property (nonatomic, strong) UIImageView *voiceImageView;
 

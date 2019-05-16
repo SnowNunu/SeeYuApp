@@ -37,12 +37,12 @@
 #pragma mark - 设置导航栏
 - (void)_setupNavigation {
     self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 40) titles:@[@"主播",@"土豪",@"活跃"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
-    self.titleView.titleNormalColor = SYColorFromHexString(@"#999999");
-    self.titleView.titleSelectColor = SYColor(159, 105, 235);
+    self.titleView.titleNormalColor = SYColor(199, 99, 237);
+    self.titleView.titleSelectColor = SYColor(248, 56, 129);
     self.titleView.backgroundColor = [UIColor whiteColor];
     self.titleView.indicatorColor = [UIColor whiteColor];
-    self.titleView.titleFont = SYRegularFont(18);
-    self.titleView.titleSelectFont = SYRegularFont(20);
+    self.titleView.titleFont = SYFont(13, YES);
+    self.titleView.titleSelectFont = SYFont(13, YES);
     [self.view addSubview:_titleView];
     
     NSArray *typeArray = @[@"anchor",@"localTyrant",@"active"];

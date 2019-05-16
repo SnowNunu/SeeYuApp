@@ -102,32 +102,47 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
     }
-    CGFloat itemMargin = (SY_SCREEN_WIDTH - 180) / 4;
+    CGFloat margin = (SY_SCREEN_WIDTH / 2 - 42.5 - 65 - 2.5) / 2;
     if (indexPath.row == 0) {
+        UIImageView *bgImageView = [UIImageView new];
+        bgImageView.image = SYImageNamed(@"rankList_bg");
+        bgImageView.userInteractionEnabled = YES;
+        [cell.contentView addSubview:bgImageView];
+        [bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(cell.contentView).offset(-5);
+            make.centerX.top.equalTo(cell.contentView);
+            make.height.offset(145);
+        }];
         for (int i = 0; i < 3; i++) {
             SYRankListModel *model = self.viewModel.dataSource[i];
             UIImageView *headImageView = [UIImageView new];
             [headImageView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
-            [cell addSubview:headImageView];
+            [bgImageView addSubview:headImageView];
             
             UIImageView *backImageView = [UIImageView new];
             backImageView.userInteractionEnabled = YES;
-            backImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"home_Head frame_%d",i]];
-            [cell addSubview:backImageView];
-            [cell bringSubviewToFront:backImageView];
+            backImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"ranklist_head_%d",i]];
+            [bgImageView addSubview:backImageView];
+            [bgImageView bringSubviewToFront:backImageView];
             
             if (i == 0) {
-                headImageView.layer.cornerRadius = 35.f;
+                headImageView.layer.cornerRadius = 37.5f;
             } else {
-                headImageView.layer.cornerRadius = 20.f;
+                headImageView.layer.cornerRadius = 29.f;
             }
             headImageView.layer.masksToBounds = YES;
             
-            UILabel *aliasLabel = [UILabel new];
-            aliasLabel.text = model.userName;
-            aliasLabel.textAlignment = NSTextAlignmentCenter;
-            aliasLabel.font = SYRegularFont(17);
-            [cell addSubview:aliasLabel];
+            TXScrollLabelView *aliasLabel = [TXScrollLabelView scrollWithTitle:model.userName type:TXScrollLabelViewTypeLeftRight];
+            aliasLabel.textAlignment = NSTextAlignmentLeft;
+            aliasLabel.font = SYFont(11, YES);
+            aliasLabel.backgroundColor = SYColorAlpha(157, 76, 213, 0.8);
+            aliasLabel.scrollTitleColor = SYColor(255, 240, 0);
+            aliasLabel.scrollSpace = 20.f;
+            aliasLabel.layer.borderWidth = 1.f;
+            aliasLabel.layer.borderColor = SYColorAlpha(207, 144, 251, 0.8).CGColor;
+            aliasLabel.layer.cornerRadius = 10.f;
+            [cell.contentView addSubview:aliasLabel];
+            [aliasLabel beginScrolling];
             
             UILabel *consumLabel = [UILabel new];
             if ([self.viewModel.listType isEqualToString:@"anchor"]) {
@@ -141,9 +156,14 @@
                 consumLabel.text = [NSString stringWithFormat:@"活跃值%@",model.score];
             }
             consumLabel.textAlignment = NSTextAlignmentCenter;
-            consumLabel.font = SYRegularFont(15);
-            consumLabel.textColor = SYColorFromHexString(@"#999999");
-            [cell addSubview:consumLabel];
+            consumLabel.font = SYFont(10, YES);
+            consumLabel.textColor = SYColor(255, 255, 255);
+            consumLabel.backgroundColor = SYColorAlpha(157, 76, 213, 0.8);
+            consumLabel.layer.borderWidth = 1.f;
+            consumLabel.layer.borderColor = SYColorAlpha(207, 144, 251, 0.8).CGColor;
+            consumLabel.layer.cornerRadius = 10.f;
+            consumLabel.layer.masksToBounds = YES;
+            [bgImageView addSubview:consumLabel];
             
             UIView *bgView = [UIView new];
             bgView.backgroundColor = [UIColor clearColor];
@@ -156,37 +176,49 @@
             }];
             [bgView addGestureRecognizer:tapGesture];
             
-            [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                if (i == 0) {
-                    make.width.offset(80.f);
-                    make.height.offset(105.f);
-                    make.centerX.equalTo(cell);
-                    make.top.equalTo(cell).offset(15.f);
-                } else if (i == 1) {
-                    make.width.offset(50.f);
-                    make.height.offset(70.f);
-                    make.top.equalTo(cell).offset(50.f);
-                    make.left.equalTo(cell).offset(itemMargin);
-                } else {
-                    make.width.offset(50.f);
-                    make.height.offset(70.f);
-                    make.top.equalTo(cell).offset(50.f);
-                    make.right.equalTo(cell).offset(-itemMargin);
-                }
-            }];
-            [headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.equalTo(backImageView.mas_width).offset(-10.f);
-                make.center.equalTo(backImageView);
-            }];
-            [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(backImageView.mas_bottom).offset(10);
-                make.centerX.equalTo(backImageView);
-                make.width.offset(SY_SCREEN_WIDTH / 3);
-                make.height.offset(15);
-            }];
+            CGFloat marginLabel = (SY_SCREEN_WIDTH / 2 - 42.5 - 85 - 2.5) / 2;
+            if (i == 0) {
+                [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.width.offset(85.f);
+                    make.height.offset(95.f);
+                    make.centerX.equalTo(bgImageView);
+                    make.top.equalTo(bgImageView).offset(5.f);
+                }];
+                [headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.width.height.offset(75.f);
+                    make.center.equalTo(backImageView);
+                }];
+                aliasLabel.frame = CGRectMake(SY_SCREEN_WIDTH / 2 - 42.5, 100, 85, 20);
+            } else if (i == 1) {
+                [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.width.offset(65.f);
+                    make.height.offset(80.f);
+                    make.left.equalTo(bgImageView).offset(margin);
+                    make.top.equalTo(bgImageView).offset(10.f);
+                }];
+                [headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.width.height.offset(58.f);
+                    make.center.equalTo(backImageView);
+                }];
+                aliasLabel.frame = CGRectMake(marginLabel + 2.5, 90, 85, 20);
+            } else {
+                [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.width.offset(65.f);
+                    make.height.offset(80.f);
+                    make.right.equalTo(bgImageView).offset(-margin);
+                    make.top.equalTo(bgImageView).offset(15.f);
+                }];
+                [headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.width.height.offset(58.f);
+                    make.center.equalTo(backImageView);
+                }];
+                aliasLabel.frame = CGRectMake(SY_SCREEN_WIDTH - marginLabel - 2.5 - 85, 95, 85, 20);
+            }
             [consumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(aliasLabel.mas_bottom).offset(5);
-                make.width.height.centerX.equalTo(aliasLabel);
+                make.top.equalTo(backImageView.mas_bottom).offset(22);
+                make.centerX.equalTo(backImageView);
+                make.width.offset(85);
+                make.height.offset(20);
             }];
             [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(backImageView);
@@ -194,21 +226,54 @@
             }];
         }
     } else {
+        SYRankListModel *model = self.viewModel.dataSource[indexPath.row + 2];
+        // 背景色
+        UIView *bgView = [UIView new];
+        bgView.layer.cornerRadius = 12.f;
+        bgView.layer.masksToBounds = YES;
+        if (indexPath.row % 2 == 1) {
+            bgView.backgroundColor = SYColor(240, 207, 255);
+        } else {
+            bgView.backgroundColor = SYColor(245, 233, 255);
+        }
+        [cell.contentView addSubview:bgView];
+        
+        // 序号文本
         UILabel *orderNum = [UILabel new];
         orderNum.text = [NSString stringWithFormat:@"%ld", indexPath.row + 3];
-        [cell addSubview:orderNum];
+        orderNum.font = SYFont(18, YES);
+        orderNum.textColor = [UIColor whiteColor];
+        orderNum.textAlignment = NSTextAlignmentCenter;
+        orderNum.backgroundColor = SYColor(218, 158, 246);
+        orderNum.layer.cornerRadius = 11.f;
+        orderNum.layer.masksToBounds = YES;
+        [cell.contentView addSubview:orderNum];
         
-        SYRankListModel *model = self.viewModel.dataSource[indexPath.row + 2];
+        // 头像
         UIImageView *headImageView = [UIImageView new];
         [headImageView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
-        headImageView.layer.cornerRadius = 20.f;
+        headImageView.layer.cornerRadius = 22.f;
         headImageView.layer.masksToBounds = YES;
-        [cell addSubview:headImageView];
+        [cell.contentView addSubview:headImageView];
         
-        UILabel *aliasLabel = [UILabel new];
-        aliasLabel.text = model.userName;
-        aliasLabel.textAlignment = NSTextAlignmentLeft;
-        [cell addSubview:aliasLabel];
+        // 昵称
+        TXScrollLabelView *aliasScrolLabel = [TXScrollLabelView scrollWithTitle:model.userName type:TXScrollLabelViewTypeLeftRight];
+        aliasScrolLabel.frame = CGRectMake(87, 15, 80, 15);
+        aliasScrolLabel.textAlignment = NSTextAlignmentLeft;
+        aliasScrolLabel.font = SYFont(11, YES);
+        aliasScrolLabel.backgroundColor = [UIColor clearColor];
+        aliasScrolLabel.scrollTitleColor = SYColor(193, 99, 237);
+        aliasScrolLabel.scrollSpace = 20.f;
+        [cell.contentView addSubview:aliasScrolLabel];
+        [aliasScrolLabel beginScrolling];
+        
+        // id
+        UILabel *idLabel = [UILabel new];
+        idLabel.text = [NSString stringWithFormat:@"ID %@",model.userId];
+        idLabel.font = SYFont(10, YES);
+        idLabel.textColor = SYColor(193, 99, 237);
+        idLabel.textAlignment = NSTextAlignmentLeft;
+        [cell.contentView addSubview:idLabel];
         
         UILabel *customLabel = [UILabel new];
         if ([self.viewModel.listType isEqualToString:@"anchor"]) {
@@ -221,46 +286,47 @@
             // 用户活跃值
             customLabel.text = [NSString stringWithFormat:@"活跃值%@",model.score];
         }
-        customLabel.textColor = SYColorFromHexString(@"#999999");
+        customLabel.font = SYFont(10, YES);
+        customLabel.textAlignment = NSTextAlignmentRight;
+        customLabel.textColor = SYColor(193, 99, 237);
         [cell addSubview:customLabel];
         
+        [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.centerX.equalTo(cell.contentView);
+            make.height.offset(60);
+            make.width.equalTo(cell.contentView).offset(-5);
+        }];
         [orderNum mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(cell).offset(15);
-            make.width.offset(20);
-            make.top.height.equalTo(cell);
+            make.left.equalTo(bgView).offset(4);
+            make.width.offset(22);
+            make.centerY.equalTo(bgView);
+            make.height.offset(40);
         }];
         [headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.height.offset(40);
+            make.width.height.offset(44);
             make.centerY.equalTo(cell);
-            make.left.equalTo(orderNum.mas_right).offset(15);
+            make.left.equalTo(orderNum.mas_right).offset(10);
         }];
-        [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(headImageView.mas_right).offset(15.f);
-            make.top.height.equalTo(cell);
-            make.right.equalTo(customLabel.mas_left);
+        [idLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(aliasScrolLabel);
+            make.top.equalTo(aliasScrolLabel.mas_bottom).offset(8);
+            make.height.offset(15);
         }];
         [customLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell).offset(-15);
-            make.width.offset(100);
-            make.height.top.equalTo(cell);
+            make.right.equalTo(bgView).offset(-15);
+            make.centerY.equalTo(bgView);
+            make.height.offset(20);
         }];
     }
-    UIImageView *line = [UIImageView new];
-    line.backgroundColor = SYColorFromHexString(@"#999999");
-    [cell addSubview:line];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.width.equalTo(cell);
-        make.height.offset(1);
-    }];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        return 170.f;
+        return 150.f;
     }
-    return 50.f;
+    return 62.f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

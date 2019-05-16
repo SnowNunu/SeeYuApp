@@ -11,6 +11,7 @@
 #import "SYTableView.h"
 #import "UIScrollView+SYRefresh.h"
 #import "SYRankListModel.h"
+#import "TXScrollLabelView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
