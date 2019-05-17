@@ -79,7 +79,6 @@
     /// 调试模式
     [self _configDebugModelTools];
 #endif
-    
     // Save the application version info. must write last
     [[NSUserDefaults standardUserDefaults] setValue:SY_APP_VERSION forKey:SYApplicationVersionKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -245,6 +244,8 @@
     /// 这里判断一下
     if ([SAMKeychain rawLogin] && self.services.client.currentUser) {
         /// 已经登录，跳转到主页
+        YYCache *cache = [YYCache cacheWithName:@"SeeYu"];
+        [cache setObject:self.services.client.currentUserId forKey:@"videoUserId"];
         return [[SYHomePageVM alloc] initWithServices:self.services params:nil];
     } else {
         /// 进入首页
@@ -401,6 +402,68 @@
         }
     }
     [vc dismissViewControllerAnimated:YES completion:nil];
+}
+
+// 启动websocket服务
+- (void)tryToConnectToChargingServer {
+    NSString *url = [NSString stringWithFormat:@"%@?type=1&userId=%@&userToken=%@",SY_WEB_SOCKET_URL,self.services.client.currentUserId,[CocoaSecurity md5:self.services.client.currentUser.userToken].hexLower];
+    [[SYSocketManager shareManager] sy_open:url connect:^{
+        NSLog(@"connect success");
+    } receive:^(id  _Nonnull message, SYSocketReceiveType type) {
+        if (type == SYSocketReceiveTypeForMessage) {
+            SYSocketResponseModel *response = [SYSocketResponseModel modelWithJSON:message];
+            if (response != nil) {
+                NSDictionary *params = response.data;
+                if (response.code == 0) {
+                    if ([params[@"type"] intValue] == 1) {
+                        // 服务器连接成功释放定时器
+                        [SYNotificationCenter postNotificationName:@"serverConnected" object:nil];
+                    } else if ([params[@"type"] intValue] == 2){
+                        // 开始计费
+                        if (params[@"longestMinutes"] != nil) {
+                            NSString *time = params[@"longestMinutes"];
+                            // 根据服务器返回的时间启动定时器定时挂断视频
+                            [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"HangUpVideo" timeInterval:time.doubleValue * 60 queue:dispatch_get_main_queue() repeats:NO fireInstantly:NO action:^{
+                                [SYNotificationCenter postNotificationName:@"HangUpVideo" object:nil];
+                            }];
+                        } else {
+                            // 为空则立即挂断
+                            [SYNotificationCenter postNotificationName:@"HangUpVideo" object:nil];
+                        }
+                    } else if ([params[@"type"] intValue] == 3){
+                        // 结束计费
+                        NSLog(@"结束计费：%@",params);
+                    } else if ([params[@"type"] intValue] == 4){
+                        // 礼物请求
+                        [SYNotificationCenter postNotificationName:@"sendGift" object:params];
+                    } else {
+                        NSLog(@"%@",params);
+                    }
+                }
+            } else {
+                NSLog(@"收到了服务器发来的:%@",message);
+            }
+        }
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+        [MBProgressHUD sy_showErrorTips:error];
+        if ([error.userInfo[@"HTTPResponseStatusCode"] intValue] == 400) {
+            [SYNotificationCenter postNotificationName:@"login" object:@{@"code":@"400"}];
+        } else if ([error code] == 504) {
+            NSLog(@"与服务器失去连接，正在重连中");
+        }
+    }];
+}
+
+- (void)sendMessageByWebSocketService:(NSString *) message {
+    NSLog(@"主动发送了数据:%@",message);
+    [[SYSocketManager shareManager] sy_send:message];
+}
+
+- (void)stopWebSocketService {
+    [[SYSocketManager shareManager] sy_close:^(NSInteger code, NSString * _Nonnull reason, BOOL wasClean) {
+        NSLog(@"code:%ld,reason:%@,wasClean:%f",(long)code,reason,wasClean);
+    }];
 }
 
 @end

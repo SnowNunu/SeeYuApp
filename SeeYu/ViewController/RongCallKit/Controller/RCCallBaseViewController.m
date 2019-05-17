@@ -55,6 +55,7 @@
     return self;
 }
 
+// 呼出会话
 - (instancetype)initWithOutgoingCall:(RCConversationType)conversationType
                             targetId:(NSString *)targetId
                            mediaType:(RCCallMediaType)mediaType
@@ -67,6 +68,8 @@
                                                           mediaType:mediaType
                                                     sessionDelegate:self
                                                               extra:nil];
+        YYCache *cache = [YYCache cacheWithName:@"SeeYu"];
+        [cache setObject:targetId forKey:@"videoReceiveUserId"];
         sem = dispatch_semaphore_create(1);
         queue = dispatch_queue_create("AnswerQueue", DISPATCH_QUEUE_SERIAL);
         if (mediaType == RCCallMediaAudio) {
@@ -83,6 +86,13 @@
         }
         [self registerForegroundNotification];
         [RCCallKitUtility setScreenForceOn];
+        // 呼出会话时建立websocket连接
+        [[SYAppDelegate sharedDelegate] tryToConnectToChargingServer];
+        // 这里单独启动一个定时器监听服务器连接状态 10S收不到服务器连接成功的响应就挂断
+        [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"checkServerConnectStatus" timeInterval:10 queue:dispatch_get_main_queue() repeats:NO fireInstantly:NO action:^{
+            [MBProgressHUD sy_showTips:@"与服务器连接出错，请检查网络或稍候再试!" addedToView:self.view];
+            [self hangupButtonClicked];
+        }];
     }
     return self;
 }
@@ -198,7 +208,14 @@
                                              selector:@selector(onOrientationChanged:)
                                                  name:UIApplicationDidChangeStatusBarOrientationNotification
                                                object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(hangupButtonClicked)
+                                                 name:@"HangUpVideo"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(serverConnected)
+                                                 name:@"serverConnected"
+                                               object:nil];
     [self registerTelephonyEvent];
     [self addProximityMonitoringObserver];
     //    UIVisualEffect *blurEffect = [UIBlurEffect
@@ -218,7 +235,8 @@
 - (void)checkApplicationStateAndAlert {
     if (self.callSession.callStatus == RCCallDialing) {
         if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-            NSString *ringPath = [[NSBundle mainBundle] pathForResource:@"Opening" ofType:@"m4r"];
+            NSString *ringPath = [[[NSBundle mainBundle] pathForResource:@"RongCloud" ofType:@"bundle"]
+                                  stringByAppendingPathComponent:@"voip/voip_calling_ring.mp3"];
             [self startPlayRing:ringPath];
             self.needPlayingAlertAfterForeground = NO;
         } else {
@@ -594,12 +612,13 @@
     return _hangupButton;
 }
 
+// 挂断按钮回调
 - (void)hangupButtonClicked {
     [self didTapHangupButton];
-
     if (!self.callSession) {
         [self callDidDisconnect];
     } else {
+        [self disconnectFromServer];
         [self.callSession hangup];
     }
 }
@@ -1681,10 +1700,76 @@
 }
 
 #pragma mark - outside callback
+- (void)serverConnected {
+    // 收到此回调服务器已经连接上，否则10s后自动挂断
+    [[JX_GCDTimerManager sharedInstance] checkExistTimer:@"checkServerConnectStatus" completion:^(BOOL doExist) {
+        if (doExist) {
+            // 释放定时器
+            [[JX_GCDTimerManager sharedInstance] cancelTimerWithName:@"checkServerConnectStatus"];
+            NSLog(@"服务器连接状态检测定时器释放成功");
+        }
+    }];
+}
+
 - (void)callWillConnect {
+    NSLog(@"通话已经接通");
+    if ([SYSocketManager shareManager].sy_socketStatus == SYSocketStatusConnected || [SYSocketManager shareManager].sy_socketStatus == SYSocketStatusReceived) {
+        YYCache *cache = [YYCache cacheWithName:@"SeeYu"];
+        if ([cache containsObjectForKey:@"videoUserId"] && [cache containsObjectForKey:@"videoReceiveUserId"]) {
+            // 有缓存数据优先读取缓存数据
+            id userId = [cache objectForKey:@"videoUserId"];
+            id receiveUserId = [cache objectForKey:@"videoReceiveUserId"];
+            NSDictionary *params = @{@"type":@"2",@"userId":(NSString *)userId,@"receiveUserId":(NSString *)receiveUserId};
+            [[SYAppDelegate sharedDelegate] sendMessageByWebSocketService:[params yy_modelToJSONString]];
+        } else {
+            [MBProgressHUD sy_showTips:@"客户端异常，请联系客服!" addedToView:self.view];
+        }
+    } else {
+        [MBProgressHUD sy_showTips:@"与服务器连接出错，请稍候再试!" addedToView:self.view];
+    }
+}
+
+- (void)disconnectFromServer {
+    NSLog(@"即将断开连接");
+    [[JX_GCDTimerManager sharedInstance] checkExistTimer:@"HangUpVideo" completion:^(BOOL doExist) {
+        if (doExist) {
+            // 释放定时器
+            [[JX_GCDTimerManager sharedInstance] cancelTimerWithName:@"HangUpVideo"];
+            NSLog(@"定时器释放成功");
+        }
+    }];
+    [[JX_GCDTimerManager sharedInstance] checkExistTimer:@"checkServerConnectStatus" completion:^(BOOL doExist) {
+        if (doExist) {
+            // 释放定时器
+            [[JX_GCDTimerManager sharedInstance] cancelTimerWithName:@"checkServerConnectStatus"];
+            NSLog(@"服务器连接状态检测定时器释放成功");
+        }
+    }];
+    if ([SYSocketManager shareManager].sy_socketStatus == SYSocketStatusConnected || [SYSocketManager shareManager].sy_socketStatus == SYSocketStatusReceived) {
+        //
+        YYCache *cache = [YYCache cacheWithName:@"SeeYu"];
+        if ([cache containsObjectForKey:@"videoUserId"] && [cache containsObjectForKey:@"videoReceiveUserId"]) {
+            if (self.callSession.callStatus != RCCallDialing) {
+                // 只有在接通状态下挂断才会发送消息
+                // 有缓存数据优先读取缓存数据
+                id userId = [cache objectForKey:@"videoUserId"];
+                id receiveUserId = [cache objectForKey:@"videoReceiveUserId"];
+                NSDictionary *params = @{@"type":@"3",@"userId":(NSString *)userId,@"receiveUserId":(NSString *)receiveUserId};
+                [[SYAppDelegate sharedDelegate] sendMessageByWebSocketService:[params yy_modelToJSONString]];
+            }
+            [[SYSocketManager shareManager] sy_close:^(NSInteger code, NSString * _Nonnull reason, BOOL wasClean) {
+                NSLog(@"websocket连接断开，原因:%@,code:%ld",reason,(long)code);
+            }];
+        } else {
+            [MBProgressHUD sy_showTips:@"客户端异常，请联系客服!" addedToView:self.view];
+        }
+    } else {
+        [MBProgressHUD sy_showTips:@"与服务器连接出错，请稍候再试!" addedToView:self.view];
+    }
 }
 
 - (void)callWillDisconnect {
+    
 }
 
 - (BOOL)tipsWillShow:(RCCallErrorCode)warning {

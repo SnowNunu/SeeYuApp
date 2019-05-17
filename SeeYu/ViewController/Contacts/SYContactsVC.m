@@ -37,7 +37,6 @@
     [[self.viewModel.services.client enqueueRequest:request resultClass:[SYUser class]] subscribeCompleted:^{
         NSLog(@"推送成功");
     }];
-    [self testWebSocket];
 }
 
 #pragma mark - 设置导航栏
@@ -71,16 +70,6 @@
 
 - (void)FSContenViewDidEndDecelerating:(FSPageContentView *)contentView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {
     self.titleView.selectIndex = endIndex;
-}
-
-- (void)testWebSocket {
-    [[SYSocketManager shareManager] sy_open:@"ws://192.168.31.23:8088/ws" connect:^{
-        [[SYSocketManager shareManager] sy_send:@"fuck you!"];
-    } receive:^(id  _Nonnull message, SYSocketReceiveType type) {
-        NSLog(@"%@",message);
-    } failure:^(NSError * _Nonnull error) {
-        NSLog(@"%@",error);
-    }];
 }
 
 @end

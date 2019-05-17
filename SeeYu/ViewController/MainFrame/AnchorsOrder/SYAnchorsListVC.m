@@ -63,7 +63,7 @@ NSString * const anchorsListCell = @"anchorsListCell";
     [_collectionView sy_addHeaderRefresh:^(MJRefreshNormalHeader *header) {
         /// 加载下拉刷新的数据
         @strongify(self);
-        [self tableViewDidTriggerHeaderRefresh];
+        [self collectionViewDidTriggerHeaderRefresh];
     }];
     [_collectionView.mj_header beginRefreshing];
     
@@ -71,7 +71,7 @@ NSString * const anchorsListCell = @"anchorsListCell";
     [_collectionView sy_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
         /// 加载上拉刷新的数据
         @strongify(self);
-        [self tableViewDidTriggerFooterRefresh];
+        [self collectionViewDidTriggerFooterRefresh];
     }];
 }
 
@@ -123,7 +123,7 @@ NSString * const anchorsListCell = @"anchorsListCell";
 }
 
 #pragma mark - 下拉刷新事件
-- (void)tableViewDidTriggerHeaderRefresh {
+- (void)collectionViewDidTriggerHeaderRefresh {
     @weakify(self)
     [[[self.viewModel.requestAnchorsListCommand execute:@1] deliverOnMainThread] subscribeNext:^(id x) {
         @strongify(self)
@@ -140,7 +140,7 @@ NSString * const anchorsListCell = @"anchorsListCell";
 }
 
 #pragma mark - 上拉刷新事件
-- (void)tableViewDidTriggerFooterRefresh {
+- (void)collectionViewDidTriggerFooterRefresh {
     @weakify(self);
     [[[self.viewModel.requestAnchorsListCommand execute:@(self.viewModel.pageNum + 1)] deliverOnMainThread] subscribeNext:^(id x) {
         @strongify(self)

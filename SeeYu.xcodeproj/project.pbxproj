@@ -226,6 +226,8 @@
 		7B359932226455FD00FDC6FE /* SYRealnameVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B359931226455FD00FDC6FE /* SYRealnameVM.m */; };
 		7B359936226456B300FDC6FE /* SYSelfieVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B359935226456B300FDC6FE /* SYSelfieVC.m */; };
 		7B35993A226456EA00FDC6FE /* SYSelfieVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B359939226456EA00FDC6FE /* SYSelfieVM.m */; };
+		7B4B14A1228DA28400590EAA /* SYNearbyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B14A0228DA28400590EAA /* SYNearbyListCell.m */; };
+		7B4B14A4228DB50E00590EAA /* SYSocketResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B14A3228DB50E00590EAA /* SYSocketResponseModel.m */; };
 		7B4BF4602251AE4C00CCD286 /* YLShortVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF45A2251AE4C00CCD286 /* YLShortVideoVC.m */; };
 		7B4BF4612251AE4C00CCD286 /* YLVideoPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF45D2251AE4C00CCD286 /* YLVideoPreView.m */; };
 		7B4BF4622251AE4C00CCD286 /* VideoEditingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF45F2251AE4C00CCD286 /* VideoEditingView.m */; };
@@ -899,6 +901,10 @@
 		7B359935226456B300FDC6FE /* SYSelfieVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSelfieVC.m; sourceTree = "<group>"; };
 		7B359938226456EA00FDC6FE /* SYSelfieVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSelfieVM.h; sourceTree = "<group>"; };
 		7B359939226456EA00FDC6FE /* SYSelfieVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSelfieVM.m; sourceTree = "<group>"; };
+		7B4B149F228DA28400590EAA /* SYNearbyListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYNearbyListCell.h; sourceTree = "<group>"; };
+		7B4B14A0228DA28400590EAA /* SYNearbyListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYNearbyListCell.m; sourceTree = "<group>"; };
+		7B4B14A2228DB50E00590EAA /* SYSocketResponseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSocketResponseModel.h; sourceTree = "<group>"; };
+		7B4B14A3228DB50E00590EAA /* SYSocketResponseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSocketResponseModel.m; sourceTree = "<group>"; };
 		7B4BF45A2251AE4C00CCD286 /* YLShortVideoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLShortVideoVC.m; sourceTree = "<group>"; };
 		7B4BF45B2251AE4C00CCD286 /* VideoEditingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoEditingView.h; sourceTree = "<group>"; };
 		7B4BF45C2251AE4C00CCD286 /* YLVideoPreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLVideoPreView.h; sourceTree = "<group>"; };
@@ -2304,6 +2310,8 @@
 				26BEBC781F8B78B1004D502F /* SYEXTRuntimeExtensions.m */,
 				26BEBC7B1F8B78B1004D502F /* SYReflection.h */,
 				26BEBC7C1F8B78B1004D502F /* SYReflection.m */,
+				7B4B14A2228DB50E00590EAA /* SYSocketResponseModel.h */,
+				7B4B14A3228DB50E00590EAA /* SYSocketResponseModel.m */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -2957,6 +2965,8 @@
 			children = (
 				7B59093B223F9C7300EE5ACF /* SYAnchorsListCell.h */,
 				7B59093C223F9C7300EE5ACF /* SYAnchorsListCell.m */,
+				7B4B149F228DA28400590EAA /* SYNearbyListCell.h */,
+				7B4B14A0228DA28400590EAA /* SYNearbyListCell.m */,
 			);
 			path = AnchorsOrder;
 			sourceTree = "<group>";
@@ -4977,6 +4987,7 @@
 				26FE8E811F9514D100EC8BE0 /* TAPageControl.m in Sources */,
 				26FE8E8A1F9514D100EC8BE0 /* TZImageManager.m in Sources */,
 				7B78811C2248BDC000B25CA3 /* SYForumCommentVM.m in Sources */,
+				7B4B14A1228DA28400590EAA /* SYNearbyListCell.m in Sources */,
 				263D36D91F666438007267C3 /* Foundation+Log.m in Sources */,
 				263D36E81F666438007267C3 /* UIBarButtonItem+SYExtension.m in Sources */,
 				7BB5199D21EC783B000C1CF2 /* FSPageContentView.m in Sources */,
@@ -5092,6 +5103,7 @@
 				7B0228B7223B55020045E25F /* SYFriendGroupModel.m in Sources */,
 				26FA40501FEB5C9D00B4AD2B /* SYComment.m in Sources */,
 				7B76B88F2267233B00153249 /* SYInfoEditVM.m in Sources */,
+				7B4B14A4228DB50E00590EAA /* SYSocketResponseModel.m in Sources */,
 				7B76B88422671D5500153249 /* SYSelfieModel.m in Sources */,
 				7B98B94B227606A60074D0A0 /* WKWebView+ExternalNavigationDelegates.m in Sources */,
 				2624CAE51F98DF9B0083923F /* RACSignal+SYHTTPServiceAdditions.m in Sources */,

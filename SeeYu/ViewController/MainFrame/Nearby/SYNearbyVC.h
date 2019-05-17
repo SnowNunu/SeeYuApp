@@ -8,18 +8,16 @@
 
 #import "SYVC.h"
 #import "SYNearbyVM.h"
-#import "SYTableView.h"
+#import "SYNearbyListCell.h"
 #import <CoreLocation/CoreLocation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYNearbyVC : SYVC <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface SYNearbyVC : SYVC <CLLocationManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
-@property (nonatomic, weak) SYTableView *tableView;
-
-@property (nonatomic, readonly, assign) UIEdgeInsets contentInset;
+@property (nonatomic, weak) UICollectionView *collectionView;
 
 @property (nonatomic, strong) NSString *city;
 

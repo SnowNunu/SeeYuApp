@@ -15,13 +15,15 @@
 
 @end
 
+NSString * const nearybyListCell = @"nearybyListCell";
+
 @implementation SYNearbyVC
 
 @dynamic viewModel;
 
 - (void)dealloc {
-    _tableView.dataSource = nil;
-    _tableView.delegate = nil;
+    _collectionView.dataSource = nil;
+    _collectionView.delegate = nil;
 }
 
 - (instancetype)initWithViewModel:(SYNearbyVM *)viewModel {
@@ -47,7 +49,7 @@
      subscribeNext:^(id x) {
          @strongify(self)
          // 刷新数据
-         [self.tableView reloadData];
+         [self.collectionView reloadData];
      }];
 }
 
@@ -85,7 +87,7 @@
             
             NSLog(@"%@", pl.locality);
             self.city = pl.locality;
-            [self.tableView reloadData];
+            [self.collectionView reloadData];
         }
     }];
 }
@@ -105,201 +107,99 @@
 }
 
 - (void)_setupSubViews {
-    SYTableView *tableView = [[SYTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    _tableView = tableView;
-    [self.view addSubview:tableView];
-    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.left.equalTo(self.view);
-        make.top.equalTo(self.view);
-        make.height.equalTo(self.view);
+    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
+    layout.minimumLineSpacing = 5.f;    // 上下间距
+    layout.minimumInteritemSpacing = 3.f;   // 左右间距
+    layout.itemSize = CGSizeMake((SY_SCREEN_WIDTH - 15.f) / 2, (SY_SCREEN_WIDTH - 15.f) / 2);
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;   // 垂直滚动
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
+    collectionView.backgroundColor = self.view.backgroundColor;
+    [collectionView registerClass:[SYNearbyListCell class] forCellWithReuseIdentifier:nearybyListCell];
+    _collectionView = collectionView;
+    [self.view addSubview:collectionView];
+    [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
     }];
-    
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     
     // 添加下拉刷新控件
     @weakify(self);
-    [self.tableView sy_addHeaderRefresh:^(MJRefreshNormalHeader *header) {
+    [_collectionView sy_addHeaderRefresh:^(MJRefreshNormalHeader *header) {
         /// 加载下拉刷新的数据
         @strongify(self);
-        [self tableViewDidTriggerHeaderRefresh];
+        [self collectionViewDidTriggerHeaderRefresh];
     }];
-    [self.tableView.mj_header beginRefreshing];
+    [_collectionView.mj_header beginRefreshing];
     
     /// 上拉加载
-    [self.tableView sy_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
+    [_collectionView sy_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
         /// 加载上拉刷新的数据
         @strongify(self);
-        [self tableViewDidTriggerFooterRefresh];
+        [self collectionViewDidTriggerFooterRefresh];
     }];
-    if (@available(iOS 11.0, *)) {
-        /// CoderMikeHe: 适配 iPhone X + iOS 11，
-        SYAdjustsScrollViewInsets_Never(tableView);
-        /// iOS 11上发生tableView顶部有留白，原因是代码中只实现了heightForHeaderInSection方法，而没有实现viewForHeaderInSection方法。那样写是不规范的，只实现高度，而没有实现view，但代码这样写在iOS 11之前是没有问题的，iOS 11之后应该是由于开启了估算行高机制引起了bug。
-        tableView.estimatedRowHeight = 0;
-        tableView.estimatedSectionHeaderHeight = 0;
-        tableView.estimatedSectionFooterHeight = 0;
-    }
-}
-
-- (UIEdgeInsets)contentInset {
-    return UIEdgeInsetsMake(SY_APPLICATION_TOP_BAR_HEIGHT, 0, 0, 0);
 }
 
 #pragma mark - 下拉刷新事件
-- (void)tableViewDidTriggerHeaderRefresh {
+- (void)collectionViewDidTriggerHeaderRefresh {
     @weakify(self)
-    [[[self.viewModel.requestNearbyFriendsCommand
-       execute:@1]
-      deliverOnMainThread]
-     subscribeNext:^(id x) {
-         @strongify(self)
-         self.viewModel.pageNum = 1;
-         /// 重置没有更多的状态
-         [self.tableView.mj_footer resetNoMoreData];
-     } error:^(NSError *error) {
-         @strongify(self)
-         /// 已经在bindViewModel中添加了对viewModel.dataSource的变化的监听来刷新数据,所以reload = NO即可
-         [self.tableView.mj_header endRefreshing];
-     } completed:^{
-         @strongify(self)
-         /// 已经在bindViewModel中添加了对viewModel.dataSource的变化的监听来刷新数据,所以只要结束刷新即可
-         [self.tableView.mj_header endRefreshing];
-         /// 请求完成
-         [self _requestDataCompleted];
-     }];
+    [[[self.viewModel.requestNearbyFriendsCommand execute:@1] deliverOnMainThread] subscribeNext:^(id x) {
+        @strongify(self)
+        self.viewModel.pageNum = 1;
+        [self.collectionView.mj_footer resetNoMoreData];
+    } error:^(NSError *error) {
+        @strongify(self)
+        [self.collectionView.mj_header endRefreshing];
+    } completed:^{
+        @strongify(self)
+        [self.collectionView.mj_header endRefreshing];
+        [self.collectionView.mj_footer resetNoMoreData];
+    }];
 }
+
 #pragma mark - 上拉刷新事件
-- (void)tableViewDidTriggerFooterRefresh {
+- (void)collectionViewDidTriggerFooterRefresh {
     @weakify(self);
-    [[[self.viewModel.requestNearbyFriendsCommand
-       execute:@(self.viewModel.pageNum + 1)]
-      deliverOnMainThread]
-     subscribeNext:^(id x) {
-         @strongify(self)
-         self.viewModel.pageNum += 1;
-     } error:^(NSError *error) {
-         @strongify(self);
-         [self.tableView.mj_footer endRefreshing];
-     } completed:^{
-         @strongify(self)
-         [self.tableView.mj_footer endRefreshing];
-         /// 请求完成
-         [self _requestDataCompleted];
-     }];
+    [[[self.viewModel.requestNearbyFriendsCommand execute:@(self.viewModel.pageNum + 1)] deliverOnMainThread] subscribeNext:^(id x) {
+        @strongify(self)
+        self.viewModel.pageNum += 1;
+    } error:^(NSError *error) {
+        @strongify(self);
+        [self.collectionView.mj_footer endRefreshing];
+    } completed:^{
+        @strongify(self)
+        [self.collectionView.mj_footer endRefreshing];
+        [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+    }];
 }
 
-#pragma mark - 辅助方法
-- (void)_requestDataCompleted {
-    NSUInteger count = self.viewModel.dataSource.count;
-    /// CoderMikeHe Fixed: 这里必须要等到，底部控件结束刷新后，再来设置无更多数据，否则被叠加无效
-    if (count%self.viewModel.pageSize) [self.tableView.mj_footer endRefreshingWithNoMoreData];
-}
-
-#pragma mark - UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#pragma mark UICollectionViewDataSource
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.viewModel.dataSource.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
-    }
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    SYNearbyListCell * cell = (SYNearbyListCell *)[collectionView dequeueReusableCellWithReuseIdentifier:nearybyListCell forIndexPath:indexPath];
     SYUser *user = self.viewModel.dataSource[indexPath.row];
-    // 头像
-    UIImageView *headImageView = [UIImageView new];
-    [headImageView yy_setImageWithURL:[NSURL URLWithString:user.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
-    headImageView.layer.cornerRadius = 35.f;
-    headImageView.layer.borderColor = SYColorFromHexString(@"#F1F1F1").CGColor;
-    headImageView.layer.borderWidth = 1.f;
-    headImageView.layer.masksToBounds = YES;
-    [cell addSubview:headImageView];
-    
-    // 昵称
-    UILabel *aliasLabel = [UILabel new];
-    aliasLabel.font = SYRegularFont(17);
-    aliasLabel.text = user.userName;
-    [cell addSubview:aliasLabel];
-    
-    // vip状态
-    UIImageView *vipImageView = [UIImageView new];
-    if (user.userVipStatus == 1) {
-        // 再判断是否已过期
-        NSTimeInterval seconds = [user.userVipExpiresAt timeIntervalSinceDate:[NSDate new]];//间隔的秒数
-        if (seconds > 0) {
-            vipImageView.hidden = NO;
-        } else {
-            vipImageView.hidden = YES;
-        }
-    } else {
-        vipImageView.hidden = YES;
+    if (user.userGender != nil && user.userGender.length > 0) {
+//        cell.contentView.backgroundColor = 
     }
-    vipImageView.image = SYImageNamed(@"VIP");
-    [cell addSubview:vipImageView];
-    
-    // 个性签名
-    UILabel *signatureLabel = [UILabel new];
-    signatureLabel.font = SYRegularFont(15);
-    signatureLabel.text = user.userSignature;
-    [cell addSubview:signatureLabel];
-    
-    UILabel *detailLabel = [UILabel new];
-    detailLabel.font = SYRegularFont(15);
-    detailLabel.textColor = SYColor(99, 99, 99);
-    NSString *detailLabelText = [NSString stringWithFormat:@"%@岁 · %@ %.1f公里外", user.userAge,_city,user.userDistance];
-    detailLabel.text = detailLabelText;
-    [cell addSubview:detailLabel];
-    
-    // 底部下划线
-    UIImageView *line = [UIImageView new];
-    line.backgroundColor = SYColor(99, 99, 99);
-    [cell addSubview:line];
-    [headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.equalTo(cell).offset(15);
-        make.width.height.offset(70);
-    }];
-    [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(headImageView.mas_right).offset(15);
-        make.height.offset(17);
-        make.width.offset(120);
-        make.top.equalTo(headImageView);
-    }];
-    [vipImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.offset(40);
-        make.height.offset(20);
-        make.centerY.equalTo(aliasLabel);
-        make.left.equalTo(aliasLabel.mas_right);
-    }];
-    [signatureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(aliasLabel);
-        make.height.offset(14);
-        make.top.equalTo(aliasLabel.mas_bottom).offset(15);
-        make.right.equalTo(cell.mas_right).offset(-15);
-    }];
-    [detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.width.equalTo(signatureLabel);
-        make.top.equalTo(signatureLabel.mas_bottom).offset(12.5f);
-        make.height.offset(12.5f);
-    }];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.width.equalTo(cell);
-        make.height.offset(1);
-    }];
+    if (user.userName != nil && user.userName.length > 0) {
+        cell.aliasLabel.text = user.userName;
+    }
+    if (user.userSignature != nil && user.userSignature.length > 0) {
+        cell.signatureLabel.text = user.userSignature;
+    }
+
+//    [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:model.showPhoto] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100.f;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     SYUser *user = self.viewModel.dataSource[indexPath.row];
     [self.viewModel.enterFriendDetailCommand execute:user.userId];
 }
