@@ -46,7 +46,7 @@
             SYGiftVM *giftVM = [[SYGiftVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
             giftVM.friendId = self.targetId;
             SYGiftVC *giftVC = [[SYGiftVC alloc] initWithViewModel:giftVM];
-            SYNavigationController *navigationController = [[SYNavigationController alloc]initWithRootViewController:giftVC];
+            SYNavigationController *navigationController = [[SYNavigationController alloc] initWithRootViewController:giftVC];
             CATransition *animation = [CATransition animation];
             [animation setDuration:0.3];
             animation.type = kCATransitionFade;
@@ -89,16 +89,16 @@
                 if (recognizer.view.center.y <= SY_SCREEN_HEIGHT/2.0) {
                     //左上
                     if (recognizer.view.center.x  >= recognizer.view.center.y) {
-                        stopPoint = CGPointMake(recognizer.view.center.x, _sendPresentBtn.width/2.0);
+                        stopPoint = CGPointMake(recognizer.view.center.x, _sendPresentBtn.size.width/2.0);
                     } else {
-                        stopPoint = CGPointMake(_sendPresentBtn.width/2.0, recognizer.view.center.y);
+                        stopPoint = CGPointMake(_sendPresentBtn.size.width/2.0, recognizer.view.center.y);
                     }
                 } else {
                     //左下
                     if (recognizer.view.center.x  >= SY_SCREEN_HEIGHT - recognizer.view.center.y) {
-                        stopPoint = CGPointMake(recognizer.view.center.x, SY_SCREEN_HEIGHT - _sendPresentBtn.width/2.0);
+                        stopPoint = CGPointMake(recognizer.view.center.x, SY_SCREEN_HEIGHT - _sendPresentBtn.size.width/2.0);
                     } else {
-                        stopPoint = CGPointMake(_sendPresentBtn.width/2.0, recognizer.view.center.y);
+                        stopPoint = CGPointMake(_sendPresentBtn.size.width/2.0, recognizer.view.center.y);
                         //                        stopPoint = CGPointMake(recognizer.view.center.x, SCREEN_HEIGHT - self.spButton.width/2.0);
                     }
                 }
@@ -106,32 +106,32 @@
                 if (recognizer.view.center.y <= SY_SCREEN_HEIGHT/2.0) {
                     //右上
                     if (SY_SCREEN_WIDTH - recognizer.view.center.x  >= recognizer.view.center.y) {
-                        stopPoint = CGPointMake(recognizer.view.center.x, _sendPresentBtn.width/2.0);
+                        stopPoint = CGPointMake(recognizer.view.center.x, _sendPresentBtn.size.width/2.0);
                     } else {
-                        stopPoint = CGPointMake(SY_SCREEN_WIDTH - _sendPresentBtn.width/2.0, recognizer.view.center.y);
+                        stopPoint = CGPointMake(SY_SCREEN_WIDTH - _sendPresentBtn.size.width/2.0, recognizer.view.center.y);
                     }
                 } else {
                     //右下
                     if (SY_SCREEN_WIDTH - recognizer.view.center.x  >= SY_SCREEN_HEIGHT - recognizer.view.center.y) {
-                        stopPoint = CGPointMake(recognizer.view.center.x, SY_SCREEN_HEIGHT - _sendPresentBtn.width/2.0);
+                        stopPoint = CGPointMake(recognizer.view.center.x, SY_SCREEN_HEIGHT - _sendPresentBtn.size.width/2.0);
                     } else {
-                        stopPoint = CGPointMake(SY_SCREEN_WIDTH - _sendPresentBtn.width/2.0,recognizer.view.center.y);
+                        stopPoint = CGPointMake(SY_SCREEN_WIDTH - _sendPresentBtn.size.width/2.0,recognizer.view.center.y);
                     }
                 }
             }
             //如果按钮超出屏幕边缘
-            if (stopPoint.y + _sendPresentBtn.width+40>= SY_SCREEN_HEIGHT) {
-                stopPoint = CGPointMake(stopPoint.x, SY_SCREEN_HEIGHT - _sendPresentBtn.width/2.0-49);
+            if (stopPoint.y + _sendPresentBtn.size.width+40>= SY_SCREEN_HEIGHT) {
+                stopPoint = CGPointMake(stopPoint.x, SY_SCREEN_HEIGHT - _sendPresentBtn.size.width/2.0-49);
                 NSLog(@"超出屏幕下方了！！"); //这里注意iphoneX的适配。。X的SCREEN高度算法有变化。
             }
-            if (stopPoint.x - _sendPresentBtn.width/2.0 <= 0) {
-                stopPoint = CGPointMake(_sendPresentBtn.width/2.0, stopPoint.y);
+            if (stopPoint.x - _sendPresentBtn.size.width/2.0 <= 0) {
+                stopPoint = CGPointMake(_sendPresentBtn.size.width/2.0, stopPoint.y);
             }
-            if (stopPoint.x + _sendPresentBtn.width/2.0 >= SY_SCREEN_WIDTH) {
-                stopPoint = CGPointMake(SY_SCREEN_WIDTH - _sendPresentBtn.width/2.0, stopPoint.y);
+            if (stopPoint.x + _sendPresentBtn.size.width/2.0 >= SY_SCREEN_WIDTH) {
+                stopPoint = CGPointMake(SY_SCREEN_WIDTH - _sendPresentBtn.size.width/2.0, stopPoint.y);
             }
-            if (stopPoint.y - _sendPresentBtn.width/2.0 <= 0) {
-                stopPoint = CGPointMake(stopPoint.x, _sendPresentBtn.width/2.0);
+            if (stopPoint.y - _sendPresentBtn.size.width/2.0 <= 0) {
+                stopPoint = CGPointMake(stopPoint.x, _sendPresentBtn.size.width/2.0);
             }
             [UIView animateWithDuration:0.5 animations:^{
                 recognizer.view.center = stopPoint;

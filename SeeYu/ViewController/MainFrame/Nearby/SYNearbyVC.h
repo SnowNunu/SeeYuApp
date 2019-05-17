@@ -10,6 +10,7 @@
 #import "SYNearbyVM.h"
 #import "SYNearbyListCell.h"
 #import <CoreLocation/CoreLocation.h>
+#import <SDWebImage/SDWebImage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -58,6 +58,12 @@
     [self.requestPayInfoCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];
+    self.enterPayInfoViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSDictionary *params) {
+        NSString *payUrl = [NSString stringWithFormat:@"http://seeyu.zhyst.cn/seeyu/recharge/pay.html?goodtype=%@&goods=%@&goodValue=%@&userId=%@&goodsId=%@",params[@"goodtype"],params[@"goods"],params[@"goodValue"],params[@"userId"],params[@"goodsId"]];
+        SYTopUpVM *vm = [[SYTopUpVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:payUrl}];
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
+    }];
 }
 
 @end

@@ -12,15 +12,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYNearbyListCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIImageView *headImageView;
+@property (nonatomic, weak) UIImageView *defaultImageView;
 
-@property (nonatomic, strong) UILabel *distanceLabel;
+@property (nonatomic, weak) UIImageView *headImageView;
 
-@property (nonatomic, strong) UIView *infoBgView;
+@property (nonatomic, weak) UIImageView *vipImageView;
 
-@property (nonatomic, strong) UILabel *aliasLabel;
+@property (nonatomic, weak) UILabel *distanceLabel;
 
-@property (nonatomic, strong) UILabel *signatureLabel;
+@property (nonatomic, weak) UIView *infoBgView;
+
+@property (nonatomic, weak) UILabel *aliasLabel;
+
+@property (nonatomic, weak) UILabel *signatureLabel;
 
 @end
 

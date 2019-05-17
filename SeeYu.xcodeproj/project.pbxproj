@@ -228,6 +228,8 @@
 		7B35993A226456EA00FDC6FE /* SYSelfieVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B359939226456EA00FDC6FE /* SYSelfieVM.m */; };
 		7B4B14A1228DA28400590EAA /* SYNearbyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B14A0228DA28400590EAA /* SYNearbyListCell.m */; };
 		7B4B14A4228DB50E00590EAA /* SYSocketResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B14A3228DB50E00590EAA /* SYSocketResponseModel.m */; };
+		7B4B14A8228E9BAF00590EAA /* SYTopUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B14A7228E9BAF00590EAA /* SYTopUpVC.m */; };
+		7B4B14AC228E9CC400590EAA /* SYTopUpVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B14AB228E9CC400590EAA /* SYTopUpVM.m */; };
 		7B4BF4602251AE4C00CCD286 /* YLShortVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF45A2251AE4C00CCD286 /* YLShortVideoVC.m */; };
 		7B4BF4612251AE4C00CCD286 /* YLVideoPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF45D2251AE4C00CCD286 /* YLVideoPreView.m */; };
 		7B4BF4622251AE4C00CCD286 /* VideoEditingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF45F2251AE4C00CCD286 /* VideoEditingView.m */; };
@@ -905,6 +907,10 @@
 		7B4B14A0228DA28400590EAA /* SYNearbyListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYNearbyListCell.m; sourceTree = "<group>"; };
 		7B4B14A2228DB50E00590EAA /* SYSocketResponseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSocketResponseModel.h; sourceTree = "<group>"; };
 		7B4B14A3228DB50E00590EAA /* SYSocketResponseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSocketResponseModel.m; sourceTree = "<group>"; };
+		7B4B14A6228E9BAF00590EAA /* SYTopUpVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTopUpVC.h; sourceTree = "<group>"; };
+		7B4B14A7228E9BAF00590EAA /* SYTopUpVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTopUpVC.m; sourceTree = "<group>"; };
+		7B4B14AA228E9CC400590EAA /* SYTopUpVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYTopUpVM.h; sourceTree = "<group>"; };
+		7B4B14AB228E9CC400590EAA /* SYTopUpVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTopUpVM.m; sourceTree = "<group>"; };
 		7B4BF45A2251AE4C00CCD286 /* YLShortVideoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLShortVideoVC.m; sourceTree = "<group>"; };
 		7B4BF45B2251AE4C00CCD286 /* VideoEditingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoEditingView.h; sourceTree = "<group>"; };
 		7B4BF45C2251AE4C00CCD286 /* YLVideoPreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLVideoPreView.h; sourceTree = "<group>"; };
@@ -2833,6 +2839,24 @@
 			path = Selfie;
 			sourceTree = "<group>";
 		};
+		7B4B14A5228E9B6500590EAA /* TopUp */ = {
+			isa = PBXGroup;
+			children = (
+				7B4B14A6228E9BAF00590EAA /* SYTopUpVC.h */,
+				7B4B14A7228E9BAF00590EAA /* SYTopUpVC.m */,
+			);
+			path = TopUp;
+			sourceTree = "<group>";
+		};
+		7B4B14A9228E9CB200590EAA /* TopUp */ = {
+			isa = PBXGroup;
+			children = (
+				7B4B14AA228E9CC400590EAA /* SYTopUpVM.h */,
+				7B4B14AB228E9CC400590EAA /* SYTopUpVM.m */,
+			);
+			path = TopUp;
+			sourceTree = "<group>";
+		};
 		7B4BF4592251AE0E00CCD286 /* MHVideoShort */ = {
 			isa = PBXGroup;
 			children = (
@@ -3916,7 +3940,6 @@
 				7B35991D2260EFF100FDC6FE /* Authentication */,
 				7BE971F32260345700FF6A25 /* Recharge */,
 				7BE971E1225F9EB000FF6A25 /* Present */,
-				7BE971D8225F39DF00FF6A25 /* Diamonds */,
 				7BE971D0225F27E700FF6A25 /* Setting */,
 				7BE971C9225ECB2C00FF6A25 /* SYProfileVC.h */,
 				7BE971CA225ECB2C00FF6A25 /* SYProfileVC.m */,
@@ -3971,13 +3994,6 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		7BE971D8225F39DF00FF6A25 /* Diamonds */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Diamonds;
-			sourceTree = "<group>";
-		};
 		7BE971E0225F9EA500FF6A25 /* Present */ = {
 			isa = PBXGroup;
 			children = (
@@ -4003,6 +4019,7 @@
 		7BE971F22260344100FF6A25 /* Recharge */ = {
 			isa = PBXGroup;
 			children = (
+				7B4B14A9228E9CB200590EAA /* TopUp */,
 				7BCDF393228969BF00D52640 /* Vip */,
 				7BCDF392228969B800D52640 /* Diamonds */,
 				7BE971F42260347100FF6A25 /* SYRechargeVM.h */,
@@ -4014,6 +4031,7 @@
 		7BE971F32260345700FF6A25 /* Recharge */ = {
 			isa = PBXGroup;
 			children = (
+				7B4B14A5228E9B6500590EAA /* TopUp */,
 				7BCDF3902289690A00D52640 /* Vip */,
 				7BCDF3912289693900D52640 /* Diamonds */,
 				7BE971F7226034EB00FF6A25 /* SYRechargeVC.h */,
@@ -5077,6 +5095,7 @@
 				7BE971DF225F435F00FF6A25 /* SYDiamondsVM.m in Sources */,
 				7B76B89E22672A3600153249 /* SYCoverInfoEditVM.m in Sources */,
 				7B3599292260FAF500FDC6FE /* SYMobileBindingVM.m in Sources */,
+				7B4B14A8228E9BAF00590EAA /* SYTopUpVC.m in Sources */,
 				7B76B8952267294400153249 /* SYCoverInfoEditVC.m in Sources */,
 				2605C5B81F66249F00B1F66E /* SYHomePageVM.m in Sources */,
 				26CCB9D120244F690090DBC5 /* SYMomentVideo.m in Sources */,
@@ -5200,6 +5219,7 @@
 				7B7602D822745F72004C9936 /* SYGiftPackageVC.m in Sources */,
 				26C7BEEE1F8CCA2C00525126 /* SYHTTPService.m in Sources */,
 				7B98B8FB2275DA380074D0A0 /* RCCallBaseViewController.m in Sources */,
+				7B4B14AC228E9CC400590EAA /* SYTopUpVM.m in Sources */,
 				261597501FEA5DD300C6FD80 /* SYMomentOperationMoreView.m in Sources */,
 				7B9A1BE02243B21F00B7BFC2 /* NSString+Hash.m in Sources */,
 				261597031FEA527400C6FD80 /* SYMoments.m in Sources */,

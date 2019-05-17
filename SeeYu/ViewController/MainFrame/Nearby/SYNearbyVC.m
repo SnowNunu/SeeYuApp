@@ -13,6 +13,8 @@
 
 @property (nonatomic, readwrite, strong) SYNearbyVM *viewModel;
 
+@property (nonatomic, strong) NSMutableDictionary *cellDic;
+
 @end
 
 NSString * const nearybyListCell = @"nearybyListCell";
@@ -60,6 +62,7 @@ NSString * const nearybyListCell = @"nearybyListCell";
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;   //最佳精度
     [self startLocating];   // 开启定位
+    _cellDic = [NSMutableDictionary new];
     [self _setupSubViews];
 }
 
@@ -110,6 +113,7 @@ NSString * const nearybyListCell = @"nearybyListCell";
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     layout.minimumLineSpacing = 5.f;    // 上下间距
     layout.minimumInteritemSpacing = 3.f;   // 左右间距
+    layout.sectionInset = UIEdgeInsetsMake(5, 5, 0, 5);
     layout.itemSize = CGSizeMake((SY_SCREEN_WIDTH - 15.f) / 2, (SY_SCREEN_WIDTH - 15.f) / 2);
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;   // 垂直滚动
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
@@ -183,10 +187,20 @@ NSString * const nearybyListCell = @"nearybyListCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    SYNearbyListCell * cell = (SYNearbyListCell *)[collectionView dequeueReusableCellWithReuseIdentifier:nearybyListCell forIndexPath:indexPath];
+    // 解决复用导致图像重叠的情况
+    NSString *identifier = [_cellDic objectForKey:[NSString stringWithFormat:@"%@", indexPath]];
+    if (identifier == nil) {
+        identifier = [NSString stringWithFormat:@"nearybyListCell-%ld",(long)indexPath.row];
+        [_cellDic setValue:identifier forKey:[NSString stringWithFormat:@"%@", indexPath]];
+        [self.collectionView registerClass:[SYNearbyListCell class]  forCellWithReuseIdentifier:identifier];
+    }
+    SYNearbyListCell * cell = (SYNearbyListCell *)[collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    cell.layer.cornerRadius = 3.5f;
+    cell.layer.masksToBounds = YES;
     SYUser *user = self.viewModel.dataSource[indexPath.row];
     if (user.userGender != nil && user.userGender.length > 0) {
-//        cell.contentView.backgroundColor = 
+        cell.contentView.backgroundColor = [user.userGender isEqualToString:@"男"] ? SYColorFromHexString(@"#BCE3FE") : SYColorFromHexString(@"#FAD1FF");
+        cell.defaultImageView.image = [user.userGender isEqualToString:@"男"] ? SYImageNamed(@"boy_default_bg") : SYImageNamed(@"girl_default_bg");
     }
     if (user.userName != nil && user.userName.length > 0) {
         cell.aliasLabel.text = user.userName;
@@ -194,14 +208,45 @@ NSString * const nearybyListCell = @"nearybyListCell";
     if (user.userSignature != nil && user.userSignature.length > 0) {
         cell.signatureLabel.text = user.userSignature;
     }
-
-//    [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:model.showPhoto] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
+    if (user.userVipStatus == 1) {
+        if (user.userVipExpiresAt != nil) {
+            NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
+            if (result == NSOrderedDescending) {
+                // 会员未过期
+                cell.vipImageView.hidden = NO;
+            } else {
+                // 会员已过期的情况
+                cell.vipImageView.hidden = YES;
+            }
+        }
+    } else {
+        cell.vipImageView.hidden = YES;
+    }
+    if (user.userHeadImg != nil && user.userHeadImg.length > 0) {
+        [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:user.userHeadImg] placeholder:[UIImage imageWithColor:[UIColor clearColor]] options:SYWebImageOptionAutomatic completion:NULL];
+    }
+    YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+    if ([cache containsObjectForKey:[NSString stringWithFormat:@"distance_%@",user.userId]]) {
+        // 有缓存数据优先读取缓存数据
+        id value = [cache objectForKey:[NSString stringWithFormat:@"distance_%@",user.userId]];
+        NSString *distance = (NSString *) value;
+        cell.distanceLabel.text = [NSString stringWithFormat:@"距离%@km",distance];
+    } else {
+        NSString *distance = [self getRandomDistance];
+        cell.distanceLabel.text = [NSString stringWithFormat:@"距离%@km",distance];
+        [cache setObject:distance forKey:[NSString stringWithFormat:@"distance_%@",user.userId]];
+    }
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     SYUser *user = self.viewModel.dataSource[indexPath.row];
     [self.viewModel.enterFriendDetailCommand execute:user.userId];
+}
+
+- (NSString *)getRandomDistance {
+    NSString *distance = [NSString stringWithFormat:@"%d.%d%d",arc4random() % 10,arc4random() % 10,arc4random() % 10];
+    return distance;
 }
 
 @end

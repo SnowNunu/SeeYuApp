@@ -10,6 +10,7 @@
 #import "SYGoodsModel.h"
 #import "SYPayInfoModel.h"
 #import "SYWebVM.h"
+#import "SYTopUpVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) RACCommand *requestDiamondsPriceInfoCommand;
 
 @property (nonatomic, strong) RACCommand *requestPayInfoCommand;
+
+@property (nonatomic, strong) RACCommand *enterPayInfoViewCommand;
 
 @end
 

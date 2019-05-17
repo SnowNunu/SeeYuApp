@@ -20,16 +20,30 @@
 }
 
 - (void)_setupSubviews {
+    UIImageView *defaultImageView = [UIImageView new];
+    _defaultImageView = defaultImageView;
+    [self.contentView addSubview:defaultImageView];
+    
     UIImageView *headImageView = [UIImageView new];
-    headImageView.layer.cornerRadius = 4.f;
-    headImageView.layer.masksToBounds = YES;
     _headImageView = headImageView;
-    [self addSubview:headImageView];
+    [self.contentView addSubview:headImageView];
+    
+    UIImageView *vipImageView = [UIImageView new];
+    vipImageView.image = SYImageNamed(@"vip_logo");
+    _vipImageView = vipImageView;
+    [self.contentView addSubview:vipImageView];
+    
+    UILabel *distanceLabel = [UILabel new];
+    distanceLabel.textColor = SYColor(255, 255, 255);
+    distanceLabel.textAlignment = NSTextAlignmentRight;
+    distanceLabel.font = SYFont(9, YES);
+    _distanceLabel = distanceLabel;
+    [self.contentView addSubview:distanceLabel];
     
     UIView *infoBgView = [UIView new];
     infoBgView.backgroundColor = SYColorAlpha(83, 16, 114, 0.3);
     _infoBgView = infoBgView;
-    [self addSubview:infoBgView];
+    [self.contentView addSubview:infoBgView];
     
     UILabel *aliasLabel = [UILabel new];
     aliasLabel.textColor = SYColor(255, 255, 255);
@@ -47,8 +61,24 @@
 }
 
 - (void)_makeSubViewsConstraints {
+    [_defaultImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(18);
+        make.bottom.equalTo(self.infoBgView.mas_top).offset(-18);
+        make.centerX.equalTo(self);
+        make.width.equalTo(self.defaultImageView.mas_height).multipliedBy(1.175);
+    }];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
+    }];
+    [_vipImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.equalTo(self).offset(5);
+        make.height.offset(12);
+        make.width.offset(25);
+    }];
+    [_distanceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(5);
+        make.right.equalTo(self).offset(-5);
+        make.height.offset(10);
     }];
     [_infoBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.width.equalTo(self);
