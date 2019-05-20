@@ -17,12 +17,12 @@ import shutil
 appFileFullPath = '/Users/Mandora/Library/Developer/Xcode/DerivedData/SeeYu-cbefmrqtsodfykcljsqzeeiphizv/Build/Products/Debug-iphoneos/SeeYu.app'
 PayLoadPath = '/Users/Mandora/Desktop/company/SeeYuApp/Payload'
 packBagPath = '/Users/Mandora/Desktop/company/SeeYuApp/ProgramBag'
-openUrlPath = 'https://pgyer.com/TgyH'
+openUrlPath = 'https://pgyer.com/psb1'
 
 
 #上传蒲公英
 USER_KEY = "142fd86ec8cea3527e3be6c7ebf745ae"
-API_KEY = "c7f0af23f34c0398e91df5ef90a6633d"
+API_KEY = "8040d22dff49f93b78f96ed3031b4023"
 
 #上传蒲公英
 def uploadIPA(IPAPath):

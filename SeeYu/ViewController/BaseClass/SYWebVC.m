@@ -9,6 +9,7 @@
 #import "SYWebVC.h"
 #import "FBKVOController+SYExtension.h"
 #import "UIScrollView+SYRefresh.h"
+#import "SYAlipayModel.h"
 
 /// KVO 监听的属性
 /// 加载情况
@@ -19,12 +20,16 @@ static NSString * const SYWebViewKVOTitle = @"title";
 static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
 
 @interface SYWebVC ()
+
 /// webView
 @property (nonatomic, weak, readwrite) WKWebView *webView;
+
 /// 进度条
 @property (nonatomic, readwrite, strong) UIProgressView *progressView;
+
 /// 返回按钮
 @property (nonatomic, readwrite, strong) UIBarButtonItem *backItem;
+
 /// 关闭按钮 （点击关闭按钮  退出WebView）
 @property (nonatomic, readwrite, strong) UIBarButtonItem *closeItem;
 
@@ -51,59 +56,18 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController.navigationBar addSubview:self.progressView];
-    /// 加载请求数据
-    [self.webView loadRequest:self.viewModel.request];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.progressView removeFromSuperview];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    /// 添加断言，request错误 应用直接crash
-    NSParameterAssert(self.viewModel.request);
-    
-    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationItem.leftBarButtonItem = self.backItem;
     
-    
-    ///CoderMikeHe FIXED: 切记 lightempty_ios 是前端跟H5商量的结果，请勿修改。
-    NSString *userAgent = @"wechat_ios";
-    
-    if (!(SYIOSVersion>=9.0)) [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"userAgent":userAgent}];
-    
-    /// 注册JS
-    WKUserContentController *userContentController = [[WKUserContentController alloc] init];
-    /// 这里可以注册JS的处理 涉及公司私有方法 这里笔者不作处理
-
-    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-    // CoderMikeHe Fixed : 自适应屏幕宽度js
-    NSString *jsString = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
-    WKUserScript *userScript = [[WKUserScript alloc] initWithSource:jsString injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
-    // 添加自适应屏幕宽度js调用的方法
-    [userContentController addUserScript:userScript];
-    /// 赋值userContentController
-    configuration.userContentController = userContentController;
-    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectZero];
     webView.navigationDelegate = self;
-    webView.UIDelegate = self;
-    
-    if ((SYIOSVersion >= 9.0)) webView.customUserAgent = userAgent;
-    self.webView = webView;
+    _webView = webView;
     [self.view addSubview:webView];
+    
     [webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
-    }];
-    
-    /// oc调用js
-    [webView evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {
-        NSLog(@"navigator.userAgent.result is ++++ %@", result);
     }];
     
     /// 监听数据
@@ -140,16 +104,26 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
         }];
         [self.webView.scrollView.mj_header beginRefreshing];
     }
-    self.webView.scrollView.contentInset = self.contentInset;
-    
     /// CoderMikeHe: 适配 iPhone X + iOS 11，去掉安全区域
     if (@available(iOS 11.0, *)) {
         SYAdjustsScrollViewInsets_Never(webView.scrollView);
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar addSubview:self.progressView];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.viewModel.requestUrl]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.progressView removeFromSuperview];
+}
+
 #pragma mark - 事件处理
-- (void)_backItemDidClicked { /// 返回按钮事件处理
+- (void)_backItemDidClicked {
+    /// 返回按钮事件处理
     /// 可以返回到上一个网页，就返回到上一个网页
     if (self.webView.canGoBack) {
         [self.webView goBack];
@@ -170,19 +144,6 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
     } else {
         [self.viewModel.services popViewModelAnimated:YES];
     }
-}
-
-- (UIEdgeInsets)contentInset{
-    return UIEdgeInsetsMake(0, 0, 0, 0);
-}
-
-
-
-
-#pragma mark - WKScriptMessageHandler
-- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    /// js call OC function
-    
 }
 
 #pragma mark - WKNavigationDelegate
@@ -213,96 +174,30 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
 
 // 在发送请求之前，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    
-//    NSURLRequest *request        = navigationAction.request;
-//    NSString     *scheme         = [request.URL scheme];
-    
-    static NSString *endPayRedirectURL = nil;
-    NSString *requestUrl = navigationAction.request.URL.absoluteString;
-//    https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx10165830910861b05d2a1ae31485662244&package=3537174028
-    
-    // Wechat Pay, Note : modify redirect_url to resolve we couldn't return our app from wechat client.
-//    if ([requestUrl hasPrefix:@"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb"] && ![requestUrl hasSuffix:@"redirect_url=seeyu.zhyst.cn://"]) {
-//        decisionHandler(WKNavigationActionPolicyCancel);
-
-        // 1. If the url contain "redirect_url" : We need to remember it to use our scheme replace it.
-        // 2. If the url not contain "redirect_url" , We should add it so that we will could jump to our app.
-        //  Note : 2. if the redirect_url is not last string, you should use correct strategy, because the redirect_url's value may contain some "&" special character so that my cut method may be incorrect.
-//        NSString *redirectUrl = nil;
-//        if ([requestUrl containsString:@"redirect_url="]) {
-//            NSRange redirectRange = [requestUrl rangeOfString:@"redirect_url"];
-//            endPayRedirectURL =  [absoluteString substringFromIndex:redirectRange.location+redirectRange.length+1];
-//            redirectUrl = [[absoluteString substringToIndex:redirectRange.location] stringByAppendingString:[NSString stringWithFormat:@"redirect_url=xdx.%@://",CompanyFirstDomainByWeChatRegister]];
-//        } else {
-//            redirectUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"&redirect_url=seeyu.zhyst.cn://"]];
-//        }
-//
-//        NSMutableURLRequest *newRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:redirectUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-//        newRequest.allHTTPHeaderFields = navigationAction.request.allHTTPHeaderFields;
-//        newRequest.URL = [NSURL URLWithString:redirectUrl];
-//        [webView loadRequest:newRequest];
-//        return;
-//    }
-    
-    // Judge is whether to jump to other app.
-    
-//    if (![scheme isEqualToString:@"https"] && ![scheme isEqualToString:@"http"]) {
-//        decisionHandler(WKNavigationActionPolicyCancel);
-//        if ([scheme isEqualToString:@"weixin"]) {
-//            // The var endPayRedirectURL was our saved origin url's redirect address. We need to load it when we return from wechat client.
-//            if (endPayRedirectURL) {
-//                [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:endPayRedirectURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:XDX_URL_TIMEOUT]];
-//            }
-//        }else if ([scheme isEqualToString:[NSString stringWithFormat:@"xdx.%@",CompanyFirstDomainByWeChatRegister]]) {
-//
-//        }
-//
-//        BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:request.URL];
-//        if (canOpen) {
-//            [[UIApplication sharedApplication] openURL:request.URL];
-//        }
-//        return;
-//    }
-    
-    // ------  对alipays:相关的scheme处理 -------
-    // 若遇到支付宝相关scheme，则跳转到本地支付宝App
-    if ([requestUrl hasPrefix:@"alipays://"] || [requestUrl hasPrefix:@"alipay://"]) {
-        // 跳转支付宝App
-        BOOL bSucc = [[UIApplication sharedApplication]openURL:navigationAction.request.URL];
-        
-        // 如果跳转失败，则跳转itune下载支付宝App
-        if (!bSucc) {
-            NSLog(@"跳转失败");
-            [self alertControllerWithMessage:@"未检测到支付宝客户端，请您安装后重试。"];
-        }
-    } else if ([requestUrl hasPrefix:@"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb"]) {
-        NSDictionary *header = navigationAction.request.allHTTPHeaderFields;
-        if (header[@"Referer"] == nil) {
-            decisionHandler(WKNavigationActionPolicyCancel);
-            NSMutableURLRequest *mutableRequest = [navigationAction.request mutableCopy];
-            [mutableRequest setValue:@"seeyu.zhyst.cn" forHTTPHeaderField:@"Referer"];
-            [webView loadRequest:mutableRequest];
-            return;
-        }
-        BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:navigationAction.request.URL];
-        if (canOpen) {
-            [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
-        }
+    NSString *url = navigationAction.request.URL.absoluteString;
+    NSLog(@"网页连接:%@",url);
+    if ([url containsString:@"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?"]) {
+#warning 微信支付链接不要拼接redirect_url，如果拼接了还是会返回到浏览器的
+        //传入的是微信支付链接：https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx201801291021026cb304f9050743178155&package=3456576571
+        //这里把webView设置成一个像素点，主要是不影响操作和界面，主要的作用是设置referer和调起微信
+        WebChatPayH5View *h5View = [[WebChatPayH5View alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+        //url是没有拼接redirect_url微信h5支付链接
+        [h5View loadingURL:url withIsWebChatURL:NO];
+        [self.view addSubview:h5View];
+        decisionHandler(WKNavigationActionPolicyCancel);
+    } else if([url containsString:@"alipay://alipayclient"]) {
+        NSLog(@"%@",[url decodeFromPercentEscapeString]);
+        NSArray *array = [[url decodeFromPercentEscapeString] componentsSeparatedByString:@"?"];
+        NSString *jsonString = array[1];
+        SYAlipayModel *model = [SYAlipayModel yy_modelWithJSON:jsonString];
+        model.fromAppUrlScheme = @"seeyu.zhyst.cn://";
+        NSString *modifyString = [model yy_modelToJSONString];
+        NSString *payUrl = [NSString stringWithFormat:@"%@?%@",array[0],modifyString];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:payUrl]];
+        decisionHandler(WKNavigationActionPolicyCancel);
+    } else {
+        decisionHandler(WKNavigationActionPolicyAllow);
     }
-    // 确认可以跳转
-    decisionHandler(WKNavigationActionPolicyAllow);
-}
-
-- (void)alertControllerWithMessage:(NSString *)message {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:message preferredStyle:UIAlertControllerStyleAlert];
-    
-    [alertController addAction:[UIAlertAction actionWithTitle:@"立即安装" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // NOTE: 跳转itune下载支付宝App
-        NSString* urlStr = @"https://itunes.apple.com/cn/app/zhi-fu-bao-qian-bao-yu-e-bao/id333206289?mt=8";
-        NSURL *downloadUrl = [NSURL URLWithString:urlStr];
-        [[UIApplication sharedApplication]openURL:downloadUrl];
-    }]];
-    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
@@ -313,32 +208,6 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
     NSURLCredential *cred = [[NSURLCredential alloc] initWithTrust:challenge.protectionSpace.serverTrust];
     completionHandler(NSURLSessionAuthChallengeUseCredential, cred);
 }
-
-#pragma mark - WKUIDelegate
-- (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
-    /// CoderMike Fixed : 解决点击网页的链接 不跳转的Bug。
-    WKFrameInfo *frameInfo = navigationAction.targetFrame;
-    if (![frameInfo isMainFrame]) {
-        [webView loadRequest:navigationAction.request];
-    }
-    return nil;
-}
-
-#pragma mark runJavaScript
-- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
-    [NSObject sy_showAlertViewWithTitle:nil message:message confirmTitle:@"我知道了"];
-    completionHandler();
-}
-
-- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler {
-    completionHandler(YES);
-}
-
-- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * __nullable result))completionHandler {
-    completionHandler(defaultText);
-}
-
-
 
 #pragma mark - Getter & Setter
 - (UIProgressView *)progressView {
@@ -372,6 +241,18 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
     return _closeItem;
 }
 
-
+- (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
+    if (jsonString == nil) {
+        return nil;
+    }
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&err];
+    if(err) {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
 
 @end

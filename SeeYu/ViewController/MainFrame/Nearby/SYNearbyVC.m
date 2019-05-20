@@ -13,8 +13,6 @@
 
 @property (nonatomic, readwrite, strong) SYNearbyVM *viewModel;
 
-@property (nonatomic, strong) NSMutableDictionary *cellDic;
-
 @end
 
 NSString * const nearybyListCell = @"nearybyListCell";
@@ -62,7 +60,6 @@ NSString * const nearybyListCell = @"nearybyListCell";
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;   //最佳精度
     [self startLocating];   // 开启定位
-    _cellDic = [NSMutableDictionary new];
     [self _setupSubViews];
 }
 
@@ -187,14 +184,7 @@ NSString * const nearybyListCell = @"nearybyListCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    // 解决复用导致图像重叠的情况
-    NSString *identifier = [_cellDic objectForKey:[NSString stringWithFormat:@"%@", indexPath]];
-    if (identifier == nil) {
-        identifier = [NSString stringWithFormat:@"nearybyListCell-%ld",(long)indexPath.row];
-        [_cellDic setValue:identifier forKey:[NSString stringWithFormat:@"%@", indexPath]];
-        [self.collectionView registerClass:[SYNearbyListCell class]  forCellWithReuseIdentifier:identifier];
-    }
-    SYNearbyListCell * cell = (SYNearbyListCell *)[collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    SYNearbyListCell * cell = (SYNearbyListCell *)[collectionView dequeueReusableCellWithReuseIdentifier:nearybyListCell forIndexPath:indexPath];
     cell.layer.cornerRadius = 3.5f;
     cell.layer.masksToBounds = YES;
     SYUser *user = self.viewModel.dataSource[indexPath.row];
@@ -204,9 +194,13 @@ NSString * const nearybyListCell = @"nearybyListCell";
     }
     if (user.userName != nil && user.userName.length > 0) {
         cell.aliasLabel.text = user.userName;
+    } else {
+        cell.aliasLabel.text = @"";
     }
     if (user.userSignature != nil && user.userSignature.length > 0) {
         cell.signatureLabel.text = user.userSignature;
+    } else {
+        cell.signatureLabel.text = @"";
     }
     if (user.userVipStatus == 1) {
         if (user.userVipExpiresAt != nil) {
@@ -224,6 +218,8 @@ NSString * const nearybyListCell = @"nearybyListCell";
     }
     if (user.userHeadImg != nil && user.userHeadImg.length > 0) {
         [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:user.userHeadImg] placeholder:[UIImage imageWithColor:[UIColor clearColor]] options:SYWebImageOptionAutomatic completion:NULL];
+    } else {
+        cell.headImageView.image = nil;
     }
     YYCache *cache = [YYCache cacheWithName:@"seeyu"];
     if ([cache containsObjectForKey:[NSString stringWithFormat:@"distance_%@",user.userId]]) {

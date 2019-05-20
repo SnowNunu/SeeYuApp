@@ -12,7 +12,7 @@
 - (instancetype)initWithServices:(id<SYViewModelServices>)services params:(NSDictionary *)params {
     self = [super initWithServices:services params:params];
     if (self) {
-        self.request = params[SYViewModelRequestKey];
+        self.requestUrl = [NSURL URLWithString:params[SYViewModelRequestKey]];
     }
     return self;
 }

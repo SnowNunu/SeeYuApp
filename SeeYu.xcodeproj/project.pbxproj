@@ -250,6 +250,8 @@
 		7B5210EE227095F200D7EEFC /* SYSigninVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210ED227095F200D7EEFC /* SYSigninVM.m */; };
 		7B5210F32270AF8000D7EEFC /* SYMyMomentsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210F22270AF8000D7EEFC /* SYMyMomentsVM.m */; };
 		7B5210F62270AFA100D7EEFC /* SYMyMomentsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210F52270AFA100D7EEFC /* SYMyMomentsVC.m */; };
+		7B54EDBA228FFDC80071EF21 /* WebChatPayH5View.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B54EDB8228FFDC80071EF21 /* WebChatPayH5View.m */; };
+		7B54EDBD22901CA80071EF21 /* SYAlipayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B54EDBC22901CA80071EF21 /* SYAlipayModel.m */; };
 		7B590934223F77B200EE5ACF /* SYAnchorsListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590933223F77B200EE5ACF /* SYAnchorsListVM.m */; };
 		7B590939223F8B0300EE5ACF /* SYAnchorsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590938223F8B0300EE5ACF /* SYAnchorsModel.m */; };
 		7B59093D223F9C7300EE5ACF /* SYAnchorsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B59093C223F9C7300EE5ACF /* SYAnchorsListCell.m */; };
@@ -946,6 +948,10 @@
 		7B5210F22270AF8000D7EEFC /* SYMyMomentsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyMomentsVM.m; sourceTree = "<group>"; };
 		7B5210F42270AFA100D7EEFC /* SYMyMomentsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyMomentsVC.h; sourceTree = "<group>"; };
 		7B5210F52270AFA100D7EEFC /* SYMyMomentsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyMomentsVC.m; sourceTree = "<group>"; };
+		7B54EDB8228FFDC80071EF21 /* WebChatPayH5View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebChatPayH5View.m; sourceTree = "<group>"; };
+		7B54EDB9228FFDC80071EF21 /* WebChatPayH5View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebChatPayH5View.h; sourceTree = "<group>"; };
+		7B54EDBB22901CA80071EF21 /* SYAlipayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAlipayModel.h; sourceTree = "<group>"; };
+		7B54EDBC22901CA80071EF21 /* SYAlipayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAlipayModel.m; sourceTree = "<group>"; };
 		7B59092F223F776100EE5ACF /* SYAnchorsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsListVC.h; sourceTree = "<group>"; };
 		7B590932223F77B200EE5ACF /* SYAnchorsListVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsListVM.h; sourceTree = "<group>"; };
 		7B590933223F77B200EE5ACF /* SYAnchorsListVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsListVM.m; sourceTree = "<group>"; };
@@ -2962,6 +2968,15 @@
 			path = MyMoments;
 			sourceTree = "<group>";
 		};
+		7B54EDB7228FFDBD0071EF21 /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				7B54EDB9228FFDC80071EF21 /* WebChatPayH5View.h */,
+				7B54EDB8228FFDC80071EF21 /* WebChatPayH5View.m */,
+			);
+			path = Pay;
+			sourceTree = "<group>";
+		};
 		7B590935223F8AB300EE5ACF /* MainFrame */ = {
 			isa = PBXGroup;
 			children = (
@@ -3400,6 +3415,8 @@
 				7B94A22822856194008453C7 /* SYGoodsModel.m */,
 				7B94A22A228567FB008453C7 /* SYPayInfoModel.h */,
 				7B94A22B228567FB008453C7 /* SYPayInfoModel.m */,
+				7B54EDBB22901CA80071EF21 /* SYAlipayModel.h */,
+				7B54EDBC22901CA80071EF21 /* SYAlipayModel.m */,
 			);
 			path = Recharge;
 			sourceTree = "<group>";
@@ -3715,11 +3732,11 @@
 		7BB5199621EC783B000C1CF2 /* FSScrollContentViewLib */ = {
 			isa = PBXGroup;
 			children = (
+				7BB5199921EC783B000C1CF2 /* FSScrollContentView.h */,
+				7BB5199B21EC783B000C1CF2 /* FSSegmentTitleView.h */,
 				7BB5199721EC783B000C1CF2 /* FSSegmentTitleView.m */,
 				7BB5199821EC783B000C1CF2 /* FSPageContentView.h */,
-				7BB5199921EC783B000C1CF2 /* FSScrollContentView.h */,
 				7BB5199A21EC783B000C1CF2 /* FSPageContentView.m */,
-				7BB5199B21EC783B000C1CF2 /* FSSegmentTitleView.h */,
 			);
 			path = FSScrollContentViewLib;
 			sourceTree = "<group>";
@@ -3966,6 +3983,7 @@
 		7BE971CC225EE48000FF6A25 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7B54EDB7228FFDBD0071EF21 /* Pay */,
 				7BEB77CD2279607B008869A1 /* MyMoments */,
 				7BC56A76226F02D4005C1F81 /* Signature */,
 			);
@@ -4200,6 +4218,9 @@
 							};
 							com.apple.Push = {
 								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 0;
 							};
 						};
 					};
@@ -5129,6 +5150,7 @@
 				7B78810F2248923000B25CA3 /* SYFriendDetailInfoVC.m in Sources */,
 				2634C7221FF0A33A00B1F639 /* SYTableView.m in Sources */,
 				7B0228B4223B4E390045E25F /* NSMutableArray+FilterElement.m in Sources */,
+				7B54EDBD22901CA80071EF21 /* SYAlipayModel.m in Sources */,
 				7B92871D22450AC100CABC5F /* SYSpeedMatchModel.m in Sources */,
 				7B98B9032275DA380074D0A0 /* UICollectionView+BackgroundView.m in Sources */,
 				7B98B947227606A60074D0A0 /* JXBWKCustomProtocol.m in Sources */,
@@ -5140,6 +5162,7 @@
 				7B0228A7223A16470045E25F /* PinyinHelper.m in Sources */,
 				26FE8E4B1F95143D00EC8BE0 /* IDMTapDetectingImageView.m in Sources */,
 				26FE8E821F9514D100EC8BE0 /* SDCollectionViewCell.m in Sources */,
+				7B54EDBA228FFDC80071EF21 /* WebChatPayH5View.m in Sources */,
 				7B724BE622462B090096F40B /* SYPrivacyShowVC.m in Sources */,
 				2624CAE41F98DF9B0083923F /* AFHTTPSessionManager+RACSupport.m in Sources */,
 				7B15EC752265BAF100A80BD5 /* ZYImageTopBar.m in Sources */,

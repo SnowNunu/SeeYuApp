@@ -41,13 +41,14 @@
 
 #pragma mark - 设置导航栏
 - (void)_setupNavigation{
-    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - 80, 44) titles:@[@"聊天",@"好友"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
+    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - 80, 44) titles:@[@"聊天",@"好友"] delegate:self indicatorType:FSIndicatorTypeEqualTitle showHalo:YES];
     self.titleView.titleNormalColor = [UIColor whiteColor];
     self.titleView.titleSelectColor = [UIColor whiteColor];
     self.titleView.backgroundColor = [UIColor clearColor];
     self.titleView.indicatorColor = [UIColor whiteColor];
-    self.titleView.titleFont = SYRegularFont(18);
-    self.titleView.titleSelectFont = SYRegularFont(20);
+    self.titleView.titleFont = SYFont(15, YES);
+    self.titleView.titleSelectFont = SYFont(15, YES);
+    self.titleView.showHalo = YES;
     self.navigationItem.titleView = self.titleView;
     
     NSMutableArray *childVCs = [[NSMutableArray alloc]init];

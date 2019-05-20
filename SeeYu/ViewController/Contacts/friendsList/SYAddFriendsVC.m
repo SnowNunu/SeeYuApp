@@ -56,22 +56,20 @@
 }
 
 - (void)_setupSubViews {
-    UIButton *searchBtn = [UIButton new];
-    searchBtn.backgroundColor = SYColorFromHexString(@"#9F69EB");
-    [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
-    [searchBtn setTintColor:[UIColor whiteColor]];
-    _searchBtn = searchBtn;
-    [self.view addSubview:searchBtn];
-    
     UIView *idTextBgView = [UIView new];
-    idTextBgView.backgroundColor = SYColorFromHexString(@"#9F69EB");
+    idTextBgView.backgroundColor = SYColor(240, 207, 255);
+    idTextBgView.layer.cornerRadius = 9.5f;
+    idTextBgView.layer.masksToBounds = YES;
     _idTextBgView = idTextBgView;
     [self.view addSubview:idTextBgView];
     
     UITextField *idTextField = [UITextField new];
-    idTextField.placeholder = @"用户ID/用户昵称";
-    idTextField.layer.cornerRadius = 5.f;
-    idTextField.backgroundColor = [UIColor whiteColor];
+    idTextField.font = SYFont(14, YES);
+    idTextField.textColor = [UIColor whiteColor];
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:@"用户ID/用户昵称" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:SYFont(12, YES)}];
+    idTextField.attributedPlaceholder = attrString;
+    idTextField.layer.cornerRadius = 9.5f;
+    idTextField.backgroundColor = SYColorFromHexString(@"#D8A8EE");
     idTextField.textAlignment = NSTextAlignmentCenter;
     _idTextField = idTextField;
     [self.view addSubview:idTextField];
@@ -79,33 +77,44 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.tableFooterView = [UIView new];
     _tableView = tableView;
     [self.view addSubview:tableView];
+    
+    UIButton *searchBtn = [UIButton new];
+    searchBtn.backgroundColor = SYColorFromHexString(@"#9F69EB");
+    [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
+    [searchBtn setTintColor:[UIColor whiteColor]];
+    _searchBtn = searchBtn;
+    [self.view addSubview:searchBtn];
 }
 
 - (void)_makeSubViewsConstraints {
-    [self.searchBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.width.bottom.equalTo(self.view);
-        make.height.offset(50);
-    }];
     [self.idTextBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.width.top.equalTo(self.view);
-        make.height.offset(50);
+        make.left.equalTo(self.view).offset(2.5);
+        make.right.equalTo(self.view).offset(-2.5);
+        make.top.equalTo(self.view).offset(2.5);
+        make.height.offset(57);
     }];
     [self.idTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.idTextBgView);
-        make.height.offset(30);
-        make.width.equalTo(self.idTextBgView).offset(-15);
+        make.centerX.equalTo(self.idTextBgView);
+        make.top.equalTo(self.idTextBgView).offset(10);
+        make.bottom.equalTo(self.idTextBgView).offset(-10);
+        make.width.equalTo(self.idTextBgView).offset(-20);
     }];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.left.equalTo(self.view);
         make.top.equalTo(self.idTextBgView.mas_bottom);
         make.bottom.equalTo(self.searchBtn.mas_top);
     }];
+    [self.searchBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.width.bottom.equalTo(self.view);
+        make.height.offset(50);
+    }];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 75.f;
+    return 59.5f;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -123,62 +132,74 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor whiteColor];
     SYUser *user = self.viewModel.datasource[indexPath.row];
+    
+    UIView *bgView = [UIView new];
+    bgView.layer.masksToBounds = YES;
+    bgView.layer.cornerRadius = 7.5f;
+    bgView.backgroundColor = indexPath.row % 2 == 0 ? SYColor(240, 207, 255) : SYColor(245, 223, 255);
+    [cell.contentView addSubview:bgView];
     
     // 好友头像
     UIImageView *avatarView = [UIImageView new];
     avatarView.layer.cornerRadius = 22.5f;
     avatarView.clipsToBounds = YES;
     [avatarView yy_setImageWithURL:[NSURL URLWithString:user.userHeadImg] placeholder:SYDefaultAvatar(SYDefaultAvatarTypeDefualt) options:YYWebImageOptionAllowInvalidSSLCertificates|YYWebImageOptionAllowBackgroundTask completion:nil];
-    [cell.contentView addSubview:avatarView];
+    [bgView addSubview:avatarView];
     
     // 好友昵称
     UILabel *aliasLabel = [UILabel new];
     aliasLabel.text = user.userName;
-    aliasLabel.font = SYRegularFont(16);
+    aliasLabel.font = SYFont(11, YES);
+    aliasLabel.textColor = SYColor(193, 99, 237);
     aliasLabel.textAlignment = NSTextAlignmentLeft;
-    [cell.contentView addSubview:aliasLabel];
+    [bgView addSubview:aliasLabel];
     
     // 好友ID
     UILabel *idLabel = [UILabel new];
     idLabel.text = [NSString stringWithFormat:@"ID：%@",user.userId];
-    idLabel.font = SYRegularFont(14);
-    idLabel.textColor = SYColor(153, 153, 153);
+    idLabel.font = SYFont(10, YES);
+    idLabel.textColor = SYColor(193, 99, 237);
     idLabel.textAlignment = NSTextAlignmentLeft;
-    [cell.contentView addSubview:idLabel];
+    [bgView addSubview:idLabel];
     
     // 添加还有按钮
     UIButton *addFriendBtn = [UIButton new];
-    [addFriendBtn setBackgroundColor:SYColorFromHexString(@"#9F69EB")];
+    [addFriendBtn setBackgroundImage:SYImageNamed(@"agreeBtn_bg") forState:UIControlStateNormal];
     [addFriendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [addFriendBtn setTitle:@"添加" forState:UIControlStateNormal];
-    addFriendBtn.layer.cornerRadius = 5.f;
-    addFriendBtn.layer.masksToBounds = YES;
+    addFriendBtn.titleLabel.font = SYFont(10, YES);
     [[addFriendBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.viewModel.addFriendRequestCommand execute:user.userId];
     }];
     [cell.contentView addSubview:addFriendBtn];
     
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(cell.contentView).offset(2.5);
+        make.left.equalTo(cell.contentView).offset(2.5);
+        make.right.equalTo(cell.contentView).offset(-2.5);
+        make.bottom.equalTo(cell.contentView);
+    }];
     [avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.offset(45);
-        make.centerY.equalTo(cell.contentView);
-        make.left.equalTo(cell.contentView).offset(15);
+        make.width.height.offset(44);
+        make.centerY.equalTo(bgView);
+        make.left.equalTo(bgView).offset(10);
     }];
     [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(avatarView.mas_right).offset(15);
-        make.right.equalTo(addFriendBtn.mas_left).offset(-15);
-        make.top.equalTo(avatarView);
-        make.height.offset(20);
+        make.left.equalTo(avatarView.mas_right).offset(10);
+        make.top.equalTo(bgView).offset(16);
+        make.height.offset(10);
     }];
     [idLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.height.equalTo(aliasLabel);
-        make.bottom.equalTo(avatarView);
+        make.left.height.equalTo(aliasLabel);
+        make.top.equalTo(aliasLabel.mas_bottom).offset(8);
     }];
     [addFriendBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(cell.contentView).offset(-15);
-        make.width.offset(70);
-        make.centerY.equalTo(cell.contentView);
-        make.height.offset(30);
+        make.right.equalTo(cell.contentView).offset(-10);
+        make.width.offset(55);
+        make.centerY.equalTo(bgView);
+        make.height.offset(20);
     }];
     return cell;
 }

@@ -34,20 +34,19 @@
     // 设置在NavigatorBar中显示连接中的提示
     self.showConnectingStatusOnNavigatorBar = YES;
     self.displayConversationTypeArray = @[@(ConversationType_PRIVATE)];
-//    [self.conversationListTableView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.view).offset(-SY_APPLICATION_TAB_BAR_HEIGHT);
-//    }];
+    self.conversationListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.conversationListTableView.backgroundColor = [UIColor whiteColor];
+    self.conversationListTableView.frame = CGRectMake(0, 0, SY_SCREEN_WIDTH, SY_SCREEN_HEIGHT - SY_APPLICATION_TAB_BAR_HEIGHT);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
-//    [self.conversationListTableView reloadData];
 }
 
 // 高度
 - (CGFloat)rcConversationListTableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 75.f;
+    return 58.f;
 }
 
 //左滑删除
@@ -83,6 +82,11 @@
     RCConversationModel *model = self.conversationListDataSource[indexPath.row];
     NSInteger unreadCount = model.unreadMessageCount;
     SYChattingListCell *cell = [[SYChattingListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chattingListCell"];
+    if (indexPath.row % 2 == 0) {
+        cell.bgView.backgroundColor = SYColor(240, 207, 255);
+    } else {
+        cell.bgView.backgroundColor = SYColor(245, 223, 255);
+    }
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:model.receivedTime / 1000];
     cell.timeLabel.text = [SYTimeTool getTimeStringAutoShort2:date mustIncludeTime:NO];
     if (unreadCount == 0) {
@@ -151,6 +155,11 @@
         }
     }];
     return cell;
+}
+
+- (void)willDisplayConversationTableCell:(RCConversationBaseCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    [super willDisplayConversationTableCell:cell atIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;    // 去除选中置灰效果
 }
 
 - (void)onSelectedTableRow:(RCConversationModelType)conversationModelType conversationModel:(RCConversationModel *)model atIndexPath:(NSIndexPath *)indexPath {

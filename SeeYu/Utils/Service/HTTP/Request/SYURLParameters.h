@@ -177,7 +177,7 @@
 //+ (NSString *)t;            // 当前时间戳
 
 /// 项目额外的配置参数拓展 (PS)开发人员无需考虑
-@interface SBURLExtendsParameters : NSObject
+@interface SYURLExtendsParameters : NSObject
 
 /// 类方法
 + (instancetype)extendsParameters;
@@ -194,8 +194,8 @@
 /// 平台 pc,wap,android,iOS
 @property (nonatomic, readonly, copy) NSString *platform;
 
-/// 渠道 AppStore
-@property (nonatomic, readonly, copy) NSString *channel;
+/// 渠道 名称
+@property (nonatomic, readonly, copy) NSString *userChannelId;
 
 /// 时间戳
 @property (nonatomic, readonly, copy) NSString *t;
@@ -211,7 +211,7 @@
 /// 方法 （POST/GET）
 @property (nonatomic, readwrite, strong) NSString *method;
 /// 拓展的参数属性 (开发人员不必关心)
-@property (nonatomic, readwrite, strong) SBURLExtendsParameters *extendsParameters;
+@property (nonatomic, readwrite, strong) SYURLExtendsParameters *extendsParameters;
 
 /**
  参数配置（统一用这个方法配置参数） （SBBaseUrl : https://api.cleancool.tenqing.com/）

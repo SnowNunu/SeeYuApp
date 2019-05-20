@@ -60,6 +60,11 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) NSInteger selectIndex;
 
 /**
+ 是否显示背景光晕，默认NO
+ */
+@property (nonatomic, assign) BOOL showHalo;
+
+/**
  标题字体大小，默认15
  */
 @property (nonatomic, strong) UIFont *titleFont;
@@ -99,5 +104,17 @@ typedef enum : NSUInteger {
  @return FSSegmentTitleView
  */
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titlesArr delegate:(id<FSSegmentTitleViewDelegate>)delegate indicatorType:(FSIndicatorType)incatorType;
+
+/**
+ 对象方法创建FSSegmentTitleView
+ 
+ @param frame frame
+ @param titlesArr 标题数组
+ @param delegate delegate
+ @param incatorType 指示器类型
+ @param show 是否显示光晕
+ @return FSSegmentTitleView
+ */
+- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titlesArr delegate:(id<FSSegmentTitleViewDelegate>)delegate indicatorType:(FSIndicatorType)incatorType showHalo:(BOOL)show;
 
 @end

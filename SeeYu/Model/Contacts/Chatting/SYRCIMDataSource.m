@@ -22,7 +22,6 @@
 
 #pragma mark - RCIMUserInfoDataSource
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion {
-    NSLog(@"getUserInfoWithUserId ----- %@", userId);
     RCUserInfo *user = [RCUserInfo new];
     if (userId == nil || [userId length] == 0) {
         user.userId = userId;

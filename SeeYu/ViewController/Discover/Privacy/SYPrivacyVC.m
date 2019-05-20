@@ -48,9 +48,11 @@
 
 - (void)_setupSubViews {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    CGFloat width = (SY_SCREEN_WIDTH - 45) / 2;
-    layout.itemSize = CGSizeMake(width, width * 0.8);
-    layout.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15);
+    CGFloat width = (SY_SCREEN_WIDTH - 14) / 2;
+    layout.itemSize = CGSizeMake(width, width * 0.9);
+    layout.minimumLineSpacing = 4.f;
+    layout.minimumInteritemSpacing = 4.f;
+    layout.sectionInset = UIEdgeInsetsMake(4, 0, 0, 0);
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"privacyViewCell"];
@@ -63,7 +65,9 @@
 
 - (void)_makeSubViewsConstraints {
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.top.bottom.equalTo(self.view);
+        make.left.equalTo(self.view).offset(5);
+        make.right.equalTo(self.view).offset(-5);
     }];
 }
 
@@ -81,9 +85,15 @@
     SYPrivacyModel *model = self.viewModel.datasource[indexPath.row];
     static NSString *cellIndentifer = @"privacyViewCell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIndentifer forIndexPath:indexPath];
+    
     // 展示图片
     UIImageView *photoShowView = [UIImageView new];
-    [photoShowView yy_setImageWithURL:[NSURL URLWithString:model.showPhoto] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
+    photoShowView.layer.cornerRadius = 6.f;
+    photoShowView.contentMode = UIViewContentModeScaleAspectFill;
+    photoShowView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [photoShowView setContentScaleFactor:[[UIScreen mainScreen] scale]];
+    photoShowView.clipsToBounds = YES;
+    [photoShowView yy_setImageWithURL:[NSURL URLWithString:model.showPhoto] placeholder:SYImageNamed(@"errorPic") options:SYWebImageOptionAutomatic completion:NULL];
     [cell.contentView addSubview:photoShowView];
     
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
@@ -95,36 +105,37 @@
 
     // 播放图标
     UIImageView *playImageView = [UIImageView new];
-    playImageView.image = SYImageNamed(@"new_icon_video_play");
+    playImageView.image = SYImageNamed(@"play");
     [photoShowView addSubview:playImageView];
+    
     //底部背景
-    UIImageView *shadowImageView = [UIImageView new];
-    shadowImageView.image = SYImageNamed(@"shadow_bottom");
-    [photoShowView addSubview:shadowImageView];
+    UIView *shadowBgView = [UIView new];
+    shadowBgView.backgroundColor = SYColorAlpha(83, 16, 114, 0.3);
+    [photoShowView addSubview:shadowBgView];
     
     // 昵称文本
     UILabel *aliasLabel = [UILabel new];
     aliasLabel.textColor = [UIColor whiteColor];
     aliasLabel.text = model.userName;
-    aliasLabel.font =SYRegularFont(16);
+    aliasLabel.font = SYFont(11, YES);
     aliasLabel.textAlignment = NSTextAlignmentLeft;
-    [shadowImageView addSubview:aliasLabel];
+    [shadowBgView addSubview:aliasLabel];
     
     [photoShowView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(cell.contentView);
     }];
     [playImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(photoShowView);
-        make.width.height.offset(30);
+        make.left.top.equalTo(photoShowView).offset(6);
+        make.width.offset(19);
+        make.height.offset(13);
     }];
-    [shadowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [shadowBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(cell.contentView);
-        make.height.offset(35);
+        make.height.offset(22);
     }];
     [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(shadowImageView).offset(10);
-        make.width.equalTo(shadowImageView);
-        make.bottom.equalTo(shadowImageView).offset(-10);
+        make.left.equalTo(shadowBgView).offset(6);
+        make.centerY.equalTo(shadowBgView);
         make.height.offset(15);
     }];
     return cell;

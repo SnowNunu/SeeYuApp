@@ -67,4 +67,20 @@
     return  result;
 }
 
+// 字符串编码
+- (NSString *)urlEncodeString {
+    NSString *result = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, NULL, CFSTR(":/?#[]@!$&’(){}<>*+,;="),kCFStringEncodingUTF8));
+    return result;
+}
+
+// 反URL编码
+- (NSString *)decodeFromPercentEscapeString {
+    NSMutableString *outputStr = [NSMutableString stringWithString:self];
+    [outputStr replaceOccurrencesOfString:@"+"
+                               withString:@" "
+                                  options:NSLiteralSearch
+                                    range:NSMakeRange(0, [outputStr length])];
+    return [outputStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
 @end

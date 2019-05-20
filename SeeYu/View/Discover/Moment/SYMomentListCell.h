@@ -7,14 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CocoaSecurity/CocoaSecurity.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYMomentListCell : UITableViewCell
 
+@property (nonatomic, strong) UIView *bgView;
+
 @property (nonatomic, strong) UIImageView *headImageView;
 
 @property (nonatomic, strong) YYLabel *aliasLabel;
+
+@property (nonatomic, strong) UILabel *timeLabel;
 
 @property (nonatomic, strong) YYLabel *contentLabel;
 
@@ -26,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UIImageView *videoContainerView;
 
-@property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UIView *bottomView;
 
 - (void)_setupPhotosViewByUrls:(NSString*)photosUrl;
 

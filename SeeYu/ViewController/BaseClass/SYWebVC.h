@@ -10,14 +10,12 @@
 #import "SYWebVM.h"
 #import <WebKit/WebKit.h>
 #import "SYWebVM.h"
+#import "WebChatPayH5View.h"
 
-@interface SYWebVC : SYVC<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler>
+@interface SYWebVC : SYVC <WKNavigationDelegate>
 
 /// webView
 @property (nonatomic, weak, readonly) WKWebView *webView;
-
-/// 内容缩进 (64,0,0,0)
-@property (nonatomic, readonly, assign) UIEdgeInsets contentInset;
 
 @property (nonatomic, strong) SYWebVM *viewModel;
 

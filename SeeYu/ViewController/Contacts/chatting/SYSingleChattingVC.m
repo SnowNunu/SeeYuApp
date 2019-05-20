@@ -26,6 +26,7 @@
     [super viewDidLoad];
     [RCIM sharedRCIM].globalMessageAvatarStyle = RC_USER_AVATAR_CYCLE;
     [RCIM sharedRCIM].globalMessagePortraitSize = CGSizeMake(45, 45);
+    self.conversationMessageCollectionView.backgroundColor = [UIColor whiteColor];
     [self initSendPresentBtn];
     [self _setupAction];
     self.btnEnabled = NO;
@@ -36,6 +37,25 @@
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
     [self.chatSessionInputBarControl.pluginBoardView removeItemAtIndex:PLUGIN_BOARD_ITEM_LOCATION_TAG];
+}
+
+- (void)willDisplayMessageCell:(RCMessageBaseCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    RCMessageModel *model = cell.model;
+    if ([model.userInfo.userId isEqualToString:model.targetId]) {
+        // 对方发送的消息
+        if ([cell isKindOfClass:[RCTextMessageCell class]] || [cell isKindOfClass:[RCCallDetailMessageCell class]]) {
+            RCTextMessageCell *textCell = (RCTextMessageCell *)cell;
+            textCell.textLabel.textColor = SYColor(193, 99, 237);
+        }
+    } else {
+        // 自己发送的消息
+        if ([cell isKindOfClass:[RCTextMessageCell class]] || [cell isKindOfClass:[RCCallDetailMessageCell class]]) {
+            RCTextMessageCell *textCell = (RCTextMessageCell *)cell;
+            textCell.textLabel.textColor = SYColor(255, 255, 255);
+        }
+    }
+    cell.messageTimeLabel.textColor = SYColor(193, 99, 237);
+    cell.messageTimeLabel.backgroundColor = [UIColor clearColor];
 }
 
 - (void)_setupAction {

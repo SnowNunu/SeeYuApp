@@ -93,7 +93,7 @@ static id service_ = nil;
 }
 
 /// config service
-- (void)_configHTTPService{
+- (void)_configHTTPService {
     AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializer];
 #if DEBUG
     responseSerializer.removesKeysWithNullValues = NO;
@@ -763,19 +763,9 @@ static id service_ = nil;
     NSLog(@"<<<<<<<<<<<<<<<<<<<<<👆 REQUEST FINISH 👆<<<<<<<<<<<<<<<<<<<<<<<<<<");
 }
 
-
-
-
-
-
-
-
-
-
-
 #pragma mark - Parameter 签名 MD5 生成一个 sign ，这里请根据实际项目来定
 /// 基础的请求参数
--(NSMutableDictionary *)_parametersWithRequest:(SYHTTPRequest *)request{
+- (NSMutableDictionary *)_parametersWithRequest:(SYHTTPRequest *)request{
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     /// 模型转字典
     NSDictionary *extendsUrlParams = [request.urlParameters.extendsParameters mj_keyValues].copy;
@@ -813,7 +803,7 @@ static id service_ = nil;
 }
 
 /// 序列化
-- (AFHTTPRequestSerializer *)_requestSerializerWithRequest:(SYHTTPRequest *) request{
+- (AFHTTPRequestSerializer *)_requestSerializerWithRequest:(SYHTTPRequest *) request {
     /// 获取基础参数（参数+拓展参数）
     NSMutableDictionary *parameters = [self _parametersWithRequest:request];
     /// 获取带签名的参数
@@ -825,7 +815,7 @@ static id service_ = nil;
     /// 配置请求头
     for (NSString *key in parameters) {
         NSString *value = [[parameters[key] sy_stringValueExtension] copy];
-        if (value.length==0) continue;
+        if (value.length == 0) continue;
         /// value只能是字符串，否则崩溃
         [requestSerializer setValue:value forHTTPHeaderField:key];
     }

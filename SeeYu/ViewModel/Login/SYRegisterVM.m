@@ -30,10 +30,9 @@
         for(int i = 0; i < 6; i++) {
             strRandom = [strRandom stringByAppendingFormat:@"%i",(arc4random() % 9)];
         }
-        CocoaSecurityResult *pwd = [CocoaSecurity aesEncrypt:strRandom hexKey:@"280f8bb8c43d532f389ef0e2a5321220b0782b065205dcdfcb8d8f02ed5115b9" hexIv:@"CC0A69779E15780ADAE46C45EB451A23"];
-        NSString *password = pwd.base64;
+        NSString *password = [CocoaSecurity md5:strRandom].hexLower;
         self.password = password;
-        NSDictionary *parameters = @{@"userPassword":password,@"userName":self.alias,@"userAge":self.age,@"userGender":self.gender,@"userProfession":self.job,@"userIncome":self.income,@"userHeight":self.height,@"userMarry":self.maritalStatus};
+        NSDictionary *parameters = @{@"userPassword":password,@"userName":self.alias,@"userAge":self.age,@"userGender":self.gender,@"userProfession":self.job,@"userIncome":self.income,@"userHeight":self.height,@"userMarry":self.maritalStatus,@"userChannelId":SY_APP_CHANNEL};
         SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:parameters];
         SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_REGISTER parameters:subscript.dictionary];
         return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUser class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];

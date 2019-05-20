@@ -116,10 +116,15 @@ NSString * const anchorsListCell = @"anchorsListCell";
     }
     [cell setScrollAliasLabel:model.userName];
     [cell setStarsByLevel:model.anchorStarLevel];
-
-    
     [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:model.showPhoto] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    SYAnchorsModel *model = self.viewModel.anchorsArray[indexPath.row];
+    NSDictionary *params = @{SYViewModelUtilKey:[model yy_modelToJSONObject]};
+    // 昵称 id号 头像 视频
+    [self.viewModel.enterAnchorShowViewCommand execute:params];
 }
 
 #pragma mark - 下拉刷新事件

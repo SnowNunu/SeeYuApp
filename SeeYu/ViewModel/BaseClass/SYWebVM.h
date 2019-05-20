@@ -9,8 +9,9 @@
 #import "SYVM.h"
 
 @interface SYWebVM : SYVM
-/// web url quest
-@property (nonatomic, readwrite, copy) NSURLRequest *request;
+
+/// url
+@property (nonatomic, readwrite, copy) NSURL *requestUrl;
 
 /// 下拉刷新 defalut is NO
 @property (nonatomic, readwrite, assign) BOOL shouldPullDownToRefresh;

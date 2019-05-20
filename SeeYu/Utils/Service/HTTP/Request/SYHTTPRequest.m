@@ -17,11 +17,11 @@
 
 @implementation SYHTTPRequest
 
-+(instancetype)requestWithParameters:(SYURLParameters *)parameters{
++ (instancetype)requestWithParameters:(SYURLParameters *)parameters {
     return [[self alloc] initRequestWithParameters:parameters];
 }
 
--(instancetype)initRequestWithParameters:(SYURLParameters *)parameters{
+- (instancetype)initRequestWithParameters:(SYURLParameters *)parameters {
     
     self = [super init];
     if (self) {

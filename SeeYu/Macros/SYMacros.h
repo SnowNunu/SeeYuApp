@@ -18,6 +18,8 @@
 #define SY_APP_VERSION ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"])
 /// 应用build
 #define SY_APP_BUILD   ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"])
+/// 推广渠道号
+#define SY_APP_CHANNEL  @"C001S001"
 
 
 
@@ -40,7 +42,7 @@
 
 
 /// 开发环境后台地址
-//#define SYURL @"http://192.168.119.25:8080/"
+//#define SYURL @"http://192.168.31.24:8080/"
 
 /// 正式环境后台地址
 #define SYURL @"http://103.214.147.194:8080/"

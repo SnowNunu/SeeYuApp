@@ -21,6 +21,12 @@
 }
 
 - (void)_setupSubviews {
+    UIView *bgView = [UIView new];
+    bgView.layer.masksToBounds = YES;
+    bgView.layer.cornerRadius = 9.f;
+    _bgView = bgView;
+    [self.contentView addSubview:bgView];
+    
     UIImageView *headImageView = [UIImageView new];
     headImageView.masksToBounds = YES;
     headImageView.layer.cornerRadius = 22.5f;
@@ -30,25 +36,35 @@
     YYLabel *aliasLabel = [YYLabel new];
     aliasLabel.numberOfLines = 0;   // 开启多行显示
     aliasLabel.preferredMaxLayoutWidth = SY_SCREEN_WIDTH - 90;
-    aliasLabel.font = SYRegularFont(16);
+    aliasLabel.font = SYFont(13, YES);
+    aliasLabel.textColor = SYColor(193, 99, 237);
+    aliasLabel.textAlignment = NSTextAlignmentLeft;
     _aliasLabel = aliasLabel;
     [self.contentView addSubview:aliasLabel];
+    
+    UILabel *timeLabel = [UILabel new];
+    timeLabel.textColor = SYColor(193, 99, 237);
+    timeLabel.font = SYFont(9, YES);
+    timeLabel.textAlignment = NSTextAlignmentRight;
+    _timeLabel = timeLabel;
+    [self.contentView addSubview:timeLabel];
     
     YYLabel *contentLabel = [YYLabel new];
     contentLabel.numberOfLines = 0;   // 开启多行显示
     contentLabel.preferredMaxLayoutWidth = SY_SCREEN_WIDTH - 90;
-    contentLabel.font = SYRegularFont(13);
-    contentLabel.textColor = SYColor(153, 153, 153);
+    contentLabel.font = SYFont(10, YES);
+    contentLabel.textColor = SYColor(193, 99, 237);
+    contentLabel.textAlignment = NSTextAlignmentLeft;
     _contentLabel = contentLabel;
     [self.contentView addSubview:contentLabel];
     
     UIView *photoContainerView = [UIView new];
-    photoContainerView.backgroundColor = [UIColor whiteColor];
+    photoContainerView.backgroundColor = [UIColor clearColor];
     _photoContainerView = photoContainerView;
     [self.contentView addSubview:photoContainerView];
     
     UIImageView *videoContainerView = [UIImageView new];
-    videoContainerView.backgroundColor = [UIColor whiteColor];
+    videoContainerView.backgroundColor = [UIColor blackColor];
     videoContainerView.userInteractionEnabled = YES;
     videoContainerView.contentMode = UIViewContentModeScaleAspectFill;
     videoContainerView.clipsToBounds = YES;
@@ -56,45 +72,53 @@
     _videoContainerView = videoContainerView;
     [self.contentView addSubview:videoContainerView];
     
-    UILabel *timeLabel = [UILabel new];
-    timeLabel.textColor = SYColor(153, 153, 153);
-    timeLabel.font = SYRegularFont(15);
-    timeLabel.textAlignment = NSTextAlignmentLeft;
-    _timeLabel = timeLabel;
-    [self.contentView addSubview:timeLabel];
+    UIView *bottomView = [UIView new];
+    bottomView.backgroundColor = [UIColor clearColor];
+    _bottomView = bottomView;
+    [self.contentView addSubview:bottomView];
 }
 
 - (void)_makeSubViewsConstraints {
-    [self.headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.contentView);
+        make.left.top.equalTo(self.contentView).offset(2);
+        make.right.equalTo(self.contentView).offset(-2);
+    }];
+    [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.offset(45);
-        make.left.top.equalTo(self.contentView).offset(15);
+        make.left.top.equalTo(self.contentView).offset(12);
     }];
-    [self.aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.headImageView);
-        make.right.equalTo(self.contentView).offset(-15);
-        make.height.offset(20);
-        make.left.equalTo(self.headImageView.mas_right).offset(15);
+    [_aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.headImageView).offset(1);
+        make.right.equalTo(self.contentView).offset(-50);
+        make.height.offset(15);
+        make.left.equalTo(self.headImageView.mas_right).offset(12);
     }];
-    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.aliasLabel.mas_bottom).offset(15);
-        make.bottom.equalTo(self.photoContainerView.mas_top).offset(-15);
+    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView).offset(12);
+        make.right.equalTo(self.contentView).offset(-12);
+        make.height.offset(15);
+    }];
+    [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.aliasLabel.mas_bottom).offset(5);
+        make.bottom.equalTo(self.photoContainerView.mas_top).offset(-4);
         make.left.right.equalTo(self.aliasLabel);
     }];
-    [self.photoContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_photoContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.left.equalTo(self.contentLabel);
         make.bottom.equalTo(self.videoContainerView.mas_top);
         make.height.offset(0);
     }];
-    [self.videoContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_videoContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.offset(0);
-        make.width.offset(50);
+        make.width.offset(140);
         make.left.equalTo(self.photoContainerView);
-        make.bottom.equalTo(self.timeLabel.mas_top).offset(-15);
+        make.bottom.equalTo(self.bottomView.mas_top);
     }];
-    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.contentView).offset(-15);
+    [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.contentView);
         make.left.right.equalTo(self.photoContainerView);
-        make.height.offset(15);
+        make.height.offset(14);
     }];
 }
 
@@ -103,9 +127,9 @@
     NSArray *photosArray = [photosUrl componentsSeparatedByString:@","];
     self.photos = [NSMutableArray arrayWithArray:photosArray];
     CGFloat width = (SY_SCREEN_WIDTH - 90 - 10) / 3;
-    [self.photoContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+    [_photoContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.left.equalTo(self.contentLabel);
-        make.bottom.equalTo(self.videoContainerView.mas_top).offset(-15);
+        make.bottom.equalTo(self.videoContainerView.mas_top);
         make.height.offset((photosArray.count - 1) / 3 * (width + 5) + width);
     }];
     for (int i = 0; i < photosArray.count; i++) {
@@ -140,26 +164,34 @@
 
 - (void)_setupVideoShowViewBy:(NSString*)url {
     UIImageView *playImageView = [UIImageView new];
-    playImageView.image = SYImageNamed(@"play_btn_normal_120x120");
+    playImageView.image = SYImageNamed(@"play");
     [self.videoContainerView addSubview:playImageView];
     [self.videoContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.offset(100);
-        make.height.offset(180);
+        make.width.offset(140);
+        make.height.offset(140);
     }];
     [playImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.videoContainerView);
-        make.width.height.offset(40);
+        make.left.top.equalTo(self.videoContainerView).offset(6);
+        make.width.offset(19);
+        make.height.offset(13);
     }];
     self.videoUrl = [NSURL URLWithString:url];
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] init];
     [recognizer addTarget:self action:@selector(_tapVideo:)];
     [self.videoContainerView addGestureRecognizer:recognizer];
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        UIImage *image = [[UIImage alloc] getVideoPreviewImage:[NSURL URLWithString:url]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.videoContainerView.image = image;
+    if ([self getCacheImageByUrl:url] != nil) {
+        self.videoContainerView.image = [self getCacheImageByUrl:url];
+    } else {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            UIImage *image = [[UIImage alloc] getVideoPreviewImage:[NSURL URLWithString:url]];
+            YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+            NSString *key = [NSString stringWithFormat:@"moments_image_%@",[CocoaSecurity md5:url].hexLower];
+            [cache setObject:image forKey:key];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.videoContainerView.image = image;
+            });
         });
-    });
+    }
 }
 
 - (void)_tapPhoto:(UITapGestureRecognizer *)sender {
@@ -188,6 +220,19 @@
     browser.dataSourceArray = @[data];
     browser.currentIndex = 0;
     [browser show];
+}
+
+- (UIImage *)getCacheImageByUrl:(NSString *)url {
+    YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+    NSString *key = [NSString stringWithFormat:@"moments_image_%@",[CocoaSecurity md5:url].hexLower];
+    if ([cache containsObjectForKey:key]) {
+        // 有缓存数据优先读取缓存数据
+        id value = [cache objectForKey:key];
+        UIImage *image = (UIImage *) value;
+        return image;
+    } else {
+        return nil;
+    }
 }
 
 @end

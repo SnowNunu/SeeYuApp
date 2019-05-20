@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYChattingListCell : RCConversationBaseCell
 
+// 背景色
+@property (nonatomic, strong) UIView *bgView;
+
 /// 用户头像
 @property (nonatomic, strong) UIImageView *avatarImageView;
 

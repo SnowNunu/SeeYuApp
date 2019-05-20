@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) RACCommand *requestPayInfoCommand;
 
-@property (nonatomic, strong) RACCommand *enterPayInfoViewCommand;
+//@property (nonatomic, strong) RACCommand *enterPayInfoViewCommand;
 
 @end
 

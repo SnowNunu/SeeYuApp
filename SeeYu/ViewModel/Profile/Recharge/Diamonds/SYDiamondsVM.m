@@ -49,7 +49,7 @@
         if (model.payInfo != nil && model.payInfo.length > 0) {
             NSLog(@"%@",model.payInfo);
             SYWebVM *vm = [[SYWebVM alloc] initWithServices:self.services params:nil];
-            vm.request = [NSURLRequest requestWithURL:[NSURL URLWithString:model.payInfo]];
+            vm.requestUrl = [NSURL URLWithString:model.payInfo];
             [self.services pushViewModel:vm animated:YES];
         } else {
             [MBProgressHUD sy_showError:@"发起支付请求失败"];
@@ -58,12 +58,13 @@
     [self.requestPayInfoCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];
-    self.enterPayInfoViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSDictionary *params) {
-        NSString *payUrl = [NSString stringWithFormat:@"http://seeyu.zhyst.cn/seeyu/recharge/pay.html?goodtype=%@&goods=%@&goodValue=%@&userId=%@&goodsId=%@",params[@"goodtype"],params[@"goods"],params[@"goodValue"],params[@"userId"],params[@"goodsId"]];
-        SYTopUpVM *vm = [[SYTopUpVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:payUrl}];
-        [self.services pushViewModel:vm animated:YES];
-        return [RACSignal empty];
-    }];
+    
+//    self.enterPayInfoViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSDictionary *params) {
+//        NSString *payUrl = [NSString stringWithFormat:@"http://seeyu.zhyst.cn/seeyu/recharge/pay.html?goodtype=%@&goods=%@&goodValue=%@&userId=%@&goodsId=%@",params[@"goodtype"],params[@"goods"],params[@"goodValue"],params[@"userId"],params[@"goodsId"]];
+//        SYTopUpVM *vm = [[SYTopUpVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:payUrl}];
+//        [self.services pushViewModel:vm animated:YES];
+//        return [RACSignal empty];
+//    }];
 }
 
 @end

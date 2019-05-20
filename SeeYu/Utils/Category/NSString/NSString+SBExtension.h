@@ -26,4 +26,10 @@
 // 根据服务器返回的时间转换成某分钟/天/月前
 + (NSString *)compareCurrentTime:(NSString *)str;
 
+// URL编码
+- (NSString*)urlEncodeString;
+
+// 反URL编码
+- (NSString *)decodeFromPercentEscapeString;
+
 @end

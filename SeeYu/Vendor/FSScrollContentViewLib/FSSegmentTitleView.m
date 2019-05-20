@@ -26,8 +26,7 @@
 
 @implementation FSSegmentTitleView
 
-- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titlesArr delegate:(id<FSSegmentTitleViewDelegate>)delegate indicatorType:(FSIndicatorType)incatorType
-{
+- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titlesArr delegate:(id<FSSegmentTitleViewDelegate>)delegate indicatorType:(FSIndicatorType)incatorType {
     self = [super initWithFrame:frame];
     if (self) {
         [self initWithProperty];
@@ -37,6 +36,19 @@
     }
     return self;
 }
+
+- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titlesArr delegate:(id<FSSegmentTitleViewDelegate>)delegate indicatorType:(FSIndicatorType)incatorType showHalo:(BOOL)show {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initWithProperty];
+        self.showHalo = show;
+        self.titlesArr = titlesArr;
+        self.delegate = delegate;
+        self.indicatorType = incatorType;
+    }
+    return self;
+}
+
 //初始化默认属性值
 - (void)initWithProperty
 {
@@ -82,7 +94,7 @@
             obj.frame = CGRectMake(idx * itemBtnWidth, 0, itemBtnWidth, itemBtnHeight);
         }];
         self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.scrollView.bounds));
-    }else{//超出屏幕 可以滑动
+    } else {//超出屏幕 可以滑动
         CGFloat currentX = 0;
         for (int idx = 0; idx < self.titlesArr.count; idx++) {
             UIButton *btn = self.itemBtnArr[idx];
@@ -104,7 +116,7 @@
     titleFont = selectBtn.isSelected?_titleSelectFont:_titleFont;
     CGFloat indicatorWidth = [FSSegmentTitleView getWidthWithString:self.titlesArr[self.selectIndex] font:titleFont];
     [UIView animateWithDuration:(animated?0.05:0) animations:^{
-        switch (_indicatorType) {
+        switch (self.indicatorType) {
             case FSIndicatorTypeDefault:
                 self.indicatorView.frame = CGRectMake(selectBtn.frame.origin.x , CGRectGetHeight(self.scrollView.bounds) - 2, CGRectGetWidth(selectBtn.bounds), 2);
                 break;
@@ -114,7 +126,7 @@
                 break;
             case FSIndicatorTypeCustom:
                 self.indicatorView.center = CGPointMake(selectBtn.center.x, CGRectGetHeight(self.scrollView.bounds) - 1);
-                self.indicatorView.bounds = CGRectMake(0, 0, indicatorWidth + _indicatorExtension*2, 2);
+                self.indicatorView.bounds = CGRectMake(0, 0, indicatorWidth + self.indicatorExtension*2, 2);
                 break;
             case FSIndicatorTypeNone:
                 self.indicatorView.frame = CGRectZero;
@@ -174,6 +186,9 @@
     self.itemBtnArr = nil;
     for (NSString *title in titlesArr) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        if (self.showHalo) {
+            [btn setBackgroundImage:SYImageNamed(@"tabUp_selected_bg") forState:UIControlStateSelected];
+        }
         btn.tag = self.itemBtnArr.count + 666;
         [btn setTitle:title forState:UIControlStateNormal];
         [btn setTitleColor:_titleNormalColor forState:UIControlStateNormal];

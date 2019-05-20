@@ -122,7 +122,7 @@
     // 使用bugly收集崩溃日志
     [Bugly startWithAppId:@"665d87c560"];
 //    // 初始化友盟服务
-    [UMConfigure initWithAppkey:@"5ca1a3aa3fc195e05e0000df" channel:@"App Store"];
+    [UMConfigure initWithAppkey:@"5ca1a3aa3fc195e05e0000df" channel:SY_APP_CHANNEL];
     UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
     //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
     entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound|UMessageAuthorizationOptionAlert;

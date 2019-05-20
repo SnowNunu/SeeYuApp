@@ -7,6 +7,7 @@
 //
 
 #import "SYDiamondsVC.h"
+#import "WebChatPayH5VIew.h"
 
 @interface SYDiamondsVC () <UITableViewDelegate, UITableViewDataSource>
 
@@ -171,9 +172,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SYGoodsModel *model = self.viewModel.datasource[indexPath.row];
-    NSArray *array = [model.goodsName componentsSeparatedByString:@"钻石"];
-    NSDictionary *params = @{@"goodtype":@"1",@"goods":array[0],@"goodValue":model.goodsMoney,@"userId":self.viewModel.services.client.currentUserId,@"goodsId":model.goodsId};
-    [self.viewModel.enterPayInfoViewCommand execute:params];
+//    NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUserId,@"goodsId":model.goodsId,@"rechargeType":@(indexPath.row % 2 + 1)};
+    NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUserId,@"goodsId":model.goodsId,@"rechargeType":@"2"};
+    [self.viewModel.requestPayInfoCommand execute:params];
+//    NSArray *array = [model.goodsName componentsSeparatedByString:@"钻石"];
+//    NSDictionary *params = @{@"goodtype":@"1",@"goods":array[0],@"goodValue":model.goodsMoney,@"userId":self.viewModel.services.client.currentUserId,@"goodsId":model.goodsId};
 }
 
 @end
