@@ -36,6 +36,14 @@
     _bgImageView = bgImageView;
     [self.contentView addSubview:bgImageView];
     
+    UILabel *aliasLabel = [UILabel new];
+    aliasLabel.textAlignment = NSTextAlignmentLeft;
+    aliasLabel.font = SYFont(12, YES);
+    aliasLabel.backgroundColor = [UIColor clearColor];
+    aliasLabel.textColor = [UIColor whiteColor];
+    _aliasLabel = aliasLabel;
+    [self.contentView addSubview:aliasLabel];
+    
     UIImageView *onlineStatusImageView = [UIImageView new];
     _onlineStatusImageView = onlineStatusImageView;
     [self.contentView addSubview:onlineStatusImageView];
@@ -74,6 +82,11 @@
         make.right.equalTo(self.diamondImageView.mas_left).offset(-2);
         make.centerY.equalTo(self.bgImageView);
     }];
+    [_aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.bgImageView).offset(3);
+        make.centerY.equalTo(self.bgImageView);
+        make.right.equalTo(self.voiceImageView.mas_left);
+    }];
     [_diamondImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.bgImageView);
         make.height.offset(20);
@@ -92,17 +105,7 @@
 }
 
 - (void)setTipsByHobby:(NSString*)hobby {
-    // 解决UICollectionViewCell复用出现的问题
-    for (int i = 0; i < 3; i++) {
-        UIImageView *lastImageView = [self viewWithTag:588 + i];
-        if (lastImageView != nil) {
-            [lastImageView removeFromSuperview];
-        }
-        UILabel *lastLabel = [self viewWithTag:888 + i];
-        if (lastLabel != nil) {
-            [lastLabel removeFromSuperview];
-        }
-    }
+    [self removeHobbyTips];
     NSArray *hobbiesArray = [hobby componentsSeparatedByString:@","];
     if (hobbiesArray.count > 0 && hobbiesArray.count <= 3) {
         for (int i = 0; i < hobbiesArray.count; i++) {
@@ -133,6 +136,20 @@
     }
 }
 
+// cell复用时移除之前添加的爱好标签
+- (void)removeHobbyTips {
+    for (int i = 0; i < 3; i++) {
+        UIImageView *lastImageView = [self viewWithTag:588 + i];
+        if (lastImageView != nil) {
+            [lastImageView removeFromSuperview];
+        }
+        UILabel *lastLabel = [self viewWithTag:888 + i];
+        if (lastLabel != nil) {
+            [lastLabel removeFromSuperview];
+        }
+    }
+}
+
 - (void)setStarsByLevel:(int)level {
     // 解决UICollectionViewCell复用出现的问题
     for (int i = 0; i < 5; i++) {
@@ -152,20 +169,6 @@
             make.centerY.equalTo(self.onlineStatusImageView);
         }];
     }
-}
-
-- (void)setScrollAliasLabel:(NSString *)alias {
-    [_aliasScrolLabel removeFromSuperview];
-    TXScrollLabelView *aliasScrolLabel = [TXScrollLabelView scrollWithTitle:alias type:TXScrollLabelViewTypeLeftRight];
-    aliasScrolLabel.frame = CGRectMake(3, self.contentView.size.height - 20, self.contentView.size.width - 95, 15);
-    aliasScrolLabel.textAlignment = NSTextAlignmentLeft;
-    aliasScrolLabel.font = SYFont(12, YES);
-    aliasScrolLabel.backgroundColor = [UIColor clearColor];
-    aliasScrolLabel.scrollTitleColor = [UIColor whiteColor];
-    aliasScrolLabel.scrollSpace = 20.f;
-    _aliasScrolLabel = aliasScrolLabel;
-    [self.contentView addSubview:aliasScrolLabel];
-    [aliasScrolLabel beginScrolling];
 }
 
 @end

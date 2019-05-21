@@ -172,11 +172,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SYGoodsModel *model = self.viewModel.datasource[indexPath.row];
-//    NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUserId,@"goodsId":model.goodsId,@"rechargeType":@(indexPath.row % 2 + 1)};
     NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUserId,@"goodsId":model.goodsId,@"rechargeType":@"2"};
     [self.viewModel.requestPayInfoCommand execute:params];
-//    NSArray *array = [model.goodsName componentsSeparatedByString:@"钻石"];
-//    NSDictionary *params = @{@"goodtype":@"1",@"goods":array[0],@"goodValue":model.goodsMoney,@"userId":self.viewModel.services.client.currentUserId,@"goodsId":model.goodsId};
 }
 
 @end

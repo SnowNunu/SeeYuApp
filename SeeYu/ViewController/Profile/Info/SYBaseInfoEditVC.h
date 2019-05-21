@@ -8,11 +8,11 @@
 
 #import "SYVC.h"
 #import "SYBaseInfoEditVM.h"
-#import "ZYImagePicker.h"
 #import "ActionSheetPicker.h"
 #import "ActionSheetCustomPicker.h"
 #import "SYSignatureVM.h"
 #import "SYNicknameModifyVM.h"
+#import <ZLPhotoBrowser/ZLPhotoBrowser.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

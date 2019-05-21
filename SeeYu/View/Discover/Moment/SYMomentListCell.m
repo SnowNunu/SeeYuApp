@@ -124,6 +124,7 @@
 
 // 根据传入的url分割
 - (void)_setupPhotosViewByUrls:(NSString*)photosUrl {
+    [self emptyPhotosView];
     NSArray *photosArray = [photosUrl componentsSeparatedByString:@","];
     self.photos = [NSMutableArray arrayWithArray:photosArray];
     CGFloat width = (SY_SCREEN_WIDTH - 90 - 10) / 3;
@@ -140,7 +141,7 @@
         photoView.backgroundColor = [UIColor blueColor];
         photoView.tag = i;
         photoView.userInteractionEnabled = YES;
-        [photoView yy_setImageWithURL:[NSURL URLWithString:photosArray[i]] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+        [photoView yy_setImageWithURL:[NSURL URLWithString:photosArray[i]] placeholder:SYImageNamed(@"errorPic") options:SYWebImageOptionAutomatic completion:NULL];
         [self.photoContainerView addSubview:photoView];
         
         // 添加手势监听器（一个手势监听器 只能 监听对应的一个view）
@@ -162,7 +163,15 @@
     }
 }
 
+- (void)emptyPhotosView {
+    [self.photoContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.photoContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.offset(0);
+    }];
+}
+
 - (void)_setupVideoShowViewBy:(NSString*)url {
+    [self emptyVideoView];
     UIImageView *playImageView = [UIImageView new];
     playImageView.image = SYImageNamed(@"play");
     [self.videoContainerView addSubview:playImageView];
@@ -192,6 +201,13 @@
             });
         });
     }
+}
+
+- (void)emptyVideoView {
+    [self.videoContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.videoContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.offset(0);
+    }];
 }
 
 - (void)_tapPhoto:(UITapGestureRecognizer *)sender {

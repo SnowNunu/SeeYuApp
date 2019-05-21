@@ -7,15 +7,14 @@
 //
 
 #import "SYVideoInfoEditVC.h"
-#import <YBImageBrowser/YBImageBrowser.h>
 
 @interface SYVideoInfoEditVC ()
 
+@property (nonatomic, strong) UIView *bgView;
+
 @property (nonatomic, strong) UIImageView *videoImageView;
 
-@property (nonatomic, strong) UILabel *videoTips1Label;
-
-@property (nonatomic, strong) UILabel *videoTips2Label;
+@property (nonatomic, strong) UILabel *tipsLabel;
 
 @property (nonatomic, strong) UIButton *playBtn;
 
@@ -39,13 +38,11 @@
         @strongify(self)
         if (model != nil && ![model.showVideo isEqualToString:@""]) {
             if (model.showVideo == nil || model.showVideo.length == 0) {
-                self.videoTips1Label.hidden = NO;
-                self.videoTips2Label.hidden = NO;
+                self.tipsLabel.hidden = NO;
                 self.playBtn.hidden = YES;
                 [self.modifyVideoBtn setTitle:@"添加视频" forState:UIControlStateNormal];
             } else {
-                self.videoTips1Label.hidden = YES;
-                self.videoTips2Label.hidden = YES;
+                self.tipsLabel.hidden = YES;
                 self.playBtn.hidden = NO;
                 [self.modifyVideoBtn setTitle:@"修改视频" forState:UIControlStateNormal];
                 self.videoImageView.image = [UIImage sy_thumbnailImageForVideo:[NSURL URLWithString:model.showVideo] atTime:1];;
@@ -54,14 +51,43 @@
     }];
     [[self.modifyVideoBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         if (self.viewModel.model.showVideo == nil || ![self.viewModel.model.showVideoStatus isEqualToString:@"0"]) {
-            YLShortVideoVC *videoVC = [YLShortVideoVC new];
-            videoVC.shortVideoBack = ^(NSURL *videoUrl) {
-                self.videoTips1Label.hidden = YES;
-                self.videoTips2Label.hidden = YES;
-                self.videoImageView.image = [UIImage sy_thumbnailImageForVideo:videoUrl atTime:1];
-                [self.viewModel.uploadUserVideoCommand execute:[NSData dataWithContentsOfURL:videoUrl]];
-            };
-            [self presentViewController:videoVC animated:YES completion:nil];
+            @strongify(self)
+            LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"取消" clicked:^(LCActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
+                if (buttonIndex == 0) return ;
+                if (buttonIndex == 1) {
+                    // 拍摄
+                    ZLCustomCamera *camera = [ZLCustomCamera new];
+                    camera.allowTakePhoto = NO;
+                    camera.allowRecordVideo = YES;
+                    camera.doneBlock = ^(UIImage *image, NSURL *videoUrl) {
+                        self.tipsLabel.hidden = YES;
+                        [self.viewModel.uploadUserVideoCommand execute:[NSData dataWithContentsOfURL:videoUrl]];
+                    };
+                    [self showDetailViewController:camera sender:nil];
+                } else {
+                    // 相册
+                    ZLPhotoActionSheet *actionSheet = [ZLPhotoActionSheet new];
+                    actionSheet.configuration.maxSelectCount = 1;
+                    actionSheet.configuration.maxPreviewCount = 0;
+                    actionSheet.configuration.allowTakePhotoInLibrary = NO;
+                    actionSheet.configuration.allowMixSelect = NO;
+                    actionSheet.configuration.allowSelectImage = NO;
+                    actionSheet.configuration.allowSelectGif = NO;
+                    actionSheet.configuration.exportVideoType = ZLExportVideoTypeMp4;
+                    actionSheet.configuration.navBarColor = SYColorFromHexString(@"#9F69EB");
+                    actionSheet.configuration.bottomBtnsNormalTitleColor = SYColorFromHexString(@"#9F69EB");
+                    // 选择回调
+                    [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+                        self.tipsLabel.hidden = YES;
+                        [self getVideoFromPHAsset:assets[0] Complete:^(NSData *data, NSString *fileName) {
+                            [self.viewModel.uploadUserVideoCommand execute:data];
+                        }];
+                    }];
+                    // 调用相册
+                    [actionSheet showPhotoLibraryWithSender:self];
+                }
+            } otherButtonTitles:@"拍摄",@"从手机相册选择", nil];
+            [sheet show];
         } else {
             [MBProgressHUD sy_showTips:@"视频审核中,暂不能修改"];
         }
@@ -80,29 +106,30 @@
 }
 
 - (void)_setupSubviews {
-    self.view.backgroundColor = SYColorFromHexString(@"#F8F8F8");
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIView *bgView = [UIView new];
+    bgView.layer.masksToBounds = YES;
+    bgView.layer.cornerRadius = 9.f;
+    bgView.backgroundColor = SYColor(249, 228, 254);
+    _bgView = bgView;
+    [self.view addSubview:bgView];
     
     UIImageView *videoImageView = [UIImageView new];
-    videoImageView.backgroundColor = SYColorAlpha(0, 0, 0, 0.05);
+    videoImageView.image = SYImageNamed(@"add_image");
+    videoImageView.layer.borderWidth = 1.f;
+    videoImageView.layer.borderColor = SYColorFromHexString(@"#ECACED").CGColor;
     videoImageView.userInteractionEnabled = YES;
     _videoImageView = videoImageView;
-    [self.view addSubview:videoImageView];
+    [bgView addSubview:videoImageView];
     
-    UILabel *videoTips1Label = [UILabel new];
-    videoTips1Label.textAlignment = NSTextAlignmentCenter;
-    videoTips1Label.font = SYRegularFont(30);
-    videoTips1Label.text = @"暂无视频";
-    videoTips1Label.textColor = SYColor(153, 153, 153);
-    _videoTips1Label = videoTips1Label;
-    [self.view addSubview:videoTips1Label];
-    
-    UILabel *videoTips2Label = [UILabel new];
-    videoTips2Label.textAlignment = NSTextAlignmentCenter;
-    videoTips2Label.font = SYRegularFont(15);
-    videoTips2Label.text = @"点击底部按钮添加";
-    videoTips2Label.textColor = SYColor(153, 153, 153);
-    _videoTips2Label = videoTips2Label;
-    [self.view addSubview:videoTips2Label];
+    UILabel *tipsLabel = [UILabel new];
+    tipsLabel.textAlignment = NSTextAlignmentCenter;
+    tipsLabel.font = SYFont(11, YES);
+    tipsLabel.textColor = SYColorFromHexString(@"#F6A7FD");
+    tipsLabel.text = @"暂无视频";
+    _tipsLabel = tipsLabel;
+    [videoImageView addSubview:tipsLabel];
     
     UIButton *playBtn = [UIButton new];
     [playBtn setImage:SYImageNamed(@"icon_videoPlay") forState:UIControlStateNormal];
@@ -112,36 +139,78 @@
     
     UIButton *modifyVideoBtn = [UIButton new];
     [modifyVideoBtn setTitle:@"添加视频" forState:UIControlStateNormal];
-    [modifyVideoBtn setTintColor:[UIColor whiteColor]];
-    modifyVideoBtn.titleLabel.font = SYRegularFont(19);
-    modifyVideoBtn.backgroundColor = SYColorFromHexString(@"#9F69EB");
+    [modifyVideoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    modifyVideoBtn.titleLabel.font = SYFont(13, YES);
+    modifyVideoBtn.backgroundColor = SYColorFromHexString(@"#BF99E7");
+    modifyVideoBtn.layer.cornerRadius = 9.f;
+    modifyVideoBtn.layer.masksToBounds = YES;
     _modifyVideoBtn = modifyVideoBtn;
-    [self.view addSubview:modifyVideoBtn];
+    [bgView addSubview:modifyVideoBtn];
 }
 
 - (void)_makeSubViewsConstraints {
+    CGFloat width = SY_SCREEN_WIDTH - 4 - 30;
+    [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(2);
+        make.right.equalTo(self.view).offset(-2);
+        make.top.equalTo(self.view);
+        make.bottom.equalTo(self.modifyVideoBtn.mas_bottom).offset(40);
+    }];
     [_videoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.equalTo(self.view).offset(15);
-        make.right.equalTo(self.view).offset(-15);
-        make.height.equalTo(self.videoImageView.mas_width);
+        make.top.equalTo(self.bgView).offset(40);
+        make.centerX.equalTo(self.view);
+        make.width.height.offset(width);
     }];
-    [_videoTips1Label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.videoImageView);
-        make.height.offset(30);
+    [_tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.videoImageView);
+        make.bottom.equalTo(self.videoImageView).offset(-67.5);
+        make.height.offset(14);
     }];
-    [_videoTips2Label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.offset(15);
-        make.top.equalTo(self.videoTips1Label.mas_bottom).offset(15);
-        make.centerX.equalTo(self.videoTips1Label);
+    [_modifyVideoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.videoImageView.mas_bottom).offset(20);
+        make.height.offset(34);
+        make.width.offset(120);
+        make.centerX.equalTo(self.bgView);
     }];
     [_playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.videoImageView);
         make.width.height.offset(80);
     }];
-    [_modifyVideoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.right.equalTo(self.view);
-        make.height.offset(40);
-    }];
+}
+
+- (void)getVideoFromPHAsset:(PHAsset *)asset Complete:(void(^)(NSData *data,NSString *fileName))result {
+    NSArray * assetResources = [PHAssetResource assetResourcesForAsset: asset];
+    PHAssetResource *resource;
+    for (PHAssetResource * assetRes in assetResources) {
+        if (assetRes.type == PHAssetResourceTypePairedVideo || assetRes.type == PHAssetResourceTypeVideo) {
+            resource = assetRes;
+        }
+    }
+    NSString * fileName = @"tempAssetVideo.mov";
+    if (resource.originalFilename) {
+        fileName = resource.originalFilename;
+    }
+    if (asset.mediaType == PHAssetMediaTypeVideo || asset.mediaSubtypes == PHAssetMediaSubtypePhotoLive) {
+        PHAssetResourceRequestOptions * options = [[PHAssetResourceRequestOptions alloc] init];
+        options.networkAccessAllowed = YES;
+        options.progressHandler = ^(double progress) {
+            NSLog(@"%f",progress);
+        };
+        NSString *PATH_MOVIE_FILE = [NSTemporaryDirectory() stringByAppendingPathComponent: fileName];
+        [[NSFileManager defaultManager] removeItemAtPath: PATH_MOVIE_FILE error: nil];
+        [[PHAssetResourceManager defaultManager] writeDataForAssetResource: resource toFile: [NSURL fileURLWithPath: PATH_MOVIE_FILE] options: options completionHandler: ^(NSError * _Nullable error) {
+            NSLog(@"%@",error);
+            if (error) {
+                [MBProgressHUD sy_showTips:@"iCloud视频下载失败" addedToView:self.view];
+                result(nil, nil);
+            } else {
+                NSData *data = [NSData dataWithContentsOfURL: [NSURL fileURLWithPath: PATH_MOVIE_FILE]];
+                result(data, fileName);
+            }
+        }];
+    } else {
+        result(nil, nil);
+    }
 }
 
 @end

@@ -28,11 +28,6 @@
     [self.requestUserShowInfoCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];
-    self.enterInfoEditViewCommand = [[RACCommand alloc]initWithSignalBlock:^RACSignal *(id input) {
-        SYBaseInfoEditVM *vm = [[SYBaseInfoEditVM alloc] initWithServices:self.services params:nil];
-        [self.services pushViewModel:vm animated:YES];
-        return [RACSignal empty];
-    }];
 }
 
 @end

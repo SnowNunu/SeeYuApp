@@ -174,7 +174,7 @@ pod 'DZNEmptyDataSet'                   , '1.8.1'
 # 图片浏览器
 pod 'YBImageBrowser'
 # 图片浏览和选择
-pod 'ZLPhotoBrowser'                    , '3.0.3'
+pod 'ZLPhotoBrowser'                    , '3.0.4'
 # 苹果内购
 pod 'RMStore', '0.7.1'
 # 拍照和录视频

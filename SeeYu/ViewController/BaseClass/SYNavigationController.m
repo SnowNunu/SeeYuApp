@@ -9,23 +9,23 @@
 #import "SYNavigationController.h"
 #import "SYVC.h"
 @interface SYNavigationController ()
+
 /// 导航栏分隔线
 @property (nonatomic , weak , readwrite) UIImageView * navigationBottomLine;
+
 @end
 
 @implementation SYNavigationController
 
 // 第一次使用这个类调用一次
-+ (void)initialize{
++ (void)initialize {
     // 2.设置UINavigationBar的主题
     [self _setupNavigationBarTheme];
-    
     // 3.设置UIBarButtonItem的主题
     [self _setupBarButtonItemTheme];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // 初始化
     [self _setup];

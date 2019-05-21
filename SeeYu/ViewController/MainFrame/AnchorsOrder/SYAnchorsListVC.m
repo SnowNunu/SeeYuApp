@@ -113,10 +113,20 @@ NSString * const anchorsListCell = @"anchorsListCell";
     cell.onlineStatusImageView.image = model.userOnline == 0 ? SYImageNamed(@"busy") : SYImageNamed(@"online");
     if (![model.userSpecialty sy_isNullOrNil] && ![model.userSpecialty isEqualToString:@""]) {
         [cell setTipsByHobby:model.userSpecialty];
+    } else {
+        [cell removeHobbyTips];
     }
-    [cell setScrollAliasLabel:model.userName];
+    if (model.userName != nil && model.userName.length > 0) {
+        cell.aliasLabel.text = model.userName;
+    } else {
+        cell.aliasLabel.text = @"";
+    }
     [cell setStarsByLevel:model.anchorStarLevel];
-    [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:model.showPhoto] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
+    if (model.userHeadImg != nil && model.userHeadImg.length > 0) {
+        [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:model.showPhoto] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
+    } else {
+        cell.headImageView.image = SYImageNamed(@"DefaultProfileHead_66x66");
+    }
     return cell;
 }
 

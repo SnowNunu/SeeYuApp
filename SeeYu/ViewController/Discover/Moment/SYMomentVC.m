@@ -14,6 +14,8 @@
 
 @end
 
+NSString * const identifier = @"momentListCellIdentifier";
+
 @implementation SYMomentVC
 
 - (instancetype)initWithViewModel:(SYVM *)viewModel {
@@ -48,7 +50,7 @@
     tableView.backgroundColor = [UIColor whiteColor];
     tableView.delegate = self;
     tableView.dataSource = self;
-    [tableView registerClass:[SYMomentListCell class] forCellReuseIdentifier:@"momentListCell"];
+    [tableView registerClass:[SYMomentListCell class] forCellReuseIdentifier:identifier];
     tableView.tableFooterView = [UIView new];
     tableView.rowHeight = UITableViewAutomaticDimension;
     tableView.estimatedRowHeight = 44.0;
@@ -72,25 +74,31 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *identifier = [NSString stringWithFormat:@"momentListCell%ld%ld",indexPath.section,indexPath.row];
-    SYMomentListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
+    SYMomentListCell *cell = (SYMomentListCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[SYMomentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.bgView.backgroundColor = indexPath.row % 2 ? SYColorFromHexString(@"#F0CFFF") : SYColorFromHexString(@"#F5DFFF");
-        SYMomentsModel *model = self.viewModel.datasource[indexPath.row];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
-        cell.aliasLabel.text = model.userName;
-        cell.contentLabel.text = model.momentContent;
-        if (model.momentPhotos != nil && model.momentPhotos.length > 0) {
-            [cell _setupPhotosViewByUrls:model.momentPhotos];
-        }
-        if (model.momentVideo != nil && model.momentVideo.length > 0) {
-            [cell _setupVideoShowViewBy:model.momentVideo];
-        }
-        cell.timeLabel.text = [NSString compareCurrentTime:model.momentTime];
+        cell = [[SYMomentListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.bgView.backgroundColor = indexPath.row % 2 ? SYColorFromHexString(@"#F0CFFF") : SYColorFromHexString(@"#F5DFFF");
+    SYMomentsModel *model = self.viewModel.datasource[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (model.userHeadImg != nil && model.userHeadImg.length > 0) {
+        [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+    } else {
+        cell.headImageView.image = SYWebAvatarImagePlaceholder();
+    }
+    cell.aliasLabel.text = model.userName;
+    cell.contentLabel.text = model.momentContent;
+    if (model.momentPhotos != nil && model.momentPhotos.length > 0) {
+        [cell _setupPhotosViewByUrls:model.momentPhotos];
+    } else {
+        [cell emptyPhotosView];
+    }
+    if (model.momentVideo != nil && model.momentVideo.length > 0) {
+        [cell _setupVideoShowViewBy:model.momentVideo];
+    } else {
+        [cell emptyVideoView];
+    }
+    cell.timeLabel.text = [NSString compareCurrentTime:model.momentTime];
     return cell;
 }
 

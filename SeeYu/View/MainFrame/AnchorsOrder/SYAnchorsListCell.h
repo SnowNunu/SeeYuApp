@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TXScrollLabelView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImageView *headImageView;
 
 // 昵称
-@property (nonatomic, strong) TXScrollLabelView *aliasScrolLabel;
+@property (nonatomic, strong) UILabel *aliasLabel;
 
 // 语聊图片
 @property (nonatomic, strong) UIImageView *voiceImageView;
@@ -38,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setTipsByHobby:(NSString*)hobby;
 
-- (void)setScrollAliasLabel:(NSString *)alias;
+- (void)removeHobbyTips;
 
 @end
 

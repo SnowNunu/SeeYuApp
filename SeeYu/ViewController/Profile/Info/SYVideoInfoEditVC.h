@@ -8,7 +8,8 @@
 
 #import "SYVC.h"
 #import "SYVideoInfoEditVM.h"
-#import "YLShortVideoVC.h"
+#import <YBImageBrowser/YBImageBrowser.h>
+#import <ZLPhotoBrowser/ZLPhotoBrowser.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

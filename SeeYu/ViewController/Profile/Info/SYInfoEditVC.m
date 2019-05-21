@@ -34,12 +34,12 @@
 
 - (void)_setupSecondTag {
     self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 40) titles:@[@"介绍",@"封面",@"视频"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
-    self.titleView.titleNormalColor = SYColorFromHexString(@"#999999");
-    self.titleView.titleSelectColor = SYColor(159, 105, 235);
+    self.titleView.titleNormalColor = SYColor(193, 99, 237);
+    self.titleView.titleSelectColor = SYColor(248, 56, 129);
     self.titleView.backgroundColor = [UIColor whiteColor];
     self.titleView.indicatorColor = [UIColor whiteColor];
-    self.titleView.titleFont = SYRegularFont(18);
-    self.titleView.titleSelectFont = SYRegularFont(20);
+    self.titleView.titleFont = SYFont(13, YES);
+    self.titleView.titleSelectFont = SYFont(13, YES);
     [self.view addSubview:_titleView];
     
     NSMutableArray *childVCs = [[NSMutableArray alloc]init];
@@ -56,6 +56,7 @@
     [childVCs addObject:videoInfoVC];
     self.contentView = [[FSPageContentView alloc] initWithFrame:CGRectMake(0, 40, SY_SCREEN_WIDTH, SY_SCREEN_HEIGHT - 40 - SY_APPLICATION_TOP_BAR_HEIGHT) childVCs:childVCs parentVC:self delegate:self];
     [self.view addSubview:_contentView];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"nav_btn_setting" target:self selector:@selector(enterInfoEditView) textType:NO];
 }
 
 - (void)FSSegmentTitleView:(FSSegmentTitleView *)titleView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {
@@ -64,6 +65,10 @@
 
 - (void)FSContenViewDidEndDecelerating:(FSPageContentView *)contentView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {
     self.titleView.selectIndex = endIndex;
+}
+
+- (void)enterInfoEditView {
+    [self.viewModel.enterInfoEditViewCommand execute:nil];
 }
 
 @end

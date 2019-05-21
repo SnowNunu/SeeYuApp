@@ -41,7 +41,8 @@
 
 - (void)willDisplayMessageCell:(RCMessageBaseCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     RCMessageModel *model = cell.model;
-    if ([model.userInfo.userId isEqualToString:model.targetId]) {
+    NSString *myUserId = SYSharedAppDelegate.services.client.currentUserId;
+    if (![model.userInfo.userId isEqualToString:myUserId]) {
         // 对方发送的消息
         if ([cell isKindOfClass:[RCTextMessageCell class]] || [cell isKindOfClass:[RCCallDetailMessageCell class]]) {
             RCTextMessageCell *textCell = (RCTextMessageCell *)cell;

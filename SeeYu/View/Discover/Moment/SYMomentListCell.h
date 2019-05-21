@@ -35,7 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)_setupPhotosViewByUrls:(NSString*)photosUrl;
 
+- (void)emptyPhotosView;
+
 - (void)_setupVideoShowViewBy:(NSString*)url;
+
+- (void)emptyVideoView;
 
 @end
 

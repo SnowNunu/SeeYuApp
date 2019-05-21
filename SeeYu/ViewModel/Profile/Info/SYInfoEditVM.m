@@ -22,6 +22,11 @@
     self.title = @"编辑资料";
     self.backTitle = @"";
     self.prefersNavigationBarBottomLineHidden = YES;
+    self.enterInfoEditViewCommand = [[RACCommand alloc]initWithSignalBlock:^RACSignal *(id input) {
+        SYBaseInfoEditVM *vm = [[SYBaseInfoEditVM alloc] initWithServices:self.services params:nil];
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
+    }];
 }
 
 @end

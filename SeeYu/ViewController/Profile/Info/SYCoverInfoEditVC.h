@@ -8,7 +8,7 @@
 
 #import "SYVC.h"
 #import "SYCoverInfoEditVM.h"
-#import "ZYImagePicker.h"
+#import <ZLPhotoBrowser/ZLPhotoBrowser.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

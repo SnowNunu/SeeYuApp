@@ -8,7 +8,6 @@
 
 #import "SYVM.h"
 #import "SYUser.h"
-#import "SYBaseInfoEditVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) SYUser *user;
 
 @property (nonatomic, strong) RACCommand *requestUserShowInfoCommand;
-
-@property (nonatomic, strong) RACCommand *enterInfoEditViewCommand;
 
 @end
 
