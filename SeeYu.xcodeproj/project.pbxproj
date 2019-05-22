@@ -250,6 +250,10 @@
 		7B5210EE227095F200D7EEFC /* SYSigninVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210ED227095F200D7EEFC /* SYSigninVM.m */; };
 		7B5210F32270AF8000D7EEFC /* SYMyMomentsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210F22270AF8000D7EEFC /* SYMyMomentsVM.m */; };
 		7B5210F62270AFA100D7EEFC /* SYMyMomentsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210F52270AFA100D7EEFC /* SYMyMomentsVC.m */; };
+		7B52A721229555900043511C /* SYWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B52A720229555900043511C /* SYWalletVC.m */; };
+		7B52A724229555A40043511C /* SYWalletVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B52A723229555A40043511C /* SYWalletVM.m */; };
+		7B52A728229587230043511C /* SYIncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B52A727229587230043511C /* SYIncomeModel.m */; };
+		7B52A72B22958A1D0043511C /* SYWalletDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B52A72A22958A1D0043511C /* SYWalletDetailModel.m */; };
 		7B54EDBA228FFDC80071EF21 /* WebChatPayH5View.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B54EDB8228FFDC80071EF21 /* WebChatPayH5View.m */; };
 		7B54EDBD22901CA80071EF21 /* SYAlipayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B54EDBC22901CA80071EF21 /* SYAlipayModel.m */; };
 		7B590934223F77B200EE5ACF /* SYAnchorsListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B590933223F77B200EE5ACF /* SYAnchorsListVM.m */; };
@@ -948,6 +952,14 @@
 		7B5210F22270AF8000D7EEFC /* SYMyMomentsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyMomentsVM.m; sourceTree = "<group>"; };
 		7B5210F42270AFA100D7EEFC /* SYMyMomentsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyMomentsVC.h; sourceTree = "<group>"; };
 		7B5210F52270AFA100D7EEFC /* SYMyMomentsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyMomentsVC.m; sourceTree = "<group>"; };
+		7B52A71F229555900043511C /* SYWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYWalletVC.h; sourceTree = "<group>"; };
+		7B52A720229555900043511C /* SYWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYWalletVC.m; sourceTree = "<group>"; };
+		7B52A722229555A40043511C /* SYWalletVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYWalletVM.h; sourceTree = "<group>"; };
+		7B52A723229555A40043511C /* SYWalletVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYWalletVM.m; sourceTree = "<group>"; };
+		7B52A726229587230043511C /* SYIncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYIncomeModel.h; sourceTree = "<group>"; };
+		7B52A727229587230043511C /* SYIncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYIncomeModel.m; sourceTree = "<group>"; };
+		7B52A72922958A1D0043511C /* SYWalletDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYWalletDetailModel.h; sourceTree = "<group>"; };
+		7B52A72A22958A1D0043511C /* SYWalletDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYWalletDetailModel.m; sourceTree = "<group>"; };
 		7B54EDB8228FFDC80071EF21 /* WebChatPayH5View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebChatPayH5View.m; sourceTree = "<group>"; };
 		7B54EDB9228FFDC80071EF21 /* WebChatPayH5View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebChatPayH5View.h; sourceTree = "<group>"; };
 		7B54EDBB22901CA80071EF21 /* SYAlipayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAlipayModel.h; sourceTree = "<group>"; };
@@ -2968,6 +2980,35 @@
 			path = MyMoments;
 			sourceTree = "<group>";
 		};
+		7B52A71D229555580043511C /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				7B52A722229555A40043511C /* SYWalletVM.h */,
+				7B52A723229555A40043511C /* SYWalletVM.m */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		7B52A71E229555690043511C /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				7B52A71F229555900043511C /* SYWalletVC.h */,
+				7B52A720229555900043511C /* SYWalletVC.m */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		7B52A7252295870F0043511C /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				7B52A726229587230043511C /* SYIncomeModel.h */,
+				7B52A727229587230043511C /* SYIncomeModel.m */,
+				7B52A72922958A1D0043511C /* SYWalletDetailModel.h */,
+				7B52A72A22958A1D0043511C /* SYWalletDetailModel.m */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
 		7B54EDB7228FFDBD0071EF21 /* Pay */ = {
 			isa = PBXGroup;
 			children = (
@@ -3951,6 +3992,7 @@
 		7BE971C4225ECA9500FF6A25 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7B52A71E229555690043511C /* Wallet */,
 				7B5210EF2270AF5D00D7EEFC /* MyMoments */,
 				7B5210E8227095B500D7EEFC /* Signin */,
 				7B76B8852267219C00153249 /* Info */,
@@ -3967,6 +4009,7 @@
 		7BE971C5225ECAD800FF6A25 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7B52A71D229555580043511C /* Wallet */,
 				7B5210F02270AF6D00D7EEFC /* MyMoments */,
 				7B5210E72270958600D7EEFC /* Signin */,
 				7B76B886226721B400153249 /* Info */,
@@ -4061,6 +4104,7 @@
 		7BE971FA2260352500FF6A25 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7B52A7252295870F0043511C /* Wallet */,
 				7B94A2232285606B008453C7 /* Recharge */,
 				7BEB77C622784CAE008869A1 /* Signin */,
 				7B76B8A52267575000153249 /* Info */,
@@ -5057,6 +5101,7 @@
 				7B0228AC223A16470045E25F /* PinYinForObjc.m in Sources */,
 				7B2A21A52276B67B00EC8614 /* NJKWebViewProgress.m in Sources */,
 				7B15EC6D2265BAF100A80BD5 /* ZYClipViewController.m in Sources */,
+				7B52A721229555900043511C /* SYWalletVC.m in Sources */,
 				26A7E7411F79FE550015CA71 /* SYRegisterVC.m in Sources */,
 				2618AFD11F91A5D900F82A46 /* SYPreferenceSettingHelper.m in Sources */,
 				7B76B8B422682BEE00153249 /* SYBaseInfoEditVM.m in Sources */,
@@ -5157,6 +5202,7 @@
 				2624CAEC1F98DFC80083923F /* SYURLParameters.m in Sources */,
 				263D36DB1F666438007267C3 /* LCActionSheet+SYExtension.m in Sources */,
 				2605C5BE1F662EE400B1F66E /* SYMainFrameVM.m in Sources */,
+				7B52A724229555A40043511C /* SYWalletVM.m in Sources */,
 				26BEBC751F8B7844004D502F /* SYUser.m in Sources */,
 				2615974B1FEA5DD300C6FD80 /* SYMomentContentCell.m in Sources */,
 				7B0228A7223A16470045E25F /* PinyinHelper.m in Sources */,
@@ -5238,6 +5284,7 @@
 				7B7602D522745F5E004C9936 /* SYGiftPackageVM.m in Sources */,
 				7BE971DC225F434900FF6A25 /* SYDiamondsVC.m in Sources */,
 				2624CAED1F98DFC80083923F /* SYHTTPRequest.m in Sources */,
+				7B52A72B22958A1D0043511C /* SYWalletDetailModel.m in Sources */,
 				7BE971D7225F289200FF6A25 /* SYSettingVM.m in Sources */,
 				7B7602D822745F72004C9936 /* SYGiftPackageVC.m in Sources */,
 				26C7BEEE1F8CCA2C00525126 /* SYHTTPService.m in Sources */,
@@ -5255,6 +5302,7 @@
 				263D36DA1F666438007267C3 /* FBKVOController+SYExtension.m in Sources */,
 				2605C5B51F66241D00B1F66E /* SYHomePageVC.m in Sources */,
 				7BE971CB225ECB2C00FF6A25 /* SYProfileVC.m in Sources */,
+				7B52A728229587230043511C /* SYIncomeModel.m in Sources */,
 				7B76B8C52269AA8A00153249 /* SYOutboundVC.m in Sources */,
 				7BE372CD226DD9C500555C41 /* SYOutboundModel.m in Sources */,
 				26FE8E7F1F9514D100EC8BE0 /* TAAnimatedDotView.m in Sources */,

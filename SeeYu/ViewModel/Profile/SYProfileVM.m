@@ -11,6 +11,7 @@
 #import "SYInfoEditVM.h"
 #import "SYPresentVM.h"
 #import "SYRechargeVM.h"
+#import "SYWalletVM.h"
 #import "SYDiamondsVM.h"
 #import "SYSettingVM.h"
 #import "SYAuthenticationVM.h"
@@ -52,18 +53,21 @@
             SYPresentVM *vm = [[SYPresentVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(2)]) {
-            SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"diamonds"}];
+            SYWalletVM *vm = [[SYWalletVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(3)]) {
-            SYSettingVM *vm = [[SYSettingVM alloc] initWithServices:self.services params:nil];
+            SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"diamonds"}];
             [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(4)]){
-            SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"vip"}];
+            SYSettingVM *vm = [[SYSettingVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(5)]) {
-            SYAuthenticationVM *vm = [[SYAuthenticationVM alloc] initWithServices:self.services params:nil];
+            SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"vip"}];
             [self.services pushViewModel:vm animated:YES];
         } else if ([kind isEqual:@(6)]) {
+            SYAuthenticationVM *vm = [[SYAuthenticationVM alloc] initWithServices:self.services params:nil];
+            [self.services pushViewModel:vm animated:YES];
+        } else if ([kind isEqual:@(7)]) {
             SYInfoEditVM *vm = [[SYInfoEditVM alloc] initWithServices:self.services params:nil];
             [self.services pushViewModel:vm animated:YES];
         }

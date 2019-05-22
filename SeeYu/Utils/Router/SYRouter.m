@@ -89,7 +89,8 @@ static SYRouter *sharedInstance_ = nil;
              @"SYBaseInfoEditVM":@"SYBaseInfoEditVC",
              @"SYDisclaimerVM":@"SYDisclaimerVC",
              @"SYAboutVM":@"SYAboutVC",
-             @"SYTopUpVM":@"SYTopUpVC"
+             @"SYTopUpVM":@"SYTopUpVC",
+             @"SYWalletVM":@"SYWalletVC"
              };
 }
 

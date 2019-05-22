@@ -48,6 +48,9 @@
 /// 获取当前用户的全部动态
 #define SY_HTTTP_PATH_USER_MINE_MOMENTS_QUERY   @"/application/userMoment/queryMineMoments"
 
+/// 获取用户每日收入明细
+#define SY_HTTTP_PATH_USER_INCOME_QUERY   @"/application/userWallet/userQueryFundDetails"
+
 /// 获取IM用户资料
 #define SY_HTTTP_PATH_USER_IMINFO   @"/application/user/iminfo"
 

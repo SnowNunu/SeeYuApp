@@ -7,10 +7,21 @@
 //
 
 #import "SYVM.h"
+#import "SYGoodsModel.h"
+#import "SYPayInfoModel.h"
+#import "SYWebVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYVipVM : SYVM
+
+@property (nonatomic, strong) SYUser *user;
+
+@property (nonatomic, strong) NSArray *datasource;
+
+@property (nonatomic, strong) RACCommand *requestVipPriceInfoCommand;
+
+@property (nonatomic, strong) RACCommand *requestPayInfoCommand;
 
 @end
 

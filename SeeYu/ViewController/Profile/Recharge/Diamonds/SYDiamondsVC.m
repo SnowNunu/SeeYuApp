@@ -13,13 +13,17 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) UIImageView *headerImageView;
+@property (nonatomic, strong) UIView *headerBgView;
+
+@property (nonatomic, strong) UIImageView *topLineView;
+
+@property (nonatomic, strong) UIImageView *bgImageView;
+
+@property (nonatomic, strong) UIImageView *bottomLineView;
 
 @property (nonatomic, strong) UILabel *diamondsLabel;
 
 @property (nonatomic, strong) UILabel *diamondsNumberLabel;
-
-@property (nonatomic ,strong) NSArray *dataSource;
 
 @end
 
@@ -28,7 +32,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    _dataSource = @[@{@"label":@"190钻石",@"price":@"19"},@{@"label":@"300钻石",@"price":@"30"},@{@"label":@"600钻石",@"price":@"60"},@{@"label":@"1000钻石",@"price":@"100"},@{@"label":@"3000钻石",@"price":@"300"},@{@"label":@"5000钻石",@"price":@"500"}];
     [self _setupSubViews];
     [self _makeSubViewsConstraints];
 }
@@ -64,46 +67,73 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.tableFooterView = [UIView new];
-    tableView.backgroundColor = SYColorFromHexString(@"#F8F8F8");
+    tableView.backgroundColor = [UIColor whiteColor];
     tableView.separatorInset = UIEdgeInsetsZero;
-    UIImageView *headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 135)];
-    headerImageView.image = SYImageNamed(@"diamond_bg");
-    _headerImageView = headerImageView;
-    tableView.tableHeaderView = headerImageView;
+    UIView *headerBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 120)];
+    _headerBgView = headerBgView;
+    tableView.tableHeaderView = headerBgView;
     _tableView = tableView;
     [self.view addSubview:tableView];
     
+    UIImageView *topLineView = [UIImageView new];
+    topLineView.backgroundColor = SYColorFromHexString(@"#F7D6F4");
+    _topLineView = topLineView;
+    [headerBgView addSubview:topLineView];
+    
+    UIImageView *bgImageView = [UIImageView new];
+    bgImageView.image = SYImageNamed(@"diamond_bg");
+    _bgImageView = bgImageView;
+    [headerBgView addSubview:bgImageView];
+    
+    UIImageView *bottomLineView = [UIImageView new];
+    bottomLineView.backgroundColor = SYColorFromHexString(@"#F7D6F4");
+    _bottomLineView = bottomLineView;
+    [headerBgView addSubview:bottomLineView];
+    
     UILabel *diamondsLabel = [UILabel new];
-    diamondsLabel.textColor = [UIColor whiteColor];
+    diamondsLabel.textColor = SYColor(193, 99, 237);
     diamondsLabel.textAlignment = NSTextAlignmentLeft;
-    diamondsLabel.font = SYRegularFont(16);
-    diamondsLabel.text = @"钻石余额";
+    diamondsLabel.font = SYFont(13, YES);
+    diamondsLabel.text = @"您的钻石余额：";
     _diamondsLabel = diamondsLabel;
-    [headerImageView addSubview:diamondsLabel];
+    [headerBgView addSubview:diamondsLabel];
     
     UILabel *diamondsNumberLabel = [UILabel new];
-    diamondsNumberLabel.textColor = [UIColor whiteColor];
+    diamondsNumberLabel.textColor = SYColor(193, 99, 237);
     diamondsNumberLabel.textAlignment = NSTextAlignmentCenter;
-    diamondsNumberLabel.font = SYRegularFont(35);
+    diamondsNumberLabel.font = SYFont(25, YES);
     diamondsNumberLabel.text = @"0";
     _diamondsNumberLabel = diamondsNumberLabel;
-    [headerImageView addSubview:diamondsNumberLabel];
-
+    [headerBgView addSubview:diamondsNumberLabel];
 }
 
 - (void)_makeSubViewsConstraints {
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.headerBgView).offset(5);
+        make.centerX.equalTo(self.headerBgView);
+        make.height.offset(1);
+        make.width.equalTo(self.headerBgView).offset(-20);
+    }];
+    [_bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.topLineView.mas_bottom).offset(5);
+        make.bottom.equalTo(self.bottomLineView.mas_top).offset(-5);
+        make.centerX.equalTo(self.headerBgView);
+        make.width.equalTo(self.headerBgView).offset(-5);
+    }];
+    [_bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.width.height.equalTo(self.topLineView);
+        make.bottom.equalTo(self.headerBgView).offset(-4);
+    }];
     [_diamondsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.headerImageView).offset(15);
-        make.top.equalTo(self.headerImageView).offset(30);
-        make.height.offset(20);
+        make.left.top.equalTo(self.bgImageView).offset(6);
+        make.height.offset(15);
     }];
     [_diamondsNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.headerImageView);
-        make.height.offset(45);
-        make.top.equalTo(self.diamondsLabel.mas_bottom).offset(15);
+        make.center.equalTo(self.bgImageView);
+        make.height.offset(25);
     }];
 }
 
@@ -116,7 +146,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 75.f;
+    return 63.f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -127,44 +157,50 @@
     cell.layoutMargins = UIEdgeInsetsZero;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     SYGoodsModel *model = self.viewModel.datasource[indexPath.row];
-    UIImageView *lineImageView = [UIImageView new];
-    lineImageView.backgroundColor = SYColorFromHexString(@"#F8F8F8");
-    [cell.contentView addSubview:lineImageView];
+    
+    UIView *bgView = [UIView new];
+    bgView.layer.cornerRadius = 8.f;
+    bgView.layer.masksToBounds = YES;
+    bgView.backgroundColor = indexPath.row % 2 == 0 ? SYColorFromHexString(@"#F0CFFF") : SYColorFromHexString(@"#F5DFFF");
+    [cell.contentView addSubview:bgView];
     
     UIImageView *diamondsImageView = [UIImageView new];
-    diamondsImageView.image = SYImageNamed(@"icon_diamond");
+    diamondsImageView.image = SYImageNamed(@"diamond");
     [cell.contentView addSubview:diamondsImageView];
     
     UILabel *diamondsAmountLabel = [UILabel new];
     diamondsAmountLabel.textAlignment = NSTextAlignmentLeft;
-    diamondsAmountLabel.textColor = SYColor(159, 105, 235);
+    diamondsAmountLabel.textColor = SYColor(193, 99, 237);
     diamondsAmountLabel.text = model.goodsName;
-    diamondsAmountLabel.font = SYRegularFont(14);
+    diamondsAmountLabel.font = SYFont(15, YES);
     [cell.contentView addSubview:diamondsAmountLabel];
     
     UILabel *diamondsPriceLabel = [UILabel new];
     diamondsPriceLabel.textAlignment = NSTextAlignmentRight;
-    diamondsPriceLabel.textColor = SYColor(153, 153, 153);
+    diamondsPriceLabel.textColor = SYColor(193, 99, 237);
     diamondsPriceLabel.text = [NSString stringWithFormat:@"￥%@元",model.goodsMoney];
-    diamondsPriceLabel.font = SYRegularFont(14);
+    diamondsPriceLabel.font = SYFont(15, YES);
     [cell.contentView addSubview:diamondsPriceLabel];
-    [lineImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.equalTo(cell.contentView);
-        make.height.offset(15);
+    
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(cell.contentView).offset(4);
+        make.left.equalTo(cell.contentView).offset(2);
+        make.right.equalTo(cell.contentView).offset(-2);
+        make.bottom.equalTo(cell.contentView);
     }];
     [diamondsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(diamondsAmountLabel);
-        make.width.height.offset(15);
-        make.left.equalTo(cell.contentView).offset(15);
+        make.centerY.equalTo(bgView);
+        make.width.height.offset(20);
+        make.left.equalTo(bgView).offset(12);
     }];
     [diamondsAmountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(cell.contentView).offset(-20);
-        make.height.offset(20);
-        make.left.equalTo(diamondsImageView.mas_right).offset(5);
+        make.centerY.equalTo(bgView);
+        make.height.offset(15);
+        make.left.equalTo(diamondsImageView.mas_right).offset(10);
     }];
     [diamondsPriceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(cell.contentView).offset(-15);
-        make.height.offset(20);
+        make.right.equalTo(bgView).offset(-20);
+        make.height.offset(15);
         make.centerY.equalTo(diamondsAmountLabel);
     }];
     return cell;
@@ -172,7 +208,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SYGoodsModel *model = self.viewModel.datasource[indexPath.row];
-    NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUserId,@"goodsId":model.goodsId,@"rechargeType":@"2"};
+    NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUserId,@"goodsId":model.goodsId,@"rechargeType":@"1"};
     [self.viewModel.requestPayInfoCommand execute:params];
 }
 
