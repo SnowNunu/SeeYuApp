@@ -79,7 +79,7 @@
 
 #pragma mark - 设置导航栏
 - (void)_setupNavigation { 
-    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - 80, 44) titles:@[@"语聊",@"附近",@"选聊",@"榜单"] delegate:self indicatorType:FSIndicatorTypeEqualTitle showHalo:YES];
+    self.titleView = [[FSSegmentTitleView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - 80, 44) titles:@[@"语聊",@"附近",@"榜单"] delegate:self indicatorType:FSIndicatorTypeEqualTitle showHalo:YES];
     self.titleView.titleNormalColor = [UIColor whiteColor];
     self.titleView.titleSelectColor = [UIColor whiteColor];
     self.titleView.backgroundColor = [UIColor clearColor];
@@ -96,9 +96,9 @@
     // 附近的人界面
     SYNearbyVC *nearVC = [[SYNearbyVC alloc]initWithViewModel:self.viewModel.nearbyVM];
     [childVCs addObject:nearVC];
-    // 选聊界面
-    SYAnchorsRandomVC *randomVC = [[SYAnchorsRandomVC alloc]initWithViewModel:self.viewModel.anchorsRandomVM];
-    [childVCs addObject:randomVC];
+//    // 选聊界面
+//    SYAnchorsRandomVC *randomVC = [[SYAnchorsRandomVC alloc]initWithViewModel:self.viewModel.anchorsRandomVM];
+//    [childVCs addObject:randomVC];
     // 榜单界面
     SYRankingVC *rankingVC = [[SYRankingVC alloc]initWithViewModel:self.viewModel.rankingVM];
     [childVCs addObject:rankingVC];

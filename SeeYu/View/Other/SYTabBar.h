@@ -7,6 +7,7 @@
 //  自定义系统的TabBar，解决TabBar顶部的细线高度问题
 
 #import <UIKit/UIKit.h>
+#import "JSBadgeView.h"
 
 @interface SYTabBar : UITabBar
 

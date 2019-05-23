@@ -8,6 +8,7 @@
 
 #import "SYTabBarController.h"
 #import "SYHomePageVM.h"
+#import "SYTabBar.h"
 
 @interface SYHomePageVC : SYTabBarController
 

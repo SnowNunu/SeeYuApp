@@ -10,7 +10,6 @@
 #import "SYGoodsModel.h"
 #import "SYPayInfoModel.h"
 #import "SYWebVM.h"
-#import "SYTopUpVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

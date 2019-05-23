@@ -9,6 +9,8 @@
 #import "SYVC.h"
 #import "SYDiamondsVM.h"
 #import "SYGoodsModel.h"
+#import "SYPayVM.h"
+#import "SYPayVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

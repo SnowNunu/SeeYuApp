@@ -8,14 +8,12 @@
 
 #import "SYVC.h"
 #import "SYWebVM.h"
-#import <WebKit/WebKit.h>
-#import "SYWebVM.h"
 #import "WebChatPayH5View.h"
 
-@interface SYWebVC : SYVC <WKNavigationDelegate>
+@interface SYWebVC : SYVC <UIWebViewDelegate>
 
 /// webView
-@property (nonatomic, weak, readonly) WKWebView *webView;
+@property (nonatomic, weak, readonly) UIWebView *webView;
 
 @property (nonatomic, strong) SYWebVM *viewModel;
 

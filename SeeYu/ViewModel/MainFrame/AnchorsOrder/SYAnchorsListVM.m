@@ -21,7 +21,7 @@
 - (void)initialize {
     @weakify(self)
     self.pageNum = 1;
-    self.pageSize = 10;
+    self.pageSize = 9;
     self.requestAnchorsListCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *page) {
         @strongify(self)
         return [self requestRemoteAnchorsDataSignalWithPage:page.integerValue];

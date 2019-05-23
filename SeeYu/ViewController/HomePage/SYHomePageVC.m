@@ -167,6 +167,9 @@
 }
 
 - (void)refreshBadgeValue {
+    // 未读消息数角标
+    
+//    _badgeView = badgeView;
     int totalUnreadCount = [[RCIMClient sharedRCIMClient] getTotalUnreadCount];
     UIViewController *vc = self.tabBarController.viewControllers[2];
     dispatch_async(dispatch_get_main_queue(), ^{

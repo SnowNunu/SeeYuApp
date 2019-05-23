@@ -8,6 +8,8 @@
 
 #import "SYVC.h"
 #import "SYVipVM.h"
+#import "SYPayVM.h"
+#import "SYPayVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

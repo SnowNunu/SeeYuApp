@@ -84,10 +84,6 @@
     }
 }
 
-- (UIEdgeInsets)contentInset {
-    return UIEdgeInsetsMake(SY_APPLICATION_TOP_BAR_HEIGHT, 0, 0, 0);
-}
-
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -132,17 +128,17 @@
             }
             headImageView.layer.masksToBounds = YES;
             
-            TXScrollLabelView *aliasLabel = [TXScrollLabelView scrollWithTitle:model.userName type:TXScrollLabelViewTypeLeftRight];
-            aliasLabel.textAlignment = NSTextAlignmentLeft;
+            UILabel *aliasLabel = [UILabel new];
+            aliasLabel.textAlignment = NSTextAlignmentCenter;
             aliasLabel.font = SYFont(11, YES);
             aliasLabel.backgroundColor = SYColorAlpha(157, 76, 213, 0.8);
-            aliasLabel.scrollTitleColor = SYColor(255, 240, 0);
-            aliasLabel.scrollSpace = 20.f;
+            aliasLabel.textColor = SYColor(255, 240, 0);
             aliasLabel.layer.borderWidth = 1.f;
             aliasLabel.layer.borderColor = SYColorAlpha(207, 144, 251, 0.8).CGColor;
             aliasLabel.layer.cornerRadius = 10.f;
+            aliasLabel.layer.masksToBounds = YES;
+            aliasLabel.text = model.userName;
             [cell.contentView addSubview:aliasLabel];
-            [aliasLabel beginScrolling];
             
             UILabel *consumLabel = [UILabel new];
             if ([self.viewModel.listType isEqualToString:@"anchor"]) {
@@ -176,7 +172,6 @@
             }];
             [bgView addGestureRecognizer:tapGesture];
             
-            CGFloat marginLabel = (SY_SCREEN_WIDTH / 2 - 42.5 - 85 - 2.5) / 2;
             if (i == 0) {
                 [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.width.offset(85.f);
@@ -188,7 +183,6 @@
                     make.width.height.offset(75.f);
                     make.center.equalTo(backImageView);
                 }];
-                aliasLabel.frame = CGRectMake(SY_SCREEN_WIDTH / 2 - 42.5, 100, 85, 20);
             } else if (i == 1) {
                 [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.width.offset(65.f);
@@ -200,7 +194,6 @@
                     make.width.height.offset(58.f);
                     make.center.equalTo(backImageView);
                 }];
-                aliasLabel.frame = CGRectMake(marginLabel + 2.5, 90, 85, 20);
             } else {
                 [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.width.offset(65.f);
@@ -212,10 +205,15 @@
                     make.width.height.offset(58.f);
                     make.center.equalTo(backImageView);
                 }];
-                aliasLabel.frame = CGRectMake(SY_SCREEN_WIDTH - marginLabel - 2.5 - 85, 95, 85, 20);
             }
+            [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.width.offset(85);
+                make.height.offset(20);
+                make.top.equalTo(backImageView.mas_bottom);
+                make.centerX.equalTo(backImageView);
+            }];
             [consumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(backImageView.mas_bottom).offset(22);
+                make.top.equalTo(aliasLabel.mas_bottom).offset(2);
                 make.centerX.equalTo(backImageView);
                 make.width.offset(85);
                 make.height.offset(20);
@@ -257,15 +255,12 @@
         [cell.contentView addSubview:headImageView];
         
         // 昵称
-        TXScrollLabelView *aliasScrolLabel = [TXScrollLabelView scrollWithTitle:model.userName type:TXScrollLabelViewTypeLeftRight];
-        aliasScrolLabel.frame = CGRectMake(87, 15, 80, 15);
-        aliasScrolLabel.textAlignment = NSTextAlignmentLeft;
-        aliasScrolLabel.font = SYFont(11, YES);
-        aliasScrolLabel.backgroundColor = [UIColor clearColor];
-        aliasScrolLabel.scrollTitleColor = SYColor(193, 99, 237);
-        aliasScrolLabel.scrollSpace = 20.f;
-        [cell.contentView addSubview:aliasScrolLabel];
-        [aliasScrolLabel beginScrolling];
+        UILabel *aliasLabel = [UILabel new];
+        aliasLabel.textAlignment = NSTextAlignmentLeft;
+        aliasLabel.font = SYFont(11, YES);
+        aliasLabel.textColor = SYColor(193, 99, 237);
+        aliasLabel.text = model.userName;
+        [cell.contentView addSubview:aliasLabel];
         
         // id
         UILabel *idLabel = [UILabel new];
@@ -307,9 +302,14 @@
             make.centerY.equalTo(cell);
             make.left.equalTo(orderNum.mas_right).offset(10);
         }];
+        [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(headImageView.mas_right).offset(9);
+            make.height.offset(12);
+            make.top.equalTo(bgView).offset(15);
+        }];
         [idLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(aliasScrolLabel);
-            make.top.equalTo(aliasScrolLabel.mas_bottom).offset(8);
+            make.left.equalTo(aliasLabel);
+            make.top.equalTo(aliasLabel.mas_bottom).offset(8);
             make.height.offset(15);
         }];
         [customLabel mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -141,6 +141,12 @@
 /// 全局细下滑线颜色 以及分割线颜色
 #define SYGlobalBottomLineColor     [UIColor colorFromHexString:@"#D9D9D9"]
 
+/// scheme (用于支付完成后跳回APP)
+#define SY_APP_SCHEME   @"seeyu.zhyst.cn://"
+
+/// wechat pay url prefix
+#define SY_WX_PAY_PREFIX @"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?"
+
 // 是否为空对象
 #define SYObjectIsNil(__object)  ((nil == __object) || [__object isKindOfClass:[NSNull class]])
 

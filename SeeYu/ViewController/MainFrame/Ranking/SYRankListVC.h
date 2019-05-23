@@ -11,15 +11,12 @@
 #import "SYTableView.h"
 #import "UIScrollView+SYRefresh.h"
 #import "SYRankListModel.h"
-#import "TXScrollLabelView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYRankListVC : SYVC <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) SYTableView *tableView;
-
-@property (nonatomic, readonly, assign) UIEdgeInsets contentInset;
 
 @end
 

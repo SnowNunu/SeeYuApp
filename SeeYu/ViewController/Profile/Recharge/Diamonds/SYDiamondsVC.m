@@ -208,8 +208,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SYGoodsModel *model = self.viewModel.datasource[indexPath.row];
-    NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUserId,@"goodsId":model.goodsId,@"rechargeType":@"1"};
-    [self.viewModel.requestPayInfoCommand execute:params];
+    [self openPayView:model];
+}
+
+// 打开支付通道选择页面
+- (void)openPayView:(SYGoodsModel *)model {
+    SYPayVM *payVM = [[SYPayVM alloc] initWithServices:self.viewModel.services params:@{SYViewModelUtilKey:model}];
+    SYPayVC *payVC = [[SYPayVC alloc] initWithViewModel:payVM];
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionMoveIn;
+    [SYSharedAppDelegate presentVC:payVC withAnimation:animation];
 }
 
 @end
