@@ -90,7 +90,15 @@ static SYRouter *sharedInstance_ = nil;
              @"SYDisclaimerVM":@"SYDisclaimerVC",
              @"SYAboutVM":@"SYAboutVC",
              @"SYPayVM":@"SYPayVC",
-             @"SYWalletVM":@"SYWalletVC"
+             @"SYWalletVM":@"SYWalletVC",
+             @"SYWithdrawalVM":@"SYWithdrawalVC",
+             @"SYAlipayWithdrawalVM":@"SYAlipayWithdrawalVC",
+             @"SYAlipayConfirmVM":@"SYAlipayConfirmVC",
+             @"SYUnionWithdrawalVM":@"SYUnionWithdrawalVC",
+             @"SYUnionConfirmVM":@"SYUnionConfirmVC",
+             @"SYPaymentsVM":@"SYPaymentsVC",
+             @"SYPaymentsDetailVM":@"SYPaymentsDetailVC",
+             @"SYWithdrawalRulesVM":@"SYWithdrawalRulesVC"
              };
 }
 

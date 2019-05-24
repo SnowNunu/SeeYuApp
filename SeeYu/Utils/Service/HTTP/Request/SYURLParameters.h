@@ -170,6 +170,15 @@
 // 点赞评论
 #define SY_HTTTP_PATH_USER_FORUM_COMMENT_LIKE     @"/application/forumComment/likeForumComment"
 
+// 获取用户可提现金额
+#define SY_HTTTP_PATH_USER_WITHDRAW_MONEY_QUERY     @"/application/userWallet/userQueryAvailableWithdrawMoney"
+
+// 用户申请提现
+#define SY_HTTTP_PATH_USER_WITHDRAW_MONEY_REQUEST   @"/application/userWallet/userWithdraw"
+
+/// 获取用户收支明细
+#define SY_HTTTP_PATH_USER_PAYMENTS_DETAIL_QUERY    @"/application/userWallet/userQueryFund"
+
 
 ///
 //+ (NSString *)ver;          // app版本号

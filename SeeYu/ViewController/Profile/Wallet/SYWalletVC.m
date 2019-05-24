@@ -56,6 +56,10 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self _setupSubViews];
     [self _makeSubViewsConstraints];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.viewModel.requestIncomeInfoCommand execute:nil];
 }
 
@@ -71,6 +75,8 @@
     [RACObserve(self.viewModel, datasource) subscribeNext:^(id x) {
         [self.tableView reloadData];
     }];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"nav_btn_question" target:nil selector:nil textType:NO];
+    self.navigationItem.rightBarButtonItem.rac_command = self.viewModel.enterWithdrawalRulesViewCommand;
 }
 
 - (void)_setupSubViews {
@@ -115,7 +121,11 @@
     _withdrawalView = withdrawalView;
     [headerView addSubview:withdrawalView];
     [withdrawalView bk_whenTapped:^{
-        NSLog(@"点击了提现");
+        if (self.viewModel.detailModel.availableWithdrawBalance > 100) {
+            [self.viewModel.enterWithdrawalViewCommand execute:nil];
+        } else {
+            [MBProgressHUD sy_showTips:@"可提现金额需要大于100才能提现"];
+        }
     }];
     
     UIImageView *withdrawalImageView = [UIImageView new];
@@ -176,7 +186,7 @@
     _moreInfoView = moreInfoView;
     [headerView addSubview:moreInfoView];
     [moreInfoView bk_whenTapped:^{
-        NSLog(@"点击了更多数据");
+        [self.viewModel.enterPaymentsViewCommand execute:nil];
     }];
     
     UIImageView *moreInfoImageView = [UIImageView new];

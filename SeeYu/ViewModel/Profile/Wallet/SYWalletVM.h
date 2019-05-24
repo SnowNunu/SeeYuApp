@@ -9,6 +9,9 @@
 #import "SYVM.h"
 #import "SYIncomeModel.h"
 #import "SYWalletDetailModel.h"
+#import "SYWithdrawalVM.h"
+#import "SYWithdrawalRulesVM.h"
+#import "SYPaymentsVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +22,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) SYWalletDetailModel *detailModel;
 
 @property (nonatomic, strong) RACCommand *requestIncomeInfoCommand;
+
+@property (nonatomic, strong) RACCommand *enterWithdrawalViewCommand;
+
+@property (nonatomic, strong) RACCommand *enterWithdrawalRulesViewCommand;
+
+@property (nonatomic, strong) RACCommand *enterPaymentsViewCommand;
 
 @end
 
