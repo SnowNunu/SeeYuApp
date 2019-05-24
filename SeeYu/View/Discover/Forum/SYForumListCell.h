@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYForumListCell : UITableViewCell
 
+@property (nonatomic, strong) UIView *bgView;
+
 @property (nonatomic, strong) YYLabel *titleLabel;
 
 @property (nonatomic, strong) UIImageView *titleImageView;
@@ -21,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImageView *commentImageView;
 
 @property (nonatomic, strong) UILabel *commentsNumLabel;
+
+@property (nonatomic, strong) UIImageView *toAnswerImageView;
 
 @property (nonatomic, strong) UILabel *toAnswerLabel;
 

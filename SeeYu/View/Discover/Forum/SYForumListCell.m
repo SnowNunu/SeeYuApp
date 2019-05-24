@@ -20,10 +20,18 @@
 }
 
 - (void)_setupSubviews {
+    UIView *bgView = [UIView new];
+    bgView.layer.masksToBounds = YES;
+    bgView.layer.cornerRadius = 9.f;
+    bgView.backgroundColor = SYColorFromHexString(@"#FFF3FF");
+    _bgView = bgView;
+    [self addSubview:bgView];
+    
     YYLabel *titleLabel = [YYLabel new];
     titleLabel.numberOfLines = 0;   // 开启多行显示
-    titleLabel.preferredMaxLayoutWidth = SY_SCREEN_WIDTH - 60;
-    titleLabel.font = SYRegularFont(16);
+    titleLabel.preferredMaxLayoutWidth = SY_SCREEN_WIDTH - 60 - 14;
+    titleLabel.font = SYFont(15,YES);
+    titleLabel.textColor = SYColor(56, 56, 56);
     _titleLabel = titleLabel;
     [self addSubview:titleLabel];
     
@@ -34,7 +42,7 @@
     [self addSubview:titleImageView];
     
     YYLabel *contentLabel = [YYLabel new];
-    contentLabel.numberOfLines = 2;   // 开启多行显示
+    contentLabel.numberOfLines = 3;   // 开启多行显示
     contentLabel.preferredMaxLayoutWidth = SY_SCREEN_WIDTH - 60;
     contentLabel.font = SYRegularFont(13);
     contentLabel.textColor = SYColor(153, 153, 153);
@@ -47,8 +55,8 @@
     [self addSubview:commentImageView];
     
     UILabel *commentsNumLabel = [UILabel new];
-    commentsNumLabel.textColor = SYColor(153, 153, 153);
-    commentsNumLabel.font = SYRegularFont(15);
+    commentsNumLabel.textColor = SYColor(193, 99, 237);
+    commentsNumLabel.font = SYFont(10,YES);
     _commentsNumLabel = commentsNumLabel;
     [self addSubview:commentsNumLabel];
     
@@ -56,41 +64,61 @@
     toAnswerLabel.textColor = SYColor(159, 105, 235);
     toAnswerLabel.font = SYRegularFont(15);
     toAnswerLabel.text = @"去回答";
+    toAnswerLabel.textAlignment = NSTextAlignmentRight;
     _toAnswerLabel = toAnswerLabel;
     [self addSubview:toAnswerLabel];
+    
+    UIImageView *toAnswerImageView = [UIImageView new];
+    toAnswerImageView.image = SYImageNamed(@"arrorMore");
+    _toAnswerImageView = toAnswerImageView;
+    [self addSubview:toAnswerImageView];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)_makeSubViewsConstraints {
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(7);
+        make.right.equalTo(self).offset(-7);
+        make.top.equalTo(self).offset(4);
+        make.bottom.equalTo(self);
+    }];
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(30);
         make.right.equalTo(self).offset(-30);
-        make.top.equalTo(self).offset(15);
+        make.top.equalTo(self.bgView).offset(15);
         make.height.offset(20);
     }];
-    [self.titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleLabel.mas_bottom);
+    [_titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(7);
         make.left.width.equalTo(self.titleLabel);
         make.height.offset(0);
     }];
-    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleImageView.mas_bottom).offset(15);
+    [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleImageView.mas_bottom).offset(9);
         make.left.width.equalTo(self.titleLabel);
     }];
-    [self.commentImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_commentImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentLabel.mas_bottom).offset(15);
-        make.width.height.offset(13);
-        make.bottom.equalTo(self).offset(-15);
-        make.left.equalTo(self.contentLabel);
+        make.width.offset(17);
+        make.height.offset(13.5);
+        make.bottom.equalTo(self).offset(-12);
+        make.left.equalTo(self.contentLabel).offset(9);
     }];
-    [self.commentsNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.commentImageView.mas_right).offset(6);
+    [_commentsNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.commentImageView.mas_right).offset(4);
         make.width.offset(60);
         make.height.centerY.equalTo(self.commentImageView);
     }];
-    [self.toAnswerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentLabel).offset(6);
+    [_toAnswerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.toAnswerImageView.mas_left).offset(-4);
         make.width.offset(60);
         make.height.centerY.equalTo(self.commentImageView);
+    }];
+    [_toAnswerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.offset(17);
+        make.height.offset(11.5);
+        make.right.equalTo(self.bgView).offset(-15);
+        make.centerY.equalTo(self.commentsNumLabel);
     }];
 }
 

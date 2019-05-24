@@ -58,7 +58,7 @@ static NSString * const SYWebViewKVOEstimatedProgress = @"estimatedProgress";
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     if ([request.URL.absoluteString hasPrefix:SY_WX_PAY_PREFIX]) {
-        //新建webView
+        // 新建webView
         UIWebView *web = [[UIWebView alloc]initWithFrame:CGRectZero];
         [self.view addSubview:web];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

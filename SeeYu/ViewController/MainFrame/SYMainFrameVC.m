@@ -52,7 +52,7 @@
     [RACObserve(self, user) subscribeNext:^(SYUser *user) {
         if (user != nil) {
             // 这里没有去服务器重新请求一下当前用户的信息，因为考虑到注册时间不会变
-            if (!([[NSDate new] timeIntervalSinceDate:self.user.userRegisterTime] > 3600 * 24 * 7)) {
+            if (!(([[NSDate new] timeIntervalSinceDate:self.user.userRegisterTime] + 8 * 3600) > 3600 * 24 * 7)) {
                 // 可以参与新手活动
                 [self.viewModel.requestGiftPackageInfoCommand execute:nil];
             }
@@ -61,7 +61,7 @@
     [RACObserve(self.viewModel, datasource) subscribeNext:^(NSArray *array) {
         if (array != nil) {
             // 请求完服务器后判断当天的签到状态再打开礼包页面
-            int day = [[NSDate new] timeIntervalSinceDate:self.user.userRegisterTime] / 3600 / 24;  //获取当前是注册完之后的第几天
+            int day = ([[NSDate new] timeIntervalSinceDate:self.user.userRegisterTime] + 8 * 3600)/ 3600 / 24;  //获取当前是注册完之后的第几天
             SYGiftPackageModel *model = self.viewModel.datasource[day];
             if (model.giftRecordIsReceive == 0) {
                 SYGiftPackageVM *giftVM = [[SYGiftPackageVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];

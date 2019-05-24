@@ -123,7 +123,7 @@ NSString * const anchorsListCell = @"anchorsListCell";
     }
     [cell setStarsByLevel:model.anchorStarLevel];
     if (model.userHeadImg != nil && model.userHeadImg.length > 0) {
-        [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:model.showPhoto] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
+        [cell.headImageView yy_setImageWithURL:[NSURL URLWithString: indexPath.row == 0 ? model.showPhotoWide : model.showPhoto] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
     } else {
         cell.headImageView.image = SYImageNamed(@"DefaultProfileHead_66x66");
     }

@@ -65,7 +65,7 @@
         [self.viewModel.requestPayInfoCommand execute:params];
         [self dismissSelfView];
     }];
-    
+    [SYNotificationCenter addObserver:self selector:@selector(goBack) name:@"goBackFromPayView" object:nil];
 }
 
 - (void)_setupSubViews {
@@ -255,6 +255,10 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [SYSharedAppDelegate dismissVC:self];
     });
+}
+
+- (void)goBack {
+    [self.viewModel.services popViewModelAnimated:YES];
 }
 
 @end

@@ -17,7 +17,11 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
+@property (nonatomic, strong) UIButton *closeBtn;
+
 @property (nonatomic, strong) UIButton *signinBtn;
+
+@property (nonatomic, strong) UIImageView *lineImageView;
 
 @property (nonatomic, strong) UILabel *tipsTitleLabel;
 
@@ -40,7 +44,7 @@
         [self.viewModel.receiveGiftCommand execute:nil];
     }];
     [self.viewModel.receiveGiftCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYGiftPackageModel *model) {
-        [MBProgressHUD sy_showTips:@"领取成功" addedToView:self.view];
+        [MBProgressHUD sy_showTips:model.award addedToView:self.view];
         UIImageView *imageView = [self.view viewWithTag:888 + model.day - 1];
         imageView.hidden = NO;
         self.signinBtn.backgroundColor = [UIColor grayColor];
@@ -53,11 +57,16 @@
             [MBProgressHUD sy_showErrorTips:error addedToView:self.view];
         }
     }];
+    [[_closeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SYSharedAppDelegate dismissVC:self];
+        });
+    }];
 }
 
 - (void)_setupSubViews {
     self.view.backgroundColor = SYColorAlpha(0, 0, 0, 0.2);
-    UITapGestureRecognizer *tap = [UITapGestureRecognizer new];
+    UITapGestureRecognizer *tap = [UITapGestureRecognizer new]; 
     [[tap rac_gestureSignal] subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [SYSharedAppDelegate dismissVC:self];
@@ -68,7 +77,9 @@
     UIView *bgView = [UIView new];
     bgView.backgroundColor = [UIColor whiteColor];
     bgView.layer.masksToBounds = YES;
-    bgView.layer.cornerRadius = 15.f;
+    bgView.layer.cornerRadius = 9.f;
+    bgView.layer.borderWidth = 2.f;
+    bgView.layer.borderColor = SYColorFromHexString(@"#AD7EB0").CGColor;
     _bgView = bgView;
     [self.view addSubview:bgView];
     UITapGestureRecognizer *tapNone = [UITapGestureRecognizer new];
@@ -80,76 +91,91 @@
     UILabel *titleLabel = [UILabel new];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = SYColor(255, 255, 255);
-    titleLabel.backgroundColor = SYColor(159, 105, 235);
-    titleLabel.font = SYRegularFont(21);
-    titleLabel.text = @"新人签到礼包";
+    titleLabel.backgroundColor = SYColorFromHexString(@"#DE93E3");
+    titleLabel.font = SYFont(18, YES);
+    titleLabel.text = @"新人礼包";
     _titleLabel = titleLabel;
     [bgView addSubview:titleLabel];
     
-    CGFloat width = (SY_SCREEN_WIDTH - 30);
-    CGFloat height = width * 1.16;
+    UIButton *closeBtn = [UIButton new];
+    [closeBtn setBackgroundImage:SYImageNamed(@"closeBtn") forState:UIControlStateNormal];
+    _closeBtn = closeBtn;
+    [bgView addSubview:closeBtn];
+    
+    CGFloat width = (SY_SCREEN_WIDTH - 60);
+    CGFloat cellWidth = width * 0.2;
+    CGFloat cellHeight = width * 0.2 * 0.814;
     CGFloat margin = width * 0.2 / 5;
     CGFloat margin1 = (width - width * 0.6 - margin * 2) / 2;
     for (int i = 0 ; i < 7; i++) {
         UIView *cellBgView = [UIView new];
         cellBgView.layer.cornerRadius = 5.f;
-        cellBgView.layer.borderColor = SYColor(159, 105, 235).CGColor;
-        cellBgView.layer.borderWidth = 1.f;
-        cellBgView.clipsToBounds = NO;
+        cellBgView.layer.borderColor = SYColorFromHexString(@"#EAB1D5").CGColor;
+        cellBgView.layer.borderWidth = 1.5f;
+        cellBgView.layer.masksToBounds = YES;
         [bgView addSubview:cellBgView];
         
         SYGiftPackageModel *model = self.viewModel.giftPackagesArray[i];
         UIImageView *iconImageView = [UIImageView new];
         if (model.giftRecordType == 1) {
             // 钻石
-            iconImageView.image = SYImageNamed(@"icon_check_diamond");
+            iconImageView.image = SYImageNamed(@"diamond");
         } else if (model.giftRecordType == 2) {
             // VIP
-            iconImageView.image = SYImageNamed(@"icon_check_vip");
+            iconImageView.image = SYImageNamed(@"VIP");
         } else {
-            // 礼物类型
-            [iconImageView yy_setImageWithURL:[NSURL URLWithString:model.giftRecordGiftUrl] placeholder:SYImageNamed(@"icon_check_gift") options:SYWebImageOptionAutomatic completion:NULL];
+            // 现金
+            iconImageView.image = SYImageNamed(@"money");
+        }
+        if (i == 6) {
+            // 随机礼物
+            iconImageView.image = SYImageNamed(@"diamond");
         }
         [cellBgView addSubview:iconImageView];
         
         UILabel *dayLabel = [UILabel new];
         dayLabel.textAlignment = NSTextAlignmentCenter;
-        dayLabel.textColor = SYColor(159, 105, 235);
-        dayLabel.font = SYRegularFont(13);
+        dayLabel.textColor = SYColor(255, 255, 255);
+        dayLabel.backgroundColor = SYColorFromHexString(@"#E081A5");
+        dayLabel.font = SYFont(10, YES);
         dayLabel.text = _dayArray[i];
         [cellBgView addSubview:dayLabel];
         
         UILabel *numberLabel = [UILabel new];
         numberLabel.textAlignment = NSTextAlignmentCenter;
-        numberLabel.textColor = SYColor(159, 105, 235);
-        numberLabel.font = SYRegularFont(13);
+        numberLabel.textColor = SYColor(75, 75, 75);
+        numberLabel.font = SYFont(9, YES);
         if (model.giftRecordType == 1) {
             numberLabel.text = [NSString stringWithFormat:@"%d钻石",model.giftRecordNum];
         } else if (model.giftRecordType == 2) {
             numberLabel.text = [NSString stringWithFormat:@"%d天会员",model.giftRecordNum];
         } else {
-            numberLabel.text = [NSString stringWithFormat:@"%d * %@",model.giftRecordNum,model.giftRecordGiftName];
+            numberLabel.text = [NSString stringWithFormat:@"%d元",model.giftRecordNum];
+        }
+        if (i == 6) {
+            // 随机礼物
+            numberLabel.text = @"随机礼物";
         }
         [cellBgView addSubview:numberLabel];
         
         UIImageView *signinStateImageView = [UIImageView new];
-        signinStateImageView.image = SYImageNamed(@"icon_check_lips");
+        signinStateImageView.image = SYImageNamed(@"checked");
         signinStateImageView.tag = 888 + i;
         [cellBgView addSubview:signinStateImageView];
         signinStateImageView.hidden = model.giftRecordIsReceive == 0 ? YES : NO;
         
         if (i < 4) {
             [cellBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(titleLabel.mas_bottom).offset(height * 0.075);
-                make.width.offset(width * 0.2);
+                make.top.equalTo(titleLabel.mas_bottom).offset(18);
+                make.width.offset(cellWidth);
                 make.left.equalTo(self.bgView).offset(margin + i * (width * 0.2 + margin));
-                make.height.offset(width * 0.2 * 0.814);
+                make.height.offset(cellHeight);
             }];
         } else {
             [cellBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.offset(width * 0.2);
-                make.height.offset(width * 0.2 * 0.814);
-                make.top.equalTo(self.titleLabel.mas_bottom).offset(height * 0.25);
+                make.width.offset(cellWidth);
+                make.height.offset(cellHeight);
+                make.top.equalTo(self.titleLabel.mas_bottom).offset(cellHeight + 18 + 9);
                 if (i == 4) {
                     make.left.equalTo(self.bgView).offset(margin1);
                 } else if (i == 5) {
@@ -160,48 +186,90 @@
             }];
         }
         [dayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(iconImageView);
-            make.bottom.equalTo(iconImageView.mas_top);
-            make.height.offset(15);
+            make.centerX.width.top.equalTo(cellBgView);
+            make.height.offset(cellHeight * 0.35);
         }];
-        [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(cellBgView);
-            make.width.height.offset(width * 0.2 * 0.25);
-        }];
-        [numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(iconImageView);
-            make.top.equalTo(iconImageView.mas_bottom);
-            make.height.offset(15);
-        }];
+        if (model.giftRecordType == 1) {
+            [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(cellBgView).offset(5);
+                make.width.height.offset(12);
+                make.centerY.equalTo(numberLabel);
+            }];
+            numberLabel.textAlignment = NSTextAlignmentLeft;
+            [numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(iconImageView.mas_right).offset(3);
+                make.top.equalTo(dayLabel.mas_bottom);
+                make.bottom.equalTo(cellBgView);
+            }];
+        } else if(model.giftRecordType == 2) {
+            [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(cellBgView);
+                make.width.offset(25);
+                make.height.offset(25);
+                make.bottom.equalTo(numberLabel.mas_top).offset(2.5);
+            }];
+            [numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(cellBgView);
+                make.height.offset(8);
+                make.bottom.equalTo(cellBgView).offset(-5);
+            }];
+        } else {
+            [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(cellBgView);
+                make.width.height.offset(18);
+                make.bottom.equalTo(numberLabel.mas_top).offset(-2);
+            }];
+            [numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(cellBgView);
+                make.height.offset(8);
+                make.bottom.equalTo(cellBgView).offset(-5);
+            }];
+        }
+        if (i == 6) {
+            [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(cellBgView);
+                make.width.height.offset(18);
+                make.bottom.equalTo(numberLabel.mas_top).offset(-2);
+            }];
+            [numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(cellBgView);
+                make.height.offset(8);
+                make.bottom.equalTo(cellBgView).offset(-5);
+            }];
+        }
         [signinStateImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.height.offset(30);
-            make.right.equalTo(cellBgView).offset(margin * 0.5);
-            make.bottom.equalTo(cellBgView).offset(margin * 0.5);
+            make.width.height.offset(15);
+            make.right.bottom.equalTo(cellBgView).offset(-4);
         }];
     }
     
     UIButton *signinBtn = [UIButton new];
-    signinBtn.backgroundColor = SYColor(159, 105, 235);
-    [signinBtn setTitle:@"签到" forState:UIControlStateNormal];
+    signinBtn.backgroundColor = SYColor(224, 159, 228);
+    [signinBtn setTitle:@"点击领取" forState:UIControlStateNormal];
     [signinBtn setTitleColor:SYColor(255, 255, 255) forState:UIControlStateNormal];
-    signinBtn.titleLabel.font = SYRegularFont(21);
-    signinBtn.layer.cornerRadius = 10.f;
+    signinBtn.titleLabel.font = SYFont(14, YES);
+    signinBtn.layer.cornerRadius = 9.f;
     signinBtn.layer.masksToBounds = YES;
     _signinBtn = signinBtn;
     [bgView addSubview:signinBtn];
     
+    UIImageView *lineImageView = [UIImageView new];
+    lineImageView.backgroundColor = SYColorFromHexString(@"#FBE8F9");
+    _lineImageView = lineImageView;
+    [bgView addSubview:lineImageView];
+    
     UILabel *tipsTitleLabel = [UILabel new];
     tipsTitleLabel.text = @"活动规则";
-    tipsTitleLabel.textAlignment = NSTextAlignmentCenter;
-    tipsTitleLabel.textColor = SYColor(153, 153, 153);
-    tipsTitleLabel.font = SYRegularFont(15);
+    tipsTitleLabel.textAlignment = NSTextAlignmentLeft;
+    tipsTitleLabel.textColor = SYColor(75, 75, 75);
+    tipsTitleLabel.font = SYFont(11, YES);
     _tipsTitleLabel = tipsTitleLabel;
     [bgView addSubview:tipsTitleLabel];
     
     UILabel *tipsLabel = [UILabel new];
     tipsLabel.textAlignment = NSTextAlignmentLeft;
-    tipsLabel.textColor = SYColor(153, 153, 153);
-    tipsLabel.font = SYRegularFont(14);
+    tipsLabel.textColor = SYColor(103, 103, 103);
+    tipsLabel.font = SYFont(10, YES);
     tipsLabel.text = @"1.登录用户每天可签到1次，并领取奖励。礼物按日发放，过期无法领取。\n2.钻石可用于与主播连线。";
     tipsLabel.lineBreakMode = NSLineBreakByWordWrapping;
     tipsLabel.numberOfLines = 0;
@@ -210,31 +278,46 @@
 }
 
 - (void)_makeSubViewsConstraints {
-    CGFloat height = (SY_SCREEN_WIDTH - 30) * 1.16;
+    CGFloat width = (SY_SCREEN_WIDTH - 60);
+    CGFloat cellWidth = width * 0.2;
+    CGFloat cellHeight = cellWidth * 0.814;
+    CGFloat margin = width * 0.2 / 5;
+    CGFloat margin1 = (width - width * 0.6 - margin * 2) / 2;
     [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
-        make.width.equalTo(self.view).offset(-30);
-        make.height.offset(height);
+        make.width.equalTo(self.view).offset(-60);
+        make.bottom.equalTo(self.tipsLabel).offset(20);
     }];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(self.bgView);
-        make.height.equalTo(self.bgView).multipliedBy(0.1);
+        make.height.offset(40);
+    }];
+    [_closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.titleLabel);
+        make.height.width.offset(23);
+        make.right.equalTo(self.bgView).offset(-7);
     }];
     [_signinBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.bgView).offset(15);
-        make.right.equalTo(self.bgView).offset(-15);
-        make.top.equalTo(self.bgView).offset(height * 0.57);
-        make.height.offset(0.1 * height);
+        make.left.equalTo(self.bgView).offset(margin1);
+        make.right.equalTo(self.bgView).offset(-margin1);
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(cellHeight * 2 + 18 + 9 + 21);
+        make.height.offset(33.5);
+    }];
+    [_lineImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.signinBtn.mas_bottom).offset(18);
+        make.height.offset(1.5);
+        make.centerX.equalTo(self.bgView);
+        make.width.equalTo(self.bgView).offset(-18);
     }];
     [_tipsTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.bgView);
-        make.height.offset(15);
-        make.top.equalTo(self.signinBtn.mas_bottom).offset(height * 0.075);
+        make.left.equalTo(self.signinBtn);
+        make.height.offset(12);
+        make.top.equalTo(self.lineImageView.mas_bottom).offset(9);
     }];
     [_tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.bgView).offset(15);
-        make.right.equalTo(self.bgView).offset(-5);
-        make.top.equalTo(self.tipsTitleLabel.mas_bottom).offset(10);
+        make.left.equalTo(self.signinBtn);
+        make.right.equalTo(self.signinBtn);
+        make.top.equalTo(self.tipsTitleLabel.mas_bottom).offset(9);
     }];
 }
 

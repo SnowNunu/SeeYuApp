@@ -51,6 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
 /* 礼物图片url */
 @property (nonatomic, strong) NSString *giftRecordGiftUrl;
 
+/* 得到的礼物内容 */
+@property (nonatomic, strong) NSString *award;
+
 @end
 
 NS_ASSUME_NONNULL_END

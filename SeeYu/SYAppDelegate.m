@@ -340,6 +340,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    // APP从后台回到前台或刚启动
+    [SYNotificationCenter postNotificationName:@"goBackFromPayView" object:nil];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

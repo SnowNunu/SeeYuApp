@@ -55,6 +55,7 @@
     tableView.dataSource = self;
     [tableView registerClass:[SYForumListCell class] forCellReuseIdentifier:@"forumListCell"];
     tableView.tableFooterView = [UIView new];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView = tableView;
     [self.view addSubview:tableView];
     
@@ -127,7 +128,7 @@
     //填充视频数据
     SYForumListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"forumListCell" forIndexPath:indexPath];
     if(!cell) {
-        cell = [[SYForumListCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"forumListCell"];
+        cell = [[SYForumListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"forumListCell"];
     }
     SYForumModel *model = self.viewModel.datasource[indexPath.row];
     cell.titleLabel.text = model.forumTitle;

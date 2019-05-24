@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *userAge;
 
 /* 主播展示大图 */
+@property (nonatomic, strong) NSString *showPhotoWide;
+
+/* 主播展示小图 */
 @property (nonatomic, strong) NSString *showPhoto;
 
 /* 主播展示视频 */
