@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSDate *recentTime;
 
+@property (nonatomic, strong) NSString *award;
 @end
 
 NS_ASSUME_NONNULL_END
