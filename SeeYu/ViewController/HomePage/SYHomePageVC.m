@@ -124,7 +124,7 @@
     [viewController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, 0)];
     [viewController.tabBarItem setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
     if (tagType == SYTabBarItemTagTypeContacts) {
-        int totalUnreadCount = [[RCIMClient sharedRCIMClient] getTotalUnreadCount];
+        int totalUnreadCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[@(ConversationType_PRIVATE)]];
         if (totalUnreadCount > 0) {
             viewController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",totalUnreadCount];
         }
@@ -168,9 +168,7 @@
 
 - (void)refreshBadgeValue {
     // 未读消息数角标
-    
-//    _badgeView = badgeView;
-    int totalUnreadCount = [[RCIMClient sharedRCIMClient] getTotalUnreadCount];
+    int totalUnreadCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[@(ConversationType_PRIVATE)]];
     UIViewController *vc = self.tabBarController.viewControllers[2];
     dispatch_async(dispatch_get_main_queue(), ^{
         if (totalUnreadCount > 0) {

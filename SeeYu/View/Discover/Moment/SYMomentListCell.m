@@ -182,7 +182,7 @@
     [playImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(self.videoContainerView).offset(6);
         make.width.offset(19);
-        make.height.offset(13);
+        make.height.offset(19);
     }];
     self.videoUrl = [NSURL URLWithString:url];
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] init];

@@ -8,6 +8,7 @@
 
 #import "SYVM.h"
 #import "SYRankListModel.h"
+#import "SYAnchorShowVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) RACCommand *requestRankListCommand;
 
 @property (nonatomic, strong) RACCommand *enterFriendDetailInfoCommand;
+
+// 进入主播详情展示
+@property (nonatomic, strong) RACCommand *enterAnchorShowViewCommand;
 
 @end
 

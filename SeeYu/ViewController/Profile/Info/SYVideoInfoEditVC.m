@@ -74,7 +74,7 @@
                     actionSheet.configuration.allowSelectImage = NO;
                     actionSheet.configuration.allowSelectGif = NO;
                     actionSheet.configuration.exportVideoType = ZLExportVideoTypeMp4;
-                    actionSheet.configuration.navBarColor = SYColorFromHexString(@"#9F69EB");
+                    actionSheet.configuration.navBarColor = SYColorFromHexString(@"#6B35DC");
                     actionSheet.configuration.bottomBtnsNormalTitleColor = SYColorFromHexString(@"#9F69EB");
                     // 选择回调
                     [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {

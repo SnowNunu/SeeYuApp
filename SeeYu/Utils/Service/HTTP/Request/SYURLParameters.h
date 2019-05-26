@@ -63,6 +63,9 @@
 /// 封面或视频上传
 #define SY_HTTTP_PATH_USER_SHOW_UPLOAD  @"/application/userShow/addShow"
 
+/// 动态上传
+#define SY_HTTTP_PATH_USER_MOMENT_UPLOAD  @"/application/userMoment/addMoment"
+
 /// 用户日常签到
 #define SY_HTTTP_PATH_USER_SIGN  @"/application/user/userSign"
 

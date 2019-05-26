@@ -38,7 +38,7 @@
     
     UILabel *appNameLabel = [UILabel new];
     appNameLabel.textAlignment = NSTextAlignmentCenter;
-    appNameLabel.text = @"SEEYU";
+    appNameLabel.text = SY_APP_NAME;
     appNameLabel.font = [UIFont boldSystemFontOfSize:20.f];
     appNameLabel.textColor = SYColor(51, 51, 51);
     _appNameLabel = appNameLabel;

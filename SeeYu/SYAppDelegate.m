@@ -288,11 +288,11 @@
 }
 
 - (void)onRCIMReceiveMessage:(RCMessage *)message left:(int)left {
-    if ([message.content isMemberOfClass:[RCInformationNotificationMessage class]]) {
-        RCInformationNotificationMessage *msg = (RCInformationNotificationMessage *)message.content;
-        SYNotificationModel *model = [SYNotificationModel yy_modelWithJSON:msg.message];
-        if ([model.type isEqualToString:@"video"]) {
-            SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:@{@"userId":model.senderId}];
+    if ([message.content isMemberOfClass:[RCTextMessage class]]) {
+        RCTextMessage *msg = (RCTextMessage *)message.content;
+        if ([msg.content isEqualToString:@"外呼视频"]) {
+            NSString *maxHangUpTime = msg.extra;
+            SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:@{@"userId":message.targetId}];
             SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_IMINFO parameters:subscript.dictionary];
             [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUser class]] sy_parsedResults] subscribeNext:^(SYUser *user) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -301,7 +301,7 @@
                     outboundModel.alias = user.userName;
                     outboundModel.avatarImage = user.userHeadImg;
                     outboundModel.videoShow = user.showVideo;
-                    outboundModel.interval = model.time;
+                    outboundModel.interval = maxHangUpTime;
                     outboundVM.model = outboundModel;
                     SYOutboundVC *outboundVC = [[SYOutboundVC alloc] initWithViewModel:outboundVM];
                     CATransition *animation = [CATransition animation];
@@ -311,10 +311,6 @@
                     [self presentVC:outboundVC withAnimation:animation];
                 });
             }];
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [FFToast showToastWithTitle:@"红娘客服" message:model.content iconImage:SYImageNamed(@"header_default_100x100") duration:2 toastType:FFToastTypeDefault];
-            });
         }
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshBadgeValue" object:nil];

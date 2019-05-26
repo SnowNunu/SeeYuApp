@@ -128,7 +128,7 @@
     [self.viewModel.userSigninCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYSigninInfoModel *model) {
         SYSigninInfoModel *tempModel = self.viewModel.infoModel;
         tempModel.count = model.day;
-        tempModel.recentTime = [NSDate new];
+        tempModel.recentTime = [[NSDate new] dateByAddingTimeInterval:8 * 3600]; // 
         self.viewModel.infoModel = tempModel;
         [MBProgressHUD sy_showTips:model.award addedToView:self.view];
     }];

@@ -9,6 +9,7 @@
 #import "SYVC.h"
 #import "SYAnchorShowVM.h"
 #import "JPVideoPlayerKit.h"
+#import "SYAnchorsModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

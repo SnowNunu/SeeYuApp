@@ -168,7 +168,11 @@
             UITapGestureRecognizer *tapGesture = [UITapGestureRecognizer new];
             [[tapGesture rac_gestureSignal] subscribeNext:^(id x) {
                 SYRankListModel *model = self.viewModel.dataSource[i];
-                [self.viewModel.enterFriendDetailInfoCommand execute:model.userId];
+                if ([self.viewModel.listType isEqualToString:@"anchor"]) {
+                    [self.viewModel.enterAnchorShowViewCommand execute:model.userId];
+                } else {
+                    [self.viewModel.enterFriendDetailInfoCommand execute:model.userId];
+                }
             }];
             [bgView addGestureRecognizer:tapGesture];
             
@@ -330,9 +334,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SYRankListModel *model = self.viewModel.dataSource[indexPath.row + 2];
     if (indexPath.row != 0) {
-        SYRankListModel *model = self.viewModel.dataSource[indexPath.row + 2];
-        [self.viewModel.enterFriendDetailInfoCommand execute:model.userId];
+        if ([self.viewModel.listType isEqualToString:@"anchor"]) {
+            [self.viewModel.enterAnchorShowViewCommand execute:model.userId];
+        } else {
+            [self.viewModel.enterFriendDetailInfoCommand execute:model.userId];
+        }
     }
 }
 

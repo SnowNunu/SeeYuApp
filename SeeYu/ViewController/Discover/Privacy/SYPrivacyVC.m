@@ -127,7 +127,7 @@
     [playImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(photoShowView).offset(6);
         make.width.offset(19);
-        make.height.offset(13);
+        make.height.offset(19);
     }];
     [shadowBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(cell.contentView);

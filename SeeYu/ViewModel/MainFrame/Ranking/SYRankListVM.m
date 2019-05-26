@@ -41,6 +41,11 @@
         [self.services pushViewModel:vm animated:YES];
         return [RACSignal empty];
     }];
+    self.enterAnchorShowViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *userId) {
+        SYAnchorShowVM *showVM = [[SYAnchorShowVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:userId}];
+        [self.services pushViewModel:showVM animated:YES];
+        return [RACSignal empty];
+    }];
 }
 
 @end

@@ -29,6 +29,10 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self _setupSubViews];
     [self _makeSubViewsConstraints];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.viewModel.requestAllMineMomentsCommand execute:nil];
 }
 
@@ -44,8 +48,14 @@
             if (buttonIndex == 1) {
                 ZLCustomCamera *camera = [ZLCustomCamera new];
                 camera.doneBlock = ^(UIImage *image, NSURL *videoUrl) {
-//                    // 自己需要在这个地方进行图片或者视频的保存
                     SYMomentsEditVM *vm = [[SYMomentsEditVM alloc] initWithServices:self.viewModel.services params:nil];
+                    if (image != nil) {
+                        vm.type = @"images";
+                        vm.imagesArray = @[image];
+                    } else if (videoUrl != nil) {
+                        vm.type = @"video";
+                        vm.videoContentUrl = videoUrl;
+                    }
                     [self.viewModel.enterMomentsEditView execute:vm];
                 };
                 [self showDetailViewController:camera sender:nil];
@@ -55,15 +65,14 @@
                 actionSheet.configuration.maxPreviewCount = 0;
                 actionSheet.configuration.allowTakePhotoInLibrary = NO;
                 actionSheet.configuration.allowMixSelect = NO;
-                actionSheet.configuration.navBarColor = SYColorFromHexString(@"#9F69EB");
+                actionSheet.configuration.navBarColor = SYColorFromHexString(@"#6B35DC");
                 actionSheet.configuration.bottomBtnsNormalTitleColor = SYColorFromHexString(@"#9F69EB");
                 // 选择回调
                 [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
-                    PHAsset *asset = assets[0];
+                    PHAsset *asset = assets.firstObject;
                     SYMomentsEditVM *vm = [[SYMomentsEditVM alloc] initWithServices:self.viewModel.services params:nil];
                     if (asset.mediaType == PHAssetMediaTypeVideo) {
                         vm.type = @"video";
-                        
                     } else {
                         vm.type = @"images";
                     }
@@ -91,6 +100,7 @@
     tableView.separatorInset = UIEdgeInsetsZero;
     tableView.estimatedRowHeight = 80.f;    // 动态计算行高
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [tableView registerClass:[SYMyMomentsListCell class] forCellReuseIdentifier:@"myMomentsListCell"];
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 155)];
     _headerView = headerView;
     tableView.tableHeaderView = headerView;
@@ -99,7 +109,7 @@
     
     UILabel *currentYearLabel = [UILabel new];
     currentYearLabel.font = SYRegularFont(32);
-    currentYearLabel.textColor = SYColor(51, 51, 51);
+    currentYearLabel.textColor = SYColor(193, 99, 237);
     currentYearLabel.textAlignment = NSTextAlignmentLeft;
     currentYearLabel.text = [NSString stringWithFormat:@"%@年",[NSDate sy_currentYear]];
     _currentYearLabel = currentYearLabel;
@@ -184,11 +194,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *identifier = [NSString stringWithFormat:@"momentListCell%ld%ld",indexPath.section,indexPath.row];
-    SYMyMomentsListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
-    if (!cell) {
-        cell = [[SYMyMomentsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    SYMyMomentsListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myMomentsListCell" forIndexPath:indexPath];
+    if(!cell) {
+        cell = [[SYMyMomentsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"myMomentsListCell"];
     }
     NSString *year = self.viewModel.yearArray[indexPath.section];
     NSArray *modelArray = self.viewModel.modelDictionary[year];
@@ -210,6 +218,8 @@
     }
     if (model.momentContent != nil && model.momentContent.length > 0) {
         cell.contentLabel.text = model.momentContent;
+    } else {
+        cell.contentLabel.text = @"";
     }
     if (model.momentPhotos != nil && model.momentPhotos.length > 0) {
         [cell setPhotosShowView:model.momentPhotos];

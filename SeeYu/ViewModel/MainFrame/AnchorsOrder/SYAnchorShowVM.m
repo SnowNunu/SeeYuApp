@@ -12,7 +12,7 @@
 
 - (instancetype)initWithServices:(id<SYViewModelServices>)services params:(NSDictionary *)params{
     if(self = [super initWithServices:services params:params]){
-        self.model = [SYAnchorsModel yy_modelWithJSON:params[SYViewModelUtilKey]];
+        self.anchorUserId = params[SYViewModelUtilKey];
     }
     return self;
 }
@@ -25,6 +25,18 @@
         @strongify(self)
         [self.services popViewModelAnimated:YES];
         return [RACSignal empty];
+    }];
+    self.requestAnchorDetailCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *userId) {
+        @strongify(self)
+        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:@{@"userId":userId}];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_IMINFO parameters:subscript.dictionary];
+        return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYAnchorsModel class]] sy_parsedResults]  takeUntil:self.rac_willDeallocSignal];
+    }];
+    [self.requestAnchorDetailCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYAnchorsModel *model) {
+        self.model = model;
+    }];
+    [self.requestAnchorDetailCommand.errors subscribeNext:^(NSError *error) {
+        [MBProgressHUD sy_showErrorTips:error];
     }];
     self.requestFocusStateCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSDictionary *params) {
         @strongify(self)

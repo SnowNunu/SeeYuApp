@@ -22,6 +22,10 @@
 
 @property (nonatomic, strong) UILabel *wordsLabel;
 
+@property (nonatomic, strong) UIImageView *videoImageView;
+
+@property (nonatomic, strong) UIImageView *playImageView;
+
 @property (nonatomic, strong) UICollectionView *imagesCollectionView;
 
 @end
@@ -39,7 +43,9 @@ static NSString *reuseIdentifier = @"imagesListCellIdentifier";
 
 - (void)bindViewModel {
     [super bindViewModel];
+    @weakify(self)
     [[_backBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"要退出动态编辑页面吗？" message:@"退出后当前添加的动态信息将会丢失" preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             
@@ -50,7 +56,86 @@ static NSString *reuseIdentifier = @"imagesListCellIdentifier";
         [self presentViewController:alertController animated:YES completion:nil];
     }];
     [RACObserve(self.viewModel, imagesArray) subscribeNext:^(id x) {
+        @strongify(self)
         [self.imagesCollectionView reloadData];
+    }];
+    [RACObserve(self.viewModel, type) subscribeNext:^(NSString *type) {
+        @strongify(self)
+        if ([type isEqualToString:@"video"]) {
+            [self.videoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.offset(180);
+            }];
+            [self.playImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.top.equalTo(self.videoImageView).offset(6);
+                make.width.offset(19);
+                make.height.offset(19);
+            }];
+            if (self.viewModel.videoContentUrl != nil) {
+                // 来自于自己拍摄的视频
+                self.videoImageView.image = [[UIImage alloc] getVideoPreviewImage:self.viewModel.videoContentUrl];
+            } else {
+                self.videoImageView.image = self.viewModel.imagesArray.firstObject;
+            }
+        } else {
+            [self.videoImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.offset(0);
+            }];
+        }
+    }];
+    [_videoImageView bk_whenTapped:^{
+        // 修改视频
+        LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"取消" clicked:^(LCActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                ZLCustomCamera *camera = [ZLCustomCamera new];
+                camera.allowTakePhoto = NO;
+                camera.doneBlock = ^(UIImage *image, NSURL *videoUrl) {
+                    self.viewModel.videoContentUrl = videoUrl;
+                    self.videoImageView.image = [[UIImage alloc] getVideoPreviewImage:videoUrl];
+                };
+                [self showDetailViewController:camera sender:nil];
+            } else if (buttonIndex == 2) {
+                ZLPhotoActionSheet *actionSheet = [ZLPhotoActionSheet new];
+                actionSheet.configuration.maxSelectCount = 1;
+                actionSheet.configuration.maxPreviewCount = 0;
+                actionSheet.configuration.allowTakePhotoInLibrary = NO;
+                actionSheet.configuration.allowMixSelect = NO;
+                actionSheet.configuration.allowSelectVideo = YES;
+                actionSheet.configuration.allowSelectImage = NO;
+                actionSheet.configuration.navBarColor = SYColorFromHexString(@"#6B35DC");
+                actionSheet.configuration.bottomBtnsNormalTitleColor = SYColorFromHexString(@"#9F69EB");
+                // 选择回调
+                [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+                    self.viewModel.imagesArray = images;
+                    self.viewModel.assetArray = assets;
+                    self.videoImageView.image = images.firstObject;
+                }];
+                // 调用相册
+                [actionSheet showPhotoLibraryWithSender:self];
+            } else {
+                return;
+            }
+        } otherButtonTitles:@"拍摄",@"从手机相册选择", nil];
+        [sheet show];
+    }];
+    [[_releaseBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        if ([self.viewModel.type isEqualToString:@"video"]) {
+            // 先判断是拍摄的视频还是从相册选择的视频
+            if (self.viewModel.videoContentUrl != nil || self.viewModel.imagesArray.count > 0) {
+                self.viewModel.text = self.textView.text;
+                [self.viewModel.releaseMomentCommand execute:nil];
+            } else {
+                [MBProgressHUD sy_showError:@"请先选择视频或照片"];
+            }
+        } else {
+            if (self.viewModel.imagesArray.count > 0) {
+                [self.viewModel.releaseMomentCommand execute:nil];
+            } else {
+                [MBProgressHUD sy_showError:@"请先选择视频或照片"];
+            }
+        }
+        NSLog(@"%@",self.viewModel.assetArray);
+        NSLog(@"%@",self.viewModel.imagesArray);
     }];
 }
 
@@ -106,6 +191,17 @@ static NSString *reuseIdentifier = @"imagesListCellIdentifier";
         self.wordsLabel.text = [NSString stringWithFormat:@"%zd",100 - text.length];
     }];
     
+    UIImageView *videoImageView = [UIImageView new];
+    videoImageView.userInteractionEnabled = YES;
+    videoImageView.backgroundColor = [UIColor blackColor];
+    _videoImageView = videoImageView;
+    [self.view addSubview:videoImageView];
+    
+    UIImageView *playImageView = [UIImageView new];
+    playImageView.image = SYImageNamed(@"play");
+    _playImageView = playImageView;
+    [videoImageView addSubview:playImageView];
+    
     CGFloat width = (SY_SCREEN_WIDTH - 4 * 15) / 3;
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.minimumLineSpacing = 15; // 最小行间距
@@ -134,30 +230,36 @@ static NSString *reuseIdentifier = @"imagesListCellIdentifier";
         make.right.equalTo(self.view).offset(-15);
         make.top.equalTo(self.view).offset(15 + SY_APPLICATION_STATUS_BAR_HEIGHT);
     }];
-    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.releaseBtn.mas_bottom).offset(10);
         make.left.equalTo(self.view).offset(15);
         make.right.equalTo(self.view).offset(-15);
         make.height.offset(150);
     }];
-    [self.divider0 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_divider0 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.top.equalTo(self.textView);
         make.height.offset(0.5f);
     }];
-    [self.divider1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_divider1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.height.offset(0.5);
         make.bottom.equalTo(self.textView);
     }];
-    [self.wordsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_wordsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view).offset(-16);
         make.bottom.equalTo(self.textView).with.offset(-9);
+    }];
+    [_videoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(15);
+        make.width.offset(103);
+        make.height.offset(0);
+        make.top.equalTo(self.textView.mas_bottom).offset(5);
     }];
     [_imagesCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(15);
         make.right.equalTo(self.view).offset(-15);
-        make.top.equalTo(self.textView.mas_bottom).offset(5);
+        make.top.equalTo(self.videoImageView.mas_bottom);
         make.height.offset(SY_SCREEN_WIDTH - 2 * 15);
     }];
 }
@@ -168,7 +270,11 @@ static NSString *reuseIdentifier = @"imagesListCellIdentifier";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.viewModel.cellIsFull ? 9 : self.viewModel.imagesArray.count + 1;
+    if ([self.viewModel.type isEqualToString:@"video"]) {
+        return 0;
+    } else {
+        return self.viewModel.cellIsFull ? 9 : self.viewModel.imagesArray.count + 1;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -178,7 +284,7 @@ static NSString *reuseIdentifier = @"imagesListCellIdentifier";
     imageView.clipsToBounds = YES;
     [imageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
     [cell.contentView addSubview:imageView];
-
+    
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(cell);
     }];
@@ -187,13 +293,53 @@ static NSString *reuseIdentifier = @"imagesListCellIdentifier";
     } else {
         imageView.image = self.viewModel.imagesArray[indexPath.row];
     }
+    if ([self.viewModel.type isEqualToString:@"video"]) {
+        imageView.image = nil;
+    } else {
+        
+    }
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == self.viewModel.imagesArray.count) {
         LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"取消" clicked:^(LCActionSheet * _Nonnull actionSheet, NSInteger buttonIndex) {
-            
+            if (buttonIndex == 1) {
+                ZLCustomCamera *camera = [ZLCustomCamera new];
+                camera.allowTakePhoto = YES;
+                camera.allowRecordVideo = NO;
+                camera.doneBlock = ^(UIImage *image, NSURL *videoUrl) {
+                    if (image != nil) {
+                        NSMutableArray<UIImage *> *tempArray = [NSMutableArray arrayWithArray:self.viewModel.imagesArray];
+                        [tempArray addObject:image];
+                        self.viewModel.imagesArray = [NSArray arrayWithArray:tempArray];
+                    }
+                };
+                [self showDetailViewController:camera sender:nil];
+            } else if (buttonIndex == 2) {
+                ZLPhotoActionSheet *actionSheet = [ZLPhotoActionSheet new];
+                actionSheet.configuration.maxSelectCount = 9 - self.viewModel.imagesArray.count;
+                actionSheet.configuration.maxPreviewCount = 0;
+                actionSheet.configuration.allowTakePhotoInLibrary = NO;
+                actionSheet.configuration.allowMixSelect = NO;
+                actionSheet.configuration.allowSelectImage = YES;
+                actionSheet.configuration.allowSelectVideo = NO;
+                actionSheet.configuration.navBarColor = SYColorFromHexString(@"#6B35DC");
+                actionSheet.configuration.bottomBtnsNormalTitleColor = SYColorFromHexString(@"#9F69EB");
+                // 选择回调
+                [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+                    // 这里不能空选
+                    NSMutableArray<UIImage *> *tempImagesArray = [NSMutableArray arrayWithArray:self.viewModel.imagesArray];
+                    [tempImagesArray addObjectsFromArray:images];
+                    NSMutableArray<PHAsset *> *tempAssetsArray = [NSMutableArray arrayWithArray:self.viewModel.assetArray];
+                    [tempAssetsArray addObjectsFromArray:assets];
+                    self.viewModel.cellIsFull = tempImagesArray.count == 9 ? YES : NO;
+                    self.viewModel.imagesArray = [NSArray arrayWithArray:tempImagesArray];
+                    self.viewModel.assetArray = [NSArray arrayWithArray:tempAssetsArray];
+                }];
+                // 调用相册
+                [actionSheet showPhotoLibraryWithSender:self];
+            }
         } otherButtonTitles:@"拍摄",@"从手机相册选择", nil];
         [sheet show];
     } else {
@@ -202,11 +348,20 @@ static NSString *reuseIdentifier = @"imagesListCellIdentifier";
         actionSheet.configuration.maxPreviewCount = 0;
         actionSheet.configuration.allowTakePhotoInLibrary = NO;
         actionSheet.configuration.allowMixSelect = NO;
-        actionSheet.configuration.navBarColor = SYColorFromHexString(@"#9F69EB");
+        actionSheet.configuration.allowSelectImage = YES;
+        actionSheet.configuration.allowSelectVideo = NO;
+        actionSheet.configuration.navBarColor = SYColorFromHexString(@"#6B35DC");
         actionSheet.configuration.bottomBtnsNormalTitleColor = SYColorFromHexString(@"#9F69EB");
         actionSheet.arrSelectedAssets = [NSMutableArray arrayWithArray:self.viewModel.assetArray];
         // 选择回调
         [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+            // 这里不能空选
+            PHAsset *asset = assets.firstObject;
+            if (asset.mediaType == PHAssetMediaTypeVideo) {
+                self.viewModel.type = @"video";
+            } else {
+                self.viewModel.type = @"images";
+            }
             self.viewModel.cellIsFull = images.count == 9 ? YES : NO;
             self.viewModel.imagesArray = images;
             self.viewModel.assetArray = assets;

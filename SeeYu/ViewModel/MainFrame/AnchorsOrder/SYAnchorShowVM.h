@@ -7,17 +7,24 @@
 //
 
 #import "SYVM.h"
-#import "SYAnchorsModel.h"
 #import "SYAnchorFocusStateModel.h"
+#import "SYAnchorsModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYAnchorShowVM : SYVM
 
+/* 主播id */
+@property (nonatomic, strong) NSString *anchorUserId;
+
+/* 主播个人详情Model */
 @property (nonatomic, strong) SYAnchorsModel *model;
 
 /* 返回 */
 @property (nonatomic, strong) RACCommand *goBackCommand;
+
+/* 请求主播个人详情 */
+@property (nonatomic, strong) RACCommand *requestAnchorDetailCommand;
 
 /* 请求当前主播关注状态 */
 @property (nonatomic, strong) RACCommand *requestFocusStateCommand;

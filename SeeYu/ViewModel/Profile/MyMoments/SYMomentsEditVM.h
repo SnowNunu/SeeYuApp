@@ -18,9 +18,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL cellIsFull;
 
+/* 动态文本 */
+@property (nonatomic, strong) NSString *text;
+
+@property (nonatomic, strong) NSURL *videoContentUrl;
+
 @property (nonatomic, strong) NSArray<UIImage *> *imagesArray;
 
 @property (nonatomic, strong) NSArray<PHAsset *> *assetArray;
+
+@property (nonatomic, strong) RACCommand *releaseMomentCommand;
+
+@property (nonatomic, strong) RACCommand *releaseVideoFromAlbumCommand;
 
 @end
 

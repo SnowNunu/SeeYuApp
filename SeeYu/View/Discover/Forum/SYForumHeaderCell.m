@@ -74,7 +74,7 @@
         make.top.equalTo(self.titleLabel.mas_bottom).offset(15);
         make.height.equalTo(self.titleImageView.mas_width).multipliedBy(0.476);
     }];
-    [self.titleImageView yy_setImageWithURL:[NSURL URLWithString:url] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
+    [self.titleImageView yy_setImageWithURL:[NSURL URLWithString:url] placeholder:SYImageNamed(@"Q&A_defaultImg") options:SYWebImageOptionAutomatic completion:NULL];
 }
 
 @end

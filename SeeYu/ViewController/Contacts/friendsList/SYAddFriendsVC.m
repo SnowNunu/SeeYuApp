@@ -37,9 +37,14 @@
 - (void)bindViewModel {
     [super bindViewModel];
     [[self.searchBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        if (self.idTextField.text.length > 0) {
+        if ([self.idTextField.text sb_trimAllWhitespace].length > 0) {
             self.sendRequest = YES;
-            [self.viewModel.searchFriendsCommand execute:self.idTextField.text];
+            NSString *string = [self.idTextField.text sb_trimAllWhitespace];
+            if ([string isEqualToString:self.viewModel.services.client.currentUserId] || [string isEqualToString:self.viewModel.services.client.currentUser.userName]) {
+                [MBProgressHUD sy_showTips:@"不能添加自己为好友"];
+            } else {
+                [self.viewModel.searchFriendsCommand execute:[self.idTextField.text sb_trimAllWhitespace]];
+            }
         } else {
             [MBProgressHUD sy_showTips:@"请先输入好友昵称或者id"];
         }

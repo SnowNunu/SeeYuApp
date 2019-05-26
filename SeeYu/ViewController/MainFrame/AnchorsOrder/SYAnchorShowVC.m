@@ -18,12 +18,13 @@
     [super viewDidLoad];
     [self _setupSubviews];
     [self _makeSubViewsConstraints];
+    [self.viewModel.requestAnchorDetailCommand execute:self.viewModel.anchorUserId];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.playerView jp_resume];
-    NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUser.userId,@"userAnchorId":self.viewModel.model.userId};
+    NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUser.userId,@"userAnchorId":self.viewModel.anchorUserId};
     [self.viewModel.requestFocusStateCommand execute:params];
 }
 
@@ -34,22 +35,13 @@
 
 - (void)bindViewModel {
     @weakify(self)
-    [RACObserve(self.viewModel.model, showVideo) subscribeNext:^(NSString *url) {
+    [RACObserve(self.viewModel, model) subscribeNext:^(SYAnchorsModel *model) {
         @strongify(self)
-        [self.playerView jp_playVideoWithURL:[NSURL URLWithString:url] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
+        self.ageLabel.text = [NSString stringWithFormat:@"%@岁",model.userAge];
+        self.aliasLabel.text = model.userName;
+        [self.headImageView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYImageNamed(@"add_image") options:SYWebImageOptionAutomatic completion:NULL];
+        [self.playerView jp_playVideoWithURL:[NSURL URLWithString:model.showVideo] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
         }];
-    }];
-    [RACObserve(self.viewModel.model, userHeadImg) subscribeNext:^(NSString *url) {
-        @strongify(self)
-        [self.headImageView yy_setImageWithURL:[NSURL URLWithString:url] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
-    }];
-    [RACObserve(self.viewModel.model, userName) subscribeNext:^(NSString *alias) {
-        @strongify(self)
-        self.aliasLabel.text = alias;
-    }];
-    [RACObserve(self.viewModel.model, userAge) subscribeNext:^(NSString *age) {
-        @strongify(self)
-        self.ageLabel.text = [NSString stringWithFormat:@"%@岁",age];
     }];
     [RACObserve(self.viewModel, focus) subscribeNext:^(id x) {
         BOOL focus = [x boolValue];
@@ -57,7 +49,7 @@
     }];
     self.backBtn.rac_command = self.viewModel.goBackCommand;
     [[self.focusBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUser.userId,@"userAnchorId":self.viewModel.model.userId};
+        NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUser.userId,@"userAnchorId":self.viewModel.anchorUserId};
         [self.viewModel.focusAnchorCommand execute:params];
     }];
 }

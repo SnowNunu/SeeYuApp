@@ -50,8 +50,7 @@
 }
 
 //初始化默认属性值
-- (void)initWithProperty
-{
+- (void)initWithProperty {
     self.itemMargin = 20;
     self.selectIndex = 0;
     self.titleNormalColor = [UIColor blackColor];
@@ -62,8 +61,7 @@
     self.titleSelectFont = self.titleFont;
 }
 //重新布局frame
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     self.scrollView.frame = self.bounds;
     if (self.itemBtnArr.count == 0) {
@@ -87,14 +85,25 @@
             totalBtnWidth += itemBtnWidth;
         }
     }
-    if (totalBtnWidth <= CGRectGetWidth(self.bounds)) {//不能滑动
-        CGFloat itemBtnWidth = CGRectGetWidth(self.bounds)/self.itemBtnArr.count;
+    if (totalBtnWidth <= CGRectGetWidth(self.bounds)) {
+        //不能滑动
+        CGFloat itemBtnWidth = CGRectGetWidth(self.bounds) / self.itemBtnArr.count;
         CGFloat itemBtnHeight = CGRectGetHeight(self.bounds);
         [self.itemBtnArr enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            obj.frame = CGRectMake(idx * itemBtnWidth, 0, itemBtnWidth, itemBtnHeight);
+            if (self.itemBtnArr.count == 2) {
+                CGFloat itemWidth = [FSSegmentTitleView getWidthWithString:self.titlesArr[idx] font:titleFont] + 40;
+                if (idx == 0) {
+                    obj.frame = CGRectMake(itemBtnWidth - itemWidth - 22.5, 0, itemWidth, itemBtnHeight);
+                } else {
+                    obj.frame = CGRectMake(itemBtnWidth + 22.5, 0, itemWidth, itemBtnHeight);
+                }
+            } else {
+                obj.frame = CGRectMake(idx * itemBtnWidth, 0, itemBtnWidth, itemBtnHeight);
+            }
         }];
         self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.scrollView.bounds));
-    } else {//超出屏幕 可以滑动
+    } else {
+        //超出屏幕 可以滑动
         CGFloat currentX = 0;
         for (int idx = 0; idx < self.titlesArr.count; idx++) {
             UIButton *btn = self.itemBtnArr[idx];
@@ -179,8 +188,7 @@
 
 #pragma mark --Setter
 
-- (void)setTitlesArr:(NSArray *)titlesArr
-{
+- (void)setTitlesArr:(NSArray *)titlesArr {
     _titlesArr = titlesArr;
     [self.itemBtnArr makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.itemBtnArr = nil;

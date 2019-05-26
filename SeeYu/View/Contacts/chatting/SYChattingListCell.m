@@ -97,11 +97,13 @@
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.aliasLabel.mas_bottom).offset(7);
         make.height.left.equalTo(self.aliasLabel);
+        make.right.equalTo(self.timeLabel.mas_left).offset(-5);
     }];
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.bgView).offset(-16);
         make.centerY.equalTo(self.contentLabel);
         make.height.offset(20);
+        make.width.offset(30);
     }];
     [_badgeBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.avatarImageView);
