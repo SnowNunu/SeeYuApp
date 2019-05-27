@@ -10,6 +10,8 @@
 #import "SYAnchorShowVM.h"
 #import "JPVideoPlayerKit.h"
 #import "SYAnchorsModel.h"
+#import "SYPopViewVC.h"
+#import "SYPopViewVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

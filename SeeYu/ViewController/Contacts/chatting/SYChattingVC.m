@@ -87,6 +87,9 @@
     } else {
         cell.bgView.backgroundColor = SYColor(245, 223, 255);
     }
+    if ([model.conversationTitle isEqualToString:@"系统消息"]) {
+        [[RCIMClient sharedRCIMClient] setConversationToTop:ConversationType_PRIVATE targetId:model.targetId isTop:YES];
+    }
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:model.receivedTime / 1000];
     cell.timeLabel.text = [SYTimeTool getTimeStringAutoShort2:date mustIncludeTime:NO];
     if (unreadCount == 0) {

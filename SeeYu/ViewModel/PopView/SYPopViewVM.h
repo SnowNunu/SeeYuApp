@@ -7,12 +7,17 @@
 //
 
 #import "SYVM.h"
+#import "SYRechargeVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYPopViewVM : SYVM
 
 @property (nonatomic, strong) NSString *type;
+
+@property (nonatomic, strong) RACCommand *enterVipRechargeViewCommand;
+
+@property (nonatomic, strong) RACCommand *enterDiamondsRechargeViewCommand;
 
 @end
 

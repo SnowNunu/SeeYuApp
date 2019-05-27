@@ -24,7 +24,7 @@
     if (self) {
         if ([viewModel shouldRequestRemoteDataOnViewDidLoad]) {
             @weakify(self)
-            [[self rac_signalForSelector:@selector(viewWillAppear:)] subscribeNext:^(id x) {
+            [[self rac_signalForSelector:@selector(viewDidLoad)] subscribeNext:^(id x) {
                 @strongify(self)
                 /// 请求第一页的网络数据
                 [self.viewModel.requestForumsCommand execute:@1];
@@ -130,14 +130,16 @@
     if(!cell) {
         cell = [[SYForumListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"forumListCell"];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     SYForumModel *model = self.viewModel.datasource[indexPath.row];
     cell.titleLabel.text = model.forumTitle;
     cell.contentLabel.text = model.forumContent;
     cell.commentsNumLabel.text = model.counts;
     if (model.forumPhoto != nil && model.forumPhoto.length > 0) {
         [cell setTitleImageViewByUrl:model.forumPhoto];
+    } else {
+        [cell removeTitleImagewView];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

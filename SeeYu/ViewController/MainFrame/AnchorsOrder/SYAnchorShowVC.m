@@ -30,7 +30,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.playerView jp_stopPlay];
+    [self.playerView jp_pause];
 }
 
 - (void)bindViewModel {
@@ -47,11 +47,58 @@
         BOOL focus = [x boolValue];
         [self.focusBtn setImage:(focus ? SYImageNamed(@"home_btn_followed") : SYImageNamed(@"home_btn_follow")) forState:UIControlStateNormal];
     }];
-    self.backBtn.rac_command = self.viewModel.goBackCommand;
+    [[_backBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.playerView jp_stopPlay];
+        [self.viewModel.goBackCommand execute:nil];
+    }];
     [[self.focusBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         NSDictionary *params = @{@"userId":self.viewModel.services.client.currentUser.userId,@"userAnchorId":self.viewModel.anchorUserId};
         [self.viewModel.focusAnchorCommand execute:params];
     }];
+    [[self.videoBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        SYUser *user = self.viewModel.services.client.currentUser;
+        BOOL controlSwitch = NO;
+        YYCache *cache = [YYCache cacheWithName:@"SeeYu"];
+        if ([cache containsObjectForKey:@"controlSwitch"]) {
+            // 有缓存数据优先读取缓存数据
+            id value = [cache objectForKey:@"controlSwitch"];
+            NSString *state = (NSString *) value;
+            controlSwitch = [state isEqualToString:@"0"] ? YES : NO;
+        } else {
+            controlSwitch = NO;
+        }
+        if (controlSwitch) {
+            // 不判断VIP状态
+            if (user.userDiamond > self.viewModel.model.anchorChatCost.intValue) {
+                [self.playerView jp_pause];
+                [[RCCall sharedRCCall] startSingleCall:self.viewModel.model.userId mediaType:RCCallMediaVideo];
+            } else {
+                [self openRechargeTipsView:@"diamonds"];
+            }
+        } else {
+            if (user.userVipStatus == 1) {
+                if (user.userVipExpiresAt != nil) {
+                    NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
+                    if (result == NSOrderedDescending) {
+                        // 会员未过期
+                        if (user.userDiamond > self.viewModel.model.anchorChatCost.intValue) {
+                            [self.playerView jp_pause];
+                            [[RCCall sharedRCCall] startSingleCall:self.viewModel.model.userId mediaType:RCCallMediaVideo];
+                        } else {
+                            [self openRechargeTipsView:@"diamonds"];
+                        }
+                    } else {
+                        // 会员已过期的情况
+                        [self openRechargeTipsView:@"vip"];
+                    }
+                }
+            } else {
+                // 未开通会员
+                [self openRechargeTipsView:@"vip"];
+            }
+        }
+    }];
+    [SYNotificationCenter addObserver:self selector:@selector(resumeVideo) name:@"hangUp" object:nil];
 }
 
 - (void)_setupSubviews {
@@ -141,4 +188,21 @@
 - (BOOL)shouldShowBlackBackgroundBeforePlaybackStart {
     return YES;
 }
+
+// 打开权限弹窗
+- (void)openRechargeTipsView:(NSString *)type {
+    SYPopViewVM *popVM = [[SYPopViewVM alloc] initWithServices:self.viewModel.services params:nil];
+    popVM.type = type;
+    SYPopViewVC *popVC = [[SYPopViewVC alloc] initWithViewModel:popVM];
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionMoveIn;
+    [SYSharedAppDelegate presentVC:popVC withAnimation:animation];
+}
+
+- (void)resumeVideo {
+    [self.playerView jp_resume];
+}
+
 @end

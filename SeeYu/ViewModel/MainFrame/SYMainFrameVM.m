@@ -7,6 +7,7 @@
 //
 
 #import "SYMainFrameVM.h"
+#import "SYControlModel.h"
 
 @interface SYMainFrameVM ()
 
@@ -49,6 +50,22 @@
     }];
     [self.requestGiftPackageInfoCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
+    }];
+    self.requestPermissionsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self)
+        NSDictionary *params = @{@"userId":self.services.client.currentUser.userId};
+        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_CONTROL_INFO parameters:subscript.dictionary];
+        return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYControlModel class]] sy_parsedResults]  takeUntil:self.rac_willDeallocSignal];
+    }];
+    [self.requestPermissionsCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYControlModel *model) {
+        YYCache *cache = [YYCache cacheWithName:@"SeeYu"];
+        [cache setObject:model.anchorChargingType forKey:@"controlSwitch"];
+    }];
+    [self.requestPermissionsCommand.errors subscribeNext:^(NSError *error) {
+        NSLog(@"%@",error.description);
+        YYCache *cache = [YYCache cacheWithName:@"SeeYu"];
+        [cache setObject:@"1" forKey:@"controlSwitch"];
     }];
 }
 @end

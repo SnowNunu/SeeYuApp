@@ -75,6 +75,9 @@
 /// 获取新手礼包详情接口
 #define SY_HTTTP_PATH_GIFT_PACKAGE_INFO @"/application/newGiftPackage/queryNewGiftPackage"
 
+/// 获取权限信息
+#define SY_HTTTP_PATH_USER_CONTROL_INFO @"/application/control/queryAnchorChargingType"
+
 /// 领取新手礼包接口
 #define SY_HTTTP_PATH_GIFT_PACKAGE_RECEIVE @"application/newGiftPackage/receiveNewGiftPackage"
 

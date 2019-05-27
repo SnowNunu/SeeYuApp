@@ -44,6 +44,7 @@
     /// 设置导航栏
     [self _setupNavigation];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    [self.viewModel.requestPermissionsCommand execute:nil];
     [self.viewModel.loginReportCommand execute:nil];
 }
 
@@ -61,7 +62,7 @@
     [RACObserve(self.viewModel, datasource) subscribeNext:^(NSArray *array) {
         if (array != nil) {
             // 请求完服务器后判断当天的签到状态再打开礼包页面
-            int day = ([[NSDate new] timeIntervalSinceDate:self.user.userRegisterTime] + 8 * 3600)/ 3600 / 24;  //获取当前是注册完之后的第几天
+            int day = ([[NSDate new] timeIntervalSinceDate:self.user.userRegisterTime] + 8 * 3600) / 3600 / 24;  //获取当前是注册完之后的第几天
             SYGiftPackageModel *model = self.viewModel.datasource[day];
             if (model.giftRecordIsReceive == 0) {
                 SYGiftPackageVM *giftVM = [[SYGiftPackageVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];

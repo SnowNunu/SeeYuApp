@@ -1731,6 +1731,7 @@
 
 - (void)disconnectFromServer {
     NSLog(@"即将断开连接");
+    [SYNotificationCenter postNotificationName:@"hangUp" object:nil];   // 用于处理从某些页面直接发起视频后挂断需要还原页面的一些操作
     [[JX_GCDTimerManager sharedInstance] checkExistTimer:@"HangUpVideo" completion:^(BOOL doExist) {
         if (doExist) {
             // 释放定时器

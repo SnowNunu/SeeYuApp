@@ -28,6 +28,8 @@
 
 @property (nonatomic, strong) RACCommand *loginReportCommand;
 
+@property (nonatomic, strong) RACCommand *requestPermissionsCommand;
+
 @property (nonatomic, strong) RACCommand *requestGiftPackageInfoCommand;
 
 @end

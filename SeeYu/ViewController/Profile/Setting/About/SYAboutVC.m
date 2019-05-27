@@ -38,7 +38,7 @@
     
     UILabel *appNameLabel = [UILabel new];
     appNameLabel.textAlignment = NSTextAlignmentCenter;
-    appNameLabel.text = SY_APP_NAME;
+    appNameLabel.text = @"真爱蜜约";
     appNameLabel.font = [UIFont boldSystemFontOfSize:20.f];
     appNameLabel.textColor = SYColor(51, 51, 51);
     _appNameLabel = appNameLabel;

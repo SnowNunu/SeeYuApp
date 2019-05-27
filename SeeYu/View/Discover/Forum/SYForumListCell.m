@@ -130,4 +130,11 @@
     [self.titleImageView yy_setImageWithURL:[NSURL URLWithString:url] placeholder:SYImageNamed(@"Q&A_defaultImg") options:SYWebImageOptionAutomatic completion:NULL];
 }
 
+- (void)removeTitleImagewView {
+    self.titleImageView.image = nil;
+    [self.titleImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.offset(0);
+    }];
+}
+
 @end

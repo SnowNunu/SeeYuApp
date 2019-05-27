@@ -140,11 +140,11 @@
     [self.tableView.mj_header beginRefreshing];
     
     /// 上拉加载
-    [self.tableView sy_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
-        /// 加载上拉刷新的数据
-        @strongify(self);
-        [self tableViewDidTriggerFooterRefresh];
-    }];
+//    [self.tableView sy_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
+//        /// 加载上拉刷新的数据
+//        @strongify(self);
+//        [self tableViewDidTriggerFooterRefresh];
+//    }];
     
     SYMomentCommentToolView *commentToolView = [[SYMomentCommentToolView alloc] init];
     self.commentToolView = commentToolView;

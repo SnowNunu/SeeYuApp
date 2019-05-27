@@ -176,8 +176,8 @@
     playImageView.image = SYImageNamed(@"play");
     [self.videoContainerView addSubview:playImageView];
     [self.videoContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.offset(140);
-        make.height.offset(140);
+        make.width.offset(100);
+        make.height.offset(180);
     }];
     [playImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(self.videoContainerView).offset(6);

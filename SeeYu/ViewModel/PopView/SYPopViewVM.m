@@ -10,4 +10,19 @@
 
 @implementation SYPopViewVM
 
+- (void)initialize {
+    [super initialize];
+    self.title = @"充值提醒";
+    self.enterVipRechargeViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"vip"}];
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
+    }];
+    self.enterDiamondsRechargeViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:self.services params:@{SYViewModelUtilKey:@"diamonds"}];
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
+    }];
+}
+
 @end
