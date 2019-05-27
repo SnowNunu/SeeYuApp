@@ -119,10 +119,10 @@ static NSString *reuseIdentifier = @"imagesListCellIdentifier";
     }];
     [[_releaseBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
+        self.viewModel.text = self.textView.text;
         if ([self.viewModel.type isEqualToString:@"video"]) {
             // 先判断是拍摄的视频还是从相册选择的视频
             if (self.viewModel.videoContentUrl != nil || self.viewModel.imagesArray.count > 0) {
-                self.viewModel.text = self.textView.text;
                 [self.viewModel.releaseMomentCommand execute:nil];
             } else {
                 [MBProgressHUD sy_showError:@"请先选择视频或照片"];

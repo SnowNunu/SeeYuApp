@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray *datasource;
 
+@property (nonatomic, strong) NSString *friendId;
+
 @property (nonatomic, strong) RACCommand *searchFriendsCommand;
 
 @property (nonatomic, strong) RACCommand *addFriendRequestCommand;

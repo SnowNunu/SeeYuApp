@@ -10,6 +10,7 @@
 #import "SYFriendDetialModel.h"
 #import "SYUser.h"
 #import "SYAuthenticationModel.h"
+#import "SYAddFriendsVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) RACCommand *goBackCommand;
 
 @property (nonatomic, strong) RACCommand *requestFriendDetailInfoCommand;
+
+@property (nonatomic, strong) RACCommand *enterAddFriendsViewCommand;
 
 @end
 

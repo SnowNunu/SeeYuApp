@@ -42,6 +42,12 @@
     [self.requestFriendDetailInfoCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];
+    self.enterAddFriendsViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *friendId) {
+        SYAddFriendsVM *vm = [[SYAddFriendsVM alloc] initWithServices:self.services params:nil];
+        vm.friendId = friendId;
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
+    }];
 }
 
 @end

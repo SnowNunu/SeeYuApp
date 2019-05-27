@@ -13,25 +13,37 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYMyMomentsListCell : UITableViewCell
 
-@property (nonatomic, strong) NSURL *videoUrl;
+@property (nonatomic, strong) UIView *bgView;
 
-@property (nonatomic, strong) NSMutableArray *photosImageArrays;
+@property (nonatomic, strong) UILabel *yearLabel;
 
 @property (nonatomic, strong) UILabel *dayLabel;
 
 @property (nonatomic, strong) UILabel *monthLabel;
 
-@property (nonatomic, strong) UIView *photosBgView;
+@property (nonatomic, strong) UILabel *aliasLabel;
+
+@property (nonatomic, strong) UILabel *timeLabel;
 
 @property (nonatomic, strong) UILabel *contentLabel;
 
-@property (nonatomic, strong) UILabel *photosNumberLabel;
+@property (nonatomic, strong) UIView *photoContainerView;
 
-- (void)setDayAndMonthLabel:(NSString *)timeLabel;
+@property (nonatomic, strong) NSMutableArray *photos;
 
-- (void)setPhotosShowView:(NSString *)photosString;
+@property (nonatomic, strong) NSURL *videoUrl;
 
-- (void)setVideoShowView:(NSString *)videoString;
+@property (nonatomic, strong) UIImageView *videoContainerView;
+
+@property (nonatomic, strong) UIView *bottomView;
+
+- (void)_setupPhotosViewByUrls:(NSString*)photosUrl;
+
+- (void)emptyPhotosView;
+
+- (void)_setupVideoShowViewBy:(NSString*)url;
+
+- (void)emptyVideoView;
 
 @end
 

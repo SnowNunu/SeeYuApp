@@ -126,7 +126,7 @@
     [RACObserve(self.viewModel, friendInfo) subscribeNext:^(SYUser *friendInfo) {
         @strongify(self)
         // 设置展示头像
-        [self.headImageView yy_setImageWithURL:[NSURL URLWithString:friendInfo.userHeadImg] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
+        [self.headImageView yy_setImageWithURL:[NSURL URLWithString:friendInfo.userHeadImg] placeholder:SYImageNamed(@"anchor_deafult_image_wide") options:SYWebImageOptionAutomatic completion:NULL];
         // 设置昵称
         self.aliasLabel.text = friendInfo.userName;
         // 设置在线状态
@@ -268,7 +268,7 @@
         }
     }];
     self.backBtn.rac_command = self.viewModel.goBackCommand;
-    [[self.sendMsgBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    [[_sendMsgBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [[SYRCIMDataSource shareInstance] getUserInfoWithUserId:self.viewModel.userId completion:^(RCUserInfo *userInfo) {
             SYSingleChattingVC *conversationVC = [[SYSingleChattingVC alloc] init];
             conversationVC.conversationType = ConversationType_PRIVATE;
@@ -276,6 +276,9 @@
             conversationVC.title = userInfo.name;
             [self.navigationController pushViewController:conversationVC animated:YES];
         }];
+    }];
+    [[_addFriendBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.viewModel.enterAddFriendsViewCommand execute:self.viewModel.userId];
     }];
 }
 

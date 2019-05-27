@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) RACCommand *requestRankListCommand;
 
+// 进入用户详情页面
 @property (nonatomic, strong) RACCommand *enterFriendDetailInfoCommand;
 
 // 进入主播详情展示

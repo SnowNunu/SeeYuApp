@@ -7,14 +7,13 @@
 //
 
 #import "SYVM.h"
+#import "SYMomentsModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYMyMomentsVM : SYVM
 
-@property (nonatomic, strong) NSArray *yearArray;
-
-@property (nonatomic, strong) NSMutableDictionary *modelDictionary;
+@property (nonatomic, strong) NSArray<SYMomentsModel *> *datasource;
 
 @property (nonatomic, strong) RACCommand *enterMomentsEditView;
 

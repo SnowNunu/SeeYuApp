@@ -30,7 +30,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.playerView jp_stopPlay];
+    [self.playerView jp_pause];
 }
 
 - (void)bindViewModel {
@@ -73,7 +73,10 @@
             }
         }
     }];
-    self.backBtn.rac_command = self.viewModel.goBackCommand;
+    [[self.backBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.playerView jp_stopPlay];
+        [self.viewModel.goBackCommand execute:nil];
+    }];
     [self.viewModel.privacyVideoLikedCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYPrivacyDetailModel *model) {
         if ([model.liked isEqualToString:@"0"]) {
             self.likeBtn.selected = NO;
@@ -83,6 +86,9 @@
         if (![model.likedCount sy_isNullOrNil] && model.likedCount.length > 0) {
             self.likeLabel.text = model.likedCount;
         }
+    }];
+    [[self.friendDetailBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.viewModel.enterFriendDetailInfoCommand execute:self.viewModel.model.showUserid];
     }];
 }
 
@@ -107,12 +113,11 @@
     _headImageView = headImageView;
     [self.containerView addSubview:headImageView];
     
-    UIButton *addFriendsBtn = [UIButton new];
-    [addFriendsBtn setImage:SYImageNamed(@"news_profile_border") forState:UIControlStateNormal];
-    addFriendsBtn.rac_command = self.viewModel.sendAddFriendsRequestCommand;
-    _addFriendsBtn = addFriendsBtn;
-    [self.containerView addSubview:addFriendsBtn];
-    [self.containerView bringSubviewToFront:addFriendsBtn];
+    UIButton *friendDetailBtn = [UIButton new];
+    [friendDetailBtn setImage:SYImageNamed(@"news_profile_border") forState:UIControlStateNormal];
+    _friendDetailBtn = friendDetailBtn;
+    [self.containerView addSubview:friendDetailBtn];
+    [self.containerView bringSubviewToFront:friendDetailBtn];
     
     UIButton *likeBtn = [UIButton new];
     [likeBtn setImage:SYImageNamed(@"news_like_normal") forState:UIControlStateNormal];
@@ -192,13 +197,13 @@
         make.top.equalTo(self.containerView).offset(40);
         make.left.equalTo(self.containerView).offset(15);
     }];
-    [self.addFriendsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.friendDetailBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.offset(45);
         make.right.equalTo(self.containerView).offset(-15);
         make.bottom.equalTo(self.likeBtn.mas_top).offset(-10);
     }];
     [self.headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.addFriendsBtn);
+        make.center.equalTo(self.friendDetailBtn);
         make.width.height.offset(44);
     }];
     [self.likeBtn mas_makeConstraints:^(MASConstraintMaker *make) {

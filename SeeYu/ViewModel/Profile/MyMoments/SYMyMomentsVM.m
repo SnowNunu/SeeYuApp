@@ -8,7 +8,6 @@
 
 #import "SYMyMomentsVM.h"
 #import "SYMomentsEditVM.h"
-#import "SYMomentsModel.h"
 
 @implementation SYMyMomentsVM
 
@@ -41,43 +40,43 @@
         return [[[self.services.client enqueueRequest:request resultClass:[SYMomentsModel class]] sy_parsedResults] map:mapAllMoments];
     }];
     [self.requestAllMineMomentsCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(NSArray *array) {
-        [self classifyMomentsData:array];
+        self.datasource = array;
     }];
     [self.requestAllMineMomentsCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];
 }
 
-// 进行排序
-- (void)classifyMomentsData:(NSArray *)array {
-    // 从服务器获取到的数据已经按时间进行过一次排序
-    NSString *currentYear = [[NSDate sy_currentTimestamp] substringToIndex:4];
-    if (array.count == 0) {
-        self.modelDictionary = [NSMutableDictionary new];
-        [self.modelDictionary setObject:@[] forKey:currentYear];
-        self.yearArray = @[currentYear];
-    } else {
-        NSMutableArray *tempYearArray = [NSMutableArray new];   // 所有的年份数组
-        [tempYearArray addObject:currentYear];
-        for (SYMomentsModel *model in array) {
-            if (![tempYearArray containsObject:[model.momentTime substringToIndex:4]]) {
-                [tempYearArray addObject:[model.momentTime substringToIndex:4]];
-            }
-        }
-        // 接着按获取所有的月日数组
-        self.modelDictionary = [NSMutableDictionary new];
-        self.modelDictionary = [NSMutableDictionary new];
-        for (int i = 0 ; i < tempYearArray.count; i++) {
-            NSMutableArray *modelArray = [NSMutableArray new];
-            for (SYMomentsModel *model in array) {
-                if ([tempYearArray[i] isEqualToString:[model.momentTime substringToIndex:4]]) {
-                    [modelArray addObject:model];
-                }
-            }
-            [self.modelDictionary setObject:modelArray forKey:tempYearArray[i]];
-        }
-        self.yearArray = [NSArray arrayWithArray:tempYearArray]; // 获取到所有的年份数组
-    }
-}
+//// 进行排序
+//- (void)classifyMomentsData:(NSArray *)array {
+//    // 从服务器获取到的数据已经按时间进行过一次排序
+//    NSString *currentYear = [[NSDate sy_currentTimestamp] substringToIndex:4];
+//    if (array.count == 0) {
+//        self.modelDictionary = [NSMutableDictionary new];
+//        [self.modelDictionary setObject:@[] forKey:currentYear];
+//        self.yearArray = @[currentYear];
+//    } else {
+//        NSMutableArray *tempYearArray = [NSMutableArray new];   // 所有的年份数组
+//        [tempYearArray addObject:currentYear];
+//        for (SYMomentsModel *model in array) {
+//            if (![tempYearArray containsObject:[model.momentTime substringToIndex:4]]) {
+//                [tempYearArray addObject:[model.momentTime substringToIndex:4]];
+//            }
+//        }
+//        // 接着按获取所有的月日数组
+//        self.modelDictionary = [NSMutableDictionary new];
+//        self.modelDictionary = [NSMutableDictionary new];
+//        for (int i = 0 ; i < tempYearArray.count; i++) {
+//            NSMutableArray *modelArray = [NSMutableArray new];
+//            for (SYMomentsModel *model in array) {
+//                if ([tempYearArray[i] isEqualToString:[model.momentTime substringToIndex:4]]) {
+//                    [modelArray addObject:model];
+//                }
+//            }
+//            [self.modelDictionary setObject:modelArray forKey:tempYearArray[i]];
+//        }
+//        self.yearArray = [NSArray arrayWithArray:tempYearArray]; // 获取到所有的年份数组
+//    }
+//}
 
 @end

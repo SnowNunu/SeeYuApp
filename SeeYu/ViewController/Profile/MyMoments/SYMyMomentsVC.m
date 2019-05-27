@@ -14,9 +14,13 @@
 
 @property (nonatomic, strong) UIView *headerView;
 
+@property (nonatomic, strong) UIView *headerBgView;
+
 @property (nonatomic, strong) UILabel *currentYearLabel;
 
 @property (nonatomic, strong) UILabel *currentDayLabel;
+
+@property (nonatomic, strong) UILabel *tipsLabel;
 
 @property (nonatomic, strong) UIImageView *uploadImageView;
 
@@ -38,7 +42,7 @@
 
 - (void)bindViewModel {
     [super bindViewModel];
-    [RACObserve(self.viewModel, yearArray) subscribeNext:^(NSArray *array) {
+    [RACObserve(self.viewModel, datasource) subscribeNext:^(NSArray *array) {
         if (array != nil) {
             [self.tableView reloadData];
         }
@@ -98,17 +102,25 @@
     tableView.dataSource = self;
     tableView.tableFooterView = [UIView new];
     tableView.separatorInset = UIEdgeInsetsZero;
-    tableView.estimatedRowHeight = 80.f;    // 动态计算行高
+    tableView.rowHeight = UITableViewAutomaticDimension;
+    tableView.estimatedRowHeight = 44.0;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [tableView registerClass:[SYMyMomentsListCell class] forCellReuseIdentifier:@"myMomentsListCell"];
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 155)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 120)];
     _headerView = headerView;
     tableView.tableHeaderView = headerView;
     _tableView = tableView;
     [self.view addSubview:tableView];
     
+    UIView *headerBgView = [UIView new];
+    headerView.layer.cornerRadius = 10.f;
+    headerView.layer.masksToBounds = YES;
+    headerBgView.backgroundColor = SYColorFromHexString(@"#F0CFFF");
+    _headerBgView = headerBgView;
+    [headerView addSubview:headerBgView];
+    
     UILabel *currentYearLabel = [UILabel new];
-    currentYearLabel.font = SYRegularFont(32);
+    currentYearLabel.font = SYFont(14,YES);
     currentYearLabel.textColor = SYColor(193, 99, 237);
     currentYearLabel.textAlignment = NSTextAlignmentLeft;
     currentYearLabel.text = [NSString stringWithFormat:@"%@年",[NSDate sy_currentYear]];
@@ -116,15 +128,23 @@
     [headerView addSubview:currentYearLabel];
     
     UILabel *currentDayLabel = [UILabel new];
-    currentDayLabel.font = SYRegularFont(30);
-    currentDayLabel.textColor = SYColor(51, 51, 51);
+    currentDayLabel.font = SYFont(13,YES);
+    currentDayLabel.textColor = SYColor(193, 99, 237);
     currentDayLabel.textAlignment = NSTextAlignmentLeft;
     currentDayLabel.text = @"今天";
     _currentDayLabel = currentDayLabel;
     [headerView addSubview:currentDayLabel];
     
+    UILabel *tipsLabel = [UILabel new];
+    tipsLabel.font = SYFont(13,YES);
+    tipsLabel.textColor = SYColor(193, 99, 237);
+    tipsLabel.textAlignment = NSTextAlignmentLeft;
+    tipsLabel.text = @"发布新的动态";
+    _tipsLabel = tipsLabel;
+    [headerView addSubview:tipsLabel];
+    
     UIImageView *uploadImageView = [UIImageView new];
-    uploadImageView.image = SYImageNamed(@"btn_addMoment");
+    uploadImageView.image = SYImageNamed(@"add_moment");
     uploadImageView.userInteractionEnabled = YES;
     _uploadImageView = uploadImageView;
     [headerView addSubview:uploadImageView];
@@ -134,87 +154,68 @@
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    [_headerBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.headerView).offset(2);
+        make.left.equalTo(self.headerView).offset(2);
+        make.right.equalTo(self.headerView).offset(-2);
+        make.bottom.equalTo(self.headerView);
+    }];
     [_currentYearLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.headerView).offset(30);
-        make.left.equalTo(self.headerView).offset(15);
-        make.height.offset(30);
+        make.top.equalTo(self.headerBgView).offset(10);
+        make.left.equalTo(self.headerBgView).offset(10);
+        make.height.offset(15);
     }];
     [_currentDayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.currentYearLabel);
-        make.height.offset(30);
-        make.top.equalTo(self.currentYearLabel.mas_bottom).offset(15);
+        make.centerX.equalTo(self.currentYearLabel);
+        make.height.offset(15);
+        make.top.equalTo(self.currentYearLabel.mas_bottom).offset(5);
+    }];
+    [_tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.currentYearLabel.mas_right).offset(10);
+        make.centerY.height.equalTo(self.currentYearLabel);
     }];
     [_uploadImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(103);
+        make.left.equalTo(self.tipsLabel);
         make.width.height.offset(80);
-        make.top.equalTo(self.currentDayLabel);
+        make.top.equalTo(self.tipsLabel.mas_bottom).offset(5);
     }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.viewModel.yearArray.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSString *year = self.viewModel.yearArray[section];
-    NSArray *modelArray = self.viewModel.modelDictionary[year];
-    return modelArray.count;
+    return self.viewModel.datasource.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return 0;
-    } else {
-        return 75.f;
-    }
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return [UIView new];
-    } else {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 75)];
-        UILabel *yearLabel = [UILabel new];
-        yearLabel.textAlignment = NSTextAlignmentLeft;
-        yearLabel.font = [UIFont boldSystemFontOfSize:32];
-        yearLabel.textColor = SYColor(51, 51, 51);
-        yearLabel.text = [NSString stringWithFormat:@"%@年",self.viewModel.yearArray[section]];
-        [view addSubview:yearLabel];
-        [yearLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(view).offset(15);
-            make.height.offset(30);
-            make.bottom.equalTo(view);
-        }];
-        return view;
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 110.f;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 110.f;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SYMyMomentsListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myMomentsListCell" forIndexPath:indexPath];
     if(!cell) {
         cell = [[SYMyMomentsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"myMomentsListCell"];
     }
-    NSString *year = self.viewModel.yearArray[indexPath.section];
-    NSArray *modelArray = self.viewModel.modelDictionary[year];
-    SYMomentsModel *model = modelArray[indexPath.row];
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        if (![[model.momentTime substringToIndex:10] isEqualToString:[[NSDate sy_currentTimestamp] substringToIndex:10]]) {
+    SYMomentsModel *model = self.viewModel.datasource[indexPath.row];
+    cell.aliasLabel.text = self.viewModel.services.client.currentUser.userName;
+    if (model.momentTime != nil && model.momentTime.length > 0) {
+        cell.yearLabel.text = [NSString stringWithFormat:@"%@年",[model.momentTime substringToIndex:4]];
+        if ([[model.momentTime substringToIndex:10] isEqualToString:[[NSDate sy_currentTimestamp] substringToIndex:10]]) {
             // 首条数据为当天的数据，则不显示月日
-            [cell setDayAndMonthLabel:model.momentTime];
+            cell.dayLabel.text = @"今日";
+            cell.monthLabel.text = @"";
+        } else {
+            cell.dayLabel.text = [model.momentTime substringWithRange:NSMakeRange(8, 2)];
+            cell.monthLabel.text = [NSString stringWithFormat:@"%@月",[model.momentTime substringWithRange:NSMakeRange(5, 2)]];
         }
-    } else if (indexPath.row == 0) {
-        // 非当年的首条显示日月
-        [cell setDayAndMonthLabel:model.momentTime];
+        cell.timeLabel.text = [NSString compareCurrentTime:model.momentTime];
     } else {
-        // 判断与上一条的年月日是否相同，不相同再显示
-        SYMomentsModel *lastModel = modelArray[indexPath.row - 1];
-        if (![[lastModel.momentTime substringToIndex:10] isEqualToString:[model.momentTime substringToIndex:10]]) {
-            [cell setDayAndMonthLabel:model.momentTime];
-        }
+        cell.yearLabel.text = @"";
+        cell.dayLabel.text = @"";
+        cell.monthLabel.text = @"";
+        cell.timeLabel.text = @"";
     }
     if (model.momentContent != nil && model.momentContent.length > 0) {
         cell.contentLabel.text = model.momentContent;
@@ -222,10 +223,14 @@
         cell.contentLabel.text = @"";
     }
     if (model.momentPhotos != nil && model.momentPhotos.length > 0) {
-        [cell setPhotosShowView:model.momentPhotos];
+        [cell _setupPhotosViewByUrls:model.momentPhotos];
+    } else {
+        [cell emptyPhotosView];
     }
     if (model.momentVideo != nil && model.momentVideo.length > 0) {
-        [cell setVideoShowView:model.momentVideo];
+        [cell _setupVideoShowViewBy:model.momentVideo];
+    } else {
+        [cell emptyVideoView];
     }
     return cell;
 }

@@ -28,8 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 // 好友头像
 @property (nonatomic, strong) UIImageView *headImageView;
 
-// 添加好友按钮
-@property (nonatomic, strong) UIButton *addFriendsBtn;
+// 好友详情按钮
+@property (nonatomic, strong) UIButton *friendDetailBtn;
 
 // 点赞按钮
 @property (nonatomic, strong) UIButton *likeBtn;

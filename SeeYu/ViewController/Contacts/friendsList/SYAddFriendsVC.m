@@ -32,6 +32,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     _sendRequest = NO;
+    if (self.viewModel.friendId != nil && self.viewModel.friendId.length > 0) {
+        self.idTextField.text = self.viewModel.friendId;
+    }
 }
 
 - (void)bindViewModel {
@@ -83,6 +86,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.tableFooterView = [UIView new];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView = tableView;
     [self.view addSubview:tableView];
     

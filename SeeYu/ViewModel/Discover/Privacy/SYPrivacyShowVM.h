@@ -9,6 +9,7 @@
 #import "SYVM.h"
 #import "SYPrivacyModel.h"
 #import "SYPrivacyDetailModel.h"
+#import "SYFriendDetailInfoVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -29,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* 发起好友请求 */
 @property (nonatomic, strong) RACCommand *sendAddFriendsRequestCommand;
+
+// 进入用户详情页面
+@property (nonatomic, strong) RACCommand *enterFriendDetailInfoCommand;
 
 @end
 
