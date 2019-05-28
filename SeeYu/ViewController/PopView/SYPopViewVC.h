@@ -11,9 +11,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^openRechargeViewBlock)(void);
+
 @interface SYPopViewVC : SYVC
 
 @property (nonatomic, strong) SYPopViewVM *viewModel;
+
+@property (nonatomic, strong) openRechargeViewBlock block;
 
 @end
 

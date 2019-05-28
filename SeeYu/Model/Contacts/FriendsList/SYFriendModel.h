@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *userHeadImg;
 
+@property (nonatomic, assign) int userHeadImgFlag;
+
 @end
 
 NS_ASSUME_NONNULL_END

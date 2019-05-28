@@ -13,6 +13,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYPrivacyVM : SYVM
 
+// 当前页数
+@property (nonatomic, assign) int pageNum;
+
+// 每页条数
+@property (nonatomic, assign) int pageSize;
+
+// 私密用户列表
+@property (nonatomic, strong) NSArray *privacyUsersArray;
+
+// 数据源
 @property (nonatomic, strong) NSArray *datasource;
 
 @property (nonatomic, strong) RACCommand *requestPrivacyCommand;

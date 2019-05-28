@@ -8,6 +8,10 @@
 
 #import <RongIMKit/RongIMKit.h>
 #import "RCCall.h"
+#import "SYPopViewVM.h"
+#import "SYPopViewVC.h"
+#import "SYRechargeVM.h"
+#import "SYRechargeVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

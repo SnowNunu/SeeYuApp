@@ -8,6 +8,7 @@
 
 #import "SYVM.h"
 #import "SYFriendsList.h"
+#import "SYFriendModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, assign) int freshFriendCount;
 
-@property(nonatomic, strong) NSArray *userFriendsArray;
+@property(nonatomic, strong) NSArray<SYFriendModel *> *userFriendsArray;
 
 @property(nonatomic, strong) RACCommand *getFriendsListCommand;
 

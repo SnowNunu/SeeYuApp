@@ -87,8 +87,59 @@
             self.likeLabel.text = model.likedCount;
         }
     }];
-    [[self.friendDetailBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    [[_friendDetailBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.viewModel.enterFriendDetailInfoCommand execute:self.viewModel.model.showUserid];
+    }];
+    [[_discussBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if ([self.viewModel.model.detailModel.isFriend isEqualToString:@"0"]) {
+            // 不是好友关系
+            [MBProgressHUD sy_showTips:@"您与对方不是好友，请先添加对方"];
+        } else {
+            [[SYRCIMDataSource shareInstance] getUserInfoWithUserId:self.viewModel.model.showUserid completion:^(RCUserInfo * _Nonnull userInfo) {
+                SYSingleChattingVC *conversationVC = [[SYSingleChattingVC alloc] init];
+                conversationVC.conversationType = ConversationType_PRIVATE;
+                conversationVC.targetId = userInfo.userId;
+                conversationVC.title = userInfo.name;
+                [self.navigationController pushViewController:conversationVC animated:YES];
+            }];
+        }
+    }];
+    [[_videoBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if ([self.viewModel.model.detailModel.isFriend isEqualToString:@"1"]) {
+            SYUser *user = self.viewModel.services.client.currentUser;
+            BOOL controlSwitch = NO;
+            YYCache *cache = [YYCache cacheWithName:@"SeeYu"];
+            if ([cache containsObjectForKey:@"controlSwitch"]) {
+                // 有缓存数据优先读取缓存数据
+                id value = [cache objectForKey:@"controlSwitch"];
+                NSString *state = (NSString *) value;
+                controlSwitch = [state isEqualToString:@"0"] ? YES : NO;
+            } else {
+                controlSwitch = NO;
+            }
+            if (controlSwitch) {
+                // 不判断VIP状态
+                [[RCCall sharedRCCall] startSingleCall:self.viewModel.model.showUserid mediaType:RCCallMediaVideo];
+            } else {
+                if (user.userVipStatus == 1) {
+                    if (user.userVipExpiresAt != nil) {
+                        NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
+                        if (result == NSOrderedDescending) {
+                            // 会员未过期,好友间可直接发起视频
+                            [[RCCall sharedRCCall] startSingleCall:self.viewModel.model.showUserid mediaType:RCCallMediaVideo];
+                        } else {
+                            // 会员已过期的情况
+                            [self openRechargeTipsView:@"vip"];
+                        }
+                    }
+                } else {
+                    // 未开通会员
+                    [self openRechargeTipsView:@"vip"];
+                }
+            }
+        } else {
+            [MBProgressHUD sy_showTips:@"您与对方不是好友，请先添加对方"];
+        }
     }];
 }
 
@@ -135,20 +186,6 @@
     
     UIButton *discussBtn = [UIButton new];
     [discussBtn setImage:SYImageNamed(@"news_message") forState:UIControlStateNormal];
-    [[discussBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        if ([self.viewModel.model.detailModel.isFriend isEqualToString:@"0"]) {
-            // 不是好友关系
-            [MBProgressHUD sy_showTips:@"请先添加对方为好友"];
-        } else {
-            [[SYRCIMDataSource shareInstance] getUserInfoWithUserId:self.viewModel.model.showUserid completion:^(RCUserInfo * _Nonnull userInfo) {
-                SYSingleChattingVC *conversationVC = [[SYSingleChattingVC alloc] init];
-                conversationVC.conversationType = ConversationType_PRIVATE;
-                conversationVC.targetId = userInfo.userId;
-                conversationVC.title = userInfo.name;
-                [self.navigationController pushViewController:conversationVC animated:YES];
-            }];
-        }
-    }];
     _discussBtn = discussBtn;
     [self.containerView addSubview:discussBtn];
     
@@ -250,6 +287,18 @@
         make.height.offset(15);
         make.right.equalTo(self.containerView).offset(-15);
     }];
+}
+
+// 打开权限弹窗
+- (void)openRechargeTipsView:(NSString *)type {
+    SYPopViewVM *popVM = [[SYPopViewVM alloc] initWithServices:self.viewModel.services params:nil];
+    popVM.type = type;
+    SYPopViewVC *popVC = [[SYPopViewVC alloc] initWithViewModel:popVM];
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionMoveIn;
+    [SYSharedAppDelegate presentVC:popVC withAnimation:animation];
 }
 
 @end

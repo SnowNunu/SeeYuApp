@@ -22,11 +22,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) SYUser *friendInfo;
 
+@property (nonatomic, assign) BOOL isFriend;
+
 @property (nonatomic, strong) SYAuthenticationModel *authInfo;
 
 @property (nonatomic, strong) RACCommand *goBackCommand;
 
 @property (nonatomic, strong) RACCommand *requestFriendDetailInfoCommand;
+
+@property (nonatomic, strong) RACCommand *requestFriendshipCommand;
 
 @property (nonatomic, strong) RACCommand *enterAddFriendsViewCommand;
 

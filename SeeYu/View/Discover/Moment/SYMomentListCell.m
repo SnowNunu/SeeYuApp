@@ -212,30 +212,42 @@
 
 - (void)_tapPhoto:(UITapGestureRecognizer *)sender {
     /// 图片浏览
-    NSMutableArray *item = [NSMutableArray new];
-    for (int i = 0 ; i < self.photos.count; i++) {
-        YBImageBrowseCellData *data = [YBImageBrowseCellData new];
-        data.url = self.photos[i];
-        data.sourceObject = [self viewWithTag:i];
-        data.allowSaveToPhotoAlbum = NO;
-        [item addObject:data];
+    if ([self judgeOpenRechargeTipsView]) {
+        if (self.block) {
+            self.block();
+        }
+    } else {
+        NSMutableArray *item = [NSMutableArray new];
+        for (int i = 0 ; i < self.photos.count; i++) {
+            YBImageBrowseCellData *data = [YBImageBrowseCellData new];
+            data.url = self.photos[i];
+            data.sourceObject = [self viewWithTag:i];
+            data.allowSaveToPhotoAlbum = NO;
+            [item addObject:data];
+        }
+        YBImageBrowser *browser = [YBImageBrowser new];
+        browser.dataSourceArray = item;
+        browser.currentIndex = sender.view.tag;
+        [browser show];
     }
-    YBImageBrowser *browser = [YBImageBrowser new];
-    browser.dataSourceArray = item;
-    browser.currentIndex = sender.view.tag;
-    [browser show];
 }
 
 - (void)_tapVideo:(UITapGestureRecognizer *)sender {
-    YBVideoBrowseCellData *data = [YBVideoBrowseCellData new];
-    data.url = self.videoUrl;
-    data.sourceObject = self.videoContainerView;
-    data.autoPlayCount = 1;
-    data.allowSaveToPhotoAlbum = NO;
-    YBImageBrowser *browser = [YBImageBrowser new];
-    browser.dataSourceArray = @[data];
-    browser.currentIndex = 0;
-    [browser show];
+    if ([self judgeOpenRechargeTipsView]) {
+        if (self.block) {
+            self.block();
+        }
+    } else {
+        YBVideoBrowseCellData *data = [YBVideoBrowseCellData new];
+        data.url = self.videoUrl;
+        data.sourceObject = self.videoContainerView;
+        data.autoPlayCount = 1;
+        data.allowSaveToPhotoAlbum = NO;
+        YBImageBrowser *browser = [YBImageBrowser new];
+        browser.dataSourceArray = @[data];
+        browser.currentIndex = 0;
+        [browser show];
+    }
 }
 
 - (UIImage *)getCacheImageByUrl:(NSString *)url {
@@ -248,6 +260,27 @@
         return image;
     } else {
         return nil;
+    }
+}
+
+- (BOOL)judgeOpenRechargeTipsView {
+    SYUser *user = SYSharedAppDelegate.services.client.currentUser;
+    if (user.userVipStatus == 1) {
+        if (user.userVipExpiresAt != nil) {
+            NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
+            if (result == NSOrderedDescending) {
+                // 会员未过期
+                return NO;
+            } else {
+                // 会员已过期的情况
+                return YES;
+            }
+        } else {
+            return YES;
+        }
+    } else {
+        // 未开通会员
+        return YES;
     }
 }
 

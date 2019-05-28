@@ -9,6 +9,8 @@
 #import "SYVC.h"
 #import "SYPrivacyVM.h"
 #import "SYPrivacyModel.h"
+#import "SYPopViewVM.h"
+#import "SYPopViewVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

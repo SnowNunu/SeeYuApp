@@ -23,6 +23,11 @@
         [self.services pushViewModel:vm animated:YES];
         return [RACSignal empty];
     }];
+    self.enterRealAuthViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        SYAuthenticationVM *vm = [[SYAuthenticationVM alloc] initWithServices:self.services params:nil];
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
+    }];
 }
 
 @end

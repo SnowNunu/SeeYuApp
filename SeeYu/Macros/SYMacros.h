@@ -216,7 +216,7 @@ _Pragma("clang diagnostic pop")\
 /// #3C3E44
 #define SY_MAIN_TEXT_COLOR_5 [UIColor colorFromHexString:@"#3C3E44"]
 
-
+#define SY_LOAD_TIME_PER_DAY    5
 
 
 

@@ -20,17 +20,24 @@
 }
 
 - (void)_setupSubViews {
+    UIView *bgView = [UIView new];
+    bgView.layer.masksToBounds = YES;
+    bgView.layer.cornerRadius = 9.f;
+    _bgView = bgView;
+    [self.contentView addSubview:bgView];
+    
     UIImageView *headImageView = [UIImageView new];
     headImageView.layer.masksToBounds = YES;
-    headImageView.layer.cornerRadius = 22.5f;
+    headImageView.layer.cornerRadius = 22.f;
     _headImageView = headImageView;
-    [self.contentView addSubview:headImageView];
+    [bgView addSubview:headImageView];
     
     UILabel *aliasLabel = [UILabel new];
-    aliasLabel.font = SYRegularFont(20);
+    aliasLabel.font = SYFont(12,YES);
+    aliasLabel.textColor = SYColor(193, 99, 237);
     aliasLabel.textAlignment = NSTextAlignmentLeft;
     _aliasLabel = aliasLabel;
-    [self.contentView addSubview:aliasLabel];
+    [bgView addSubview:aliasLabel];
     
     // 未读消息数角标
     JSBadgeView *badgeView = [[JSBadgeView alloc] initWithParentView:self.contentView alignment:JSBadgeViewAlignmentCenterRight];
@@ -46,12 +53,19 @@
 }
 
 - (void)_makeSubViewsConstraints {
+    [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView).offset(3);
+        make.left.equalTo(self.contentView).offset(2);
+        make.right.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView);
+    }];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.offset(45.f);
-        make.left.top.equalTo(self.contentView).offset(15);
+        make.width.height.offset(44.f);
+        make.centerY.equalTo(self.bgView);
+        make.left.equalTo(self.bgView).offset(7.5);
     }];
     [_aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.headImageView.mas_right).offset(30);
+        make.left.equalTo(self.headImageView.mas_right).offset(15);
         make.height.top.equalTo(self.contentView);
         make.right.equalTo(self.contentView).offset(-30);
     }];

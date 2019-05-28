@@ -36,6 +36,11 @@
     [self _makeSubViewsConstraints];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;  // 这里需要先关闭，不然会导致单聊界面错乱
+}
+
 - (void)bindViewModel {
     [super bindViewModel];
     [[_cancelBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -48,9 +53,20 @@
             [SYSharedAppDelegate dismissVC:self];
         });
         if ([self.viewModel.type isEqualToString:@"vip"]) {
-            [self.viewModel.enterVipRechargeViewCommand execute:nil];
-        } else {
+            if (self.viewModel.direct) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SYSharedAppDelegate dismissVC:self];
+                    if (self.block) {
+                        self.block();
+                    }
+                });
+            } else {
+                [self.viewModel.enterVipRechargeViewCommand execute:nil];
+            }
+        } else if ([self.viewModel.type isEqualToString:@"diamonds"]){
             [self.viewModel.enterDiamondsRechargeViewCommand execute:nil];
+        } else if ([self.viewModel.type isEqualToString:@"realAuth"]) {
+            [self.viewModel.enterRealAuthViewCommand execute:nil];
         }
     }];
 }
@@ -79,8 +95,10 @@
     UIImageView *iconImageView = [UIImageView new];
     if ([self.viewModel.type isEqualToString:@"diamonds"]) {
         iconImageView.image = SYImageNamed(@"icon_diamond");
-    } else {
-        
+    } else if ([self.viewModel.type isEqualToString:@"vip"]){
+        iconImageView.image = SYImageNamed(@"vip_logo");
+    } else if ([self.viewModel.type isEqualToString:@"realAuth"]) {
+        iconImageView.image = SYImageNamed(@"truePerson");
     }
     _iconImageView = iconImageView;
     [bgView addSubview:iconImageView];
@@ -92,8 +110,10 @@
     tipsLabel.textColor = [UIColor whiteColor];
     if ([self.viewModel.type isEqualToString:@"diamonds"]) {
         tipsLabel.text = @"您的钻石不足了，MM还在等你快去充值吧";
-    } else {
+    } else if ([self.viewModel.type isEqualToString:@"vip"]){
         tipsLabel.text = @"开通VIP就能和美女视频聊天了~";
+    } else if ([self.viewModel.type isEqualToString:@"realAuth"]) {
+        tipsLabel.text = @"通过真人认证就能和美女打招呼了~";
     }
     tipsLabel.font = SYFont(12, YES);
     _tipsLabel = tipsLabel;
@@ -103,8 +123,10 @@
     cancelBtn.backgroundColor = [UIColor whiteColor];
     if ([self.viewModel.type isEqualToString:@"diamonds"]) {
         [cancelBtn setTitle:@"我没钱" forState:UIControlStateNormal];
-    } else {
+    } else if ([self.viewModel.type isEqualToString:@"vip"]) {
         [cancelBtn setTitle:@"继续单身" forState:UIControlStateNormal];
+    } else if ([self.viewModel.type isEqualToString:@"realAuth"]) {
+        [cancelBtn setTitle:@"考虑考虑" forState:UIControlStateNormal];
     }
     [cancelBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     _cancelBtn = cancelBtn;
@@ -117,7 +139,11 @@
     
     UIButton *confirmBtn = [UIButton new];
     confirmBtn.backgroundColor = [UIColor whiteColor];
-    [confirmBtn setTitle:@"我要充值" forState:UIControlStateNormal];
+    if ([self.viewModel.type isEqualToString:@"realAuth"]) {
+        [confirmBtn setTitle:@"前去认证" forState:UIControlStateNormal];
+    } else {
+        [confirmBtn setTitle:@"我要充值" forState:UIControlStateNormal];
+    }
     [confirmBtn setTitleColor:SYColor(193, 99, 237) forState:UIControlStateNormal];
     _confirmBtn = confirmBtn;
     [bgView addSubview:confirmBtn];

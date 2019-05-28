@@ -24,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 新的好友关系
 @property (nonatomic, strong) NSString *relation_status;
 
+// 头像审核状态
+@property (nonatomic, assign) int userHeadImgFlag;
+
 @end
 
 NS_ASSUME_NONNULL_END

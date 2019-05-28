@@ -29,7 +29,7 @@
     [self _setupAllChildViewController];
     /// set delegate
     self.tabBarController.delegate = self;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshBadgeValue) name:@"refreshBadgeValue" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshBadgeValue" object:nil];
 }
 
 #pragma mark - 初始化所有的子视图控制器
@@ -123,12 +123,6 @@
     
     [viewController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, 0)];
     [viewController.tabBarItem setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
-    if (tagType == SYTabBarItemTagTypeContacts) {
-        int totalUnreadCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[@(ConversationType_PRIVATE)]];
-        if (totalUnreadCount > 0) {
-            viewController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",totalUnreadCount];
-        }
-    }
 }
 
 
@@ -164,25 +158,6 @@
     NSLog(@"viewController   %@  %zd",viewController,viewController.tabBarItem.tag);
     [SYSharedAppDelegate.navigationControllerStack popNavigationController];
     [SYSharedAppDelegate.navigationControllerStack pushNavigationController:(UINavigationController *)viewController];
-}
-
-- (void)refreshBadgeValue {
-    // 未读消息数角标
-    int totalUnreadCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[@(ConversationType_PRIVATE)]];
-    UIViewController *vc = self.tabBarController.viewControllers[2];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (totalUnreadCount > 0) {
-            vc.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",totalUnreadCount];
-        } else {
-            vc.tabBarItem.badgeValue = nil;
-        }
-    });
-}
-
-- (void)dealloc {
-    SYDealloc;
-    // 移除观察者
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshBadgeValue" object:nil];
 }
 
 @end

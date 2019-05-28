@@ -13,18 +13,16 @@
 
 - (void)initialize {
     @weakify(self)
-    self.requestPrivacyCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+    self.pageNum = 1;
+    self.pageSize = 10;
+    self.requestPrivacyCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *page) {
         @strongify(self)
-        NSArray * (^mapAllPrivacy)(NSArray *) = ^(NSArray *privacy) {
-            return privacy.rac_sequence.array;
-        };
-        NSDictionary *params = @{@"userId":self.services.client.currentUser.userId};
-        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
-        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_PRIVACY_LIST parameters:subscript.dictionary];
-        return [[[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYPrivacyModel class]] sy_parsedResults] map:mapAllPrivacy] takeUntil:self.rac_willDeallocSignal];
+        return [self requestRemotePrivacyUsersDataSignalWithPage:page.integerValue];
     }];
-    [self.requestPrivacyCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(NSArray *array) {
-        self.datasource = array;
+    RAC(self,privacyUsersArray) = self.requestPrivacyCommand.executionSignals.switchToLatest;
+    RAC(self,datasource) = [RACObserve(self, privacyUsersArray) map:^id(NSArray *array) {
+        @strongify(self)
+        return [self dataSourceWithPrivacyUsers:array];
     }];
     [self.requestPrivacyCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
@@ -34,6 +32,33 @@
         [self.services pushViewModel:vm animated:YES];
         return [RACSignal empty];
     }];
+}
+
+- (RACSignal *)requestRemotePrivacyUsersDataSignalWithPage:(NSUInteger)page {
+    NSArray * (^mapPrivacyUsers)(NSArray *) = ^(NSArray *array) {
+        if (page == 1) {
+            /// 下拉刷新
+        } else {
+            /// 上拉加载
+            array = @[(self.privacyUsersArray ?: @[]).rac_sequence, array.rac_sequence].rac_sequence.flatten.array;
+        }
+        return array;
+    };
+    SYKeyedSubscript *subscript = [SYKeyedSubscript subscript];
+    subscript[@"userId"] = self.services.client.currentUser.userId;
+    subscript[@"pageNum"] = @(page);
+    subscript[@"pageSize"] = @(_pageSize);
+    SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_PRIVACY_LIST parameters:subscript.dictionary];
+    SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
+    return [[[self.services.client enqueueRequest:request resultClass:[SYPrivacyModel class]] sy_parsedResults] map:mapPrivacyUsers];
+}
+
+- (NSArray *)dataSourceWithPrivacyUsers:(NSArray *)privacyUsers {
+    if (SYObjectIsNil(privacyUsers) || privacyUsers.count == 0) return nil;
+    NSArray *datasources = [privacyUsers.rac_sequence map:^(SYPrivacyModel *model) {
+        return model;
+    }].array;
+    return datasources ?: @[] ;
 }
 
 @end

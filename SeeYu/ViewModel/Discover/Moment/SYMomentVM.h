@@ -16,7 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) int pageSize;
 
+// 数据源数组
 @property (nonatomic, strong) NSArray *datasource;
+
+// 动态列表数组
+@property (nonatomic, strong) NSArray *moments;
 
 @property (nonatomic, strong) RACCommand *requestMomentsCommand;
 

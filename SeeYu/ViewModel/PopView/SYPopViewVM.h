@@ -8,6 +8,7 @@
 
 #import "SYVM.h"
 #import "SYRechargeVM.h"
+#import "SYAuthenticationVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,9 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *type;
 
+@property (nonatomic, assign) BOOL direct;
+
 @property (nonatomic, strong) RACCommand *enterVipRechargeViewCommand;
 
 @property (nonatomic, strong) RACCommand *enterDiamondsRechargeViewCommand;
+
+@property (nonatomic, strong) RACCommand *enterRealAuthViewCommand;
 
 @end
 

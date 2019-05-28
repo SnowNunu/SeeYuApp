@@ -8,48 +8,36 @@
 
 #import "SYFriendsListVC.h"
 #import "SYFriendsList.h"
-#import "PinYinForObjc.h"
-#import "SYFriendGroupModel.h"
 #import "NSMutableArray+FilterElement.h"
 #import "SYFriendsListCell.h"
 #import "SYFriendModel.h"
-#import "SYSearchFriendsResultVC.h"
-#import "SYSearchResultHandle.h"
 #import "SYSingleChattingVC.h"
 
-@interface SYFriendsListVC () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate>
+@interface SYFriendsListVC () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView; // 好友列表视图
 
-@property (nonatomic, strong) NSMutableArray *aliasArray; // 全部好友昵称
+@property (nonatomic, strong) NSMutableArray *firstLetterArray; // 存放字母索引的数组
 
-@property (nonatomic, strong) NSMutableArray *sectionIndexArray; // 存放字母索引的数组
-
-@property (nonatomic, strong) NSMutableArray *array;    // 重新排序分组后的数据源数组
-
-@property (nonatomic, strong) NSMutableArray *searchList; // 搜索结果的数组
-
-@property (nonatomic, strong) UISearchController *searchFriendsVC;  // 好友搜索框
-
-@property (nonatomic, strong) SYSearchFriendsResultVC *searchResultVC;  // 好友搜索结果
+@property (nonatomic, strong) NSMutableArray *sortedModelArray;    // 重新排序分组后的数据源数组
 
 @end
 
 @implementation SYFriendsListVC
 
 #pragma mark 懒加载部分内容
-- (NSMutableArray *)aliasArray {
-    if (_aliasArray == nil) {
-        _aliasArray = [NSMutableArray new];
+- (NSMutableArray *)firstLetterArray {
+    if (_firstLetterArray == nil) {
+        _firstLetterArray = [NSMutableArray new];
     }
-    return _aliasArray;
+    return _firstLetterArray;
 }
 
-- (NSMutableArray *)sectionIndexArray {
-    if (_sectionIndexArray == nil) {
-        _sectionIndexArray = [NSMutableArray new];
+- (NSMutableArray *)sortedModelArray {
+    if (_sortedModelArray == nil) {
+        _sortedModelArray = [NSMutableArray new];
     }
-    return _sectionIndexArray;
+    return _sortedModelArray;
 }
 
 - (instancetype)initWithViewModel:(SYFriendsListVM *)viewModel {
@@ -65,7 +53,6 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self _setupSubviews];
     [self _makeSubViewsConstraints];
-    [self _setupSearchVC];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,110 +60,51 @@
     [self.viewModel.getFriendsListCommand execute:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.array removeAllObjects];
-    [self.sectionIndexArray removeAllObjects];
-}
-
 - (void)bindViewModel {
     @weakify(self)
-//    [RACObserve(self.viewModel, freshFriendCount) subscribeNext:^(NSString *count) {
-//        NSLog(@"新的朋友数量：%d",[count intValue]);
-//        if ([count intValue] > 0) {
-//            SYFriendsListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"SYFriendsListCell" forIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-//            cell.badgeView.badgeText = count;
-//            [cell.badgeView setNeedsLayout];
-//        }
-//    }];
-    [RACObserve(self.viewModel, userFriendsArray) subscribeNext:^(NSArray *friendsList) {
-        if (friendsList.count > 1) {
-            @strongify(self)
-            for (NSDictionary *dict in friendsList) {
-                [self.aliasArray addObject:dict[@"userFriendName"]];
-            }
-            for (NSString *string in self.aliasArray) {
-                if (![string isEqualToString:@"红娘客服"]) {
-                    NSString *header = [PinYinForObjc chineseConvertToPinYinHead:string];
-                    [self.sectionIndexArray addObject:header];
+    [RACObserve(self.viewModel, userFriendsArray) subscribeNext:^(NSArray<SYFriendModel *> *array) {
+        @strongify(self)
+        if (array.count > 0) {
+            BMChineseSortSetting.share.sortMode = 1;
+            BMChineseSortSetting.share.needStable = YES;
+            BMChineseSortSetting.share.specialCharPositionIsFront = NO;
+            NSMutableArray<SYFriendModel *> *tempArray = [NSMutableArray new];
+            NSMutableArray<SYFriendModel *> *sortArray = [NSMutableArray arrayWithArray:array];
+            for (SYFriendModel *model in array) {
+                if ([model.userFriendName isEqualToString:@"红娘客服"] || [model.userFriendName isEqualToString:@"系统消息"]) {
+                    [tempArray addObject:model];
+                    [sortArray removeObject:model];
                 }
             }
-            // 去除数组中相同的元素
-            self.sectionIndexArray = [self.sectionIndexArray filterTheSameElement];
-            // 数组排序
-            [self.sectionIndexArray sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-                NSString *string1 = obj1;
-                NSString *string2 = obj2;
-                return [string1 compare:string2];
+            [BMChineseSort sortAndGroup:[NSArray arrayWithArray:sortArray] key:@"userFriendName" finish:^(bool isSuccess, NSMutableArray *unGroupedArr, NSMutableArray *sectionTitleArr, NSMutableArray<NSMutableArray *> *sortedObjArr) {
+                if (isSuccess) {
+                    [sectionTitleArr insertObject:@"☆" atIndex:0];
+                    self.firstLetterArray = sectionTitleArr;
+                    SYFriendModel *model = [SYFriendModel new];
+                    model.userFriendName = @"新的朋友";
+                    model.userFriendId = @"10000";
+                    [tempArray insertObject:model atIndex:0];
+                    [sortedObjArr insertObject:tempArray atIndex:0];
+                    self.sortedModelArray = sortedObjArr;
+                    [self.tableView reloadData];
+                }
             }];
-            if ([self.sectionIndexArray[0] isEqualToString:@"#"]) {
-                [self.sectionIndexArray replaceObjectAtIndex:0 withObject:@"☆"];
-                [self.sectionIndexArray addObject:@"#"];
-            } else {
-                [self.sectionIndexArray insertObject:@"☆" atIndex:0];
-            }
-        } else {
-            // 用户注册时默认添加红娘为好友
-            if (friendsList.count == 0) {
-                return;
-            }
-            [self.sectionIndexArray addObject:@"☆"];
         }
-        // 目前已经获得所有的首字母，现在就是需要把全部数据按首字母排序
-        NSMutableArray *friendsModelArray = [NSMutableArray new];
-        for (NSString *string in self.sectionIndexArray) {
-            NSMutableArray *tempArray = [NSMutableArray new];
-            if ([string isEqualToString:@"☆"]) {
-                [tempArray addObject:@{@"userFriendId": @"10000",@"userFriendName": @"新的朋友",@"userHeadImg":@"icon_newFriend"}];
-                for (NSDictionary *dict in friendsList) {
-                    if ([dict[@"userFriendName"] isEqualToString:@"红娘客服"]) {
-                        [tempArray addObject:dict];
-                    }
-                }
-            } else {
-                for (NSDictionary *dict in friendsList) {
-                    if ([[PinYinForObjc chineseConvertToPinYinHead:dict[@"userFriendName"]] isEqualToString:string]) {
-                        if (![dict[@"userFriendName"] isEqualToString:@"红娘客服"]) {
-                            [tempArray addObject:dict];
-                        }
-                    }
-                }
-            }
-            SYFriendGroupModel *group = [SYFriendGroupModel getGroupsWithArray:tempArray groupTitle:string];
-            [friendsModelArray addObject:group];
-        }
-        self.array = friendsModelArray;
-        [self.tableView reloadData];
     }];
 }
 
 - (void)_setupSubviews {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    _tableView.tableFooterView = [UIView new];
-    _tableView.sectionIndexColor = [UIColor blackColor]; // 设置默认时索引值颜色
-//    _tableView.sectionIndexTrackingBackgroundColor = [UIColor grayColor]; // 设置选中时，索引背景颜色
-//    [_tableView registerClass:[SYFriendsListCell class] forCellReuseIdentifier:@"SYFriendsListCell"];
-    [self.view addSubview:_tableView];
-}
-
-- (void)_setupSearchVC {
-    _searchResultVC = [[SYSearchFriendsResultVC alloc] init];
-//    self.searchResultVC.delegate = self;
-    _searchFriendsVC = [[UISearchController alloc] initWithSearchResultsController:self.searchResultVC];
-    _searchFriendsVC.delegate = self;
-//    _searchController.delegateCustom = self;
-    _searchFriendsVC.searchResultsUpdater = self;
-    _searchFriendsVC.dimsBackgroundDuringPresentation = NO;
-    _searchFriendsVC.hidesNavigationBarDuringPresentation = YES;
-    _searchFriendsVC.searchBar.delegate = self;
-    _searchFriendsVC.searchBar.frame = CGRectMake(0, 0, SY_SCREEN_WIDTH, 44);
-    _searchFriendsVC.searchBar.placeholder = @"请输入搜索的的内容";
-    _searchFriendsVC.searchBar.searchBarStyle = UISearchBarStyleProminent;
-    _searchFriendsVC.searchBar.returnKeyType = UIReturnKeyDone;
-    _searchFriendsVC.searchBar.backgroundImage = [UIImage imageWithColor:SYColorFromHexString(@"#9F69EB") size:CGSizeMake(_searchFriendsVC.searchBar.width,44)];
-    self.tableView.tableHeaderView = self.searchFriendsVC.searchBar;
+    self.view.backgroundColor = [UIColor whiteColor];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.tableFooterView = [UIView new];
+    tableView.backgroundColor = [UIColor whiteColor];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.sectionIndexColor = SYColorAlpha(211, 26, 191, 0.5); // 设置默认时索引值颜色
+    [tableView registerClass:[SYFriendsListCell class] forCellReuseIdentifier:@"SYFriendsListCell"];
+    _tableView = tableView;
+    [self.view addSubview:tableView];
 }
 
 - (void)_makeSubViewsConstraints {
@@ -188,28 +116,24 @@
 
 #pragma mark UITableViewDatasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.searchFriendsVC.active ? 1 : self.array.count;
+    return self.firstLetterArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.searchFriendsVC.active) {
-        return 0;
-    }
-    SYFriendGroupModel *group = self.array[section];
-    return group.friends.count;
+    return [self.sortedModelArray[section] count];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"SYFriendsListCell";
-    SYFriendsListCell *cell;
-    cell = [tableView cellForRowAtIndexPath:indexPath];
+    SYFriendsListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SYFriendsListCell" forIndexPath:indexPath];
     if(!cell) {
-        cell = [[SYFriendsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[SYFriendsListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SYFriendsListCell"];
     }
-    SYFriendGroupModel *group = self.array[indexPath.section];
-    SYFriendModel *friendModel = group.friends[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSMutableArray *array = self.sortedModelArray[indexPath.section];
+    SYFriendModel *friendModel = array[indexPath.row];
     cell.friendId = friendModel.userFriendId;
     cell.aliasLabel.text = friendModel.userFriendName;
+    cell.bgView.backgroundColor = indexPath.row % 2 == 0 ? SYColorFromHexString(@"#F0CFFF") : SYColorFromHexString(@"#F5DFFF");
     if ([friendModel.userFriendName isEqualToString:@"新的朋友"]) {
         cell.headImageView.image = SYImageNamed(@"icon_newFriend");
         if (self.viewModel.freshFriendCount > 0) {
@@ -221,11 +145,18 @@
         }
     } else if ([friendModel.userFriendName isEqualToString:@"红娘客服"]) {
         cell.headImageView.image = SYImageNamed(@"icon_cusService");
+    } else if ([friendModel.userFriendName isEqualToString:@"系统消息"]) {
+        cell.headImageView.image = SYImageNamed(@"icon_systemCall");
     } else {
         if ([friendModel.userHeadImg sy_isNullOrNil]) {
-            cell.headImageView.image = SYImageNamed(@"header_default_100x100");
+            cell.headImageView.image = SYImageNamed(@"anchor_deafult_image");
         } else {
-            [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:friendModel.userHeadImg] placeholder:SYImageNamed(@"header_default_100x100") options:SYWebImageOptionAutomatic completion:NULL];
+            if (friendModel.userHeadImgFlag == 1) {
+                // 头像审核通过
+                [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:friendModel.userHeadImg] placeholder:SYImageNamed(@"anchor_deafult_image") options:SYWebImageOptionAutomatic completion:NULL];
+            } else {
+                cell.headImageView.image = SYImageNamed(@"anchor_deafult_image");
+            }
         }
     }
     return cell;
@@ -233,41 +164,60 @@
 
 // 右侧的索引标题数组
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return self.searchFriendsVC.active ? nil : self.sectionIndexArray;
+    return self.firstLetterArray;
 }
 
 // 返回cell行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 75;
+    return 60;
 }
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    SYFriendGroupModel *group = self.array[section];
+    NSString *text = self.firstLetterArray[section];
     // 背景图
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 42)];
-    bgView.backgroundColor = SYColorFromHexString(@"#F8F8F8");
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, 22.5)];
+    bgView.backgroundColor = [UIColor whiteColor];
+    
     // 显示分区的 label
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, SY_SCREEN_WIDTH - 40, 42)];
-    label.text = group.groupTitle;
-    label.font = SYRegularFont(15);
+    UILabel *label = [UILabel new];
+    label.text = text;
+    label.font = SYFont(16.5,YES);
+    label.textAlignment = NSTextAlignmentLeft;
+    label.textColor = SYColorAlpha(211, 26, 191, 0.5);
     [bgView addSubview:label];
+    
+    UIImageView *line = [UIImageView new];
+    line.backgroundColor = SYColorAlpha(211, 26, 191, 0.5);
+    [bgView addSubview:line];
+    
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(bgView).offset(24);
+        make.centerY.equalTo(bgView);
+        make.height.offset(15);
+    }];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.offset(2);
+        make.left.equalTo(label.mas_right).offset(9);
+        make.centerY.equalTo(label);
+        make.right.equalTo(bgView).offset(-20);
+    }];
     return bgView;
 }
 
 // 设置表头的高度。如果使用自定义表头，该方法必须要实现，否则自定义表头无法执行，也不会报错
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (self.searchFriendsVC.active || section == 0) {
+    if (section == 0) {
         return 0;
     } else {
-        return 42;
+        return 22.5;
     }
 }
 
 // cell点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    SYFriendGroupModel *group = self.array[indexPath.section];
-    SYFriendModel *friendModel = group.friends[indexPath.row];
+    NSMutableArray *array = self.sortedModelArray[indexPath.section];
+    SYFriendModel *friendModel = array[indexPath.row];
     if ([friendModel.userFriendName isEqualToString:@"新的朋友"]) {
         [self.viewModel.enterNewFriendsViewCommand execute:nil];
     } else {
@@ -278,34 +228,6 @@
         conversationVC.title = friendModel.userFriendName;
         [self.navigationController pushViewController:conversationVC animated:YES];
     }
-}
-
-#pragma mark - UISearchResultsUpdating
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    NSString *searchString = [self.searchFriendsVC.searchBar text];
-    // 移除搜索结果数组的数据
-    [self.searchList removeAllObjects];
-    //过滤数据
-    self.searchList = [SYSearchResultHandle getSearchResultBySearchText:searchString dataArray:self.array];
-    if (searchString.length == 0 && self.searchList!= nil) {
-        [self.searchList removeAllObjects];
-    }
-    self.searchList = [self.searchList filterTheSameElement];
-    NSMutableArray *dataSource = nil;
-    if ([self.searchList count] > 0) {
-        dataSource = [NSMutableArray array];
-        // 结局了数据重复的问题
-        for (NSString *str in self.searchList) {
-            SYFriendModel *model = [[SYFriendModel alloc] init];
-            model.userFriendName = str;
-//            model.img_Url = nil;
-            [dataSource addObject:model];
-        }
-    }
-    //刷新表格
-    self.searchResultVC.dataSource = dataSource;
-    [self.searchResultVC.tableView reloadData];
-    [self.tableView reloadData];
 }
 
 @end

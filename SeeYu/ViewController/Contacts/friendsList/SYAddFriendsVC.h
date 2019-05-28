@@ -8,6 +8,8 @@
 
 #import "SYVC.h"
 #import "SYAddFriendsVM.h"
+#import "SYPopViewVM.h"
+#import "SYPopViewVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

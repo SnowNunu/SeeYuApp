@@ -33,6 +33,10 @@
 
 @property (nonatomic, assign) NSString *direction;
 
+@property (nonatomic, assign) BOOL canLoadMore;
+
+@property (nonatomic, assign) int loadTime;
+
 @end
 
 @implementation SYCollocationVC
@@ -48,6 +52,8 @@
     [super viewDidLoad];
     [self _setupSubViews];
     [self reloadCacheData];
+    NSLog(@"%@",[[NSDate sy_currentTimestamp] substringToIndex:10]);
+    [self judgeWhetherCanLoadMore];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,11 +91,38 @@
         }
     }];
     [[self.likeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
-        [self changeUser];
+        [self judgeWhetherCanLoadMore];
+        if (self.canLoadMore) {
+            if (self.loadTime > SY_LOAD_TIME_PER_DAY) {
+                [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
+                [self changeUser];  // 会员无限制
+            } else if (self.loadTime > 0) {
+                [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
+                [self writeCanLoadMoreCache];
+                [self changeUser];
+            } else {
+                [self openRechargeTipsView:@"vip"];
+            }
+        } else {
+            [self openRechargeTipsView:@"vip"];
+        }
     }];
     [[self.unlikeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self changeUser];
+        [self judgeWhetherCanLoadMore];
+        if (self.canLoadMore) {
+            if (self.loadTime > SY_LOAD_TIME_PER_DAY) {
+                [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
+                [self changeUser];  // 会员无限制
+            } else if (self.loadTime > 0) {
+                [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
+                [self writeCanLoadMoreCache];
+                [self changeUser];
+            } else {
+                [self openRechargeTipsView:@"vip"];
+            }
+        } else {
+            [self openRechargeTipsView:@"vip"];
+        }
     }];
 }
 
@@ -101,6 +134,7 @@
     UIScrollView *controlView = [UIScrollView new];
     controlView.delegate = self;
     controlView.contentSize = CGSizeMake(SY_SCREEN_WIDTH * 2, 0);
+    controlView.showsHorizontalScrollIndicator = NO;
     _controlView = controlView;
     [self.view addSubview:controlView];
     [self.view bringSubviewToFront:controlView];
@@ -292,10 +326,27 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if ([_direction isEqualToString:@"right"]) {
-        [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
+    [self judgeWhetherCanLoadMore];
+    if (self.canLoadMore) {
+        if (self.loadTime > SY_LOAD_TIME_PER_DAY) {
+            [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
+            if ([_direction isEqualToString:@"right"]) {
+                [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
+            }
+            [self changeUser];  // 会员无限制
+        } else if (self.loadTime > 0) {
+            [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
+            if ([_direction isEqualToString:@"right"]) {
+                [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
+            }
+            [self writeCanLoadMoreCache];
+            [self changeUser];
+        } else {
+            [self openRechargeTipsView:@"vip"];
+        }
+    } else {
+        [self openRechargeTipsView:@"vip"];
     }
-    [self changeUser];
 }
 
 - (void)setTipsByHobby:(NSString*)hobby {
@@ -337,6 +388,99 @@
             }];
         }
     }
+}
+
+- (void)judgeWhetherCanLoadMore {
+    SYUser *user = self.viewModel.services.client.currentUser;
+    if (user.userVipStatus == 1) {
+        if (user.userVipExpiresAt != nil) {
+            NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
+            if (result == NSOrderedDescending) {
+                // 会员未过期
+                self.canLoadMore = YES;
+                self.loadTime = SY_LOAD_TIME_PER_DAY + 1;
+            } else {
+                // 会员已过期的情况
+                YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+                if ([cache containsObjectForKey:@"loadMoreInfo"]) {
+                    NSString *value = (NSString *)[cache objectForKey:@"loadMoreInfo"];
+                    NSArray *array = [value componentsSeparatedByString:@"*"];
+                    NSString *date = array.firstObject;
+                    if ([date isEqualToString:[[NSDate sy_currentTimestamp] substringToIndex:10]]) {
+                        int time = [(NSString *)array[1] intValue];
+                        self.loadTime = time;
+                        self.canLoadMore = time > 0 ? YES : NO;
+                    } else {
+                        self.loadTime = SY_LOAD_TIME_PER_DAY;
+                        self.canLoadMore = YES;
+                        [cache setObject:[NSString stringWithFormat:@"%@*%d",[[NSDate sy_currentTimestamp] substringToIndex:10],_loadTime] forKey:@"loadMoreInfo"];
+                    }
+                } else {
+                    // 读取不到则是首次使用
+                    self.canLoadMore = YES;
+                    self.loadTime = SY_LOAD_TIME_PER_DAY;  // 每天限制使用五次
+                    [self writeCanLoadMoreCache];
+                }
+            }
+        }
+    } else {
+        // 未开通会员
+        YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+        if ([cache containsObjectForKey:@"loadMoreInfo"]) {
+            NSString *value = (NSString *)[cache objectForKey:@"loadMoreInfo"];
+            NSArray *array = [value componentsSeparatedByString:@"*"];
+            NSString *date = array.firstObject;
+            if ([date isEqualToString:[[NSDate sy_currentTimestamp] substringToIndex:10]]) {
+                int time = [(NSString *)array[1] intValue];
+                self.loadTime = time;
+                self.canLoadMore = time > 0 ? YES : NO;
+            } else {
+                self.loadTime = SY_LOAD_TIME_PER_DAY;
+                self.canLoadMore = YES;
+                [cache setObject:[NSString stringWithFormat:@"%@*%d",[[NSDate sy_currentTimestamp] substringToIndex:10],_loadTime] forKey:@"loadMoreInfo"];
+            }
+        } else {
+            // 读取不到则是首次使用
+            self.canLoadMore = YES;
+            self.loadTime = SY_LOAD_TIME_PER_DAY;  // 每天限制使用五次
+            [self writeCanLoadMoreCache];
+        }
+    }
+}
+
+- (void)writeCanLoadMoreCache {
+    YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+    if (_loadTime > 0) {
+        _loadTime = --_loadTime;
+        if ([cache containsObjectForKey:@"loadMoreInfo"]) {
+            NSString *value = (NSString *)[cache objectForKey:@"loadMoreInfo"];
+            NSArray *array = [value componentsSeparatedByString:@"*"];
+            NSString *date = array.firstObject;
+            if ([date isEqualToString:[[NSDate sy_currentTimestamp] substringToIndex:10]]) {
+                [cache setObject:[NSString stringWithFormat:@"%@*%d",date,_loadTime] forKey:@"loadMoreInfo"];
+            } else {
+                _loadTime = SY_LOAD_TIME_PER_DAY;
+                [cache setObject:[NSString stringWithFormat:@"%@*%d",[[NSDate sy_currentTimestamp] substringToIndex:10],_loadTime] forKey:@"loadMoreInfo"];
+            }
+        } else {
+            NSString *value = [NSString stringWithFormat:@"%@*%d",[[NSDate sy_currentTimestamp] substringToIndex:10],_loadTime];
+            [cache setObject:value forKey:@"loadMoreInfo"];
+        }
+    } else {
+        self.canLoadMore = NO;
+    }
+}
+
+// 打开权限弹窗
+- (void)openRechargeTipsView:(NSString *)type {
+    SYPopViewVM *popVM = [[SYPopViewVM alloc] initWithServices:self.viewModel.services params:nil];
+    popVM.type = type;
+    SYPopViewVC *popVC = [[SYPopViewVC alloc] initWithViewModel:popVM];
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionMoveIn;
+    [SYSharedAppDelegate presentVC:popVC withAnimation:animation];
 }
 
 @end

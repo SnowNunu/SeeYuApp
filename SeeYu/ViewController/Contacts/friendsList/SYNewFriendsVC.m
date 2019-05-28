@@ -43,6 +43,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.tableFooterView = [UIView new];
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"SYNewFriendsListCell"];
     _tableView = tableView;
     [self.view addSubview:tableView];
 }
@@ -54,7 +55,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 75.f;
+    return 59.f;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -66,55 +67,66 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellID = @"friendsInfoViewCell";
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SYNewFriendsListCell" forIndexPath:indexPath];
+    if(!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SYNewFriendsListCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     SYNewFriendModel *model = self.viewModel.datasource[indexPath.row];
     
+    UIView *bgView = [UIView new];
+    bgView.layer.masksToBounds = YES;
+    bgView.layer.cornerRadius = 9.f;
+    bgView.backgroundColor = indexPath.row % 2 == 0 ? SYColorFromHexString(@"#F0CFFF") : SYColorFromHexString(@"#F5DFFF");
+    [cell.contentView addSubview:bgView];
+    
     // 好友头像
     UIImageView *avatarView = [UIImageView new];
-    avatarView.layer.cornerRadius = 22.5f;
+    avatarView.layer.cornerRadius = 22.f;
     avatarView.clipsToBounds = YES;
-    [avatarView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYDefaultAvatar(SYDefaultAvatarTypeDefualt) options:YYWebImageOptionAllowInvalidSSLCertificates|YYWebImageOptionAllowBackgroundTask completion:nil];
-    [cell.contentView addSubview:avatarView];
+    [bgView addSubview:avatarView];
     
     // 好友昵称
     UILabel *aliasLabel = [UILabel new];
     aliasLabel.text = model.userFriendName;
-    aliasLabel.font = SYRegularFont(16);
+    aliasLabel.font = SYFont(11,YES);
+    aliasLabel.textColor = SYColor(193, 99, 237);
     aliasLabel.textAlignment = NSTextAlignmentLeft;
-    [cell.contentView addSubview:aliasLabel];
+    [bgView addSubview:aliasLabel];
     
     // 好友ID
     UILabel *idLabel = [UILabel new];
     idLabel.text = [NSString stringWithFormat:@"ID：%@",model.userFriendId];
-    idLabel.font = SYRegularFont(14);
-    idLabel.textColor = SYColor(153, 153, 153);
+    idLabel.font = SYFont(10,YES);
+    idLabel.textColor = SYColor(193, 99, 237);
     idLabel.textAlignment = NSTextAlignmentLeft;
-    [cell.contentView addSubview:idLabel];
+    [bgView addSubview:idLabel];
     
     // 同意按钮按钮
     UIButton *agreeFriendBtn = [UIButton new];
-    [agreeFriendBtn setBackgroundColor:SYColorFromHexString(@"#9F69EB")];
+    [agreeFriendBtn setBackgroundColor:SYColorFromHexString(@"#EB7BE1")];
     [agreeFriendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [agreeFriendBtn setTitle:@"同意" forState:UIControlStateNormal];
-    agreeFriendBtn.layer.cornerRadius = 5.f;
+    agreeFriendBtn.titleLabel.font = SYFont(13, YES);
+    agreeFriendBtn.layer.cornerRadius = 9.f;
     agreeFriendBtn.layer.masksToBounds = YES;
     [[agreeFriendBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.viewModel.agreeFriendRequestCommand execute:model.userFriendId];
     }];
-    [cell.contentView addSubview:agreeFriendBtn];
+    [bgView addSubview:agreeFriendBtn];
     
     // 目前好友关系状态
     UILabel *relationStatusLabel = [UILabel new];
-    relationStatusLabel.font = SYRegularFont(14);
-    relationStatusLabel.textColor = SYColor(153, 153, 153);
+    relationStatusLabel.font = SYFont(11,YES);
+    relationStatusLabel.textColor = SYColor(193, 99, 237);
     relationStatusLabel.textAlignment = NSTextAlignmentCenter;
-    [cell.contentView addSubview:relationStatusLabel];
+    [bgView addSubview:relationStatusLabel];
     
+    if (model.userHeadImg == nil || model.userHeadImg.length == 0 || model.userHeadImgFlag != 1) {
+        avatarView.image = SYImageNamed(@"anchor_deafult_image");
+    } else {
+        [avatarView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYImageNamed(@"anchor_deafult_image") options:SYWebImageOptionAutomatic completion:NULL];
+    }
     if ([model.relation_status isEqualToString:@"2"]) {
         relationStatusLabel.hidden = YES;
         agreeFriendBtn.hidden = NO;
@@ -128,26 +140,32 @@
         }
     }
     
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(cell.contentView).offset(3);
+        make.left.equalTo(cell.contentView).offset(2);
+        make.right.equalTo(cell.contentView).offset(-2);
+        make.bottom.equalTo(cell.contentView);
+    }];
     [avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.offset(45);
-        make.centerY.equalTo(cell.contentView);
-        make.left.equalTo(cell.contentView).offset(15);
+        make.width.height.offset(44);
+        make.centerY.equalTo(bgView);
+        make.left.equalTo(cell.contentView).offset(10);
     }];
     [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(avatarView.mas_right).offset(15);
+        make.left.equalTo(avatarView.mas_right).offset(8);
         make.right.equalTo(agreeFriendBtn.mas_left).offset(-15);
         make.top.equalTo(avatarView);
-        make.height.offset(20);
+        make.height.offset(15);
     }];
     [idLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.height.equalTo(aliasLabel);
-        make.bottom.equalTo(avatarView);
+        make.top.equalTo(aliasLabel.mas_bottom).offset(10);
     }];
     [agreeFriendBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(cell.contentView).offset(-15);
-        make.width.offset(70);
-        make.centerY.equalTo(cell.contentView);
-        make.height.offset(30);
+        make.right.equalTo(bgView).offset(-15);
+        make.width.offset(50);
+        make.centerY.equalTo(bgView);
+        make.height.offset(18);
     }];
     [relationStatusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(agreeFriendBtn);

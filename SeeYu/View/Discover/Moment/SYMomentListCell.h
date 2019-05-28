@@ -11,7 +11,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^openRechargeTipsBlock)(void);
+
 @interface SYMomentListCell : UITableViewCell
+
+@property (nonatomic, strong) openRechargeTipsBlock block;
 
 @property (nonatomic, strong) UIView *bgView;
 

@@ -7,6 +7,7 @@
 //
 
 #import "SYFriendDetailInfoVM.h"
+#import "SYPrivacyDetailModel.h"
 
 @implementation SYFriendDetailInfoVM
 
@@ -25,6 +26,21 @@
     self.goBackCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         [self.services popViewModelAnimated:YES];
         return [RACSignal empty];
+    }];
+    // 获取好友关系
+    self.requestFriendshipCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self)
+        NSDictionary *params = @{@"userId":self.services.client.currentUserId, @"friendUserId":self.userId};
+        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_FRIENDSSHIP_INFO parameters:subscript.dictionary];
+        return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYPrivacyDetailModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];
+    }];
+    [self.requestFriendshipCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYPrivacyDetailModel *model) {
+        self.isFriend = [model.isFriend isEqualToString:@"1"] ? YES : NO;
+        [self.requestFriendDetailInfoCommand execute:nil];
+    }];
+    [self.requestFriendshipCommand.errors subscribeNext:^(NSError *error) {
+        [MBProgressHUD sy_showErrorTips:error];
     }];
     // 请求好友详情
     self.requestFriendDetailInfoCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id x) {

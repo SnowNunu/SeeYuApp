@@ -164,6 +164,9 @@
 // 获取好友详情
 #define SY_HTTTP_PATH_USER_FRIENDS_DETAIL     @"/application/user/queryPersonalPage"
 
+// 获取好友关系
+#define SY_HTTTP_PATH_USER_FRIENDSSHIP_INFO   @"/application/userFriendRelation/queryIsFriend"
+
 // 获取论坛列表
 #define SY_HTTTP_PATH_USER_FORUM_LIST     @"/application/forum/queryForums"
 

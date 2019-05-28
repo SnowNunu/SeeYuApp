@@ -8,6 +8,7 @@
 
 #import "SYVC.h"
 #import "SYFriendsListVM.h"
+#import "BMChineseSort.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -28,16 +28,26 @@
 
 @implementation SYMyMomentsVC
 
+- (instancetype)initWithViewModel:(SYVM *)viewModel {
+    self = [super initWithViewModel:viewModel];
+    if (self) {
+        if ([viewModel shouldRequestRemoteDataOnViewDidLoad]) {
+            @weakify(self)
+            [[self rac_signalForSelector:@selector(viewWillAppear:)] subscribeNext:^(id x) {
+                @strongify(self)
+                /// 请求第一页的网络数据
+                [self.viewModel.requestAllMineMomentsCommand execute:@(1)];
+            }];
+        }
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self _setupSubViews];
     [self _makeSubViewsConstraints];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.viewModel.requestAllMineMomentsCommand execute:nil];
 }
 
 - (void)bindViewModel {
@@ -85,7 +95,6 @@
                     vm.cellIsFull = images.count == 9 ? YES : NO;
                     [self.viewModel.enterMomentsEditView execute:vm];
                 }];
-                
                 // 调用相册
                 [actionSheet showPhotoLibraryWithSender:self];
             } else {
@@ -111,6 +120,22 @@
     tableView.tableHeaderView = headerView;
     _tableView = tableView;
     [self.view addSubview:tableView];
+    
+    // 添加下拉刷新控件
+    @weakify(self);
+    [self.tableView sy_addHeaderRefresh:^(MJRefreshNormalHeader *header) {
+        /// 加载下拉刷新的数据
+        @strongify(self);
+        [self tableViewDidTriggerHeaderRefresh];
+    }];
+    [self.tableView.mj_header beginRefreshing];
+    
+    /// 上拉加载
+    [self.tableView sy_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
+        /// 加载上拉刷新的数据
+        @strongify(self);
+        [self tableViewDidTriggerFooterRefresh];
+    }];
     
     UIView *headerBgView = [UIView new];
     headerView.layer.cornerRadius = 10.f;
@@ -189,10 +214,6 @@
     return self.viewModel.datasource.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 110.f;
-//}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SYMyMomentsListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myMomentsListCell" forIndexPath:indexPath];
     if(!cell) {
@@ -237,6 +258,39 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+#pragma mark - 下拉刷新事件
+- (void)tableViewDidTriggerHeaderRefresh {
+    @weakify(self)
+    [[[self.viewModel.requestAllMineMomentsCommand execute:@1] deliverOnMainThread] subscribeNext:^(id x) {
+        @strongify(self)
+        self.viewModel.pageNum = 1;
+        [self.tableView.mj_footer resetNoMoreData];
+    } error:^(NSError *error) {
+        @strongify(self)
+        [self.tableView.mj_header endRefreshing];
+    } completed:^{
+        @strongify(self)
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer resetNoMoreData];
+    }];
+}
+
+#pragma mark - 上拉刷新事件
+- (void)tableViewDidTriggerFooterRefresh {
+    @weakify(self);
+    [[[self.viewModel.requestAllMineMomentsCommand execute:@(self.viewModel.pageNum + 1)] deliverOnMainThread] subscribeNext:^(id x) {
+        @strongify(self)
+        self.viewModel.pageNum += 1;
+    } error:^(NSError *error) {
+        @strongify(self);
+        [self.tableView.mj_footer endRefreshing];
+    } completed:^{
+        @strongify(self)
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    }];
 }
 
 @end

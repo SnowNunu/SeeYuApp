@@ -8,6 +8,9 @@
 
 #import "SYVC.h"
 #import "SYMomentVM.h"
+#import "UIScrollView+SYRefresh.h"
+#import "SYPopViewVM.h"
+#import "SYPopViewVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -7,6 +7,7 @@
 //
 
 #import "SYPrivacyVC.h"
+#import "UIScrollView+SYRefresh.h"
 
 @interface SYPrivacyVC () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -21,10 +22,10 @@
     if (self) {
         if ([viewModel shouldRequestRemoteDataOnViewDidLoad]) {
             @weakify(self)
-            [[self rac_signalForSelector:@selector(viewDidLoad)] subscribeNext:^(id x) {
+            [[self rac_signalForSelector:@selector(viewWillAppear:)] subscribeNext:^(id x) {
                 @strongify(self)
                 /// 请求第一页的网络数据
-                [self.viewModel.requestPrivacyCommand execute:nil];
+                [self.viewModel.requestPrivacyCommand execute:@"1"];
             }];
         }
     }
@@ -61,6 +62,22 @@
     collectionView.backgroundColor = [UIColor whiteColor];
     _collectionView = collectionView;
     [self.view addSubview:collectionView];
+    
+    // 添加下拉刷新控件
+    @weakify(self);
+    [_collectionView sy_addHeaderRefresh:^(MJRefreshNormalHeader *header) {
+        /// 加载下拉刷新的数据
+        @strongify(self);
+        [self collectionViewDidTriggerHeaderRefresh];
+    }];
+    [_collectionView.mj_header beginRefreshing];
+    
+    /// 上拉加载
+    [_collectionView sy_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
+        /// 加载上拉刷新的数据
+        @strongify(self);
+        [self collectionViewDidTriggerFooterRefresh];
+    }];
 }
 
 - (void)_makeSubViewsConstraints {
@@ -99,9 +116,11 @@
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
     blurEffectView.frame = cell.contentView.bounds;
-//    if (indexPath.row > 4) {
-//        [photoShowView addSubview:blurEffectView];
-//    }
+    if (![self judgeVipStatus]) {
+        if (indexPath.row > 1) {
+            [photoShowView addSubview:blurEffectView];
+        }
+    }
 
     // 播放图标
     UIImageView *playImageView = [UIImageView new];
@@ -142,9 +161,82 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (![self judgeVipStatus]) {
+        if (indexPath.row > 1) {
+            [self openRechargeTipsView];
+            return;
+        }
+    }
     SYPrivacyModel *model = self.viewModel.datasource[indexPath.row];
     NSDictionary *params = @{SYViewModelUtilKey:[model yy_modelToJSONObject]};
     [self.viewModel.enterPrivacyShowViewCommand execute:params];
+}
+
+// 判断当前会员状态
+- (BOOL)judgeVipStatus {
+    SYUser *user = self.viewModel.services.client.currentUser;
+    if (user.userVipStatus == 1) {
+        if (user.userVipExpiresAt != nil) {
+            NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
+            if (result == NSOrderedDescending) {
+                // 会员未过期
+                return YES;
+            } else {
+                // 会员已过期的情况
+                return NO;
+            }
+        } else {
+            return NO;
+        }
+    } else {
+        // 未开通会员
+        return NO;
+    }
+}
+
+// 打开权限弹窗
+- (void)openRechargeTipsView {
+    SYPopViewVM *popVM = [[SYPopViewVM alloc] initWithServices:self.viewModel.services params:nil];
+    popVM.type = @"vip";
+    SYPopViewVC *popVC = [[SYPopViewVC alloc] initWithViewModel:popVM];
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionMoveIn;
+    [SYSharedAppDelegate presentVC:popVC withAnimation:animation];
+}
+
+#pragma mark - 下拉刷新事件
+- (void)collectionViewDidTriggerHeaderRefresh {
+    @weakify(self)
+    [[[self.viewModel.requestPrivacyCommand execute:@1] deliverOnMainThread] subscribeNext:^(id x) {
+        @strongify(self)
+        self.viewModel.pageNum = 1;
+        [self.collectionView.mj_footer resetNoMoreData];
+    } error:^(NSError *error) {
+        @strongify(self)
+        [self.collectionView.mj_header endRefreshing];
+    } completed:^{
+        @strongify(self)
+        [self.collectionView.mj_header endRefreshing];
+        [self.collectionView.mj_footer resetNoMoreData];
+    }];
+}
+
+#pragma mark - 上拉刷新事件
+- (void)collectionViewDidTriggerFooterRefresh {
+    @weakify(self);
+    [[[self.viewModel.requestPrivacyCommand execute:@(self.viewModel.pageNum + 1)] deliverOnMainThread] subscribeNext:^(id x) {
+        @strongify(self)
+        self.viewModel.pageNum += 1;
+    } error:^(NSError *error) {
+        @strongify(self);
+        [self.collectionView.mj_footer endRefreshing];
+    } completed:^{
+        @strongify(self)
+        [self.collectionView.mj_footer endRefreshing];
+        [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+    }];
 }
 
 @end

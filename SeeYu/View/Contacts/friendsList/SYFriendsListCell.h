@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *friendId;
 
+@property (nonatomic, strong) UIView *bgView;
+
 @property (nonatomic, strong) UIImageView *headImageView;
 
 @property (nonatomic, strong) UILabel *aliasLabel;

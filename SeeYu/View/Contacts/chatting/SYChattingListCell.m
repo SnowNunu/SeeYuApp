@@ -103,7 +103,7 @@
         make.right.equalTo(self.bgView).offset(-16);
         make.centerY.equalTo(self.contentLabel);
         make.height.offset(20);
-        make.width.offset(30);
+        make.width.offset(35);
     }];
     [_badgeBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.avatarImageView);

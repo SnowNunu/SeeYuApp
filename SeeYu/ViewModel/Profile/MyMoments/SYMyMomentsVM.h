@@ -13,6 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYMyMomentsVM : SYVM
 
+@property (nonatomic, assign) int pageNum;
+
+@property (nonatomic, assign) int pageSize;
+
+// 动态列表数组
+@property (nonatomic, strong) NSArray *moments;
+
 @property (nonatomic, strong) NSArray<SYMomentsModel *> *datasource;
 
 @property (nonatomic, strong) RACCommand *enterMomentsEditView;

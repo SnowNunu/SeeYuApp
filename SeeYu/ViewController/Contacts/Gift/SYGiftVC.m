@@ -44,9 +44,9 @@
     [self _makeSubViewsConstraints];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [UIApplication sharedApplication].statusBarHidden = NO;
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;  // 这里需要先关闭，不然会导致单聊界面错乱
 }
 
 - (void)bindViewModel {
@@ -58,9 +58,12 @@
         }
     }];
     [[self.rechargeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        SYDiamondsVM *diamondsVM = [[SYDiamondsVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
-        SYDiamondsVC *diamondsVC = [[SYDiamondsVC alloc] initWithViewModel:diamondsVM];
-        [self.navigationController pushViewController:diamondsVC animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.block) {
+                self.block();
+            }
+            [SYSharedAppDelegate dismissVC:self];
+        });
     }];
     [[self.sendGiftBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
@@ -92,7 +95,7 @@
     UITapGestureRecognizer *tap = [UITapGestureRecognizer new];
     [[tap rac_gestureSignal] subscribeNext:^(id x) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SYSharedAppDelegate dismissVC:self.navigationController];
+            [SYSharedAppDelegate dismissVC:self];
         });
     }];
     [self.view addGestureRecognizer:tap];

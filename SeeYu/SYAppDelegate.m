@@ -311,6 +311,18 @@
                     [self presentVC:outboundVC withAnimation:animation];
                 });
             }];
+        } else if([msg.content isEqualToString:@"赠送礼物"]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (msg.extra != nil && msg.extra.length > 0) {
+                    FFToast *toast = [[FFToast alloc] initToastWithTitle:@"系统消息" message:msg.extra iconImage:nil];
+                    toast.duration = 3.f;
+                    toast.toastType = FFToastTypeDefault;
+                    [toast show:^{
+                        [toast dismissCentreToast];
+                        NSLog(@"点击了");
+                    }];
+                }
+            });
         }
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshBadgeValue" object:nil];

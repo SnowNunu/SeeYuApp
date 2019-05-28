@@ -96,7 +96,7 @@
     }];
     [self.viewModel.bindCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYUser *user) {
         [MBProgressHUD sy_hideHUD];
-        [MBProgressHUD sy_showProgressHUD:@"绑定成功"];
+        [MBProgressHUD sy_showTips:@"绑定成功"];
         [self.viewModel.services popViewModelAnimated:YES];
     }];
     [self.viewModel.bindCommand.errors subscribeNext:^(NSError *error) {

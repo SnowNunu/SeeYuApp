@@ -27,16 +27,25 @@
     [RCIM sharedRCIM].globalMessageAvatarStyle = RC_USER_AVATAR_CYCLE;
     [RCIM sharedRCIM].globalMessagePortraitSize = CGSizeMake(45, 45);
     self.conversationMessageCollectionView.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"nav_btn_back" target:nil selector:@selector(goBack) textType:NO];
     [self initSendPresentBtn];
     [self _setupAction];
     self.btnEnabled = NO;
     [self requestGiftList];
+    if (@available(iOS 11.0, *)) {
+        self.conversationMessageCollectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
     [self.chatSessionInputBarControl.pluginBoardView removeItemAtIndex:PLUGIN_BOARD_ITEM_LOCATION_TAG];
+    if ([self.title isEqualToString:@"系统消息"]) {
+        self.conversationMessageCollectionView.frame = self.view.frame;
+        self.chatSessionInputBarControl.hidden = YES;
+        self.chatSessionInputBarControl.backgroundColor = [UIColor clearColor];
+    }
 }
 
 - (void)willDisplayMessageCell:(RCMessageBaseCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -67,11 +76,16 @@
             SYGiftVM *giftVM = [[SYGiftVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
             giftVM.friendId = self.targetId;
             SYGiftVC *giftVC = [[SYGiftVC alloc] initWithViewModel:giftVM];
-            SYNavigationController *navigationController = [[SYNavigationController alloc] initWithRootViewController:giftVC];
+            giftVC.block = ^{
+                SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:SYSharedAppDelegate.services params:@{SYViewModelUtilKey:@"diamonds"}];
+                SYRechargeVC *vc = [[SYRechargeVC alloc]initWithViewModel:vm];
+                [self.navigationController pushViewController:vc animated:YES];
+            };
             CATransition *animation = [CATransition animation];
             [animation setDuration:0.3];
             animation.type = kCATransitionFade;
-            [SYSharedAppDelegate presentVC:navigationController withAnimation:animation];
+            animation.subtype = kCATransitionMoveIn;
+            [SYSharedAppDelegate presentVC:giftVC withAnimation:animation];
         }
     }];
 }
@@ -82,6 +96,7 @@
     sendPresentBtn.tag = 0;                                                                 
     sendPresentBtn.layer.cornerRadius = 8;
     [self.view addSubview:sendPresentBtn];
+    [self.view bringSubviewToFront:sendPresentBtn];
     _sendPresentBtn = sendPresentBtn;
     //添加手势
     UIPanGestureRecognizer *panRcognize = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
@@ -177,6 +192,54 @@
     } completed:^{
         self.btnEnabled = YES;
     }];
+}
+
+- (RCMessageContent *)willSendMessage:(RCMessageContent *)messageContent {
+    SYUser *user = SYSharedAppDelegate.services.client.currentUser;
+    if (user.userVipStatus == 1) {
+        if (user.userVipExpiresAt != nil) {
+            NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
+            if (result == NSOrderedDescending) {
+                return messageContent;
+            } else {
+                [self openRechargeTipsView:@"vip"];
+                return nil;
+            }
+        } else {
+            [self openRechargeTipsView:@"vip"];
+            return nil;
+        }
+    } else {
+        // 未开通会员
+        [self openRechargeTipsView:@"vip"];
+        return nil;
+    }
+}
+
+- (void)goBack {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)notifyUpdateUnreadMessageCount {
+    
+}
+
+// 打开权限弹窗
+- (void)openRechargeTipsView:(NSString *)type {
+    SYPopViewVM *popVM = [[SYPopViewVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
+    popVM.type = type;
+    popVM.direct = YES;
+    SYPopViewVC *popVC = [[SYPopViewVC alloc] initWithViewModel:popVM];
+    popVC.block = ^{
+        SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:SYSharedAppDelegate.services params:@{SYViewModelUtilKey:@"vip"}];
+        SYRechargeVC *vc = [[SYRechargeVC alloc]initWithViewModel:vm];
+        [self.navigationController pushViewController:vc animated:YES];
+    };
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionMoveIn;
+    [SYSharedAppDelegate presentVC:popVC withAnimation:animation];
 }
 
 @end

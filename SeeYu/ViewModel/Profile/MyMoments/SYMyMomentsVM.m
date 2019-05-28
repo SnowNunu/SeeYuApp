@@ -24,27 +24,52 @@
     self.title = @"我的动态";
     self.backTitle = @"";
     self.prefersNavigationBarBottomLineHidden = YES;
-    self.enterMomentsEditView = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(SYMomentsEditVM *vm) {
-        [self.services pushViewModel:vm animated:YES];
-        return [RACSignal empty];
-    }];
-    self.requestAllMineMomentsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+    self.pageNum = 1;
+    self.pageSize = 10;     // 每次加载10条数据
+    
+    self.requestAllMineMomentsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *page) {
         @strongify(self)
-        NSArray * (^mapAllMoments)(NSArray *) = ^(NSArray *moments) {
-            return moments.rac_sequence.array;
-        };
-        SYKeyedSubscript *subscript = [SYKeyedSubscript subscript];
-        subscript[@"userId"] = self.services.client.currentUser.userId;
-        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_MINE_MOMENTS_QUERY parameters:subscript.dictionary];
-        SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
-        return [[[self.services.client enqueueRequest:request resultClass:[SYMomentsModel class]] sy_parsedResults] map:mapAllMoments];
+        return [self requestRemoteMyCommentsDataSignalWithPage:page.integerValue];
     }];
-    [self.requestAllMineMomentsCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(NSArray *array) {
-        self.datasource = array;
+    RAC(self,moments) = self.requestAllMineMomentsCommand.executionSignals.switchToLatest;
+    RAC(self,datasource) = [RACObserve(self, moments) map:^id(NSArray *momentsArray) {
+        @strongify(self)
+        return [self dataSourceWithMoments:momentsArray];
     }];
     [self.requestAllMineMomentsCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];
+    self.enterMomentsEditView = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(SYMomentsEditVM *vm) {
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
+    }];
+}
+
+- (RACSignal *)requestRemoteMyCommentsDataSignalWithPage:(NSUInteger)page {
+    NSArray * (^mapMoments)(NSArray *) = ^(NSArray *array) {
+        if (page == 1) {
+            /// 下拉刷新
+        } else {
+            /// 上拉加载
+            array = @[(self.moments ?: @[]).rac_sequence, array.rac_sequence].rac_sequence.flatten.array;
+        }
+        return array;
+    };
+    SYKeyedSubscript *subscript = [SYKeyedSubscript subscript];
+    subscript[@"userId"] = self.services.client.currentUser.userId;
+    subscript[@"pageNum"] = @(page);
+    subscript[@"pageSize"] = @(_pageSize);
+    SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_MINE_MOMENTS_QUERY parameters:subscript.dictionary];
+    SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
+    return [[[self.services.client enqueueRequest:request resultClass:[SYMomentsModel class]] sy_parsedResults] map:mapMoments];
+}
+
+- (NSArray *)dataSourceWithMoments:(NSArray *)moments {
+    if (SYObjectIsNil(moments) || moments.count == 0) return nil;
+    NSArray *datasources = [moments.rac_sequence map:^(SYMomentsModel *model) {
+        return model;
+    }].array;
+    return datasources ?: @[] ;
 }
 
 //// 进行排序

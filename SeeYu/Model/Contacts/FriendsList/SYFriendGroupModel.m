@@ -7,7 +7,7 @@
 //
 
 #import "SYFriendGroupModel.h"
-#import "PinYinForObjc.h"
+//#import "PinYinForObjc.h"
 #import "SYFriendModel.h"
 
 @implementation SYFriendGroupModel

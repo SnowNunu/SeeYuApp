@@ -56,6 +56,22 @@ NSString * const identifier = @"momentListCellIdentifier";
     tableView.estimatedRowHeight = 44.0;
     _tableView = tableView;
     [self.view addSubview:tableView];
+    
+    // 添加下拉刷新控件
+    @weakify(self);
+    [self.tableView sy_addHeaderRefresh:^(MJRefreshNormalHeader *header) {
+        /// 加载下拉刷新的数据
+        @strongify(self);
+        [self tableViewDidTriggerHeaderRefresh];
+    }];
+    [self.tableView.mj_header beginRefreshing];
+    
+    /// 上拉加载
+    [self.tableView sy_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
+        /// 加载上拉刷新的数据
+        @strongify(self);
+        [self tableViewDidTriggerFooterRefresh];
+    }];
 }
 
 - (void)_makeSubViewsConstraints {
@@ -99,7 +115,55 @@ NSString * const identifier = @"momentListCellIdentifier";
         [cell emptyVideoView];
     }
     cell.timeLabel.text = [NSString compareCurrentTime:model.momentTime];
+    cell.block = ^{
+        [self openRechargeTipsView];
+    };
     return cell;
+}
+
+#pragma mark - 下拉刷新事件
+- (void)tableViewDidTriggerHeaderRefresh {
+    @weakify(self)
+    [[[self.viewModel.requestMomentsCommand execute:@1] deliverOnMainThread] subscribeNext:^(id x) {
+        @strongify(self)
+        self.viewModel.pageNum = 1;
+        [self.tableView.mj_footer resetNoMoreData];
+    } error:^(NSError *error) {
+        @strongify(self)
+        [self.tableView.mj_header endRefreshing];
+    } completed:^{
+        @strongify(self)
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer resetNoMoreData];
+    }];
+}
+
+#pragma mark - 上拉刷新事件
+- (void)tableViewDidTriggerFooterRefresh {
+    @weakify(self);
+    [[[self.viewModel.requestMomentsCommand execute:@(self.viewModel.pageNum + 1)] deliverOnMainThread] subscribeNext:^(id x) {
+        @strongify(self)
+        self.viewModel.pageNum += 1;
+    } error:^(NSError *error) {
+        @strongify(self);
+        [self.tableView.mj_footer endRefreshing];
+    } completed:^{
+        @strongify(self)
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    }];
+}
+
+// 打开权限弹窗
+- (void)openRechargeTipsView {
+    SYPopViewVM *popVM = [[SYPopViewVM alloc] initWithServices:self.viewModel.services params:nil];
+    popVM.type = @"vip";
+    SYPopViewVC *popVC = [[SYPopViewVC alloc] initWithViewModel:popVM];
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionMoveIn;
+    [SYSharedAppDelegate presentVC:popVC withAnimation:animation];
 }
 
 @end

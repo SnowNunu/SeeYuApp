@@ -9,6 +9,8 @@
 #import "SYVC.h"
 #import "SYPrivacyShowVM.h"
 #import "JPVideoPlayerKit.h"
+#import "SYPopViewVM.h"
+#import "SYPopViewVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

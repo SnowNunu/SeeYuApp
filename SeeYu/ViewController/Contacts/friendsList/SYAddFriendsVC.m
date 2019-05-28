@@ -34,23 +34,14 @@
     _sendRequest = NO;
     if (self.viewModel.friendId != nil && self.viewModel.friendId.length > 0) {
         self.idTextField.text = self.viewModel.friendId;
+        [self searchFriend];
     }
 }
 
 - (void)bindViewModel {
     [super bindViewModel];
     [[self.searchBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        if ([self.idTextField.text sb_trimAllWhitespace].length > 0) {
-            self.sendRequest = YES;
-            NSString *string = [self.idTextField.text sb_trimAllWhitespace];
-            if ([string isEqualToString:self.viewModel.services.client.currentUserId] || [string isEqualToString:self.viewModel.services.client.currentUser.userName]) {
-                [MBProgressHUD sy_showTips:@"不能添加自己为好友"];
-            } else {
-                [self.viewModel.searchFriendsCommand execute:[self.idTextField.text sb_trimAllWhitespace]];
-            }
-        } else {
-            [MBProgressHUD sy_showTips:@"请先输入好友昵称或者id"];
-        }
+        [self searchFriend];
     }];
     [RACObserve(self.viewModel, datasource) subscribeNext:^(NSArray *usersArray) {
         if (usersArray.count > 0) {
@@ -87,6 +78,7 @@
     tableView.dataSource = self;
     tableView.tableFooterView = [UIView new];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"SYAddFriendsListCell"];
     _tableView = tableView;
     [self.view addSubview:tableView];
     
@@ -135,10 +127,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellID = @"friendsInfoViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SYAddFriendsListCell" forIndexPath:indexPath];
+    if(!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SYAddFriendsListCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor whiteColor];
@@ -180,7 +171,22 @@
     [addFriendBtn setTitle:@"添加" forState:UIControlStateNormal];
     addFriendBtn.titleLabel.font = SYFont(10, YES);
     [[addFriendBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.viewModel.addFriendRequestCommand execute:user.userId];
+        SYUser *user = self.viewModel.services.client.currentUser;
+        if (user.userVipStatus == 1) {
+            if (user.userVipExpiresAt != nil) {
+                NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
+                if (result == NSOrderedDescending) {
+                    // 会员未过期
+                    [self.viewModel.addFriendRequestCommand execute:user.userId];
+                } else {
+                    // 会员已过期的情况
+                    [self openRechargeTipsView:@"vip"];
+                }
+            }
+        } else {
+            // 未开通会员
+            [self openRechargeTipsView:@"vip"];
+        }
     }];
     [cell.contentView addSubview:addFriendBtn];
     
@@ -211,6 +217,33 @@
         make.height.offset(20);
     }];
     return cell;
+}
+
+// 搜索好友
+- (void)searchFriend {
+    if ([self.idTextField.text sb_trimAllWhitespace].length > 0) {
+        self.sendRequest = YES;
+        NSString *string = [self.idTextField.text sb_trimAllWhitespace];
+        if ([string isEqualToString:self.viewModel.services.client.currentUserId] || [string isEqualToString:self.viewModel.services.client.currentUser.userName]) {
+            [MBProgressHUD sy_showTips:@"不能添加自己为好友"];
+        } else {
+            [self.viewModel.searchFriendsCommand execute:[self.idTextField.text sb_trimAllWhitespace]];
+        }
+    } else {
+        [MBProgressHUD sy_showTips:@"请先输入好友昵称或者id"];
+    }
+}
+
+// 打开权限弹窗
+- (void)openRechargeTipsView:(NSString *)type {
+    SYPopViewVM *popVM = [[SYPopViewVM alloc] initWithServices:self.viewModel.services params:nil];
+    popVM.type = type;
+    SYPopViewVC *popVC = [[SYPopViewVC alloc] initWithViewModel:popVM];
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionMoveIn;
+    [SYSharedAppDelegate presentVC:popVC withAnimation:animation];
 }
 
 @end
