@@ -286,8 +286,11 @@
         SYUser *user = self.viewModel.services.client.currentUser;
         if (user.userVipStatus == 1) {
             if (user.userVipExpiresAt != nil) {
-                NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
-                if (result == NSOrderedDescending) {
+                
+                if ([NSDate sy_overdue:user.userVipExpiresAt]) {
+                    // 已过期
+                    [self openRechargeTipsView:@"vip"];
+                } else {
                     // 会员未过期再判断是否经过真人认证
                     if (user.identityStatus == 1) {
                         // 已通过真人认证
@@ -302,9 +305,6 @@
                         // 未通过真人认证
                         [self openRechargeTipsView:@"realAuth"];
                     }
-                } else {
-                    // 会员已过期的情况
-                    [self openRechargeTipsView:@"vip"];
                 }
             }
         } else {
@@ -331,13 +331,12 @@
             } else {
                 if (user.userVipStatus == 1) {
                     if (user.userVipExpiresAt != nil) {
-                        NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
-                        if (result == NSOrderedDescending) {
+                        if ([NSDate sy_overdue:user.userVipExpiresAt]) {
+                            // 已过期
+                            [self openRechargeTipsView:@"vip"];
+                        } else {
                             // 会员未过期,好友间可直接发起视频
                             [[RCCall sharedRCCall] startSingleCall:self.viewModel.userId mediaType:RCCallMediaVideo];
-                        } else {
-                            // 会员已过期的情况
-                            [self openRechargeTipsView:@"vip"];
                         }
                     }
                 } else {

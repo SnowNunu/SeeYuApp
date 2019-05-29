@@ -145,8 +145,12 @@
         }
     } else if ([friendModel.userFriendName isEqualToString:@"红娘客服"]) {
         cell.headImageView.image = SYImageNamed(@"icon_cusService");
+        cell.badgeView.badgeText = nil;
+        [cell.badgeView setNeedsLayout];
     } else if ([friendModel.userFriendName isEqualToString:@"系统消息"]) {
         cell.headImageView.image = SYImageNamed(@"icon_systemCall");
+        cell.badgeView.badgeText = nil;
+        [cell.badgeView setNeedsLayout];
     } else {
         if ([friendModel.userHeadImg sy_isNullOrNil]) {
             cell.headImageView.image = SYImageNamed(@"anchor_deafult_image");
@@ -158,6 +162,8 @@
                 cell.headImageView.image = SYImageNamed(@"anchor_deafult_image");
             }
         }
+        cell.badgeView.badgeText = nil;
+        [cell.badgeView setNeedsLayout];
     }
     return cell;
 }
@@ -223,8 +229,7 @@
     } else {
         SYSingleChattingVC *conversationVC = [[SYSingleChattingVC alloc] init];
         conversationVC.conversationType = ConversationType_PRIVATE;
-        NSNumber *friendId = (NSNumber*)friendModel.userFriendId;
-        conversationVC.targetId = [friendId stringValue];
+        conversationVC.targetId = friendModel.userFriendId;
         conversationVC.title = friendModel.userFriendName;
         [self.navigationController pushViewController:conversationVC animated:YES];
     }

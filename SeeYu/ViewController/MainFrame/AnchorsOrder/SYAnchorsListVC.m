@@ -10,6 +10,7 @@
 #import "SYAnchorsListCell.h"
 #import "SYAnchorsModel.h"
 #import "UIScrollView+SYRefresh.h"
+#import "UICollectionViewLeftAlignedLayout.h"
 
 NSString * const anchorsListCell = @"anchorsListCell";
 
@@ -46,7 +47,7 @@ NSString * const anchorsListCell = @"anchorsListCell";
     _bgView = bgView;
     [self.view addSubview:bgView];
     
-    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
+    UICollectionViewLeftAlignedLayout * layout = [UICollectionViewLeftAlignedLayout new];
     layout.minimumLineSpacing = 5.f;    // 上下间距
     layout.minimumInteritemSpacing = 3.f;   // 左右间距
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;   // 垂直滚动

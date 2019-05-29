@@ -260,6 +260,17 @@
     return destinationDateNow;
 }
 
-
+/**
+ * 判断当前时间对比传入的时间是否过期
+ */
++ (BOOL)sy_overdue:(NSDate *)date {
+    // 这里直接将服务器的时间设置为了UTC0，所以要减去8个小时
+    NSTimeInterval time = [date timeIntervalSinceNow] - 3600 * 8;
+    if (time > 0) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
 
 @end

@@ -267,13 +267,12 @@
     SYUser *user = SYSharedAppDelegate.services.client.currentUser;
     if (user.userVipStatus == 1) {
         if (user.userVipExpiresAt != nil) {
-            NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
-            if (result == NSOrderedDescending) {
-                // 会员未过期
-                return NO;
-            } else {
-                // 会员已过期的情况
+            if ([NSDate sy_overdue:user.userVipExpiresAt]) {
+                // 已过期
                 return YES;
+            } else {
+                // 未过期
+                return NO;
             }
         } else {
             return YES;

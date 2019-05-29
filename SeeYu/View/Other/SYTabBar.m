@@ -58,7 +58,7 @@
             self.badgeView.badgeText = [NSString stringWithFormat:@"%d",totalUnreadCount];
             [self.badgeView setNeedsLayout];
         } else {
-            self.badgeView.badgeText = [NSString stringWithFormat:@"%d",totalUnreadCount];
+            self.badgeView.badgeText = nil;
             [self.badgeView setNeedsLayout];
         }
     });

@@ -394,12 +394,8 @@
     SYUser *user = self.viewModel.services.client.currentUser;
     if (user.userVipStatus == 1) {
         if (user.userVipExpiresAt != nil) {
-            NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
-            if (result == NSOrderedDescending) {
-                // 会员未过期
-                self.canLoadMore = YES;
-                self.loadTime = SY_LOAD_TIME_PER_DAY + 1;
-            } else {
+            
+            if ([NSDate sy_overdue:user.userVipExpiresAt]) {
                 // 会员已过期的情况
                 YYCache *cache = [YYCache cacheWithName:@"seeyu"];
                 if ([cache containsObjectForKey:@"loadMoreInfo"]) {
@@ -421,6 +417,10 @@
                     self.loadTime = SY_LOAD_TIME_PER_DAY;  // 每天限制使用五次
                     [self writeCanLoadMoreCache];
                 }
+            } else {
+                // 会员未过期
+                self.canLoadMore = YES;
+                self.loadTime = SY_LOAD_TIME_PER_DAY + 1;
             }
         }
     } else {
@@ -451,8 +451,8 @@
 - (void)writeCanLoadMoreCache {
     YYCache *cache = [YYCache cacheWithName:@"seeyu"];
     if (_loadTime > 0) {
-        _loadTime = --_loadTime;
         if ([cache containsObjectForKey:@"loadMoreInfo"]) {
+            _loadTime = --_loadTime;
             NSString *value = (NSString *)[cache objectForKey:@"loadMoreInfo"];
             NSArray *array = [value componentsSeparatedByString:@"*"];
             NSString *date = array.firstObject;

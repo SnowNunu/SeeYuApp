@@ -143,6 +143,9 @@
 /// 获取速配好友列表
 #define SY_HTTTP_PATH_USER_MATCH_SPEED_LIST     @"/application/user/querySpeedMatch"
 
+/// 发起速配请求
+#define SY_HTTTP_PATH_USER_SPEED_MATCH     @"/application/user/speedMatch"
+
 // 添加好友
 #define SY_HTTTP_PATH_USER_FRIEND_ADD        @"/application/userFriendRelation/addFriend"
 

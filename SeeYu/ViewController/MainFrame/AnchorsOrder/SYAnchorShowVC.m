@@ -78,18 +78,22 @@
         } else {
             if (user.userVipStatus == 1) {
                 if (user.userVipExpiresAt != nil) {
-                    NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
-                    if (result == NSOrderedDescending) {
+                    if ([NSDate sy_overdue:user.userVipExpiresAt]) {
+                        // 会员已过期的情况
+                        [self openRechargeTipsView:@"vip"];
+                    } else {
                         // 会员未过期
                         if (user.userDiamond > self.viewModel.model.anchorChatCost.intValue) {
-                            [self.playerView jp_pause];
-                            [[RCCall sharedRCCall] startSingleCall:self.viewModel.model.userId mediaType:RCCallMediaVideo];
+                            if (self.viewModel.model.userOnline == 0) {
+                                // 主播忙碌状态不允许视频
+                                [MBProgressHUD sy_showTips:@"用户忙碌中，请稍候再试"];
+                            } else {
+                                [self.playerView jp_pause];
+                                [[RCCall sharedRCCall] startSingleCall:self.viewModel.model.userId mediaType:RCCallMediaVideo];
+                            }
                         } else {
                             [self openRechargeTipsView:@"diamonds"];
                         }
-                    } else {
-                        // 会员已过期的情况
-                        [self openRechargeTipsView:@"vip"];
                     }
                 }
             } else {

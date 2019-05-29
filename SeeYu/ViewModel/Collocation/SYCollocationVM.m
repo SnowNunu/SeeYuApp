@@ -37,13 +37,13 @@
     }];
     self.matchLikeCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *friendId) {
         @strongify(self)
-        NSDictionary *params = @{@"userId":self.services.client.currentUser.userId,@"firendUserId":friendId};
+        NSDictionary *params = @{@"userId":self.services.client.currentUser.userId,@"matchUserId":friendId};
         SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
-        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_FRIEND_ADD parameters:subscript.dictionary];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_SPEED_MATCH parameters:subscript.dictionary];
         return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYSpeedMatchModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];
     }];
     [self.matchLikeCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(id x) {
-        [MBProgressHUD sy_showTips:@"你喜欢了她"];
+        [MBProgressHUD sy_showTips:@"发送速配请求成功"];
     }];
     [self.matchLikeCommand.errors subscribeNext:^(NSError *error) {
         if ([error code] == 82) {

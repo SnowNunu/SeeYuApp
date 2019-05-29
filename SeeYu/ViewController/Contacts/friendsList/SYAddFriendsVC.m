@@ -171,16 +171,15 @@
     [addFriendBtn setTitle:@"添加" forState:UIControlStateNormal];
     addFriendBtn.titleLabel.font = SYFont(10, YES);
     [[addFriendBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        SYUser *user = self.viewModel.services.client.currentUser;
-        if (user.userVipStatus == 1) {
-            if (user.userVipExpiresAt != nil) {
-                NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
-                if (result == NSOrderedDescending) {
-                    // 会员未过期
-                    [self.viewModel.addFriendRequestCommand execute:user.userId];
-                } else {
-                    // 会员已过期的情况
+        SYUser *currentUser = self.viewModel.services.client.currentUser;
+        if (currentUser.userVipStatus == 1) {
+            if (currentUser.userVipExpiresAt != nil) {
+                if ([NSDate sy_overdue:currentUser.userVipExpiresAt]) {
+                    // 已过期
                     [self openRechargeTipsView:@"vip"];
+                } else {
+                    // 未过期
+                    [self.viewModel.addFriendRequestCommand execute:user.userId];
                 }
             }
         } else {

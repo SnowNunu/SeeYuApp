@@ -123,13 +123,13 @@
             } else {
                 if (user.userVipStatus == 1) {
                     if (user.userVipExpiresAt != nil) {
-                        NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
-                        if (result == NSOrderedDescending) {
-                            // 会员未过期,好友间可直接发起视频
-                            [[RCCall sharedRCCall] startSingleCall:self.viewModel.model.showUserid mediaType:RCCallMediaVideo];
-                        } else {
+                        
+                        if ([NSDate sy_overdue:user.userVipExpiresAt]) {
                             // 会员已过期的情况
                             [self openRechargeTipsView:@"vip"];
+                        } else {
+                            // 会员未过期,好友间可直接发起视频
+                            [[RCCall sharedRCCall] startSingleCall:self.viewModel.model.showUserid mediaType:RCCallMediaVideo];
                         }
                     }
                 } else {

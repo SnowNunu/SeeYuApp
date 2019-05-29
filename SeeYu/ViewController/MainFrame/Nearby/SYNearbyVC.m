@@ -204,13 +204,12 @@ NSString * const nearybyListCell = @"nearybyListCell";
     }
     if (user.userVipStatus == 1) {
         if (user.userVipExpiresAt != nil) {
-            NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
-            if (result == NSOrderedDescending) {
-                // 会员未过期
-                cell.vipImageView.hidden = NO;
-            } else {
-                // 会员已过期的情况
+            if ([NSDate sy_overdue:user.userVipExpiresAt]) {
+                // 已过期
                 cell.vipImageView.hidden = YES;
+            } else {
+                // 未过期
+                cell.vipImageView.hidden = NO;
             }
         }
     } else {

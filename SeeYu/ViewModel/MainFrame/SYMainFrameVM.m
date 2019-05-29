@@ -33,7 +33,10 @@
         NSDictionary *params = @{@"userId":self.services.client.currentUser.userId};
         SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
         SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_LOGIN_REPORT parameters:subscript.dictionary];
-        return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYObject class]] sy_parsedResults]  takeUntil:self.rac_willDeallocSignal];
+        return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUser class]] sy_parsedResults]  takeUntil:self.rac_willDeallocSignal];
+    }];
+    [self.loginReportCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYUser *user) {
+        [self.services.client saveUser:user];
     }];
     self.requestGiftPackageInfoCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self)

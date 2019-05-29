@@ -42,10 +42,18 @@
                 self.playBtn.hidden = YES;
                 [self.modifyVideoBtn setTitle:@"添加视频" forState:UIControlStateNormal];
             } else {
-                self.tipsLabel.hidden = YES;
-                self.playBtn.hidden = NO;
-                [self.modifyVideoBtn setTitle:@"修改视频" forState:UIControlStateNormal];
-                self.videoImageView.image = [UIImage sy_thumbnailImageForVideo:[NSURL URLWithString:model.showVideo] atTime:1];;
+                if ([model.showVideoStatus isEqualToString:@"2"]) {
+                    self.tipsLabel.hidden = NO;
+                    self.playBtn.hidden = YES;
+                    [self.modifyVideoBtn setTitle:@"修改视频" forState:UIControlStateNormal];
+                    self.videoImageView.image = SYImageNamed(@"add_image");
+                    [MBProgressHUD sy_showError:@"视频审核不通过，请重新上传"];
+                } else {
+                    self.tipsLabel.hidden = YES;
+                    self.playBtn.hidden = NO;
+                    [self.modifyVideoBtn setTitle:@"修改视频" forState:UIControlStateNormal];
+                    self.videoImageView.image = [UIImage sy_thumbnailImageForVideo:[NSURL URLWithString:model.showVideo] atTime:1];
+                }
             }
         }
     }];

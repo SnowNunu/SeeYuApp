@@ -73,6 +73,9 @@ pod 'SDWebImage'
 # UIView模糊
 pod 'FXBlurView'                        , '1.6.4'
 
+# UICollectionView左对齐
+pod 'UICollectionViewLeftAlignedLayout'
+
 # WebSocket
 pod 'SocketRocket'                      , '0.5.1'
 

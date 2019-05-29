@@ -11,13 +11,14 @@
 
 @interface SYHTTPResponse ()
 
-/// The parsed SYObject object corresponding to the API response.
-/// The developer need care this data
 @property (nonatomic, readwrite, strong) id parsedResult;
+
 /// 自己服务器返回的状态码
 @property (nonatomic, readwrite, assign) SYHTTPResponseCode code;
+
 /// 自己服务器返回的信息
 @property (nonatomic, readwrite, copy) NSString *msg;
+
 @end
 
 @implementation SYHTTPResponse

@@ -74,6 +74,11 @@
 /** 与当前时间的差距 */
 - (NSDateComponents *)sy_deltaWithNow;
 
+/**
+ * 判断当前时间对比传入的时间是否过期
+ */
++ (BOOL)sy_overdue:(NSDate *)date;
+
 
 
 //////////// MVC&MVVM的商品的发布时间的描述 ////////////

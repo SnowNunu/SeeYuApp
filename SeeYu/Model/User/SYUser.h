@@ -104,6 +104,9 @@
 /** 用户展示视频 */
 @property (nonatomic, strong) NSString *showVideo;
 
+/** 用户头像审核状态 */
+@property (nonatomic, assign) int userHeadImgFlag;
+
 //------------------------------------------------------------------
 /// ----- 登录相关 -----
 /// qq

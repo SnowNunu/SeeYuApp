@@ -42,9 +42,10 @@
     [IQKeyboardManager sharedManager].enable = NO;
     [self.chatSessionInputBarControl.pluginBoardView removeItemAtIndex:PLUGIN_BOARD_ITEM_LOCATION_TAG];
     if ([self.title isEqualToString:@"系统消息"]) {
-        self.conversationMessageCollectionView.frame = self.view.frame;
+        self.conversationMessageCollectionView.frame = CGRectMake(0, SY_APPLICATION_TOP_BAR_HEIGHT, SY_SCREEN_WIDTH, SY_SCREEN_HEIGHT - SY_APPLICATION_TOP_BAR_HEIGHT);
         self.chatSessionInputBarControl.hidden = YES;
         self.chatSessionInputBarControl.backgroundColor = [UIColor clearColor];
+        [super scrollToBottomAnimated:YES];
     }
 }
 
@@ -198,12 +199,13 @@
     SYUser *user = SYSharedAppDelegate.services.client.currentUser;
     if (user.userVipStatus == 1) {
         if (user.userVipExpiresAt != nil) {
-            NSComparisonResult result = [user.userVipExpiresAt compare:[NSDate date]];
-            if (result == NSOrderedDescending) {
-                return messageContent;
-            } else {
+            if ([NSDate sy_overdue:user.userVipExpiresAt]) {
+                // 已过期
                 [self openRechargeTipsView:@"vip"];
                 return nil;
+            } else {
+                // 未过期
+                return messageContent;
             }
         } else {
             [self openRechargeTipsView:@"vip"];

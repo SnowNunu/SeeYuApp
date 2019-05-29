@@ -40,9 +40,15 @@
                 self.tipsLabel.hidden = NO;
                 [self.modifyCoverBtn setTitle:@"添加封面" forState:UIControlStateNormal];
             } else {
-                self.tipsLabel.hidden = YES;
                 [self.modifyCoverBtn setTitle:@"修改封面" forState:UIControlStateNormal];
-                self.coverImageView.yy_imageURL = [NSURL URLWithString:model.showPhoto];
+                if ([model.showPhotoStatus isEqualToString:@"2"]) {
+                    self.tipsLabel.hidden = NO;
+                    self.coverImageView.image = SYImageNamed(@"add_image");
+                    [MBProgressHUD sy_showError:@"封面审核不通过，请重新上传"];
+                } else {
+                    self.tipsLabel.hidden = YES;
+                    self.coverImageView.yy_imageURL = [NSURL URLWithString:model.showPhoto];
+                }
             }
         }
     }];
