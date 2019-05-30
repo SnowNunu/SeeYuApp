@@ -25,6 +25,9 @@
     [self.contentView addSubview:defaultImageView];
     
     UIImageView *headImageView = [UIImageView new];
+    headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    headImageView.clipsToBounds = YES;
+    [headImageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
     _headImageView = headImageView;
     [self.contentView addSubview:headImageView];
     
@@ -92,6 +95,7 @@
         make.left.equalTo(self.infoBgView).offset(5);
         make.bottom.equalTo(self.infoBgView).offset(-6);
         make.height.offset(10);
+        make.right.equalTo(self.infoBgView).offset(-5);
     }];
 }
 

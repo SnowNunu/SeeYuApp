@@ -128,12 +128,25 @@ NSString * const anchorsListCell = @"anchorsListCell";
     } else {
         cell.headImageView.image = SYImageNamed(@"anchor_deafult_image_wide");
     }
+    if (indexPath.row == 0) {
+        cell.signatureLabel.text = model.userSignature;
+        cell.crownImageView.image = SYImageNamed(@"crown");
+        [cell.crownImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.offset(22);
+        }];
+    } else {
+        cell.signatureLabel.text = nil;
+        [cell.crownImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.offset(0);
+        }];
+    }
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    SYAnchorsModel *model = self.viewModel.anchorsArray[indexPath.row];
-    [self.viewModel.enterAnchorShowViewCommand execute:model.userId];
+//    SYAnchorsModel *model = self.viewModel.anchorsArray[indexPath.row];
+//    [self.viewModel.enterAnchorShowViewCommand execute:model.userId];
+    [self.viewModel.enterAnchorGatherViewCommand execute:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
 }
 
 #pragma mark - 下拉刷新事件

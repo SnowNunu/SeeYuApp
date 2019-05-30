@@ -235,6 +235,12 @@
 		7B4BF4812251B09300CCD286 /* MHGetPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF4762251B09300CCD286 /* MHGetPermission.m */; };
 		7B4BF4872251B3BC00CCD286 /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF4832251B3BB00CCD286 /* UIView+SDAutoLayout.m */; };
 		7B4BF4882251B3BC00CCD286 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BF4852251B3BB00CCD286 /* UITableView+SDAutoTableViewCellHeight.m */; };
+		7B503426229E88B90064D740 /* SYAnchorsGatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B503425229E88B90064D740 /* SYAnchorsGatherVC.m */; };
+		7B503429229E890B0064D740 /* SYAnchorsGatherVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B503428229E890B0064D740 /* SYAnchorsGatherVM.m */; };
+		7B50342C229E9D160064D740 /* SYAnchorsGatherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B50342B229E9D160064D740 /* SYAnchorsGatherCell.m */; };
+		7B503432229ED62E0064D740 /* AVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B50342F229ED62E0064D740 /* AVPlayerView.m */; };
+		7B503433229ED62E0064D740 /* AVPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B503430229ED62E0064D740 /* AVPlayerManager.m */; };
+		7B503436229ED71E0064D740 /* WebCacheHelpler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B503435229ED71E0064D740 /* WebCacheHelpler.m */; };
 		7B5210EB227095CA00D7EEFC /* SYSigninVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210EA227095CA00D7EEFC /* SYSigninVC.m */; };
 		7B5210EE227095F200D7EEFC /* SYSigninVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210ED227095F200D7EEFC /* SYSigninVM.m */; };
 		7B5210F32270AF8000D7EEFC /* SYMyMomentsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5210F22270AF8000D7EEFC /* SYMyMomentsVM.m */; };
@@ -935,6 +941,18 @@
 		7B4BF4842251B3BB00CCD286 /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
 		7B4BF4852251B3BB00CCD286 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
 		7B4BF4862251B3BB00CCD286 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
+		7B503424229E88B90064D740 /* SYAnchorsGatherVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsGatherVC.h; sourceTree = "<group>"; };
+		7B503425229E88B90064D740 /* SYAnchorsGatherVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsGatherVC.m; sourceTree = "<group>"; };
+		7B503427229E890B0064D740 /* SYAnchorsGatherVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsGatherVM.h; sourceTree = "<group>"; };
+		7B503428229E890B0064D740 /* SYAnchorsGatherVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsGatherVM.m; sourceTree = "<group>"; };
+		7B50342A229E9D160064D740 /* SYAnchorsGatherCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAnchorsGatherCell.h; sourceTree = "<group>"; };
+		7B50342B229E9D160064D740 /* SYAnchorsGatherCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAnchorsGatherCell.m; sourceTree = "<group>"; };
+		7B50342E229ED62E0064D740 /* AVPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerManager.h; sourceTree = "<group>"; };
+		7B50342F229ED62E0064D740 /* AVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerView.m; sourceTree = "<group>"; };
+		7B503430229ED62E0064D740 /* AVPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerManager.m; sourceTree = "<group>"; };
+		7B503431229ED62E0064D740 /* AVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerView.h; sourceTree = "<group>"; };
+		7B503434229ED7140064D740 /* WebCacheHelpler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebCacheHelpler.h; sourceTree = "<group>"; };
+		7B503435229ED71E0064D740 /* WebCacheHelpler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebCacheHelpler.m; sourceTree = "<group>"; };
 		7B5210E9227095CA00D7EEFC /* SYSigninVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSigninVC.h; sourceTree = "<group>"; };
 		7B5210EA227095CA00D7EEFC /* SYSigninVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSigninVC.m; sourceTree = "<group>"; };
 		7B5210EC227095F200D7EEFC /* SYSigninVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSigninVM.h; sourceTree = "<group>"; };
@@ -1579,6 +1597,7 @@
 		26064AF01F5DA21000566B95 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				7B50342D229ED62E0064D740 /* AVPlayer */,
 				7B52A781229C370F0043511C /* BMChineseSort */,
 				7B2A218C2276B67B00EC8614 /* CYWebViewController */,
 				7B98B917227606A50074D0A0 /* JXBWebKit */,
@@ -2769,6 +2788,8 @@
 				7BCDF3A7228C1A9500D52640 /* SYAnchorsListVC.m */,
 				7B9A1BBB2240997E00B7BFC2 /* SYAnchorShowVC.h */,
 				7B9A1BBC2240997E00B7BFC2 /* SYAnchorShowVC.m */,
+				7B503424229E88B90064D740 /* SYAnchorsGatherVC.h */,
+				7B503425229E88B90064D740 /* SYAnchorsGatherVC.m */,
 			);
 			path = AnchorsOrder;
 			sourceTree = "<group>";
@@ -2782,6 +2803,8 @@
 				7B590933223F77B200EE5ACF /* SYAnchorsListVM.m */,
 				7B9A1BBE2240999D00B7BFC2 /* SYAnchorShowVM.h */,
 				7B9A1BBF2240999D00B7BFC2 /* SYAnchorShowVM.m */,
+				7B503427229E890B0064D740 /* SYAnchorsGatherVM.h */,
+				7B503428229E890B0064D740 /* SYAnchorsGatherVM.m */,
 			);
 			path = AnchorsOrder;
 			sourceTree = "<group>";
@@ -2938,6 +2961,19 @@
 				7B4BF4852251B3BB00CCD286 /* UITableView+SDAutoTableViewCellHeight.m */,
 			);
 			path = SDAutoLayout;
+			sourceTree = "<group>";
+		};
+		7B50342D229ED62E0064D740 /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				7B503431229ED62E0064D740 /* AVPlayerView.h */,
+				7B50342F229ED62E0064D740 /* AVPlayerView.m */,
+				7B50342E229ED62E0064D740 /* AVPlayerManager.h */,
+				7B503430229ED62E0064D740 /* AVPlayerManager.m */,
+				7B503434229ED7140064D740 /* WebCacheHelpler.h */,
+				7B503435229ED71E0064D740 /* WebCacheHelpler.m */,
+			);
+			path = AVPlayer;
 			sourceTree = "<group>";
 		};
 		7B5210E72270958600D7EEFC /* Signin */ = {
@@ -3224,6 +3260,8 @@
 				7B59093C223F9C7300EE5ACF /* SYAnchorsListCell.m */,
 				7B4B149F228DA28400590EAA /* SYNearbyListCell.h */,
 				7B4B14A0228DA28400590EAA /* SYNearbyListCell.m */,
+				7B50342A229E9D160064D740 /* SYAnchorsGatherCell.h */,
+				7B50342B229E9D160064D740 /* SYAnchorsGatherCell.m */,
 			);
 			path = AnchorsOrder;
 			sourceTree = "<group>";
@@ -5137,6 +5175,7 @@
 				2615974C1FEA5DD300C6FD80 /* SYMomentFooterView.m in Sources */,
 				26BE2B522010C02C00F28AA0 /* SYMomentBackgroundView.m in Sources */,
 				7B15EC712265BAF100A80BD5 /* ZYImagePicker.m in Sources */,
+				7B50342C229E9D160064D740 /* SYAnchorsGatherCell.m in Sources */,
 				7B724BDB2245E14E0096F40B /* SYPrivacyVC.m in Sources */,
 				2624CAE31F98DF9B0083923F /* RACSubscriber+AFProgressCallbacks.m in Sources */,
 				7BC6FC102237D0F90079330A /* SYGuideVM.m in Sources */,
@@ -5151,6 +5190,7 @@
 				263D36E91F666438007267C3 /* UIFont+SYExtension.m in Sources */,
 				7B7B1AA3225B2FAF008C7EEA /* SYPrivacyDetailModel.m in Sources */,
 				7B788157224E727100B25CA3 /* SYTimeTool.m in Sources */,
+				7B503426229E88B90064D740 /* SYAnchorsGatherVC.m in Sources */,
 				7BC6FC222238C0C00079330A /* CountDownOperation.m in Sources */,
 				7B15EC742265BAF100A80BD5 /* ZYClipBorderView.m in Sources */,
 				7B2A21A62276B67B00EC8614 /* NJKWebViewProgressView.m in Sources */,
@@ -5215,6 +5255,7 @@
 				7BCDF3A8228C1A9600D52640 /* SYAnchorsListVC.m in Sources */,
 				2617531A1F7398F000812E1B /* SYCommonAvatarItemViewModel.m in Sources */,
 				7B0228BE223B87810045E25F /* SYFriendsListCell.m in Sources */,
+				7B503436229ED71E0064D740 /* WebCacheHelpler.m in Sources */,
 				26FE8E8D1F9514D100EC8BE0 /* TZLocationManager.m in Sources */,
 				7BEB77D022796493008869A1 /* SYMyMomentsListCell.m in Sources */,
 				2609ED4A1F790833002D31CE /* UILabel+SYExtension.m in Sources */,
@@ -5313,6 +5354,7 @@
 				7B3599252260FAD700FDC6FE /* SYMobileBindingVC.m in Sources */,
 				261597061FEA52CE00C6FD80 /* SYMoment.m in Sources */,
 				7B78812B2249D58A00B25CA3 /* SYMomentVC.m in Sources */,
+				7B503433229ED62E0064D740 /* AVPlayerManager.m in Sources */,
 				7B78815D224F453400B25CA3 /* SYAddFriendsVC.m in Sources */,
 				26003FF31F988B81000621B0 /* SYButton.m in Sources */,
 				7B4BF4782251B09300CCD286 /* UIScrollView+MHMH.m in Sources */,
@@ -5344,6 +5386,7 @@
 				7BE971DF225F435F00FF6A25 /* SYDiamondsVM.m in Sources */,
 				7B76B89E22672A3600153249 /* SYCoverInfoEditVM.m in Sources */,
 				7B3599292260FAF500FDC6FE /* SYMobileBindingVM.m in Sources */,
+				7B503429229E890B0064D740 /* SYAnchorsGatherVM.m in Sources */,
 				7B76B8952267294400153249 /* SYCoverInfoEditVC.m in Sources */,
 				2605C5B81F66249F00B1F66E /* SYHomePageVM.m in Sources */,
 				26CCB9D120244F690090DBC5 /* SYMomentVideo.m in Sources */,
@@ -5420,6 +5463,7 @@
 				2615974F1FEA5DD300C6FD80 /* SYMomentOperationMoreItemView.m in Sources */,
 				7B76B8AE22680D8400153249 /* SYUserShowInfoModel.m in Sources */,
 				7B4BF4612251AE4C00CCD286 /* YLVideoPreView.m in Sources */,
+				7B503432229ED62E0064D740 /* AVPlayerView.m in Sources */,
 				7B98B8FA2275DA380074D0A0 /* RCCallSelectMemberViewController.m in Sources */,
 				263D36EA1F666438007267C3 /* UIImage+SYExtension.m in Sources */,
 				7B4BF4882251B3BC00CCD286 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,

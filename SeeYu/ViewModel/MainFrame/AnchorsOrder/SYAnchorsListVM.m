@@ -39,6 +39,11 @@
         [self.services pushViewModel:showVM animated:YES];
         return [RACSignal empty];
     }];
+    self.enterAnchorGatherViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *index) {
+        SYAnchorsGatherVM *vm = [[SYAnchorsGatherVM alloc] initWithServices:self.services params:@{@"anchorType":self.anchorType,@"currentIndex":index}];
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
+    }];
 }
 
 - (RACSignal *)requestRemoteAnchorsDataSignalWithPage:(NSUInteger)page {

@@ -24,17 +24,17 @@
     self.layer.masksToBounds = YES;
     
     UIImageView *headImageView = [UIImageView new];
-//    headImageView.contentMode = UIViewContentModeScaleAspectFill;
-//    headImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-//    [headImageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
-//    headImageView.clipsToBounds = YES;
     _headImageView = headImageView;
     [self.contentView addSubview:headImageView];
     
     UIImageView *bgImageView = [UIImageView new];
     bgImageView.backgroundColor = SYColorAlpha(83, 16, 114, 0.3);
     _bgImageView = bgImageView;
-    [self.contentView addSubview:bgImageView];
+    [headImageView addSubview:bgImageView];
+    
+    UIImageView *crownImageView = [UIImageView new];
+    _crownImageView = crownImageView;
+    [bgImageView addSubview:crownImageView];
     
     UILabel *aliasLabel = [UILabel new];
     aliasLabel.textAlignment = NSTextAlignmentLeft;
@@ -42,11 +42,19 @@
     aliasLabel.backgroundColor = [UIColor clearColor];
     aliasLabel.textColor = [UIColor whiteColor];
     _aliasLabel = aliasLabel;
-    [self.contentView addSubview:aliasLabel];
+    [bgImageView addSubview:aliasLabel];
+    
+    UILabel *signatureLabel = [UILabel new];
+    signatureLabel.textAlignment = NSTextAlignmentLeft;
+    signatureLabel.font = SYFont(10, YES);
+    signatureLabel.backgroundColor = [UIColor clearColor];
+    signatureLabel.textColor = [UIColor whiteColor];
+    _signatureLabel = signatureLabel;
+    [bgImageView addSubview:signatureLabel];
     
     UIImageView *onlineStatusImageView = [UIImageView new];
     _onlineStatusImageView = onlineStatusImageView;
-    [self.contentView addSubview:onlineStatusImageView];
+    [headImageView addSubview:onlineStatusImageView];
     
     UIImageView *voiceImageView = [UIImageView new];
     voiceImageView.image = SYImageNamed(@"play");
@@ -59,7 +67,7 @@
     [bgImageView addSubview:diamondImageView];
     
     UILabel *voicePriceLabel = [UILabel new];
-    voicePriceLabel.textAlignment = NSTextAlignmentRight;
+    voicePriceLabel.textAlignment = NSTextAlignmentCenter;
     voicePriceLabel.textColor = [UIColor whiteColor];
     voicePriceLabel.font = SYFont(9, YES);
     _voicePriceLabel = voicePriceLabel;
@@ -82,25 +90,37 @@
         make.right.equalTo(self.diamondImageView.mas_left).offset(-2);
         make.centerY.equalTo(self.bgImageView);
     }];
-    [_aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.bgImageView).offset(3);
+    [_crownImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.offset(22);
         make.centerY.equalTo(self.bgImageView);
-        make.right.equalTo(self.voiceImageView.mas_left);
+        make.left.equalTo(self.bgImageView).offset(3);
+    }];
+    [_aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.crownImageView.mas_right).offset(3);
+        make.height.offset(12);
+        make.bottom.equalTo(self.signatureLabel.mas_top).offset(-2);
+        make.right.equalTo(self.voiceImageView.mas_left).offset(-2);
+    }];
+    [_signatureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.bgImageView).offset(-6);
+        make.left.equalTo(self.crownImageView.mas_right).offset(3);
+        make.right.equalTo(self.voiceImageView.mas_left).offset(-2);
     }];
     [_diamondImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.bgImageView);
         make.height.offset(20);
         make.width.offset(25);
-        make.right.equalTo(self.voicePriceLabel.mas_left).offset(-2);
+        make.right.equalTo(self.voicePriceLabel.mas_left);
     }];
     [_voicePriceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(-9);
+        make.right.equalTo(self.bgImageView).offset(-9);
         make.height.offset(15);
         make.centerY.equalTo(self.bgImageView);
+        make.width.offset(35);
     }];
     [_bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.contentView);
-        make.height.offset(25);
+        make.top.equalTo(self.aliasLabel).offset(-6);
     }];
 }
 

@@ -99,7 +99,8 @@ static SYRouter *sharedInstance_ = nil;
              @"SYPaymentsVM":@"SYPaymentsVC",
              @"SYPaymentsDetailVM":@"SYPaymentsDetailVC",
              @"SYWithdrawalRulesVM":@"SYWithdrawalRulesVC",
-             @"SYPopViewVM":@"SYPopViewVC"
+             @"SYPopViewVM":@"SYPopViewVC",
+             @"SYAnchorsGatherVM":@"SYAnchorsGatherVC"
              };
 }
 

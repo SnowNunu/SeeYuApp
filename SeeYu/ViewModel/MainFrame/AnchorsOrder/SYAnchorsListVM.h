@@ -8,6 +8,7 @@
 
 #import "SYVM.h"
 #import "SYAnchorShowVM.h"
+#import "SYAnchorsGatherVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 进入主播详情展示
 @property (nonatomic, strong) RACCommand *enterAnchorShowViewCommand;
+
+// 进入主播轮播显示页
+@property (nonatomic, strong) RACCommand *enterAnchorGatherViewCommand;
 
 @end
 

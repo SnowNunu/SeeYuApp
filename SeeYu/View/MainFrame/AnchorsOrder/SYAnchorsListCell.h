@@ -15,8 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 // 头像
 @property (nonatomic, strong) UIImageView *headImageView;
 
+// 皇冠图标
+@property (nonatomic, strong) UIImageView *crownImageView;
+
 // 昵称
 @property (nonatomic, strong) UILabel *aliasLabel;
+
+// 签名
+@property (nonatomic, strong) UILabel *signatureLabel;
 
 // 语聊图片
 @property (nonatomic, strong) UIImageView *voiceImageView;

@@ -27,12 +27,12 @@
     [RCIM sharedRCIM].globalMessageAvatarStyle = RC_USER_AVATAR_CYCLE;
     [RCIM sharedRCIM].globalMessagePortraitSize = CGSizeMake(45, 45);
     self.conversationMessageCollectionView.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem sy_systemItemWithTitle:nil titleColor:nil imageName:@"nav_btn_back" target:nil selector:@selector(goBack) textType:NO];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem sy_customItemWithTitle:nil titleColor:[UIColor whiteColor] imageName:@"nav_btn_back" target:self selector:@selector(goBack) contentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
     [self initSendPresentBtn];
     [self _setupAction];
     self.btnEnabled = NO;
     [self requestGiftList];
-    if (@available(iOS 11.0, *)) {
+    if (@available(iOS 11.0, *)) { 
         self.conversationMessageCollectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
 }
@@ -219,6 +219,7 @@
 }
 
 - (void)goBack {
+    NSLog(@"点击了返回");
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -111,10 +111,8 @@
         [self judgeWhetherCanLoadMore];
         if (self.canLoadMore) {
             if (self.loadTime > SY_LOAD_TIME_PER_DAY) {
-                [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
                 [self changeUser];  // 会员无限制
             } else if (self.loadTime > 0) {
-                [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
                 [self writeCanLoadMoreCache];
                 [self changeUser];
             } else {
@@ -329,13 +327,11 @@
     [self judgeWhetherCanLoadMore];
     if (self.canLoadMore) {
         if (self.loadTime > SY_LOAD_TIME_PER_DAY) {
-            [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
             if ([_direction isEqualToString:@"right"]) {
                 [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
             }
             [self changeUser];  // 会员无限制
         } else if (self.loadTime > 0) {
-            [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
             if ([_direction isEqualToString:@"right"]) {
                 [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
             }
@@ -394,7 +390,6 @@
     SYUser *user = self.viewModel.services.client.currentUser;
     if (user.userVipStatus == 1) {
         if (user.userVipExpiresAt != nil) {
-            
             if ([NSDate sy_overdue:user.userVipExpiresAt]) {
                 // 会员已过期的情况
                 YYCache *cache = [YYCache cacheWithName:@"seeyu"];
