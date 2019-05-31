@@ -145,7 +145,11 @@
     UIImageView *avatarView = [UIImageView new];
     avatarView.layer.cornerRadius = 22.5f;
     avatarView.clipsToBounds = YES;
-    [avatarView yy_setImageWithURL:[NSURL URLWithString:user.userHeadImg] placeholder:SYDefaultAvatar(SYDefaultAvatarTypeDefualt) options:YYWebImageOptionAllowInvalidSSLCertificates|YYWebImageOptionAllowBackgroundTask completion:nil];
+    if (user.userHeadImg != nil && user.userHeadImg.length > 0 && user.userHeadImgFlag == 1) {
+        [avatarView yy_setImageWithURL:[NSURL URLWithString:user.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+    } else {
+        avatarView.image = SYImageNamed(@"anchor_deafult_image");
+    }
     [bgView addSubview:avatarView];
     
     // 好友昵称

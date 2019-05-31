@@ -32,7 +32,7 @@
     [self _setupAction];
     self.btnEnabled = NO;
     [self requestGiftList];
-    if (@available(iOS 11.0, *)) { 
+    if (@available(iOS 11.0, *)) {
         self.conversationMessageCollectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
 }
@@ -216,6 +216,13 @@
         [self openRechargeTipsView:@"vip"];
         return nil;
     }
+}
+
+// 点击cell头像的回调
+- (void)didTapCellPortrait:(NSString *)userId {
+    SYFriendDetailInfoVM *vm = [[SYFriendDetailInfoVM alloc] initWithServices:SYSharedAppDelegate.services params:@{SYViewModelIDKey:userId}];
+    SYFriendDetailInfoVC *vc = [[SYFriendDetailInfoVC alloc] initWithViewModel:vm];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)goBack {

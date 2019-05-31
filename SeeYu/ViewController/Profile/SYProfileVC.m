@@ -70,7 +70,12 @@
             self.signatureLabel.text = user.userSignature;
         }
         if (![user.userHeadImg sy_isNullOrNil] && user.userHeadImg.length > 0) {
-            [self.avatarImageView yy_setImageWithURL:[NSURL URLWithString:user.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+            if (user.userHeadImgFlag == 2) {
+                // 审核不通过的情况下
+                self.avatarImageView.image = SYImageNamed(@"anchor_deafult_image");
+            } else {
+                [self.avatarImageView yy_setImageWithURL:[NSURL URLWithString:user.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+            }
         }
         if (user.userVipStatus == 1) {
             if (user.userVipExpiresAt != nil) {
@@ -124,7 +129,7 @@
     
     //用户头像
     UIImageView *avatarImageView = [UIImageView new];
-    avatarImageView.image = SYImageNamed(@"DefaultProfileHead_66x66");
+    avatarImageView.image = SYImageNamed(@"anchor_deafult_image");
     avatarImageView.layer.cornerRadius = 30.f;
     avatarImageView.clipsToBounds = YES;
     _avatarImageView = avatarImageView;

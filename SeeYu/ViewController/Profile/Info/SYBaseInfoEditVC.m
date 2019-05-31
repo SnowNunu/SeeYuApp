@@ -134,7 +134,7 @@
     UIImageView *avatarImageView = [UIImageView new];
     avatarImageView.clipsToBounds = YES;
     avatarImageView.layer.cornerRadius = 22.f;
-    avatarImageView.image = SYImageNamed(@"default_headImg");
+    avatarImageView.image = SYImageNamed(@"anchor_deafult_image");
     [cell.contentView addSubview:avatarImageView];
     if (![params[@"kind"] isEqualToString:@"image"]) {
         avatarImageView.hidden = YES;
@@ -175,9 +175,14 @@
     switch (indexPath.row) {
         case 0: {
             if (self.viewModel.user.userHeadImg != nil && self.viewModel.user.userHeadImg.length > 0) {
-                [avatarImageView yy_setImageWithURL:[NSURL URLWithString:self.viewModel.user.userHeadImg] placeholder:SYImageNamed(@"default_headImg") options:SYWebImageOptionAutomatic completion:NULL];
+                if (self.viewModel.user.userHeadImgFlag == 2) {
+                    // 审核不通过则还原头像为默认
+                    avatarImageView.image = SYImageNamed(@"anchor_deafult_image");
+                } else {
+                    [avatarImageView yy_setImageWithURL:[NSURL URLWithString:self.viewModel.user.userHeadImg] placeholder:SYImageNamed(@"anchor_deafult_image") options:SYWebImageOptionAutomatic completion:NULL];
+                }
             } else {
-                avatarImageView.image = SYImageNamed(@"default_headImg");
+                avatarImageView.image = SYImageNamed(@"anchor_deafult_image");
             }
         }
             break;

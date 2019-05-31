@@ -24,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 /* 用户权重值 */
 @property (nonatomic, strong) NSString *score;
 
+/* 用户头像的审核状态 */
+@property (nonatomic, assign) int userHeadImgFlag;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -112,7 +112,11 @@
         for (int i = 0; i < 3; i++) {
             SYRankListModel *model = self.viewModel.dataSource[i];
             UIImageView *headImageView = [UIImageView new];
-            [headImageView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+            if (model.userHeadImg != nil && model.userHeadImg.length > 0 && model.userHeadImgFlag == 1) {
+                [headImageView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+            } else {
+                headImageView.image = SYImageNamed(@"anchor_deafult_image");
+            }
             [bgImageView addSubview:headImageView];
             
             UIImageView *backImageView = [UIImageView new];
@@ -253,7 +257,11 @@
         
         // 头像
         UIImageView *headImageView = [UIImageView new];
-        [headImageView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+        if (model.userHeadImg != nil && model.userHeadImg.length > 0 && model.userHeadImgFlag == 1) {
+            [headImageView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+        } else {
+            headImageView.image = SYImageNamed(@"anchor_deafult_image");
+        }
         headImageView.layer.cornerRadius = 22.f;
         headImageView.layer.masksToBounds = YES;
         [cell.contentView addSubview:headImageView];

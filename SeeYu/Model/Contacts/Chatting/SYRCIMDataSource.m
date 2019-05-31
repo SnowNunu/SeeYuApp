@@ -31,14 +31,14 @@
         return;
     }
     //开发者调自己的服务器接口根据userID异步请求数据
-    user = [[RCIM sharedRCIM] getUserInfoCache:userId];
-    if (user != nil) {
-        completion(user);
-    } else {
-        [[SYUserInfoManager shareInstance] getUserInfo:userId completion:^(RCUserInfo * _Nonnull user) {
-            completion(user);
-        }];
-    }
+//    user = [[RCIM sharedRCIM] getUserInfoCache:userId];
+//    if (user != nil) {
+//        completion(user);
+//    } else {
+    [[SYUserInfoManager shareInstance] getUserInfo:userId completion:^(RCUserInfo * _Nonnull userInfo) {
+        completion(userInfo);
+    }];
+//    }
     return;
 }
 

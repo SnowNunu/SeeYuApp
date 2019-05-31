@@ -29,13 +29,11 @@
        enqueueResultClass:[SYUser class]]
       sy_parsedResults]
      subscribeNext:^(SYUser * user) {
-         NSLog(@"register successful");
          userInfo.userId = user.userId;
          userInfo.name = user.userName;
          userInfo.portraitUri = user.userHeadImg;
      } error:^(NSError *error) {
          /// 失败回调
-         NSLog(@"error");
          completion(userInfo);
          return;
      } completed:^{

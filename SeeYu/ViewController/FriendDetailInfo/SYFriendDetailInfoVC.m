@@ -126,7 +126,11 @@
     [RACObserve(self.viewModel, friendInfo) subscribeNext:^(SYUser *friendInfo) {
         @strongify(self)
         // 设置展示头像
-        [self.headImageView yy_setImageWithURL:[NSURL URLWithString:friendInfo.userHeadImg] placeholder:SYImageNamed(@"anchor_deafult_image_wide") options:SYWebImageOptionAutomatic completion:NULL];
+        if (friendInfo.userHeadImg != nil && friendInfo.userHeadImg.length > 0 && friendInfo.userHeadImgFlag == 1) {
+            [self.headImageView yy_setImageWithURL:[NSURL URLWithString:friendInfo.userHeadImg] placeholder:SYImageNamed(@"anchor_deafult_image_wide") options:SYWebImageOptionAutomatic completion:NULL];
+        } else {
+            self.headImageView.image = SYImageNamed(@"anchor_deafult_image_wide");
+        }
         // 设置昵称
         self.aliasLabel.text = friendInfo.userName;
         // 设置在线状态
@@ -151,7 +155,7 @@
             } else {
                 self.firstHobbyLabel.text = array[0];
                 self.secondHobbyLabel.text = array[1];
-                self.thirdHobbyLabel.text =array[2];
+                self.thirdHobbyLabel.text = array[2];
                 self.firstHobbyLabel.hidden = NO;
                 self.secondHobbyLabel.hidden = NO;
                 self.thirdHobbyLabel.hidden = NO;
@@ -695,8 +699,8 @@
         make.centerY.width.height.equalTo(self.firstHobbyLabel);
     }];
     [self.thirdHobbyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.thirdHobbyLabel.mas_right).offset(15);
-        make.centerY.width.height.equalTo(self.thirdHobbyLabel);
+        make.left.equalTo(self.secondHobbyLabel.mas_right).offset(15);
+        make.centerY.width.height.equalTo(self.secondHobbyLabel);
     }];
     [self.aliasInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.offset(15);

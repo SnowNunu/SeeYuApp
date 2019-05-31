@@ -12,6 +12,8 @@
 #import "SYPopViewVC.h"
 #import "SYRechargeVM.h"
 #import "SYRechargeVC.h"
+#import "SYFriendDetailInfoVC.h"
+#import "SYFriendDetailInfoVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

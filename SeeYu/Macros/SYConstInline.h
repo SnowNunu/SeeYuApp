@@ -16,7 +16,7 @@ static inline UIImage *SYWebImagePlaceholder(){
 
 /// 网络头像
 static inline UIImage *SYWebAvatarImagePlaceholder(){
-    return SYImageNamed(@"DefaultProfileHead_66x66");
+    return SYImageNamed(@"anchor_deafult_image");
 }
 
 /// 适配

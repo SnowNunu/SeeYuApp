@@ -111,7 +111,23 @@
     agreeFriendBtn.layer.cornerRadius = 9.f;
     agreeFriendBtn.layer.masksToBounds = YES;
     [[agreeFriendBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.viewModel.agreeFriendRequestCommand execute:model.userFriendId];
+        SYUser *user = self.viewModel.services.client.currentUser;
+        if (user.userVipStatus == 1) {
+            if (user.userVipExpiresAt != nil) {
+                if ([NSDate sy_overdue:user.userVipExpiresAt]) {
+                    // 已过期
+                    [self openRechargeTipsView:@"vip"];
+                } else {
+                    // 未过期
+                    [self.viewModel.agreeFriendRequestCommand execute:model.userFriendId];
+                }
+            } else {
+                [self openRechargeTipsView:@"vip"];
+            }
+        } else {
+            // 未开通会员
+            [self openRechargeTipsView:@"vip"];
+        }
     }];
     [bgView addSubview:agreeFriendBtn];
     
@@ -171,6 +187,18 @@
         make.edges.equalTo(agreeFriendBtn);
     }];
     return cell;
+}
+
+// 打开充值提示
+- (void)openRechargeTipsView:(NSString *)type {
+    SYPopViewVM *popVM = [[SYPopViewVM alloc] initWithServices:self.viewModel.services params:nil];
+    popVM.type = type;
+    SYPopViewVC *popVC = [[SYPopViewVC alloc] initWithViewModel:popVM];
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionMoveIn;
+    [SYSharedAppDelegate presentVC:popVC withAnimation:animation];
 }
 
 @end

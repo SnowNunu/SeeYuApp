@@ -224,7 +224,11 @@
             cell = [[SYForumCommentCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"forumListCell"];
         }
         SYForumCommentModel *model = self.viewModel.datasource[indexPath.row];
-        [cell.headPhotoView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+        if (model.userHeadImg != nil && model.userHeadImg.length > 0 && model.userHeadImgFlag == 1) {
+            cell.headPhotoView.image = SYImageNamed(@"anchor_deafult_image");
+        } else {
+            [cell.headPhotoView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+        }
         cell.aliasLabel.text = model.userName;
         cell.contentLabel.text = model.commentContent;
         cell.genderImageView.image = [model.userGender isEqualToString:@"男"] ? SYImageNamed(@"news_icon_male") : SYImageNamed(@"news_icon_female");

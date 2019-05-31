@@ -106,22 +106,30 @@
             if (buttonIndex == 0) return ;
             if (buttonIndex == 1) {
                 // 拍照
-                weakSelf.imagePicker.isCustomCamera = YES;
-                weakSelf.imagePicker.imageSorceType = sourceType_camera;
-                weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
-                    weakSelf.takePhotoBgView.image = clippedImage;
+                ZLCustomCamera *camera = [ZLCustomCamera new];
+                camera.allowTakePhoto = YES;
+                camera.allowRecordVideo = NO;
+                camera.doneBlock = ^(UIImage *image, NSURL *videoUrl) {
+                    weakSelf.takePhotoBgView.image = image;
                     weakSelf.takePhotoImageView.hidden = YES;
                 };
-                [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
+                [self showDetailViewController:camera sender:nil];
             } else {
                 // 相册
-                weakSelf.imagePicker.isCustomCamera = YES;
-                weakSelf.imagePicker.imageSorceType = sourceType_SavedPhotosAlbum;
-                weakSelf.imagePicker.clippedBlock = ^(UIImage *clippedImage) {
-                    weakSelf.takePhotoBgView.image = clippedImage;
+                ZLPhotoActionSheet *actionSheet = [ZLPhotoActionSheet new];
+                actionSheet.configuration.maxSelectCount = 1;
+                actionSheet.configuration.maxPreviewCount = 0;
+                actionSheet.configuration.allowTakePhotoInLibrary = NO;
+                actionSheet.configuration.allowMixSelect = NO;
+                actionSheet.configuration.navBarColor = SYColorFromHexString(@"#6B35DC");
+                actionSheet.configuration.bottomBtnsNormalTitleColor = SYColorFromHexString(@"#9F69EB");
+                // 选择回调
+                [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+                    weakSelf.takePhotoBgView.image = images[0];
                     weakSelf.takePhotoImageView.hidden = YES;
-                };
-                [weakSelf presentViewController:weakSelf.imagePicker.pickerController animated:YES completion:nil];
+                }];
+                // 调用相册
+                [actionSheet showPhotoLibraryWithSender:self];
             }
         } otherButtonTitles:@"拍照",@"从手机相册选择", nil];
         [sheet show];
