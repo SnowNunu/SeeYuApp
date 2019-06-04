@@ -32,4 +32,7 @@
 
 @property (nonatomic, strong) RACCommand *requestGiftPackageInfoCommand;
 
+// 上传用户经纬度信息
+@property (nonatomic, strong) RACCommand *uploadLocationInfoCommand;
+
 @end

@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) RACCommand *enterFriendDetailCommand;
 
+
+
 @end
 
 NS_ASSUME_NONNULL_END

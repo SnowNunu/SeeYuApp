@@ -31,6 +31,8 @@
 
 @property (nonatomic, strong) UILabel *vipLabel;
 
+@property (nonatomic, strong) UILabel *vipStatusLabel;
+
 @property (nonatomic, strong) UIImageView *separateImageView;
 
 @property (nonatomic, strong) UIView *authenticationBgView;
@@ -38,6 +40,8 @@
 @property (nonatomic, strong) UIImageView *authenticationImageView;
 
 @property (nonatomic, strong) UILabel *authenticationLabel;
+
+@property (nonatomic, strong) UILabel *authenticationStatusLabel;
 
 @property (nonatomic ,strong) NSArray *dataSource;
 
@@ -191,12 +195,20 @@
     
     // vip tips
     UILabel *vipLabel = [UILabel new];
-    vipLabel.font = SYFont(14, YES);
-    vipLabel.textAlignment = NSTextAlignmentCenter;
-    vipLabel.textColor = SYColor(193, 99, 237);
+    vipLabel.font = SYFont(10, YES);
+    vipLabel.textAlignment = NSTextAlignmentLeft;
+    vipLabel.textColor = SYColor(249, 172, 8);
     vipLabel.text = @"VIP特权";
     _vipLabel = vipLabel;
     [vipBgView addSubview:vipLabel];
+    
+    UILabel *vipStatusLabel = [UILabel new];
+    vipStatusLabel.font = SYFont(10, YES);
+    vipStatusLabel.textAlignment = NSTextAlignmentLeft;
+    vipStatusLabel.textColor = SYColor(143, 135, 220);
+    vipStatusLabel.text = @"未开通";
+    _vipStatusLabel = vipStatusLabel;
+    [vipBgView addSubview:vipStatusLabel];
     
     // 真人认证状态背景
     UIView *authenticationBgView = [UIView new];
@@ -223,6 +235,14 @@
     authenticationLabel.text = @"真人认证";
     _authenticationLabel = authenticationLabel;
     [authenticationBgView addSubview:authenticationLabel];
+    
+    UILabel *authenticationStatusLabel = [UILabel new];
+    authenticationStatusLabel.font = SYFont(10, YES);
+    authenticationStatusLabel.textAlignment = NSTextAlignmentCenter;
+    authenticationStatusLabel.textColor = SYColor(143, 135, 220);
+    authenticationStatusLabel.text = @"立即认证";
+    _authenticationStatusLabel = authenticationStatusLabel;
+    [vipBgView addSubview:authenticationStatusLabel];
 }
 
 - (void)_makeSubViewsConstraints {
@@ -267,29 +287,36 @@
         make.width.offset((SY_SCREEN_WIDTH - 6) / 2);
     }];
     [_vipImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.vipLabel.mas_top).offset(5);
-        make.height.offset(55);
-        make.width.offset(55);
-        make.centerX.equalTo(self.vipBgView);
+        make.height.width.offset(50);
+        make.centerY.equalTo(self.vipBgView);
+        make.right.equalTo(self.vipLabel.mas_left).offset(-7);
     }];
     [_vipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.vipImageView);
-        make.bottom.equalTo(self.vipBgView.mas_bottom).offset(-14);
+        make.centerY.equalTo(self.vipImageView).offset(-2.5);
+        make.right.equalTo(self.vipBgView).offset(-30);
+        make.width.offset(38);
         make.height.offset(15);
+    }];
+    [_vipStatusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.height.width.equalTo(self.vipLabel);
+        make.top.equalTo(self.vipLabel.mas_bottom).offset(5);
     }];
     [_authenticationBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.top.bottom.equalTo(self.bgView);
         make.width.offset((SY_SCREEN_WIDTH - 6) / 2);
     }];
     [_authenticationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.authenticationLabel.mas_top).offset(5);
-        make.width.height.offset(55);
-        make.centerX.equalTo(self.authenticationBgView);
+        make.left.equalTo(self.authenticationBgView).offset(30);
+        make.width.height.offset(50);
+        make.centerY.equalTo(self.authenticationBgView);
     }];
     [_authenticationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.authenticationImageView);
-        make.bottom.equalTo(self.authenticationBgView.mas_bottom).offset(-14);
-        make.height.offset(15);
+        make.centerY.height.width.equalTo(self.vipLabel);
+        make.left.equalTo(self.authenticationImageView.mas_right).offset(7);
+    }];
+    [_authenticationStatusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.width.height.equalTo(self.vipStatusLabel);
+        make.left.equalTo(self.authenticationLabel);
     }];
 }
 

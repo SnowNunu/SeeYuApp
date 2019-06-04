@@ -295,21 +295,24 @@
             SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:@{@"userId":message.targetId}];
             SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_IMINFO parameters:subscript.dictionary];
             [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUser class]] sy_parsedResults] subscribeNext:^(SYUser *user) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    SYOutboundVM *outboundVM = [[SYOutboundVM alloc] initWithServices:self.services params:nil];
-                    SYOutboundModel *outboundModel = [SYOutboundModel new];
-                    outboundModel.alias = user.userName;
-                    outboundModel.avatarImage = user.userHeadImg;
-                    outboundModel.videoShow = user.showVideo;
-                    outboundModel.interval = maxHangUpTime;
-                    outboundVM.model = outboundModel;
-                    SYOutboundVC *outboundVC = [[SYOutboundVC alloc] initWithViewModel:outboundVM];
-                    CATransition *animation = [CATransition animation];
-                    [animation setDuration:0.3];
-                    animation.type = kCATransitionFade;
-                    animation.subtype = kCATransitionMoveIn;
-                    [self presentVC:outboundVC withAnimation:animation];
-                });
+                if (user.userVipStatus != 1 || user.userVipExpiresAt == nil || [NSDate sy_overdue:user.userVipExpiresAt]) {
+                    // 会员未开通或者已过期
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        SYOutboundVM *outboundVM = [[SYOutboundVM alloc] initWithServices:self.services params:nil];
+                        SYOutboundModel *outboundModel = [SYOutboundModel new];
+                        outboundModel.alias = user.userName;
+                        outboundModel.avatarImage = user.userHeadImg;
+                        outboundModel.videoShow = user.showVideo;
+                        outboundModel.interval = maxHangUpTime;
+                        outboundVM.model = outboundModel;
+                        SYOutboundVC *outboundVC = [[SYOutboundVC alloc] initWithViewModel:outboundVM];
+                        CATransition *animation = [CATransition animation];
+                        [animation setDuration:0.3];
+                        animation.type = kCATransitionFade;
+                        animation.subtype = kCATransitionMoveIn;
+                        [self presentVC:outboundVC withAnimation:animation];
+                    });
+                }
             }];
         } else if([msg.content isEqualToString:@"赠送礼物"]) {
             dispatch_async(dispatch_get_main_queue(), ^{

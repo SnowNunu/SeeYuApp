@@ -44,6 +44,11 @@
     /// 设置导航栏
     [self _setupNavigation];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    // 获取用户地理位置
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;   //最佳精度
+    [self startLocating];   // 开启定位
     [self.viewModel.requestPermissionsCommand execute:nil];
     [self.viewModel.loginReportCommand execute:nil];
 }
@@ -116,6 +121,46 @@
 
 - (void)FSContenViewDidEndDecelerating:(FSPageContentView *)contentView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex {
     self.titleView.selectIndex = endIndex;
+}
+
+#pragma mark - 开始定位
+- (void)startLocating {
+    if([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    [self.locationManager startUpdatingLocation];   //开始定位
+}
+
+/* 定位完成后 回调 */
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    CLLocation *location = [locations lastObject];
+    CLLocationCoordinate2D coordinate = location.coordinate;
+    [manager stopUpdatingLocation];   //停止定位
+    CLGeocoder *geoCoder = [CLGeocoder new];
+    @weakify(self)
+    [geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        @strongify(self)
+        CLPlacemark *pl = [placemarks firstObject];
+        if(error == nil) {
+            NSLog(@"%f----%f", pl.location.coordinate.latitude, pl.location.coordinate.longitude);
+            [self.viewModel.uploadLocationInfoCommand execute:@{@"userId":self.viewModel.services.client.currentUserId,@"userLongitude":[NSString stringWithFormat:@"%f",pl.location.coordinate.longitude],@"userLatitude":[NSString stringWithFormat:@"%f",pl.location.coordinate.latitude]}];
+            NSLog(@"%@", pl.locality);
+        }
+    }];
+}
+
+/* 定位失败后 回调 */
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    if (error.code == kCLErrorDenied) {
+        // 提示用户出错
+        [MBProgressHUD sy_showTips:@"定位失败，请检查"];
+    }
+}
+/* 监听用户授权状态 */
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+    if (status != kCLAuthorizationStatusAuthorizedAlways && status != kCLAuthorizationStatusAuthorizedWhenInUse) {
+        // 用户未开启定位功能
+    }
 }
 
 @end

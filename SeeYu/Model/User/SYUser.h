@@ -107,6 +107,12 @@
 /** 用户头像审核状态 */
 @property (nonatomic, assign) int userHeadImgFlag;
 
+/** 用户经度坐标 */
+@property (nonatomic, strong) NSString *userLongitude;
+
+/** 用户纬度坐标 */
+@property (nonatomic, strong) NSString *userLatitude;
+
 //------------------------------------------------------------------
 /// ----- 登录相关 -----
 /// qq

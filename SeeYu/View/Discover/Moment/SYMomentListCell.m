@@ -21,12 +21,6 @@
 }
 
 - (void)_setupSubviews {
-    UIView *bgView = [UIView new];
-    bgView.layer.masksToBounds = YES;
-    bgView.layer.cornerRadius = 9.f;
-    _bgView = bgView;
-    [self.contentView addSubview:bgView];
-    
     UIImageView *headImageView = [UIImageView new];
     headImageView.masksToBounds = YES;
     headImageView.layer.cornerRadius = 22.5f;
@@ -36,15 +30,15 @@
     YYLabel *aliasLabel = [YYLabel new];
     aliasLabel.numberOfLines = 0;   // 开启多行显示
     aliasLabel.preferredMaxLayoutWidth = SY_SCREEN_WIDTH - 90;
-    aliasLabel.font = SYFont(13, YES);
-    aliasLabel.textColor = SYColor(193, 99, 237);
+    aliasLabel.font = SYFont(12, YES);
+    aliasLabel.textColor = SYColor(143, 135, 220);
     aliasLabel.textAlignment = NSTextAlignmentLeft;
     _aliasLabel = aliasLabel;
     [self.contentView addSubview:aliasLabel];
     
     UILabel *timeLabel = [UILabel new];
-    timeLabel.textColor = SYColor(193, 99, 237);
-    timeLabel.font = SYFont(9, YES);
+    timeLabel.textColor = SYColor(100, 100, 100);
+    timeLabel.font = SYFont(8, YES);
     timeLabel.textAlignment = NSTextAlignmentRight;
     _timeLabel = timeLabel;
     [self.contentView addSubview:timeLabel];
@@ -53,7 +47,7 @@
     contentLabel.numberOfLines = 0;   // 开启多行显示
     contentLabel.preferredMaxLayoutWidth = SY_SCREEN_WIDTH - 90;
     contentLabel.font = SYFont(10, YES);
-    contentLabel.textColor = SYColor(193, 99, 237);
+    contentLabel.textColor = SYColor(100, 100, 100);
     contentLabel.textAlignment = NSTextAlignmentLeft;
     _contentLabel = contentLabel;
     [self.contentView addSubview:contentLabel];
@@ -76,14 +70,14 @@
     bottomView.backgroundColor = [UIColor clearColor];
     _bottomView = bottomView;
     [self.contentView addSubview:bottomView];
+    
+    UIView *lineView = [UIView new];
+    lineView.backgroundColor = SYColor(242, 242, 242);
+    _lineView = lineView;
+    [self.contentView addSubview:lineView];
 }
 
 - (void)_makeSubViewsConstraints {
-    [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.contentView);
-        make.left.top.equalTo(self.contentView).offset(2);
-        make.right.equalTo(self.contentView).offset(-2);
-    }];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.offset(45);
         make.left.top.equalTo(self.contentView).offset(12);
@@ -119,6 +113,12 @@
         make.bottom.equalTo(self.contentView);
         make.left.right.equalTo(self.photoContainerView);
         make.height.offset(14);
+    }];
+    [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.aliasLabel);
+        make.right.equalTo(self.timeLabel);
+        make.bottom.equalTo(self.bottomView);
+        make.height.offset(1);
     }];
 }
 

@@ -54,6 +54,7 @@ NSString * const identifier = @"momentListCellIdentifier";
     tableView.tableFooterView = [UIView new];
     tableView.rowHeight = UITableViewAutomaticDimension;
     tableView.estimatedRowHeight = 44.0;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView = tableView;
     [self.view addSubview:tableView];
     
@@ -94,7 +95,6 @@ NSString * const identifier = @"momentListCellIdentifier";
     if (!cell) {
         cell = [[SYMomentListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    cell.bgView.backgroundColor = indexPath.row % 2 ? SYColorFromHexString(@"#F0CFFF") : SYColorFromHexString(@"#F5DFFF");
     SYMomentsModel *model = self.viewModel.datasource[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (model.userHeadImg != nil && model.userHeadImg.length > 0) {

@@ -36,6 +36,8 @@
     self.displayConversationTypeArray = @[@(ConversationType_PRIVATE)];
     self.conversationListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.conversationListTableView.backgroundColor = [UIColor whiteColor];
+    self.conversationListTableView.estimatedRowHeight = 0;
+    [self.conversationListTableView registerClass:[SYChattingListCell class] forCellReuseIdentifier:@"chattingListCell"];
     self.conversationListTableView.frame = CGRectMake(0, 0, SY_SCREEN_WIDTH, SY_SCREEN_HEIGHT - SY_APPLICATION_TAB_BAR_HEIGHT);
 }
 
@@ -79,14 +81,12 @@
 
 //自定义cell
 - (RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    SYChattingListCell *cell = (SYChattingListCell *)[tableView dequeueReusableCellWithIdentifier:@"chattingListCell"];
+    if (!cell) {
+        cell = [[SYChattingListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chattingListCell"];
+    }
     RCConversationModel *model = self.conversationListDataSource[indexPath.row];
     NSInteger unreadCount = model.unreadMessageCount;
-    SYChattingListCell *cell = [[SYChattingListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chattingListCell"];
-    if (indexPath.row % 2 == 0) {
-        cell.bgView.backgroundColor = SYColor(240, 207, 255);
-    } else {
-        cell.bgView.backgroundColor = SYColor(245, 223, 255);
-    }
     if ([model.conversationTitle isEqualToString:@"系统消息"]) {
         [[RCIMClient sharedRCIMClient] setConversationToTop:ConversationType_PRIVATE targetId:model.targetId isTop:YES];
     }

@@ -10,7 +10,10 @@
 #import "SYMainFrameVM.h"
 #import "FSSegmentTitleView.h"
 #import "FSPageContentView.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface SYMainFrameVC : SYVC <FSSegmentTitleViewDelegate,FSPageContentViewDelegate>
+@interface SYMainFrameVC : SYVC <FSSegmentTitleViewDelegate,FSPageContentViewDelegate,CLLocationManagerDelegate>
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end

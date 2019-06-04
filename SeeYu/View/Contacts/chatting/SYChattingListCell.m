@@ -23,6 +23,7 @@
     UIView *bgView = [UIView new];
     bgView.layer.cornerRadius = 8.5f;
     bgView.layer.masksToBounds = YES;
+    bgView.backgroundColor = [UIColor whiteColor];
     _bgView = bgView;
     [self.contentView addSubview:bgView];
     
@@ -30,6 +31,8 @@
     UIImageView *avatarImageView = [UIImageView new];
     avatarImageView.layer.cornerRadius = 22.f;
     avatarImageView.clipsToBounds = YES;    // 子视图超过父视图部分进行裁剪
+    avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [avatarImageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
     _avatarImageView = avatarImageView;
     [bgView addSubview:avatarImageView];
     
@@ -37,7 +40,7 @@
     UILabel *aliasLabel = [UILabel new];
     aliasLabel.font = SYFont(11, YES);
     aliasLabel.textAlignment = NSTextAlignmentLeft;
-    aliasLabel.textColor = SYColor(193, 99, 237);
+    aliasLabel.textColor = SYColor(100, 100, 100);
     _aliasLabel = aliasLabel;
     [self.contentView addSubview:aliasLabel];
     
@@ -45,7 +48,8 @@
     UILabel *contentLabel = [UILabel new];
     contentLabel.font = SYFont(10, YES);
     contentLabel.textAlignment = NSTextAlignmentLeft;
-    contentLabel.textColor = SYColor(193, 99, 237);
+    contentLabel.textColor = SYColor(100, 100, 100);
+//    contentLabel.textColor = SYColor(193, 99, 237);
     _contentLabel = contentLabel;
     [self.contentView addSubview:contentLabel];
     
@@ -53,7 +57,8 @@
     UILabel *timeLabel = [UILabel new];
     timeLabel.font = SYFont(10, YES);
     timeLabel.textAlignment = NSTextAlignmentRight;
-    timeLabel.textColor = SYColor(193, 99, 237);
+//    timeLabel.textColor = SYColor(193, 99, 237);
+    timeLabel.textColor = SYColor(100, 100, 100);
     _timeLabel = timeLabel;
     [self.contentView addSubview:timeLabel];
     
@@ -75,14 +80,16 @@
         make.height.equalTo(@10);
     }];
     _badgeView = badgeView;
+    
+    UIImageView *lineImageView = [UIImageView new];
+    lineImageView.backgroundColor = SYColor(242, 242, 242);
+    _lineImageView = lineImageView;
+    [bgView addSubview:lineImageView];
 }
 
 - (void)_makeSubViewsConstraints {
     [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(1);
-        make.bottom.equalTo(self).offset(-1);
-        make.left.equalTo(self).offset(2);
-        make.right.equalTo(self).offset(-2);
+        make.edges.equalTo(self);
     }];
     [_avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.offset(44);
@@ -101,12 +108,16 @@
     }];
     [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.bgView).offset(-16);
-        make.centerY.equalTo(self.contentLabel);
+        make.centerY.equalTo(self.bgView);
         make.height.offset(20);
         make.width.offset(35);
     }];
     [_badgeBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.avatarImageView);
+    }];
+    [_lineImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.equalTo(self.bgView);
+        make.height.offset(1);
     }];
 }
 

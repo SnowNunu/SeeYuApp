@@ -233,16 +233,11 @@
         }
     } else {
         SYRankListModel *model = self.viewModel.dataSource[indexPath.row + 2];
-        // 背景色
-        UIView *bgView = [UIView new];
-        bgView.layer.cornerRadius = 12.f;
-        bgView.layer.masksToBounds = YES;
-        if (indexPath.row % 2 == 1) {
-            bgView.backgroundColor = SYColor(240, 207, 255);
-        } else {
-            bgView.backgroundColor = SYColor(245, 233, 255);
-        }
-        [cell.contentView addSubview:bgView];
+        
+        // 序号背景
+        UIImageView *orderBgImageView = [UIImageView new];
+        orderBgImageView.image = SYImageNamed(@"number_bg");
+        [cell.contentView addSubview:orderBgImageView];
         
         // 序号文本
         UILabel *orderNum = [UILabel new];
@@ -250,9 +245,6 @@
         orderNum.font = SYFont(18, YES);
         orderNum.textColor = [UIColor whiteColor];
         orderNum.textAlignment = NSTextAlignmentCenter;
-        orderNum.backgroundColor = SYColor(218, 158, 246);
-        orderNum.layer.cornerRadius = 11.f;
-        orderNum.layer.masksToBounds = YES;
         [cell.contentView addSubview:orderNum];
         
         // 头像
@@ -298,15 +290,20 @@
         customLabel.textColor = SYColor(193, 99, 237);
         [cell addSubview:customLabel];
         
-        [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.centerX.equalTo(cell.contentView);
-            make.height.offset(60);
-            make.width.equalTo(cell.contentView).offset(-5);
+        // 下划线
+        UIImageView *lineView = [UIImageView new];
+        lineView.backgroundColor = SYColor(242, 242, 242);
+        [cell.contentView addSubview:lineView];
+        
+        [orderBgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.centerY.equalTo(cell.contentView);
+            make.width.offset(28);
+            make.height.offset(20);
         }];
         [orderNum mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(bgView).offset(4);
+            make.centerX.equalTo(orderBgImageView);
             make.width.offset(22);
-            make.centerY.equalTo(bgView);
+            make.centerY.equalTo(cell.contentView);
             make.height.offset(40);
         }];
         [headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -317,7 +314,7 @@
         [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(headImageView.mas_right).offset(9);
             make.height.offset(12);
-            make.top.equalTo(bgView).offset(15);
+            make.top.equalTo(cell.contentView).offset(15);
         }];
         [idLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(aliasLabel);
@@ -325,9 +322,13 @@
             make.height.offset(15);
         }];
         [customLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(bgView).offset(-15);
-            make.centerY.equalTo(bgView);
+            make.right.equalTo(cell.contentView).offset(-15);
+            make.centerY.equalTo(cell.contentView);
             make.height.offset(20);
+        }];
+        [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(cell.contentView);
+            make.height.offset(1);
         }];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

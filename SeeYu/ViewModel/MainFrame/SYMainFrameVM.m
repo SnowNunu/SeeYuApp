@@ -70,6 +70,18 @@
         YYCache *cache = [YYCache cacheWithName:@"SeeYu"];
         [cache setObject:@"1" forKey:@"controlSwitch"];
     }];
+    self.uploadLocationInfoCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSDictionary *params) {
+        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc] initWithDictionary:params];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_INFO_UPDATE parameters:subscript.dictionary];
+        SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
+        return [[self.services.client enqueueRequest:request resultClass:[SYUser class]] sy_parsedResults];
+    }];
+    [self.uploadLocationInfoCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(id x) {
+        NSLog(@"%@",x);
+    }];
+    [self.uploadLocationInfoCommand.errors subscribeNext:^(NSError *error) {
+        [MBProgressHUD sy_showErrorTips:error];
+    }];
 }
 @end
 

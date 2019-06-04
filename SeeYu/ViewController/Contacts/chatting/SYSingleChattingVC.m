@@ -18,6 +18,8 @@
 
 @property (nonatomic, assign) BOOL btnEnabled;
 
+@property (nonatomic, strong) RCMessageModel *messageModel;
+
 @end
 
 @implementation SYSingleChattingVC
@@ -40,7 +42,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
-    [self.chatSessionInputBarControl.pluginBoardView removeItemAtIndex:PLUGIN_BOARD_ITEM_LOCATION_TAG];
+//    [self.chatSessionInputBarControl.pluginBoardView removeItemAtIndex:PLUGIN_BOARD_ITEM_LOCATION_TAG];
     if ([self.title isEqualToString:@"系统消息"]) {
         self.conversationMessageCollectionView.frame = CGRectMake(0, SY_APPLICATION_TOP_BAR_HEIGHT, SY_SCREEN_WIDTH, SY_SCREEN_HEIGHT - SY_APPLICATION_TOP_BAR_HEIGHT);
         self.chatSessionInputBarControl.hidden = YES;
@@ -226,12 +228,32 @@
 }
 
 - (void)goBack {
-    NSLog(@"点击了返回");
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)notifyUpdateUnreadMessageCount {
     
+}
+
+- (void)didLongTouchMessageCell:(RCMessageModel *)model inView:(UIView *)view {
+    [super didLongTouchMessageCell:model inView:view];
+}
+
+- (NSArray<UIMenuItem *> *)getLongTouchMessageCellMenuList:(RCMessageModel *)model {
+    if ([model.senderUserId isEqualToString:SYSharedAppDelegate.services.client.currentUserId]) {
+        // 自己发送的消息才能撤回
+        NSMutableArray *array = [NSMutableArray arrayWithArray:[super getLongTouchMessageCellMenuList:model]];
+        UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:@"撤回" action:@selector(recallMyMessage)];
+        self.messageModel = model;
+        [array addObject:item];
+        return [NSArray arrayWithArray:array];
+    } else {
+        return [super getLongTouchMessageCellMenuList:model];
+    }
+}
+
+- (void)recallMyMessage{
+    [super recallMessage:self.messageModel.messageId];
 }
 
 // 打开权限弹窗

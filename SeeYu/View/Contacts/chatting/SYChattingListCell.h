@@ -34,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 角标
 @property (nonatomic, strong) JSBadgeView *badgeView;
 
+@property (nonatomic, strong) UIImageView *lineImageView;
+
 @end
 
 NS_ASSUME_NONNULL_END

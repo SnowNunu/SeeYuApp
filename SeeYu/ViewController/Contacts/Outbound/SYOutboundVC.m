@@ -57,6 +57,7 @@
         if (model != nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.videoShowView jp_playVideoWithURL:[NSURL URLWithString:model.videoShow] options:JPVideoPlayerLayerVideoGravityResize configuration:^(UIView * _Nonnull view, JPVideoPlayerModel * _Nonnull playerModel) {
+                    view.jp_muted = YES;
                     [self.headImageView yy_setImageWithURL:[NSURL URLWithString:model.avatarImage] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
                     self.aliasLabel.text = model.alias;
                     [self startCallShow];

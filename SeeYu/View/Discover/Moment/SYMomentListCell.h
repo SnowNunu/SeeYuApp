@@ -17,8 +17,6 @@ typedef void(^openRechargeTipsBlock)(void);
 
 @property (nonatomic, strong) openRechargeTipsBlock block;
 
-@property (nonatomic, strong) UIView *bgView;
-
 @property (nonatomic, strong) UIImageView *headImageView;
 
 @property (nonatomic, strong) YYLabel *aliasLabel;
@@ -36,6 +34,8 @@ typedef void(^openRechargeTipsBlock)(void);
 @property (nonatomic, strong) UIImageView *videoContainerView;
 
 @property (nonatomic, strong) UIView *bottomView;
+
+@property (nonatomic, strong) UIView *lineView;
 
 - (void)_setupPhotosViewByUrls:(NSString*)photosUrl;
 
