@@ -93,6 +93,9 @@
 /// 获取附近的人
 #define SY_HTTTP_PATH_USER_NEARBY   @"/application/user/nearby"
 
+/// 撤回消息
+#define SY_HTTTP_PATH_MESSAGE_RECALL   @"/application/push/recall"
+
 /// 获取所有的爱好标签
 #define SY_HTTTP_PATH_USER_HOBBIES   @"/application/userHobby/queryHobbies"
 

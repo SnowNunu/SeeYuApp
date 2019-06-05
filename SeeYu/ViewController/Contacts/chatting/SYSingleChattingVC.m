@@ -53,6 +53,13 @@
 
 - (void)willDisplayMessageCell:(RCMessageBaseCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     RCMessageModel *model = cell.model;
+    if ([cell isKindOfClass:[RCMessageCell class]]) {
+        RCMessageCell *baseCell = (RCMessageCell *)cell;
+        UIImageView *avatarImageView = (UIImageView *)baseCell.portraitImageView;
+        avatarImageView.clipsToBounds = YES;    // 子视图超过父视图部分进行裁剪
+        avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
+        [avatarImageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
+    }
     NSString *myUserId = SYSharedAppDelegate.services.client.currentUserId;
     if (![model.userInfo.userId isEqualToString:myUserId]) {
         // 对方发送的消息
@@ -69,6 +76,13 @@
     }
     cell.messageTimeLabel.textColor = SYColor(193, 99, 237);
     cell.messageTimeLabel.backgroundColor = [UIColor clearColor];
+    if ([model.content isKindOfClass:[RCTextMessage class]]) {
+        RCTextMessage *msg = (RCTextMessage *)model.content;
+        if (msg.extra != nil && [msg.extra isEqualToString:@"recall"]) {
+            NSTimeInterval interval = arc4random_uniform(2) + 2;
+            [self performSelector:@selector(recallMessageFromServer:) withObject:@{@"userId":SYSharedAppDelegate.services.client.currentUserId,@"senderId":model.senderUserId,@"targetId":SYSharedAppDelegate.services.client.currentUserId,@"uId":model.messageUId,@"sentTime":[NSString stringWithFormat:@"%lld",model.sentTime]} afterDelay:interval];
+        }
+    }
 }
 
 - (void)_setupAction {
@@ -94,7 +108,7 @@
 }
 
 - (void)initSendPresentBtn {
-    UIButton *sendPresentBtn = [[UIButton alloc] initWithFrame:CGRectMake(SY_SCREEN_WIDTH - 71, 400, 60, 60)];
+    UIButton *sendPresentBtn = [[UIButton alloc] initWithFrame:CGRectMake(SY_SCREEN_WIDTH - 71, 300, 60, 60)];
     [sendPresentBtn setImage:SYImageNamed(@"message_icon_sendGift") forState:UIControlStateNormal];
     sendPresentBtn.tag = 0;                                                                 
     sendPresentBtn.layer.cornerRadius = 8;
@@ -254,6 +268,18 @@
 
 - (void)recallMyMessage{
     [super recallMessage:self.messageModel.messageId];
+}
+
+// 这里撤回操作需要服务端进行
+- (void)recallMessageFromServer:(NSDictionary *)params {
+    SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc] initWithDictionary:params];
+    SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_MESSAGE_RECALL parameters:subscript.dictionary];
+    SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
+    [[[SYSharedAppDelegate.services.client enqueueRequest:request resultClass:[SYObject class]] sy_parsedResults] subscribeNext:^(id x) {
+        NSLog(@"撤回成本");
+    } error:^(NSError *error) {
+        [MBProgressHUD sy_showErrorTips:error];
+    }];
 }
 
 // 打开权限弹窗

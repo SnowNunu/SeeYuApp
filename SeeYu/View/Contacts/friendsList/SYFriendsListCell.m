@@ -27,8 +27,10 @@
     [self.contentView addSubview:bgView];
     
     UIImageView *headImageView = [UIImageView new];
-    headImageView.layer.masksToBounds = YES;
     headImageView.layer.cornerRadius = 22.f;
+    headImageView.clipsToBounds = YES;    // 子视图超过父视图部分进行裁剪
+    headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [headImageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
     _headImageView = headImageView;
     [bgView addSubview:headImageView];
     

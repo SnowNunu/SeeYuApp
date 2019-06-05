@@ -84,6 +84,8 @@
     UIImageView *avatarView = [UIImageView new];
     avatarView.layer.cornerRadius = 22.f;
     avatarView.clipsToBounds = YES;
+    avatarView.contentMode = UIViewContentModeScaleAspectFill;
+    [avatarView setContentScaleFactor:[[UIScreen mainScreen] scale]];
     [bgView addSubview:avatarView];
     
     // 好友昵称

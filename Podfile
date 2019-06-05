@@ -73,9 +73,6 @@ pod 'SDWebImage'
 # UIView模糊
 pod 'FXBlurView'                        , '1.6.4'
 
-# UICollectionView左对齐
-pod 'UICollectionViewLeftAlignedLayout'
-
 # WebSocket
 pod 'SocketRocket'                      , '0.5.1'
 
@@ -113,7 +110,7 @@ pod 'libextobjc'                        , '0.4.1'
 # UI block
 pod 'BlocksKit'                         , '2.2.5'
 # UICollectionView左对齐布局
-pod 'UICollectionViewLeftAlignedLayout' , '1.0.2'
+pod 'UICollectionViewLeftAlignedLayout'
 
 
 # FaceBook KVO（优雅的代替系统原生的KVO）
@@ -167,9 +164,9 @@ pod 'CHTCollectionViewWaterfallLayout'  , '0.9.6'
 pod 'ActionSheetPicker-3.0'             , '2.3.0'
 
 # 融云即时聊天服务
-pod 'RongCloudIM/IMLib'                 , '2.9.14'
-pod 'RongCloudIM/IMKit'                 , '2.9.14'
-pod 'RongCloudRTC/RongCallLib'          , '2.9.14'
+pod 'RongCloudIM/IMLib'                 , '2.9.17'
+pod 'RongCloudIM/IMKit'                 , '2.9.17'
+pod 'RongCloudRTC/RongCallLib'          , '2.9.17'
 #pod 'RongCloudRTC/RongCallKit'          , '2.9.14'
 
 # 空占位

@@ -145,6 +145,8 @@
     UIImageView *avatarView = [UIImageView new];
     avatarView.layer.cornerRadius = 22.5f;
     avatarView.clipsToBounds = YES;
+    avatarView.contentMode = UIViewContentModeScaleAspectFill;
+    [avatarView setContentScaleFactor:[[UIScreen mainScreen] scale]];
     if (user.userHeadImg != nil && user.userHeadImg.length > 0 && user.userHeadImgFlag == 1) {
         [avatarView yy_setImageWithURL:[NSURL URLWithString:user.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
     } else {
