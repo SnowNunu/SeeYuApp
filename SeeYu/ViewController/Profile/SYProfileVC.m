@@ -87,18 +87,23 @@
                 if ([NSDate sy_overdue:user.userVipExpiresAt]) {
                     // 已过期
                     self.vipImageView.image = SYImageNamed(@"VIP_disable");
+                    self.vipStatusLabel.text = @"未开通";
                 } else {
                     // 未过期
                     self.vipImageView.image = SYImageNamed(@"VIP");
+                    self.vipStatusLabel.text = @"已开通";
                 }
             }
         } else {
             self.vipImageView.image = SYImageNamed(@"VIP_disable");
+            self.vipStatusLabel.text = @"未开通";
         }
         if (user.identityStatus == 1) {
             self.authenticationImageView.image = SYImageNamed(@"truePerson");
+            self.authenticationStatusLabel.text = @"已认证";
         } else {
             self.authenticationImageView.image = SYImageNamed(@"truePerson_disable");
+            self.authenticationStatusLabel.text = @"立即认证";
         }
         if (user.userRegisterTime != nil) {
             NSTimeInterval interval = 8 * 3600 - [user.userRegisterTime timeIntervalSinceNow];
@@ -229,7 +234,7 @@
     
     // authentication tips
     UILabel *authenticationLabel = [UILabel new];
-    authenticationLabel.font = SYFont(14, YES);
+    authenticationLabel.font = SYFont(10, YES);
     authenticationLabel.textAlignment = NSTextAlignmentCenter;
     authenticationLabel.textColor = SYColor(193, 99, 237);
     authenticationLabel.text = @"真人认证";
@@ -311,11 +316,13 @@
         make.centerY.equalTo(self.authenticationBgView);
     }];
     [_authenticationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.height.width.equalTo(self.vipLabel);
+        make.centerY.height.equalTo(self.vipLabel);
+        make.width.offset(42);
         make.left.equalTo(self.authenticationImageView.mas_right).offset(7);
     }];
     [_authenticationStatusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.width.height.equalTo(self.vipStatusLabel);
+        make.centerY.height.equalTo(self.vipStatusLabel);
+        make.width.equalTo(self.authenticationLabel);
         make.left.equalTo(self.authenticationLabel);
     }];
 }
