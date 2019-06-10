@@ -176,8 +176,7 @@
 }
 
 #pragma mark - 在初始化UI之后配置
-- (void)_configureApplication:(UIApplication *)application initialParamsAfterInitUI:(NSDictionary *)launchOptions
-{
+- (void)_configureApplication:(UIApplication *)application initialParamsAfterInitUI:(NSDictionary *)launchOptions {
     /// 配置ActionSheet
     [LCActionSheet sy_configureActionSheet];
     
@@ -224,9 +223,6 @@
             });
         }
     }];
-    
-    /// 配置H5
-//    [SBConfigureManager configure];
 }
 
 #pragma mark - 调试(DEBUG)模式下的工具条
@@ -297,21 +293,22 @@
             [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUser class]] sy_parsedResults] subscribeNext:^(SYUser *user) {
                 if (user.userVipStatus != 1 || user.userVipExpiresAt == nil || [NSDate sy_overdue:user.userVipExpiresAt]) {
                     // 会员未开通或者已过期
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        SYOutboundVM *outboundVM = [[SYOutboundVM alloc] initWithServices:self.services params:nil];
-                        SYOutboundModel *outboundModel = [SYOutboundModel new];
-                        outboundModel.alias = user.userName;
-                        outboundModel.avatarImage = user.userHeadImg;
-                        outboundModel.videoShow = user.showVideo;
-                        outboundModel.interval = maxHangUpTime;
-                        outboundVM.model = outboundModel;
-                        SYOutboundVC *outboundVC = [[SYOutboundVC alloc] initWithViewModel:outboundVM];
-                        CATransition *animation = [CATransition animation];
-                        [animation setDuration:0.3];
-                        animation.type = kCATransitionFade;
-                        animation.subtype = kCATransitionMoveIn;
-                        [self presentVC:outboundVC withAnimation:animation];
-                    });
+                    SYOutboundModel *outboundModel = [SYOutboundModel new];
+                    outboundModel.alias = user.userName;
+                    outboundModel.avatarImage = user.userHeadImg;
+                    outboundModel.videoShow = user.showVideo;
+                    outboundModel.interval = maxHangUpTime;
+                    YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+                    if ([cache containsObjectForKey:@"outboundDatasource"]) {
+                        // 有缓存数据优先读取缓存数据
+                        id value = [cache objectForKey:@"outboundDatasource"];
+                        NSArray *array = (NSArray *)value;
+                        NSMutableArray *temp = [NSMutableArray arrayWithArray:array];
+                        [temp addObject:outboundModel];
+                        [cache setObject:[NSArray arrayWithArray:temp] forKey:@"outboundDatasource"];
+                    } else {
+                        [cache setObject:@[outboundModel] forKey:@"outboundDatasource"];
+                    }
                 }
             }];
         } else if([msg.content isEqualToString:@"赠送礼物"]) {
@@ -347,45 +344,55 @@
         int unreadMsgCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[@(ConversationType_PRIVATE)]];
         application.applicationIconBadgeNumber = unreadMsgCount;
     }
+    // 关闭消费者
+    [[JX_GCDTimerManager sharedInstance] checkExistTimer:@"outboundTimer" completion:^(BOOL doExist) {
+        [[JX_GCDTimerManager sharedInstance] cancelTimerWithName:@"outboundTimer"];
+    }];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     // APP从后台回到前台或刚启动
     [SYNotificationCenter postNotificationName:@"goBackFromPayView" object:nil];
+    // 开启消费者
+    [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"outboundTimer" timeInterval:10.f queue:nil repeats:YES fireInstantly:YES action:^{
+        BOOL isShow = NO;
+        for (UIWindow *window in self.callWindows) {
+            if ([window.rootViewController isKindOfClass:[SYOutboundVC class]]) {
+                isShow = YES;
+                break;
+            }
+        }
+        if (!isShow) {
+            YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+            if ([cache containsObjectForKey:@"outboundDatasource"]) {
+                // 有缓存数据优先读取缓存数据
+                id value = [cache objectForKey:@"outboundDatasource"];
+                NSArray *array = (NSArray *)value;
+                if (array.count > 0) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSMutableArray *temp = [NSMutableArray arrayWithArray:array];
+                        SYOutboundModel *outboundModel = [temp firstObject];
+                        [temp removeObjectAtIndex:0];
+                        SYOutboundVM *outboundVM = [[SYOutboundVM alloc] initWithServices:self.services params:nil];
+                        outboundVM.model = outboundModel;
+                        SYOutboundVC *outboundVC = [[SYOutboundVC alloc] initWithViewModel:outboundVM];
+                        CATransition *animation = [CATransition animation];
+                        [animation setDuration:0.3];
+                        animation.type = kCATransitionFade;
+                        animation.subtype = kCATransitionMoveIn;
+                        [self presentVC:outboundVC withAnimation:animation];
+                        [cache setObject:[NSArray arrayWithArray:temp] forKey:@"outboundDatasource"];
+                    });
+                }
+            }
+        }
+    }];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
-- (void)redirectNSlogToDocumentFolder {
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
-    NSString *documentDirectory = [paths objectAtIndex:0];
-    
-    NSDate *currentDate = [NSDate date];
-    
-    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
-    
-    [dateformatter setDateFormat:@"MMddHHmmss"];
-    
-    NSString *formattedDate = [dateformatter stringFromDate:currentDate];
-    
-    
-    NSString *fileName = [NSString stringWithFormat:@"rc%@.log", formattedDate];
-    
-    NSString *logFilePath = [documentDirectory stringByAppendingPathComponent:fileName];
-    
-    
-    
-    freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stdout);
-    
-    freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
-    
-}
-
 
 - (void)presentVC:(UIViewController *)vc withAnimation:(CATransition *)animation {
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];

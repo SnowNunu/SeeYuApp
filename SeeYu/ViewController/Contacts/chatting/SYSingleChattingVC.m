@@ -30,6 +30,7 @@
     [RCIM sharedRCIM].globalMessagePortraitSize = CGSizeMake(45, 45);
     self.conversationMessageCollectionView.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem sy_customItemWithTitle:nil titleColor:[UIColor whiteColor] imageName:@"nav_btn_back" target:self selector:@selector(goBack) contentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+    self.navigationItem.rightBarButtonItem = nil;
     [self initSendPresentBtn];
     [self _setupAction];
     self.btnEnabled = NO;
@@ -79,7 +80,7 @@
     if ([model.content isKindOfClass:[RCTextMessage class]]) {
         RCTextMessage *msg = (RCTextMessage *)model.content;
         if (msg.extra != nil && [msg.extra isEqualToString:@"recall"]) {
-            NSTimeInterval interval = arc4random_uniform(2) + 2;
+            NSTimeInterval interval = arc4random_uniform(4) + 8;
             [self performSelector:@selector(recallMessageFromServer:) withObject:@{@"userId":SYSharedAppDelegate.services.client.currentUserId,@"senderId":model.senderUserId,@"targetId":SYSharedAppDelegate.services.client.currentUserId,@"uId":model.messageUId,@"sentTime":[NSString stringWithFormat:@"%lld",model.sentTime]} afterDelay:interval];
         }
     }
@@ -276,7 +277,7 @@
     SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_MESSAGE_RECALL parameters:subscript.dictionary];
     SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
     [[[SYSharedAppDelegate.services.client enqueueRequest:request resultClass:[SYObject class]] sy_parsedResults] subscribeNext:^(id x) {
-        NSLog(@"撤回成本");
+        NSLog(@"撤回成功");
     } error:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];

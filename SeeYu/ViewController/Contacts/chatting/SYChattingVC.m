@@ -57,6 +57,12 @@
                   forRowAtIndexPath:(NSIndexPath *)indexPath {
     //可以从数据库删除数据
     RCConversationModel *model = self.conversationListDataSource[indexPath.row];
+    [[RCIMClient sharedRCIMClient] clearHistoryMessages:ConversationType_PRIVATE targetId:model.targetId recordTime:0 clearRemote:YES success:^{
+        NSLog(@"聊天记录清除成功");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshBadgeValue" object:nil];
+    } error:^(RCErrorCode status) {
+        NSLog(@"聊天记录清除失败:%ld",(long)status);
+    }];
     [[RCIMClient sharedRCIMClient] removeConversation:ConversationType_PRIVATE targetId:model.targetId];
     [self.conversationListDataSource removeObjectAtIndex:indexPath.row];
     [self.conversationListTableView reloadData];
@@ -174,6 +180,5 @@
         [self.navigationController pushViewController:conversationVC animated:YES];
     }
 }
-
 
 @end

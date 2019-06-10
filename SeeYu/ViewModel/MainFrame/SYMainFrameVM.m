@@ -77,7 +77,6 @@
         return [[self.services.client enqueueRequest:request resultClass:[SYUser class]] sy_parsedResults];
     }];
     [self.uploadLocationInfoCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(id x) {
-        NSLog(@"%@",x);
     }];
     [self.uploadLocationInfoCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];

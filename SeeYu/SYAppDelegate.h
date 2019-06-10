@@ -12,6 +12,7 @@
 #import "RCCallBaseViewController.h"
 #import "SYSocketManager.h"
 #import "SYSocketResponseModel.h"
+#import "JX_GCDTimerManager.h"
 #import <CocoaSecurity/CocoaSecurity.h>
 
 @interface SYAppDelegate : UIResponder <UIApplicationDelegate>

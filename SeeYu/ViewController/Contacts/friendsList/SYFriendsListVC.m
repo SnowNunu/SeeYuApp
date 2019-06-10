@@ -144,11 +144,11 @@
             [cell.badgeView setNeedsLayout];
         }
     } else if ([friendModel.userFriendName isEqualToString:@"红娘客服"]) {
-        cell.headImageView.image = SYImageNamed(@"icon_cusService");
+        [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:friendModel.userHeadImg] placeholder:SYImageNamed(@"icon_cusService") options:SYWebImageOptionAutomatic completion:NULL];
         cell.badgeView.badgeText = nil;
         [cell.badgeView setNeedsLayout];
     } else if ([friendModel.userFriendName isEqualToString:@"系统消息"]) {
-        cell.headImageView.image = SYImageNamed(@"icon_systemCall");
+        [cell.headImageView yy_setImageWithURL:[NSURL URLWithString:friendModel.userHeadImg] placeholder:SYImageNamed(@"icon_systemCall") options:SYWebImageOptionAutomatic completion:NULL];
         cell.badgeView.badgeText = nil;
         [cell.badgeView setNeedsLayout];
     } else {
