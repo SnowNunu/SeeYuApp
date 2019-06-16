@@ -9,9 +9,10 @@
 #import "SYViewModelServicesImpl.h"
 
 @implementation SYViewModelServicesImpl
+
 @synthesize client = _client;
-- (instancetype)init
-{
+
+- (instancetype)init {
     self = [super init];
     if (self) {
          _client = [SYHTTPService sharedInstance];

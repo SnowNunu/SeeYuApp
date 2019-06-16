@@ -8,6 +8,10 @@
 
 #import "SYVC.h"
 #import "SYOutboundVM.h"
+#import "SYPopViewVM.h"
+#import "SYPopViewVC.h"
+#import "SYRechargeVM.h"
+#import "SYRechargeVC.h"
 #import "JX_GCDTimerManager.h"
 
 NS_ASSUME_NONNULL_BEGIN

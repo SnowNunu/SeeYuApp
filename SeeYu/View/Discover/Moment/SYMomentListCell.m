@@ -264,23 +264,24 @@
 }
 
 - (BOOL)judgeOpenRechargeTipsView {
-    SYUser *user = SYSharedAppDelegate.services.client.currentUser;
-    if (user.userVipStatus == 1) {
-        if (user.userVipExpiresAt != nil) {
-            if ([NSDate sy_overdue:user.userVipExpiresAt]) {
-                // 已过期
-                return YES;
-            } else {
-                // 未过期
-                return NO;
-            }
-        } else {
-            return YES;
-        }
-    } else {
-        // 未开通会员
-        return YES;
-    }
+    return NO;
+//    SYUser *user = SYSharedAppDelegate.services.client.currentUser;
+//    if (user.userVipStatus == 1) {
+//        if (user.userVipExpiresAt != nil) {
+//            if ([NSDate sy_overdue:user.userVipExpiresAt]) {
+//                // 已过期
+//                return YES;
+//            } else {
+//                // 未过期
+//                return NO;
+//            }
+//        } else {
+//            return YES;
+//        }
+//    } else {
+//        // 未开通会员
+//        return YES;
+//    }
 }
 
 @end

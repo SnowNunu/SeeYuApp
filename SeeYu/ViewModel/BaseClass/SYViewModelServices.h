@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "SYNavigationProtocol.h"
 #import "SYHTTPService.h"
+
 @protocol SYViewModelServices <NSObject,SYNavigationProtocol>
+
 /// A reference to SYHTTPService instance.
 /// 全局通过这个Client来请求数据，处理用户信息
 @property (nonatomic, readonly, strong) SYHTTPService *client;
+
 @end

@@ -7,6 +7,7 @@
 //  `view` 层维护一个 `SYNavigationController` 的堆栈 SYNavigationControllerStack ，不管是 push/pop 还是 present/dismiss ，都使用栈顶的 SYNavigationController 来执行导航操作，且并且保证 present 出来的是一个 SYNavigationController 。
 
 #import <Foundation/Foundation.h>
+#import "SYSingleChattingVC.h"
 
 @protocol SYViewModelServices;
 

@@ -68,8 +68,11 @@
     }];
     [[self.hangUpBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        
         [self stopCallShow];
+    }];
+    [[self.answerBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        [self openRechargeTipsView:@"vip"];
     }];
 }
 
@@ -223,6 +226,26 @@
     [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"stopCallShow" timeInterval:[self.viewModel.model.interval doubleValue]  queue:dispatch_get_main_queue() repeats:NO fireInstantly:NO action:^{
         [self stopCallShow];
     }];
+}
+
+// 打开权限弹窗
+- (void)openRechargeTipsView:(NSString *)type {
+    SYPopViewVM *popVM = [[SYPopViewVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
+    popVM.type = type;
+    popVM.direct = YES;
+    SYPopViewVC *popVC = [[SYPopViewVC alloc] initWithViewModel:popVM];
+    @weakify(self)
+    popVC.block = ^{
+        @strongify(self)
+        [self stopCallShow];
+        SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:SYSharedAppDelegate.services params:@{SYViewModelUtilKey:@"vip"}];
+        [SYSharedAppDelegate.services pushViewModel:vm animated:YES];
+    };
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.3];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionMoveIn;
+    [SYSharedAppDelegate presentVC:popVC withAnimation:animation];
 }
 
 @end

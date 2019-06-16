@@ -8,5 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SYViewModelServices.h"
+
 @interface SYViewModelServicesImpl : NSObject<SYViewModelServices>
+
 @end

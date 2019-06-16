@@ -50,6 +50,12 @@
         self.chatSessionInputBarControl.backgroundColor = [UIColor clearColor];
         [super scrollToBottomAnimated:YES];
     }
+    if ([self.title isEqualToString:@"红娘客服"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.chatSessionInputBarControl.pluginBoardView removeItemAtIndex:PLUGIN_BOARD_ITEM_VOIP_TAG];
+            [self.chatSessionInputBarControl.pluginBoardView removeItemAtIndex:PLUGIN_BOARD_ITEM_VIDEO_VOIP_TAG];
+        });
+    }
 }
 
 - (void)willDisplayMessageCell:(RCMessageBaseCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -123,6 +129,11 @@
     [panRcognize delaysTouchesEnded];
     [panRcognize cancelsTouchesInView];
     [sendPresentBtn addGestureRecognizer:panRcognize];
+    if ([self.title isEqualToString:@"红娘客服"] || [self.title isEqualToString:@"系统消息"]) {
+        sendPresentBtn.hidden = YES;
+    } else {
+        sendPresentBtn.hidden = NO;
+    }
 }
 
 
@@ -213,6 +224,9 @@
 }
 
 - (RCMessageContent *)willSendMessage:(RCMessageContent *)messageContent {
+    if ([self.title isEqualToString:@"红娘客服"]) {
+        return messageContent;
+    }
     SYUser *user = SYSharedAppDelegate.services.client.currentUser;
     if (user.userVipStatus == 1) {
         if (user.userVipExpiresAt != nil) {
@@ -240,6 +254,32 @@
     SYFriendDetailInfoVM *vm = [[SYFriendDetailInfoVM alloc] initWithServices:SYSharedAppDelegate.services params:@{SYViewModelIDKey:userId}];
     SYFriendDetailInfoVC *vc = [[SYFriendDetailInfoVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+// 扩展面板点击回调
+- (void)pluginBoardView:(RCPluginBoardView *)pluginBoardView clickedItemWithTag:(NSInteger)tag {
+    if ([self.title isEqualToString:@"红娘客服"] && (tag == 1001 || tag == 1002 || tag == 1003)) {
+        // 红娘客服无会员可以发送照片和拍摄的照片
+        [super pluginBoardView:pluginBoardView clickedItemWithTag:tag];
+    } else {
+        SYUser *user = SYSharedAppDelegate.services.client.currentUser;
+        if (user.userVipStatus == 1) {
+            if (user.userVipExpiresAt != nil) {
+                if ([NSDate sy_overdue:user.userVipExpiresAt]) {
+                    // 已过期
+                    [self openRechargeTipsView:@"vip"];
+                } else {
+                    // 未过期
+                    [super pluginBoardView:pluginBoardView clickedItemWithTag:tag];
+                }
+            } else {
+                [self openRechargeTipsView:@"vip"];
+            }
+        } else {
+            // 未开通会员
+            [self openRechargeTipsView:@"vip"];
+        }
+    }
 }
 
 - (void)goBack {

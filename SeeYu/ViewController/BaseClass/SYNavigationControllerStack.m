@@ -55,7 +55,11 @@
          @strongify(self)
          SYVC *topViewController = (SYVC *)[self.navigationControllers.lastObject topViewController];
          if (topViewController.tabBarController) {
-             topViewController.snapshot = [topViewController.tabBarController.view snapshotViewAfterScreenUpdates:NO];
+             if ([topViewController isKindOfClass:[SYSingleChattingVC class]]) {
+
+             } else {
+                 topViewController.snapshot = [topViewController.tabBarController.view snapshotViewAfterScreenUpdates:NO];
+             }
          } else {
              topViewController.snapshot = [[self.navigationControllers.lastObject view] snapshotViewAfterScreenUpdates:NO];
          }

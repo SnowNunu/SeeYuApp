@@ -104,7 +104,8 @@
     [self _configureFMDB];
     
     // 初始化融云服务
-    [[RCIM sharedRCIM] initWithAppKey:@"c9kqb3rdc4vbj"];
+//    [[RCIM sharedRCIM] initWithAppKey:@"vnroth0kvbhso"];   // 开发环境
+    [[RCIM sharedRCIM] initWithAppKey:@"m7ua80gbmo03m"];   // 生产环境
     [RCIM sharedRCIM].enablePersistentUserInfoCache = YES;  // 开启用户信息持久化
     [RCIM sharedRCIM].receiveMessageDelegate = self;    // 设置接收消息代理
     [RCIM sharedRCIM].userInfoDataSource = [SYRCIMDataSource shareInstance];
@@ -114,11 +115,7 @@
 //    [self redirectNSlogToDocumentFolder];
     
     _callWindows = [NSMutableArray new];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(didReceiveMessageNotification:)
-//                                                 name:RCKitDispatchMessageNotification
-//                                               object:nil];
+
     // 使用bugly收集崩溃日志
     [Bugly startWithAppId:@"665d87c560"];
 //    // 初始化友盟服务
@@ -287,11 +284,12 @@
     if ([message.content isMemberOfClass:[RCTextMessage class]]) {
         RCTextMessage *msg = (RCTextMessage *)message.content;
         if ([msg.content isEqualToString:@"外呼视频"]) {
-            NSString *maxHangUpTime = msg.extra;
-            SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:@{@"userId":message.targetId}];
-            SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_IMINFO parameters:subscript.dictionary];
-            [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUser class]] sy_parsedResults] subscribeNext:^(SYUser *user) {
-                if (user.userVipStatus != 1 || user.userVipExpiresAt == nil || [NSDate sy_overdue:user.userVipExpiresAt]) {
+            SYUser *currentUser = self.services.client.currentUser;
+            if (currentUser.userVipStatus != 1 || currentUser.userVipExpiresAt == nil || [NSDate sy_overdue:currentUser.userVipExpiresAt]) {
+                NSString *maxHangUpTime = msg.extra;
+                SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:@{@"userId":message.targetId}];
+                SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_IMINFO parameters:subscript.dictionary];
+                [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUser class]] sy_parsedResults] subscribeNext:^(SYUser *user) {
                     // 会员未开通或者已过期
                     SYOutboundModel *outboundModel = [SYOutboundModel new];
                     outboundModel.alias = user.userName;
@@ -309,8 +307,8 @@
                     } else {
                         [cache setObject:@[outboundModel] forKey:@"outboundDatasource"];
                     }
-                }
-            }];
+                }];
+            }
         } else if([msg.content isEqualToString:@"赠送礼物"]) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (msg.extra != nil && msg.extra.length > 0) {
@@ -377,6 +375,7 @@
                         SYOutboundVM *outboundVM = [[SYOutboundVM alloc] initWithServices:self.services params:nil];
                         outboundVM.model = outboundModel;
                         SYOutboundVC *outboundVC = [[SYOutboundVC alloc] initWithViewModel:outboundVM];
+                        
                         CATransition *animation = [CATransition animation];
                         [animation setDuration:0.3];
                         animation.type = kCATransitionFade;
@@ -405,13 +404,6 @@
 }
 
 - (void)dismissVC:(UIViewController *)vc {
-    if ([vc isKindOfClass:[RCCallBaseViewController class]]) {
-        UIViewController *rootVC = vc;
-        while (rootVC.parentViewController) {
-            rootVC = rootVC.parentViewController;
-        }
-        vc = rootVC;
-    }
     for (UIWindow *window in self.callWindows) {
         if (window.rootViewController == vc) {
             [window resignKeyWindow];

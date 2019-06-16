@@ -35,7 +35,7 @@
     SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_PUSH_REBOT parameters:subscript.dictionary];
     SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
     [[self.viewModel.services.client enqueueRequest:request resultClass:[SYUser class]] subscribeCompleted:^{
-        NSLog(@"推送成功");
+        NSLog(@"机器人推送成功");
     }];
 }
 
