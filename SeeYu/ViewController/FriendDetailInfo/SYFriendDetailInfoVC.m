@@ -380,6 +380,9 @@
     self.tableView.tableHeaderView = headerView;
     
     UIImageView *headImageView = [UIImageView new];
+    headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    headImageView.clipsToBounds = YES;
+    [headImageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
     _headImageView = headImageView;
     [headerView addSubview:headImageView];
     
@@ -597,7 +600,7 @@
     }];
     [self.headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(self.headerView);
-        make.height.offset(SY_SCREEN_WIDTH * 0.7);
+        make.height.offset(SY_SCREEN_WIDTH);
     }];
     [self.aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.height.equalTo(self.signatureLabel);

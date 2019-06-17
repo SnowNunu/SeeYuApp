@@ -225,9 +225,9 @@
         }
         SYForumCommentModel *model = self.viewModel.datasource[indexPath.row];
         if (model.userHeadImg != nil && model.userHeadImg.length > 0 && model.userHeadImgFlag == 1) {
-            cell.headPhotoView.image = SYImageNamed(@"anchor_deafult_image");
-        } else {
             [cell.headPhotoView yy_setImageWithURL:[NSURL URLWithString:model.userHeadImg] placeholder:SYWebAvatarImagePlaceholder() options:SYWebImageOptionAutomatic completion:NULL];
+        } else {
+            cell.headPhotoView.image = SYImageNamed(@"anchor_deafult_image");
         }
         cell.aliasLabel.text = model.userName;
         cell.contentLabel.text = model.commentContent;

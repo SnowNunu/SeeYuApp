@@ -353,7 +353,7 @@
     // APP从后台回到前台或刚启动
     [SYNotificationCenter postNotificationName:@"goBackFromPayView" object:nil];
     // 开启消费者
-    [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"outboundTimer" timeInterval:10.f queue:nil repeats:YES fireInstantly:YES action:^{
+    [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"outboundTimer" timeInterval:30.f queue:nil repeats:YES fireInstantly:YES action:^{
         BOOL isShow = NO;
         for (UIWindow *window in self.callWindows) {
             if ([window.rootViewController isKindOfClass:[SYOutboundVC class]]) {
