@@ -13,7 +13,6 @@
 
 - (instancetype)initWithServices:(id<SYViewModelServices>)services params:(NSDictionary *)params {
     if(self = [super initWithServices:services params:params]){
-//        self.model = [SYAnchorsModel yy_modelWithJSON:params[SYViewModelUtilKey]];
         self.user = self.services.client.currentUser;
     }
     return self;
@@ -27,6 +26,19 @@
         SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
         SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_GIFT_SEND parameters:subscript.dictionary];
         return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUser class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];
+    }];
+    
+    self.requestGiftsListCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        NSDictionary *params = @{@"userId":self.services.client.currentUserId};
+        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_GIFT_LIST_QUERY parameters:subscript.dictionary];
+        return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYGiftModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];
+    }];
+    [self.requestGiftsListCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYGiftModel *model) {
+        self.datasource = model.gifts;
+    }];
+    [self.requestGiftsListCommand.errors subscribeNext:^(NSError *error) {
+        [MBProgressHUD sy_showErrorTips:error];
     }];
 }
 

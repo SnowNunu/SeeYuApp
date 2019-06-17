@@ -8,6 +8,10 @@
 
 #import "RCCallBaseViewController.h"
 #import <Masonry/Masonry.h>
+#import "SYGiftVM.h"
+#import "SYGiftVC.h"
+#import "SYRechargeVM.h"
+#import "SYRechargeVC.h"
 
 @class RCloudImageView;
 
@@ -27,9 +31,9 @@
 @property(nonatomic, strong) UILabel *remoteNameLabel;
 
 /*!
- 用户状态的view
+ 赠送礼物按钮
  */
-@property(nonatomic, strong) UIImageView *statusView;
+@property (nonatomic, strong) UIButton *sendGiftBtn;
 
 /*!
  全屏的视频View

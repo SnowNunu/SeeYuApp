@@ -16,8 +16,6 @@
 
 @property (nonatomic, strong) UIButton *sendPresentBtn;
 
-@property (nonatomic, assign) BOOL btnEnabled;
-
 @property (nonatomic, strong) RCMessageModel *messageModel;
 
 @end
@@ -33,8 +31,6 @@
     self.navigationItem.rightBarButtonItem = nil;
     [self initSendPresentBtn];
     [self _setupAction];
-    self.btnEnabled = NO;
-    [self requestGiftList];
     if (@available(iOS 11.0, *)) {
         self.conversationMessageCollectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
@@ -96,21 +92,19 @@
     @weakify(self)
     [[_sendPresentBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        if (self.btnEnabled) {
-            SYGiftVM *giftVM = [[SYGiftVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
-            giftVM.friendId = self.targetId;
-            SYGiftVC *giftVC = [[SYGiftVC alloc] initWithViewModel:giftVM];
-            giftVC.block = ^{
-                SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:SYSharedAppDelegate.services params:@{SYViewModelUtilKey:@"diamonds"}];
-                SYRechargeVC *vc = [[SYRechargeVC alloc]initWithViewModel:vm];
-                [self.navigationController pushViewController:vc animated:YES];
-            };
-            CATransition *animation = [CATransition animation];
-            [animation setDuration:0.3];
-            animation.type = kCATransitionFade;
-            animation.subtype = kCATransitionMoveIn;
-            [SYSharedAppDelegate presentVC:giftVC withAnimation:animation];
-        }
+        SYGiftVM *giftVM = [[SYGiftVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
+        giftVM.friendId = self.targetId;
+        SYGiftVC *giftVC = [[SYGiftVC alloc] initWithViewModel:giftVM];
+        giftVC.block = ^{
+            SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:SYSharedAppDelegate.services params:@{SYViewModelUtilKey:@"diamonds"}];
+            SYRechargeVC *vc = [[SYRechargeVC alloc]initWithViewModel:vm];
+            [self.navigationController pushViewController:vc animated:YES];
+        };
+        CATransition *animation = [CATransition animation];
+        [animation setDuration:0.3];
+        animation.type = kCATransitionFade;
+        animation.subtype = kCATransitionMoveIn;
+        [SYSharedAppDelegate presentVC:giftVC withAnimation:animation];
     }];
 }
 
@@ -207,20 +201,6 @@
             break;
     }
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
-}
-
-- (void)requestGiftList {
-    NSDictionary *params = @{@"userId":SYSharedAppDelegate.services.client.currentUser.userId};
-    SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
-    SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_GIFT_LIST_QUERY parameters:subscript.dictionary];
-    [[[[SYSharedAppDelegate.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYGiftModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(SYGiftModel *giftModel) {
-        YYCache *cache = [YYCache cacheWithName:@"seeyu"];
-        [cache setObject:giftModel forKey:@"giftModel"];
-    } error:^(NSError *error) {
-        [MBProgressHUD sy_showErrorTips:error];
-    } completed:^{
-        self.btnEnabled = YES;
-    }];
 }
 
 - (RCMessageContent *)willSendMessage:(RCMessageContent *)messageContent {

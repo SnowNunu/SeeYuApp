@@ -406,6 +406,8 @@
 		7B9A1BE82243CECD00B7BFC2 /* SYListVideoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A1BE62243CECD00B7BFC2 /* SYListVideoOperation.m */; };
 		7BA3260A21DFA62100B7A352 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA3260921DFA62000B7A352 /* Assets.xcassets */; };
 		7BA547DB21E58ECB00049EE3 /* SYMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA547DA21E58ECB00049EE3 /* SYMenuView.m */; };
+		7BB1ED4022B6A7AE007528CC /* SYGiftListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1ED3F22B6A7AE007528CC /* SYGiftListModel.m */; };
+		7BB1ED4422B721AE007528CC /* SYGiftListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1ED4322B721AE007528CC /* SYGiftListCell.m */; };
 		7BB5199C21EC783B000C1CF2 /* FSSegmentTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB5199721EC783B000C1CF2 /* FSSegmentTitleView.m */; };
 		7BB5199D21EC783B000C1CF2 /* FSPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB5199A21EC783B000C1CF2 /* FSPageContentView.m */; };
 		7BB519A121EC8052000C1CF2 /* SYChattingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB519A021EC8052000C1CF2 /* SYChattingVC.m */; };
@@ -1285,6 +1287,10 @@
 		7BA3260921DFA62000B7A352 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BA547D921E58ECB00049EE3 /* SYMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYMenuView.h; sourceTree = "<group>"; };
 		7BA547DA21E58ECB00049EE3 /* SYMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYMenuView.m; sourceTree = "<group>"; };
+		7BB1ED3E22B6A7AE007528CC /* SYGiftListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGiftListModel.h; sourceTree = "<group>"; };
+		7BB1ED3F22B6A7AE007528CC /* SYGiftListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGiftListModel.m; sourceTree = "<group>"; };
+		7BB1ED4222B721AE007528CC /* SYGiftListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGiftListCell.h; sourceTree = "<group>"; };
+		7BB1ED4322B721AE007528CC /* SYGiftListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGiftListCell.m; sourceTree = "<group>"; };
 		7BB5199721EC783B000C1CF2 /* FSSegmentTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSegmentTitleView.m; sourceTree = "<group>"; };
 		7BB5199821EC783B000C1CF2 /* FSPageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPageContentView.h; sourceTree = "<group>"; };
 		7BB5199921EC783B000C1CF2 /* FSScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSScrollContentView.h; sourceTree = "<group>"; };
@@ -2021,6 +2027,7 @@
 		263C896D1F6A305100F7A0AE /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				7BB1ED4122B7217A007528CC /* gift */,
 				7B788151224E5C8700B25CA3 /* chatting */,
 				7B0228BB223B87490045E25F /* friendsList */,
 			);
@@ -3987,6 +3994,15 @@
 			path = SYVideoPlayer;
 			sourceTree = "<group>";
 		};
+		7BB1ED4122B7217A007528CC /* gift */ = {
+			isa = PBXGroup;
+			children = (
+				7BB1ED4222B721AE007528CC /* SYGiftListCell.h */,
+				7BB1ED4322B721AE007528CC /* SYGiftListCell.m */,
+			);
+			path = gift;
+			sourceTree = "<group>";
+		};
 		7BB5199621EC783B000C1CF2 /* FSScrollContentViewLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -4060,6 +4076,8 @@
 			children = (
 				7BC56A83227018A1005C1F81 /* SYGiftModel.h */,
 				7BC56A84227018A1005C1F81 /* SYGiftModel.m */,
+				7BB1ED3E22B6A7AE007528CC /* SYGiftListModel.h */,
+				7BB1ED3F22B6A7AE007528CC /* SYGiftListModel.m */,
 			);
 			path = Gift;
 			sourceTree = "<group>";
@@ -5239,6 +5257,7 @@
 				7BE971E4225F9F7600FF6A25 /* SYPresentVC.m in Sources */,
 				7B76B8A422672A7400153249 /* SYVideoInfoEditVM.m in Sources */,
 				7B52A784229C370F0043511C /* BMChineseSort.m in Sources */,
+				7BB1ED4022B6A7AE007528CC /* SYGiftListModel.m in Sources */,
 				2605C5D31F6632AA00B1F66E /* SYContactsVC.m in Sources */,
 				7B4BF4622251AE4C00CCD286 /* VideoEditingView.m in Sources */,
 				7B78811622489A2000B25CA3 /* SYForumListCell.m in Sources */,
@@ -5443,6 +5462,7 @@
 				7B15EC772265BAF100A80BD5 /* ZYImageCell.m in Sources */,
 				7B5A334421FA074900535F8D /* SYNearbyVC.m in Sources */,
 				26FE8E891F9514D100EC8BE0 /* TZImageCropManager.m in Sources */,
+				7BB1ED4422B721AE007528CC /* SYGiftListCell.m in Sources */,
 				7B1E733122267684001299C0 /* SYCollocationVC.m in Sources */,
 				7B15EC6F2265BAF100A80BD5 /* ZYCameraController.m in Sources */,
 				7BC56A81226F0F5E005C1F81 /* SYNicknameModifyVC.m in Sources */,

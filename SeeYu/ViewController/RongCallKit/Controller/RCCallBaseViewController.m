@@ -858,22 +858,23 @@
             self.acceptButton.hidden = YES;
         } else if (callStatus == RCCallIncoming || callStatus == RCCallRinging) {
             [self.hangupButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.offset(60);
+                make.width.height.offset(65);
                 make.left.equalTo(self.view).offset(60);
                 make.bottom.equalTo(self.view).offset(-45);
             }];
             self.hangupButton.hidden = NO;
             [self.acceptButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.offset(60);
+                make.width.height.offset(65);
                 make.right.equalTo(self.view).offset(-60);
                 make.bottom.equalTo(self.view).offset(-45);
             }];
             self.acceptButton.hidden = NO;
         } else if (callStatus == RCCallActive) {
-            self.hangupButton.frame =
-                CGRectMake((self.view.frame.size.width - RCCallButtonLength) / 2,
-                           self.view.frame.size.height - RCCallVerticalMargin - RCCallButtonLength - RCCallExtraSpace, RCCallButtonLength,
-                           RCCallButtonLength);
+            [self.hangupButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.width.height.offset(60);
+                make.centerX.equalTo(self.view);
+                make.bottom.equalTo(self.view).offset(-32-RCCallExtraSpace);
+            }];
             [self layoutTextUnderImageButton:self.hangupButton];
             self.hangupButton.hidden = NO;
 
@@ -959,23 +960,24 @@
 
             self.acceptButton.hidden = YES;
         } else if (callStatus == RCCallIncoming || callStatus == RCCallRinging) {
-            [self.hangupButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.offset(60);
+            [self.hangupButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.width.height.offset(65);
                 make.left.equalTo(self.view).offset(60);
                 make.bottom.equalTo(self.view).offset(-45);
             }];
             self.hangupButton.hidden = NO;
-            [self.acceptButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.offset(60);
+            [self.acceptButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.width.height.offset(65);
                 make.right.equalTo(self.view).offset(-60);
                 make.bottom.equalTo(self.view).offset(-45);
             }];
             self.acceptButton.hidden = NO;
         } else if (callStatus == RCCallActive) {
-            self.hangupButton.frame =
-                CGRectMake((self.view.frame.size.width - RCCallButtonLength) / 2,
-                           self.view.frame.size.height - RCCallVerticalMargin - RCCallButtonLength - RCCallExtraSpace, RCCallButtonLength,
-                           RCCallButtonLength);
+            [self.hangupButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.width.height.offset(60);
+                make.centerX.equalTo(self.view);
+                make.bottom.equalTo(self.view).offset(-32-RCCallExtraSpace);
+            }];
             [self layoutTextUnderImageButton:self.hangupButton];
             self.hangupButton.hidden = NO;
 
@@ -1722,7 +1724,8 @@
             NSDictionary *params = @{@"type":@"2",@"userId":(NSString *)userId,@"receiveUserId":(NSString *)receiveUserId};
             [[SYAppDelegate sharedDelegate] sendMessageByWebSocketService:[params yy_modelToJSONString]];
         } else {
-            [MBProgressHUD sy_showTips:@"客户端异常，请联系客服!" addedToView:self.view];
+            // 只有非主播用户才会计费
+//            [MBProgressHUD sy_showTips:@"客户端异常，请联系客服!" addedToView:self.view];
         }
     } else {
         [MBProgressHUD sy_showTips:@"与服务器连接出错，请稍候再试!" addedToView:self.view];
@@ -1762,7 +1765,8 @@
                 NSLog(@"websocket连接断开，原因:%@,code:%ld",reason,(long)code);
             }];
         } else {
-            [MBProgressHUD sy_showTips:@"客户端异常，请联系客服!" addedToView:self.view];
+            // 只有非主播用户才会计费
+//            [MBProgressHUD sy_showTips:@"客户端异常，请联系客服!" addedToView:self.view];
         }
     } else {
         [MBProgressHUD sy_showTips:@"与服务器连接出错，请稍候再试!" addedToView:self.view];

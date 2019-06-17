@@ -9,6 +9,8 @@
 #import "SYVC.h"
 #import "SYGiftVM.h"
 #import "SYGiftModel.h"
+#import "SYGiftListModel.h"
+#import "SYGiftListCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

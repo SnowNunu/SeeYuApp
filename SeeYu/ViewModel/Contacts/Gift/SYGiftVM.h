@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) SYUser *user;
 
+@property (nonatomic, strong) NSArray *datasource;
+
+@property (nonatomic, strong) RACCommand *requestGiftsListCommand;
+
 @property (nonatomic, strong) RACCommand *sendGiftCommand;
 
 @end

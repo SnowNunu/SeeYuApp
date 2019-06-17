@@ -51,6 +51,8 @@
     self.remoteUserInfo = userInfo;
     [self.remoteNameLabel setText:userInfo.name];
     [self.remotePortraitView setImageURL:[NSURL URLWithString:userInfo.portraitUri]];
+    [self initRequestPresentListBtn];
+    [self _setupAction];
 }
 
 - (RCloudImageView *)remotePortraitView {
@@ -60,8 +62,10 @@
         [self.view addSubview:_remotePortraitView];
         _remotePortraitView.hidden = YES;
         [_remotePortraitView setPlaceholderImage:[RCCallKitUtility getDefaultPortraitImage]];
-        _remotePortraitView.layer.cornerRadius = 4;
-        _remotePortraitView.layer.masksToBounds = YES;
+        _remotePortraitView.layer.cornerRadius = 40.f;
+        _remotePortraitView.contentMode = UIViewContentModeScaleAspectFill;
+        _remotePortraitView.clipsToBounds = YES;
+        [_remotePortraitView setContentScaleFactor:[[UIScreen mainScreen] scale]];
     }
     return _remotePortraitView;
 }
@@ -82,16 +86,6 @@
         _remoteNameLabel.hidden = YES;
     }
     return _remoteNameLabel;
-}
-
-- (UIImageView *)statusView {
-    if (!_statusView) {
-        _statusView = [[RCloudImageView alloc] init];
-        [self.view addSubview:_statusView];
-        _statusView.hidden = YES;
-        _statusView.image = [RCCallKitUtility imageFromVoIPBundle:@"voip/voip_connecting"];
-    }
-    return _statusView;
 }
 
 - (UIView *)mainVideoView {
@@ -165,14 +159,9 @@
         self.remoteNameLabel.textAlignment = NSTextAlignmentCenter;
         self.tipsLabel.textAlignment = NSTextAlignmentCenter;
 
-        self.statusView.frame = CGRectMake((self.view.frame.size.width - 17) / 2,
-                                           RCCallVerticalMargin * 3 + (RCCallHeaderLength - 4) / 2, 17, 4);
-
         if (callStatus == RCCallRinging || callStatus == RCCallDialing || callStatus == RCCallIncoming) {
             self.remotePortraitView.alpha = 0.5;
-            self.statusView.hidden = NO;
         } else {
-            self.statusView.hidden = YES;
             self.remotePortraitView.alpha = 1.0;
         }
 
@@ -185,12 +174,15 @@
             [self.callSession setVideoView:self.mainVideoView
                                     userId:[RCIMClient sharedRCIMClient].currentUserInfo.userId];
             self.blurView.hidden = YES;
+            self.sendGiftBtn.hidden = YES;
         } else if (callStatus == RCCallActive) {
             self.mainVideoView.hidden = NO;
             [self.callSession setVideoView:self.mainVideoView userId:self.callSession.targetId];
             self.blurView.hidden = YES;
+            self.sendGiftBtn.hidden = NO;
         } else {
             self.mainVideoView.hidden = YES;    // 全屏view
+            self.sendGiftBtn.hidden = YES;
         }
 
         if (callStatus == RCCallActive) {
@@ -246,14 +238,10 @@
         }
 
         self.remoteNameLabel.textAlignment = NSTextAlignmentCenter;
-        self.statusView.frame = CGRectMake((self.view.frame.size.width - 17) / 2,
-                                           RCCallVerticalMargin * 3 + (RCCallHeaderLength - 4) / 2, 17, 4);
 
         if (callStatus == RCCallRinging || callStatus == RCCallDialing || callStatus == RCCallIncoming) {
             self.remotePortraitView.alpha = 0.5;
-            self.statusView.hidden = NO;
         } else {
-            self.statusView.hidden = YES;
             self.remotePortraitView.alpha = 1.0;
         }
     }
@@ -295,6 +283,111 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)initRequestPresentListBtn {
+    UIButton *sendGiftBtn = [[UIButton alloc] initWithFrame:CGRectMake(SY_SCREEN_WIDTH - 71, 400, 60, 60)];
+    [sendGiftBtn setImage:SYImageNamed(@"message_icon_sendGift") forState:UIControlStateNormal];
+    sendGiftBtn.layer.cornerRadius = 8;
+    [self.view addSubview:sendGiftBtn];
+    _sendGiftBtn = sendGiftBtn;
+    //添加手势
+    UIPanGestureRecognizer *panRcognize = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    [panRcognize setMinimumNumberOfTouches:1];
+    [panRcognize setEnabled:YES];
+    [panRcognize delaysTouchesEnded];
+    [panRcognize cancelsTouchesInView];
+    [sendGiftBtn addGestureRecognizer:panRcognize];
+}
+
+- (void)_setupAction {
+    [[_sendGiftBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        SYGiftVM *giftVM = [[SYGiftVM alloc] initWithServices:SYSharedAppDelegate.services params:nil];
+        giftVM.friendId = self.targetId;
+        SYGiftVC *giftVC = [[SYGiftVC alloc] initWithViewModel:giftVM];
+        giftVC.block = ^{
+            SYRechargeVM *vm = [[SYRechargeVM alloc] initWithServices:SYSharedAppDelegate.services params:@{SYViewModelUtilKey:@"diamonds"}];
+            SYRechargeVC *vc = [[SYRechargeVC alloc]initWithViewModel:vm];
+            [self.navigationController pushViewController:vc animated:YES];
+        };
+        CATransition *animation = [CATransition animation];
+        [animation setDuration:0.3];
+        animation.type = kCATransitionFade;
+        animation.subtype = kCATransitionMoveIn;
+        [SYSharedAppDelegate presentVC:giftVC withAnimation:animation];
+    }];
+}
+
+- (void)handlePanGesture:(UIPanGestureRecognizer *)recognizer {
+    //移动状态
+    UIGestureRecognizerState recState = recognizer.state;
+    switch (recState) {
+        case UIGestureRecognizerStateBegan:
+            break;
+        case UIGestureRecognizerStateChanged: {
+            CGPoint translation = [recognizer translationInView:self.navigationController.view];
+            recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x, recognizer.view.center.y + translation.y);
+        }
+            break;
+        case UIGestureRecognizerStateEnded: {
+            CGPoint stopPoint = CGPointMake(0, SY_SCREEN_HEIGHT / 2.0);
+            if (recognizer.view.center.x < SY_SCREEN_WIDTH / 2.0) {
+                if (recognizer.view.center.y <= SY_SCREEN_HEIGHT/2.0) {
+                    //左上
+                    if (recognizer.view.center.x  >= recognizer.view.center.y) {
+                        stopPoint = CGPointMake(recognizer.view.center.x, _sendGiftBtn.frame.size.width / 2.f);
+                    } else {
+                        stopPoint = CGPointMake(_sendGiftBtn.frame.size.width / 2.f, recognizer.view.center.y);
+                    }
+                } else {
+                    //左下
+                    if (recognizer.view.center.x  >= SY_SCREEN_HEIGHT - recognizer.view.center.y) {
+                        stopPoint = CGPointMake(recognizer.view.center.x, SY_SCREEN_HEIGHT - _sendGiftBtn.frame.size.width /2.f);
+                    } else {
+                        stopPoint = CGPointMake(_sendGiftBtn.frame.size.width / 2.f, recognizer.view.center.y);
+                        //                        stopPoint = CGPointMake(recognizer.view.center.x, SCREEN_HEIGHT - self.spButton.width/2.0);
+                    }
+                }
+            } else {
+                if (recognizer.view.center.y <= SY_SCREEN_HEIGHT / 2.f) {
+                    //右上
+                    if (SY_SCREEN_WIDTH - recognizer.view.center.x  >= recognizer.view.center.y) {
+                        stopPoint = CGPointMake(recognizer.view.center.x, _sendGiftBtn.frame.size.width / 2.f);
+                    } else {
+                        stopPoint = CGPointMake(SY_SCREEN_WIDTH - _sendGiftBtn.frame.size.width / 2.f, recognizer.view.center.y);
+                    }
+                } else {
+                    //右下
+                    if (SY_SCREEN_WIDTH - recognizer.view.center.x  >= SY_SCREEN_HEIGHT - recognizer.view.center.y) {
+                        stopPoint = CGPointMake(recognizer.view.center.x, SY_SCREEN_HEIGHT - _sendGiftBtn.frame.size.width/2.f);
+                    } else {
+                        stopPoint = CGPointMake(SY_SCREEN_WIDTH - _sendGiftBtn.frame.size.width/2.f,recognizer.view.center.y);
+                    }
+                }
+            }
+            //如果按钮超出屏幕边缘
+            if (stopPoint.y + _sendGiftBtn.frame.size.width + 40 >= SY_SCREEN_HEIGHT) {
+                stopPoint = CGPointMake(stopPoint.x, SY_SCREEN_HEIGHT - _sendGiftBtn.frame.size.width/2.f - 49);
+                NSLog(@"超出屏幕下方了！！"); //这里注意iphoneX的适配。。X的SCREEN高度算法有变化。
+            }
+            if (stopPoint.x - _sendGiftBtn.frame.size.width / 2.f <= 0) {
+                stopPoint = CGPointMake(_sendGiftBtn.frame.size.width / 2.f, stopPoint.y);
+            }
+            if (stopPoint.x + _sendGiftBtn.frame.size.width / 2.f >= SY_SCREEN_WIDTH) {
+                stopPoint = CGPointMake(SY_SCREEN_WIDTH - _sendGiftBtn.frame.size.width / 2.f, stopPoint.y);
+            }
+            if (stopPoint.y - _sendGiftBtn.frame.size.width / 2.f <= 0) {
+                stopPoint = CGPointMake(stopPoint.x, _sendGiftBtn.frame.size.width / 2.f);
+            }
+            [UIView animateWithDuration:0.5 animations:^{
+                recognizer.view.center = stopPoint;
+            }];
+        }
+            break;
+        default:
+            break;
+    }
+    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
 }
 
 @end
