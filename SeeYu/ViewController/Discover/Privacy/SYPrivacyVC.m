@@ -211,7 +211,6 @@
     [[[self.viewModel.requestPrivacyCommand execute:@1] deliverOnMainThread] subscribeNext:^(id x) {
         @strongify(self)
         self.viewModel.pageNum = 1;
-        [self.collectionView.mj_footer resetNoMoreData];
     } error:^(NSError *error) {
         @strongify(self)
         [self.collectionView.mj_header endRefreshing];
@@ -234,7 +233,9 @@
     } completed:^{
         @strongify(self)
         [self.collectionView.mj_footer endRefreshing];
-        [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+        if (self.viewModel.currentPageValues.count < self.viewModel.pageSize) {
+            [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+        }
     }];
 }
 

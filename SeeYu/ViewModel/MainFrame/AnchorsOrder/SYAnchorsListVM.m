@@ -48,6 +48,7 @@
 
 - (RACSignal *)requestRemoteAnchorsDataSignalWithPage:(NSUInteger)page {
     NSArray * (^mapAnchors)(NSArray *) = ^(NSArray *array) {
+        self.currentPageValues = array;
         if (page == 1) {
             /// 下拉刷新
         } else {

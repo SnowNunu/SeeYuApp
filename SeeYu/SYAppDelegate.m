@@ -23,11 +23,9 @@
 #import "SYOutboundVM.h"
 
 #if defined(DEBUG)||defined(_DEBUG)
-#import <JPFPSStatus/JPFPSStatus.h>
-//#import <FBMemoryProfiler/FBMemoryProfiler.h>
-//#import <FBRetainCycleDetector/FBRetainCycleDetector.h>
-//#import "CacheCleanerPlugin.h"
-//#import "RetainCycleLoggerPlugin.h"
+
+#import "LLDebug.h"
+
 #endif
 
 @interface SYAppDelegate () <RCIMReceiveMessageDelegate,UNUserNotificationCenterDelegate>
@@ -227,8 +225,7 @@
 {
     
 #if defined(DEBUG)||defined(_DEBUG)
-    /// 显示FPS
-    [[JPFPSStatus sharedInstance] open];
+//    [[LLDebugTool sharedTool] startWorking];
 #endif
 }
 
@@ -434,10 +431,9 @@
                         // 开始计费
                         if (params[@"longestMinutes"] != nil) {
                             NSString *time = params[@"longestMinutes"];
+                            NSLog(@"首次返回的挂断时间为：%@",time);
                             // 根据服务器返回的时间启动定时器定时挂断视频
-                            [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"HangUpVideo" timeInterval:time.doubleValue * 60 queue:dispatch_get_main_queue() repeats:NO fireInstantly:NO action:^{
-                                [SYNotificationCenter postNotificationName:@"HangUpVideo" object:nil];
-                            }];
+                            [SYNotificationCenter postNotificationName:@"HangUpVideo" object:@{@"time":time}];
                         } else {
                             // 为空则立即挂断
                             [SYNotificationCenter postNotificationName:@"HangUpVideo" object:nil];

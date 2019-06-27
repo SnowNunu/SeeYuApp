@@ -49,16 +49,15 @@ PODS:
   - FDFullscreenPopGesture (1.1)
   - FFToast (1.2.0)
   - FLEX (2.4.0)
-  - FMDB (2.6.2):
-    - FMDB/standard (= 2.6.2)
-  - FMDB/standard (2.6.2)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - FXBlurView (1.6.4)
   - HJCornerRadius (0.0.1)
   - HYBImageCliped (2.2.4)
   - HYBNetworking (3.3.1):
     - AFNetworking (~> 3.1.0)
   - IQKeyboardManager (5.0.2)
-  - JPFPSStatus (0.1)
   - JPVideoPlayer (3.1.1)
   - JSBadgeView (1.4.1)
   - KVOController (1.2.0)
@@ -102,6 +101,31 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4.1)
   - libextobjc/UmbrellaHeader (0.4.1)
+  - LLDebugTool (1.2.2):
+    - LLDebugTool/AppInfo (= 1.2.2)
+    - LLDebugTool/Crash (= 1.2.2)
+    - LLDebugTool/General (= 1.2.2)
+    - LLDebugTool/Log (= 1.2.2)
+    - LLDebugTool/Network (= 1.2.2)
+    - LLDebugTool/Sandbox (= 1.2.2)
+    - LLDebugTool/Screenshot (= 1.2.2)
+    - LLDebugTool/StorageManager (= 1.2.2)
+  - LLDebugTool/AppInfo (1.2.2):
+    - LLDebugTool/General
+  - LLDebugTool/Crash (1.2.2):
+    - LLDebugTool/StorageManager
+  - LLDebugTool/General (1.2.2)
+  - LLDebugTool/Log (1.2.2):
+    - LLDebugTool/StorageManager
+  - LLDebugTool/Network (1.2.2):
+    - LLDebugTool/StorageManager
+  - LLDebugTool/Sandbox (1.2.2):
+    - LLDebugTool/General
+  - LLDebugTool/Screenshot (1.2.2):
+    - LLDebugTool/General
+  - LLDebugTool/StorageManager (1.2.2):
+    - FMDB
+    - LLDebugTool/General
   - LxDBAnything (1.1.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
@@ -134,6 +158,7 @@ PODS:
   - SVProgressHUD (2.1.2)
   - TTTAttributedLabel (2.0.0)
   - TXScrollLabelView (1.3.2)
+  - TYText (1.0.2)
   - UICollectionViewLeftAlignedLayout (1.0.2)
   - "UIImage+ImageWithColor (1.4.0)"
   - "UITableView+FDTemplateLayoutCell (1.6)"
@@ -184,13 +209,11 @@ DEPENDENCIES:
   - FDFullscreenPopGesture (= 1.1)
   - FFToast
   - FLEX (= 2.4.0)
-  - FMDB (= 2.6.2)
   - FXBlurView (= 1.6.4)
   - HJCornerRadius (from `https://github.com/panghaijiao/HJCornerRadius.git`)
   - HYBImageCliped (= 2.2.4)
   - HYBNetworking (~> 3.3.0)
   - IQKeyboardManager (= 5.0.2)
-  - JPFPSStatus (= 0.1)
   - JPVideoPlayer
   - JSBadgeView (= 1.4.1)
   - KVOController (= 1.2.0)
@@ -199,6 +222,7 @@ DEPENDENCIES:
   - LBXScan/LBXZXing (= 2.0)
   - LBXScan/UI (= 2.0)
   - libextobjc (= 0.4.1)
+  - LLDebugTool
   - LxDBAnything (= 1.1.0)
   - Masonry (= 1.1.0)
   - MBProgressHUD (= 1.1.0)
@@ -219,6 +243,7 @@ DEPENDENCIES:
   - SVProgressHUD (= 2.1.2)
   - TTTAttributedLabel (= 2.0.0)
   - TXScrollLabelView (= 1.3.2)
+  - TYText
   - UICollectionViewLeftAlignedLayout
   - "UIImage+ImageWithColor (= 1.4.0)"
   - "UITableView+FDTemplateLayoutCell (= 1.6)"
@@ -264,12 +289,12 @@ SPEC REPOS:
     - HYBImageCliped
     - HYBNetworking
     - IQKeyboardManager
-    - JPFPSStatus
     - JPVideoPlayer
     - JSBadgeView
     - KVOController
     - LBXScan
     - libextobjc
+    - LLDebugTool
     - LxDBAnything
     - Masonry
     - MBProgressHUD
@@ -288,6 +313,7 @@ SPEC REPOS:
     - SVProgressHUD
     - TTTAttributedLabel
     - TXScrollLabelView
+    - TYText
     - UICollectionViewLeftAlignedLayout
     - "UIImage+ImageWithColor"
     - "UITableView+FDTemplateLayoutCell"
@@ -342,18 +368,18 @@ SPEC CHECKSUMS:
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FFToast: 60e0f3c9fd8fc473205015055ee39cd200404e01
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
-  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   HJCornerRadius: 0af191386b5f2e9c4465739b5db22c0acc52923b
   HYBImageCliped: 22d14431324bc9d056353d6f1490a3bd03fc7dff
   HYBNetworking: 5b350e2eacfbf6db7d3f4253274b2f2bb68e881c
   IQKeyboardManager: 5ab84749f20f682f784160c2c63bef4f19d10d26
-  JPFPSStatus: 4467a17488382e4c1700bd9d18c92ae581fd6305
   JPVideoPlayer: 234c2fc5c9dfd67b969a5dd8233815eb872472c6
   JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   LBXScan: 458f4b7a6688504a1415dc4a0f9822100e099f66
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
+  LLDebugTool: 37e600681126878a2e398508e4ee82678aef21f2
   LxDBAnything: 154a2ad1ae32e70355d886b5443260543bb60c71
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -373,6 +399,7 @@ SPEC CHECKSUMS:
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   TXScrollLabelView: 0e1650caf61198bf5dc0938ea6493254aeb80f90
+  TYText: e19e9031c70b8eb61c7f18c17e301ead31c2c4ab
   UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
   "UIImage+ImageWithColor": 891401f732f2f332fefe68c2332c6c955c2a879c
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
@@ -395,6 +422,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: 74f02c52b369bab0bfd7db225faf4e77fcf4d59a
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 8b46aa7529002f6fed13798e5d546e05ca377723
+PODFILE CHECKSUM: bcdcb7af9b578f3934d710940e2e144a4b168335
 
 COCOAPODS: 1.7.0.beta.3

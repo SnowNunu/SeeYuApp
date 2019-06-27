@@ -40,8 +40,10 @@ NSString * const identifier = @"momentListCellIdentifier";
 }
 
 - (void)bindViewModel {
-    [RACObserve(self.viewModel, datasource) subscribeNext:^(id x) {
-        [self.tableView reloadData];
+    [RACObserve(self.viewModel, datasource) subscribeNext:^(NSArray *array) {
+        if (array.count > 0) {
+            [self.tableView reloadData];
+        }
     }];
 }
 
@@ -127,7 +129,6 @@ NSString * const identifier = @"momentListCellIdentifier";
     [[[self.viewModel.requestMomentsCommand execute:@1] deliverOnMainThread] subscribeNext:^(id x) {
         @strongify(self)
         self.viewModel.pageNum = 1;
-        [self.tableView.mj_footer resetNoMoreData];
     } error:^(NSError *error) {
         @strongify(self)
         [self.tableView.mj_header endRefreshing];
@@ -150,7 +151,9 @@ NSString * const identifier = @"momentListCellIdentifier";
     } completed:^{
         @strongify(self)
         [self.tableView.mj_footer endRefreshing];
-        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        if (self.viewModel.currentPageValues.count < self.viewModel.pageSize) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
     }];
 }
 

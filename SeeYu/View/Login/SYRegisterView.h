@@ -13,41 +13,41 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SYRegisterView : UIView 
 
 /// 昵称输入框
-@property(nonatomic, weak) UITextField *aliasTextField;
+@property (nonatomic, weak) UITextField *aliasTextField;
 
 /// 年龄按钮
-@property(nonatomic, weak) UIButton *ageBtn;
+@property (nonatomic, weak) UIButton *ageBtn;
 
 /// "男"按钮
-@property(nonatomic, weak) UIButton *maleBtn;
+@property (nonatomic, weak) UIButton *maleBtn;
 
-@property(nonatomic, strong) UITapGestureRecognizer *chooseMaleTap;
+@property (nonatomic, strong) UITapGestureRecognizer *chooseMaleTap;
 
 /// "男"文本
-@property(nonatomic, weak) UILabel *maleLabel;
+@property (nonatomic, weak) UILabel *maleLabel;
 
 /// "女"按钮
-@property(nonatomic, weak) UIButton *femaleBtn;
+@property (nonatomic, weak) UIButton *femaleBtn;
 
-@property(nonatomic, strong) UITapGestureRecognizer *chooseFemaleTap;
+@property (nonatomic, strong) UITapGestureRecognizer *chooseFemaleTap;
 
 /// "女"文本
-@property(nonatomic, weak) UILabel *femaleLabel;
+@property (nonatomic, weak) UILabel *femaleLabel;
 
 /// 职业选择框
-@property(nonatomic, weak) UIButton *jobBtn;
+@property (nonatomic, weak) UIButton *jobBtn;
 
 /// 收入选择框
-@property(nonatomic, weak) UIButton *incomeBtn;
+@property (nonatomic, weak) UIButton *incomeBtn;
 
 /// 身高选择框
-@property(nonatomic, weak) UIButton *heightBtn;
+@property (nonatomic, weak) UIButton *heightBtn;
 
 /// 婚姻状态选择框
-@property(nonatomic, weak) UIButton *maritalStatusBtn;
+@property (nonatomic, weak) UIButton *maritalStatusBtn;
 
 /// 完成按钮
-@property(nonatomic, weak) UIButton *completeBtn;
+@property (nonatomic, weak) UIButton *completeBtn;
 
 + (instancetype)registerView;
 

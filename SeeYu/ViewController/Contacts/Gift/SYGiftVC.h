@@ -11,6 +11,8 @@
 #import "SYGiftModel.h"
 #import "SYGiftListModel.h"
 #import "SYGiftListCell.h"
+#import "JX_GCDTimerManager.h"
+#import "SYGiftResultModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

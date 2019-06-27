@@ -10,11 +10,13 @@
 
 @interface SYVipVC () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic ,strong) UITableView *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic ,strong) NSArray *rightImagesArray;
+@property (nonatomic, strong) NSArray *rightImagesArray;
 
-@property (nonatomic ,strong) NSArray *rightTextsArray;
+@property (nonatomic, strong) NSArray *rightTextsArray;
+
+@property (nonatomic, assign) BOOL auditPass;
 
 @end
 
@@ -27,13 +29,22 @@
     _rightTextsArray = @[@"速配特权",@"开心畅聊",@"私密预览",@"签到奖励",@"尊贵标识",@"主播观看"];
     [self _setupSubViews];
     [self _makeSubViewsConstraints];
-    [self.viewModel.requestVipPriceInfoCommand execute:nil];
+    YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+    if ([cache containsObjectForKey:@"auditPass"]) {
+        // 有缓存数据优先读取缓存数据
+        self.auditPass = [(NSString *)[cache objectForKey:@"auditPass"] isEqualToString:@"1"];
+    } else {
+        self.auditPass = NO;
+    }
+    [self loadDatasourceByAuditPassState];
 }
 
 - (void)bindViewModel {
     [super bindViewModel];
-    [RACObserve(self.viewModel, datasource) subscribeNext:^(id x) {
-        [self.tableView reloadData];
+    [RACObserve(self.viewModel, datasource) subscribeNext:^(NSArray *array) {
+        if (array.count > 0) {
+            [self.tableView reloadData];
+        }
     }];
 }
 
@@ -55,6 +66,26 @@
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+}
+
+- (void)loadDatasourceByAuditPassState {
+    if (_auditPass) {
+        [self.viewModel.requestVipPriceInfoCommand execute:nil];
+    } else {
+        NSArray *namesArr = @[@"一个月",@"六个月",@"终身"];
+        NSArray *pricesArr = @[@"68",@"93",@"98"];
+        NSArray *productIdArr = @[@"com.xm.lovemiyue.vip.one",@"com.xm.lovemiyue.vip.six",@"com.xm.lovemiyue.vip.lifelong"];
+        NSMutableArray *tempArr = [NSMutableArray new];
+        for (int i = 0; i < 3; i++) {
+            SYGoodsModel *model = [SYGoodsModel new];
+            model.goodsId = [NSString stringWithFormat:@"%d",i + 1];
+            model.goodsName = namesArr[i];
+            model.goodsMoney = pricesArr[i];
+            model.productId = productIdArr[i];
+            [tempArr addObject:model];
+        }
+        self.viewModel.datasource = [NSArray arrayWithArray:tempArr];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -138,7 +169,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SYGoodsModel *model = self.viewModel.datasource[indexPath.row];
-    [self openPayView:model];
+    if (_auditPass) {
+        [self openPayView:model];
+    } else {
+        [[RMStore defaultStore] addPayment:model.productId success:^(SKPaymentTransaction *transaction) {
+            NSURL *receiptUrl = [[NSBundle mainBundle] appStoreReceiptURL];
+            NSData *receipt;
+            receipt = [NSData dataWithContentsOfURL:receiptUrl];
+            
+            NSString *transReceipt = [receipt base64EncodedStringWithOptions:0];
+            
+            NSLog(@"transReceipt = %@", transReceipt);
+            UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"购买成功", @"") message:[NSString stringWithFormat:@"transReceipt = %@", transReceipt] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+            [alerView show];
+        } failure:^(SKPaymentTransaction *transaction, NSError *error) {
+            
+        }];
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

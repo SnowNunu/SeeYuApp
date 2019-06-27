@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray<SYMomentsModel *> *datasource;
 
+// 当前页元素
+@property (nonatomic, strong) NSArray *currentPageValues;
+
 @property (nonatomic, strong) RACCommand *enterMomentsEditView;
 
 @property (nonatomic, strong) RACCommand *requestAllMineMomentsCommand;

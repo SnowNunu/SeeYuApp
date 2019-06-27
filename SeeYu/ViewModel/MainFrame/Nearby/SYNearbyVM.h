@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray *nearbyFriends;
 
+// 当前页元素个数
+@property (nonatomic, strong) NSArray *currentPageValues;
+
 /// 当前页
 @property (nonatomic, readwrite, assign) NSUInteger pageNum;
 

@@ -111,9 +111,11 @@
         [self judgeWhetherCanLoadMore];
         if (self.canLoadMore) {
             if (self.loadTime > SY_LOAD_TIME_PER_DAY) {
+                [self.viewModel.matchUnlikeCommand execute:self.matchModel.userId];
                 [self changeUser];  // 会员无限制
             } else if (self.loadTime > 0) {
                 [self writeCanLoadMoreCache];
+                [self.viewModel.matchUnlikeCommand execute:self.matchModel.userId];
                 [self changeUser];
             } else {
                 [self openRechargeTipsView:@"vip"];
@@ -329,11 +331,15 @@
         if (self.loadTime > SY_LOAD_TIME_PER_DAY) {
             if ([_direction isEqualToString:@"right"]) {
                 [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
+            } else {
+                [self.viewModel.matchUnlikeCommand execute:self.matchModel.userId];
             }
             [self changeUser];  // 会员无限制
         } else if (self.loadTime > 0) {
             if ([_direction isEqualToString:@"right"]) {
                 [self.viewModel.matchLikeCommand execute:self.matchModel.userId];
+            } else {
+                [self.viewModel.matchUnlikeCommand execute:self.matchModel.userId];
             }
             [self writeCanLoadMoreCache];
             [self changeUser];

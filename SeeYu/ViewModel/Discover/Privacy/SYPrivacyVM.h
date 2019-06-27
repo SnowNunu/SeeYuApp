@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 数据源
 @property (nonatomic, strong) NSArray *datasource;
 
+// 当前页元素
+@property (nonatomic, strong) NSArray *currentPageValues;
+
 @property (nonatomic, strong) RACCommand *requestPrivacyCommand;
 
 @property (nonatomic, strong) RACCommand *enterPrivacyShowViewCommand;

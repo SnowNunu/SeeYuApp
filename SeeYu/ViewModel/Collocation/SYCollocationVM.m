@@ -52,6 +52,19 @@
             [MBProgressHUD sy_showErrorTips:error];
         }
     }];
+    self.matchUnlikeCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSString *friendId) {
+        @strongify(self)
+        NSDictionary *params = @{@"userId":self.services.client.currentUser.userId,@"matchUserId":friendId};
+        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_SPEED_UNMATCH parameters:subscript.dictionary];
+        return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYSpeedMatchModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];
+    }];
+    [self.matchUnlikeCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(id x) {
+        NSLog(@"不喜欢请求成功");
+    }];
+    [self.matchUnlikeCommand.errors subscribeNext:^(NSError *error) {
+        [MBProgressHUD sy_showErrorTips:error];
+    }];
 }
 
 @end

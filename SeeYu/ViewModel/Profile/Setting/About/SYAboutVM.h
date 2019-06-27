@@ -7,10 +7,14 @@
 //
 
 #import "SYVM.h"
+#import "SYAppUpdateModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SYAboutVM : SYVM
+
+// 获取当前app最新版本信息
+@property (nonatomic, strong) RACCommand *requestUpdateInfoCommand;
 
 @end
 

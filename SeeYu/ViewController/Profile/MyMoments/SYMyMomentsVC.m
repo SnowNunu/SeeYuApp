@@ -266,7 +266,6 @@
     [[[self.viewModel.requestAllMineMomentsCommand execute:@1] deliverOnMainThread] subscribeNext:^(id x) {
         @strongify(self)
         self.viewModel.pageNum = 1;
-        [self.tableView.mj_footer resetNoMoreData];
     } error:^(NSError *error) {
         @strongify(self)
         [self.tableView.mj_header endRefreshing];
@@ -289,7 +288,9 @@
     } completed:^{
         @strongify(self)
         [self.tableView.mj_footer endRefreshing];
-        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        if (self.viewModel.currentPageValues.count < self.viewModel.pageSize) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
     }];
 }
 

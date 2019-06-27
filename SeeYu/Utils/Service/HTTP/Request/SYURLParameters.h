@@ -146,8 +146,11 @@
 /// 获取速配好友列表
 #define SY_HTTTP_PATH_USER_MATCH_SPEED_LIST     @"/application/user/querySpeedMatch"
 
-/// 发起速配请求
+/// 发起速配喜欢请求
 #define SY_HTTTP_PATH_USER_SPEED_MATCH     @"/application/user/speedMatch"
+
+/// 发起速配不喜欢请求
+#define SY_HTTTP_PATH_USER_SPEED_UNMATCH     @"/application/user/speedMatchDisLike"
 
 // 添加好友
 #define SY_HTTTP_PATH_USER_FRIEND_ADD        @"/application/userFriendRelation/addFriend"
@@ -193,6 +196,9 @@
 
 /// 获取用户收支明细
 #define SY_HTTTP_PATH_USER_PAYMENTS_DETAIL_QUERY    @"/application/userWallet/userQueryFund"
+
+/// APP版本信息
+#define SY_HTTTP_PATH_APP_UPDATE_INFO               @"/application/app/IOSUpdate"
 
 
 ///

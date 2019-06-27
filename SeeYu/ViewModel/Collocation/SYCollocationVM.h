@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) RACCommand *matchLikeCommand;
 
+@property (nonatomic, strong) RACCommand *matchUnlikeCommand;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,7 +9,7 @@
 #import "SYGuideVC.h"
 #import "JPVideoPlayerKit.h"
 
-@interface SYGuideVC ()
+@interface SYGuideVC () <TYLabelDelegate>
 
 //@property (nonatomic, strong) YYAnimatedImageView *gifImageView;
 
@@ -18,6 +18,15 @@
 @property (nonatomic, strong) UIButton *loginBtn;
 
 @property (nonatomic, strong) UIButton *registerBtn;
+
+/// 同意协议按钮
+@property (nonatomic, weak) UIButton *agreementBtn;
+
+/// 注册协议
+@property (nonatomic, weak) TYLabel *registerTips;
+
+/// 隐私政策
+@property (nonatomic, weak) TYLabel *privacyTips;
 
 @end
 
@@ -31,11 +40,26 @@
 
 - (void)bindViewModel {
     [super bindViewModel];
+    @weakify(self)
     [[_loginBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.viewModel.loginCommand execute:nil];
+        @strongify(self)
+        if (self.agreementBtn.selected) {
+            [self.viewModel.loginCommand execute:nil];
+        } else {
+            [MBProgressHUD sy_showTips:@"请先同意注册协议与隐私政策"];
+        }
     }];
     [[_registerBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.viewModel.registerCommand execute:nil];
+        @strongify(self)
+        if (self.agreementBtn.selected) {
+            [self.viewModel.registerCommand execute:nil];
+        } else {
+            [MBProgressHUD sy_showTips:@"请先同意注册协议与隐私政策"];
+        }
+    }];
+    [[_agreementBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        self.agreementBtn.selected = !self.agreementBtn.selected;
     }];
 }
 
@@ -84,6 +108,29 @@
     registerBtn.layer.cornerRadius = 20.f;
     _registerBtn = registerBtn;
     [self.view addSubview:registerBtn];
+    
+    TYLabel *registerTips = [TYLabel new];
+    registerTips.backgroundColor = [UIColor clearColor];
+    registerTips.attributedText = [self setAgreementText:@"register"];
+    registerTips.delegate = self;
+    registerTips.tag = 958;
+    _registerTips = registerTips;
+    [self.view addSubview:registerTips];
+    
+    TYLabel *privacyTips = [TYLabel new];
+    privacyTips.backgroundColor = [UIColor clearColor];
+    privacyTips.attributedText = [self setAgreementText:@"privacy"];
+    privacyTips.delegate = self;
+    privacyTips.tag = 988;
+    _privacyTips = privacyTips;
+    [self.view addSubview:privacyTips];
+    
+    UIButton *agreementBtn = [UIButton new];
+    [agreementBtn setImage:SYImageNamed(@"agree_btn_unselected") forState:UIControlStateNormal];
+    [agreementBtn setImage:SYImageNamed(@"agree_btn_selected") forState:UIControlStateSelected];
+    agreementBtn.selected = YES;
+    _agreementBtn = agreementBtn;
+    [self.view addSubview:agreementBtn];
 }
 
 - (void)_makeSubViewsConstraints {
@@ -101,6 +148,58 @@
         make.width.height.bottom.equalTo(self.loginBtn);
         make.left.equalTo(self.loginBtn.mas_right).offset(30);
     }];
+    [_agreementBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.registerTips.mas_left);
+        make.centerY.equalTo(self.registerTips);
+        make.width.height.offset(20);
+    }];
+    [_registerTips mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view).offset(-20);
+        make.height.offset(30);
+        make.bottom.equalTo(self.view).offset(-20);
+    }];
+    [_privacyTips mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.registerTips.mas_right);
+        make.height.centerY.equalTo(self.registerTips);
+    }];
 }
+
+- (NSAttributedString *)setAgreementText:(NSString *)type {
+    NSMutableAttributedString *attString = [NSMutableAttributedString new];
+    NSString *text;
+    if ([type isEqualToString:@"register"]) {
+        text = @"同意用户-注册协议";
+    } else {
+        text = @"与-隐私政策";
+    }
+    NSArray *textArray = [text componentsSeparatedByString:@"-"];
+    NSArray *colorArray = @[SYColorFromHexString(@"#454E55"),SYColorFromHexString(@"#237CB7")];
+    NSInteger index = 0;
+    for (NSString *text in textArray) {
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:text];
+        // 设置当前文本字体
+        attributedString.ty_color = colorArray[index];
+        // 设置当前文本颜色
+        attributedString.ty_font = SYFont(15, YES);
+        if (index == 1) {
+            attributedString.ty_underLineStyle = NSUnderlineStyleSingle;
+            TYTextHighlight *textHighlight = [TYTextHighlight new];
+            NSRange range = NSMakeRange(0, 4);
+            [attributedString addTextHighlightAttribute:textHighlight range:range];
+        }
+        [attString appendAttributedString:attributedString];
+        ++index;
+    }
+    return attString;
+}
+
+- (void)label:(TYLabel *)label didTappedTextHighlight:(TYTextHighlight *)textHighlight {
+    if (label.tag == 958) {
+        [self.viewModel.enterRegisterAgreementViewCommand execute:nil];
+    } else {
+        [self.viewModel.enterPrivacyAgreementViewCommand execute:nil];
+    }
+}
+
 
 @end

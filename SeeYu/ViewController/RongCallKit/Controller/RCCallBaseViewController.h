@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import "SYSocketManager.h"
 #import "JX_GCDTimerManager.h"
+#import "SYPrivacyDetailModel.h"
 
 /*!
  通话的ViewController基类
@@ -119,6 +120,9 @@
  信号强度ImageView
  */
 @property (nonatomic, strong) UIImageView *signalImageView;
+
+/* 是否为好友关系 */
+@property (nonatomic, assign) BOOL isFriend;
 
 #pragma mark - 回调
 /*!

@@ -10,6 +10,7 @@
 #import "SYVipVM.h"
 #import "SYPayVM.h"
 #import "SYPayVC.h"
+#import "RMStore.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

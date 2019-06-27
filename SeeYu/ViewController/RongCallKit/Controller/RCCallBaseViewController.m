@@ -86,11 +86,24 @@
         }
         [self registerForegroundNotification];
         [RCCallKitUtility setScreenForceOn];
-        // 呼出会话时建立websocket连接
-        [[SYAppDelegate sharedDelegate] tryToConnectToChargingServer];
-        // 这里单独启动一个定时器监听服务器连接状态 10S收不到服务器连接成功的响应就挂断
-        [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"checkServerConnectStatus" timeInterval:10 queue:dispatch_get_main_queue() repeats:NO fireInstantly:NO action:^{
-            [MBProgressHUD sy_showTips:@"与服务器连接出错，请检查网络或稍候再试!" addedToView:self.view];
+        NSDictionary *params = @{@"userId":SYSharedAppDelegate.services.client.currentUserId, @"friendUserId":targetId};
+        SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_FRIENDSSHIP_INFO parameters:subscript.dictionary];
+        [[[[SYSharedAppDelegate.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYPrivacyDetailModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(SYPrivacyDetailModel *model) {
+            if ([model.isFriend isEqualToString:@"1"]) {
+                self.isFriend = YES;
+            } else {
+                self.isFriend = NO;
+                // 呼出会话时建立websocket连接
+                [[SYAppDelegate sharedDelegate] tryToConnectToChargingServer];
+                // 这里单独启动一个定时器监听服务器连接状态 10S收不到服务器连接成功的响应就挂断
+                [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"checkServerConnectStatus" timeInterval:10 queue:dispatch_get_main_queue() repeats:NO fireInstantly:NO action:^{
+                    [MBProgressHUD sy_showTips:@"与服务器连接出错，请检查网络或稍候再试!" addedToView:self.view];
+                    [self hangupButtonClicked];
+                }];
+            }
+        } error:^(NSError *error) {
+            NSLog(@"%@",error);
             [self hangupButtonClicked];
         }];
     }
@@ -209,7 +222,7 @@
                                                  name:UIApplicationDidChangeStatusBarOrientationNotification
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(hangupButtonClicked)
+                                             selector:@selector(hangupByTimer:)
                                                  name:@"HangUpVideo"
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -620,6 +633,22 @@
     } else {
         [self disconnectFromServer];
         [self.callSession hangup];
+    }
+}
+
+- (void)hangupByTimer:(NSNotification *)notification {
+    NSDictionary *dict = notification.object;
+    if (dict != nil) {
+        int minutes = [dict[@"time"] intValue];
+        int seconds = 60 - (int)([[NSDate date] timeIntervalSince1970] - self.callSession.connectedTime / 1000) % 60 + 60 *minutes;
+        NSLog(@"实际挂断时间间隔为:%d",seconds);
+        [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"HangUpVideo" timeInterval:seconds queue:dispatch_get_main_queue() repeats:NO fireInstantly:NO action:^{
+            [self hangupButtonClicked];
+        }];
+    } else {
+        [[JX_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:@"HangUpVideo" timeInterval:0 queue:dispatch_get_main_queue() repeats:NO fireInstantly:NO action:^{
+            [self hangupButtonClicked];
+        }];
     }
 }
 
@@ -1722,7 +1751,9 @@
             id userId = [cache objectForKey:@"videoUserId"];
             id receiveUserId = [cache objectForKey:@"videoReceiveUserId"];
             NSDictionary *params = @{@"type":@"2",@"userId":(NSString *)userId,@"receiveUserId":(NSString *)receiveUserId};
-            [[SYAppDelegate sharedDelegate] sendMessageByWebSocketService:[params yy_modelToJSONString]];
+            if (!self.isFriend) {
+                [[SYAppDelegate sharedDelegate] sendMessageByWebSocketService:[params yy_modelToJSONString]];
+            }
         } else {
             // 只有非主播用户才会计费
 //            [MBProgressHUD sy_showTips:@"客户端异常，请联系客服!" addedToView:self.view];

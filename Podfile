@@ -55,7 +55,10 @@ pod 'SVProgressHUD'                     , '2.1.2'
 pod 'FFToast'
 
 # 数据库
-pod 'FMDB'                              , '2.6.2'
+#pod 'FMDB'
+
+# 带下划线跳转文本
+pod 'TYText'
 
 # 环形进度条
 pod 'DACircularProgress'                , '2.3.1'
@@ -90,7 +93,9 @@ pod 'SAMKeychain'                       , '1.5.2'
 #pod 'MMMaterialDesignSpinner', '0.2.3'
 
 #FPS检测
-pod 'JPFPSStatus', '0.1'
+#pod 'JPFPSStatus', '0.1'
+
+pod 'LLDebugTool'                       ,:configurations => ['Debug']
 
 #打印一切
 pod 'LxDBAnything', '1.1.0'

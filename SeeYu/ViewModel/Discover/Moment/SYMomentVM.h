@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 动态列表数组
 @property (nonatomic, strong) NSArray *moments;
 
+// 当前页数据源元素
+@property (nonatomic, strong) NSArray *currentPageValues;
+
 @property (nonatomic, strong) RACCommand *requestMomentsCommand;
 
 @end

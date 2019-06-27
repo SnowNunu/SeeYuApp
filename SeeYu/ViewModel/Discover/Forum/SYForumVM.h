@@ -24,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 论坛列表数组
 @property (nonatomic, strong) NSArray *forums;
 
+// 当前页全部元素
+@property (nonatomic, strong) NSArray *currentPageValues;
+
 // 请求所有的话题列表
 @property (nonatomic, strong) RACCommand *requestForumsCommand;
 

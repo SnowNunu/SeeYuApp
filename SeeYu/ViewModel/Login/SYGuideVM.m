@@ -31,6 +31,18 @@
         [self.services pushViewModel:vm animated:YES];
         return [RACSignal empty];
     }];
+    self.enterRegisterAgreementViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self)
+        SYRegisterTipsVM *vm = [[SYRegisterTipsVM alloc] initWithServices:self.services params:nil];
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
+    }];
+    self.enterPrivacyAgreementViewCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self)
+        SYPrivacyTipsVM *vm = [[SYPrivacyTipsVM alloc] initWithServices:self.services params:nil];
+        [self.services pushViewModel:vm animated:YES];
+        return [RACSignal empty];
+    }];
 }
 
 @end

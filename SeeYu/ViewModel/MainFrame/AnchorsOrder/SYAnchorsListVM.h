@@ -29,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 主播列表
 @property (nonatomic, strong) NSArray *anchorsArray;
 
+// 当前页主播元素
+@property (nonatomic, strong) NSArray *currentPageValues;
+
 // 获取主播列表
 @property (nonatomic, strong) RACCommand *requestAnchorsListCommand;
 

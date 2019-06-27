@@ -7,6 +7,7 @@
 //
 
 #import "SYVM.h"
+#import "SYGiftResultModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

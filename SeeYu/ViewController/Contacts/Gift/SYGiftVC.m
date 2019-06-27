@@ -78,9 +78,23 @@ static NSString *reuseIdentifier = @"giftListCellIdentifier";
             }
         }
     }];
-    [self.viewModel.sendGiftCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYUser *user) {
+    [self.viewModel.sendGiftCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYGiftResultModel *result) {
+        SYUser *user = self.viewModel.user;
+        user.userDiamond = result.diamond;
         self.viewModel.user = user;
         [self.viewModel.services.client saveUser:user];
+        if (result.longestMinutes == -1) {
+            // 非主播用户
+        } else {
+            NSLog(@"更新挂断时长为：%d",result.longestMinutes);
+            // 主播的话送完礼物后重新计算挂断时长
+            [[JX_GCDTimerManager sharedInstance] checkExistTimer:@"HangUpVideo" completion:^(BOOL doExist) {
+                if (doExist) {
+                    [[JX_GCDTimerManager sharedInstance] cancelTimerWithName:@"HangUpVideo"];
+                }
+                [SYNotificationCenter postNotificationName:@"HangUpVideo" object:@{@"time":[NSString stringWithFormat:@"%d",result.longestMinutes]}];
+            }];
+        }
         [MBProgressHUD sy_showTips:@"礼物赠送成功" addedToView:self.view];
     }];
     [self.viewModel.sendGiftCommand.errors subscribeNext:^(NSError *error) {

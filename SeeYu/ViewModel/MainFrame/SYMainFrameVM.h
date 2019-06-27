@@ -13,6 +13,7 @@
 #import "SYAnchorsOrderVM.h"
 #import "SYAnchorsRandomVM.h"
 #import "SYGiftPackageModel.h"
+#import "SYAppUpdateModel.h"
 
 @interface SYMainFrameVM : SYVM
 
@@ -34,5 +35,8 @@
 
 // 上传用户经纬度信息
 @property (nonatomic, strong) RACCommand *uploadLocationInfoCommand;
+
+// 获取当前app最新版本信息
+@property (nonatomic, strong) RACCommand *requestUpdateInfoCommand;
 
 @end

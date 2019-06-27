@@ -47,6 +47,7 @@
 
 - (RACSignal *)requestRemoteMyCommentsDataSignalWithPage:(NSUInteger)page {
     NSArray * (^mapMoments)(NSArray *) = ^(NSArray *array) {
+        self.currentPageValues = array;
         if (page == 1) {
             /// 下拉刷新
         } else {

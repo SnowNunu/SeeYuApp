@@ -8,6 +8,7 @@
 
 #import "SYVC.h"
 #import "SYGuideVM.h"
+#import "TYLabel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -29,6 +29,12 @@
     [self _makeSubViewsConstraints];
 }
 
+- (void)bindViewModel {
+    [super bindViewModel];
+    [[self.checkUpdateBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.viewModel.requestUpdateInfoCommand execute:nil];
+    }];
+}
 
 - (void)_setupSubViews {
     UIImageView *logoImageView = [UIImageView new];
@@ -46,7 +52,7 @@
     
     UILabel *versionLabel = [UILabel new];
     versionLabel.textAlignment = NSTextAlignmentCenter;
-    versionLabel.text = [NSString stringWithFormat:@"V%@",SY_APP_BUILD];
+    versionLabel.text = [NSString stringWithFormat:@"V%@",SY_APP_VERSION];
     versionLabel.font = SYRegularFont(18);
     versionLabel.textColor = SYColor(153, 153, 153);
     _versionLabel = versionLabel;

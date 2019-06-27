@@ -81,6 +81,41 @@
     [self.uploadLocationInfoCommand.errors subscribeNext:^(NSError *error) {
         [MBProgressHUD sy_showErrorTips:error];
     }];
+    self.requestUpdateInfoCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        SYKeyedSubscript *subscript = [SYKeyedSubscript subscript];
+        SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_APP_UPDATE_INFO parameters:subscript.dictionary];
+        SYHTTPRequest *request = [SYHTTPRequest requestWithParameters:paramters];
+        return [[self.services.client enqueueRequest:request resultClass:[SYAppUpdateModel class]] sy_parsedResults];
+    }];
+    [self.requestUpdateInfoCommand.executionSignals.switchToLatest.deliverOnMainThread subscribeNext:^(SYAppUpdateModel *model) {
+        YYCache *cache = [YYCache cacheWithName:@"seeyu"];
+        NSLog(@"服务器版本:%f",model.version);
+        if ([SY_APP_VERSION floatValue] > model.version) {
+            // 本地版本高于服务器版本(此种情况为APP正在审核)
+            [cache setObject:@"0" forKey:@"auditPass"];
+        } else {
+            [cache setObject:@"1" forKey:@"auditPass"];
+            if ([SY_APP_VERSION floatValue] < model.version) {
+                // 提示应用需要更新
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"检测到APP有新的版本，是否前往更新？" preferredStyle:UIAlertControllerStyleAlert];
+                [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                }]];
+                [alertController addAction:[UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                    if (model.downloadLink != nil && model.downloadLink.length > 0) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:model.downloadLink]];
+                    }
+                }]];
+                UIWindow *alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+                alertWindow.rootViewController = [[UIViewController alloc] init];
+                alertWindow.windowLevel = UIWindowLevelAlert + 1;
+                [alertWindow makeKeyAndVisible];
+                [alertWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
+            }
+        }
+    }];
+    [self.requestUpdateInfoCommand.errors subscribeNext:^(NSError *error) {
+        [MBProgressHUD sy_showErrorTips:error];
+    }];
 }
 @end
 

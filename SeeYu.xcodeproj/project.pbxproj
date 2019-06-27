@@ -68,7 +68,6 @@
 		2633E01D1FEA07E300D0E187 /* SYSegmentedControlViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2633E01C1FEA07E300D0E187 /* SYSegmentedControlViewModel.m */; };
 		2634C7221FF0A33A00B1F639 /* SYTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2634C7211FF0A33A00B1F639 /* SYTableView.m */; };
 		26363AC920134258000061EF /* SYEmoticonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26363AC820134258000061EF /* SYEmoticonManager.m */; };
-		26363ACB20134298000061EF /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26363ACA20134297000061EF /* Emoticons.bundle */; };
 		26363ACF201346E6000061EF /* SYEmoticonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 26363ACE201346E6000061EF /* SYEmoticonGroup.m */; };
 		26363AD2201346FC000061EF /* SYEmoticon.m in Sources */ = {isa = PBXBuildFile; fileRef = 26363AD1201346FC000061EF /* SYEmoticon.m */; };
 		2638C5AD20450DC300C334E2 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2638C5AC20450DC300C334E2 /* UIImage+ImageEffects.m */; };
@@ -182,6 +181,7 @@
 		7B0228B7223B55020045E25F /* SYFriendGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228B6223B55020045E25F /* SYFriendGroupModel.m */; };
 		7B0228BA223B7D9D0045E25F /* SYFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228B9223B7D9D0045E25F /* SYFriendModel.m */; };
 		7B0228BE223B87810045E25F /* SYFriendsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0228BD223B87810045E25F /* SYFriendsListCell.m */; };
+		7B0D654322C1B15700BE2868 /* SYAppUpdateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D654222C1B15700BE2868 /* SYAppUpdateModel.m */; };
 		7B1279E62274B0AA0007833A /* SYGiftPackageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1279E52274B0AA0007833A /* SYGiftPackageModel.m */; };
 		7B15EC6D2265BAF100A80BD5 /* ZYClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC4E2265BAF000A80BD5 /* ZYClipViewController.m */; };
 		7B15EC6E2265BAF100A80BD5 /* ZYImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15EC502265BAF000A80BD5 /* ZYImagePickerController.m */; };
@@ -351,6 +351,11 @@
 		7B78816F224FB74700B25CA3 /* SYNewFriendsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78816E224FB74700B25CA3 /* SYNewFriendsVM.m */; };
 		7B788172224FBB8300B25CA3 /* SYNewFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B788171224FBB8300B25CA3 /* SYNewFriendModel.m */; };
 		7B7B1AA3225B2FAF008C7EEA /* SYPrivacyDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B1AA2225B2FAF008C7EEA /* SYPrivacyDetailModel.m */; };
+		7B7CED2822BB6F4D00CE2784 /* SYGiftResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CED2722BB6F4D00CE2784 /* SYGiftResultModel.m */; };
+		7B7E748922BA280700298D49 /* SYRegisterTipsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E748822BA280700298D49 /* SYRegisterTipsVC.m */; };
+		7B7E748C22BA281A00298D49 /* SYRegisterTipsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E748B22BA281A00298D49 /* SYRegisterTipsVM.m */; };
+		7B7E748F22BA2ED500298D49 /* SYPrivacyTipsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E748E22BA2ED500298D49 /* SYPrivacyTipsVM.m */; };
+		7B7E749222BA31F000298D49 /* SYPrivacyTipsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E749122BA31F000298D49 /* SYPrivacyTipsVC.m */; };
 		7B92871D22450AC100CABC5F /* SYSpeedMatchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B92871C22450AC100CABC5F /* SYSpeedMatchModel.m */; };
 		7B94A22922856194008453C7 /* SYGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B94A22822856194008453C7 /* SYGoodsModel.m */; };
 		7B94A22C228567FB008453C7 /* SYPayInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B94A22B228567FB008453C7 /* SYPayInfoModel.m */; };
@@ -457,6 +462,7 @@
 		7BF37C3C2272F9790042BC4F /* SYSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C3B2272F9790042BC4F /* SYSocketManager.m */; };
 		7BF37C3F227349D90042BC4F /* SYMomentsEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C3E227349D90042BC4F /* SYMomentsEditVC.m */; };
 		7BF37C4222734A380042BC4F /* SYMomentsEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C4122734A380042BC4F /* SYMomentsEditVM.m */; };
+		7BF540F322BCCB0200D6443E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF540F222BCCB0200D6443E /* StoreKit.framework */; };
 		864BB5E20D5521374F720EC0 /* Pods_SeeYu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F38DBDD0C5EE456B831E4A /* Pods_SeeYu.framework */; };
 		AD21F790DBB21B99763DBF6A /* Pods_SeeYu_SeeYuUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F007961429C86520F15C504 /* Pods_SeeYu_SeeYuUITests.framework */; };
 		FF517F8EEC68B750C774C0C7 /* Pods_SeeYu_SeeYuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F609A3FCDE82ED766B6FC1F9 /* Pods_SeeYu_SeeYuTests.framework */; };
@@ -614,7 +620,6 @@
 		2634C7211FF0A33A00B1F639 /* SYTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYTableView.m; sourceTree = "<group>"; };
 		26363AC720134258000061EF /* SYEmoticonManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYEmoticonManager.h; sourceTree = "<group>"; };
 		26363AC820134258000061EF /* SYEmoticonManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYEmoticonManager.m; sourceTree = "<group>"; };
-		26363ACA20134297000061EF /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
 		26363ACD201346E6000061EF /* SYEmoticonGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYEmoticonGroup.h; sourceTree = "<group>"; };
 		26363ACE201346E6000061EF /* SYEmoticonGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYEmoticonGroup.m; sourceTree = "<group>"; };
 		26363AD0201346FC000061EF /* SYEmoticon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYEmoticon.h; sourceTree = "<group>"; };
@@ -845,6 +850,8 @@
 		7B0228B9223B7D9D0045E25F /* SYFriendModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYFriendModel.m; sourceTree = "<group>"; };
 		7B0228BC223B87810045E25F /* SYFriendsListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYFriendsListCell.h; sourceTree = "<group>"; };
 		7B0228BD223B87810045E25F /* SYFriendsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYFriendsListCell.m; sourceTree = "<group>"; };
+		7B0D654122C1B15700BE2868 /* SYAppUpdateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYAppUpdateModel.h; sourceTree = "<group>"; };
+		7B0D654222C1B15700BE2868 /* SYAppUpdateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYAppUpdateModel.m; sourceTree = "<group>"; };
 		7B1279E42274B0AA0007833A /* SYGiftPackageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGiftPackageModel.h; sourceTree = "<group>"; };
 		7B1279E52274B0AA0007833A /* SYGiftPackageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGiftPackageModel.m; sourceTree = "<group>"; };
 		7B15EC4D2265BAF000A80BD5 /* ZYClipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClipViewController.h; sourceTree = "<group>"; };
@@ -1172,6 +1179,16 @@
 		7B788171224FBB8300B25CA3 /* SYNewFriendModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYNewFriendModel.m; sourceTree = "<group>"; };
 		7B7B1AA1225B2FAF008C7EEA /* SYPrivacyDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPrivacyDetailModel.h; sourceTree = "<group>"; };
 		7B7B1AA2225B2FAF008C7EEA /* SYPrivacyDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPrivacyDetailModel.m; sourceTree = "<group>"; };
+		7B7CED2622BB6F4D00CE2784 /* SYGiftResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGiftResultModel.h; sourceTree = "<group>"; };
+		7B7CED2722BB6F4D00CE2784 /* SYGiftResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGiftResultModel.m; sourceTree = "<group>"; };
+		7B7E748722BA280700298D49 /* SYRegisterTipsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYRegisterTipsVC.h; sourceTree = "<group>"; };
+		7B7E748822BA280700298D49 /* SYRegisterTipsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYRegisterTipsVC.m; sourceTree = "<group>"; };
+		7B7E748A22BA281A00298D49 /* SYRegisterTipsVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYRegisterTipsVM.h; sourceTree = "<group>"; };
+		7B7E748B22BA281A00298D49 /* SYRegisterTipsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYRegisterTipsVM.m; sourceTree = "<group>"; };
+		7B7E748D22BA2ED500298D49 /* SYPrivacyTipsVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPrivacyTipsVM.h; sourceTree = "<group>"; };
+		7B7E748E22BA2ED500298D49 /* SYPrivacyTipsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPrivacyTipsVM.m; sourceTree = "<group>"; };
+		7B7E749022BA31F000298D49 /* SYPrivacyTipsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYPrivacyTipsVC.h; sourceTree = "<group>"; };
+		7B7E749122BA31F000298D49 /* SYPrivacyTipsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYPrivacyTipsVC.m; sourceTree = "<group>"; };
 		7B92871B22450AC100CABC5F /* SYSpeedMatchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSpeedMatchModel.h; sourceTree = "<group>"; };
 		7B92871C22450AC100CABC5F /* SYSpeedMatchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSpeedMatchModel.m; sourceTree = "<group>"; };
 		7B94A22722856194008453C7 /* SYGoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGoodsModel.h; sourceTree = "<group>"; };
@@ -1390,6 +1407,7 @@
 		7BF37C3E227349D90042BC4F /* SYMomentsEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMomentsEditVC.m; sourceTree = "<group>"; };
 		7BF37C4022734A380042BC4F /* SYMomentsEditVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMomentsEditVM.h; sourceTree = "<group>"; };
 		7BF37C4122734A380042BC4F /* SYMomentsEditVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMomentsEditVM.m; sourceTree = "<group>"; };
+		7BF540F222BCCB0200D6443E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		94F38DBDD0C5EE456B831E4A /* Pods_SeeYu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeYu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971B7041FF0A7CD187AB3BEE /* Pods-SeeYu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeYu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeeYu/Pods-SeeYu.debug.xcconfig"; sourceTree = "<group>"; };
 		AB79D87EFBDD8EDD42D99FD8 /* Pods-SeeYu-SeeYuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeeYu-SeeYuUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeeYu-SeeYuUITests/Pods-SeeYu-SeeYuUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1403,6 +1421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				864BB5E20D5521374F720EC0 /* Pods_SeeYu.framework in Frameworks */,
+				7BF540F322BCCB0200D6443E /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1687,6 +1706,7 @@
 		26064AF51F5DB46500566B95 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				7B7E748522BA27CC00298D49 /* Agreement */,
 				7BC6FC0B2237D0C10079330A /* SYGuideVC.h */,
 				7BC6FC0C2237D0C10079330A /* SYGuideVC.m */,
 				7BC6FC112237F2780079330A /* SYLoginVC.h */,
@@ -1863,6 +1883,7 @@
 		26225D7F1F65506E0074BFC3 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				7B7E748622BA27E100298D49 /* Agreement */,
 				7BC6FC0E2237D0F90079330A /* SYGuideVM.h */,
 				7BC6FC0F2237D0F90079330A /* SYGuideVM.m */,
 				7BC6FC142237F28C0079330A /* SYLoginVM.h */,
@@ -2376,7 +2397,6 @@
 			isa = PBXGroup;
 			children = (
 				7BCDF38E2289548400D52640 /* login.mp4 */,
-				26363ACA20134297000061EF /* Emoticons.bundle */,
 			);
 			path = Pictures;
 			sourceTree = "<group>";
@@ -2591,6 +2611,15 @@
 				7B0228BD223B87810045E25F /* SYFriendsListCell.m */,
 			);
 			path = friendsList;
+			sourceTree = "<group>";
+		};
+		7B0D654022C1B14500BE2868 /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				7B0D654122C1B15700BE2868 /* SYAppUpdateModel.h */,
+				7B0D654222C1B15700BE2868 /* SYAppUpdateModel.m */,
+			);
+			path = Update;
 			sourceTree = "<group>";
 		};
 		7B1279E32274B08B0007833A /* GiftPackage */ = {
@@ -3241,6 +3270,7 @@
 		7B590935223F8AB300EE5ACF /* MainFrame */ = {
 			isa = PBXGroup;
 			children = (
+				7B0D654022C1B14500BE2868 /* Update */,
 				7B1279E32274B08B0007833A /* GiftPackage */,
 				7B9A1BD022439B8A00B7BFC2 /* AnchorsRandom */,
 				7B9A1BCC22437D5100B7BFC2 /* Ranking */,
@@ -3662,6 +3692,28 @@
 			path = chatting;
 			sourceTree = "<group>";
 		};
+		7B7E748522BA27CC00298D49 /* Agreement */ = {
+			isa = PBXGroup;
+			children = (
+				7B7E748722BA280700298D49 /* SYRegisterTipsVC.h */,
+				7B7E748822BA280700298D49 /* SYRegisterTipsVC.m */,
+				7B7E749022BA31F000298D49 /* SYPrivacyTipsVC.h */,
+				7B7E749122BA31F000298D49 /* SYPrivacyTipsVC.m */,
+			);
+			path = Agreement;
+			sourceTree = "<group>";
+		};
+		7B7E748622BA27E100298D49 /* Agreement */ = {
+			isa = PBXGroup;
+			children = (
+				7B7E748A22BA281A00298D49 /* SYRegisterTipsVM.h */,
+				7B7E748B22BA281A00298D49 /* SYRegisterTipsVM.m */,
+				7B7E748D22BA2ED500298D49 /* SYPrivacyTipsVM.h */,
+				7B7E748E22BA2ED500298D49 /* SYPrivacyTipsVM.m */,
+			);
+			path = Agreement;
+			sourceTree = "<group>";
+		};
 		7B92871A22450A6F00CABC5F /* Collocation */ = {
 			isa = PBXGroup;
 			children = (
@@ -4078,6 +4130,8 @@
 				7BC56A84227018A1005C1F81 /* SYGiftModel.m */,
 				7BB1ED3E22B6A7AE007528CC /* SYGiftListModel.h */,
 				7BB1ED3F22B6A7AE007528CC /* SYGiftListModel.m */,
+				7B7CED2622BB6F4D00CE2784 /* SYGiftResultModel.h */,
+				7B7CED2722BB6F4D00CE2784 /* SYGiftResultModel.m */,
 			);
 			path = Gift;
 			sourceTree = "<group>";
@@ -4388,6 +4442,7 @@
 		DB1E4F3D3B653F9FE4DEFF73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BF540F222BCCB0200D6443E /* StoreKit.framework */,
 				7BC56A6C226ECA42005C1F81 /* CoreImage.framework */,
 				7BE971C2225E36AD00FF6A25 /* RongCallKit.framework */,
 				94F38DBDD0C5EE456B831E4A /* Pods_SeeYu.framework */,
@@ -4493,6 +4548,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -4520,6 +4578,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -4541,7 +4600,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				26FE8E471F95143D00EC8BE0 /* IDMPBLocalizations.bundle in Resources */,
-				26363ACB20134298000061EF /* Emoticons.bundle in Resources */,
 				7B66334F223178F2002B220E /* birthday.json in Resources */,
 				7B98B952227606A60074D0A0 /* JSResources.bundle in Resources */,
 				26FE8E491F95143D00EC8BE0 /* IDMPhotoBrowser.bundle in Resources */,
@@ -4706,11 +4764,11 @@
 				"${BUILT_PRODUCTS_DIR}/HYBImageCliped/HYBImageCliped.framework",
 				"${BUILT_PRODUCTS_DIR}/HYBNetworking/HYBNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/JPFPSStatus/JPFPSStatus.framework",
 				"${BUILT_PRODUCTS_DIR}/JPVideoPlayer/JPVideoPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/JSBadgeView/JSBadgeView.framework",
 				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
 				"${BUILT_PRODUCTS_DIR}/LBXScan/LBXScan.framework",
+				"${BUILT_PRODUCTS_DIR}/LLDebugTool/LLDebugTool.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -4726,6 +4784,7 @@
 				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 				"${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/TXScrollLabelView/TXScrollLabelView.framework",
+				"${BUILT_PRODUCTS_DIR}/TYText/TYText.framework",
 				"${BUILT_PRODUCTS_DIR}/UICollectionViewLeftAlignedLayout/UICollectionViewLeftAlignedLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImage+ImageWithColor/UIImageWithColor.framework",
 				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
@@ -4769,11 +4828,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBImageCliped.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPFPSStatus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPVideoPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSBadgeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBXScan.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LLDebugTool.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -4789,6 +4848,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTTAttributedLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TXScrollLabelView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TYText.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICollectionViewLeftAlignedLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageWithColor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
@@ -4888,11 +4948,11 @@
 				"${BUILT_PRODUCTS_DIR}/HYBImageCliped/HYBImageCliped.framework",
 				"${BUILT_PRODUCTS_DIR}/HYBNetworking/HYBNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/JPFPSStatus/JPFPSStatus.framework",
 				"${BUILT_PRODUCTS_DIR}/JPVideoPlayer/JPVideoPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/JSBadgeView/JSBadgeView.framework",
 				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
 				"${BUILT_PRODUCTS_DIR}/LBXScan/LBXScan.framework",
+				"${BUILT_PRODUCTS_DIR}/LLDebugTool/LLDebugTool.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -4908,6 +4968,7 @@
 				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 				"${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/TXScrollLabelView/TXScrollLabelView.framework",
+				"${BUILT_PRODUCTS_DIR}/TYText/TYText.framework",
 				"${BUILT_PRODUCTS_DIR}/UICollectionViewLeftAlignedLayout/UICollectionViewLeftAlignedLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImage+ImageWithColor/UIImageWithColor.framework",
 				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
@@ -4951,11 +5012,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBImageCliped.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPFPSStatus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPVideoPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSBadgeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBXScan.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LLDebugTool.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -4971,6 +5032,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTTAttributedLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TXScrollLabelView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TYText.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICollectionViewLeftAlignedLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageWithColor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
@@ -5024,11 +5086,11 @@
 				"${BUILT_PRODUCTS_DIR}/HYBImageCliped/HYBImageCliped.framework",
 				"${BUILT_PRODUCTS_DIR}/HYBNetworking/HYBNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/JPFPSStatus/JPFPSStatus.framework",
 				"${BUILT_PRODUCTS_DIR}/JPVideoPlayer/JPVideoPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/JSBadgeView/JSBadgeView.framework",
 				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
 				"${BUILT_PRODUCTS_DIR}/LBXScan/LBXScan.framework",
+				"${BUILT_PRODUCTS_DIR}/LLDebugTool/LLDebugTool.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -5044,6 +5106,7 @@
 				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 				"${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/TXScrollLabelView/TXScrollLabelView.framework",
+				"${BUILT_PRODUCTS_DIR}/TYText/TYText.framework",
 				"${BUILT_PRODUCTS_DIR}/UICollectionViewLeftAlignedLayout/UICollectionViewLeftAlignedLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImage+ImageWithColor/UIImageWithColor.framework",
 				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
@@ -5087,11 +5150,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBImageCliped.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HYBNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPFPSStatus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JPVideoPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSBadgeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBXScan.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LLDebugTool.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -5107,6 +5170,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTTAttributedLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TXScrollLabelView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TYText.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICollectionViewLeftAlignedLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageWithColor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
@@ -5166,6 +5230,7 @@
 				26FE8E931F9514D100EC8BE0 /* UIView+Layout.m in Sources */,
 				7BC6FC0322374CB60079330A /* SYRCIMDataSource.m in Sources */,
 				7B52A76522982C630043511C /* SYUnionWithdrawalVC.m in Sources */,
+				7B7E748F22BA2ED500298D49 /* SYPrivacyTipsVM.m in Sources */,
 				7B76B8D7226A310200153249 /* SYGiftVM.m in Sources */,
 				26FE8E841F9514D100EC8BE0 /* UIView+SDExtension.m in Sources */,
 				26BEBC7D1F8B78B1004D502F /* SYEXTRuntimeExtensions.m in Sources */,
@@ -5223,6 +5288,7 @@
 				26225D771F654DEE0074BFC3 /* SYWebVC.m in Sources */,
 				7B7881062248898000B25CA3 /* SYForumVM.m in Sources */,
 				26AEEE0D1F7D16F600A270EE /* SYSearchBar.m in Sources */,
+				7B7CED2822BB6F4D00CE2784 /* SYGiftResultModel.m in Sources */,
 				7B747A542236229500B3F6A0 /* XFCameraController.m in Sources */,
 				7B2A21A42276B67B00EC8614 /* CYWebViewController.m in Sources */,
 				7B61945B21D760C9004055A2 /* SYRegisterView.m in Sources */,
@@ -5260,6 +5326,7 @@
 				7BB1ED4022B6A7AE007528CC /* SYGiftListModel.m in Sources */,
 				2605C5D31F6632AA00B1F66E /* SYContactsVC.m in Sources */,
 				7B4BF4622251AE4C00CCD286 /* VideoEditingView.m in Sources */,
+				7B7E748C22BA281A00298D49 /* SYRegisterTipsVM.m in Sources */,
 				7B78811622489A2000B25CA3 /* SYForumListCell.m in Sources */,
 				7BC56A79226F0304005C1F81 /* SYSignatureView.m in Sources */,
 				7B1E733522267765001299C0 /* SYCollocationVM.m in Sources */,
@@ -5292,6 +5359,7 @@
 				26225D971F6557290074BFC3 /* SYViewModelServicesImpl.m in Sources */,
 				26FE8E911F9514D100EC8BE0 /* TZProgressView.m in Sources */,
 				7B98B94C227606A60074D0A0 /* WKWebView+CookiesManager.m in Sources */,
+				7B7E748922BA280700298D49 /* SYRegisterTipsVC.m in Sources */,
 				7BC56A75226EFE60005C1F81 /* SYSignatureVC.m in Sources */,
 				7B78816C224FB6C800B25CA3 /* SYNewFriendsVC.m in Sources */,
 				7B98B9002275DA380074D0A0 /* RCCallMultiCallUserCell.m in Sources */,
@@ -5367,6 +5435,7 @@
 				2617531D1F739C1900812E1B /* SYCommonLabelItemViewModel.m in Sources */,
 				263D36E31F666438007267C3 /* NSAttributedString+SYSize.m in Sources */,
 				7BE971E7225F9F8700FF6A25 /* SYPresentVM.m in Sources */,
+				7B7E749222BA31F000298D49 /* SYPrivacyTipsVC.m in Sources */,
 				2605C5D01F66326000B1F66E /* SYDiscoverVC.m in Sources */,
 				263D36DC1F666438007267C3 /* MBProgressHUD+SYExtension.m in Sources */,
 				7B98B8F92275DA380074D0A0 /* RCCallSingleCallViewController.m in Sources */,
@@ -5528,6 +5597,7 @@
 				7B7881312249D80000B25CA3 /* SYMomentsModel.m in Sources */,
 				7B4BF4872251B3BC00CCD286 /* UIView+SDAutoLayout.m in Sources */,
 				263D36DF1F666438007267C3 /* NSDateFormatter+Extension.m in Sources */,
+				7B0D654322C1B15700BE2868 /* SYAppUpdateModel.m in Sources */,
 				7B52A76122982C630043511C /* SYAlipayConfirmVC.m in Sources */,
 				7B66335B22325302002B220E /* SYUserHobby.m in Sources */,
 				7B15EC732265BAF100A80BD5 /* ZYClipView.m in Sources */,

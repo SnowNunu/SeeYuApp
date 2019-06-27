@@ -51,6 +51,7 @@
     [self startLocating];   // 开启定位
     [self.viewModel.requestPermissionsCommand execute:nil];
     [self.viewModel.loginReportCommand execute:nil];
+    [self.viewModel.requestUpdateInfoCommand execute:nil];
 }
 
 - (void)bindViewModel {

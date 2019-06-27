@@ -25,7 +25,7 @@
     self.sendGiftCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSDictionary *params) {
         SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:params];
         SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_GIFT_SEND parameters:subscript.dictionary];
-        return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUser class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];
+        return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYGiftResultModel class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];
     }];
     
     self.requestGiftsListCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {

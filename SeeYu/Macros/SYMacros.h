@@ -186,6 +186,8 @@ _Pragma("clang diagnostic pop")\
 /// 项目轻量数据数据备份的文件夹（Library/Caches/WeChatCache）利用NSFileManager来访问
 #define SY_SEEYU_CACHE_NAME  @"SeeYuCache"
 
+#define SY_SEEYU_APP_NAME   @"真爱蜜约"
+
 
 
 /// AppDelegate
