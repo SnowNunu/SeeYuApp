@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) UILabel *orderLabel;
 
+@property (nonatomic, strong) UILabel *customerPhoneLabel;
+
 @property (nonatomic, strong) UILabel *tipsLabel;
 
 @property (nonatomic, strong) UIButton *wechatPayBtn;
@@ -107,6 +109,14 @@
     _orderLabel = orderLabel;
     [bgview addSubview:orderLabel];
     
+    UILabel *customerPhoneLabel = [UILabel new];
+    customerPhoneLabel.text = @"客服电话：17165146153";
+    customerPhoneLabel.font = SYFont(13, YES);
+    customerPhoneLabel.textColor = SYColor(64, 64, 64);
+    customerPhoneLabel.textAlignment = NSTextAlignmentLeft;
+    _customerPhoneLabel = customerPhoneLabel;
+    [bgview addSubview:customerPhoneLabel];
+    
     UIImageView *line1 = [UIImageView new];
     line1.backgroundColor = SYColorFromHexString(@"#F7D6F4");
     _line1 = line1;
@@ -182,7 +192,7 @@
     [_bgview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view).offset(-60);
         make.center.equalTo(self.view);
-        make.height.offset(264);
+        make.height.offset(274);
     }];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.bgview);
@@ -203,8 +213,13 @@
         make.centerX.equalTo(self.bgview);
         make.top.equalTo(self.orderLabel.mas_bottom).offset(15);
     }];
+    [_customerPhoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.bgview).offset(30);
+        make.top.equalTo(self.orderLabel.mas_bottom).offset(15);
+        make.height.offset(13);
+    }];
     [_tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.line1.mas_bottom).offset(15);
+        make.top.equalTo(self.customerPhoneLabel.mas_bottom).offset(15);
         make.left.height.equalTo(self.orderLabel);
     }];
     [_wechatPayBtn mas_makeConstraints:^(MASConstraintMaker *make) {

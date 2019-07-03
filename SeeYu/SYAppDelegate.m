@@ -21,6 +21,7 @@
 #import "RongCallKit.h"
 #import "SYOutboundVC.h"
 #import "SYOutboundVM.h"
+#import <JSPatchPlatform/JSPatch.h>
 
 #if defined(DEBUG)||defined(_DEBUG)
 
@@ -100,6 +101,12 @@
     
     /// 配置FMDB
     [self _configureFMDB];
+    
+    /// 配置热更新
+    [JSPatch testScriptInBundle];
+//    [JSPatch startWithAppKey:@"9cc0e753d76bc7f2"];
+//    [JSPatch setupRSAPublicKey:@"-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC5+aV9mtrSqy+1dFscBWZ1B2OG\nVtf7XP/IbfqlytA2SUjqWYiGd07klecEIU7GdrnIQS4/vd+Lsms9u/5DzUn9Rag5\nm2o88AjZSGgD0I7XjvJKjL9lh70P83Zzgu0mMjFR4SkiCNVnmo4bAEQqaUYT0ld0\nLT+3yYSuj2yrcaLXrQIDAQAB\n-----END PUBLIC KEY-----"];
+//    [JSPatch sync];
     
     // 初始化融云服务
 //    [[RCIM sharedRCIM] initWithAppKey:@"vnroth0kvbhso"];   // 开发环境

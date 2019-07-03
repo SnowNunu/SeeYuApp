@@ -32,7 +32,7 @@
         }
         NSString *password = [CocoaSecurity md5:strRandom].hexLower;
         self.password = password;
-        NSDictionary *parameters = @{@"userPassword":password,@"userName":self.alias,@"userAge":self.age,@"userGender":self.gender,@"userProfession":self.job,@"userIncome":self.income,@"userHeight":self.height,@"userMarry":self.maritalStatus,@"userChannelId":SY_APP_CHANNEL};
+        NSDictionary *parameters = @{@"userPassword":password,@"userName":self.alias,@"userAge":self.age,@"userGender":self.gender,@"userProfession":self.job,@"userIncome":self.income,@"userHeight":self.height,@"userMarry":self.maritalStatus,@"userChannelId":SY_APP_CHANNEL,@"userFrom":@"2"};
         SYKeyedSubscript *subscript = [[SYKeyedSubscript alloc]initWithDictionary:parameters];
         SYURLParameters *paramters = [SYURLParameters urlParametersWithMethod:SY_HTTTP_METHOD_POST path:SY_HTTTP_PATH_USER_REGISTER parameters:subscript.dictionary];
         return [[[self.services.client enqueueRequest:[SYHTTPRequest requestWithParameters:paramters] resultClass:[SYUser class]] sy_parsedResults] takeUntil:self.rac_willDeallocSignal];

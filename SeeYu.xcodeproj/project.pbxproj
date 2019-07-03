@@ -459,6 +459,10 @@
 		7BEB77C922784CCC008869A1 /* SYSigninInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB77C822784CCC008869A1 /* SYSigninInfoModel.m */; };
 		7BEB77CC22785C8A008869A1 /* SYSigninModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB77CB22785C8A008869A1 /* SYSigninModel.m */; };
 		7BEB77D022796493008869A1 /* SYMyMomentsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB77CF22796493008869A1 /* SYMyMomentsListCell.m */; };
+		7BF360F822C5B16E005F5FFF /* JSPatchPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF360F722C5B16E005F5FFF /* JSPatchPlatform.framework */; };
+		7BF360FA22C5B1DB005F5FFF /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF360F922C5B1DB005F5FFF /* JavaScriptCore.framework */; };
+		7BF360FC22C5B20B005F5FFF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF360FB22C5B20B005F5FFF /* libz.tbd */; };
+		7BF360FF22C5BD20005F5FFF /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 7BF360FE22C5BD20005F5FFF /* main.js */; };
 		7BF37C3C2272F9790042BC4F /* SYSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C3B2272F9790042BC4F /* SYSocketManager.m */; };
 		7BF37C3F227349D90042BC4F /* SYMomentsEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C3E227349D90042BC4F /* SYMomentsEditVC.m */; };
 		7BF37C4222734A380042BC4F /* SYMomentsEditVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF37C4122734A380042BC4F /* SYMomentsEditVM.m */; };
@@ -1401,6 +1405,10 @@
 		7BEB77CB22785C8A008869A1 /* SYSigninModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSigninModel.m; sourceTree = "<group>"; };
 		7BEB77CE22796493008869A1 /* SYMyMomentsListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMyMomentsListCell.h; sourceTree = "<group>"; };
 		7BEB77CF22796493008869A1 /* SYMyMomentsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMyMomentsListCell.m; sourceTree = "<group>"; };
+		7BF360F722C5B16E005F5FFF /* JSPatchPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatchPlatform.framework; sourceTree = "<group>"; };
+		7BF360F922C5B1DB005F5FFF /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		7BF360FB22C5B20B005F5FFF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		7BF360FE22C5BD20005F5FFF /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		7BF37C3A2272F9790042BC4F /* SYSocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYSocketManager.h; sourceTree = "<group>"; };
 		7BF37C3B2272F9790042BC4F /* SYSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYSocketManager.m; sourceTree = "<group>"; };
 		7BF37C3D227349D90042BC4F /* SYMomentsEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMomentsEditVC.h; sourceTree = "<group>"; };
@@ -1420,6 +1428,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BF360FC22C5B20B005F5FFF /* libz.tbd in Frameworks */,
+				7BF360FA22C5B1DB005F5FFF /* JavaScriptCore.framework in Frameworks */,
+				7BF360F822C5B16E005F5FFF /* JSPatchPlatform.framework in Frameworks */,
 				864BB5E20D5521374F720EC0 /* Pods_SeeYu.framework in Frameworks */,
 				7BF540F322BCCB0200D6443E /* StoreKit.framework in Frameworks */,
 			);
@@ -1477,7 +1488,6 @@
 				26064AEB1F5DA1F800566B95 /* ViewController */,
 				26064AEC1F5DA1F800566B95 /* ViewModel */,
 				26064AEF1F5DA21000566B95 /* Utils */,
-				26064AF01F5DA21000566B95 /* Vendor */,
 				26064AED1F5DA21000566B95 /* Macros */,
 				26064AEE1F5DA21000566B95 /* Resource */,
 				26064AC71F5D9A1400566B95 /* Info.plist */,
@@ -1597,6 +1607,7 @@
 		26064AEE1F5DA21000566B95 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7BF360FE22C5BD20005F5FFF /* main.js */,
 				7B76B8C9226A166500153249 /* Ringtones */,
 				2667A3ED1F7B987600A3D7A2 /* Data */,
 				2667A3EF1F7B987600A3D7A2 /* Pictures */,
@@ -1607,6 +1618,7 @@
 		26064AEF1F5DA21000566B95 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				26064AF01F5DA21000566B95 /* Vendor */,
 				262ADA4E1FCA795300B0F4FD /* Singleton */,
 				26C7BEEF1F8CD2BF00525126 /* Manager */,
 				26C7BEE71F8CC97F00525126 /* Service */,
@@ -1622,6 +1634,7 @@
 		26064AF01F5DA21000566B95 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				7BF360F622C5B16E005F5FFF /* JSPatch */,
 				7B50342D229ED62E0064D740 /* AVPlayer */,
 				7B52A781229C370F0043511C /* BMChineseSort */,
 				7B2A218C2276B67B00EC8614 /* CYWebViewController */,
@@ -1643,7 +1656,8 @@
 				263D36F11F666569007267C3 /* LCActionSheet */,
 				263D36FD1F666569007267C3 /* YYKit */,
 			);
-			path = Vendor;
+			name = Vendor;
+			path = ../Vendor;
 			sourceTree = "<group>";
 		};
 		26064AF11F5DB46500566B95 /* BaseClass */ = {
@@ -4430,6 +4444,14 @@
 			path = MyMoments;
 			sourceTree = "<group>";
 		};
+		7BF360F622C5B16E005F5FFF /* JSPatch */ = {
+			isa = PBXGroup;
+			children = (
+				7BF360F722C5B16E005F5FFF /* JSPatchPlatform.framework */,
+			);
+			path = JSPatch;
+			sourceTree = "<group>";
+		};
 		7BF37C392272F9540042BC4F /* WebSocket */ = {
 			isa = PBXGroup;
 			children = (
@@ -4442,6 +4464,8 @@
 		DB1E4F3D3B653F9FE4DEFF73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BF360FB22C5B20B005F5FFF /* libz.tbd */,
+				7BF360F922C5B1DB005F5FFF /* JavaScriptCore.framework */,
 				7BF540F222BCCB0200D6443E /* StoreKit.framework */,
 				7BC56A6C226ECA42005C1F81 /* CoreImage.framework */,
 				7BE971C2225E36AD00FF6A25 /* RongCallKit.framework */,
@@ -4606,6 +4630,7 @@
 				7BCDF38F2289548400D52640 /* login.mp4 in Resources */,
 				263D36DD1F666438007267C3 /* MBProgressHUD.bundle in Resources */,
 				26452BF32012001C0042B2FE /* SeeYu_Moments_3.json in Resources */,
+				7BF360FF22C5BD20005F5FFF /* main.js in Resources */,
 				26452BF5201200260042B2FE /* SeeYu_Moments_4.json in Resources */,
 				7B4BF47D2251B09300CCD286 /* public_pic_choose@2x.png in Resources */,
 				2667A3F11F7B987600A3D7A2 /* Zone.plist in Resources */,
@@ -5784,6 +5809,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SRLXHCX26Y;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SeeYu/Vendor/JSPatch",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SeeYu/SeeYu.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5875,6 +5904,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SRLXHCX26Y;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SeeYu/Vendor/JSPatch",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SeeYu/SeeYu.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
