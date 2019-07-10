@@ -67,6 +67,8 @@
             [self.viewModel.enterDiamondsRechargeViewCommand execute:nil];
         } else if ([self.viewModel.type isEqualToString:@"realAuth"]) {
             [self.viewModel.enterRealAuthViewCommand execute:nil];
+        } else if ([self.viewModel.type isEqualToString:@"lookOver"]) {
+            [self.viewModel.enterVipRechargeViewCommand execute:nil];
         }
     }];
 }
@@ -99,6 +101,8 @@
         iconImageView.image = SYImageNamed(@"vip_logo");
     } else if ([self.viewModel.type isEqualToString:@"realAuth"]) {
         iconImageView.image = SYImageNamed(@"truePerson");
+    } else if ([self.viewModel.type isEqualToString:@"lookOver"]) {
+        iconImageView.image = SYImageNamed(@"vip_logo");
     }
     _iconImageView = iconImageView;
     [bgView addSubview:iconImageView];
@@ -114,6 +118,8 @@
         tipsLabel.text = @"开通VIP就能和美女视频聊天了~";
     } else if ([self.viewModel.type isEqualToString:@"realAuth"]) {
         tipsLabel.text = @"通过真人认证就能和美女打招呼了~";
+    } else if([self.viewModel.type isEqualToString:@"lookOver"]) {
+        tipsLabel.text = @"只有VIP用户才能查看美女的联系方式哦，赶快前往领取VIP身份吧！";
     }
     tipsLabel.font = SYFont(12, YES);
     _tipsLabel = tipsLabel;
@@ -127,6 +133,8 @@
         [cancelBtn setTitle:@"继续单身" forState:UIControlStateNormal];
     } else if ([self.viewModel.type isEqualToString:@"realAuth"]) {
         [cancelBtn setTitle:@"考虑考虑" forState:UIControlStateNormal];
+    } else if ([self.viewModel.type isEqualToString:@"lookOver"]) {
+        [cancelBtn setTitle:@"继续单身" forState:UIControlStateNormal];
     }
     [cancelBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     _cancelBtn = cancelBtn;
@@ -141,6 +149,8 @@
     confirmBtn.backgroundColor = [UIColor whiteColor];
     if ([self.viewModel.type isEqualToString:@"realAuth"]) {
         [confirmBtn setTitle:@"前去认证" forState:UIControlStateNormal];
+    } else if ([self.viewModel.type isEqualToString:@"lookOver"]) {
+        [confirmBtn setTitle:@"华丽升级" forState:UIControlStateNormal];
     } else {
         [confirmBtn setTitle:@"我要充值" forState:UIControlStateNormal];
     }

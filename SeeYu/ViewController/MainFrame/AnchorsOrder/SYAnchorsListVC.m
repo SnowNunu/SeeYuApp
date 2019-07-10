@@ -111,7 +111,7 @@ NSString * const anchorsListCell = @"anchorsListCell";
     SYAnchorsListCell * cell = (SYAnchorsListCell *)[collectionView dequeueReusableCellWithReuseIdentifier:anchorsListCell forIndexPath:indexPath];
     SYAnchorsModel *model = self.viewModel.datasource[indexPath.row];
     cell.voicePriceLabel.text = [NSString stringWithFormat:@"%@/分钟",model.anchorChatCost];
-    cell.onlineStatusImageView.image = model.userOnline == 0 ? SYImageNamed(@"busy") : SYImageNamed(@"online");
+    cell.onlineStatusImageView.image = model.userOnline == 0 ? SYImageNamed(@"chating") : SYImageNamed(@"online");
     if (![model.userSpecialty sy_isNullOrNil] && ![model.userSpecialty isEqualToString:@""]) {
         [cell setTipsByHobby:model.userSpecialty];
     } else {

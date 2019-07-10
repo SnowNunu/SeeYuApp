@@ -126,7 +126,6 @@
             break;
         case AVPlayerItemStatusReadyToPlay:
 //            [self startLoadingPlayItemAnim:NO];
-            
             _isPlayerReady = YES;
             //            [_musicAlum startAnimation:_aweme.rate];
             
@@ -136,7 +135,8 @@
             break;
         case AVPlayerItemStatusFailed:
 //            [self startLoadingPlayItemAnim:NO];
-//            [UIWindow showTips:@"加载失败"];
+//            [MBProgressHUD sy_hideHUD];
+            [MBProgressHUD sy_showTips:@"加载失败"];
             break;
         default:
             break;

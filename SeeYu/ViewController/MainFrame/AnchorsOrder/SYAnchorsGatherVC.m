@@ -31,7 +31,8 @@ NSString * const anchorsGatherCell   = @"anchorsGatherCell";
     [self.viewModel.requestAllAnchorsInfoCommand execute:nil];
     [SYNotificationCenter addObserver:self selector:@selector(applicationBecomeActive) name:UIApplicationWillEnterForegroundNotification object:nil];
     [SYNotificationCenter addObserver:self selector:@selector(applicationEnterBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
-    [SYNotificationCenter addObserver:self selector:@selector(resumeVideo) name:@"hangUp" object:nil];
+    [SYNotificationCenter addObserver:self selector:@selector(continueAnchorsShow) name:@"continueAnchorsShow" object:nil];
+    [SYNotificationCenter addObserver:self selector:@selector(pasueAnchorsShow) name:@"pasueAnchorsShow" object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -240,9 +241,14 @@ NSString * const anchorsGatherCell   = @"anchorsGatherCell";
     [SYSharedAppDelegate presentVC:popVC withAnimation:animation];
 }
 
-- (void)resumeVideo {
+- (void)continueAnchorsShow {
     SYAnchorsGatherCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_currentIndex inSection:0]];
     [cell.playerView play];
+}
+
+- (void)pasueAnchorsShow {
+    SYAnchorsGatherCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_currentIndex inSection:0]];
+    [cell.playerView pause];
 }
 
 @end

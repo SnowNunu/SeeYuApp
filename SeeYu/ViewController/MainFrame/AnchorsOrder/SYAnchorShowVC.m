@@ -102,7 +102,8 @@
             }
         }
     }];
-    [SYNotificationCenter addObserver:self selector:@selector(resumeVideo) name:@"hangUp" object:nil];
+    [SYNotificationCenter addObserver:self selector:@selector(continueAnchorsShow) name:@"continueAnchorsShow" object:nil];
+    [SYNotificationCenter addObserver:self selector:@selector(pasueAnchorsShow) name:@"pasueAnchorsShow" object:nil];
 }
 
 - (void)_setupSubviews {
@@ -205,8 +206,12 @@
     [SYSharedAppDelegate presentVC:popVC withAnimation:animation];
 }
 
-- (void)resumeVideo {
+- (void)continueAnchorsShow {
     [self.playerView jp_resume];
+}
+
+- (void)pasueAnchorsShow {
+    [self.playerView jp_pause];
 }
 
 @end

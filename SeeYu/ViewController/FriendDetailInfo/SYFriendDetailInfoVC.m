@@ -93,19 +93,37 @@
 @property (nonatomic, strong) UILabel *ageInfoLabel;
 
 // 城市文本
-@property (nonatomic, strong) UILabel *cityInfoLabel;
+//@property (nonatomic, strong) UILabel *cityInfoLabel;
 
 // 身高文本
 @property (nonatomic, strong) UILabel *heightInfoLabel;
 
 // 收入文本
-@property (nonatomic, strong) UILabel *incomeInfoLabel;
+//@property (nonatomic, strong) UILabel *incomeInfoLabel;
 
 // 婚姻文本
 @property (nonatomic, strong) UILabel *marryInfoLabel;
 
 // ID文本
 @property (nonatomic, strong) UILabel *IDInfoLabel;
+
+// 微信文本
+@property (nonatomic, strong) UILabel * wxInfoLabel;
+
+// 微信
+@property (nonatomic, strong) UILabel * wxNumberLabel;
+
+// QQ文本
+@property (nonatomic, strong) UILabel *qqInfoLabel;
+
+// qq
+@property (nonatomic, strong) UILabel * qqNumberLabel;
+
+// 手机号文本
+@property (nonatomic, strong) UILabel *mobileInfoLabel;
+
+// 手机号
+@property (nonatomic, strong) UILabel * mobileNumberLabel;
 
 @property (nonatomic, strong) UIView *lineBgView2;
 
@@ -200,7 +218,7 @@
             cityString = [[NSMutableAttributedString alloc] initWithString:@"城市：未填写"];
             [cityString addAttribute:NSForegroundColorAttributeName value:SYColor(153, 153, 153) range:NSMakeRange(3, cityString.length - 3)];
         }
-        self.cityInfoLabel.attributedText = cityString;
+//        self.cityInfoLabel.attributedText = cityString;
         // 身高
         NSMutableAttributedString *heightString;
         if (![friendInfo.userHeight sy_isNullOrNil] && friendInfo.userHeight.length > 0) {
@@ -220,7 +238,7 @@
             incomeString = [[NSMutableAttributedString alloc] initWithString:@"收入：未填写"];
             [incomeString addAttribute:NSForegroundColorAttributeName value:SYColor(153, 153, 153) range:NSMakeRange(3, incomeString.length - 3)];
         }
-        self.incomeInfoLabel.attributedText = incomeString;
+//        self.incomeInfoLabel.attributedText = incomeString;
         // 婚姻
         NSMutableAttributedString *marrayString;
         if (![friendInfo.userMarry sy_isNullOrNil] && friendInfo.userMarry.length > 0) {
@@ -241,6 +259,65 @@
             [idString addAttribute:NSForegroundColorAttributeName value:SYColor(153, 153, 153) range:NSMakeRange(3, idString.length - 3)];
         }
         self.IDInfoLabel.attributedText = idString;
+        SYUser *user = self.viewModel.services.client.currentUser;
+        if (user.userVipStatus == 1 && user.userVipExpiresAt != nil && ![NSDate sy_overdue:user.userVipExpiresAt]) {
+            // 会员未过期
+            if (friendInfo.userWechat != nil && friendInfo.userWechat.length > 0) {
+                self.wxNumberLabel.text = friendInfo.userWechat;
+                [self.wxNumberLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.right.equalTo(self.headerView).offset(-20);
+                }];
+            }
+            if (friendInfo.userQq != nil && friendInfo.userQq.length > 0) {
+                self.qqNumberLabel.text = friendInfo.userQq;
+                [self.qqNumberLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.right.equalTo(self.headerView).offset(-20);
+                }];
+            }
+            if (friendInfo.userMobile != nil && friendInfo.userMobile.length > 0) {
+                self.mobileNumberLabel.text = friendInfo.userMobile;
+                [self.mobileNumberLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.right.equalTo(self.headerView).offset(-20);
+                }];
+            }
+        } else {
+            // 未开通会员或已过期
+            self.wxNumberLabel.text = @"查看微信";
+            self.wxNumberLabel.userInteractionEnabled = YES;
+            self.wxNumberLabel.textColor = [UIColor whiteColor];
+            self.wxNumberLabel.backgroundColor = SYColorFromHexString(@"#9F69EB");
+            self.wxNumberLabel.textAlignment = NSTextAlignmentCenter;
+            self.wxNumberLabel.font = SYFont(12, NO);
+            UITapGestureRecognizer *tapWx = [UITapGestureRecognizer new];
+            [[tapWx rac_gestureSignal] subscribeNext:^(id x) {
+                [self openRechargeTipsView:@"lookOver"];
+            }];
+            [self.wxNumberLabel addGestureRecognizer:tapWx];
+            
+            self.qqNumberLabel.text = @"查看QQ";
+            self.qqNumberLabel.userInteractionEnabled = YES;
+            self.qqNumberLabel.textColor = [UIColor whiteColor];
+            self.qqNumberLabel.backgroundColor = SYColorFromHexString(@"#9F69EB");
+            self.qqNumberLabel.textAlignment = NSTextAlignmentCenter;
+            self.qqNumberLabel.font = SYFont(12, NO);
+            UITapGestureRecognizer *tapQq = [UITapGestureRecognizer new];
+            [[tapQq rac_gestureSignal] subscribeNext:^(id x) {
+                [self openRechargeTipsView:@"lookOver"];
+            }];
+            [self.qqNumberLabel addGestureRecognizer:tapQq];
+            
+            self.mobileNumberLabel.text = @"查看手机号";
+            self.mobileNumberLabel.userInteractionEnabled = YES;
+            self.mobileNumberLabel.textColor = [UIColor whiteColor];
+            self.mobileNumberLabel.backgroundColor = SYColorFromHexString(@"#9F69EB");
+            self.mobileNumberLabel.textAlignment = NSTextAlignmentCenter;
+            self.mobileNumberLabel.font = SYFont(12, NO);
+            UITapGestureRecognizer *tapMobile = [UITapGestureRecognizer new];
+            [[tapMobile rac_gestureSignal] subscribeNext:^(id x) {
+                [self openRechargeTipsView:@"lookOver"];
+            }];
+            [self.mobileNumberLabel addGestureRecognizer:tapMobile];
+        }
     }];
     [RACObserve(self.viewModel, authInfo) subscribeNext:^(SYAuthenticationModel *authInfo) {
         if (authInfo.mobileFlag == 1) {
@@ -290,7 +367,6 @@
         SYUser *user = self.viewModel.services.client.currentUser;
         if (user.userVipStatus == 1) {
             if (user.userVipExpiresAt != nil) {
-                
                 if ([NSDate sy_overdue:user.userVipExpiresAt]) {
                     // 已过期
                     [self openRechargeTipsView:@"vip"];
@@ -375,7 +451,7 @@
     [self.view addSubview:backBtn];
     [self.view bringSubviewToFront:backBtn];
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, SY_SCREEN_WIDTH * 0.7 + 410)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SY_SCREEN_WIDTH, SY_SCREEN_WIDTH + 500)];
     _headerView = headerView;
     self.tableView.tableHeaderView = headerView;
     
@@ -553,11 +629,11 @@
     _ageInfoLabel = ageInfoLabel;
     [detailInfoView addSubview:ageInfoLabel];
     
-    UILabel *cityInfoLabel = [UILabel new];
-    cityInfoLabel.textAlignment = NSTextAlignmentLeft;
-    cityInfoLabel.font = SYRegularFont(16);
-    _cityInfoLabel = cityInfoLabel;
-    [detailInfoView addSubview:cityInfoLabel];
+//    UILabel *cityInfoLabel = [UILabel new];
+//    cityInfoLabel.textAlignment = NSTextAlignmentLeft;
+//    cityInfoLabel.font = SYRegularFont(16);
+//    _cityInfoLabel = cityInfoLabel;
+//    [detailInfoView addSubview:cityInfoLabel];
     
     UILabel *heightInfoLabel = [UILabel new];
     heightInfoLabel.textAlignment = NSTextAlignmentLeft;
@@ -565,11 +641,11 @@
     _heightInfoLabel = heightInfoLabel;
     [detailInfoView addSubview:heightInfoLabel];
     
-    UILabel *incomeInfoLabel = [UILabel new];
-    incomeInfoLabel.textAlignment = NSTextAlignmentLeft;
-    incomeInfoLabel.font = SYRegularFont(16);
-    _incomeInfoLabel = incomeInfoLabel;
-    [detailInfoView addSubview:incomeInfoLabel];
+//    UILabel *incomeInfoLabel = [UILabel new];
+//    incomeInfoLabel.textAlignment = NSTextAlignmentLeft;
+//    incomeInfoLabel.font = SYRegularFont(16);
+//    _incomeInfoLabel = incomeInfoLabel;
+//    [detailInfoView addSubview:incomeInfoLabel];
     
     UILabel *marryInfoLabel = [UILabel new];
     marryInfoLabel.textAlignment = NSTextAlignmentLeft;
@@ -582,6 +658,60 @@
     IDInfoLabel.font = SYRegularFont(16);
     _IDInfoLabel = IDInfoLabel;
     [detailInfoView addSubview:IDInfoLabel];
+    
+    // 微信文本
+    UILabel *wxInfoLabel = [UILabel new];
+    wxInfoLabel.textAlignment = NSTextAlignmentLeft;
+    wxInfoLabel.font = SYRegularFont(16);
+    wxInfoLabel.text = @"微信:";
+    _wxInfoLabel = wxInfoLabel;
+    [detailInfoView addSubview:wxInfoLabel];
+    
+    UILabel * wxNumberLabel = [UILabel new];
+    wxNumberLabel.textColor = SYColor(153, 153, 153);
+    wxNumberLabel.font = SYRegularFont(16);
+    wxNumberLabel.layer.masksToBounds = YES;
+    wxNumberLabel.layer.cornerRadius = 15.f;
+    wxNumberLabel.textAlignment = NSTextAlignmentLeft;
+    wxNumberLabel.text = @"保密";
+    _wxNumberLabel = wxNumberLabel;
+    [detailInfoView addSubview:wxNumberLabel];
+    
+    // QQ文本
+    UILabel *qqInfoLabel = [UILabel new];
+    qqInfoLabel.textAlignment = NSTextAlignmentLeft;
+    qqInfoLabel.font = SYRegularFont(16);
+    qqInfoLabel.text = @"QQ:";
+    _qqInfoLabel = qqInfoLabel;
+    [detailInfoView addSubview:qqInfoLabel];
+    
+    UILabel * qqNumberLabel = [UILabel new];
+    qqNumberLabel.textColor = SYColor(153, 153, 153);
+    qqNumberLabel.font = SYRegularFont(16);
+    qqNumberLabel.layer.masksToBounds = YES;
+    qqNumberLabel.layer.cornerRadius = 15.f;
+    qqNumberLabel.textAlignment = NSTextAlignmentLeft;
+    qqNumberLabel.text = @"保密";
+    _qqNumberLabel = qqNumberLabel;
+    [detailInfoView addSubview:qqNumberLabel];
+    
+    // 手机号文本
+    UILabel *mobileInfoLabel = [UILabel new];
+    mobileInfoLabel.textAlignment = NSTextAlignmentLeft;
+    mobileInfoLabel.font = SYRegularFont(16);
+    mobileInfoLabel.text = @"手机号:";
+    _mobileInfoLabel = mobileInfoLabel;
+    [detailInfoView addSubview:mobileInfoLabel];
+    
+    UILabel * mobileNumberLabel = [UILabel new];
+    mobileNumberLabel.textColor = SYColor(153, 153, 153);
+    mobileNumberLabel.font = SYRegularFont(16);
+    mobileNumberLabel.layer.masksToBounds = YES;
+    mobileNumberLabel.layer.cornerRadius = 15.f;
+    mobileNumberLabel.textAlignment = NSTextAlignmentLeft;
+    mobileNumberLabel.text = @"保密";
+    _mobileNumberLabel = mobileNumberLabel;
+    [detailInfoView addSubview:mobileNumberLabel];
     
     UIView *lineBgView2 = [UIView new];
     lineBgView2.backgroundColor = SYColorFromHexString(@"#F8F8F8");
@@ -626,8 +756,8 @@
         make.right.equalTo(self.headerView).offset(-15);
     }];
     [self.signatureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.headImageView).offset(20);
-        make.right.equalTo(self.headImageView).offset(-20);
+        make.left.equalTo(self.headerView).offset(20);
+        make.right.equalTo(self.headerView).offset(-20);
         make.height.offset(15);
         make.bottom.equalTo(self.headImageView).offset(-15);
     }];
@@ -679,7 +809,7 @@
     [self.detailInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(self.lineBgView1);
         make.top.equalTo(self.lineBgView1.mas_bottom);
-        make.bottom.equalTo(self.IDInfoLabel).offset(15);
+        make.bottom.equalTo(self.mobileInfoLabel).offset(15);
     }];
     [self.infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.equalTo(self.detailInfoView).offset(15);
@@ -705,41 +835,63 @@
         make.left.equalTo(self.secondHobbyLabel.mas_right).offset(15);
         make.centerY.width.height.equalTo(self.secondHobbyLabel);
     }];
-    [self.aliasInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_aliasInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.offset(15);
         make.width.offset(SY_SCREEN_WIDTH / 2 - 15);
         make.top.equalTo(self.hobbyInfoLabel.mas_bottom).offset(30);
         make.left.equalTo(self.hobbyInfoLabel);
     }];
-    [self.genderInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_genderInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.centerY.equalTo(self.aliasInfoLabel);
         make.right.equalTo(self.detailInfoView).offset(-15);
     }];
-    [self.ageInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_ageInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.aliasInfoLabel.mas_bottom).offset(30);
         make.left.width.height.equalTo(self.aliasInfoLabel);
     }];
-    [self.cityInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_marryInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.centerY.equalTo(self.ageInfoLabel);
         make.right.equalTo(self.detailInfoView).offset(-15);
     }];
-    [self.heightInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_heightInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.ageInfoLabel.mas_bottom).offset(30);
         make.left.width.height.equalTo(self.aliasInfoLabel);
     }];
-    [self.incomeInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_IDInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.centerY.equalTo(self.heightInfoLabel);
         make.right.equalTo(self.detailInfoView).offset(-15);
     }];
-    [self.marryInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_wxInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.heightInfoLabel.mas_bottom).offset(30);
-        make.left.width.height.equalTo(self.heightInfoLabel);
+        make.left.width.height.equalTo(self.aliasInfoLabel);
     }];
-    [self.IDInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.centerY.equalTo(self.marryInfoLabel);
-        make.right.equalTo(self.detailInfoView).offset(-15);
+    [_wxNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.wxInfoLabel);
+        make.left.equalTo(self.detailInfoView).offset(SY_SCREEN_WIDTH / 2);
+        make.height.offset(30);
+        make.width.offset(80);
     }];
-    [self.lineBgView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_qqInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.wxInfoLabel.mas_bottom).offset(30);
+        make.left.width.height.equalTo(self.aliasInfoLabel);
+    }];
+    [_qqNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.qqInfoLabel);
+        make.left.equalTo(self.detailInfoView).offset(SY_SCREEN_WIDTH / 2);
+        make.height.offset(30);
+        make.width.offset(80);
+    }];
+    [_mobileInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.qqInfoLabel.mas_bottom).offset(30);
+        make.left.width.height.equalTo(self.aliasInfoLabel);
+    }];
+    [_mobileNumberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.mobileInfoLabel);
+        make.left.equalTo(self.detailInfoView).offset(SY_SCREEN_WIDTH / 2);
+        make.height.offset(30);
+        make.width.offset(80);
+    }];
+    [_lineBgView2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.detailInfoView.mas_bottom);
         make.height.offset(15);
         make.left.width.equalTo(self.functionView);

@@ -266,13 +266,13 @@
         aliasLabel.text = model.userName;
         [cell.contentView addSubview:aliasLabel];
         
-        // id
-        UILabel *idLabel = [UILabel new];
-        idLabel.text = [NSString stringWithFormat:@"ID %@",model.userId];
-        idLabel.font = SYFont(10, YES);
-        idLabel.textColor = SYColor(193, 99, 237);
-        idLabel.textAlignment = NSTextAlignmentLeft;
-        [cell.contentView addSubview:idLabel];
+//        // id
+//        UILabel *idLabel = [UILabel new];
+//        idLabel.text = [NSString stringWithFormat:@"ID %@",model.userId];
+//        idLabel.font = SYFont(10, YES);
+//        idLabel.textColor = SYColor(193, 99, 237);
+//        idLabel.textAlignment = NSTextAlignmentLeft;
+//        [cell.contentView addSubview:idLabel];
         
         UILabel *customLabel = [UILabel new];
         if ([self.viewModel.listType isEqualToString:@"anchor"]) {
@@ -314,13 +314,13 @@
         [aliasLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(headImageView.mas_right).offset(9);
             make.height.offset(12);
-            make.top.equalTo(cell.contentView).offset(15);
+            make.centerY.equalTo(headImageView) ;
         }];
-        [idLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(aliasLabel);
-            make.top.equalTo(aliasLabel.mas_bottom).offset(8);
-            make.height.offset(15);
-        }];
+//        [idLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(aliasLabel);
+//            make.top.equalTo(aliasLabel.mas_bottom).offset(8);
+//            make.height.offset(15);
+//        }];
         [customLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(cell.contentView).offset(-15);
             make.centerY.equalTo(cell.contentView);

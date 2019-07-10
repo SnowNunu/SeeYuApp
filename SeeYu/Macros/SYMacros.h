@@ -19,7 +19,7 @@
 /// 应用build
 #define SY_APP_BUILD   ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"])
 /// 推广渠道号
-#define SY_APP_CHANNEL  @"C001S001"
+#define SY_APP_CHANNEL  @"C001S006"
 
 
 

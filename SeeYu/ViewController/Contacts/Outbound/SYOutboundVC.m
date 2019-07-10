@@ -209,11 +209,13 @@
 }
 
 - (void)startCallShow {
+    [SYNotificationCenter postNotificationName:@"pasueAnchorsShow" object:nil];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Opening" ofType:@"m4r"];
     [self startPlayRing:filePath];
 }
 
 - (void)stopCallShow {
+    [SYNotificationCenter postNotificationName:@"continueAnchorsShow" object:nil];
     dispatch_async(dispatch_get_main_queue(), ^{
         [[JX_GCDTimerManager sharedInstance] cancelTimerWithName:@"stopCallShow"];
         [self.videoShowView jp_stopPlay];

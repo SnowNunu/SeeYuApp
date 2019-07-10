@@ -113,16 +113,20 @@
 /** 用户纬度坐标 */
 @property (nonatomic, strong) NSString *userLatitude;
 
+/** 微信号 */
+@property (nonatomic, strong) NSString *userWechat;
+
+/** 用户QQ号 */
+@property (nonatomic, strong) NSString *userQq;
+
+/** 手机号 */
+@property (nonatomic, strong) NSString *userMobile;
+
 //------------------------------------------------------------------
 /// ----- 登录相关 -----
-/// qq
-@property (nonatomic, readwrite, copy) NSString *qq;
+
 /// 邮箱
 @property (nonatomic, readwrite, copy) NSString *email;
-/// 微信号
-@property (nonatomic, readwrite, copy) NSString *wechatId;
-/// 手机号码
-@property (nonatomic, readwrite, copy) NSString *phone;
 
 /// 登录渠道
 @property (nonatomic, readwrite, assign) SYUserLoginChannelType channel;

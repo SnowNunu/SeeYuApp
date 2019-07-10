@@ -103,10 +103,10 @@
     [self _configureFMDB];
     
     /// 配置热更新
-    [JSPatch testScriptInBundle];
-//    [JSPatch startWithAppKey:@"9cc0e753d76bc7f2"];
-//    [JSPatch setupRSAPublicKey:@"-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC5+aV9mtrSqy+1dFscBWZ1B2OG\nVtf7XP/IbfqlytA2SUjqWYiGd07klecEIU7GdrnIQS4/vd+Lsms9u/5DzUn9Rag5\nm2o88AjZSGgD0I7XjvJKjL9lh70P83Zzgu0mMjFR4SkiCNVnmo4bAEQqaUYT0ld0\nLT+3yYSuj2yrcaLXrQIDAQAB\n-----END PUBLIC KEY-----"];
-//    [JSPatch sync];
+//    [JSPatch testScriptInBundle];
+    [JSPatch startWithAppKey:@"9cc0e753d76bc7f2"];
+    [JSPatch setupRSAPublicKey:@"-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC5+aV9mtrSqy+1dFscBWZ1B2OG\nVtf7XP/IbfqlytA2SUjqWYiGd07klecEIU7GdrnIQS4/vd+Lsms9u/5DzUn9Rag5\nm2o88AjZSGgD0I7XjvJKjL9lh70P83Zzgu0mMjFR4SkiCNVnmo4bAEQqaUYT0ld0\nLT+3yYSuj2yrcaLXrQIDAQAB\n-----END PUBLIC KEY-----"];
+    [JSPatch sync];
     
     // 初始化融云服务
 //    [[RCIM sharedRCIM] initWithAppKey:@"vnroth0kvbhso"];   // 开发环境
@@ -123,7 +123,7 @@
 
     // 使用bugly收集崩溃日志
     [Bugly startWithAppId:@"665d87c560"];
-//    // 初始化友盟服务
+    // 初始化友盟服务
     [UMConfigure initWithAppkey:@"5ca1a3aa3fc195e05e0000df" channel:SY_APP_CHANNEL];
     UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
     //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
